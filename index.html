@@ -354,6 +354,9 @@ nav button .bd{position:absolute;top:4px;right:10px;min-width:16px;height:16px;p
 .lmsppk .lmspr:active{transform:scale(.98)}
 .lmsppk-ck{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-weight:900;font-size:14px;color:#1A1030;background:#FFD35A}
 .lmsppk .lmspr.on>div{padding-right:28px}
+/* LEMNISCATE：融合のイラスト（赤と青が重なって紫に） */
+.lmart.lmbigart.m-merge .a3{transform-origin:24px 24px;animation:lmfuse3 .9s ease both}
+@keyframes lmfuse3{0%,45%{opacity:0;transform:scale(.4)}75%{opacity:1;transform:scale(1.25)}100%{opacity:1;transform:none}}
 
 /* ===== 共通部品（旧アプリから） ===== */
 .arena{position:fixed;inset:0;z-index:40;display:flex;flex-direction:column;padding:calc(var(--safe-t) + 12px) 16px calc(var(--safe-b) + 14px);
@@ -1808,7 +1811,7 @@ body.bgpause .hxemb i{animation-play-state:paused}
    ============================================================ */
 const CFG_URL = "https://gcuddhongxvojabweclh.supabase.co";
 const CFG_KEY = "sb_publishable_E6PxQDZpmdfb6kjRPte3qw_goaYjKZB";
-const APP_VER = "v27";
+const APP_VER = "v38";
 
 const lsGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
 const lsSet = (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} };
@@ -5463,7 +5466,7 @@ function lmScoreShow(g, e){
 }
 /* ---------- スペシャルのイラスト（線画SVG）と発動エフェクト ---------- */
 const LM_SP_COL = { amp: "#FFD35A", dbl: "#5EC8FF", wild: "#E58CFF", up: "#3FE0B0", wall: "#9FB4FF", ward: "#C46BFF", rev: "#FF5A7A", raid: "#FF9A4A",
-  rob: "#FF6A3A", aim: "#FF5A7A", crown: "#FFD35A", acc: "#FFE08A", swap: "#5EC8FF", see: "#A8F0FF", fill: "#3FE0B0", seal: "#FF5A7A", fuse: "#5EC8FF",
+  rob: "#FF6A3A", aim: "#FF5A7A", crown: "#FFD35A", acc: "#FFE08A", swap: "#5EC8FF", see: "#A8F0FF", fill: "#3FE0B0", seal: "#FF5A7A", fuse: "#C46BFF",
   relive: "#FF8A3A", freeze: "#9FE6FF", solo: "#FFFFFF", comeback: "#FFD35A", ward2: "#C46BFF" };
 /* 各イラストは viewBox 0 0 48 48、線は currentColor。class a1〜a3 は動きの付く部品 */
 const LM_SP_ART = {
@@ -5472,10 +5475,10 @@ const LM_SP_ART = {
   wild: `<path class="a1" d="M24 4l5 13 14 1-11 9 4 14-12-8-12 8 4-14-11-9 14-1z"/><circle class="a2" cx="24" cy="24" r="3" fill="currentColor"/>`,
   up: `<path class="a1" d="M12 30l12-11 12 11"/><path class="a2" d="M12 40l12-11 12 11"/><path class="a3" d="M12 20l12-11 12 11"/>`,
   wall: `<path class="a1" d="M24 4l17 6v12c0 11-8 18-17 22C15 40 7 33 7 22V10z"/><path class="a2" d="M24 12v24M15 20h18"/>`,
-  ward: `<circle class="a1" cx="24" cy="24" r="19"/><circle cx="24" cy="24" r="13"/><path class="a1" d="M24 5l5 15h15l-12 9 5 15-13-9-13 9 5-15-12-9h15z" stroke-width="1.2"/>`,
-  rev: `<path class="a1" d="M10 34c0-14 10-22 24-22"/><path class="a1" d="M28 6l7 6-7 6"/><path class="a2" d="M38 14c0 14-10 22-24 22"/><path class="a2" d="M20 42l-7-6 7-6"/>`,
-  raid: `<path class="a1" d="M24 6v20"/><path class="a2" d="M14 26c0 8 4 14 10 14s10-6 10-14"/><path class="a2" d="M10 22l4 4 4-4M30 22l4 4 4-4"/><circle cx="24" cy="6" r="2.5" fill="currentColor"/>`,
-  rob: `<path class="a1" d="M10 12l8 24M20 8l6 26M31 9l2 24M40 14l-3 20"/>`,
+  ward: `<g class="a1"><circle cx="24" cy="24" r="22.5"/><circle cx="24" cy="24" r="17.8" stroke-width="1.4"/><path d="M28.8 6.0L29.6 3.1M37.2 10.8L39.3 8.7M42.0 19.2L44.9 18.4M42.0 28.8L44.9 29.6M37.2 37.2L39.3 39.3M28.8 42.0L29.6 44.9M19.2 42.0L18.4 44.9M10.8 37.2L8.7 39.3M6.0 28.8L3.1 29.6M6.0 19.2L3.1 18.4M10.8 10.8L8.7 8.7M19.2 6.0L18.4 3.1" stroke-width="1"/><circle cx="24.0" cy="3.9" r="1" fill="currentColor" stroke="none"/><circle cx="34.0" cy="6.6" r="1" fill="currentColor" stroke="none"/><circle cx="41.4" cy="13.9" r="1" fill="currentColor" stroke="none"/><circle cx="44.1" cy="24.0" r="1" fill="currentColor" stroke="none"/><circle cx="41.4" cy="34.0" r="1" fill="currentColor" stroke="none"/><circle cx="34.0" cy="41.4" r="1" fill="currentColor" stroke="none"/><circle cx="24.0" cy="44.1" r="1" fill="currentColor" stroke="none"/><circle cx="13.9" cy="41.4" r="1" fill="currentColor" stroke="none"/><circle cx="6.6" cy="34.1" r="1" fill="currentColor" stroke="none"/><circle cx="3.9" cy="24.0" r="1" fill="currentColor" stroke="none"/><circle cx="6.6" cy="13.9" r="1" fill="currentColor" stroke="none"/><circle cx="13.9" cy="6.6" r="1" fill="currentColor" stroke="none"/></g><g class="a2"><path d="M24.0 7.2L40.8 24.0L24.0 40.8L7.2 24.0ZM35.9 12.1L35.9 35.9L12.1 35.9L12.1 12.1Z" stroke-width="1.7"/><circle cx="24" cy="24" r="9.6" stroke-width="1.3"/><circle cx="24" cy="24" r="5" stroke-width="1.2"/><circle cx="24" cy="24" r="1.8" fill="currentColor" stroke="none"/></g>`,
+  rev: `<g class="a1"><g transform="translate(0.6 -2)"><path d="M15.5 33.5V44H32.5V33.5" fill="#0B0E28" stroke-width="1.7"/><path d="M11.6 21V29.4Q12.4 35.4 19 35.6H30.4Q36.4 35.2 37.2 29V20" fill="#0B0E28" stroke-width="1.8"/><rect x="12" y="10.4" width="6.6" height="13.6" rx="3.3" fill="#0B0E28" stroke-width="1.7"/><rect x="18.6" y="8.2" width="6.6" height="15.8" rx="3.3" fill="#0B0E28" stroke-width="1.7"/><rect x="25.2" y="8.8" width="6.4" height="15.2" rx="3.2" fill="#0B0E28" stroke-width="1.7"/><rect x="31.6" y="11.6" width="5.8" height="12.6" rx="2.9" fill="#0B0E28" stroke-width="1.7"/><path d="M13.8 16.2H16.8M20.4 14.4H23.4M27 14.8H29.8M33.2 17.2H35.8" stroke-width="1" opacity=".6"/><path d="M12.6 30.6Q9.6 29.6 9.6 25.8Q9.6 21.4 13.8 21.4H25.2Q28.4 21.4 28.4 24.6Q28.4 27.8 25.2 27.8H16Q13.4 27.8 12.6 30.6Z" fill="#0B0E28" stroke-width="1.8"/><path d="M22.6 22.8Q24.6 22.6 25.8 23.8" stroke-width="1" opacity=".6"/></g></g>`,
+  raid: `<g class="a1"><g transform="translate(2.2 -1.2) rotate(38 24 23)"><path d="M22.4 31V12.2Q22.4 5.8 26.6 1.4L30 2.6Q28.4 7.4 28.6 13.4Q29 23.2 27.2 31Z" fill="currentColor" fill-opacity=".22" stroke-width="1.4"/><path d="M24 29.4V12.6Q24.2 8 26.4 4.6" stroke-width=".8" opacity=".8"/><path d="M27.4 3.4L29.8 3.4" stroke-width="1.2" opacity=".9"/><path d="M17.4 31.3Q24.6 28.9 32 31.3Q32.9 33.8 31.4 35.6Q24.6 33.2 18.2 35.4Q16.6 33.4 17.4 31.3Z" fill="currentColor" stroke-width="1"/><path d="M31.4 35.2Q34.6 40 27.4 44.4" stroke-width="1.7"/><path d="M24.8 35.4V42" stroke-width="3.2"/><path d="M23.2 37.2H26.4M23.2 39.6H26.4" stroke="#0B0E28" stroke-width=".8"/><circle cx="25" cy="44" r="2.1" fill="currentColor" stroke="none"/></g></g>`,
+  rob: `<g transform="translate(4.5 3.5)"><path class="a1" d="M24.0 9.0Q10.0 21.0 6.0 39.0Q14.5 23.7 24.0 9.0Z" fill="currentColor" stroke="currentColor" stroke-width=".6"/><path class="a2" d="M33.0 7.0Q18.9 21.3 15.0 41.0Q23.5 23.7 33.0 7.0Z" fill="currentColor" stroke="currentColor" stroke-width=".6"/><path class="a3" d="M42.0 5.0Q28.0 17.0 24.0 35.0Q32.5 19.7 42.0 5.0Z" fill="currentColor" stroke="currentColor" stroke-width=".6"/></g>`,
   aim: `<circle class="a1" cx="24" cy="24" r="16"/><circle cx="24" cy="24" r="6"/><path class="a2" d="M24 2v12M24 34v12M2 24h12M34 24h12"/>`,
   crown: `<path class="a1" d="M6 36l4-22 9 10 5-14 5 14 9-10 4 22z"/><path d="M8 42h32"/><circle cx="24" cy="10" r="2" fill="currentColor"/><circle cx="10" cy="14" r="2" fill="currentColor"/><circle cx="38" cy="14" r="2" fill="currentColor"/>`,
   acc: `<rect class="a1" x="8" y="30" width="8" height="12"/><rect class="a2" x="20" y="20" width="8" height="22"/><rect class="a3" x="32" y="10" width="8" height="32"/>`,
@@ -5483,9 +5486,9 @@ const LM_SP_ART = {
   see: `<path d="M3 24c6-10 13-15 21-15s15 5 21 15c-6 10-13 15-21 15S9 34 3 24z"/><circle class="a1" cx="24" cy="24" r="7"/><circle cx="24" cy="24" r="3" fill="currentColor"/>`,
   fill: `<rect x="12" y="14" width="24" height="30" rx="3"/><path class="a1" d="M24 22v14M17 29h14"/><path class="a2" d="M18 8h12M21 3h6"/>`,
   seal: `<rect x="12" y="20" width="24" height="20" rx="3"/><path class="a1" d="M17 20v-6a7 7 0 0 1 14 0v6"/><path class="a2" d="M4 12l40 30M44 12L4 42" stroke-width="1.4"/>`,
-  fuse: `<circle class="a1" cx="16" cy="24" r="9"/><circle class="a2" cx="32" cy="24" r="9"/><path d="M24 16v16"/>`,
+  fuse: `<defs><radialGradient id="lmfuG" cx="50%" cy="50%" r="60%"><stop offset="0" stop-color="#F2D2FF"/><stop offset=".55" stop-color="#C46BFF"/><stop offset="1" stop-color="#8A4BFF"/></radialGradient></defs><g class="a1"><circle cx="17" cy="24" r="11" stroke="#FF5A7A" fill="#FF5A7A" fill-opacity=".22"/></g><g class="a2"><circle cx="31" cy="24" r="11" stroke="#5EC8FF" fill="#5EC8FF" fill-opacity=".22"/></g><path class="a3" d="M24 15.5A11 11 0 0 1 24 32.5A11 11 0 0 1 24 15.5Z" fill="url(#lmfuG)" stroke="none"/><path d="M24 21v6M21 24h6" stroke="#fff" stroke-width="1.3"/>`,
   relive: `<path class="a1" d="M24 44c-9 0-14-6-14-13 0-8 7-11 8-19 4 3 5 7 5 10 2-2 3-5 3-9 7 5 12 12 12 19 0 7-5 12-14 12z"/><path class="a2" d="M24 44c-3 0-5-2-5-5 0-4 3-5 5-9 2 4 5 5 5 9 0 3-2 5-5 5z"/>`,
-  freeze: `<g class="a1"><path d="M24 4v40M6.7 14l34.6 20M6.7 34l34.6-20"/><path d="M20 8l4 4 4-4M20 40l4-4 4 4M9 20l5 1-1 5M39 28l-5-1 1-5M9 28l5-1-1-5M39 20l-5 1 1 5"/></g>`,
+  freeze: `<g class="a1"><path d="M24.0 21.0L24.0 4.0M26.6 22.5L41.3 14.0M26.6 25.5L41.3 34.0M24.0 27.0L24.0 44.0M21.4 25.5L6.7 34.0M21.4 22.5L6.7 14.0"/><path d="M24.0 15.0L19.5 11.8M24.0 15.0L28.5 11.8M24.0 9.5L20.7 7.2M24.0 9.5L27.3 7.2M31.8 19.5L32.3 14.0M31.8 19.5L36.8 21.8M36.6 16.8L36.9 12.8M36.6 16.8L40.2 18.4M31.8 28.5L36.8 26.2M31.8 28.5L32.3 34.0M36.6 31.2L40.2 29.6M36.6 31.2L36.9 35.2M24.0 33.0L28.5 36.2M24.0 33.0L19.5 36.2M24.0 38.5L27.3 40.8M24.0 38.5L20.7 40.8M16.2 28.5L15.7 34.0M16.2 28.5L11.2 26.2M11.4 31.3L11.1 35.2M11.4 31.3L7.8 29.6M16.2 19.5L11.2 21.8M16.2 19.5L15.7 14.0M11.4 16.8L7.8 18.4M11.4 16.8L11.1 12.8" stroke-width="1.8"/><path d="M25.5 21.4L27.0 24.0L25.5 26.6L22.5 26.6L21.0 24.0L22.5 21.4Z" stroke-width="1.6"/></g>`,
   solo: `<path class="a2" d="M14 4l-6 40h32l-6-40z" opacity=".35"/><rect class="a1" x="16" y="16" width="16" height="22" rx="3"/><text x="24" y="32" font-size="12" text-anchor="middle" fill="currentColor" stroke="none" font-family="Cinzel,serif" font-weight="900">1</text>`,
   comeback: `<path class="a1" d="M14 6h20M14 42h20M16 6c0 10 16 12 16 18s-16 8-16 18M32 6c0 10-16 12-16 18s16 8 16 18"/><path class="a2" d="M20 38h8l-4-6z" fill="currentColor"/>`
 };
