@@ -331,7 +331,7 @@ nav button .bd{position:absolute;top:4px;right:10px;min-width:16px;height:16px;p
    ・結果画面はいつでも最後までスクロールでき、下のボタンまで余白をとる
    ・6人でも1画面に収まりやすいよう、少しコンパクトに */
 .arena.lmg.lmending>.lmend{filter:none!important}
-.arena.lmg>.lmend{position:fixed;inset:0;height:100%;z-index:45;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:calc(var(--safe-t) + 10px) 12px calc(var(--safe-b) + 40px)}
+#lmEndHost>.lmend{position:fixed;inset:0;height:100%;z-index:45;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:calc(var(--safe-t) + 10px) 12px calc(var(--safe-b) + 40px)}
 .lmend .lmendt .lminf{width:120px;height:60px}
 .lmend .lmendt b{font-size:30px}
 .lmend .lmres{padding:7px 10px;gap:8px}
@@ -357,6 +357,19 @@ nav button .bd{position:absolute;top:4px;right:10px;min-width:16px;height:16px;p
 /* LEMNISCATE：融合のイラスト（赤と青が重なって紫に） */
 .lmart.lmbigart.m-merge .a3{transform-origin:24px 24px;animation:lmfuse3 .9s ease both}
 @keyframes lmfuse3{0%,45%{opacity:0;transform:scale(.4)}75%{opacity:1;transform:scale(1.25)}100%{opacity:1;transform:none}}
+
+/* 最終結果の置き場（画面に直接置く）：LEMNISCATEの色・文字の設定を引き継ぐ */
+#lmEndHost{--lmbg:#070A1E;--lmink:#EAF0FF;--lmmute:#8E98C8;--lmline:rgba(160,180,255,.18);--lmgold:#FFD35A;--lmcz:"Cinzel",serif;color:var(--lmink);font-family:var(--body)}
+/* カード右上：この数字で合成したら引ける枚数 */
+.lmc .lmdr{position:absolute;top:3px;right:4px;z-index:2;font-style:normal;font-family:var(--lmcz);font-weight:900;font-size:9.5px;line-height:1;padding:2px 3px 1px;border-radius:4px;color:#0B0E28;background:color-mix(in srgb,var(--nc) 85%,#fff);box-shadow:0 0 6px color-mix(in srgb,var(--nc) 60%,transparent)}
+.lmc .lmup{top:17px}
+.lmbig .lmc .lmdr,.lmfly .lmc .lmdr,.lmdc .lmc .lmdr,.lmbr .lmc .lmdr,.lmpick .lmc .lmdr{display:none}
+/* 戦績：対人戦／CPU戦の切り替え */
+.recmode{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px;margin:0 0 12px;border-radius:16px;background:var(--glass);border:1px solid var(--edge)}
+.recmode button{padding:9px 0;border-radius:12px;font-size:13px;font-weight:900;color:var(--tx2)}
+.recmode button[aria-pressed="true"]{color:#1B1838;background:linear-gradient(110deg,#FFE36A,#FF8AC0 50%,#7FF0FF)}
+/* 最終結果：束がない人の「束なし」を小さく */
+.lmend .lmres em.lmnone{font-family:var(--body);font-weight:700;font-size:11px;color:var(--lmmute);text-shadow:none}
 
 /* ===== 共通部品（旧アプリから） ===== */
 .arena{position:fixed;inset:0;z-index:40;display:flex;flex-direction:column;padding:calc(var(--safe-t) + 12px) 16px calc(var(--safe-b) + 14px);
@@ -1450,7 +1463,7 @@ body.bgpause .hxemb i{animation-play-state:paused}
 .lmburst i{position:absolute;width:6px;height:6px;margin:-3px;border-radius:50%;background:var(--c);box-shadow:0 0 10px var(--c),0 0 20px var(--c);animation:lmbst 1.1s cubic-bezier(.1,.8,.3,1) forwards}
 .lmburst i:nth-child(3n){width:3px;height:14px;border-radius:2px}
 @keyframes lmbst{from{transform:rotate(var(--a)) translateX(0) scale(1.4);opacity:1}to{transform:rotate(var(--a)) translateX(var(--r)) scale(.2);opacity:0}}
-.lmshake{animation:lmshake .45s both}
+.lmshake{animation:lmshake .45s}
 @keyframes lmshake{20%,60%{transform:translateX(-7px)}40%,80%{transform:translateX(7px)}}
 .gic.lmi{background:#0E1230}
 .lmrules .lmspr{background:#151A44}
@@ -1780,6 +1793,279 @@ body.bgpause .hxemb i{animation-play-state:paused}
 .lmnr b{font-family:var(--lmcz);font-weight:900;font-size:64px;line-height:1;background:linear-gradient(180deg,#fff,#FFD35A);-webkit-background-clip:text;background-clip:text;color:transparent;animation:lmpop .6s .3s cubic-bezier(.2,1.6,.4,1) both}
 .lmnr p{animation:lmfadeup .5s .5s both}
 .lmtrack{margin-bottom:10px}
+/* ===== WYRDSTONE ===== */
+.arena.wdg{--wbg:#0B0618;--wink:#F2ECFF;--wmute:#A99CC9;--wline:rgba(200,170,255,.16);--wgold:#FFE7A3;--wcz:"Cinzel",serif;
+  height:100dvh;overflow:hidden;padding:calc(var(--safe-t) + 6px) 0 0;gap:6px;color:var(--wink);background:radial-gradient(120% 70% at 50% -10%,#3A1A6B 0%,transparent 60%),radial-gradient(80% 50% at 100% 100%,rgba(63,169,255,.18),transparent 60%),linear-gradient(180deg,#140A2C,#0B0618 60%);font-family:"Zen Kaku Gothic New",sans-serif}
+.wdg .wdbg{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.wdg .wdbg i{position:absolute;width:60vmax;height:60vmax;border-radius:50%;filter:blur(60px);opacity:.25;animation:wdorb 18s ease-in-out infinite alternate}
+.wdg .wdbg i:nth-child(1){background:#E07CFF;left:-30vmax;top:10%}
+.wdg .wdbg i:nth-child(2){background:#3FA9FF;right:-30vmax;top:40%;animation-delay:-6s}
+.wdg .wdbg i:nth-child(3){background:#FFB84A;left:20%;bottom:-40vmax;opacity:.14;animation-delay:-12s}
+@keyframes wdorb{to{transform:translate(8vmax,-6vmax) scale(1.15)}}
+.wdg>*{position:relative;z-index:1}
+.wdtop{display:flex;align-items:center;gap:8px;padding:0 12px}
+.wdback,.wdmenu{width:38px;height:38px;border-radius:12px;border:1px solid var(--wline);background:rgba(255,255,255,.05);color:var(--wink);font-size:24px;line-height:1;display:grid;place-items:center}
+.wdttl{flex:1;display:flex;flex-direction:column;align-items:center;line-height:1.05}
+.wdttl b{font-family:var(--wcz);font-weight:900;font-size:19px;letter-spacing:.14em;background:linear-gradient(180deg,#fff,var(--wgold) 55%,#E07CFF);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 8px rgba(224,124,255,.5))}
+.wdttl small{font-family:var(--wcz);font-size:10px;letter-spacing:.3em;color:var(--wmute)}
+.wdgd{height:34px;border-radius:999px;border:1px solid var(--wline);background:rgba(255,255,255,.05);color:var(--wmute);font-size:12px;font-weight:700;padding:0 10px;display:flex;align-items:center;gap:5px}
+.wdgd i{font-style:normal;font-family:var(--wcz);font-size:10px;padding:2px 6px;border-radius:999px;background:rgba(255,255,255,.1)}
+.wdgd.on{color:#1A0E2E;background:linear-gradient(110deg,var(--wgold),#E07CFF);border-color:transparent}
+.wdgd.on i{background:rgba(0,0,0,.18)}
+.wdpls{display:flex;gap:6px;overflow-x:auto;padding:2px 12px 4px;scrollbar-width:none}
+.wdpls::-webkit-scrollbar{display:none}
+.wdpl{flex:1 0 auto;min-width:76px;position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:1px;padding:6px 9px 6px 11px;border-radius:12px;border:1px solid var(--wline);background:rgba(20,10,40,.7);color:var(--wink);text-align:left}
+.wdpl::before{content:"";position:absolute;left:0;top:8px;bottom:8px;width:3px;border-radius:3px;background:var(--pc)}
+.wdpl .nm{font-size:11px;color:var(--wmute);max-width:96px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.wdpl .wp{font-family:var(--wcz);font-weight:900;font-size:15px;position:relative}
+.wdpl .wp small,.wdmh .big small{font-size:9px;margin-left:2px;color:var(--wmute)}
+.wdpl .tr{display:flex;gap:3px}
+.wdpl .tr i{width:9px;height:9px;transform:rotate(45deg);border:1px solid rgba(255,231,163,.5);border-radius:2px}
+.wdpl .tr i.on{background:var(--wgold);box-shadow:0 0 6px var(--wgold)}
+.wdpl .sh{position:absolute;right:5px;top:4px;font-style:normal;font-size:12px}
+.wdpl.cur{border-color:var(--pc);box-shadow:0 0 0 1px var(--pc),0 0 18px -4px var(--pc);background:linear-gradient(160deg,color-mix(in srgb,var(--pc) 26%,transparent),rgba(20,10,40,.8))}
+.wdpl.me .nm{color:var(--wink);font-weight:700}
+.wdguide{margin:0 12px;padding:8px 11px;border-radius:12px;background:linear-gradient(110deg,rgba(255,231,163,.14),rgba(224,124,255,.12));border:1px solid rgba(255,231,163,.3);display:flex;gap:8px;align-items:flex-start}
+.wdguide i{font-style:normal;font-family:var(--wcz);font-size:9px;letter-spacing:.15em;padding:3px 6px;border-radius:6px;background:var(--wgold);color:#1A0E2E;font-weight:900;flex:none;margin-top:1px}
+.wdguide p{margin:0;font-size:12.5px;line-height:1.5}
+.wdbody{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:4px 12px 20px;display:flex;flex-direction:column;gap:12px}
+.wdsec h4{margin:0 0 6px;font-size:13px;letter-spacing:.06em;display:flex;align-items:baseline;gap:8px}
+.wdsec h4 small{font-size:11px;color:var(--wmute);font-weight:500}
+/* 手番の舞台 */
+.wdstage{border-radius:18px;padding:10px 12px 12px;background:linear-gradient(160deg,color-mix(in srgb,var(--pc) 20%,transparent),rgba(18,8,36,.85) 60%);border:1px solid color-mix(in srgb,var(--pc) 50%,transparent);display:flex;flex-direction:column;align-items:center;gap:8px}
+.wdwho{font-size:13px;display:flex;align-items:center;gap:6px}
+.wdwho .dot{width:9px;height:9px;border-radius:50%;background:var(--pc);box-shadow:0 0 8px var(--pc)}
+.wdsteps{display:flex;gap:4px;width:100%}
+.wdsteps span{flex:1;text-align:center;font-size:11px;color:var(--wmute);padding:4px 0;border-radius:8px;background:rgba(255,255,255,.04);border:1px solid transparent}
+.wdsteps span b{font-family:var(--wcz);margin-right:3px}
+.wdsteps span.on{color:#1A0E2E;background:linear-gradient(110deg,var(--wgold),#FFC4F2);font-weight:900}
+.wdsteps span.done{color:var(--wink);opacity:.55}
+.wddice{display:flex;gap:12px;min-height:74px;align-items:center;justify-content:center}
+.wddie{width:64px;height:68px;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;background:radial-gradient(80% 70% at 30% 20%,rgba(255,255,255,.22),transparent 60%),linear-gradient(160deg,color-mix(in srgb,var(--ac) 55%,#1A0E2E),#1A0E2E);border:1.5px solid var(--ac);box-shadow:0 8px 22px -6px color-mix(in srgb,var(--ac) 70%,transparent),inset 0 -6px 12px rgba(0,0,0,.35);color:var(--ac)}
+.wddie .wdico{width:30px;height:30px}
+.wddie b{font-size:13px;color:#fff}
+.wddie.idle{--ac:#6E5F92;color:#6E5F92;font-family:var(--wcz);font-size:28px;font-weight:900}
+.wddie.any{--ac:var(--wgold);font-size:12px;color:var(--wgold)}
+.wddie.chosen{transform:scale(1.12);box-shadow:0 0 0 3px var(--ac),0 0 30px var(--ac)}
+.wddie.rolling{animation:wdroll .65s cubic-bezier(.2,.7,.3,1.2) both;animation-delay:calc(var(--i) * 120ms)}
+@keyframes wdroll{0%{transform:translateY(-40px) rotate(-200deg) scale(.6);opacity:0}60%{transform:translateY(6px) rotate(20deg) scale(1.05);opacity:1}100%{transform:none}}
+.wddice .skip{color:var(--wmute);font-size:12px}
+.wdface{font-size:12px;color:var(--wmute);display:flex;align-items:center;gap:4px}
+.wdface b{color:#fff;font-size:15px}
+.wdface .wdico{width:18px;height:18px}
+/* 属性アイコン・キューブ */
+.wdico{width:18px;height:18px;color:var(--ac);display:inline-block;vertical-align:middle;filter:drop-shadow(0 0 3px color-mix(in srgb,var(--ac) 60%,transparent))}
+.wdico.none{width:14px;height:14px;border-radius:50%;border:1px dashed var(--wmute)}
+.wdcube{width:26px;height:26px;border-radius:7px;display:grid;place-items:center;background:linear-gradient(160deg,color-mix(in srgb,var(--ac) 40%,#1A0E2E),#160B2C);border:1px solid color-mix(in srgb,var(--ac) 80%,transparent);flex:none}
+.wdcube .wdico{width:17px;height:17px}
+.wdcube.nul{background:rgba(255,255,255,.03);border:1px dashed rgba(200,180,255,.3)}
+.wdcube.nul b{font-size:10px;color:var(--wmute);font-weight:500}
+.wdcube.main{width:30px;height:30px;border-radius:9px;border-width:1.5px;box-shadow:0 0 0 2px rgba(255,231,163,.25)}
+.wdcube.main.nul{box-shadow:0 0 0 1px rgba(255,231,163,.25)}
+/* キャラ */
+.wdemb{position:relative;width:40px;height:40px;flex:none;color:var(--ac);display:grid;place-items:center}
+.wdemb svg{position:absolute;inset:0;width:100%;height:100%}
+.wdemb b{position:relative;font-family:"Dela Gothic One",sans-serif;font-size:17px;color:#fff;text-shadow:0 0 8px var(--ac)}
+.wdemb .wdico.sig{position:absolute;right:-4px;bottom:-3px;width:15px;height:15px}
+.wdty{font-style:normal;font-size:9px;font-weight:900;padding:1px 5px;border-radius:5px;margin-right:4px;background:rgba(255,255,255,.12)}
+.wdty.t1{background:#4B5A73}.wdty.t2{background:#6A4FA0}.wdty.t3{background:linear-gradient(110deg,#B8862F,#E8C25A);color:#1A0E2E}
+.wdch{position:relative;display:flex;align-items:center;gap:8px;padding:7px 8px;border-radius:13px;background:linear-gradient(160deg,color-mix(in srgb,var(--ac) 14%,transparent),rgba(18,8,36,.85));border:1px solid color-mix(in srgb,var(--ac) 35%,transparent)}
+.wdchi{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.wdchi b{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wdchi .meta{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--wmute)}
+.wdchi .meta em{font-style:normal;font-family:var(--wcz);font-weight:900;color:var(--wgold)}
+.wdslots{display:flex;gap:4px;align-items:center}
+.wdch.big{padding:10px}
+.wdch.acting{border-color:var(--ac)}
+.wdch.can{border-color:var(--wgold);box-shadow:0 0 0 1px var(--wgold),0 0 22px -4px var(--wgold);animation:wdglow 1.6s ease-in-out infinite}
+@keyframes wdglow{50%{box-shadow:0 0 0 1px var(--wgold),0 0 30px 0 rgba(255,231,163,.55)}}
+.wdch.sealed{filter:grayscale(.8);opacity:.75}
+.wdsealtx{font-size:11px;font-weight:900;padding:6px 10px;border-radius:8px;background:repeating-linear-gradient(45deg,#3A2A50 0 6px,#2A1C3E 6px 12px);color:#FFB3C2;border:1px solid #E8455F}
+.wdact{position:absolute;right:-6px;top:-8px;font-style:normal;font-family:var(--wcz);font-weight:900;font-size:13px;background:var(--wgold);color:#1A0E2E;border-radius:999px;padding:2px 8px;box-shadow:0 4px 12px rgba(0,0,0,.4)}
+.wdact small{font-family:"Zen Kaku Gothic New";font-size:9px;margin-left:1px}
+.wdnew{position:absolute;left:6px;top:-7px;font-style:normal;font-size:9px;font-weight:900;padding:1px 6px;border-radius:5px;background:#3FA9FF;color:#fff}
+/* 自分 */
+.wdmine{border-radius:18px;padding:10px;background:linear-gradient(160deg,color-mix(in srgb,var(--pc) 16%,transparent),rgba(14,6,30,.88));border:1px solid color-mix(in srgb,var(--pc) 40%,transparent)}
+.wdmh{display:flex;align-items:baseline;gap:10px;margin-bottom:8px}
+.wdmh b{font-size:12px;color:var(--wmute)}
+.wdmh .big{font-family:var(--wcz);font-weight:900;font-size:28px;position:relative;background:linear-gradient(180deg,#fff,var(--wgold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.wdmh .slots{margin-left:auto;font-size:11px;color:var(--wmute)}
+.wdmchs{display:flex;flex-direction:column;gap:8px}
+.wdempty{border:1px dashed rgba(200,180,255,.22);border-radius:12px;padding:9px;text-align:center;font-size:11px;color:var(--wmute)}
+.wdmytre{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:12px;background:linear-gradient(110deg,rgba(255,231,163,.18),rgba(255,231,163,.04));border:1px solid rgba(255,231,163,.4);font-size:13px}
+.wdmytre span:first-child{color:var(--wgold);font-size:12px;letter-spacing:-.1em}
+.wdmytre .cb{margin-left:auto;display:flex;gap:2px}
+/* 秘宝 */
+.wdtres{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}
+.wdtre{position:relative;display:grid;grid-template-columns:1fr auto;grid-template-areas:"st wp" "nm nm" "cb cb";gap:2px 6px;padding:8px 9px;border-radius:12px;text-align:left;color:var(--wink);background:linear-gradient(160deg,rgba(255,231,163,.10),rgba(18,8,36,.9));border:1px solid rgba(255,231,163,.28)}
+.wdtre .st{grid-area:st;color:var(--wgold);font-size:11px;letter-spacing:-.08em;text-shadow:0 0 6px rgba(255,231,163,.6)}
+.wdtre b{grid-area:nm;font-size:12.5px}
+.wdtre .cb{grid-area:cb;display:flex;gap:3px}
+.wdtre .wp{grid-area:wp;font-family:var(--wcz);font-weight:900;font-size:13px}
+.wdtre .wp small{font-size:8px;color:var(--wmute)}
+.wdtre.r4,.wdtre.r5{background:linear-gradient(160deg,rgba(224,124,255,.2),rgba(255,231,163,.08) 50%,rgba(18,8,36,.9));border-color:rgba(255,200,255,.4)}
+.wdtre.taken{opacity:.45;filter:grayscale(.6);border-color:var(--pc)}
+.wdtre .own{position:absolute;right:6px;bottom:6px;font-style:normal;font-size:10px;padding:1px 6px;border-radius:6px;background:var(--pc);color:#fff;font-weight:700}
+.wdtre.can{opacity:1;border-color:var(--wgold);box-shadow:0 0 0 1px var(--wgold),0 0 20px -2px rgba(255,231,163,.7);animation:wdglow 1.4s infinite}
+/* 場 */
+.wdmks{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.wdmk{display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 5px;border-radius:13px;text-align:center;background:linear-gradient(160deg,color-mix(in srgb,var(--ac) 18%,transparent),rgba(18,8,36,.9));border:1px solid color-mix(in srgb,var(--ac) 40%,transparent)}
+.wdmk b{font-size:12px}
+.wdmk .meta{font-size:10px;color:var(--wmute);display:flex;align-items:center}
+.wdmk .cost{font-family:var(--wcz);font-weight:900;font-size:13px}
+.wdmk .cost small{font-size:8px;color:var(--wmute)}
+.wdmk.empty{border-style:dashed;min-height:90px;background:none}
+/* ドラフト */
+.wddraft h3{margin:4px 0 2px;font-family:var(--wcz);letter-spacing:.1em;text-align:center}
+.wddraft>p{text-align:center;font-size:12px;color:var(--wmute);margin:0 0 10px}
+.wddmine{display:flex;gap:10px;align-items:center;justify-content:center;font-size:12px;margin-bottom:10px}
+.wddmine span{display:flex;align-items:center;gap:6px}
+.wddcards{display:flex;flex-direction:column;gap:10px}
+.wdmk.dr{align-items:stretch;text-align:left;padding:12px;display:grid;grid-template-columns:44px 1fr;grid-template-areas:"e n" "e t" "m m" "p p" "l l" "b b";gap:3px 10px}
+.wdmk.dr .wdemb{grid-area:e;width:44px;height:44px}
+.wdmk.dr b{grid-area:n;font-size:16px}
+.wdmk.dr .th{grid-area:t;font-size:11px;color:var(--wgold)}
+.wdmk.dr .meta{grid-area:m;font-size:11px}
+.wdmk.dr p{grid-area:p;margin:2px 0;font-size:12.5px;line-height:1.5}
+.wdmk.dr .lvs{grid-area:l;font-size:11px;color:var(--wmute)}
+.wdmk.dr .wdbtn,.wdmk.dr .ok{grid-area:b;margin-top:6px}
+.wdmk.dr .ok{font-style:normal;color:var(--wgold);font-weight:900;text-align:center}
+.wdmk.dr.sel{border-color:var(--wgold);box-shadow:0 0 0 2px var(--wgold)}
+.wdmk.dr.dim{opacity:.4}
+.wdwait{text-align:center;font-size:12px;color:var(--wmute);padding:12px}
+/* ほかの人 */
+.wdopp{border-radius:14px;padding:8px;margin-bottom:8px;background:rgba(18,8,36,.7);border:1px solid var(--wline);border-left:3px solid var(--pc)}
+.wdoh{display:flex;align-items:baseline;gap:8px;margin-bottom:6px;font-size:12px}
+.wdoh span{font-family:var(--wcz);font-weight:900}
+.wdoh .trs{margin-left:auto;display:flex;gap:4px;font-family:inherit}
+.wdoh .trs i{font-style:normal;color:var(--wgold);font-size:10px;letter-spacing:-.1em;padding:1px 4px;border-radius:5px;background:rgba(255,231,163,.12)}
+.wdoh .trs small{color:var(--wmute);font-weight:400}
+.wdochs{display:flex;flex-direction:column;gap:5px}
+.wdochs .wdch{padding:5px 7px}
+.wdochs .wdemb{width:30px;height:30px}
+.wdochs .wdemb b{font-size:13px}
+.wdochs .wdcube{width:22px;height:22px}.wdochs .wdcube.main{width:25px;height:25px}
+.wdochs .wdcube .wdico{width:14px;height:14px}
+/* 出来事 */
+.wdfeed{display:flex;flex-direction:column;gap:4px;font-size:12px;width:100%}
+.wdfeed:empty{display:none}
+.wdfi{padding:6px 9px;border-radius:9px;background:rgba(255,255,255,.04);border:1px solid var(--wline);line-height:1.45;animation:wdfin .4s both}
+.wdfi small{display:block;color:var(--wmute);font-size:10.5px}
+.wdfi .wdico{width:14px;height:14px}
+.wdfi.k-turn,.wdfi.k-round{text-align:center;background:none;border:0;color:var(--wmute)}
+.wdfi.k-steal,.wdfi.k-seal{border-color:rgba(232,69,95,.45);background:rgba(232,69,95,.08)}
+.wdfi.k-tre{border-color:var(--wgold);background:rgba(255,231,163,.1)}
+.wdplus{font-style:normal;color:#8BFFB0;font-weight:900}
+.wdrob{font-style:normal;color:#FF8FA3;font-weight:900}
+@keyframes wdfin{from{opacity:0;transform:translateY(6px)}}
+.wdfloat{position:absolute;left:50%;top:-4px;font-style:normal;font-family:var(--wcz);font-weight:900;font-size:15px;color:#8BFFB0;-webkit-text-fill-color:#8BFFB0;text-shadow:0 0 8px rgba(0,0,0,.8);pointer-events:none;animation:wdfloat 1.3s ease-out forwards;white-space:nowrap}
+.wdfloat.rob{color:#FFD23F;-webkit-text-fill-color:#FFD23F}
+.wdfloat.minus{color:#FF6F87;-webkit-text-fill-color:#FF6F87}
+@keyframes wdfloat{0%{transform:translate(-50%,6px);opacity:0}20%{opacity:1}100%{transform:translate(-50%,-26px);opacity:0}}
+/* 下のボタン */
+.wdbar{display:flex;gap:6px;align-items:center;justify-content:center;flex-wrap:wrap;padding:10px 12px calc(var(--safe-b) + 10px);background:linear-gradient(0deg,rgba(11,6,24,.98) 60%,rgba(11,6,24,0));border-top:1px solid var(--wline)}
+.wdbar.wait{color:var(--wmute);font-size:13px}
+.wdbar .lbl{width:100%;text-align:center;font-size:11px;color:var(--wmute)}
+.wdbtn{border:1px solid var(--wline);background:rgba(255,255,255,.07);color:var(--wink);border-radius:14px;padding:11px 16px;font-weight:900;font-size:14px;display:flex;flex-direction:column;align-items:center;gap:2px;font-family:inherit}
+.wdbtn small{font-size:10.5px;font-weight:500;color:var(--wmute)}
+.wdbtn.main{flex:1;max-width:420px;background:linear-gradient(110deg,var(--wgold),#FFB8EC 50%,#B98CFF);color:#1A0E2E;border:0;box-shadow:0 10px 26px -8px rgba(224,124,255,.7);font-size:16px}
+.wdbtn.ghost{flex:1;max-width:420px}
+.wdbtn.danger{border-color:rgba(232,69,95,.6);color:#FF8FA3}
+.wdbtn.sm{padding:8px 12px;font-size:13px}
+.wdbtn:disabled{opacity:.35}
+.wdface-b{display:flex;flex-direction:column;align-items:center;gap:2px;min-width:64px;padding:8px 10px;border-radius:14px;border:1.5px solid var(--ac);background:linear-gradient(160deg,color-mix(in srgb,var(--ac) 40%,#1A0E2E),#1A0E2E);color:#fff;font-family:inherit}
+.wdface-b .wdico{width:26px;height:26px}
+.wdface-b small{font-size:11px;color:#8BFFB0;font-weight:900;min-height:14px}
+/* 効果の選択 */
+.wdask{position:absolute;inset:0;z-index:5;background:rgba(6,2,14,.6);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);display:flex;align-items:flex-end;justify-content:center;padding:12px 12px calc(var(--safe-b) + 12px)}
+.wdaskin{width:100%;max-width:480px;max-height:80%;overflow:auto;border-radius:20px;padding:14px;background:linear-gradient(170deg,color-mix(in srgb,var(--ac) 22%,#1A0E2E),#120826);border:1px solid color-mix(in srgb,var(--ac) 60%,transparent);box-shadow:0 20px 60px rgba(0,0,0,.6);animation:wdfin .3s both}
+.wdaskin>small{color:var(--wgold);font-size:12px;font-weight:700}
+.wdaskin .tx{margin:4px 0 10px;font-size:12.5px;color:var(--wmute);line-height:1.5}
+.wdaskin>b{display:block;font-size:15px;margin-bottom:8px}
+.wdaskin .opts{display:flex;flex-direction:column;gap:6px}
+.wdopt{display:flex;align-items:center;gap:8px;text-align:left;padding:11px 12px;border-radius:12px;border:1px solid var(--wline);background:rgba(255,255,255,.06);color:var(--wink);font-size:13.5px;font-family:inherit}
+.wdopt:active{background:rgba(255,231,163,.2)}
+.wdlog p{margin:0 0 6px;font-size:12.5px;line-height:1.5}
+/* ポップアップ */
+.wdpop{position:fixed;inset:0;z-index:90;background:rgba(6,2,14,.62);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:flex;align-items:flex-end;justify-content:center;padding:12px 10px calc(var(--safe-b) + 10px);color:#F2ECFF;font-family:"Zen Kaku Gothic New",sans-serif;--wgold:#FFE7A3;--wmute:#A99CC9;--wline:rgba(200,170,255,.16);--wcz:"Cinzel",serif;--wink:#F2ECFF}
+.wdpin{position:relative;width:100%;max-width:520px;max-height:86dvh;overflow-y:auto;border-radius:22px;padding:16px 14px 16px;background:linear-gradient(170deg,#24123F,#120826 60%);border:1px solid rgba(200,170,255,.25);box-shadow:0 20px 60px rgba(0,0,0,.6);animation:wdfin .25s both}
+.wdx{position:absolute;right:10px;top:10px;width:32px;height:32px;border-radius:50%;border:1px solid var(--wline);background:rgba(255,255,255,.06);color:#fff;font-size:18px;z-index:2}
+.wdcp-hd,.wdas-hd{display:flex;align-items:center;gap:12px;margin-bottom:8px;padding-right:36px}
+.wdcp-hd .wdemb,.wdas-hd .wdemb{width:52px;height:52px}
+.wdcp-hd .wdemb b,.wdas-hd .wdemb b{font-size:22px}
+.wdcp-hd div,.wdas-hd>div{display:flex;flex-direction:column;gap:2px;flex:1}
+.wdcp-hd small{font-size:11px;color:var(--wgold)}
+.wdcp-hd b,.wdas-hd b{font-size:19px}
+.wdcp-hd span,.wdas-hd span{font-size:11.5px;color:var(--wmute);display:flex;align-items:center}
+.wdcp-desc{font-size:12.5px;line-height:1.55;margin:0 0 10px}
+.wdcp-slots{display:flex;gap:14px;margin-bottom:10px}
+.wdcp-slots div{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10px;color:var(--wmute)}
+.wdcp-lv{display:flex;gap:4px;align-items:center;flex-wrap:wrap;font-size:11px;margin-bottom:10px}
+.wdcp-lv b{font-size:11px;margin-right:4px}
+.wdcp-lv span{padding:3px 6px;border-radius:7px;background:rgba(255,255,255,.06);font-family:var(--wcz);font-weight:900}
+.wdcp-lv span small{font-family:"Zen Kaku Gothic New";font-size:9px;color:var(--wmute);margin-right:3px;font-weight:500}
+.wdcp-lv span.on{background:var(--wgold);color:#1A0E2E}
+.wdcp-lv span.on small{color:#4A3A20}
+.wdcp-tbl{display:flex;flex-direction:column;gap:4px}
+.wdcp-th{display:grid;grid-template-columns:48px 1fr 48px;font-size:10px;color:var(--wmute);padding:0 8px}
+.wdeff{display:grid;grid-template-columns:48px 1fr 48px;align-items:center;gap:4px;padding:7px 8px;border-radius:10px;background:rgba(255,255,255,.04);border:1px solid transparent}
+.wdeff .wdea{display:flex;align-items:center;gap:3px}
+.wdeff .wdea em{font-style:normal;font-size:12px;font-weight:900;color:var(--ac)}
+.wdeff .wdea>b{font-size:11px;color:var(--wmute)}
+.wdeff p{margin:0;font-size:12px;line-height:1.45}
+.wdeff .wdec{text-align:right;font-family:var(--wcz);font-weight:900;font-size:12px}
+.wdeff .wdec small{font-size:8px;color:var(--wmute)}
+.wdeff.sig{border-color:rgba(255,231,163,.45);background:rgba(255,231,163,.08)}
+.wdeff.sig .wdea em::after{content:"★";color:var(--wgold);margin-left:1px}
+.wdeff.have{box-shadow:inset 3px 0 0 var(--ac)}
+.wdcp-note{font-size:11px;color:var(--wmute);margin:8px 0 0}
+/* 行動メニュー */
+.wdas-hd .mini{flex:none}
+.wdas-sec{margin:10px 0}
+.wdas-sec h5{margin:0 0 6px;font-size:13px}
+.wdas-sec h5 small{font-weight:500;color:var(--wmute);font-size:11px;margin-left:6px}
+.wdas-sec .mute{color:var(--wmute);font-size:12px}
+.wdas-slots{display:flex;gap:6px;margin-bottom:6px}
+.wdslotb{padding:6px 12px;border-radius:999px;border:1px solid var(--wline);background:rgba(255,255,255,.05);color:var(--wink);font-size:12px;font-family:inherit}
+.wdslotb.on{background:var(--wgold);color:#1A0E2E;border-color:transparent;font-weight:900}
+.wdas-attrs{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}
+.wdattr{display:flex;flex-direction:column;align-items:center;gap:1px;padding:7px 2px;border-radius:11px;border:1px solid color-mix(in srgb,var(--ac) 55%,transparent);background:linear-gradient(160deg,color-mix(in srgb,var(--ac) 25%,#1A0E2E),#160B2C);color:#fff;font-family:inherit}
+.wdattr b{font-size:12px}
+.wdattr small{font-family:var(--wcz);font-weight:900;font-size:11px;color:var(--wgold)}
+.wdattr.sig{box-shadow:0 0 0 1.5px var(--wgold)}
+.wdattr:disabled{opacity:.3}
+.wdas-row{display:flex;gap:6px;margin:8px 0}
+.wdas-row .wdbtn{flex:1}
+.wdas-row.foot{margin-top:14px}
+.wdas-mk{display:grid;grid-template-columns:repeat(3,1fr);gap:5px}
+.wdmkb{display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 3px;border-radius:12px;border:1px solid color-mix(in srgb,var(--ac) 45%,transparent);background:rgba(255,255,255,.04);color:#fff;font-family:inherit}
+.wdmkb b{font-size:11.5px}
+.wdmkb small{font-family:var(--wcz);font-weight:900;font-size:11px;color:var(--wgold)}
+.wdmkb:disabled{opacity:.3}
+.wdplp{display:flex;flex-direction:column;gap:2px;margin-bottom:10px;padding-left:10px;border-left:3px solid var(--pc)}
+.wdplp b{font-size:17px}.wdplp span{font-size:12px;color:var(--wmute)}
+.wdpin .wdmchs{gap:6px}
+/* 結果 */
+.wdpin.end{text-align:center;background:radial-gradient(90% 60% at 50% 0%,rgba(224,124,255,.35),transparent 60%),linear-gradient(170deg,#2A1450,#120826)}
+.wdend small{color:var(--wmute);font-size:12px}
+.wdend h2{margin:6px 0;font-family:var(--wcz);font-weight:900;font-size:36px;letter-spacing:.14em;background:linear-gradient(180deg,#fff,var(--wgold) 55%,#E07CFF);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 14px rgba(224,124,255,.6))}
+.wdend .w{display:block;font-size:16px;margin-bottom:12px}
+.wdrank{display:flex;flex-direction:column;gap:6px;text-align:left;margin-bottom:14px}
+.wdrank div{display:grid;grid-template-columns:24px 1fr auto;grid-template-areas:"i b s" "i t s";align-items:center;gap:0 8px;padding:8px 10px;border-radius:12px;background:rgba(255,255,255,.05);border-left:3px solid var(--pc)}
+.wdrank i{grid-area:i;font-style:normal;font-family:var(--wcz);font-weight:900;font-size:18px}
+.wdrank b{grid-area:b}
+.wdrank span{grid-area:t;display:flex;gap:4px;font-size:11px;color:var(--wmute)}
+.wdrank span em{font-style:normal;color:var(--wgold);letter-spacing:-.1em}
+.wdrank small{grid-area:s;font-family:var(--wcz);font-weight:900}
+.wdrank .win{background:linear-gradient(110deg,rgba(255,231,163,.22),rgba(255,255,255,.04))}
+.wdend .btns{display:flex;gap:8px}
+.wdend .btns .wdbtn{flex:1}
+/* ポスター */
+.poster.t-wd{--g1:#FFE7A3;--g2:#E07CFF;--g3:#3FA9FF;--pbg:radial-gradient(100% 80% at 50% -10%,rgba(224,124,255,.4),transparent 60%),radial-gradient(70% 60% at 0% 100%,rgba(63,169,255,.25),transparent 60%),linear-gradient(170deg,#24103F,#0B0618 70%);--pfont:"Cinzel",serif;--pglow:rgba(255,231,163,.6);--ctash:rgba(224,124,255,.55);--cta:linear-gradient(110deg,#FFE7A3,#FFB8EC 40%,#B98CFF 75%,#3FA9FF)}
+.poster.t-wd .ptop h3{font-weight:900;letter-spacing:.08em;background:linear-gradient(180deg,#fff,#FFE7A3 55%,#E07CFF);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 10px rgba(224,124,255,.5));font-size:24px}
+.poster.t-wd .art svg{position:absolute;right:-20px;bottom:-6px;width:220px;opacity:.3;animation:infspin 12s ease-in-out infinite alternate}
+.gic.wdi svg{width:100%;height:100%;display:block}
+
 </style>
 </head>
 <body>
@@ -1799,6 +2085,7 @@ body.bgpause .hxemb i{animation-play-state:paused}
 <div class="arena hxg" id="hxg" hidden></div>
 <div class="arena szg" id="szg" hidden></div>
 <div class="arena lmg" id="lmg" hidden></div>
+<div class="arena wdg" id="wdg" hidden></div>
 <div class="sheet" id="sheet"><div class="in" id="sheetIn" role="dialog" aria-modal="true"></div></div>
 <div class="toast" id="toast" role="status"></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
@@ -1811,7 +2098,7 @@ body.bgpause .hxemb i{animation-play-state:paused}
    ============================================================ */
 const CFG_URL = "https://gcuddhongxvojabweclh.supabase.co";
 const CFG_KEY = "sb_publishable_E6PxQDZpmdfb6kjRPte3qw_goaYjKZB";
-const APP_VER = "v38";
+const APP_VER = "v41";
 
 const lsGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
 const lsSet = (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} };
@@ -1820,12 +2107,12 @@ const SUPABASE_KEY = (CFG_KEY || lsGet("gl:sbKey") || "").trim();
 const sb = SUPABASE_URL && SUPABASE_KEY && window.supabase ? supabase.createClient(SUPABASE_URL, SUPABASE_KEY, { auth: { persistSession: false } }) : null;
 
 const COLORS = ["#FFC93C", "#FF2E6A", "#19C9E6", "#8B5CFF", "#3FD67A", "#FF8A3D", "#FF6FB5", "#5A6378"];
-const GAME_TBL = ["hx_games", "sz_games", "lm_games"];
+const GAME_TBL = ["hx_games", "sz_games", "lm_games", "wd_games"];
 const TABLES = ["players", "app_settings", ...GAME_TBL];
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 
-const db = { players: [], app_settings: [], hx_games: [], sz_games: [], lm_games: [] };
+const db = { players: [], app_settings: [], hx_games: [], sz_games: [], lm_games: [], wd_games: [] };
 let tab = lsGet("gl:tab") || "done", loaded = false;
 let me = lsGet("gl:me") || "";
 
@@ -1862,8 +2149,8 @@ async function loadTable(t){
 }
 async function loadAll(){ await Promise.all(TABLES.map(loadTable)); loaded = true; }
 const reloadTimer = {};
-const GAME_HOOK = { hx_games: () => [hxId, drawHx], sz_games: () => [szId, drawSz], lm_games: () => [lmId, drawLm] };
-const inGame = () => !!(hxId || szId || lmId);
+const GAME_HOOK = { hx_games: () => [hxId, drawHx], sz_games: () => [szId, drawSz], lm_games: () => [lmId, drawLm], wd_games: () => [wdId, drawWd] };
+const inGame = () => !!(hxId || szId || lmId || wdId);
 function subscribe(){
   if (!sb) return;
   sb.channel("gamelab-all")
@@ -1918,8 +2205,8 @@ function flash(big, small){
 
 /* ---------- ルール ---------- */
 function openGameRules(k){
-  const title = { hx: "どんぐり戦争のルール", sz: "四季の巡りのルール", lm: "LEMNISCATEのルール" }[k];
-  const html = { hx: hxRulesHtml, sz: szRulesHtml, lm: lmRulesHtml }[k]();
+  const title = { hx: "どんぐり戦争のルール", sz: "四季の巡りのルール", lm: "LEMNISCATEのルール", wd: "WYRDSTONEのルール" }[k];
+  const html = { hx: hxRulesHtml, sz: szRulesHtml, lm: lmRulesHtml, wd: wdRulesHtml }[k]();
   let el = $("#artpop");
   if (!el){ el = document.createElement("div"); el.id = "artpop"; el.className = "artpop"; document.body.appendChild(el); el.addEventListener("click", e => { if (e.target === el || e.target.closest("[data-artclose]")) el.classList.remove("on"); }); }
   el.innerHTML = `<div class="artin wide" role="dialog" aria-modal="true"><div class="arth"><b>${title}</b><button class="artx" data-artclose aria-label="閉じる">×</button></div><div class="gr">${html}</div></div>`;
@@ -1935,8 +2222,8 @@ function pickMine(list){ return list.find(g => me && (g.players || []).includes(
 const turnSeen = {};
 function turnBuzz(){
   if (!me || !loaded) return;
-  [...hxLive(), ...szLive(), ...lmLive()].filter(g => (g.players || []).includes(me)).forEach(g => {
-    const now = g.st && g.st.lm ? lmMyTurn(g) : g.st && g.st.hx ? hxMyTurn(g) : szMyTurn(g);
+  [...hxLive(), ...szLive(), ...lmLive(), ...wdLive()].filter(g => (g.players || []).includes(me)).forEach(g => {
+    const now = g.st && g.st.wd ? wdMyTurn(g) : g.st && g.st.lm ? lmMyTurn(g) : g.st && g.st.hx ? hxMyTurn(g) : szMyTurn(g);
     const prev = turnSeen[g.id];
     turnSeen[g.id] = now;
     if (prev === false && now){ try { if (navigator.vibrate) navigator.vibrate([120, 70, 120, 70, 200]); } catch (e) {} }
@@ -4411,14 +4698,14 @@ const LM_CNT = [0, 90, 81, 72, 63, 54, 45, 36, 27];     // 数字ごとの総枚
 const LM_ROUNDS = 15, LM_HAND = 8, LM_CAP = 10, LM_REFILL = 2, LM_STEAL = 4, LM_SP_PICK = 8, LM_SP_COPY = 2;
 const LM_SP = {
   amp:    { n: "増幅",     m: "増", tx: "合成で引く枚数＋3" },
-  dbl:    { n: "二連",     m: "連", tx: "手札から2組（違う数字どうし）を同時に合成できる" },
+  dbl:    { n: "二連",     m: "連", tx: "手札から2組（違う数字どうし）を同時に合成できる（引けるのは先に選んだ1組目の分だけ。2組目の分は引けない）" },
   wild:   { n: "万能",     m: "万", tx: "手札1枚を、±1の隣り合う数字として合成に使える（例：4・4・5 → 4を3枚。8にはできない）" },
   up:     { n: "昇格",     m: "昇", tx: "合成するとき、1つ小さい数字のカードを＋1して使える（何枚でも。ただし元の数字のカードが1枚以上必要。例：3・3・4 → 4を3枚）" },
   wall:   { n: "防壁",     m: "壁", tx: "自分の束を奪取するには、相手は5枚以上の合成が必要" },
   rev:    { n: "逆襲",     m: "逆", tx: "束を奪取されたら逆襲モードに。次の自分の手番だけ、2枚以上の合成をすると、奪取してきた相手の束を1つ獲得できる" },
   raid:   { n: "略奪",     m: "略", tx: "奪取できる範囲が「合成した数字＋3」まで広がる" },
   rob:    { n: "強奪",     m: "強", tx: "3枚の合成でも奪取できる" },
-  aim:    { n: "狙い撃ち", m: "狙", tx: "奪取するたびに山札を1枚めくる。その数字の束は自分だけ、さらに＋1倍（めくるたびに入れ替わる）" },
+  aim:    { n: "狙い撃ち", m: "狙", tx: "奪取したとき、山札を1枚めくるかを選べる。めくった数字の束は自分だけ、さらに＋1倍（※効果は上書き：めくるたびに前の数字と入れ替わる）" },
   crown:  { n: "王冠",     m: "冠", tx: "自分の8の束は得点2倍" },
   acc:    { n: "蓄積",     m: "蓄", tx: "ラウンドの得点計算で、自分の束の数×1点を追加" },
   swap:   { n: "交換",     m: "換", tx: "1手番に1回、相手1人と手札をランダムに1枚交換" },
@@ -4534,7 +4821,8 @@ function lmMergeInfo(st, p, idx){
   if (ks.length === 1) groups = [{ v: ks[0], k: idx.length, idx: idx.slice() }];
   else if (ks.length === 2 && lmOn(st, p, "dbl") && cnt[ks[0]] >= 2 && cnt[ks[1]] >= 2){
     // 二連：手札から2組を同時に合成
-    groups = ks.sort((x, y) => y - x).map(v => ({ v, k: cnt[v], idx: idx.filter(i => lmVal(h[i]) === v) }));
+    const firstV = lmVal(h[idx[0]]);   // 1組目＝先に選んだカードの数字の組
+    groups = ks.sort((x, y) => (y === firstV) - (x === firstV) || y - x).map(v => ({ v, k: cnt[v], idx: idx.filter(i => lmVal(h[i]) === v) }));
   } else if (ks.length === 2 && lmOn(st, p, "up") && Math.abs(ks[0] - ks[1]) === 1){
     // 昇格：小さい方の数字を＋1して大きい方の組に入れる（元の数字のカードが1枚以上あればよい）
     const v = Math.max(...ks); groups = [{ v, k: idx.length, idx: idx.slice(), up: true }];
@@ -4570,7 +4858,7 @@ function lmMerge(st, p, idx){
   let n = 0, sp = 0;
   M.groups.forEach((G, gi) => {
     const b = lmNewB(st, G.v, G.k, p); st.bun[p].push(b); T.made.push(b.id);
-    const d = G.k === 1 ? 0 : lmDrawN(G.v) + (gi === 0 && lmOn(st, p, "amp") ? 3 : 0); n += d;
+    const d = G.k === 1 || gi > 0 ? 0 : lmDrawN(G.v) + (lmOn(st, p, "amp") ? 3 : 0); n += d;   // 二連の2組目の分は引けない
     lmFx(st, { k: "merge", p, v: G.v, c: G.k, d, wild: !!G.wild, up: !!G.up, b: b.id, dbl: M.groups.length > 1 ? gi + 1 : 0 });
     if (gi === 0 && G.k > 1 && lmOn(st, p, "amp")) lmLight(st, p, "amp");
     if (G.wild) lmLight(st, p, "wild"); if (G.up) lmLight(st, p, "up"); if (G.k === 1) lmLight(st, p, "solo"); if (M.groups.length > 1) lmLight(st, p, "dbl");
@@ -4630,11 +4918,17 @@ function lmSteal(st, p, id){
   const normNeed = lmOn(st, t.q, "wall") ? 5 : lmOn(st, p, "rob") ? 3 : LM_STEAL, isRev = !!(st.revOn && st.revOn[p] === t.q && a.n < normNeed);
   lmL(st, isRev ? `「逆襲」${lmNm(p)}が${lmNm(t.q)}の${b.v}の束を獲得した（このラウンドは得点なし）` : `${lmNm(p)}が${lmNm(t.q)}の${b.v}の束を奪取した（このラウンドは得点なし）`);
   lmFx(st, { k: "steal", p, q: t.q, v: b.v, b: b.id, rev: isRev ? 1 : 0 });
-  lmAimFlip(st, p);
   st.ask = null;
   // 逆襲：奪取された人は逆襲モード（次の自分の手番だけ、2枚以上の合成で、奪取してきた相手の束を1つ獲得できる）
   const q = t.q;
   if (lmOn(st, q, "rev")){ st.revOn = st.revOn || {}; st.revOn[q] = p; lmL(st, `「逆襲」${lmNm(q)}が逆襲モードに。次の手番は、2枚以上の合成で${lmNm(p)}の束を1つ獲得できる`); lmFx(st, { k: "revon", p: q, q: p }); }
+  if (lmOn(st, p, "aim")){ st.ask = { pid: p, k: "aim", cur: st.aim[p] || null }; return true; }   // 狙い撃ち：めくるか聞いてから次へ
+  lmNextSteal(st, p); return true;
+}
+/* 「狙い撃ち」：奪取したあと、山札を1枚めくるか（めくると今の狙いは上書き） */
+function lmAimAns(st, p, yes){
+  const a = st.ask; if (!a || a.k !== "aim" || a.pid !== p) return false;
+  st.ask = null; if (yes) lmAimFlip(st, p); else lmL(st, `「狙い撃ち」${lmNm(p)}はめくらなかった`);
   lmNextSteal(st, p); return true;
 }
 function lmPickSp(st, p, k){
@@ -4718,6 +5012,7 @@ function lmApply(st, p, mv){
   if (st.ask && st.ask.pid === p){
     if (k === "draw") return lmDrawPick(st, p, a);
     if (k === "relive") return lmRelive(st, p, !!a);
+    if (k === "aim") return lmAimAns(st, p, !!a);
     if (k === "steal") return lmSteal(st, p, a);
     if (k === "sp") return lmPickSp(st, p, a);
     return false;
@@ -4740,6 +5035,7 @@ function lmCpuStep(st, p){
       return ["draw", best];
     }
     if (a.k === "relive") return ["relive", st.hands[p].length < LM_CAP ? 1 : 0];
+    if (a.k === "aim") return ["aim", !a.cur || st.bun[p].filter(b => b.v === a.cur).length <= 1 ? 1 : 0];
     if (a.k === "steal"){ const t = a.tg.slice().sort((x, y) => { const bx = st.bun[x.q].find(b => b.id === x.id), by = st.bun[y.q].find(b => b.id === y.id); return lmPts(st, y.q, by) - lmPts(st, x.q, bx) || st.total[y.q] - st.total[x.q]; })[0]; return ["steal", t.id]; }
     if (a.k === "sp"){ const k = LM_SP_PREF.find(x => a.can.includes(x)) || a.can[0]; return ["sp", k]; }
     return null;
@@ -4849,7 +5145,7 @@ function lmEmblem(v){
 const lmEmb = (v, cls = "") => `<svg class="lmemb ${cls}" viewBox="0 0 40 40" aria-hidden="true">${lmEmblem(v)}</svg>`;
 const LM_INF = `<svg class="lminf" viewBox="0 0 100 50" aria-hidden="true"><defs><linearGradient id="lmgr" x1="0" x2="1"><stop offset="0" stop-color="#5EC8FF"/><stop offset=".35" stop-color="#C46BFF"/><stop offset=".7" stop-color="#FF5A7A"/><stop offset="1" stop-color="#FFD35A"/></linearGradient></defs><path d="M50 25C40 8 14 8 14 25s26 17 36 0 36-17 36 0-26 17-36 0z" fill="none" stroke="url(#lmgr)" stroke-width="6" stroke-linecap="round" pathLength="100"/></svg>`;
 const LM_ICON = `<span class="gic lmi"><svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lmig" x1="0" x2="1"><stop offset="0" stop-color="#5EC8FF"/><stop offset=".5" stop-color="#C46BFF"/><stop offset="1" stop-color="#FFD35A"/></linearGradient></defs><rect x="3" y="3" width="58" height="58" rx="12" fill="#0E1230" stroke="#FFD35A" stroke-width="2"/><path d="M32 32C26 22 12 22 12 32s14 10 20 0 20-10 20 0-14 10-20 0z" fill="none" stroke="url(#lmig)" stroke-width="5" stroke-linecap="round"/><text x="32" y="56" text-anchor="middle" font-family="Cinzel,serif" font-weight="900" font-size="9" fill="#FFE9A8">8</text></svg></span>`;
-const lmCard = (c, cls = "", data = "") => { const v = lmVal(c); return `<div class="lmc n${v} ${lmIsUp(c) ? "up" : ""} ${cls}" style="--nc:${LM_COL[v]}" ${data}><i class="lmcn">${LM_CNT[v]}</i>${lmIsUp(c) ? `<i class="lmup">＋1</i>` : ""}<b>${v}</b>${lmEmb(v)}</div>`; };
+const lmCard = (c, cls = "", data = "") => { const v = lmVal(c); return `<div class="lmc n${v} ${lmIsUp(c) ? "up" : ""} ${cls}" style="--nc:${LM_COL[v]}" ${data}><i class="lmcn">${LM_CNT[v]}</i><i class="lmdr" title="この数字で合成すると引ける枚数">+${lmDrawN(v)}</i>${lmIsUp(c) ? `<i class="lmup">＋1</i>` : ""}<b>${v}</b>${lmEmb(v)}</div>`; };
 const lmMiniCard = v => `<span class="lmmc n${v}" style="--nc:${LM_COL[v]}"><b>${v}</b></span>`;
 const lmSpBadge = (k, cls = "") => `<span class="lmsp ${cls}" title="${LM_SP[k].n}" data-spk="${k}"><b>${LM_SP[k].m}</b></span>`;
 const lmSpB = (st, p, k) => lmSpBadge(k, `${st.used[p + ":" + k] ? "used" : ""} ${lmHas(st, p, k) && !lmOn(st, p, k) ? "wait" : ""} ${lmHot(st, p, k) ? "hot" : ""}`);
@@ -4887,7 +5183,7 @@ let lmSpSel = null;
 let lmScoreHoldUntil = 0, lmScoreTm = null;   // ラウンドの得点表示が終わる時刻   // スペシャル獲得：選んでいるカード（OKで決定）
 let lmId = null, lmSel = [], lmMode = "normal", lmSeenFx = {}, lmFuseSel = [];
 function openLm(id){ const g0 = lmById(id); lmId = id; lmSel = []; lmMode = "normal"; lmFuseSel = []; if (g0 && g0.st) lmSeenFx[id] = Math.max(0, (g0.st.fxn || 0) - (g0.st.no <= 1 ? 3 : 0)); $("#lmg").hidden = false; document.body.style.overflow = "hidden"; drawLm(); }
-function closeLm(){ lmPopClose(); lmId = null; $("#lmg").hidden = true; document.body.style.overflow = ""; render(); }
+function closeLm(){ lmPopClose(); { const h = document.getElementById("lmEndHost"); if (h) h.remove(); } lmId = null; $("#lmg").hidden = true; document.body.style.overflow = ""; render(); }
 function lmMenu(g){
   const s = openSheet("LEMNISCATEのメニュー", `<div class="menu"><button data-x="rule">ルールを見る<span></span></button><button data-x="log">これまでの流れ<span></span></button><button data-x="abort">この対戦をやめる<span></span></button></div>`);
   s.querySelector('[data-x="rule"]').onclick = () => openGameRules("lm");
@@ -4969,6 +5265,8 @@ function openLmNew(){
 function lmAskHtml(st, a){
   if (a.k === "draw") return `<div class="lmask"><div class="lmaskin"><b>${a.opts[0].src === "see" ? "「透視」山札の上3枚から1枚を選んで引く" : "どこから引きますか？"}</b>
     <div class="lmaskc">${a.opts.map((o, i) => o.src === "deck" ? `<button class="lmpick deck" data-dp="${i}"><span class="lmback">${LM_INF}</span><small>山札から引く</small></button>` : `<button class="lmpick" data-dp="${i}">${lmCard(o.c)}<small>${o.src === "ex" ? "除外の一番上（再起）" : ["一番上", "2枚目", "3枚目"][o.i]}</small></button>`).join("")}</div></div></div>`;
+  if (a.k === "aim") return `<div class="lmask"><div class="lmaskin gold"><b>「狙い撃ち」山札を1枚めくりますか？<small>めくった数字の束は、あなただけさらに＋1倍。${a.cur ? `今の狙いは<b>${a.cur}</b>。めくると上書きされます` : "まだ狙いはありません"}</small></b>
+    <div class="lmaskc"><button class="lmb" data-am="0">めくらない</button><button class="lmb go" data-am="1">めくる</button></div></div></div>`;
   if (a.k === "relive") return `<div class="lmask"><div class="lmaskin gold"><b>「再起」除外置き場の一番上も引きますか？<small>手番のドローはもう済んでいます。これは追加の1枚です</small></b>
     <div class="lmaskc"><button class="lmpick" data-rl="1">${lmCard(a.c)}<small>除外の一番上を引く</small></button></div>
     <div class="lmaskc"><button class="lmb" data-rl="0">今回は引かない</button></div></div></div>`;
@@ -4991,6 +5289,16 @@ function lmEndHtml(g){
       return `<div class="lmres ${win ? "win" : ""}" style="--pc:${pcolor(p)};--dl:${dl}s"><span class="lmrk">${win ? "1" : i + 1}</span><div><b>${lmPname(p)}</b><span class="lmmons">${st.sp[p].map(k => lmSpBadge(k)).join("")}</span><span class="lmchips">${st.bun[p].map(b => lmChip(st, p, b, { bun: {} })).join("") || `<em class="lmnone">束なし</em>`}</span></div><em>${st.total[p]}<small>点</small></em></div>`; }).join("")}
     <div class="lmbtns"><button class="lmb" id="lmEndClose">閉じる</button><button class="lmb go" id="lmAgain">もう一度遊ぶ</button></div></div></div>`;
 }
+function lmEndShow(g, show){
+  let host = document.getElementById("lmEndHost");
+  if (!show){ if (host) host.remove(); return; }
+  if (!host){ host = document.createElement("div"); host.id = "lmEndHost"; document.body.appendChild(host); }
+  if (host.dataset.g === g.id && host.querySelector(".lmend")) return;   // もう表示中（描き直さない＝演出が途中で消えない）
+  host.dataset.g = g.id; host.innerHTML = lmEndHtml(g);
+  host.querySelector("#lmEndClose").onclick = closeLm;
+  host.querySelector("#lmAgain").onclick = () => { closeLm(); openLmNew(); };
+  lmEndReveal(g, host);
+}
 function lmEndReveal(g, el){
   const box = el.querySelector(".lmend"); if (!box) return;
   if (lmEndSeen[g.id]){ box.classList.add("seen"); return; }
@@ -4999,14 +5307,14 @@ function lmEndReveal(g, el){
   // 1位の前に「そして1位は…」で溜める。1位が出たら金の光を何度もはじけさせる
   const w = rows[0], wdl = w ? (parseFloat(w.style.getPropertyValue("--dl")) || 0) * 1000 : 0;
   if (w){
-    setTimeout(() => { const b = document.querySelector("#lmg .lmend"); if (b) b.scrollTo({ top: 0, behavior: "smooth" }); lmBig(`<p class="lmdrum">そして、1位は…</p>`, "drum", 1900); }, wdl - 2000);
-    setTimeout(() => { const r = lmRect(document.querySelector("#lmg .lmres.win")); lmBurstAt(r, "#FFD35A", 34, 1.6); setTimeout(() => lmBurstAt(r, "#C46BFF", 28, 1.9), 250); setTimeout(() => lmBurstAt(r, "#5EC8FF", 28, 2.2), 500); setTimeout(() => lmBurstAt(r, "#FFE9A8", 40, 2.6), 800); lmConfetti(); }, wdl + 250);
+    setTimeout(() => { const b = document.querySelector("#lmEndHost .lmend"); if (b) b.scrollTo({ top: 0, behavior: "smooth" }); lmBig(`<p class="lmdrum">そして、1位は…</p>`, "drum", 1900); }, wdl - 2000);
+    setTimeout(() => { const r = lmRect(document.querySelector("#lmEndHost .lmres.win")); lmBurstAt(r, "#FFD35A", 34, 1.6); setTimeout(() => lmBurstAt(r, "#C46BFF", 28, 1.9), 250); setTimeout(() => lmBurstAt(r, "#5EC8FF", 28, 2.2), 500); setTimeout(() => lmBurstAt(r, "#FFE9A8", 40, 2.6), 800); lmConfetti(); }, wdl + 250);
   }
   // 発表が終わったら、念のため全員の行をそのまま表示に固定する（演出が途中で止まっても全部見えるように）
   const allDl = Math.max(0, ...rows.map(r => parseFloat(r.style.getPropertyValue("--dl")) || 0));
-  setTimeout(() => { const b = document.querySelector("#lmg .lmend"); if (b) b.classList.add("seen"); }, allDl * 1000 + 2200);
+  setTimeout(() => { const b = document.querySelector("#lmEndHost .lmend"); if (b) b.classList.add("seen"); }, allDl * 1000 + 2200);
   rows.forEach((r, i) => { const dl = parseFloat(r.style.getPropertyValue("--dl")) || 0;
-    setTimeout(() => { const b = document.querySelector("#lmg .lmend"), x = b && b.querySelectorAll(".lmres")[i]; if (!x) return; b.scrollTo({ top: Math.max(0, x.offsetTop - (i === 0 ? b.clientHeight * .25 : b.clientHeight * .45)), behavior: "smooth" }); }, Math.max(0, dl * 1000 - 350)); });
+    setTimeout(() => { const b = document.querySelector("#lmEndHost .lmend"), x = b && b.querySelectorAll(".lmres")[i]; if (!x) return; b.scrollTo({ top: Math.max(0, x.offsetTop - (i === 0 ? b.clientHeight * .25 : b.clientHeight * .45)), behavior: "smooth" }); }, Math.max(0, dl * 1000 - 350)); });
 }
 /* 金と虹色の紙吹雪 */
 function lmConfetti(){
@@ -5077,7 +5385,7 @@ function drawLm(){
   else if (lmMode === "fuse") guide = `合体する束を2つタップ（選択中${lmFuseSel.length}つ）`;
   else if (M){
     let c5 = st.c5[me], drawN = 0;
-    const parts = M.groups.map((G, gi) => { const tg = lmStealTargets(st, me, G.v, G.k), d = G.k === 1 ? 0 : lmDrawN(G.v) + (gi === 0 && lmOn(st, me, "amp") ? 3 : 0); drawN += d;
+    const parts = M.groups.map((G, gi) => { const tg = lmStealTargets(st, me, G.v, G.k), d = G.k === 1 || gi > 0 ? 0 : lmDrawN(G.v) + (lmOn(st, me, "amp") ? 3 : 0); drawN += d;
       let sp = G.k >= 2 && G.v === 8; if (G.k >= 2 && G.v === 5){ c5++; if (c5 % 2 === 0) sp = true; }
       return `<b>${G.v}</b>を${G.k}枚${G.wild ? "（万能）" : G.up ? `（昇格：${G.v - 1}を${G.v}として）` : ""} → ${G.v}の束（${G.v * lmMult(st, me, G.v)}点／R）${tg.length ? (G.k < LM_STEAL && !(lmOn(st, me, "rob") && G.k >= 3) ? "・<em>逆襲で獲得できる</em>" : "・<em>奪取できる</em>") : G.k >= LM_STEAL ? "・奪取できる束なし" : ""}${sp ? "・<em>スペシャル獲得</em>" : ""}`; });
     const fillN = lmOn(st, me, "fill") ? M.groups.reduce((s, G) => s + G.k, 0) : 0;
@@ -5110,11 +5418,10 @@ function drawLm(){
     ${lmHistHtml(st)}
     <ul class="lmlog">${lg}</ul>
     ${myAsk && !holdAsk && !stealAsk ? lmAskHtml(st, myAsk) : ""}
-    ${fin && st.end && !holdAsk ? lmEndHtml(g) : ""}`;
+    `;
   const on = (id, fn) => { const x = el.querySelector("#" + id); if (x) x.onclick = fn; };
   on("lmX", closeLm); on("lmMenu", () => lmMenu(g));
-  on("lmEndClose", closeLm); on("lmAgain", () => { closeLm(); openLmNew(); });
-  lmEndReveal(g, el);
+  lmEndShow(g, fin && st.end && !holdAsk);
   el.querySelectorAll("[data-spi]").forEach(b => b.onclick = ev => { ev.stopPropagation(); lmSpPop(b, b.dataset.spi, st); });
   // 席や自分の欄にあるスペシャルの小さなバッジも、タップでその上に説明（奪取する束・融合などを選んでいる間は今まで通り席の操作を優先）
   el.querySelectorAll("[data-spk]").forEach(b => b.onclick = ev => { if (lmStealSel || lmMode !== "normal") return; ev.stopPropagation(); lmSpPop(b, b.dataset.spk, st); });
@@ -5144,6 +5451,7 @@ function drawLm(){
   on("lmFuseGo", async () => { const [a, b] = lmFuseSel; lmFuseSel = []; lmMode = "normal"; await lmDo(g.id, me, ["fuse", a, b]); });
   el.querySelectorAll("[data-dp]").forEach(b => b.onclick = () => lmDo(g.id, me, ["draw", +b.dataset.dp]));
   el.querySelectorAll("[data-rl]").forEach(b => b.onclick = () => lmDo(g.id, me, ["relive", +b.dataset.rl]));
+  el.querySelectorAll("[data-am]").forEach(b => b.onclick = () => lmDo(g.id, me, ["aim", +b.dataset.am]));
   el.querySelectorAll("[data-st]").forEach(b => b.onclick = () => lmDo(g.id, me, ["steal", b.dataset.st]));
   on("lmNoSteal", () => lmDo(g.id, me, ["steal", null]));
   el.querySelectorAll("[data-sp]").forEach(b => b.onclick = () => { lmSpSel = lmSpSel === b.dataset.sp ? null : b.dataset.sp; drawLm(); });
@@ -5374,7 +5682,7 @@ function lmRun(g, e){
       <div class="lmstlrow"><span class="lmstlp vic" style="--pc:${vc}"><i>${R ? "獲得された" : "奪取された"}</i>${who(vic)}</span>
       <span class="lmstlc"><i class="lmchip n${e.v} xl2" style="--nc:${nc}"><b>${e.v}</b></i><em class="lmstlar"></em></span>
       <span class="lmstlp thf" style="--pc:${tc}"><i>${R ? "獲得した" : "奪取した"}</i>${who(thief)}</span></div><p>${line}</p></div>`, "steal steal2", 1500);
-    const host = $("#lmg"); host.classList.remove("lmshake"); void host.offsetWidth; host.classList.add("lmshake");
+    const host = $("#lmg"); host.classList.remove("lmshake"); void host.offsetWidth; host.classList.add("lmshake"); setTimeout(() => host.classList.remove("lmshake"), 500);   // 揺れが終わったら外す（付けたままだと画面の固定表示がずれる）
     setTimeout(() => {
       const fr = seatR(vic), to0 = seatR(thief);
       lmFocus(seat(vic), "#FF5A7A", 1500); lmFocus(seat(thief), tc, 1500);
@@ -5520,8 +5828,1184 @@ function lmRulesHtml(){
 }
 
 
+/* ======================= WYRDSTONE（ルール処理：画面に依存しない部分） ======================= */
+const WD_TITLE = "WYRDSTONE";
+const WD_AT = ["炎", "水", "木", "雷", "闇", "龍", "覇", "天", "幻"];
+const WD_RARE = ["龍", "覇", "天", "幻"];
+const WD_DIE = ["炎", "炎", "炎", "炎", "水", "水", "水", "水", "木", "木", "木", "木", "雷", "雷", "闇", "闇", "龍", "幻", "天", "覇"];
+const WD_PAY = a => WD_RARE.includes(a) ? 400 : a === "雷" || a === "闇" ? 200 : 100;
+const WD_COL = { 無: "#8A8FA3", 炎: "#FF5A3C", 水: "#3FA9FF", 木: "#4FD06A", 雷: "#FFD23F", 闇: "#9B5CFF", 龍: "#FF9A2E", 覇: "#E8455F", 天: "#F6EFC8", 幻: "#E07CFF" };
+const WD_LVT = { 低: [30, 100, 280, 700, 1600], 中: [50, 150, 400, 1000, 2200], 高: [80, 200, 550, 1300, 2800] };
+const WD_LVUP = [0, 100, 500, 2000, 5000];
+const WD_GC = { 低: [150, 300, 600], 中: [200, 400, 800], 高: [250, 500, 1000] };
+const WD_SLOTS = 4, WD_WIN = 3, WD_START = 1000, WD_MAXR = 40;
+const WD_TRE = [
+  { id: "t1", n: "竜鱗の護符", r: 1, wp: 1500, cb: ["炎"] },
+  { id: "t2", n: "星砂の砂時計", r: 1, wp: 1500, cb: ["水"] },
+  { id: "t3", n: "世界樹の若枝", r: 2, wp: 2500, cb: ["木", "木"] },
+  { id: "t4", n: "海神の三叉槍", r: 2, wp: 2500, cb: ["水", "雷"] },
+  { id: "t5", n: "雷霆の戦鎚", r: 3, wp: 4000, cb: ["雷", "龍"] },
+  { id: "t6", n: "幻影の仮面", r: 3, wp: 4000, cb: ["幻", "水"] },
+  { id: "t7", n: "不死鳥の心臓", r: 4, wp: 6500, cb: ["炎", "炎", "雷"] },
+  { id: "t8", n: "冥府の鍵", r: 4, wp: 6500, cb: ["闇", "闇", "木"] },
+  { id: "t9", n: "創世の石版", r: 5, wp: 10000, cb: ["龍", "天", "水"] },
+  { id: "t10", n: "覇王の聖杯", r: 5, wp: 10000, cb: ["覇", "幻", "炎"] }
+];
+const wdTreDef = id => WD_TRE.find(t => t.id === id);
+/* 相性：a が b に強い（wp獲得で2倍） */
+const WD_BEAT = { 水: "炎", 炎: "木", 木: "水", 龍: "覇", 覇: "天", 天: "幻", 幻: "龍" };
+const wdMult = (m, f) => !m ? 1 : (m === "雷" && f === "闇") || (m === "闇" && f === "雷") || WD_BEAT[m] === f ? 2 : WD_BEAT[f] === m ? 0.5 : 1;
+
+/* ---------- 小さな道具 ---------- */
+const wdR = n => Math.max(0, Math.floor(n / 10) * 10);
+const wdRoll = () => WD_DIE[Math.floor(Math.random() * WD_DIE.length)];
+const wdShuf = a => { const b = a.slice(); for (let i = b.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [b[i], b[j]] = [b[j], b[i]]; } return b; };
+const wdNm = p => { const n = typeof pname === "function" ? pname(p) : p; return String(n).replace(/[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}️‍]/gu, ""); };
+const wdL = (st, m) => { (st._log = st._log || []).push(m); };
+const wdFx = (st, e) => { st.fxn = (st.fxn || 0) + 1; e.n = st.fxn; e.no = st.no; st.fx = (st.fx || []).concat([e]).slice(-80); };
+const wdDef = c => WD_CH[c.k];
+const wdFind = (st, cid) => { for (const p of st.order){ const c = st.ch[p].find(x => x.id === cid); if (c) return { p, c }; } return null; };
+const wdNull = c => c.s.filter(x => !x).length;
+const wdCubes = c => c.s.filter(Boolean);
+const wdMyCubes = (st, p, a) => st.ch[p].reduce((n, c) => n + c.s.filter(x => x && (!a || x === a)).length, 0);
+const wdAllCubes = (st, p) => st.ch[p].flatMap(wdCubes);
+const wdKinds = (st, p) => new Set(wdAllCubes(st, p)).size;
+const wdMaxSame = cs => { const m = {}; cs.forEach(x => { m[x] = (m[x] || 0) + 1; }); return Math.max(0, ...Object.values(m)); };
+const wdTreN = (st, p) => st.tre[p].length;
+const wdTreCubes = (st, p) => st.tre[p].reduce((n, t) => n + t.cubes.length, 0);
+const wdStars = (st, p) => st.tre[p].reduce((n, t) => n + wdTreDef(t.id).r, 0);
+const wdOthers = (st, p) => { const i = st.order.indexOf(p); return st.order.slice(i + 1).concat(st.order.slice(0, i)); };
+const wdLeader = (st, p) => wdOthers(st, p).reduce((b, q) => st.wp[q] > st.wp[b] ? q : b, wdOthers(st, p)[0]);
+const wdIsTop = (st, p) => wdOthers(st, p).every(q => st.wp[p] >= st.wp[q]);
+const wdIsLast = (st, p) => wdOthers(st, p).every(q => st.wp[p] <= st.wp[q]);
+const wdLvWp = c => WD_LVT[wdDef(c).t][c.lv - 1];
+const wdFreeSlots = (st, p) => WD_SLOTS - st.ch[p].length - st.tre[p].length;
+const wdCur = st => st.T ? st.T.p : null;
+const wdShielded = (st, q) => !!(st.sh[q] && st.sh[q].shield);
+function wdGain(st, p, n, why){
+  n = Math.max(0, Math.round(n)); if (!n) return 0;
+  st.wp[p] += n; wdFx(st, { k: "gain", p, v: n, why: why || "" }); return n;
+}
+function wdPay(st, p, n){ n = Math.max(0, Math.round(n)); st.wp[p] -= n; return n; }
+function wdMove(st, from, to, n){ const m = Math.min(st.wp[from], Math.max(0, Math.round(n))); st.wp[from] -= m; st.wp[to] += m; return m; }
+/* 空いている枠の一番上に属性を付ける（無料で付ける効果用） */
+function wdPut(c, a){ const i = c.s.indexOf(null); if (i < 0) return false; c.s[i] = a; return true; }
+function wdPutAny(st, p, a, prefer){ const cs = prefer ? [prefer, ...st.ch[p].filter(c => c !== prefer)] : st.ch[p]; for (const c of cs) if (wdPut(c, a)) return c; return null; }
+
+/* ---------- 干渉 ---------- */
+function wdHit(x, q){
+  const { st, p } = x;
+  if (!q || q === p) return false;
+  x.hr = x.hr || {}; if (q in x.hr) return x.hr[q];
+  const sh = st.sh[q] || {};
+  let ok = true;
+  if (sh.shield){
+    ok = false;
+    let back = 0; if (sh.gTen) back = wdMove(st, p, q, 200);
+    wdFx(st, { k: "block", p, q, v: back });
+    wdL(st, `${wdNm(q)}は干渉無効で防いだ${back ? `（${wdNm(p)}から${back}wpもらう）` : ""}`);
+  } else {
+    st.hitBy[q] = st.hitBy[q] || []; if (!st.hitBy[q].includes(p)) st.hitBy[q].push(p);
+    if (sh.counter){ const m = wdMove(st, p, q, 300); if (m){ wdFx(st, { k: "steal", p: q, q: p, v: m, why: "反撃" }); wdL(st, `${wdNm(q)}の反撃：${wdNm(p)}から${m}wp奪い返した`); } }
+  }
+  x.hr[q] = ok; return ok;
+}
+function wdSteal(x, q, n, why){
+  const { st, p } = x;
+  if (!wdHit(x, q)) return 0;
+  let amt = Math.min(st.wp[q], Math.max(0, Math.round(n)));
+  if (st.sh[q] && st.sh[q].halfSteal) amt = Math.floor(amt / 2);
+  if (!amt) return 0;
+  st.wp[q] -= amt; st.wp[p] += amt;
+  wdFx(st, { k: "steal", p, q, v: amt, why: why || "" });
+  wdL(st, `${wdNm(p)}が${wdNm(q)}から${amt}wp奪った`);
+  return amt;
+}
+const wdStealPct = (x, q, pct, why) => wdSteal(x, q, wdR(x.st.wp[q] * pct / 100), why);
+function wdSeal(x, cid){
+  const f = cid && wdFind(x.st, cid); if (!f || f.p === x.p) return false;
+  if (!wdHit(x, f.p)) return false;
+  f.c.seal = 1; wdFx(x.st, { k: "seal", p: x.p, q: f.p, cid });
+  wdL(x.st, `${wdNm(f.p)}の${wdDef(f.c).n}に行動封じ`);
+  return true;
+}
+function wdRmCube(x, v){
+  if (!v) return null;
+  const [cid, si] = v.split(":"), f = wdFind(x.st, cid); if (!f) return null;
+  const i = +si, a = f.c.s[i]; if (!a) return null;
+  if (f.p !== x.p && !wdHit(x, f.p)) return null;
+  f.c.s[i] = null; wdFx(x.st, { k: "rmcube", p: x.p, q: f.p, cid, a });
+  wdL(x.st, `${wdNm(f.p)}の${wdDef(f.c).n}の${a}キューブを無に戻した`);
+  return a;
+}
+function wdLvDown(x, cid){
+  const f = cid && wdFind(x.st, cid); if (!f) return;
+  if (!wdHit(x, f.p)) return;
+  if (f.c.lv > 1){ f.c.lv--; wdFx(x.st, { k: "lvdown", p: x.p, q: f.p, cid }); wdL(x.st, `${wdNm(f.p)}の${wdDef(f.c).n}のLvを1下げた`); }
+  else wdGain(x.st, x.p, 300, "Lvを下げられない");
+}
+const wdShield = x => { x.st.sh[x.p] = { ...(x.st.sh[x.p] || {}), shield: 1 }; wdFx(x.st, { k: "shield", p: x.p }); };
+const wdNx = (st, q) => (st.nx[q] = st.nx[q] || {});
+const wdUntil = (st, q) => (st.until[q] = st.until[q] || {});
+/* コピーなど、あとから効果を差し込む */
+const wdPush = (x, k, a, flags = {}) => { x.st.T.q.unshift({ cid: x.c.id, p: x.p, k, a, ...flags }); };
+
+/* ---------- 選択肢 ---------- */
+const wdPlL = (st, q) => `${wdNm(q)}（${st.wp[q]}wp）${wdShielded(st, q) ? "・干渉無効" : ""}`;
+const wdCL = (st, q, c) => `${wdNm(q)}の${wdDef(c).n}（Lv${c.lv}${c.s.map(a => a || "無").join("")}）${wdShielded(st, q) ? "・干渉無効" : ""}`;
+const qPl = (q, f = () => true) => ({ q, o: x => wdOthers(x.st, x.p).filter(r => f(x, r)).map(r => ({ v: r, l: wdPlL(x.st, r) })) });
+const qOC = (q, f = () => true, opt) => ({ q, opt, o: x => wdOthers(x.st, x.p).flatMap(r => x.st.ch[r].filter(c => f(x, c, r)).map(c => ({ v: c.id, l: wdCL(x.st, r, c) }))) });
+const qOCube = (q, f = () => true) => ({ q, o: x => wdOthers(x.st, x.p).flatMap(r => x.st.ch[r].flatMap(c => c.s.map((a, i) => ({ a, i })).filter(u => u.a && u.i > 0 && f(x, c, r, u.a)).map(u => ({ v: `${c.id}:${u.i}`, l: `${wdNm(r)}の${wdDef(c).n}：${u.a}（${u.i + 1}枠目）${wdShielded(x.st, r) ? "・干渉無効" : ""}` })))) });
+const qAt = (q, list = WD_AT, by) => ({ q, by, o: () => list.map(a => ({ v: a, l: a })) });
+const qMyC = (q, f = () => true) => ({ q, o: x => x.st.ch[x.p].filter(c => f(x, c)).map(c => ({ v: c.id, l: `${wdDef(c).n}（Lv${c.lv}${c.s.map(a => a || "無").join("")}）` })) });
+const qMyCube = (q, f = () => true, opt) => ({ q, opt, o: x => x.st.ch[x.p].flatMap(c => c.s.map((a, i) => ({ a, i })).filter(u => u.a && u.i > 0 && f(x, c, u.a)).map(u => ({ v: `${c.id}:${u.i}`, l: `${wdDef(c).n}：${u.a}（${u.i + 1}枠目）` }))) });
+const qCopy = (q, f) => ({ q, o: x => wdOthers(x.st, x.p).flatMap(r => x.st.ch[r].filter(c => c.s.includes(x.a) && (!f || f(x, c, r))).map(c => ({ v: c.id, l: `${wdNm(r)}の${wdDef(c).n}の「${x.a}」：${wdDef(c).e[x.a].tx}` }))) });
+const wdCopyRun = (x, cid) => { const f = cid && wdFind(x.st, cid); if (!f) return; const E = wdDef(f.c).e[x.a]; if (E.cp || x.act.copy){ wdGain(x.st, x.p, 200, "コピー"); return; } wdL(x.st, `${wdNm(x.p)}は${wdDef(f.c).n}の「${x.a}」をコピー`); wdPush(x, f.c.k, x.a, { copy: 1 }); };
+
+/* ---------- このターンだけの割引 ---------- */
+const wdGd = (x, g) => x.st.T.gd.push(g);
+const wdLd = (x, g) => x.st.T.ld.push(g);
+function wdCond(st, p, c, a, cond){
+  if (cond === "othersHave") return wdOthers(st, p).some(q => wdAllCubes(st, q).includes(a));
+  if (cond === "sameOnChar") return c.s.includes(a);
+  if (cond === "notOwn") return !wdAllCubes(st, p).includes(a);
+  if (cond === "leaderHas") return wdAllCubes(st, wdLeader(st, p)).includes(a);
+  return true;
+}
+function wdGrantBase(c, a){ const d = wdDef(c), tier = WD_RARE.includes(a) ? 2 : a === "雷" || a === "闇" ? 1 : 0; const b = WD_GC[d.t][tier]; return a === d.sig ? b / 2 : b; }
+function wdGrantCost(st, p, c, a){
+  let v = wdGrantBase(c, a), sub = 0, half = false;
+  if (st.T && st.T.p === p) st.T.gd.forEach(g => {
+    if (g.cid && g.cid !== c.id) return; if (g.attrs && !g.attrs.includes(a)) return; if (g.cond && !wdCond(st, p, c, a, g.cond)) return;
+    if (g.half) half = true; else sub += (g.amtFor && g.amtFor[a]) || g.amt || 0;
+  });
+  v -= sub; if (half) v /= 2; return wdR(v + 5);
+}
+function wdLvCost(st, p, c, steps = 1){
+  let v = 0; for (let i = 0; i < steps; i++) v += WD_LVUP[c.lv + i] || 0;
+  let sub = 0, half = false;
+  if (st.T && st.T.p === p) st.T.ld.forEach(g => { if (g.cid && g.cid !== c.id) return; if (g.half) half = true; else sub += g.amt || 0; });
+  v -= sub; if (half) v /= 2; return wdR(v + 5);
+}
+const wdBuyCost = (st, p, k) => wdR(WD_CH[k].cost - (st.T && st.T.p === p ? st.T.buyDisc || 0 : 0));
+function wdTreCost(st, p, id){
+  const t = wdTreDef(id); let v = t.wp + (st.T && st.T.p === p ? st.T.tax || 0 : 0);
+  if (st.T && st.T.p === p) st.T.td.forEach(d => { if (!d.r || d.r.includes(t.r)) v -= d.amt; });
+  return wdR(v);
+}
+/* 秘宝の支払い計画：どのキューブを外すか（サブの枠から優先） */
+function wdTrePlan(st, p, id){
+  const t = wdTreDef(id), T = st.T;
+  const pool = [];
+  st.ch[p].forEach(c => { if (c.seal) return; c.s.forEach((a, i) => { if (a) pool.push({ cid: c.id, i, a }); }); });
+  pool.sort((x, y) => (x.i === 0) - (y.i === 0) || WD_PAY(x.a) - WD_PAY(y.a));
+  const used = [], miss = [];
+  t.cb.forEach(a => { const u = pool.find(z => z.a === a && !used.includes(z)); if (u) used.push(u); else miss.push(a); });
+  let free = T && T.p === p ? T.free || 0 : 0, wild = T && T.p === p ? T.wild || 0 : 0, fu = 0, wu = 0;
+  for (const a of miss){
+    if (free > 0){ free--; fu++; continue; }
+    const u = wild > 0 && pool.find(z => !used.includes(z));
+    if (u){ wild--; wu++; used.push(u); continue; }
+    return { ok: false, miss: miss.length - fu - wu, used, fu, wu };
+  }
+  return { ok: true, used, fu, wu, cost: wdTreCost(st, p, id) };
+}
+
+/* ======================= キャラクター20体 ======================= */
+const G = (x, n, why) => wdGain(x.st, x.p, n, why);
+const Lv = x => x.c.lv;
+const pctW = (x, pct, cap) => G(x, Math.min(cap || Infinity, wdR(x.st.wp[x.p] * pct / 100)));
+const allSteal = (x, f) => wdOthers(x.st, x.p).forEach(q => f(q));
+const seal2 = (n, cond) => [qOC("行動封じするキャラ", (x, c) => !c.seal), qOC("2体目に行動封じするキャラ", (x, c) => cond(x) && !c.seal && c.id !== x.ch[0])];
+const WD_CH = [
+  { n: "フェニックス", t: "中", sig: "炎", it: "固定", cost: 800, th: "再生", im: "灰から蘇る不死鳥", desc: "自分の「無」の枠や、秘宝に払ったキューブが多いほど強くなります。", e: {
+    無: { tx: "+20wp。秘宝にはめたキューブ1つにつき+10wp", f: x => G(x, 20 + 10 * wdTreCubes(x.st, x.p)) },
+    炎: { tx: "+300wp。このキャラの無の枠1つにつき+100wp", f: x => G(x, 300 + 100 * wdNull(x.c)) },
+    水: { tx: "+Lv×40wp。秘宝にはめたキューブ1つにつき+30wp", f: x => G(x, Lv(x) * 40 + 30 * wdTreCubes(x.st, x.p)) },
+    木: { tx: "このターン、このキャラへの属性付与コスト−100wp（無の枠が2つ以上なら−200wp）", f: x => wdGd(x, { cid: x.c.id, amt: wdNull(x.c) >= 2 ? 200 : 100 }) },
+    雷: { tx: "このキャラは手順3を2回行える。そのうち1回が属性付与なら、付与コスト−100wp", f: x => { x.st.T.extra[x.c.id] = (x.st.T.extra[x.c.id] || 0) + 1; wdGd(x, { cid: x.c.id, amt: 100 }); } },
+    闇: { tx: "秘宝にはめたキューブ1つを、このキャラの無の枠に戻せる（秘宝は持ったまま）", need: [{ q: "このキャラに戻すキューブ", o: x => wdNull(x.c) ? x.st.tre[x.p].flatMap((t, ti) => t.cubes.map((a, j) => ({ v: `${ti}:${j}`, l: `${wdTreDef(t.id).n}の${a}` }))) : [] }],
+      f: x => { const v = x.ch[0]; if (!v) return; const [ti, j] = v.split(":").map(Number), t = x.st.tre[x.p][ti]; if (!t) return; const a = t.cubes.splice(j, 1)[0]; wdPut(x.c, a); wdFx(x.st, { k: "back", p: x.p, cid: x.c.id, a }); wdL(x.st, `${wdNm(x.p)}は秘宝の${a}キューブをフェニックスに戻した`); } },
+    龍: { tx: "他の全員から100wpずつ奪う。このキャラの無の枠1つにつき、1人あたり+50wp多く奪う", f: x => allSteal(x, q => wdSteal(x, q, 100 + 50 * wdNull(x.c))) },
+    覇: { tx: "相手キャラ1体に行動封じ。そのキャラのキューブ1つにつき+100wp", need: [qOC("行動封じするキャラ", (x, c) => !c.seal)], f: x => { const f = x.ch[0] && wdFind(x.st, x.ch[0]); if (f && wdSeal(x, x.ch[0])) G(x, 100 * wdCubes(f.c).length); } },
+    天: { tx: "前の自分の手番から今までに干渉を受けていたら+600wp。次の自分の手番まで干渉無効", f: x => { if ((x.st.hitBy[x.p] || []).length) G(x, 600); wdShield(x); } },
+    幻: { tx: "相手キャラ1体のサブ属性キューブ1つを無に戻す。さらに+200wp", need: [qOCube("無に戻すキューブ")], f: x => { wdRmCube(x, x.ch[0]); G(x, 200); } }
+  } },
+  { n: "リヴァイアサン", t: "高", sig: "水", it: "割合", cost: 1300, th: "深海の財", im: "深海の王", desc: "自分の所持wpの何%、で増えます。お金持ちほど強くなります。", e: {
+    無: { tx: "所持wpの1%（最大50wp）", f: x => pctW(x, 1, 50) },
+    炎: { tx: "所持wpの5%（最大400wp）", f: x => pctW(x, 5, 400) },
+    水: { tx: "所持wpの12%（最大700wp）", f: x => pctW(x, 12, 700) },
+    木: { tx: "所持wpが3000以上なら、このターンLv上げコスト−300wp。3000未満なら+150wp", f: x => x.st.wp[x.p] >= 3000 ? wdLd(x, { amt: 300 }) : G(x, 150) },
+    雷: { tx: "所持wpの8%（最大600wp）。所持wpが1位ならさらに+200wp", f: x => { const top = wdIsTop(x.st, x.p); pctW(x, 8, 600); if (top) G(x, 200); } },
+    闇: { tx: "所持wpが1位なら、このターンの手順4で秘宝の必要キューブ1つを免除", f: x => { if (wdIsTop(x.st, x.p)) x.st.T.free = (x.st.T.free || 0) + 1; } },
+    龍: { tx: "1人を選び、所持wpの10%を奪う。自分の所持wpの方が少なければ15%", need: [qPl("wpを奪う相手")], f: x => { const q = x.ch[0]; if (q) wdStealPct(x, q, x.st.wp[x.p] < x.st.wp[q] ? 15 : 10); } },
+    覇: { tx: "自分より所持wpが少ない人全員から、所持wpの5%ずつ奪う", f: x => { const me0 = x.st.wp[x.p]; allSteal(x, q => { if (x.st.wp[q] < me0) wdStealPct(x, q, 5); }); } },
+    天: { tx: "次の自分の手番まで干渉無効。さらに所持wpの5%（最大500wp）", f: x => { wdShield(x); pctW(x, 5, 500); } },
+    幻: { tx: "1人を選ぶ。その人が次の自分の手番までに手順1でもらうwpは半分", need: [qPl("wpを半分にする相手")], f: x => { const q = x.ch[0]; if (q && wdHit(x, q)){ wdUntil(x.st, q).halfPay = 1; wdFx(x.st, { k: "curse", p: x.p, q, why: "手順1のwp半分" }); } } }
+  } },
+  { n: "ドライアド", t: "低", sig: "木", it: "固定", cost: 400, th: "芽吹き", im: "森の精霊", desc: "自分の全キャラのキューブの数が多いほど強くなります。", e: {
+    無: { tx: "自分のキューブ1つにつき+10wp", f: x => G(x, 10 * wdMyCubes(x.st, x.p)) },
+    炎: { tx: "+100wp。自分のキューブ1つにつき+30wp", f: x => G(x, 100 + 30 * wdMyCubes(x.st, x.p)) },
+    水: { tx: "自分の木キューブ1つにつき+80wp", f: x => G(x, 80 * wdMyCubes(x.st, x.p, "木")) },
+    木: { tx: "このターン、自分の全キャラの属性付与コストが半額", f: x => wdGd(x, { half: 1 }) },
+    雷: { tx: "自分の他のキャラ1体の無の枠に、炎・水・木のどれかを1つ無料で付ける", need: [qMyC("無料で属性を付けるキャラ", (x, c) => c.id !== x.c.id && wdNull(c) > 0), qAt("付ける属性", ["炎", "水", "木"])],
+      f: x => { const f = x.ch[0] && wdFind(x.st, x.ch[0]); if (f && x.ch[1] && wdPut(f.c, x.ch[1])) wdFx(x.st, { k: "grant", p: x.p, cid: f.c.id, a: x.ch[1] }); } },
+    闇: { tx: "自分のキューブ1つにつき+50wp", f: x => G(x, 50 * wdMyCubes(x.st, x.p)) },
+    龍: { tx: "他の全員から、その人のキューブ1つにつき30wpずつ奪う", f: x => allSteal(x, q => { const n = wdMyCubes(x.st, q); if (n) wdSteal(x, q, 30 * n); }) },
+    覇: { tx: "相手キャラ1体に行動封じ。自分のキューブが8つ以上なら2体", need: seal2(2, x => wdMyCubes(x.st, x.p) >= 8), f: x => { wdSeal(x, x.ch[0]); wdSeal(x, x.ch[1]); } },
+    天: { tx: "次の自分の手番まで干渉無効。自分の全キャラの無の枠1つにつき+100wp", f: x => { wdShield(x); G(x, 100 * x.st.ch[x.p].reduce((n, c) => n + wdNull(c), 0)); } },
+    幻: { tx: "相手キャラ1体のサブ属性キューブ1つを無に戻し、同じ属性を自分のキャラの無の枠に無料で付ける", need: [qOCube("奪うキューブ")], f: x => { const a = wdRmCube(x, x.ch[0]); if (a){ const c = wdPutAny(x.st, x.p, a, x.c); if (c) wdFx(x.st, { k: "grant", p: x.p, cid: c.id, a }); } } }
+  } },
+  { n: "サンダーバード", t: "中", sig: "雷", it: "割合", cost: 900, th: "連鎖", im: "嵐を呼ぶ巨鳥", desc: "追加でダイスを振り、当たると効果が続きます。", e: {
+    無: { tx: "ダイスを1つ振る。雷・闇なら+60wp、それ以外は+10wp", f: x => { const d = wdRoll(); wdFx(x.st, { k: "die", p: x.p, a: d }); G(x, d === "雷" || d === "闇" ? 60 : 10); } },
+    炎: { tx: "ダイスを1つ振る。炎・雷なら+250wpしてもう一度振る（最大3回）。それ以外は+80wp", f: x => { for (let i = 0; i < 3; i++){ const d = wdRoll(); wdFx(x.st, { k: "die", p: x.p, a: d }); if (d === "炎" || d === "雷") G(x, 250); else { G(x, 80); break; } } } },
+    水: { tx: "+80wp。手順1で選ばなかった方の目が、このキャラの持つ属性なら+150wp", f: x => { G(x, 80); if ((x.st.T.unused || []).some(a => x.c.s.includes(a))) G(x, 150); } },
+    木: { tx: "このターン、このキャラのLv上げを2段階まとめて行える（コストは2段階分の合計）", f: x => { x.st.T.lv2[x.c.id] = 1; } },
+    雷: { tx: "+200wp。ダイスを1つ振り、雷・闇ならこの効果をもう一度（最大3回）", f: x => { for (let i = 0; i < 3; i++){ G(x, 200); if (i === 2) break; const d = wdRoll(); wdFx(x.st, { k: "die", p: x.p, a: d }); if (d !== "雷" && d !== "闇") break; } } },
+    闇: { tx: "手順1で選ばなかった方の目でも、自分だけ手順1のwpをもらう。さらに+150wp", f: x => { const T = x.st.T; let best = 0; (T.unused || []).forEach(a => { best = Math.max(best, wdPayFor(x.st, x.p, a)); }); G(x, best + 150); } },
+    龍: { tx: "ダイスを1つ振る。雷・闇なら他の全員から、それ以外なら1人から、所持wpの6%ずつ奪う", need: [qPl("雷・闇以外が出たときに奪う相手")], f: x => { const d = wdRoll(); wdFx(x.st, { k: "die", p: x.p, a: d }); if (d === "雷" || d === "闇") allSteal(x, q => wdStealPct(x, q, 6)); else if (x.ch[0]) wdStealPct(x, x.ch[0], 6); } },
+    覇: { tx: "1位の人から所持wpの8%を奪う。さらにダイスを1つ振り、雷ならその人のキャラ1体に行動封じ", f: x => { const L = wdLeader(x.st, x.p); wdStealPct(x, L, 8); const d = wdRoll(); wdFx(x.st, { k: "die", p: x.p, a: d }); if (d === "雷"){ const c = x.st.ch[L].filter(c2 => !c2.seal).sort((a, b) => wdLvWp(b) - wdLvWp(a))[0]; if (c) wdSeal(x, c.id); } } },
+    天: { tx: "このキャラは手順3を3回行える", f: x => { x.st.T.extra[x.c.id] = (x.st.T.extra[x.c.id] || 0) + 2; } },
+    幻: { tx: "相手1人の次の手番、手順1のダイスは1つだけ。さらにダイスを1つ振り、幻ならもう1人にも", need: [qPl("ダイスを1つにする相手")], f: x => { const q = x.ch[0]; if (q && wdHit(x, q)){ wdNx(x.st, q).oneDie = 1; wdFx(x.st, { k: "curse", p: x.p, q, why: "ダイス1つ" }); } const d = wdRoll(); wdFx(x.st, { k: "die", p: x.p, a: d }); if (d === "幻"){ const r = wdOthers(x.st, x.p).filter(z => z !== q).sort((a, b) => x.st.wp[b] - x.st.wp[a])[0]; if (r && wdHit(x, r)){ wdNx(x.st, r).oneDie = 1; wdFx(x.st, { k: "curse", p: x.p, q: r, why: "ダイス1つ" }); } } } }
+  } },
+  { n: "ヴァンパイア", t: "中", sig: "闇", it: "割合", cost: 900, th: "吸収", im: "夜の貴族", desc: "他の人が持つキューブの数が多いほど稼げます（他人の成長を養分にする）。", e: {
+    無: { tx: "他の人全員のキューブの合計×5wp", f: x => G(x, 5 * wdOthers(x.st, x.p).reduce((n, q) => n + wdMyCubes(x.st, q), 0)) },
+    炎: { tx: "他の人の炎キューブ1つにつき+60wp", f: x => G(x, 60 * wdOthers(x.st, x.p).reduce((n, q) => n + wdMyCubes(x.st, q, "炎"), 0)) },
+    水: { tx: "他の人の水キューブ1つにつき+60wp", f: x => G(x, 60 * wdOthers(x.st, x.p).reduce((n, q) => n + wdMyCubes(x.st, q, "水"), 0)) },
+    木: { tx: "このターン、他の人が持っている属性を付与するなら、付与コスト−150wp", f: x => wdGd(x, { amt: 150, cond: "othersHave" }) },
+    雷: { tx: "他の人全員のキューブの合計×15wp（最大500wp）", f: x => G(x, Math.min(500, 15 * wdOthers(x.st, x.p).reduce((n, q) => n + wdMyCubes(x.st, q), 0))) },
+    闇: { tx: "他の人全員のキューブの合計×25wp（最大800wp）", f: x => G(x, Math.min(800, 25 * wdOthers(x.st, x.p).reduce((n, q) => n + wdMyCubes(x.st, q), 0))) },
+    龍: { tx: "キューブを一番多く持つ人から、所持wpの10%を奪う", f: x => { const q = wdOthers(x.st, x.p).reduce((b, r) => wdMyCubes(x.st, r) > wdMyCubes(x.st, b) ? r : b); wdStealPct(x, q, 10); } },
+    覇: { tx: "キューブを持つ他の人全員から、所持wpの4%ずつ奪う", f: x => allSteal(x, q => { if (wdMyCubes(x.st, q)) wdStealPct(x, q, 4); }) },
+    天: { tx: "次の自分の手番まで干渉無効。このターンの手順1で他の人がもらったwpの合計の半分をもらう", f: x => { wdShield(x); G(x, wdR(wdOthers(x.st, x.p).reduce((n, q) => n + (x.st.T.paid[q] || 0), 0) / 2)); } },
+    幻: { tx: "相手キャラ1体の、いま出ている属性の効果をコピーして使う", cp: 1, need: [qCopy("コピーする効果")], f: x => wdCopyRun(x, x.ch[0]) }
+  } },
+  { n: "バハムート", t: "高", sig: "龍", it: "固定", cost: 1500, th: "竜王", im: "竜の王", desc: "Lvに比例する効果ばかりです。Lvを上げきると最強の稼ぎ頭になります。", e: {
+    無: { tx: "+Lv×10wp", f: x => G(x, Lv(x) * 10) },
+    炎: { tx: "+Lv×60wp", f: x => G(x, Lv(x) * 60) },
+    水: { tx: "+Lv×40wp。Lv3以上なら+100wp", f: x => G(x, Lv(x) * 40 + (Lv(x) >= 3 ? 100 : 0)) },
+    木: { tx: "このターン、このキャラのLv上げコスト−Lv×100wp", f: x => wdLd(x, { cid: x.c.id, amt: Lv(x) * 100 }) },
+    雷: { tx: "+Lv×90wp", f: x => G(x, Lv(x) * 90) },
+    闇: { tx: "このターン、このキャラのLv分のwpが2倍", f: x => { x.st.T.lvx2[x.c.id] = 1; } },
+    龍: { tx: "他の全員から、Lv×80wpずつ奪う", f: x => allSteal(x, q => wdSteal(x, q, Lv(x) * 80)) },
+    覇: { tx: "このキャラよりLvが低い相手キャラ1体に行動封じ。さらに+Lv×50wp", need: [qOC("行動封じするキャラ", (x, c) => !c.seal && c.lv < x.c.lv)], f: x => { wdSeal(x, x.ch[0]); G(x, Lv(x) * 50); } },
+    天: { tx: "+Lv×120wp", f: x => G(x, Lv(x) * 120) },
+    幻: { tx: "相手キャラ1体のLvを1下げる（下げられなければ+300wp）", need: [qOC("Lvを下げるキャラ")], f: x => wdLvDown(x, x.ch[0]) }
+  } },
+  { n: "ナイトメア", t: "中", sig: "幻", it: "割合", cost: 800, th: "悪夢", im: "悪夢の黒馬", desc: "ダイスの目を操ります。他の人のダイスにも手を出します。", e: {
+    無: { tx: "手順1で2つのダイスが同じ目なら+80wp、違えば+15wp", f: x => { const d = x.st.T.dice || []; G(x, d.length >= 2 && d[0] === d[1] ? 80 : 15); } },
+    炎: { tx: "ダイスを2つ振り、好きな方の目で判定。炎・水・木なら+250wp、それ以外は+80wp", f: x => { const a = wdRoll(), b = wdRoll(); wdFx(x.st, { k: "die", p: x.p, a }); wdFx(x.st, { k: "die", p: x.p, a: b }); G(x, [a, b].some(d => ["炎", "水", "木"].includes(d)) ? 250 : 80); } },
+    水: { tx: "+120wp。次の自分の手番、手順1のダイスの1つを好きな目に置き、もう1つだけ振る", f: x => { G(x, 120); wdNx(x.st, x.p).anyFace = 1; } },
+    木: { tx: "このターン、属性付与のコスト−150wp（付けられるのは手順1で出た2つの目のどちらか）", f: x => wdGd(x, { amt: 150, attrs: (x.st.T.dice || []).slice() }) },
+    雷: { tx: "手順1で選ばなかった方の目でも、自分のキャラがその属性の効果を行う", f: x => { if (x.act.alt) return; const T = x.st.T; const b = (T.unused || [])[0]; if (!b) return; const adds = []; x.st.ch[x.p].forEach(c => { if (c.seal) return; c.s.forEach(a => { if (a === b) adds.push({ cid: c.id, p: x.p, k: c.k, a: b, alt: 1 }); }); if (c.s.includes(b)) T.acting[c.id] = 1; }); T.q.unshift(...adds); wdL(x.st, `ナイトメア：もう1つの目「${b}」でも効果を行う`); } },
+    闇: { tx: "+300wp。次の自分の手番、手順1のダイスを3つ振って選べる", f: x => { G(x, 300); wdNx(x.st, x.p).three = 1; } },
+    龍: { tx: "1人を選び、所持wpの10%を奪う", need: [qPl("wpを奪う相手")], f: x => { if (x.ch[0]) wdStealPct(x, x.ch[0], 10); } },
+    覇: { tx: "他の人全員の次の手番（1巡だけ）、手順1でどちらの目を使うかは、あなたが選ぶ", f: x => allSteal(x, q => { if (wdHit(x, q)){ wdNx(x.st, q).chooser = x.p; wdFx(x.st, { k: "curse", p: x.p, q, why: "目を選ばれる" }); } }) },
+    天: { tx: "次の自分の手番まで干渉無効。ダイスを1つ振り、出た属性の自分のキューブ1つにつき+100wp", f: x => { wdShield(x); const d = wdRoll(); wdFx(x.st, { k: "die", p: x.p, a: d }); G(x, 100 * wdMyCubes(x.st, x.p, d)); } },
+    幻: { tx: "他の人全員の次の手番、手順1のダイスは1つだけ", f: x => allSteal(x, q => { if (wdHit(x, q)){ wdNx(x.st, q).oneDie = 1; wdFx(x.st, { k: "curse", p: x.p, q, why: "ダイス1つ" }); } }) }
+  } },
+  { n: "セラフィム", t: "高", sig: "天", it: "固定", cost: 1400, th: "祝福", im: "六翼の熾天使", desc: "秘宝に関わる効果ばかりです。", e: {
+    無: { tx: "秘宝を1つ以上持っていれば+40wp、なければ+20wp", f: x => G(x, wdTreN(x.st, x.p) ? 40 : 20) },
+    炎: { tx: "+150wp。このターンに秘宝を獲得したら、さらに+300wp", f: x => { G(x, 150); x.st.T.treOnce = (x.st.T.treOnce || 0) + 300; } },
+    水: { tx: "このターンの手順4で、秘宝の必要wp−400", f: x => x.st.T.td.push({ amt: 400 }) },
+    木: { tx: "このターンの手順4で、★1・★2の秘宝の必要wp−600", f: x => x.st.T.td.push({ amt: 600, r: [1, 2] }) },
+    雷: { tx: "このターン、秘宝を1つ獲得するたびに+400wp", f: x => { x.st.T.treEach = (x.st.T.treEach || 0) + 400; } },
+    闇: { tx: "このターンの手順4で、秘宝の必要キューブ1つを好きな属性として払える", f: x => { x.st.T.wild = (x.st.T.wild || 0) + 1; } },
+    龍: { tx: "秘宝を持つ他の人全員から、その人の秘宝1つにつき200wpずつ奪う", f: x => allSteal(x, q => { const n = wdTreN(x.st, q); if (n) wdSteal(x, q, 200 * n); }) },
+    覇: { tx: "1人を選ぶ。その人は次の手番、秘宝を獲得できない。さらに+300wp", need: [qPl("秘宝を取れなくする相手")], f: x => { const q = x.ch[0]; if (q && wdHit(x, q)){ wdNx(x.st, q).noTre = 1; wdFx(x.st, { k: "curse", p: x.p, q, why: "秘宝禁止" }); } G(x, 300); } },
+    天: { tx: "このターンの手順4で、秘宝の必要wp−1500。次の自分の手番まで干渉無効", f: x => { x.st.T.td.push({ amt: 1500 }); wdShield(x); } },
+    幻: { tx: "相手キャラ1体のサブ属性キューブ1つを無に戻す", need: [qOCube("無に戻すキューブ")], f: x => wdRmCube(x, x.ch[0]) }
+  } },
+  { n: "ベヒモス", t: "高", sig: "覇", it: "割合", cost: 1500, th: "重鎮", im: "大地を統べる巨獣", desc: "持っている秘宝が多いほど強くなる、終盤型です。", e: {
+    無: { tx: "秘宝1つにつき+30wp（なければ+15wp）", f: x => { const t = wdTreN(x.st, x.p); G(x, t ? 30 * t : 15); } },
+    炎: { tx: "+150wp。秘宝1つにつき+150wp", f: x => G(x, 150 + 150 * wdTreN(x.st, x.p)) },
+    水: { tx: "+Lv×40wp。秘宝を持っていれば、さらに+Lv×40wp", f: x => G(x, Lv(x) * 40 * (wdTreN(x.st, x.p) ? 2 : 1)) },
+    木: { tx: "このターン、Lv上げコスト−200wp（秘宝を持っていれば−400wp）", f: x => wdLd(x, { amt: wdTreN(x.st, x.p) ? 400 : 200 }) },
+    雷: { tx: "秘宝1つにつき+300wp（なければ+150wp）", f: x => { const t = wdTreN(x.st, x.p); G(x, t ? 300 * t : 150); } },
+    闇: { tx: "自分の枠が1つ以上空いていれば+400wp、なければ+150wp", f: x => G(x, wdFreeSlots(x.st, x.p) > 0 ? 400 : 150) },
+    龍: { tx: "自分より秘宝が少ない人全員から、所持wpの6%ずつ奪う", f: x => { const t = wdTreN(x.st, x.p); allSteal(x, q => { if (wdTreN(x.st, q) < t) wdStealPct(x, q, 6); }); } },
+    覇: { tx: "1位の人から、所持wpの「10%＋自分の秘宝1つにつき4%」を奪う", f: x => wdStealPct(x, wdLeader(x.st, x.p), 10 + 4 * wdTreN(x.st, x.p)) },
+    天: { tx: "次の自分の手番まで干渉無効。秘宝1つにつき+400wp", f: x => { wdShield(x); G(x, 400 * wdTreN(x.st, x.p)); } },
+    幻: { tx: "1人を選ぶ。その人の次の手番、秘宝の必要wpは+1000", need: [qPl("秘宝を高くする相手")], f: x => { const q = x.ch[0]; if (q && wdHit(x, q)){ wdNx(x.st, q).tax = 1000; wdFx(x.st, { k: "curse", p: x.p, q, why: "秘宝+1000wp" }); } } }
+  } },
+  { n: "ケルベロス", t: "中", sig: "炎", it: "割合", cost: 700, th: "三つ首", im: "冥府の番犬", desc: "同じ属性を3つそろえると、爆発的に強くなります。", e: {
+    無: { tx: "+30wp", f: x => G(x, 30) },
+    炎: { tx: "このキャラの炎キューブ1つにつき+200wp。炎が3つそろっていれば合計が2倍", f: x => { const n = x.c.s.filter(a => a === "炎").length; G(x, 200 * n * (n === 3 ? 2 : 1)); } },
+    水: { tx: "このキャラに同じ属性が2つ以上あれば+250wp、なければ+100wp", f: x => G(x, wdMaxSame(wdCubes(x.c)) >= 2 ? 250 : 100) },
+    木: { tx: "このターン、このキャラに既にある属性と同じ属性を付与するなら、付与コスト半額", f: x => wdGd(x, { cid: x.c.id, half: 1, cond: "sameOnChar" }) },
+    雷: { tx: "自分の全キャラで、一番多い属性のキューブ数×120wp", f: x => G(x, 120 * wdMaxSame(wdAllCubes(x.st, x.p))) },
+    闇: { tx: "このキャラの3つの枠がすべて同じ属性なら+800wp、それ以外は+200wp", f: x => G(x, x.c.s[0] && x.c.s.every(a => a === x.c.s[0]) ? 800 : 200) },
+    龍: { tx: "1人を選び、所持wpの10%を奪う。このキャラが同じ属性3つなら、3人から奪う", need: [{ ...qPl("wpを奪う相手"), o: x => x.c.s[0] && x.c.s.every(a => a === x.c.s[0]) ? [] : qPl("").o(x) }], f: x => { if (x.c.s[0] && x.c.s.every(a => a === x.c.s[0])) wdOthers(x.st, x.p).sort((a, b) => x.st.wp[b] - x.st.wp[a]).slice(0, 3).forEach(q => wdStealPct(x, q, 10)); else if (x.ch[0]) wdStealPct(x, x.ch[0], 10); } },
+    覇: { tx: "1位の人から、所持wpの「8%＋このキャラの同じ属性1つにつき2%」を奪う", f: x => wdStealPct(x, wdLeader(x.st, x.p), 8 + 2 * wdMaxSame(wdCubes(x.c))) },
+    天: { tx: "次の自分の手番まで干渉無効。さらに+300wp", f: x => { wdShield(x); G(x, 300); } },
+    幻: { tx: "相手キャラ1体の、いま出ている属性の効果をコピーして使う", cp: 1, need: [qCopy("コピーする効果")], f: x => wdCopyRun(x, x.ch[0]) }
+  } },
+  { n: "クラーケン", t: "中", sig: "水", it: "固定", cost: 700, th: "触手", im: "海の大怪物", desc: "参加人数や、他の人のキャラの数が多いほど稼げます。", e: {
+    無: { tx: "他の人1人につき+10wp", f: x => G(x, 10 * wdOthers(x.st, x.p).length) },
+    炎: { tx: "他の人のキャラ1体につき+40wp", f: x => G(x, 40 * wdOthers(x.st, x.p).reduce((n, q) => n + x.st.ch[q].length, 0)) },
+    水: { tx: "他の人1人につき+100wp", f: x => G(x, 100 * wdOthers(x.st, x.p).length) },
+    木: { tx: "このターン、キャラ獲得のコスト−200wp", f: x => { x.st.T.buyDisc = (x.st.T.buyDisc || 0) + 200; } },
+    雷: { tx: "他の人全員のキャラの数×60wp", f: x => G(x, 60 * wdOthers(x.st, x.p).reduce((n, q) => n + x.st.ch[q].length, 0)) },
+    闇: { tx: "場の3枚のうち1体の、いま出ている属性の効果を使う", cp: 1, need: [{ q: "効果を使う場のキャラ", o: x => x.st.mk.filter(k => k != null).map(k => ({ v: String(k), l: `${WD_CH[k].n}の「${x.a}」：${WD_CH[k].e[x.a].tx}` })) }],
+      f: x => { const k = x.ch[0] == null ? null : +x.ch[0]; if (k == null) return; if (WD_CH[k].e[x.a].cp || x.act.copy){ G(x, 200); return; } wdL(x.st, `${wdNm(x.p)}は場の${WD_CH[k].n}の「${x.a}」を使う`); wdPush(x, k, x.a, { copy: 1 }); } },
+    龍: { tx: "他の全員から120wpずつ奪う", f: x => allSteal(x, q => wdSteal(x, q, 120)) },
+    覇: { tx: "キャラを一番多く持つ人のキャラ1体に行動封じ。さらに+200wp", need: [qOC("行動封じするキャラ", (x, c, r) => !c.seal && x.st.ch[r].length === Math.max(...wdOthers(x.st, x.p).map(q => x.st.ch[q].length)))], f: x => { wdSeal(x, x.ch[0]); G(x, 200); } },
+    天: { tx: "次の自分の手番まで干渉無効。他の人1人につき+100wp", f: x => { wdShield(x); G(x, 100 * wdOthers(x.st, x.p).length); } },
+    幻: { tx: "相手2人を選び、それぞれのキャラ1体のLvを1下げる", need: [qOC("Lvを下げるキャラ（1人目）"), qOC("Lvを下げるキャラ（2人目）", (x, c, r) => { const f = x.ch[0] && wdFind(x.st, x.ch[0]); return !f || f.p !== r; })], f: x => { wdLvDown(x, x.ch[0]); wdLvDown(x, x.ch[1]); } }
+  } },
+  { n: "ゴーレム", t: "低", sig: "木", it: "割合", cost: 350, th: "堅牢", im: "石の巨人", desc: "Lv上げのコストを下げる効果ばかりです。ゆっくり確実に育ちます。", e: {
+    無: { tx: "+20wp。このキャラがLv2以上なら+40wp", f: x => G(x, Lv(x) >= 2 ? 40 : 20) },
+    炎: { tx: "+Lv×50wp", f: x => G(x, Lv(x) * 50) },
+    水: { tx: "+100wp。次の自分の手番、このキャラのLv上げコスト−100wp", f: x => { G(x, 100); const n = wdNx(x.st, x.p); n.ld = (n.ld || []).concat([{ cid: x.c.id, amt: 100 }]); } },
+    木: { tx: "このターン、このキャラのLv上げコストが半額。さらに+100wp", f: x => { wdLd(x, { cid: x.c.id, half: 1 }); G(x, 100); } },
+    雷: { tx: "このターン、自分の全キャラのLv上げコスト−200wp", f: x => wdLd(x, { amt: 200 }) },
+    闇: { tx: "Lv2以下の自分のキャラ1体のLvを1上げる（無料）", need: [qMyC("Lvを上げるキャラ", (x, c) => c.lv <= 2)], f: x => { const f = x.ch[0] && wdFind(x.st, x.ch[0]); if (f){ f.c.lv++; wdFx(x.st, { k: "lvup", p: x.p, cid: f.c.id }); } } },
+    龍: { tx: "1人を選び、所持wpの8%を奪う", need: [qPl("wpを奪う相手")], f: x => { if (x.ch[0]) wdStealPct(x, x.ch[0], 8); } },
+    覇: { tx: "Lvが一番高いキャラを持つ人から、所持wpの8%を奪う", f: x => { const mx = q => Math.max(0, ...x.st.ch[q].map(c => c.lv)); const q = wdOthers(x.st, x.p).reduce((b, r) => mx(r) > mx(b) ? r : b); wdStealPct(x, q, 8); } },
+    天: { tx: "次の自分の手番まで干渉無効。さらに+Lv×80wp", f: x => { wdShield(x); G(x, Lv(x) * 80); } },
+    幻: { tx: "相手キャラ1体のLvを1下げる（下げられなければ+300wp）", need: [qOC("Lvを下げるキャラ")], f: x => wdLvDown(x, x.ch[0]) }
+  } },
+  { n: "グリフォン", t: "低", sig: "雷", it: "固定", cost: 450, th: "守護", im: "天空の守護獣", desc: "干渉を防いだり、跳ね返したりする、守りの専門家です。", e: {
+    無: { tx: "+20wp。自分が干渉無効の状態なら+40wp", f: x => G(x, wdShielded(x.st, x.p) ? 40 : 20) },
+    炎: { tx: "+200wp", f: x => G(x, 200) },
+    水: { tx: "+100wp。次の自分の手番まで、自分が奪われるwpは半分", f: x => { G(x, 100); x.st.sh[x.p] = { ...(x.st.sh[x.p] || {}), halfSteal: 1 }; } },
+    木: { tx: "このターン、属性付与のコスト−100wp（天を付けるなら−300wp）", f: x => wdGd(x, { amt: 100, amtFor: { 天: 300 } }) },
+    雷: { tx: "次の自分の手番まで干渉無効。さらに+250wp", f: x => { wdShield(x); G(x, 250); } },
+    闇: { tx: "次の自分の手番までに干渉を受けたら、その相手から300wpを奪い返す", f: x => { x.st.sh[x.p] = { ...(x.st.sh[x.p] || {}), counter: 1 }; } },
+    龍: { tx: "前の自分の手番から今までに自分に干渉した人全員から、400wpずつ奪う（いなければ+200wp）", f: x => { const hb = (x.st.hitBy[x.p] || []).filter(q => q !== x.p); if (hb.length) hb.forEach(q => wdSteal(x, q, 400)); else G(x, 200); } },
+    覇: { tx: "相手キャラ1体に行動封じ。さらに次の自分の手番まで干渉無効", need: [qOC("行動封じするキャラ", (x, c) => !c.seal)], f: x => { wdSeal(x, x.ch[0]); wdShield(x); } },
+    天: { tx: "次の自分の手番まで干渉無効。自分に干渉しようとした人からは、1回につき200wpもらう", f: x => { wdShield(x); x.st.sh[x.p].gTen = 1; } },
+    幻: { tx: "相手1人の次の手番、その人は龍・覇・幻の効果を使えない", need: [qPl("龍・覇・幻を封じる相手")], f: x => { const q = x.ch[0]; if (q && wdHit(x, q)){ wdNx(x.st, q).noInt = 1; wdFx(x.st, { k: "curse", p: x.p, q, why: "龍・覇・幻 禁止" }); } } }
+  } },
+  { n: "リッチ", t: "中", sig: "闇", it: "固定", cost: 850, th: "禁術", im: "不死の魔導士", desc: "キューブを付け替えたり、別の属性として扱ったりします。", e: {
+    無: { tx: "+30wp", f: x => G(x, 30) },
+    炎: { tx: "+150wp。このキャラのサブ属性キューブ1つを別の属性に付け替えられる", need: [{ ...qMyCube("付け替えるキューブ", (x, c) => c.id === x.c.id), opt: 1 }, { q: "新しい属性", o: x => x.ch[0] ? WD_AT.map(a => ({ v: a, l: a })) : [] }], f: x => { G(x, 150); wdRecolor(x, x.ch[0], x.ch[1]); } },
+    水: { tx: "+100wp。自分のキャラ同士で、サブ属性キューブ1つずつを入れ替えられる", need: [{ ...qMyCube("入れ替えるキューブ（1つ目）"), opt: 1 }, { ...qMyCube("入れ替えるキューブ（2つ目）", (x, c) => x.ch[0] && x.ch[0].split(":")[0] !== c.id) }],
+      f: x => { G(x, 100); const a = x.ch[0], b = x.ch[1]; if (!a || !b) return; const [ca, ia] = a.split(":"), [cb, ib] = b.split(":"); const A = wdFind(x.st, ca).c, B = wdFind(x.st, cb).c; [A.s[+ia], B.s[+ib]] = [B.s[+ib], A.s[+ia]]; wdFx(x.st, { k: "swap", p: x.p }); } },
+    木: { tx: "このターン、属性付与のコスト−150wp", f: x => wdGd(x, { amt: 150 }) },
+    雷: { tx: "自分のサブ属性キューブ1つを、雷か闇に付け替える", need: [qMyCube("付け替えるキューブ", (x, c, a) => a !== "雷" && a !== "闇"), { q: "新しい属性", o: x => x.ch[0] ? ["雷", "闇"].map(a => ({ v: a, l: a })) : [] }], f: x => wdRecolor(x, x.ch[0], x.ch[1]) },
+    闇: { tx: "このターンの手順4で、秘宝の必要キューブ2つまでを好きな属性として払える。さらに+150wp", f: x => { x.st.T.wild = (x.st.T.wild || 0) + 2; G(x, 150); } },
+    龍: { tx: "1人を選び、500wp奪う", need: [qPl("wpを奪う相手")], f: x => { if (x.ch[0]) wdSteal(x, x.ch[0], 500); } },
+    覇: { tx: "相手キャラ1体のサブ属性キューブ1つを、自分のキャラの無の枠へ移す（奪う）", need: [qOCube("奪うキューブ")], f: x => { const a = wdRmCube(x, x.ch[0]); if (a){ const c = wdPutAny(x.st, x.p, a, x.c); if (c) wdFx(x.st, { k: "grant", p: x.p, cid: c.id, a }); } } },
+    天: { tx: "次の自分の手番まで干渉無効。さらに+300wp", f: x => { wdShield(x); G(x, 300); } },
+    幻: { tx: "相手キャラ1体のメイン属性を無に戻す（メインも外せる禁術）", need: [qOC("メイン属性を外すキャラ", (x, c) => !!c.s[0])], f: x => { const f = x.ch[0] && wdFind(x.st, x.ch[0]); if (f && f.c.s[0] && wdHit(x, f.p)){ const a = f.c.s[0]; f.c.s[0] = null; wdFx(x.st, { k: "rmcube", p: x.p, q: f.p, cid: f.c.id, a }); wdL(x.st, `${wdNm(f.p)}の${wdDef(f.c).n}のメイン属性（${a}）を外した`); } } }
+  } },
+  { n: "ワイバーン", t: "低", sig: "龍", it: "割合", cost: 500, th: "急襲", im: "飛竜", desc: "序盤（所持wpが少ない・秘宝0個）ほど強くなります。", e: {
+    無: { tx: "秘宝が0個なら+40wp、それ以外は+10wp", f: x => G(x, wdTreN(x.st, x.p) ? 10 : 40) },
+    炎: { tx: "所持wpが2000未満なら+300wp、それ以外は+100wp", f: x => G(x, x.st.wp[x.p] < 2000 ? 300 : 100) },
+    水: { tx: "このキャラがLv2以下なら+200wp、それ以外は+80wp", f: x => G(x, Lv(x) <= 2 ? 200 : 80) },
+    木: { tx: "このターン、キャラ獲得のコスト−200wp", f: x => { x.st.T.buyDisc = (x.st.T.buyDisc || 0) + 200; } },
+    雷: { tx: "秘宝が0個なら+450wp、それ以外は+150wp", f: x => G(x, wdTreN(x.st, x.p) ? 150 : 450) },
+    闇: { tx: "所持wpが最下位なら+500wp、それ以外は+150wp", f: x => G(x, wdIsLast(x.st, x.p) ? 500 : 150) },
+    龍: { tx: "他の全員から、所持wpの7%ずつ奪う", f: x => allSteal(x, q => wdStealPct(x, q, 7)) },
+    覇: { tx: "秘宝を持つ人全員から、所持wpの5%ずつ奪う", f: x => allSteal(x, q => { if (wdTreN(x.st, q)) wdStealPct(x, q, 5); }) },
+    天: { tx: "次の自分の手番まで干渉無効。秘宝が0個なら+400wp", f: x => { wdShield(x); if (!wdTreN(x.st, x.p)) G(x, 400); } },
+    幻: { tx: "1人を選ぶ。その人の次の手番、手順3を行えるのはキャラ1体だけ", need: [qPl("手順3を1体だけにする相手")], f: x => { const q = x.ch[0]; if (q && wdHit(x, q)){ wdNx(x.st, q).one = 1; wdFx(x.st, { k: "curse", p: x.p, q, why: "手順3は1体だけ" }); } } }
+  } },
+  { n: "キマイラ", t: "中", sig: "幻", it: "固定", cost: 750, th: "合成", im: "三つ首の合成獣", desc: "自分の全キャラで、違う属性を何種類持っているかで強くなります。", e: {
+    無: { tx: "属性の種類1つにつき+10wp", f: x => G(x, 10 * wdKinds(x.st, x.p)) },
+    炎: { tx: "属性の種類1つにつき+60wp", f: x => G(x, 60 * wdKinds(x.st, x.p)) },
+    水: { tx: "このキャラの3つの枠が全部違う属性なら+350wp、それ以外は+100wp", f: x => G(x, x.c.s.every(Boolean) && new Set(x.c.s).size === 3 ? 350 : 100) },
+    木: { tx: "このターン、自分がまだ持っていない属性を付与するなら、付与コスト−200wp", f: x => wdGd(x, { amt: 200, cond: "notOwn" }) },
+    雷: { tx: "属性の種類1つにつき+100wp", f: x => G(x, 100 * wdKinds(x.st, x.p)) },
+    闇: { tx: "このキャラの3つの属性の効果を、1回ずつ行う（龍・覇・天・幻は除く）", f: x => { if (x.act.copy) return; const adds = x.c.s.filter(a => a && !WD_RARE.includes(a) && a !== "闇").map(a => ({ cid: x.c.id, p: x.p, k: x.c.k, a, copy: 1 })); x.st.T.q.unshift(...adds); } },
+    龍: { tx: "他の全員から、自分の属性の種類×40wpずつ奪う", f: x => { const k = wdKinds(x.st, x.p); allSteal(x, q => wdSteal(x, q, 40 * k)); } },
+    覇: { tx: "相手キャラ1体に行動封じ。自分の属性が6種類以上なら2体", need: seal2(2, x => wdKinds(x.st, x.p) >= 6), f: x => { wdSeal(x, x.ch[0]); wdSeal(x, x.ch[1]); } },
+    天: { tx: "次の自分の手番まで干渉無効。属性の種類1つにつき+60wp", f: x => { wdShield(x); G(x, 60 * wdKinds(x.st, x.p)); } },
+    幻: { tx: "相手キャラ1体の、好きな属性の効果をコピーして使う（相手が持っている属性ならどれでも）", cp: 1, need: [{ q: "コピーする効果", o: x => wdOthers(x.st, x.p).flatMap(r => x.st.ch[r].flatMap(c => [...new Set(wdCubes(c))].map(a => ({ v: `${c.id}:${a}`, l: `${wdNm(r)}の${wdDef(c).n}の「${a}」：${wdDef(c).e[a].tx}` })))) }],
+      f: x => { const v = x.ch[0]; if (!v) return; const [cid, a] = v.split(":"); const f = wdFind(x.st, cid); if (!f) return; if (wdDef(f.c).e[a].cp || x.act.copy){ G(x, 200); return; } wdL(x.st, `${wdNm(x.p)}は${wdDef(f.c).n}の「${a}」をコピー`); wdPush(x, f.c.k, a, { copy: 1 }); } }
+  } },
+  { n: "ユニコーン", t: "低", sig: "天", it: "割合", cost: 400, th: "癒し", im: "聖なる一角獣", desc: "所持wpが最下位のときに強く、逆転を狙えます。", e: {
+    無: { tx: "所持wpが最下位なら+60wp、それ以外は+15wp", f: x => G(x, wdIsLast(x.st, x.p) ? 60 : 15) },
+    炎: { tx: "所持wpが最下位なら+400wp、それ以外は+100wp", f: x => G(x, wdIsLast(x.st, x.p) ? 400 : 100) },
+    水: { tx: "1位の人との差の5%（最大500wp）をもらう", f: x => G(x, Math.min(500, wdR(Math.max(0, x.st.wp[wdLeader(x.st, x.p)] - x.st.wp[x.p]) * 0.05))) },
+    木: { tx: "所持wpが最下位なら、このターンのLv上げと属性付与のコストが半額", f: x => { if (wdIsLast(x.st, x.p)){ wdLd(x, { half: 1 }); wdGd(x, { half: 1 }); } } },
+    雷: { tx: "秘宝の数が一番少ないなら+500wp、それ以外は+150wp", f: x => G(x, wdOthers(x.st, x.p).every(q => wdTreN(x.st, x.p) <= wdTreN(x.st, q)) ? 500 : 150) },
+    闇: { tx: "1位の人の所持wpが自分の2倍以上なら+800wp、それ以外は+200wp", f: x => G(x, x.st.wp[wdLeader(x.st, x.p)] >= 2 * x.st.wp[x.p] ? 800 : 200) },
+    龍: { tx: "1位の人から、所持wpの10%を奪う", f: x => wdStealPct(x, wdLeader(x.st, x.p), 10) },
+    覇: { tx: "自分より所持wpが多い人全員から、所持wpの4%ずつ奪う", f: x => { const me0 = x.st.wp[x.p]; allSteal(x, q => { if (x.st.wp[q] > me0) wdStealPct(x, q, 4); }); } },
+    天: { tx: "次の自分の手番まで干渉無効。1位の人との差の10%（最大1000wp）をもらう", f: x => { wdShield(x); G(x, Math.min(1000, wdR(Math.max(0, x.st.wp[wdLeader(x.st, x.p)] - x.st.wp[x.p]) * 0.1))); } },
+    幻: { tx: "1位の人のキャラ1体のLvを1下げる", need: [qOC("Lvを下げるキャラ", (x, c, r) => r === wdLeader(x.st, x.p))], f: x => wdLvDown(x, x.ch[0]) }
+  } },
+  { n: "スフィンクス", t: "高", sig: "覇", it: "固定", cost: 1200, th: "謎かけ", im: "謎かけの守護者", desc: "次に出る目を予言し、当たれば大きなボーナスがもらえます。", e: {
+    無: { tx: "属性を1つ宣言して、ダイスを1つ振る。当たれば+150wp", need: [qAt("宣言する属性")], f: x => { if (wdGuess(x, x.ch[0])) G(x, 150); } },
+    炎: { tx: "炎・水・木から1つ宣言して、ダイスを1つ振る。当たれば+700wp、外れたら+100wp", need: [qAt("宣言する属性", ["炎", "水", "木"])], f: x => G(x, wdGuess(x, x.ch[0]) ? 700 : 100) },
+    水: { tx: "次の人の手番で選ばれる目を予言する。当たれば+400wp", need: [qAt("次の人の手番で選ばれる目")], f: x => { const nx = wdOthers(x.st, x.p)[0]; x.st.pred.push({ by: x.p, tgt: nx, a: x.ch[0] }); wdL(x.st, `${wdNm(x.p)}は次の目を予言した`); } },
+    木: { tx: "属性を1つ宣言して、ダイスを振る。当たればこのキャラのLvを1上げる（無料）、外れたら+100wp", need: [qAt("宣言する属性")], f: x => { if (wdGuess(x, x.ch[0])){ if (x.c.lv < 5){ x.c.lv++; wdFx(x.st, { k: "lvup", p: x.p, cid: x.c.id }); } else G(x, 300); } else G(x, 100); } },
+    雷: { tx: "雷か闇を宣言して、ダイスを1つ振る。当たれば+1200wp、外れたら+150wp", need: [qAt("宣言する属性", ["雷", "闇"])], f: x => G(x, wdGuess(x, x.ch[0]) ? 1200 : 150) },
+    闇: { tx: "ダイスを2つ振る。同じ属性なら+1500wp、違えば+200wp", f: x => { const a = wdRoll(), b = wdRoll(); wdFx(x.st, { k: "die", p: x.p, a }); wdFx(x.st, { k: "die", p: x.p, a: b }); G(x, a === b ? 1500 : 200); } },
+    龍: { tx: "1人を選び、その人に属性を宣言させてダイスを振る。外れたら、その人から600wp奪う", need: [qPl("謎かけをする相手"), qAt("（あなたへの謎かけ）属性を宣言してください", WD_AT, x => x.ch[0])],
+      f: x => { const q = x.ch[0]; if (!q) return; if (!wdHit(x, q)) return; const d = wdRoll(); wdFx(x.st, { k: "die", p: x.p, a: d }); wdL(x.st, `${wdNm(q)}は「${x.ch[1]}」と答えた。出た目は「${d}」`); if (d !== x.ch[1]) wdSteal(x, q, 600); } },
+    覇: { tx: "相手キャラ1体に行動封じ、さらに+300wp。属性を宣言してダイスを振り、当たればもう1体封じる", need: [qOC("行動封じするキャラ", (x, c) => !c.seal), qAt("宣言する属性"), qOC("当たったときに封じるもう1体", (x, c) => !c.seal && c.id !== x.ch[0])],
+      f: x => { wdSeal(x, x.ch[0]); G(x, 300); if (wdGuess(x, x.ch[1])) wdSeal(x, x.ch[2]); } },
+    天: { tx: "次の自分の手番まで干渉無効。属性を宣言してダイスを振り、当たれば+800wp", need: [qAt("宣言する属性")], f: x => { wdShield(x); if (wdGuess(x, x.ch[0])) G(x, 800); } },
+    幻: { tx: "属性を1つ宣言し、相手キャラ1体のサブ属性キューブ1つを無に戻す。戻したのが宣言した属性なら、もう1つ戻す", need: [qAt("宣言する属性"), qOCube("無に戻すキューブ")],
+      f: x => { const a = wdRmCube(x, x.ch[1]); if (a && a === x.ch[0]){ const f = wdFind(x.st, x.ch[1].split(":")[0]); const i = f ? f.c.s.findIndex((z, j) => z && j > 0) : -1; if (i > 0) wdRmCube(x, `${f.c.id}:${i}`); } } }
+  } },
+  { n: "ヒュドラ", t: "中", sig: "龍", it: "固定", cost: 950, th: "九つ首", im: "九つ首の大蛇", desc: "同じ属性を重ねるほど、効果の回数が増えます。", e: {
+    無: { tx: "自分の全キャラで、一番多い属性のキューブ数×15wp", f: x => G(x, 15 * wdMaxSame(wdAllCubes(x.st, x.p))) },
+    炎: { tx: "+100wp。このターン、炎の効果を行うたびに+100wp（他のキャラの分も数える）", f: x => { G(x, 100); x.st.T.fireB = (x.st.T.fireB || 0) + 100; } },
+    水: { tx: "このキャラの同じ属性のキューブ1つにつき+100wp", f: x => G(x, 100 * wdMaxSame(wdCubes(x.c))) },
+    木: { tx: "このターン、このキャラに既にある属性を付与するなら、付与コスト−200wp", f: x => wdGd(x, { cid: x.c.id, amt: 200, cond: "sameOnChar" }) },
+    雷: { tx: "このキャラの雷キューブ1つにつき、手順3を1回追加で行える", f: x => { x.st.T.extra[x.c.id] = (x.st.T.extra[x.c.id] || 0) + 1; } },
+    闇: { tx: "このターン、選んだ目の属性を持つ自分の全キャラが、その効果をもう一度行う（龍・覇・天・幻は除く）", f: x => { if (x.act.copy) return; const a = x.a; if (WD_RARE.includes(a)) return; const adds = x.st.ch[x.p].filter(c => !c.seal && c.id !== x.c.id && c.s.includes(a)).map(c => ({ cid: c.id, p: x.p, k: c.k, a, copy: 1 })); x.st.T.q.unshift(...adds); } },
+    龍: { tx: "他の全員から150wpずつ奪う。このキャラの龍キューブが2つ以上なら、もう一度", f: x => { const n = x.c.s.filter(a => a === "龍").length >= 2 ? 2 : 1; for (let i = 0; i < n; i++){ x.hr = {}; allSteal(x, q => wdSteal(x, q, 150)); } } },
+    覇: { tx: "相手キャラ1体に行動封じ。さらに+200wp", need: [qOC("行動封じするキャラ", (x, c) => !c.seal)], f: x => { wdSeal(x, x.ch[0]); G(x, 200); } },
+    天: { tx: "次の自分の手番まで干渉無効。このキャラのキューブ1つにつき+100wp", f: x => { wdShield(x); G(x, 100 * wdCubes(x.c).length); } },
+    幻: { tx: "相手キャラ1体のサブ属性キューブ1つを無に戻す", need: [qOCube("無に戻すキューブ")], f: x => wdRmCube(x, x.ch[0]) }
+  } },
+  { n: "フェンリル", t: "高", sig: "覇", it: "割合", cost: 1300, th: "喰らう", im: "神をも喰らう狼", desc: "1位のプレイヤーを狙い撃ちます。", e: {
+    無: { tx: "1位の人との差が1000wp以上なら+40wp、それ以外は+15wp", f: x => G(x, x.st.wp[wdLeader(x.st, x.p)] - x.st.wp[x.p] >= 1000 ? 40 : 15) },
+    炎: { tx: "自分が1位でなければ+300wp、1位なら+120wp", f: x => G(x, wdIsTop(x.st, x.p) ? 120 : 300) },
+    水: { tx: "このターンの手順1で1位の人がもらったwpと、同じだけもらう", f: x => G(x, x.st.T.paid[wdLeader(x.st, x.p)] || 0) },
+    木: { tx: "1位の人が持っている属性を付与するなら、付与コスト半額", f: x => wdGd(x, { half: 1, cond: "leaderHas" }) },
+    雷: { tx: "1位の人との差の8%（最大700wp）をもらう", f: x => G(x, Math.min(700, wdR(Math.max(0, x.st.wp[wdLeader(x.st, x.p)] - x.st.wp[x.p]) * 0.08))) },
+    闇: { tx: "1位の人のキャラ1体の、いま出ている属性の効果をコピーして使う", cp: 1, need: [qCopy("コピーする効果", (x, c, r) => r === wdLeader(x.st, x.p))], f: x => wdCopyRun(x, x.ch[0]) },
+    龍: { tx: "1位の人から、所持wpの12%を奪う", f: x => wdStealPct(x, wdLeader(x.st, x.p), 12) },
+    覇: { tx: "1位の人から所持wpの12%を奪い、その人のキャラ1体に行動封じ", need: [qOC("行動封じするキャラ（1位の人）", (x, c, r) => r === wdLeader(x.st, x.p) && !c.seal)], f: x => { const L = wdLeader(x.st, x.p); wdStealPct(x, L, 12); if (x.ch[0]) wdSeal(x, x.ch[0]); } },
+    天: { tx: "次の自分の手番まで干渉無効。自分が1位でなければ+400wp", f: x => { wdShield(x); if (!wdIsTop(x.st, x.p)) G(x, 400); } },
+    幻: { tx: "1位の人のキャラ1体のサブ属性キューブ1つを無に戻す", need: [qOCube("無に戻すキューブ（1位の人）", (x, c, r) => r === wdLeader(x.st, x.p))], f: x => wdRmCube(x, x.ch[0]) }
+  } }
+];
+function wdRecolor(x, v, a){
+  if (!v || !a) return; const [cid, i] = v.split(":"); const f = wdFind(x.st, cid); if (!f || f.p !== x.p) return;
+  const old = f.c.s[+i]; f.c.s[+i] = a; wdFx(x.st, { k: "grant", p: x.p, cid, a }); wdL(x.st, `${wdNm(x.p)}は${wdDef(f.c).n}の${old}を${a}に付け替えた`);
+}
+function wdGuess(x, a){ const d = wdRoll(); wdFx(x.st, { k: "die", p: x.p, a: d, call: a }); wdL(x.st, `${wdNm(x.p)}の宣言「${a}」→ 出た目「${d}」${d === a ? "：的中！" : ""}`); return d === a; }
+/* 手順1：ある目でその人がもらうwp */
+function wdPayFor(st, q, a){
+  let n = 0;
+  st.ch[q].forEach(c => { if (c.seal) return; c.s.forEach((z, i) => { if (z === a) n += WD_PAY(a) * (i === 0 ? 2 : 1); }); });
+  if (st.until[q] && st.until[q].halfPay) n = Math.floor(n / 2);
+  return n;
+}
+
+/* ======================= 進行 ======================= */
+function wdNewChar(st, k){ st.cseq = (st.cseq || 0) + 1; return { id: "c" + st.cseq, k, lv: 1, s: [null, null, null], seal: 0 }; }
+function wdSetup(players){
+  const deck = wdShuf(WD_CH.map((_, i) => i));
+  const st = { wd: 1, v: 1, order: players.slice(), ph: "draft", wp: {}, ch: {}, tre: {}, sh: {}, nx: {}, until: {}, hitBy: {}, pred: [], treL: WD_TRE.map(t => t.id), mk: [], round: 1, ti: 0, no: 0, fx: [], fxn: 0, status: "playing" };
+  const hand = {};
+  players.forEach(p => { st.wp[p] = WD_START; st.ch[p] = []; st.tre[p] = []; hand[p] = deck.splice(0, 3); });
+  st.deck = deck; st.dr = { step: 1, hand, pick: {} };
+  wdL(st, `${WD_TITLE}開始！ 3枚から1枚選んで、残りを隣へ回します`);
+  return st;
+}
+function wdDraftPick(st, p, k){
+  const D = st.dr; if (st.ph !== "draft" || !D.hand[p] || D.pick[p] != null || !D.hand[p].includes(k)) return false;
+  D.pick[p] = k;
+  if (st.order.every(q => D.pick[q] != null)){
+    st.order.forEach(q => { st.ch[q].push(wdNewChar(st, D.pick[q])); });
+    if (D.step === 1){
+      const nh = {}; st.order.forEach((q, i) => { const nxt = st.order[(i + 1) % st.order.length]; nh[nxt] = D.hand[q].filter(z => z !== D.pick[q]); });
+      st.dr = { step: 2, hand: nh, pick: {} };
+      wdL(st, "受け取った2枚から1枚選びます");
+    } else {
+      st.order.forEach(q => { D.hand[q].filter(z => z !== D.pick[q]).forEach(z => st.deck.push(z)); });
+      st.deck = wdShuf(st.deck); st.mk = st.deck.splice(0, 3);
+      delete st.dr; st.ph = "play";
+      wdL(st, "キャラがそろいました。ゲームスタート！");
+      wdStart(st);
+    }
+  }
+  return true;
+}
+function wdStart(st){
+  const p = st.order[st.ti];
+  st.no++;
+  st.sh[p] = {};                         // 「次の自分の手番まで」の効果はここで終わり
+  const nx = st.nx[p] || {}; st.nx[p] = {};
+  const T = st.T = { p, ph: "roll", dice: [], face: null, unused: [], paid: {}, q: [], cur: null, acting: {}, acts: {}, extra: {}, gd: [], ld: (nx.ld || []).slice(), td: [], lv2: {}, lvx2: {}, nx, n: (nx.three ? 3 : 2) - (nx.oneDie ? 1 : 0), pickBy: nx.chooser || p, tax: nx.tax || 0 };
+  st.ask = null;
+  wdFx(st, { k: "turn", p });
+  if (!wdMyCubes(st, p)){ T.ph = "eff"; T.skip = 1; wdBuildQ(st, null); wdRun(st); }
+}
+function wdRollDice(st, p){
+  const T = st.T; if (!T || T.p !== p || T.ph !== "roll") return false;
+  T.dice = Array.from({ length: Math.max(1, T.n) }, wdRoll);
+  T.ph = "pick";
+  wdFx(st, { k: "roll", p, dice: T.dice.slice(), any: T.nx.anyFace ? 1 : 0 });
+  wdL(st, `${wdNm(p)}がダイスを振った：${T.dice.join("・")}${T.nx.anyFace ? "（＋好きな目）" : ""}`);
+  return true;
+}
+const wdFaceOpts = st => { const T = st.T; return [...new Set(T.nx.anyFace ? [...T.dice, ...WD_AT] : T.dice)]; };
+function wdPickFace(st, by, a){
+  const T = st.T; if (!T || T.ph !== "pick" || by !== T.pickBy || !wdFaceOpts(st).includes(a)) return false;
+  T.face = a;
+  const rest = T.dice.slice(); const j = rest.indexOf(a); if (j >= 0) rest.splice(j, 1); T.unused = rest;
+  wdL(st, `選んだ目は「${a}」${by !== T.p ? `（${wdNm(by)}が選んだ）` : ""}`);
+  wdFx(st, { k: "face", p: T.p, a, by });
+  // 予言（スフィンクス）
+  st.pred = (st.pred || []).filter(pr => { if (pr.tgt !== T.p) return true; if (pr.a === a){ wdGain(st, pr.by, 400, "予言的中"); wdL(st, `${wdNm(pr.by)}の予言が的中！ +400wp`); } return false; });
+  // 手順1：全員にwp
+  st.order.forEach(q => { const n = wdPayFor(st, q, a); if (n){ T.paid[q] = n; wdGain(st, q, n, `手順1「${a}」`); } });
+  T.ph = "eff"; wdBuildQ(st, a); wdRun(st);
+  return true;
+}
+function wdBuildQ(st, a){
+  const T = st.T, p = T.p;
+  st.ch[p].forEach(c => {
+    if (c.seal) return;
+    const nul = wdNull(c), hit = a ? c.s.filter(z => z === a).length : 0;
+    if (!nul && !hit) return;
+    T.acting[c.id] = 1;
+    for (let i = 0; i < nul; i++) T.q.push({ cid: c.id, p, k: c.k, a: "無" });
+    for (let i = 0; i < hit; i++) T.q.push({ cid: c.id, p, k: c.k, a });
+  });
+}
+/* 手順2の効果を順に処理（選択が必要なら止まる） */
+function wdRun(st){
+  let guard = 0;
+  while (st.status === "playing" && guard++ < 400){
+    if (st.ask) return;
+    const T = st.T; if (!T || T.ph !== "eff") return;
+    let A = T.cur;
+    if (!A){
+      if (!T.q.length){ wdEffDone(st); return; }
+      A = T.cur = T.q.shift(); A.ch = [];
+      const f0 = wdFind(st, A.cid);
+      if (!f0 || f0.c.seal || (T.nx.noInt && ["龍", "覇", "幻"].includes(A.a) && A.a !== "無")){ T.cur = null; continue; }
+    }
+    const f = wdFind(st, A.cid); if (!f){ T.cur = null; continue; }
+    const E = WD_CH[A.k].e[A.a], need = E.need || [];
+    const x = { st, p: A.p, c: f.c, ch: A.ch, a: A.a, act: A };
+    if (A.ch.length < need.length){
+      const nd = need[A.ch.length];
+      let opts = nd.o(x);
+      if (nd.opt && opts.length) opts = opts.concat([{ v: "", l: "しない" }]);
+      if (!opts.length){ A.ch.push(null); continue; }
+      if (opts.length === 1){ A.ch.push(opts[0].v || null); continue; }
+      st.ask = { pid: nd.by ? nd.by(x) : A.p, q: nd.q, opts, k: A.k, a: A.a, cid: A.cid, owner: A.p };
+      return;
+    }
+    if (A.a === "炎" && T.fireB) wdGain(st, A.p, T.fireB, "ヒュドラ");
+    wdFx(st, { k: "eff", p: A.p, cid: A.cid, ck: A.k, a: A.a, copy: A.copy ? 1 : 0 });
+    try { E.f(x); } catch (e){ if (typeof console !== "undefined") console.error(e); }
+    T.cur = null;
+  }
+}
+function wdAnswer(st, p, v){
+  if (!st.ask || st.ask.pid !== p) return false;
+  const o = st.ask.opts.find(z => String(z.v) === String(v)); if (!o) return false;
+  st.T.cur.ch.push(o.v === "" ? null : o.v); st.ask = null; wdRun(st); return true;
+}
+function wdEffDone(st){
+  const T = st.T, p = T.p;
+  st.ch[p].forEach(c => { if (!T.acting[c.id] || c.seal) return; const n = wdLvWp(c) * (T.lvx2[c.id] ? 2 : 1); wdGain(st, p, n, `${wdDef(c).n} Lv${c.lv}`); T.acts[c.id] = 1 + (T.extra[c.id] || 0); });
+  T.ph = "act"; T.one = T.nx.one ? 1 : 0; T.lock = null;
+}
+const wdCanAct = (st, cid) => { const T = st.T; return T && T.ph === "act" && (T.acts[cid] || 0) > 0 && (!T.one || !T.lock || T.lock === cid); };
+function wdAct(st, p, cid, kind, arg){
+  const T = st.T; if (!T || T.p !== p || !wdCanAct(st, cid) || st.ask) return false;
+  const c = st.ch[p].find(z => z.id === cid); if (!c) return false;
+  if (kind === "grant"){
+    const { s, a } = arg || {}; if (!WD_AT.includes(a) || c.s[s] !== null || s == null) return false;
+    const cost = wdGrantCost(st, p, c, a); if (st.wp[p] < cost) return false;
+    wdPay(st, p, cost); c.s[s] = a; wdFx(st, { k: "grant", p, cid, a, v: cost });
+    wdL(st, `${wdNm(p)}：${wdDef(c).n}に${a}を付与（${cost}wp）`);
+  } else if (kind === "lv" || kind === "lv2"){
+    const n = kind === "lv2" ? 2 : 1; if (n === 2 && !T.lv2[cid]) return false;
+    if (c.lv + n > 5) return false;
+    const cost = wdLvCost(st, p, c, n); if (st.wp[p] < cost) return false;
+    wdPay(st, p, cost); c.lv += n; wdFx(st, { k: "lvup", p, cid, v: cost });
+    wdL(st, `${wdNm(p)}：${wdDef(c).n}をLv${c.lv}に（${cost}wp）`);
+  } else if (kind === "buy"){
+    const i = +arg, k = st.mk[i]; if (k == null || wdFreeSlots(st, p) < 1) return false;
+    const cost = wdBuyCost(st, p, k); if (st.wp[p] < cost) return false;
+    wdPay(st, p, cost); const nc = wdNewChar(st, k); nc.fresh = st.no; st.ch[p].push(nc);
+    st.mk[i] = st.deck.length ? st.deck.shift() : null;
+    wdFx(st, { k: "buy", p, cid: nc.id, ck: k, v: cost });
+    wdL(st, `${wdNm(p)}：${WD_CH[k].n}を獲得（${cost}wp）`);
+  } else if (kind === "earn"){
+    const d = wdRoll(), m = wdMult(c.s[0], d), n = Math.round(wdLvWp(c) * m);
+    wdFx(st, { k: "die", p, a: d, m });
+    wdGain(st, p, n, `wp獲得（${d}${m === 2 ? "：有利×2" : m === 0.5 ? "：不利×½" : ""}）`);
+    wdL(st, `${wdNm(p)}：${wdDef(c).n}でwp獲得 → 目「${d}」${m === 2 ? "有利！" : m === 0.5 ? "不利…" : ""} +${n}wp`);
+  } else if (kind === "skip"){
+    T.acts[cid] = 0; return true;
+  } else return false;
+  T.acts[cid]--; if (T.one) T.lock = cid;
+  return true;
+}
+function wdRelease(st, p, cid){
+  const T = st.T; if (!T || T.p !== p || !["act", "tre"].includes(T.ph) || st.ask) return false;
+  const i = st.ch[p].findIndex(z => z.id === cid); if (i < 0) return false;
+  const c = st.ch[p].splice(i, 1)[0]; delete T.acts[cid];
+  st.deck = wdShuf(st.deck.concat(st.mk.filter(k => k != null), [c.k])); st.mk = st.deck.splice(0, 3);
+  wdFx(st, { k: "release", p, ck: c.k });
+  wdL(st, `${wdNm(p)}：${wdDef(c).n}を手放した（場をシャッフルしてめくり直し）`);
+  return true;
+}
+function wdToTre(st, p){ const T = st.T; if (!T || T.p !== p || T.ph !== "act" || st.ask) return false; T.ph = "tre"; return true; }
+function wdCanTre(st, p, id){
+  const T = st.T;
+  if (!T || T.p !== p || T.ph !== "tre" || !st.treL.includes(id)) return { ok: false, why: "" };
+  if (T.nx.noTre) return { ok: false, why: "この手番は秘宝を獲得できない" };
+  if (wdFreeSlots(st, p) < 1) return { ok: false, why: "枠が空いていない（キャラを手放すと空く）" };
+  const pl = wdTrePlan(st, p, id);
+  if (!pl.ok) return { ok: false, why: `キューブが${pl.miss}つ足りない`, pl };
+  if (st.wp[p] < pl.cost) return { ok: false, why: `wpが${pl.cost - st.wp[p]}足りない`, pl };
+  return { ok: true, pl };
+}
+function wdTake(st, p, id){
+  const r = wdCanTre(st, p, id); if (!r.ok) return false;
+  const T = st.T, pl = r.pl, t = wdTreDef(id);
+  wdPay(st, p, pl.cost);
+  const cubes = [];
+  pl.used.forEach(u => { const c = st.ch[p].find(z => z.id === u.cid); if (c && c.s[u.i]){ cubes.push(c.s[u.i]); c.s[u.i] = null; } });
+  T.free = (T.free || 0) - pl.fu; T.wild = (T.wild || 0) - pl.wu;
+  T.td = T.td.filter(d => d.r && !d.r.includes(t.r));       // wpの割引は1回分
+  T.tax = 0;
+  st.tre[p].push({ id, cubes });
+  st.treL = st.treL.filter(z => z !== id);
+  wdFx(st, { k: "tre", p, id, v: pl.cost });
+  wdL(st, `${wdNm(p)}が秘宝「${t.n}」（★${t.r}）を獲得！（${pl.cost}wp）`);
+  if (T.treOnce){ wdGain(st, p, T.treOnce, "セラフィム"); T.treOnce = 0; }
+  if (T.treEach) wdGain(st, p, T.treEach, "セラフィム");
+  if (wdTreN(st, p) >= WD_WIN) wdFinish(st, [p], `${wdNm(p)}が秘宝を${WD_WIN}つそろえた！`);
+  else if (!st.treL.length) wdFinishStars(st, "秘宝がすべてなくなった");
+  return true;
+}
+function wdFinishStars(st, why){
+  const best = Math.max(...st.order.map(q => wdStars(st, q)));
+  let w = st.order.filter(q => wdStars(st, q) === best);
+  if (w.length > 1){ const bw = Math.max(...w.map(q => st.wp[q])); w = w.filter(q => st.wp[q] === bw); }
+  wdFinish(st, w, `${why}。★の合計で決着`);
+}
+function wdFinish(st, wins, why){
+  st.status = "finished"; st.wins = wins; st.endWhy = why; st.ask = null;
+  if (st.T) st.T.ph = "over";
+  wdFx(st, { k: "end", wins });
+  wdL(st, `ゲーム終了：${why} 勝者 ${wins.map(wdNm).join("・")}`);
+}
+function wdEndTurn(st, p){
+  const T = st.T; if (!T || T.p !== p || !["act", "tre"].includes(T.ph) || st.ask) return false;
+  st.ch[p].forEach(c => { c.seal = 0; delete c.fresh; });
+  st.hitBy[p] = []; st.until[p] = {};
+  st.ti = (st.ti + 1) % st.order.length;
+  if (st.ti === 0){ st.round++; wdFx(st, { k: "round", v: st.round }); }
+  if (st.round > WD_MAXR){ wdFinishStars(st, `${WD_MAXR}ラウンドが終わった`); return true; }
+  wdStart(st);
+  return true;
+}
+/* 操作をまとめて受け付ける */
+function wdApply(st, p, mv){
+  if (st.status !== "playing") return false;
+  const [k, a, b, c] = mv;
+  if (k === "draft") return wdDraftPick(st, p, +a);
+  if (k === "roll") return wdRollDice(st, p);
+  if (k === "face") return wdPickFace(st, p, a);
+  if (k === "ans") return wdAnswer(st, p, a);
+  if (k === "act") return wdAct(st, p, a, b, c);
+  if (k === "rel") return wdRelease(st, p, a);
+  if (k === "next") return wdToTre(st, p);
+  if (k === "tre") return wdTake(st, p, a);
+  if (k === "end") return wdEndTurn(st, p);
+  return false;
+}
+const wdActors = st => {
+  if (!st || st.status !== "playing") return [];
+  if (st.ph === "draft") return st.order.filter(q => st.dr.pick[q] == null);
+  if (st.ask) return [st.ask.pid];
+  if (st.T && st.T.ph === "pick") return [st.T.pickBy];
+  return st.T ? [st.T.p] : [];
+};
+
+/* ======================= コンピューター ======================= */
+const wdClone = o => JSON.parse(JSON.stringify(o));
+function wdVal(st, p){
+  let v = st.wp[p];
+  st.ch[p].forEach(c => { const d = wdDef(c); v += d.cost * 0.4 + wdLvWp(c) * 5 * (c.seal ? 0.6 : 1); c.s.forEach((a, i) => { if (a) v += WD_PAY(a) * (i === 0 ? 2.2 : 1.3); }); });
+  v += st.tre[p].reduce((n, t) => n + wdTreDef(t.id).wp * 1.15 + 2500, 0);
+  const nx = st.nx[p] || {}; v -= (nx.oneDie ? 120 : 0) + (nx.chooser ? 120 : 0) + (nx.noTre ? 400 : 0) + (nx.tax ? 500 : 0) + (nx.one ? 200 : 0) + (nx.noInt ? 100 : 0);
+  if (st.until[p] && st.until[p].halfPay) v -= 150;
+  if (wdShielded(st, p)) v += 150;
+  return v;
+}
+const wdRel = (st, p) => wdVal(st, p) - Math.max(...wdOthers(st, p).map(q => wdVal(st, q))) * 0.6 - wdOthers(st, p).reduce((n, q) => n + wdVal(st, q), 0) * 0.15;
+function wdCpuAns(st, p){
+  const A = st.ask;
+  if (A.owner !== p){   // 謎かけに答える：一番出やすい目
+    return ["ans", A.opts.find(o => ["炎", "水", "木"].includes(o.v)) ? A.opts.find(o => ["炎", "水", "木"].includes(o.v)).v : A.opts[0].v];
+  }
+  let best = null, bv = -Infinity;
+  A.opts.forEach(o => {
+    let s = 0; for (let r = 0; r < 3; r++){ const s2 = wdClone(st); if (!wdAnswer(s2, p, o.v)) continue; s += wdRel(s2, p); }
+    s += Math.random() * 5; if (s > bv){ bv = s; best = o.v; }
+  });
+  return ["ans", best];
+}
+/* 目標の秘宝：残すキャラだけで必要キューブをそろえられるか、で選ぶ */
+function wdCpuGoal(st, p){
+  const chs = st.ch[p], free = wdFreeSlots(st, p);
+  // 枠が空いていなければ、1体を手放してから取ることになる
+  const keepSets = free >= 1 || chs.length <= 1 ? [chs] : chs.map(c => chs.filter(z => z !== c));
+  let best = null, bv = Infinity;
+  st.treL.forEach(id => {
+    const t = wdTreDef(id);
+    keepSets.forEach(keep => {
+      const pool = keep.flatMap(c => c.seal ? [] : wdCubes(c)); const miss = [];
+      t.cb.forEach(a => { const j = pool.indexOf(a); if (j >= 0) pool.splice(j, 1); else miss.push(a); });
+      const nul = keep.reduce((n, c) => n + wdNull(c), 0);
+      if (miss.length > nul) return;
+      const cost = t.wp + miss.reduce((n, a) => n + (WD_RARE.includes(a) ? 800 : a === "雷" || a === "闇" ? 400 : 200), 0);
+      const v = cost - t.r * 300 + miss.length * 400;
+      if (v < bv){ bv = v; best = { id, miss, cost, t, keep: keep.map(c => c.id) }; }
+    });
+  });
+  return best;
+}
+function wdCpuFace(st, p){
+  const opts = wdFaceOpts(st), T = st.T, cur = T.p;
+  let best = opts[0], bv = -Infinity;
+  opts.forEach(a => {
+    let v = 0;
+    st.order.forEach(q => { const n = wdPayFor(st, q, a); v += q === p ? n : -n * 0.5; });
+    if (cur === p) st.ch[p].forEach(c => { if (!c.seal) v += c.s.filter(z => z === a).length * 220; });
+    else st.ch[cur].forEach(c => { if (!c.seal) v -= c.s.filter(z => z === a).length * 150; });
+    v += Math.random() * 20;
+    if (v > bv){ bv = v; best = a; }
+  });
+  return best;
+}
+function wdCpuStep(st, p){
+  if (st.status !== "playing") return null;
+  if (st.ph === "draft"){
+    const h = st.dr.hand[p]; if (!h || st.dr.pick[p] != null) return null;
+    const k = h.slice().sort((a, b) => (WD_CH[b].cost + Math.random() * 400) - (WD_CH[a].cost + Math.random() * 400))[0];
+    return ["draft", k];
+  }
+  if (st.ask) return st.ask.pid === p ? wdCpuAns(st, p) : null;
+  const T = st.T; if (!T) return null;
+  if (T.ph === "pick") return T.pickBy === p ? ["face", wdCpuFace(st, p)] : null;
+  if (T.p !== p) return null;
+  if (T.ph === "roll") return ["roll"];
+  const goal = wdCpuGoal(st, p);
+  const ready = goal && !goal.miss.length;
+  const reserve = goal ? (ready ? goal.t.wp : goal.t.wp * 0.35) : 0;
+  const spare = st.wp[p] - reserve;
+  const tn = wdTreN(st, p);
+  if (T.ph === "act"){
+    // どの秘宝もそろえられない（枠がキューブで埋まった）→ 一番役に立たないキャラを手放して新しいキャラを入れる
+    if (!goal && st.ch[p].length >= 2 && st.ch[p].some(c => wdCanAct(st, c.id))){
+      const cand = st.ch[p].filter(c => !wdNull(c)).sort((a, b) => wdVal1(a) - wdVal1(b))[0];
+      if (cand && st.ch[p].some(c => c !== cand && wdCanAct(st, c.id))) return ["rel", cand.id];
+    }
+    const cs = st.ch[p].filter(c => wdCanAct(st, c.id));
+    for (const c of cs){
+      const inKeep = goal && goal.keep.includes(c.id);
+      // 1) 目標の秘宝に足りないキューブを付ける（サブの枠から）
+      if (goal && goal.miss.length && inKeep && wdNull(c)){
+        for (const a of goal.miss){
+          const cost = wdGrantCost(st, p, c, a);
+          if (st.wp[p] >= cost){
+            const s = c.s[1] === null ? 1 : c.s[2] === null ? 2 : 0;
+            return ["act", c.id, "grant", { s, a }];
+          }
+        }
+      }
+      // 2) キャラ獲得（秘宝の枠を残す）
+      const maxCh = tn === 0 ? 3 : 2;
+      if (wdFreeSlots(st, p) >= 1 && (st.ch[p].length < maxCh || (!goal && st.ch[p].length < 3))){
+        const opts = st.mk.map((k, i) => ({ k, i })).filter(z => z.k != null && st.wp[p] - wdBuyCost(st, p, z.k) >= (goal ? reserve * 0.5 : 0)).sort((a, b) => WD_CH[b.k].cost - WD_CH[a.k].cost);
+        if (opts.length) return ["act", c.id, "buy", opts[0].i];
+      }
+      // 3) Lv上げ
+      if (c.lv < 5){
+        const two = T.lv2[c.id] && c.lv <= 3 && st.wp[p] - wdLvCost(st, p, c, 2) >= reserve * 0.5;
+        const cost = wdLvCost(st, p, c, 1), gain = WD_LVT[wdDef(c).t][c.lv] - wdLvWp(c);
+        if (two) return ["act", c.id, "lv2"];
+        if (st.wp[p] - cost >= reserve * 0.5 && cost <= gain * 6) return ["act", c.id, "lv"];
+      }
+      // 4) メインが空いていて余裕があれば得意属性（手順1で2倍もらえる）
+      if (c.s[0] === null && wdNull(c) >= 3 && spare > 600 && tn < 2){
+        const a = wdDef(c).sig, cost = wdGrantCost(st, p, c, a);
+        if (spare - cost > 300) return ["act", c.id, "grant", { s: 0, a }];
+      }
+      return ["act", c.id, "earn"];
+    }
+    return ["next"];
+  }
+  if (T.ph === "tre"){
+    const ids = st.treL.slice().sort((a, b) => wdTreDef(b).r - wdTreDef(a).r);
+    for (const id of ids){ if (wdCanTre(st, p, id).ok) return ["tre", id]; }
+    if (wdFreeSlots(st, p) < 1 && st.ch[p].length > 1){
+      for (const id of ids){
+        const pl = wdTrePlan(st, p, id); if (!pl.ok || st.wp[p] < pl.cost) continue;
+        const usedC = new Set(pl.used.map(u => u.cid));
+        const cand = st.ch[p].filter(c => !usedC.has(c.id)).sort((a, b) => wdVal1(a) - wdVal1(b))[0];
+        if (cand) return ["rel", cand.id];
+      }
+    }
+    return ["end"];
+  }
+  return null;
+}
+const wdVal1 = c => wdDef(c).cost * 0.4 + wdLvWp(c) * 5 + wdCubes(c).length * 200;
+
+/* ======================= WYRDSTONE（画面・オンライン） ======================= */
+const WD_SEAT_BONUS = 150;    // 2番手以降は、手番が遅いほど開始wpを多く（先手有利の調整）
+const wdGames = () => db.wd_games || [];
+const wdLive = () => wdGames().filter(g => g.status === "playing" && g.st && g.st.wd).sort((a, b) => b.created_at.localeCompare(a.created_at));
+const wdById = id => wdGames().find(g => g.id === id);
+function wdMyTurn(g){ const st = g && g.st; return !!(st && st.wd && g.status === "playing" && me && wdActors(st).includes(me)); }
+async function wdCommit(id, fn){
+  for (let tries = 0; tries < 6; tries++){
+    const g = wdById(id); if (!g || g.status !== "playing") return false;
+    const st = JSON.parse(JSON.stringify(g.st)); st._log = [];
+    const r = fn(st, g); if (!r) return false;
+    const lines = st._log; delete st._log;
+    const body = { st, version: (g.version || 1) + 1, updated_at: new Date().toISOString() };
+    if (st.status !== "playing"){ body.status = "finished"; body.winner = (st.wins || [])[0] || null; }
+    if (lines.length){ const lg = (g.log || []).slice(), now = Date.now(); lines.forEach((m, i) => lg.push({ t: new Date(now + i).toISOString(), m })); body.log = lg.slice(-150); }
+    let data, error;
+    try { ({ data, error } = await sb.from("wd_games").update(body).eq("id", id).eq("version", g.version || 1).select()); } catch (e) { error = e; }
+    if (error && dmNetErr(error) && tries < 5){ await new Promise(r2 => setTimeout(r2, 600 * (tries + 1))); await loadTable("wd_games"); continue; }
+    if (error){ fail(error, "保存"); return false; }
+    if (data && data.length){ Object.assign(g, data[0]); drawWd(); return true; }
+    await loadTable("wd_games");
+  }
+  drawWd(); toast("混み合っています。もう一度タップしてください", 2000); return false;
+}
+const wdDo = (id, p, mv) => wdCommit(id, st => wdApply(st, p, mv));
+CPU_AI.wd_games = g => {
+  const st = g.st; if (!st || !st.wd || g.status !== "playing") return null;
+  const p = wdActors(st).find(isCpu); if (!p) return null;
+  const mv = wdCpuStep(st, p); if (!mv) return null;
+  const base = mv[0] === "draft" ? 700 : mv[0] === "roll" ? 900 : mv[0] === "face" ? 1300 : mv[0] === "ans" ? 1200 : mv[0] === "end" ? 900 : 1000;
+  const wait = Math.max(base, (wdAnimUntil || 0) - Date.now() + 300);
+  return { wait, run: async () => { const ok = await wdDo(g.id, p, mv); if (ok) return true;
+    // 万一その手が通らなかったときは、手番を進める
+    return wdCommit(g.id, s2 => { const T = s2.T; if (s2.ask && s2.ask.pid === p) return wdAnswer(s2, p, s2.ask.opts[0].v); if (!T || T.p !== p) return false; if (T.ph === "act"){ const c = s2.ch[p].find(z => wdCanAct(s2, z.id)); return c ? wdAct(s2, p, c.id, "skip") : wdToTre(s2, p); } if (T.ph === "tre") return wdEndTurn(s2, p); return false; }); } };
+};
+
+/* ---------- 絵 ---------- */
+const WD_GLYPH = { 炎: '<path d="M12 2c1 4 5 6 5 11a5 5 0 0 1-10 0c0-3 2-4 2-7 1 1 2 2 2 4 1-2 1-5 1-8z"/>', 水: '<path d="M12 2c3 5 6 8 6 12a6 6 0 0 1-12 0c0-4 3-7 6-12z"/>', 木: '<path d="M12 2c5 3 7 8 4 13-1 2-3 3-4 3v4h-1v-4c-2 0-5-2-5-6 0-4 3-7 6-10z"/>', 雷: '<path d="M14 1 5 13h6l-2 10 10-13h-6z"/>', 闇: '<path d="M15 3a9 9 0 1 0 6 13A8 8 0 0 1 15 3z"/>', 龍: '<path d="M4 18c3-1 4-4 4-7l-4-3 6 1 2-6 2 6 6-1-4 3c0 3 1 6 4 7-4 1-6-1-8-3-2 2-4 4-8 3z"/>', 覇: '<path d="M3 8l4 3 5-7 5 7 4-3-2 11H5z"/>', 天: '<path d="M12 1l2.5 7.5H22l-6 4.5 2.3 7.5L12 16l-6.3 4.5L8 13 2 8.5h7.5z"/>', 幻: '<path d="M12 3c5 0 9 4 9 9s-4 9-9 9c3-2 4-5 4-9s-1-7-4-9zm-1 4a5 5 0 1 0 0 10 3 3 0 1 1 0-10z"/>' };
+const wdIco = (a, cls = "") => a ? `<svg class="wdico ${cls}" viewBox="0 0 24 24" style="--ac:${WD_COL[a]}" aria-label="${a}"><g fill="currentColor">${WD_GLYPH[a]}</g></svg>` : `<i class="wdico none ${cls}"></i>`;
+const wdCube = (a, main, cls = "") => `<span class="wdcube ${a ? "" : "nul"} ${main ? "main" : ""} ${cls}" style="--ac:${WD_COL[a || "無"]}">${a ? wdIco(a) : "<b>無</b>"}</span>`;
+const WD_ICON = `<span class="gic wdi"><svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="wdig" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE7A3"/><stop offset=".5" stop-color="#E07CFF"/><stop offset="1" stop-color="#3FA9FF"/></linearGradient></defs><rect x="3" y="3" width="58" height="58" rx="12" fill="#120A24" stroke="url(#wdig)" stroke-width="2"/><path d="M32 8l18 14-6 26H20l-6-26z" fill="none" stroke="url(#wdig)" stroke-width="3" stroke-linejoin="round"/><path d="M32 8v40M14 22l18 8 18-8M20 48l12-18 12 18" fill="none" stroke="url(#wdig)" stroke-width="1.6" opacity=".7"/><circle cx="32" cy="30" r="4" fill="#FFE7A3"/></svg></span>`;
+const wdEmb = k => { const d = WD_CH[k]; return `<span class="wdemb" style="--ac:${WD_COL[d.sig]}"><svg viewBox="0 0 40 40"><path d="M20 2l16 9v18l-16 9-16-9V11z" fill="rgba(0,0,0,.35)" stroke="currentColor" stroke-width="1.6"/></svg><b>${d.n[0]}</b>${wdIco(d.sig, "sig")}</span>`; };
+const wdTypeB = d => `<i class="wdty t${{ 低: 1, 中: 2, 高: 3 }[d.t]}">${d.t}</i>`;
+const wdStarTx = r => "★".repeat(r);
+
+/* ---------- 状態 ---------- */
+const wdDrawn = {};
+let wdId = null, wdSeenFx = {}, wdAnimUntil = 0, wdFeed = [], wdSel = null, wdTab = "me";
+const wdGuideOn = () => lsGet("gl:wdGuide") !== "0";
+function openWd(id){ const g0 = wdById(id); wdId = id; wdSel = null; wdFeed = []; if (g0 && g0.st) wdSeenFx[id] = g0.st.fxn || 0; $("#wdg").hidden = false; document.body.style.overflow = "hidden"; drawWd(); }
+function closeWd(){ wdId = null; $("#wdg").hidden = true; document.body.style.overflow = ""; const h = document.getElementById("wdPop"); if (h) h.remove(); render(); }
+
+/* ---------- キャラの効果一覧（ポップアップ） ---------- */
+function wdCharPop(k, c, st, owner){
+  const d = WD_CH[k];
+  const rows = ["無", ...WD_AT].map(a => {
+    const cost = a === "無" ? "−" : c && st && owner ? `${wdGrantCost(st, owner, c, a)}` : `${wdGrantBase({ k }, a)}`;
+    return `<div class="wdeff ${a === d.sig ? "sig" : ""} ${c && c.s.includes(a) ? "have" : ""}" style="--ac:${WD_COL[a]}"><span class="wdea">${a === "無" ? "<b>無</b>" : wdIco(a)}<em>${a}</em></span><p>${esc(d.e[a].tx)}</p><span class="wdec">${a === "無" ? "" : `${cost}<small>wp</small>`}</span></div>`;
+  }).join("");
+  const lv = WD_LVT[d.t].map((v, i) => `<span class="${c && c.lv === i + 1 ? "on" : ""}"><small>Lv${i + 1}</small>${v}</span>`).join("");
+  wdPopup(`<div class="wdcp-hd" style="--ac:${WD_COL[d.sig]}">${wdEmb(k)}<div><small>${d.th}・${esc(d.im)}</small><b>${d.n}</b><span>${wdTypeB(d)}得意 ${d.sig}・干渉 ${d.it}・獲得 ${d.cost}wp</span></div></div>
+    <p class="wdcp-desc">${esc(d.desc)}</p>
+    ${c ? `<div class="wdcp-slots">${c.s.map((a, i) => `<div>${wdCube(a, i === 0)}<small>${i === 0 ? "メイン" : `サブ${i}`}</small></div>`).join("")}</div>` : ""}
+    <div class="wdcp-lv"><b>Lvごとのwp</b>${lv}</div>
+    <div class="wdcp-tbl"><div class="wdcp-th"><span>属性</span><span>効果</span><span>付与</span></div>${rows}</div>
+    <p class="wdcp-note">★得意属性（${d.sig}）は付与コストが半額。</p>`);
+}
+function wdPopup(html, cls = ""){
+  let el = document.getElementById("wdPop");
+  if (!el){ el = document.createElement("div"); el.id = "wdPop"; el.className = "wdpop"; document.body.appendChild(el); el.addEventListener("click", e => { if (e.target === el || e.target.closest("[data-wdx]")) el.remove(); }); }
+  el.innerHTML = `<div class="wdpin ${cls}" role="dialog" aria-modal="true"><button class="wdx" data-wdx aria-label="閉じる">×</button>${html}</div>`;
+  return el;
+}
+
+/* ---------- ガイド ---------- */
+function wdGuide(st, g){
+  if (g.status === "finished") return "ゲーム終了！";
+  if (st.ph === "draft"){
+    const D = st.dr; if (!st.order.includes(me)) return "キャラを選んでいます…";
+    if (D.pick[me] != null) return "ほかの人がキャラを選ぶのを待っています";
+    return D.step === 1 ? "【ドラフト1/2】配られた3体から、使いたいキャラを1体選びます。残りの2体は次の人へ回ります。" : "【ドラフト2/2】回ってきた2体から1体選びます。残りは山札に戻ります。";
+  }
+  const T = st.T; if (!T) return "";
+  const mine = T.p === me;
+  if (st.ask) return st.ask.pid === me ? `【効果の選択】${st.ask.q}を選んでください。` : `${wdNm(st.ask.pid)}が「${st.ask.q}」を選んでいます…`;
+  if (T.ph === "pick") return T.pickBy === me ? `【手順1】出た目から1つ選びます。その属性のキューブを持つ人は全員wpをもらえます（メイン枠は2倍）。自分のキャラが動けるのもその属性です。${T.pickBy !== T.p ? "（ナイトメアの効果で、あなたが目を選びます）" : ""}` : `${wdNm(T.pickBy)}が目を選んでいます…`;
+  if (!mine) return `${wdNm(T.p)}の手番です。手順1で選ばれた目のキューブを持っていれば、あなたもwpをもらえます。`;
+  if (T.ph === "roll") return "【手順1】ダイスを振ります。2つの目から1つを選びます。";
+  if (T.ph === "act"){
+    const left = st.ch[me].filter(c => wdCanAct(st, c.id)).length;
+    return left ? `【手順3】光っているキャラ（${left}体）が行動できます。タップして「属性付与・Lv上げ・キャラ獲得・wp獲得」から1つ選びます。` : "【手順3】行動は終わりです。「手順4へ」で秘宝に挑戦します。";
+  }
+  if (T.ph === "tre") return "【手順4】必要なwpとキューブがそろった秘宝をタップすると獲得できます（何個でも）。枠が足りなければキャラを手放します。終わったら「ターン終了」。";
+  return "";
+}
+
+/* ---------- 演出：新しい出来事を流す ---------- */
+const WD_FXT = { gain: 0, steal: 1, seal: 1, block: 1, rmcube: 1, lvdown: 1, curse: 1, tre: 1, buy: 1, release: 1, shield: 1, die: 1, face: 1, roll: 1, eff: 1, grant: 1, lvup: 1, back: 1, swap: 1, turn: 1, round: 1, end: 1 };
+function wdFxText(st, e){
+  const N = p => `<b class="lgn" style="--pc:${pcolor(p)}">${esc(wdNm(p))}</b>`;
+  const cn = cid => { const f = wdFind(st, cid); return f ? wdDef(f.c).n : ""; };
+  switch (e.k){
+    case "gain": return `${N(e.p)} <em class="wdplus">+${e.v}wp</em>${e.why ? `<small>${esc(e.why)}</small>` : ""}`;
+    case "steal": return `${N(e.p)}が${N(e.q)}から <em class="wdrob">${e.v}wp</em> 奪った${e.why ? `<small>${esc(e.why)}</small>` : ""}`;
+    case "seal": return `${N(e.q)}の${esc(cn(e.cid))}に <em class="wdrob">行動封じ</em>`;
+    case "block": return `${N(e.q)}が干渉を防いだ🛡${e.v ? `（+${e.v}wp）` : ""}`;
+    case "rmcube": return `${N(e.q)}の${esc(cn(e.cid))}の${e.a}が無に戻った`;
+    case "lvdown": return `${N(e.q)}の${esc(cn(e.cid))}のLvが下がった`;
+    case "curse": return `${N(e.q)}に「${esc(e.why)}」`;
+    case "tre": return `${N(e.p)}が秘宝「${esc(wdTreDef(e.id).n)}」を獲得！`;
+    case "buy": return `${N(e.p)}が${esc(WD_CH[e.ck].n)}を獲得`;
+    case "release": return `${N(e.p)}が${esc(WD_CH[e.ck].n)}を手放した`;
+    case "shield": return `${N(e.p)}が干渉無効に`;
+    case "die": return `ダイス：${wdIco(e.a)}${e.a}${e.call ? `（宣言 ${e.call}${e.call === e.a ? "・的中！" : ""}）` : ""}${e.m === 2 ? "・有利×2" : e.m === 0.5 ? "・不利×½" : ""}`;
+    case "face": return `選ばれた目：${wdIco(e.a)}<b>${e.a}</b>`;
+    case "eff": return `${N(e.p)}の${esc(WD_CH[e.ck].n)}「${e.a}」${e.copy ? "（コピー）" : ""}<small>${esc(WD_CH[e.ck].e[e.a].tx)}</small>`;
+    case "grant": return `${N(e.p)}の${esc(cn(e.cid))}に${wdIco(e.a)}${e.a}`;
+    case "lvup": return `${N(e.p)}の${esc(cn(e.cid))}がLvアップ`;
+    case "turn": return `── ${N(e.p)}の手番 ──`;
+    case "round": return `══ ラウンド${e.v} ══`;
+    default: return "";
+  }
+}
+function wdTakeFx(g){
+  const st = g.st, seen = wdSeenFx[g.id] || 0, nw = (st.fx || []).filter(e => e.n > seen);
+  wdSeenFx[g.id] = st.fxn || 0;
+  if (!nw.length) return [];
+  nw.forEach(e => {
+    const last = wdFeed[wdFeed.length - 1];
+    // 効果の直後のwp獲得は、同じ行にまとめる
+    if (e.k === "gain" && last && last.k === "eff" && last.p === e.p && !last.g){ last.g = 1; last.t = last.t.replace("<small>", ` <em class="wdplus">+${e.v}wp</em><small>`); return; }
+    const t = wdFxText(st, e); if (t) wdFeed.push({ t, k: e.k, n: e.n, p: e.p });
+  });
+  wdFeed = wdFeed.slice(-40);
+  return nw;
+}
+
+/* ---------- 描画 ---------- */
+function drawWd(){
+  setTimeout(cpuKick, 0);
+  if (!wdId) return;
+  const g = wdById(wdId); if (!g || !g.st || g.status === "aborted") return closeWd();
+  const st = g.st, el = $("#wdg"), fin = g.status === "finished", T = st.T;
+  const nw = wdTakeFx(g);
+  const rolled = nw.find(e => e.k === "roll");
+  if (rolled) wdAnimUntil = Date.now() + 900;
+  const inG = st.order.includes(me);
+  const top = `<div class="wdtop"><button class="wdback" id="wdBack" aria-label="もどる">‹</button><div class="wdttl"><b>WYRDSTONE</b><small>${st.ph === "draft" ? "DRAFT" : `ROUND ${st.round}`}</small></div><button class="wdgd ${wdGuideOn() ? "on" : ""}" id="wdGuide">ガイド<i>${wdGuideOn() ? "ON" : "OFF"}</i></button><button class="wdmenu" id="wdMenu" aria-label="メニュー">⋯</button></div>`;
+  const players = `<div class="wdpls">${st.order.map(p => {
+    const cur = T && T.p === p && st.ph !== "draft", tn = wdTreN(st, p);
+    return `<button class="wdpl ${cur ? "cur" : ""} ${p === me ? "me" : ""}" data-pl="${p}" style="--pc:${pcolor(p)}"><span class="nm">${esc(wdNm(p))}</span><b class="wp" data-wp="${p}">${st.wp[p].toLocaleString()}<small>wp</small></b><span class="tr">${[0, 1, 2].map(i => `<i class="${i < tn ? "on" : ""}"></i>`).join("")}</span>${wdShielded(st, p) ? `<em class="sh" title="干渉無効">🛡</em>` : ""}</button>`; }).join("")}</div>`;
+  let body = "";
+  if (st.ph === "draft") body = wdDraftHtml(st);
+  else body = wdBoardHtml(st, g);
+  const guide = wdGuideOn() ? `<div class="wdguide"><i>GUIDE</i><p>${wdGuide(st, g)}</p></div>` : "";
+  const bar = fin ? "" : wdBarHtml(st);
+  const keepScroll = el.querySelector(".wdbody") ? el.querySelector(".wdbody").scrollTop : 0;
+  el.innerHTML = `<div class="wdbg" aria-hidden="true"><i></i><i></i><i></i></div>${top}${players}${guide}<div class="wdbody">${body}</div>${bar}${wdAskHtml(st)}`;
+  el.querySelector(".wdbody").scrollTop = keepScroll;
+  if (rolled) el.querySelectorAll(".wddie").forEach((d, i) => { d.classList.add("rolling"); setTimeout(() => d.classList.remove("rolling"), 650 + i * 120); });
+  nw.filter(e => e.k === "gain" || e.k === "steal").forEach(e => wdPop(el, e));
+  if (nw.some(e => e.k === "tre")) { const e = nw.find(z => z.k === "tre"); flash(`秘宝獲得`, `${wdNm(e.p)}「${wdTreDef(e.id).n}」`); }
+  wdBind(el, g);
+  // 手順4になったら秘宝のところまで送る
+  const phk = T ? `${st.no}:${T.ph}` : "";
+  if (T && T.p === me && T.ph === "tre" && wdDrawn.ph !== phk){ const t = el.querySelector(".wdtres"); if (t) setTimeout(() => t.scrollIntoView({ behavior: "smooth", block: "center" }), 60); }
+  if (T && T.p === me && T.ph === "act" && wdDrawn.ph !== phk){ const t = el.querySelector(".wdmine"); if (t) setTimeout(() => t.scrollIntoView({ behavior: "smooth", block: "start" }), 60); }
+  wdDrawn.ph = phk;
+  if (fin) wdEndShow(g);
+}
+function wdPop(el, e){
+  const t = el.querySelector(`[data-wp="${e.k === "steal" ? e.p : e.p}"]`); if (!t) return;
+  const s = document.createElement("i"); s.className = "wdfloat " + (e.k === "steal" ? "rob" : ""); s.textContent = `+${e.v}`;
+  t.appendChild(s); setTimeout(() => s.remove(), 1400);
+  if (e.k === "steal"){ const u = el.querySelector(`[data-wp="${e.q}"]`); if (u){ const s2 = document.createElement("i"); s2.className = "wdfloat minus"; s2.textContent = `−${e.v}`; u.appendChild(s2); setTimeout(() => s2.remove(), 1400); } }
+}
+function wdDraftHtml(st){
+  const D = st.dr, h = D.hand[me] || [];
+  if (!st.order.includes(me)) return `<div class="wdwait">ドラフト中…</div>`;
+  const picked = D.pick[me];
+  const mine = st.ch[me] || [];
+  return `<div class="wddraft"><h3>ドラフト ${D.step}/2</h3><p>${D.step === 1 ? "3体から1体" : "2体から1体"}を選ぶ（カードをタップで効果を見る）</p>
+    ${mine.length ? `<div class="wddmine"><small>選んだキャラ</small>${mine.map(c => `<span>${wdEmb(c.k)}${WD_CH[c.k].n}</span>`).join("")}</div>` : ""}
+    <div class="wddcards">${h.map(k => { const d = WD_CH[k]; return `<div class="wdmk dr ${picked === k ? "sel" : ""} ${picked != null && picked !== k ? "dim" : ""}" style="--ac:${WD_COL[d.sig]}" data-info="${k}">${wdEmb(k)}<b>${d.n}</b><span class="th">${d.th}</span><span class="meta">${wdTypeB(d)}得意${wdIco(d.sig)}・${d.it}</span><p>${esc(d.desc)}</p><span class="lvs">Lv1 ${WD_LVT[d.t][0]}wp → Lv5 ${WD_LVT[d.t][4]}wp</span>${picked == null ? `<button class="wdbtn sm" data-draft="${k}">これにする</button>` : picked === k ? `<em class="ok">選択済み</em>` : ""}</div>`; }).join("")}</div>
+    ${picked != null ? `<div class="wdwait">ほかの人の選択を待っています… ${st.order.filter(q => D.pick[q] == null).map(q => esc(wdNm(q))).join("・")}</div>` : ""}</div>`;
+}
+function wdCharHtml(st, p, c, big){
+  const d = wdDef(c), T = st.T, can = T && T.p === p && p === me && wdCanAct(st, c.id) && !st.ask;
+  const acting = T && T.p === p && T.acting[c.id];
+  const n = T && T.p === p ? T.acts[c.id] || 0 : 0;
+  const hidden = c.seal;
+  return `<div class="wdch ${big ? "big" : ""} ${can ? "can" : ""} ${acting ? "acting" : ""} ${c.seal ? "sealed" : ""} ${wdSel === c.id ? "sel" : ""}" style="--ac:${WD_COL[d.sig]}" data-ch="${c.id}">
+    ${wdEmb(c.k)}<div class="wdchi"><b>${d.n}</b><span class="meta">${wdTypeB(d)}<em>Lv${c.lv}</em><small>${wdLvWp(c)}wp</small></span></div>
+    <div class="wdslots">${hidden ? `<span class="wdsealtx">行動封じ</span>` : c.s.map((a, i) => wdCube(a, i === 0)).join("")}</div>
+    ${can ? `<i class="wdact">${n}<small>行動</small></i>` : ""}${c.fresh ? `<i class="wdnew">NEW</i>` : ""}</div>`;
+}
+function wdTreHtml(st, id, own){
+  const t = wdTreDef(id), taken = !st.treL.includes(id);
+  const owner = taken ? st.order.find(q => st.tre[q].some(z => z.id === id)) : null;
+  const T = st.T, mine = T && T.p === me && T.ph === "tre" && !st.ask;
+  const cr = mine && !taken ? wdCanTre(st, me, id) : null;
+  return `<button class="wdtre r${t.r} ${taken ? "taken" : ""} ${cr && cr.ok ? "can" : ""}" data-tre="${id}" ${owner ? `style="--pc:${pcolor(owner)}"` : ""}>
+    <span class="st">${wdStarTx(t.r)}</span><b>${t.n}</b><span class="cb">${t.cb.map(a => wdIco(a)).join("")}</span><span class="wp">${(mine && !taken ? wdTreCost(st, me, id) : t.wp).toLocaleString()}<small>wp</small></span>${owner ? `<em class="own">${esc(wdNm(owner))}</em>` : ""}</button>`;
+}
+function wdBoardHtml(st, g){
+  const T = st.T;
+  const others = wdOthers(st, st.order.includes(me) ? me : st.order[st.order.length - 1]).filter(q => q !== me);
+  const steps = [["1", "ダイス"], ["2", "行動"], ["3", "選ぶ"], ["4", "秘宝"]];
+  const cur = !T ? -1 : T.ph === "roll" || T.ph === "pick" ? 0 : T.ph === "eff" ? 1 : T.ph === "act" ? 2 : T.ph === "tre" ? 3 : -1;
+  const dice = T && T.dice && T.dice.length ? T.dice : [];
+  const stage = `<div class="wdstage" style="--pc:${T ? pcolor(T.p) : "#888"}">
+    <div class="wdwho"><span class="dot"></span><b>${T ? esc(wdNm(T.p)) : ""}</b>の手番</div>
+    <div class="wdsteps">${steps.map((s, i) => `<span class="${i === cur ? "on" : i < cur ? "done" : ""}"><b>${s[0]}</b>${s[1]}</span>`).join("")}</div>
+    <div class="wddice">${T && T.skip ? `<small class="skip">キューブがないので手順1はとばし</small>` : dice.length ? dice.map((a, i) => `<span class="wddie ${T.face === a && T.ph !== "pick" ? "chosen" : ""}" style="--ac:${WD_COL[a]};--i:${i}">${wdIco(a)}<b>${a}</b></span>`).join("") + (T.nx && T.nx.anyFace && T.ph === "pick" ? `<span class="wddie any">好き<b>な目</b></span>` : "") : `<span class="wddie idle">?</span><span class="wddie idle">?</span>`}</div>
+    ${T && T.face ? `<div class="wdface">選んだ目 ${wdIco(T.face)}<b>${T.face}</b></div>` : ""}
+    <div class="wdfeed">${wdFeed.slice(-4).map(f => `<div class="wdfi k-${f.k}">${f.t}</div>`).join("")}</div>
+  </div>`;
+  const opp = others.map(q => `<div class="wdopp" style="--pc:${pcolor(q)}"><div class="wdoh"><b>${esc(wdNm(q))}</b><span>${st.wp[q].toLocaleString()}wp</span><span class="trs">${st.tre[q].map(t => `<i class="r${wdTreDef(t.id).r}">${wdStarTx(wdTreDef(t.id).r)}</i>`).join("") || "<small>秘宝なし</small>"}</span></div><div class="wdochs">${st.ch[q].map(c => wdCharHtml(st, q, c)).join("")}</div></div>`).join("");
+  const tres = `<div class="wdsec"><h4>秘宝 <small>3つで勝利・残り${st.treL.length}</small></h4><div class="wdtres">${WD_TRE.map(t => wdTreHtml(st, t.id)).join("")}</div></div>`;
+  const myAct = T && T.p === me && T.ph === "act";
+  const mk = `<div class="wdsec"><h4>場のキャラ <small>山札${st.deck.length}</small></h4><div class="wdmks">${st.mk.map((k, i) => k == null ? `<div class="wdmk empty"></div>` : `<div class="wdmk" style="--ac:${WD_COL[WD_CH[k].sig]}" data-info="${k}">${wdEmb(k)}<b>${WD_CH[k].n}</b><span class="meta">${wdTypeB(WD_CH[k])}${wdIco(WD_CH[k].sig)}</span><span class="cost">${(myAct ? wdBuyCost(st, me, k) : WD_CH[k].cost).toLocaleString()}<small>wp</small></span></div>`).join("")}</div></div>`;
+  const mine = st.order.includes(me) ? `<div class="wdmine" style="--pc:${pcolor(me)}"><div class="wdmh"><b>あなた</b><span class="big" data-wp="${me}">${st.wp[me].toLocaleString()}<small>wp</small></span><span class="slots">枠 ${st.ch[me].length + st.tre[me].length}/${WD_SLOTS}</span></div>
+    <div class="wdmchs">${st.ch[me].map(c => wdCharHtml(st, me, c, true)).join("")}${st.tre[me].map(t => `<div class="wdmytre r${wdTreDef(t.id).r}"><span>${wdStarTx(wdTreDef(t.id).r)}</span><b>${wdTreDef(t.id).n}</b><span class="cb">${t.cubes.map(a => wdIco(a)).join("")}</span></div>`).join("")}${Array.from({ length: Math.max(0, wdFreeSlots(st, me)) }, () => `<div class="wdempty">空き枠</div>`).join("")}</div></div>` : "";
+  return `${stage}${mine}${tres}${mk}<div class="wdsec"><h4>ほかのプレイヤー</h4>${opp}</div>`;
+}
+function wdBarHtml(st){
+  if (st.ph === "draft") return "";
+  const T = st.T; if (!T || st.ask) return "";
+  if (T.ph === "pick" && T.pickBy === me) return `<div class="wdbar"><span class="lbl">目を選ぶ</span>${wdFaceOpts(st).map(a => `<button class="wdface-b" data-face="${a}" style="--ac:${WD_COL[a]}">${wdIco(a)}<b>${a}</b><small>${wdPayFor(st, me, a) ? `+${wdPayFor(st, me, a)}` : ""}</small></button>`).join("")}</div>`;
+  if (T.p !== me) return `<div class="wdbar wait"><span>${T.ph === "pick" ? `${esc(wdNm(T.pickBy))}が目を選んでいます` : `${esc(wdNm(T.p))}の手番`}</span></div>`;
+  if (T.ph === "roll") return `<div class="wdbar"><button class="wdbtn main" id="wdRoll">🎲 ダイスを振る${T.n !== 2 ? `（${T.n}個）` : ""}</button></div>`;
+  if (T.ph === "act"){ const left = st.ch[me].some(c => wdCanAct(st, c.id)); return `<div class="wdbar"><button class="wdbtn ${left ? "ghost" : "main"}" id="wdNext">${left ? "残りの行動をとばして" : ""}手順4へ（秘宝）</button></div>`; }
+  if (T.ph === "tre") return `<div class="wdbar"><button class="wdbtn main" id="wdEnd">ターン終了</button></div>`;
+  return "";
+}
+function wdAskHtml(st){
+  const A = st.ask; if (!A || A.pid !== me) return "";
+  const d = WD_CH[A.k];
+  return `<div class="wdask"><div class="wdaskin" style="--ac:${WD_COL[A.a] || "#ccc"}"><small>${A.owner === me ? `${d.n}「${A.a}」` : `${esc(wdNm(A.owner))}の${d.n}「${A.a}」`}</small><p class="tx">${esc(d.e[A.a].tx)}</p><b>${esc(A.q)}</b><div class="opts">${A.opts.map(o => `<button class="wdopt" data-ans="${esc(o.v)}">${WD_AT.includes(o.v) ? wdIco(o.v) : ""}${esc(o.l)}</button>`).join("")}</div></div></div>`;
+}
+/* キャラをタップしたときの行動メニュー */
+function wdActSheet(g, cid){
+  const st = g.st, c = st.ch[me].find(z => z.id === cid); if (!c) return;
+  const T = st.T, d = wdDef(c), wp = st.wp[me];
+  const free = c.s.map((a, i) => a ? null : i).filter(i => i != null);
+  const grant = free.length ? `<div class="wdas-sec"><h5>属性付与 <small>空いている枠に付ける</small></h5>
+    <div class="wdas-slots">${free.map(i => `<button class="wdslotb ${i === free[0] ? "on" : ""}" data-slot="${i}">${i === 0 ? "メイン" : `サブ${i}`}</button>`).join("")}</div>
+    <div class="wdas-attrs">${WD_AT.map(a => { const cost = wdGrantCost(st, me, c, a); return `<button class="wdattr ${a === d.sig ? "sig" : ""}" data-ga="${a}" ${cost > wp ? "disabled" : ""} style="--ac:${WD_COL[a]}">${wdIco(a)}<b>${a}</b><small>${cost}</small></button>`; }).join("")}</div></div>` : `<div class="wdas-sec"><h5>属性付与</h5><small class="mute">空いている枠がない</small></div>`;
+  const lvc = c.lv < 5 ? wdLvCost(st, me, c, 1) : 0, lv2 = T.lv2[cid] && c.lv <= 3 ? wdLvCost(st, me, c, 2) : 0;
+  const lvh = `<div class="wdas-row"><button class="wdbtn" data-lv="1" ${c.lv >= 5 || lvc > wp ? "disabled" : ""}>Lv上げ ${c.lv < 5 ? `Lv${c.lv}→${c.lv + 1}（${lvc}wp）<small>${wdLvWp(c)}→${WD_LVT[d.t][c.lv]}wp</small>` : "（最大）"}</button>${lv2 ? `<button class="wdbtn" data-lv="2" ${lv2 > wp ? "disabled" : ""}>2段階 Lv${c.lv + 2}へ（${lv2}wp）</button>` : ""}</div>`;
+  const mk = `<div class="wdas-sec"><h5>キャラ獲得 <small>${wdFreeSlots(st, me) < 1 ? "枠が空いていない" : "次の手番から行動"}</small></h5><div class="wdas-mk">${st.mk.map((k, i) => k == null ? "" : `<button class="wdmkb" data-buy="${i}" ${wdFreeSlots(st, me) < 1 || wdBuyCost(st, me, k) > wp ? "disabled" : ""} style="--ac:${WD_COL[WD_CH[k].sig]}">${wdEmb(k)}<b>${WD_CH[k].n}</b><small>${wdBuyCost(st, me, k)}wp</small></button>`).join("")}</div></div>`;
+  const m = c.s[0];
+  const earn = `<div class="wdas-row"><button class="wdbtn" data-earn>wp獲得：ダイスを1つ振る<small>${wdLvWp(c)}wp${m ? `（${m}に有利な目なら×2・不利なら×½）` : "（メインが無なのでそのまま）"}</small></button></div>`;
+  const el = wdPopup(`<div class="wdas-hd" style="--ac:${WD_COL[d.sig]}">${wdEmb(c.k)}<div><b>${d.n}</b><span>Lv${c.lv}・残り${T.acts[cid]}行動・所持${wp}wp</span></div><button class="mini" data-info2="${c.k}">効果を見る</button></div>${grant}${lvh}${mk}${earn}
+    <div class="wdas-row foot"><button class="wdbtn ghost" data-skip>この行動をとばす</button><button class="wdbtn danger" data-rel>手放す</button></div>`, "act");
+  let slot = free[0];
+  el.querySelectorAll("[data-slot]").forEach(b => b.onclick = () => { slot = +b.dataset.slot; el.querySelectorAll("[data-slot]").forEach(x => x.classList.toggle("on", x === b)); });
+  const go = async mv => { el.remove(); await wdDo(g.id, me, mv); };
+  el.querySelectorAll("[data-ga]").forEach(b => b.onclick = () => go(["act", cid, "grant", { s: slot, a: b.dataset.ga }]));
+  el.querySelectorAll("[data-lv]").forEach(b => b.onclick = () => go(["act", cid, b.dataset.lv === "2" ? "lv2" : "lv"]));
+  el.querySelectorAll("[data-buy]").forEach(b => b.onclick = () => go(["act", cid, "buy", +b.dataset.buy]));
+  el.querySelector("[data-earn]").onclick = () => go(["act", cid, "earn"]);
+  el.querySelector("[data-skip]").onclick = () => go(["act", cid, "skip"]);
+  el.querySelector("[data-rel]").onclick = () => { if (confirmWd(`${d.n}を手放しますか？（キューブも失います）`)) go(["rel", cid]); };
+  el.querySelector("[data-info2]").onclick = () => wdCharPop(c.k, c, st, me);
+}
+const confirmWd = m => { try { return window.confirm(m); } catch (e) { return true; } };
+function wdBind(el, g){
+  const st = g.st, on = (id, f) => { const b = el.querySelector("#" + id); if (b) b.onclick = f; };
+  on("wdBack", closeWd);
+  on("wdGuide", () => { lsSet("gl:wdGuide", wdGuideOn() ? "0" : "1"); drawWd(); });
+  on("wdMenu", () => wdMenu(g));
+  on("wdRoll", () => wdDo(g.id, me, ["roll"]));
+  on("wdNext", () => wdDo(g.id, me, ["next"]));
+  on("wdEnd", () => wdDo(g.id, me, ["end"]));
+  el.querySelectorAll("[data-face]").forEach(b => b.onclick = () => wdDo(g.id, me, ["face", b.dataset.face]));
+  el.querySelectorAll("[data-ans]").forEach(b => b.onclick = () => wdDo(g.id, me, ["ans", b.dataset.ans]));
+  el.querySelectorAll("[data-draft]").forEach(b => b.onclick = e => { e.stopPropagation(); wdDo(g.id, me, ["draft", +b.dataset.draft]); });
+  el.querySelectorAll("[data-info]").forEach(b => b.onclick = () => wdCharPop(+b.dataset.info));
+  el.querySelectorAll("[data-ch]").forEach(b => b.onclick = () => {
+    const f = wdFind(st, b.dataset.ch); if (!f) return;
+    if (f.p === me && st.T && st.T.p === me && !st.ask && ["act", "tre"].includes(st.T.ph)){
+      if (wdCanAct(st, f.c.id)) return wdActSheet(g, f.c.id);
+      if (st.T.ph === "tre"){ const d = wdDef(f.c); return wdPopup(`<div class="wdas-hd" style="--ac:${WD_COL[d.sig]}">${wdEmb(f.c.k)}<div><b>${d.n}</b><span>Lv${f.c.lv}</span></div></div><div class="wdas-row foot"><button class="mini" data-info3>効果を見る</button><button class="wdbtn danger" data-rel2>手放して枠を空ける</button></div>`).querySelectorAll("button").forEach(x => x.onclick = () => { if (x.hasAttribute("data-info3")) wdCharPop(f.c.k, f.c, st, me); else if (confirmWd(`${d.n}を手放しますか？`)){ document.getElementById("wdPop").remove(); wdDo(g.id, me, ["rel", f.c.id]); } }); }
+    }
+    wdCharPop(f.c.k, f.c, st, f.p);
+  });
+  el.querySelectorAll("[data-tre]").forEach(b => b.onclick = () => {
+    const id = b.dataset.tre, t = wdTreDef(id);
+    if (st.T && st.T.p === me && st.T.ph === "tre" && st.treL.includes(id)){
+      const r = wdCanTre(st, me, id);
+      if (r.ok) return wdDo(g.id, me, ["tre", id]);
+      toast(r.why || "まだ取れません", 2400); return;
+    }
+    toast(`${wdStarTx(t.r)} ${t.n}：${t.wp}wp＋${t.cb.join("・")}のキューブ`, 2600);
+  });
+  el.querySelectorAll("[data-pl]").forEach(b => b.onclick = () => { const p = b.dataset.pl; wdPopup(`<div class="wdplp" style="--pc:${pcolor(p)}"><b>${esc(wdNm(p))}</b><span>${st.wp[p].toLocaleString()}wp・秘宝${wdTreN(st, p)}つ（★${wdStars(st, p)}）${wdShielded(st, p) ? "・干渉無効中" : ""}</span></div><div class="wdmchs">${st.ch[p].map(c => wdCharHtml(st, p, c, true)).join("")}</div>${st.tre[p].map(t => `<div class="wdmytre r${wdTreDef(t.id).r}"><span>${wdStarTx(wdTreDef(t.id).r)}</span><b>${wdTreDef(t.id).n}</b></div>`).join("")}`).querySelectorAll("[data-ch]").forEach(x => x.onclick = () => { const f = wdFind(st, x.dataset.ch); if (f) wdCharPop(f.c.k, f.c, st, f.p); }); });
+}
+function wdMenu(g){
+  const mine = (g.players || []).includes(me);
+  const s = openSheet("WYRDSTONE", `<div class="btns col"><button class="btn sub" data-grule="wd">ルールを見る</button><button class="btn sub" id="wdLogB">ログを見る</button>${mine && g.status === "playing" ? `<button class="btn danger" id="wdAbort">この対戦をやめる</button>` : ""}</div>`);
+  const lb = s.querySelector("#wdLogB"); if (lb) lb.onclick = () => openSheet("ログ", `<div class="wdlog">${(g.log || []).slice().reverse().map(l => `<p>${colorizeLog(g.players, l.m)}</p>`).join("")}</div>`);
+  const ab = s.querySelector("#wdAbort"); if (ab) ab.onclick = async () => { if (!confirmWd("この対戦をやめますか？（戦績には残りません）")) return; const { error } = await sb.from("wd_games").update({ status: "aborted" }).eq("id", g.id); if (error) return fail(error, "中止"); await loadTable("wd_games"); closeSheet(); closeWd(); };
+}
+const wdEndSeen = {};
+function wdEndShow(g){
+  const st = g.st; if (wdEndSeen[g.id] === g.version) return; wdEndSeen[g.id] = g.version;
+  const rk = st.order.slice().sort((a, b) => (st.wins.includes(b) - st.wins.includes(a)) || wdTreN(st, b) - wdTreN(st, a) || wdStars(st, b) - wdStars(st, a) || st.wp[b] - st.wp[a]);
+  const el = wdPopup(`<div class="wdend"><small>${esc(st.endWhy || "")}</small><h2>${st.wins.includes(me) ? "VICTORY" : "GAME SET"}</h2><b class="w">${st.wins.map(p => esc(wdNm(p))).join("・")} の勝ち！</b>
+    <div class="wdrank">${rk.map((p, i) => `<div class="${st.wins.includes(p) ? "win" : ""}" style="--pc:${pcolor(p)}"><i>${i + 1}</i><b>${esc(wdNm(p))}</b><span>${st.tre[p].map(t => `<em class="r${wdTreDef(t.id).r}">${wdStarTx(wdTreDef(t.id).r)}</em>`).join("") || "秘宝なし"}</span><small>${st.wp[p].toLocaleString()}wp</small></div>`).join("")}</div>
+    <div class="btns"><button class="wdbtn ghost" id="wdEndClose">盤面を見る</button><button class="wdbtn main" id="wdAgain">もう一度</button></div></div>`, "end");
+  el.querySelector("#wdEndClose").onclick = () => el.remove();
+  el.querySelector("#wdAgain").onclick = () => { el.remove(); closeWd(); openWdNew(); };
+  if (st.wins.includes(me) && typeof lmConfetti === "function") try { lmConfetti(); } catch (e) {}
+}
+
+/* ---------- 新しく始める ---------- */
+function openWdNew(){
+  let order = db.players.map(p => p.id).slice(0, 5);
+  const s = openSheet("WYRDSTONEを始める", `
+    <p class="note">【オリジナル・開発中】運命の力 wp を集めて、属性キューブと合わせて秘宝を手に入れる。秘宝を3つ最初にそろえた人の勝ち（2〜5人・30〜45分）。キャラは20体、それぞれ10種類の効果を持つ。</p>
+    <button type="button" class="grbtn" data-grule="wd">ルールを見る</button>
+    <div class="f"><span>参加者（タップで選ぶ・2〜5人）</span>${chipPlayers(db.players.map(p => p.id), order)}${cpuChips(order)}</div>
+    <div class="f"><span>手番の順番・名前を指で動かして並べ替え（1番の人から。2番手以降は開始wpが${WD_SEAT_BONUS}ずつ多い）</span><div id="wdOrder" class="norder"></div><button class="shufbtn" id="wdShuf">順番をシャッフル</button></div>
+    <div class="btns"><button class="btn" id="wdGo">はじめる</button></div>`);
+  s.querySelector("[data-close]").onclick = openGames;
+  const draw = () => { $("#wdOrder").innerHTML = seatHtml(order); seatDrag($("#wdOrder"), () => order, o => order = o, draw); };
+  s.querySelectorAll("[data-p]").forEach(b => b.onclick = () => {
+    const id = b.dataset.p, on = b.getAttribute("aria-pressed") !== "true";
+    if (on && order.length >= 5){ toast("最大5人です"); return; }
+    b.setAttribute("aria-pressed", String(on)); order = on ? [...order, id] : order.filter(x => x !== id); draw();
+  });
+  $("#wdShuf").onclick = () => { order = shuffle(order); draw(); };
+  draw();
+  $("#wdGo").onclick = async () => {
+    if (!order.some(id => !isCpu(id))){ toast("人間のプレイヤーを1人以上入れてください"); return; }
+    if (order.length < 2 || order.length > 5){ toast("参加者は2〜5人です"); return; }
+    const st = wdSetup(order); order.forEach((p, i) => { st.wp[p] += i * WD_SEAT_BONUS; });
+    const lg = st._log || []; delete st._log;
+    const row = { status: "playing", players: order, st, created_by: me || null, log: lg.map((m, i) => ({ t: new Date(Date.now() + i).toISOString(), m })) };
+    const { data: res, error } = await sb.from("wd_games").insert(row).select().single();
+    if (error){ if (/wd_games|relation|exist|schema|permission/i.test(error.message || "")) toast("WYRDSTONEを使うには schema.sql をもう一度実行してください", 3800); else fail(error, "作成"); return; }
+    await loadTable("wd_games"); closeSheet(); openWd(res.id);
+  };
+}
+
+/* ---------- ルール ---------- */
+function wdRulesHtml(){
+  return `<h4>目的</h4><p>運命の力 <b>wp</b>（Wyrd Point）を集め、属性キューブと合わせて<b>秘宝を3つ最初に手に入れた人の勝ち</b>。3つそろう前に秘宝が全部なくなったら、★の合計が多い人の勝ち（同じならwpが多い人）。wpは全員に公開。</p>
+  <h4>準備</h4><p>全員1000wp（2番手以降は${WD_SEAT_BONUS}wpずつ多い）。キャラを3体配り、1体取って残り2体を次の人へ。受け取った2体から1体取り、残りは山札へ（1人2体）。場にキャラを3体並べる。キャラは3つの枠がすべて「無」、Lv1から。</p>
+  <h4>手番の流れ</h4>
+  <p><b>手順1：ダイス</b> 属性ダイス（20面：炎・水・木 各4、雷・闇 各2、龍・幻・天・覇 各1）を2つ振り、1つの目を選ぶ。その属性のキューブを持つ人は全員（振った人も）キューブ1つにつき 炎水木100・雷闇200・龍幻天覇400wp。メイン枠（一番上）のキューブは2倍。自分のキャラにキューブが1つもなければ、手順1はとばす。</p>
+  <p><b>手順2：キャラが行動</b> 「無」の枠があるキャラと、選んだ目の属性を持つキャラが動く。無の枠1つにつき無の効果を1回、選んだ目のキューブ1つにつきその属性の効果を1回。動いたキャラは1体につき1回、Lvに応じたwpをもらう。</p>
+  <p><b>手順3：1つ選ぶ</b>（手順2で動いたキャラだけ）<br>・属性付与：空いている枠に好きな属性を付ける（コストはキャラごと。得意属性は半額）<br>・Lv上げ：1→2 100、2→3 500、3→4 2000、4→5 5000wp<br>・キャラ獲得：場の3体から1体（次の手番から行動）<br>・wp獲得：ダイスを1つ振り、メイン属性に有利な目ならLv分の2倍、不利なら半分</p>
+  <p><b>手順4：秘宝</b> 何個でも。必要wpを払い、必要なキューブをキャラから外して秘宝にはめる。メインを外したら、メインは無に戻ってまた決め直せる。</p>
+  <h4>枠</h4><p>1人4枠。キャラと秘宝が1つずつ使う。枠が足りないときはキャラを手放す。手放したキャラは山札へ戻し、場も含めてシャッフルして3体めくり直す。メイン属性は一度付けたら動かせない（メインを無のまま、サブだけ付けてもよい）。3枠すべて埋まると無の効果はなくなる。</p>
+  <h4>相性（wp獲得で使う）</h4><p>水→炎→木→水（矢印の先に強い）／雷と闇はお互いに有利／龍→覇→天→幻→龍</p>
+  <h4>干渉</h4><p>他人の邪魔をする効果は龍・覇・幻だけ。天の「干渉無効」は、奪う・キューブを無に戻す・行動封じ・Lvを下げる、など全部を防ぐ（次の自分の手番まで）。行動封じされたキャラは次の手番の終わりまで行動できず、手順1のwpももらえない。</p>
+  <h4>秘宝</h4><p>${WD_TRE.map(t => `${wdStarTx(t.r)} ${t.n}：${t.wp}wp＋${t.cb.join("・")}`).join("<br>")}</p>`;
+}
+
 /* ======================= ここからロビー（ゲームの棚・戦績・設定） ======================= */
-const DEFAULT_STAGES = { hx: "dev", sz: "done", lm: "done" };
+const DEFAULT_STAGES = { hx: "dev", sz: "done", lm: "done", wd: "dev" };
 const stages = () => ({ ...DEFAULT_STAGES, ...(setting("stages") || {}) });
 const maxOf = (ids, val) => { const best = Math.max(...ids.map(val)); return ids.filter(p => val(p) === best); };
 const GAMES = [
@@ -5542,16 +7026,26 @@ const GAMES = [
     icon: () => LM_ICON, list: () => lmGames(), live: () => lmLive(), myTurn: g => lmMyTurn(g),
     start: () => openLmNew(), open: g => openLm(g.id),
     winners: g => { const E = g.st && g.st.end; return E && E.total ? maxOf(g.st.players, p => E.total[p] || 0) : []; },
-    liveTx: g => `ラウンド${Math.min(g.st.round, LM_ROUNDS)}/${LM_ROUNDS}` }
+    liveTx: g => `ラウンド${Math.min(g.st.round, LM_ROUNDS)}/${LM_ROUNDS}` },
+  { id: "wd", name: "WYRDSTONE", en: "THE STONES OF FATE", players: "2〜5人", time: "30〜45分",
+    desc: "運命の力wpを集め、神話の魔獣20体に属性キューブを付けて育てる。20面の属性ダイスで出た目のキューブを持つ人は全員wpを獲得。秘宝を3つ最初にそろえた人の勝ち。",
+    icon: () => WD_ICON, list: () => wdGames(), live: () => wdLive(), myTurn: g => wdMyTurn(g),
+    start: () => openWdNew(), open: g => openWd(g.id),
+    winners: g => (g.st && g.st.wins) || [],
+    liveTx: g => g.st.ph === "draft" ? "ドラフト中" : `ラウンド${g.st.round}` }
 ];
 const gameById = id => GAMES.find(x => x.id === id);
 const finished = gm => gm.list().filter(g => g.status === "finished");
+/* 人間が1人だけ（あとはCPU）の対戦＝「CPU戦」。メインの戦績には入れず、別枠で集計する */
+const isCpuGame = g => (g.players || []).filter(p => !isCpu(p)).length <= 1;
+const finishedPvp = gm => finished(gm).filter(g => !isCpuGame(g));
 
 /* ポスターの背景の飾り */
 const ART = {
   hx: "",
   sz: Array.from({ length: 7 }, (_, k) => `<i style="left:${(k * 37 + 12) % 96}%;top:-20px;animation-delay:-${(k * 1.3).toFixed(1)}s;animation-duration:${(8 + (k % 3) * 2)}s;background:${["#E58FB0", "#F2B8CC", "#E39A52", "#BFD9F2"][k % 4]}"></i>`).join(""),
-  lm: `<svg viewBox="0 0 200 100" aria-hidden="true"><path d="M100 50C80 18 30 18 30 50s50 32 70 0 50-32 70 0-50 32-70 0z" fill="none" stroke="#FFD35A" stroke-width="5"/></svg>`
+  lm: `<svg viewBox="0 0 200 100" aria-hidden="true"><path d="M100 50C80 18 30 18 30 50s50 32 70 0 50-32 70 0-50 32-70 0z" fill="none" stroke="#FFD35A" stroke-width="5"/></svg>`,
+  wd: `<svg viewBox="0 0 200 120" aria-hidden="true"><g fill="none" stroke-width="2.5"><path d="M100 10l40 30-14 60H74L60 40z" stroke="#E07CFF"/><path d="M100 10v90M60 40l40 18 40-18M74 100l26-42 26 42" stroke="#FFE7A3" opacity=".6"/></g>${["#FF5A3C","#3FA9FF","#4FD06A","#FFD23F","#9B5CFF"].map((c,i)=>`<circle cx="${30+i*35}" cy="${112-(i%2)*8}" r="4" fill="${c}"/>`).join("")}</svg>`
 };
 
 function viewShelf(st){
@@ -5567,7 +7061,7 @@ function viewShelf(st){
     return `<article class="poster t-${gm.id} ${st}" style="--i:${i}"><div class="pin">
       <div class="art">${ART[gm.id]}</div>
       ${dev ? `<div class="tape"><span>${"IN DEVELOPMENT ・ 開発中 ・ BETA TEST ・ ".repeat(6)}</span></div><span class="beta">β</span>` : ""}
-      <div class="ptop">${gm.icon()}<div class="ttl"><span class="en">${gm.en}</span><h3>${gm.name}</h3><div class="meta"><span>${gm.players}</span><span>${gm.time}</span><span>${finished(gm).length}回プレイ</span></div></div></div>
+      <div class="ptop">${gm.icon()}<div class="ttl"><span class="en">${gm.en}</span><h3>${gm.name}</h3><div class="meta"><span>${gm.players}</span><span>${gm.time}</span><span>${finishedPvp(gm).length}回プレイ</span></div></div></div>
       <p class="pdesc">${gm.desc}</p>
       ${lv.length ? `<div class="plives">${lv.map(g => { const mn = !!me && (g.players || []).includes(me); return `<div class="plv"><span class="who"><em>${mn ? "参加中" : "LIVE"}</em>${(g.players || []).map(p => `<i style="--pc:${pcolor(p)}">${esc(pname(p))}</i>`).join("")}</span>${mn ? `<button class="mini" data-gopen="${gm.id}" data-gid="${g.id}">参加</button>` : `<button class="mini watch" data-gopen="${gm.id}" data-gid="${g.id}">観戦</button>`}</div>`; }).join("")}</div>` : ""}
       <div class="pact"><button class="ghostb" data-grule="${gm.id}">ルール</button><button class="cta" data-start="${gm.id}">PLAY<small>${lv.length ? "新しく遊ぶ" : dev ? "テストプレイ" : "遊ぶ"}</small></button></div>
@@ -5576,19 +7070,20 @@ function viewShelf(st){
   return h;
 }
 
-let recFilter = "all";
+let recFilter = "all", recMode = "pvp";
 function viewRecords(){
-  const gms = recFilter === "all" ? GAMES : GAMES.filter(x => x.id === recFilter);
-  const games = gms.flatMap(gm => finished(gm).map(g => ({ gm, g }))).sort((a, b) => String(b.g.updated_at || b.g.created_at).localeCompare(String(a.g.updated_at || a.g.created_at)));
+  const gms = recFilter === "all" ? GAMES : GAMES.filter(x => x.id === recFilter), cpu = recMode === "cpu";
+  const games = gms.flatMap(gm => finished(gm).filter(g => isCpuGame(g) === cpu).map(g => ({ gm, g }))).sort((a, b) => String(b.g.updated_at || b.g.created_at).localeCompare(String(a.g.updated_at || a.g.created_at)));
   const stat = {};
   games.forEach(({ gm, g }) => { const w = gm.winners(g); (g.players || []).filter(p => !isCpu(p)).forEach(p => { const s = stat[p] || (stat[p] = { p, n: 0, w: 0 }); s.n++; if (w.includes(p)) s.w++; }); });
   const rows = Object.values(stat).filter(s => player(s.p)).sort((a, b) => b.w - a.w || (b.w / b.n) - (a.w / a.n) || b.n - a.n);
   const humans = new Set(games.flatMap(x => (x.g.players || []).filter(p => !isCpu(p))));
-  let h = `<div class="shelf-hd"><span class="big">RECORDS</span><h2>戦績</h2><p>終わった対戦の記録</p></div>`;
+  let h = `<div class="shelf-hd"><span class="big">RECORDS</span><h2>戦績</h2><p>${cpu ? "1人でCPUと戦った対戦の記録（対人戦の戦績とは別に集計）" : "人どうしで遊んだ対戦の記録（CPUとだけ戦った対戦は「CPU戦」に別集計）"}</p></div>`;
+  h += `<div class="recmode"><button data-rm="pvp" aria-pressed="${!cpu}">対人戦</button><button data-rm="cpu" aria-pressed="${cpu}">CPU戦</button></div>`;
   h += `<div class="filt">${[["all", "すべて"], ...GAMES.map(x => [x.id, x.name])].map(([k, l]) => `<button data-rf="${k}" aria-pressed="${recFilter === k}">${esc(l)}</button>`).join("")}</div>`;
-  h += `<div class="stat3"><div><small>対戦数</small><b>${games.length}</b></div><div><small>遊んだ人</small><b>${humans.size}</b></div><div><small>対戦中</small><b>${gms.reduce((a, gm) => a + gm.live().length, 0)}</b></div></div>`;
+  h += `<div class="stat3"><div><small>対戦数</small><b>${games.length}</b></div><div><small>遊んだ人</small><b>${humans.size}</b></div><div><small>対戦中</small><b>${gms.reduce((a, gm) => a + gm.live().filter(g => isCpuGame(g) === cpu).length, 0)}</b></div></div>`;
   if (!games.length) return h + `<div class="emptyshelf"><b>まだ記録がありません</b>対戦が終わると、ここに勝敗が残ります。</div>`;
-  h += `<div class="sec">勝利数ランキング</div><div class="lb">${rows.map((s, i) => `<div class="lbr ${i === 0 ? "top" : ""}" style="--pc:${pcolor(s.p)};--w:${Math.round(s.w / s.n * 100)}"><span class="r">${i + 1}</span><span class="n"><span class="dot" style="background:${pcolor(s.p)};color:${pcolor(s.p)}"></span><span>${esc(pname(s.p))}</span></span><span class="v"><b>${s.w}</b>勝 / ${s.n}戦・${Math.round(s.w / s.n * 100)}%</span></div>`).join("")}</div>`;
+  h += `<div class="sec">${cpu ? "CPU戦の勝利数" : "勝利数ランキング"}</div><div class="lb">${rows.map((s, i) => `<div class="lbr ${i === 0 ? "top" : ""}" style="--pc:${pcolor(s.p)};--w:${Math.round(s.w / s.n * 100)}"><span class="r">${i + 1}</span><span class="n"><span class="dot" style="background:${pcolor(s.p)};color:${pcolor(s.p)}"></span><span>${esc(pname(s.p))}</span></span><span class="v"><b>${s.w}</b>勝 / ${s.n}戦・${Math.round(s.w / s.n * 100)}%</span></div>`).join("")}</div>`;
   h += `<div class="sec">最近の対戦</div>${games.slice(0, 30).map(({ gm, g }) => { const w = gm.winners(g), d = new Date(g.updated_at || g.created_at);
     return `<div class="hist">${gm.icon()}<div><b>${gm.name}</b><small>${d.getMonth() + 1}/${d.getDate()} ${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")}・${(g.players || []).map(p => esc(pname(p))).join("・")}</small></div>${w.length ? `<span class="wn" style="--pc:${pcolor(w[0])}">👑 ${w.map(p => esc(pname(p))).join("・")}</span>` : `<span class="wn draw">引き分け</span>`}</div>`; }).join("")}`;
   return h;
@@ -5625,6 +7120,7 @@ function bind(v){
   v.querySelectorAll("[data-start]").forEach(b => b.onclick = () => { if (needMe()) gameById(b.dataset.start).start(); });
   v.querySelectorAll("[data-gopen]").forEach(b => b.onclick = () => { const gm = gameById(b.dataset.gopen), g = gm.list().find(x => x.id === b.dataset.gid); if (g) gm.open(g); });
   v.querySelectorAll("[data-rf]").forEach(b => b.onclick = () => { recFilter = b.dataset.rf; render(); });
+  v.querySelectorAll("[data-rm]").forEach(b => b.onclick = () => { recMode = b.dataset.rm; render(); });
   v.querySelectorAll('[data-act="players"]').forEach(b => b.onclick = openPlayers);
 }
 function bindSetup(){
@@ -5730,7 +7226,7 @@ $("#gearBtn").onclick = openSettings;
 $("#meBtn").onclick = () => sb ? openMe() : toast("先にSupabaseにつないでください");
 document.addEventListener("visibilitychange", async () => {
   if (document.hidden || !sb) return;
-  try { await loadAll(); if (!inGame()) render(); drawHx(); drawSz(); drawLm(); } catch (e) { console.error(e); }
+  try { await loadAll(); if (!inGame()) render(); drawHx(); drawSz(); drawLm(); drawWd(); } catch (e) { console.error(e); }
 });
 (async () => {
   render();
