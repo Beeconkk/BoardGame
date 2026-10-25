@@ -2205,6 +2205,155 @@ details.wdrc tr.sig th,details.wdrc tr.sig td{background:rgba(255,201,60,.14)}
 .wdturn{font-size:12.5px}
 .wdtable.l0.r0 .wdfelt{min-height:260px}
 
+/* ===== v43：絵・20面ダイス・中央のポップアップ ===== */
+.wdpop{align-items:center;padding:calc(var(--safe-t) + 12px) 10px calc(var(--safe-b) + 12px)}
+.wdpop.over{z-index:95;background:rgba(6,2,14,.5)}
+.wdpin{max-height:88dvh}
+.wdpin.act{display:flex;flex-direction:column}
+.wdpin.act .wdas-pane{height:318px;overflow-y:auto;overscroll-behavior:contain}
+.wdpin.act .wdas-row.foot{margin-top:10px}
+/* キャラの絵 */
+.wdart{display:block;width:100%;height:100%}
+.wdemb{width:40px;height:48px;border-radius:9px;overflow:hidden;border:1.5px solid var(--ac);box-shadow:0 0 10px -2px var(--ac);background:#000}
+.wdemb>svg.wdart{position:absolute;inset:0}
+.wdemb>svg:not(.wdart){position:absolute;inset:auto;width:auto;height:auto}
+.wdemb .wdico.sig{right:2px;bottom:2px;width:14px;height:14px;background:rgba(0,0,0,.6);border-radius:50%;padding:1px}
+.wdcp-hd .wdemb,.wdas-hd .wdemb{width:76px;height:95px;border-radius:13px}
+.wdcp-hd .wdemb .wdico.sig,.wdas-hd .wdemb .wdico.sig{width:18px;height:18px}
+.wdmk.dr{grid-template-columns:76px 1fr}
+.wdmk.dr .wdemb{width:76px;height:95px;grid-row:span 3}
+.wdcap .ch .wdemb{width:40px;height:50px}
+.wdflycard .wdemb{width:44px;height:55px}
+.wddmine .wdemb,.wdplr .wdemb,.wdzr .wdemb,.wdmkb .wdemb{width:40px;height:50px}
+.wdmc .e{width:20px;height:24px;border-radius:5px;overflow:hidden;background:none;border:1px solid color-mix(in srgb,var(--ac) 70%,transparent)}
+.wdmc .e svg{display:block;width:100%;height:100%}
+.wdmkc{padding:0 0 3px;overflow:hidden}
+.wdmkc .ar{display:block;width:100%;height:36px;overflow:hidden;border-bottom:1px solid color-mix(in srgb,var(--ac) 60%,transparent)}
+.wdmkc small{margin-top:2px}
+.wdcard{padding:0 0 6px;overflow:hidden}
+.wdcard .ar{position:relative;display:block;width:100%;height:60px;overflow:hidden;border-bottom:1px solid color-mix(in srgb,var(--ac) 60%,transparent)}
+.wdcard .ar .n{position:absolute;left:0;right:0;bottom:2px;font-size:10.5px;text-shadow:0 1px 4px #000,0 0 6px #000;padding:0 3px}
+.wdcard .ar .wdico.sig{position:absolute;right:3px;top:3px;width:13px;height:13px;background:rgba(0,0,0,.55);border-radius:50%;padding:1px}
+.wdcard .lv{margin-top:3px}
+.wdcard.free{padding:6px}
+.wdcard.tre{padding:6px 4px}
+.wdcard.tre .wdta{width:34px;height:34px;filter:drop-shadow(0 0 6px rgba(255,231,163,.6))}
+/* 秘宝の絵 */
+.wdta{display:block}
+.wdgem{background:none!important;border:0!important;box-shadow:none;aspect-ratio:auto;max-height:none;padding:0;gap:0;justify-content:flex-start}
+.wdgem::before{content:"";position:absolute;left:12%;right:12%;bottom:12px;height:9px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,231,163,.45),transparent)}
+.wdgem.r3::before{background:radial-gradient(closest-side,rgba(224,124,255,.55),transparent)}
+.wdgem.r4::before,.wdgem.r5::before{background:radial-gradient(closest-side,rgba(255,160,240,.7),transparent);height:12px}
+.wdgem .wdta{position:relative;width:100%;max-width:40px;height:34px}
+.wdgem .st{font-size:7px;letter-spacing:-.1em;color:var(--wgold);font-family:inherit;margin-top:1px}
+.wdgem .cb{margin-top:1px}
+.wdgem.taken{opacity:.3;filter:grayscale(.85)}
+.wdgem.taken::after{content:"";position:absolute;right:2px;top:0;width:9px;height:9px;border-radius:50%;background:var(--pc);box-shadow:0 0 0 1.5px #12081F}
+.wdgem.can{animation:none}
+.wdgem.can .wdta{animation:wdgemc 1.2s ease-in-out infinite}
+@keyframes wdgemc{50%{transform:scale(1.15) translateY(-2px)}}
+.wdgem.can::before{background:radial-gradient(closest-side,#FFE7A3,transparent);height:14px}
+.tg.art{width:14px;height:14px;transform:none;border-radius:0;background:none;box-shadow:none;display:inline-block}
+.tg.art .wdta{width:100%;height:100%}
+.wdtp .gem{transform:none;background:none!important;box-shadow:none;width:60px;height:60px}
+.wdtp .gem .wdta{width:100%;height:100%;filter:drop-shadow(0 0 10px rgba(255,231,163,.6))}
+.wdflygem{transform:none;background:none!important;box-shadow:none;width:48px;height:48px}
+.wdflygem .wdta{width:100%;height:100%;filter:drop-shadow(0 0 14px #FFE7A3)}
+.wdmytre .wdta{width:22px;height:22px}
+/* 20面ダイス */
+.wddie{width:62px;height:72px;border:0!important;background:none!important;box-shadow:none!important;border-radius:0;gap:0;justify-content:flex-start;position:relative}
+.wddie::before{content:"";position:absolute;left:8px;right:8px;top:50px;height:12px;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.55),transparent)}
+.wddie .wdd20{position:relative;width:56px;height:56px;filter:drop-shadow(0 4px 8px rgba(0,0,0,.45))}
+.wddie b{font-size:11px;margin-top:1px}
+.wddie.idle{opacity:.55}
+.wddie.chosen{transform:scale(1.12)}
+.wddie.chosen .wdd20{filter:drop-shadow(0 0 10px var(--ac)) drop-shadow(0 0 3px #fff)}
+.wddie.off{opacity:.3;transform:scale(.85)}
+.wddie.pick .wdd20{animation:wdd20p 1.1s ease-in-out infinite}
+@keyframes wdd20p{50%{transform:translateY(-3px) scale(1.06)}}
+.wddie.land .wdd20{animation:wdland .45s ease-out}
+@keyframes wdland{0%{transform:scale(1.25)}100%{transform:none}}
+.wddie.big{width:90px;height:100px}.wddie.big .wdd20{width:84px;height:84px}.wddie.big::before{top:74px}
+.wddie.mid{width:46px;height:46px}.wddie.mid .wdd20{width:44px;height:44px}.wddie.mid::before{display:none}
+.wddie.tumble .wdd20{animation:wdtumble .7s cubic-bezier(.2,.8,.3,1.1) both}
+@keyframes wdtumble{0%{transform:translateY(-50px) rotate(-400deg) scale(.4);opacity:0}60%{transform:translateY(4px) rotate(15deg) scale(1.08);opacity:1}100%{transform:none}}
+.wdattr.short{opacity:.38;filter:grayscale(.6)}
+.wdattr.short.on{opacity:.75}
+.wdas-why{padding:9px 11px;border-radius:12px;background:rgba(232,69,95,.14);border:1px solid rgba(232,69,95,.5);color:#FFB3C2;font-size:12.5px;font-weight:900}
+.wdas-why small{display:block;font-weight:500;color:#F2D6DD;margin-top:2px}
+.wdearn{display:flex;flex-direction:column;gap:5px;margin-bottom:8px}
+.wdearn .r{display:grid;grid-template-columns:62px 1fr auto auto;align-items:center;gap:6px;padding:7px 9px;border-radius:11px;background:rgba(255,255,255,.05)}
+.wdearn .r.head{grid-template-columns:62px 1fr auto auto;background:rgba(255,231,163,.1);border:1px solid rgba(255,231,163,.35)}
+.wdearn .k{font-size:11.5px;font-weight:900;display:flex;flex-direction:column;line-height:1.2}
+.wdearn .k small{font-size:9.5px;color:var(--wmute);font-weight:500}
+.wdearn .v{display:flex;flex-wrap:wrap;gap:3px 6px;align-items:center}
+.wdearn .v b{font-size:13px}
+.wdearn .ic{display:inline-flex;align-items:center;gap:1px}
+.wdearn .ic small{font-size:10px}
+.wdearn .ic .wdico{width:15px;height:15px}
+.wdearn .lv{font-size:11px;color:var(--wmute)}
+.wdearn em{font-style:normal;font-weight:900;font-size:13px}
+.wdearn .w{font-family:var(--wcz);font-size:13px;white-space:nowrap}
+.wdearn .adv{border:1px solid rgba(139,255,176,.4)}.wdearn .adv em,.wdearn .adv .w{color:#8BFFB0}
+.wdearn .dis{border:1px solid rgba(255,122,146,.4)}.wdearn .dis em,.wdearn .dis .w{color:#FF8FA3}
+.wdearn .note{font-size:11px;color:var(--wmute);margin:2px 0 0}
+.wdmkb .sh{font-style:normal;font-size:9.5px;color:#FF8FA3;font-weight:900}
+.wdmkb:disabled{opacity:.45}
+.wdas-prev .wdas-why{margin-bottom:6px}
+.wdchartb{display:block;width:100%;padding:2px 0;border-radius:12px;background:rgba(0,0,0,.18);border:1px solid rgba(255,231,163,.15)}
+.wdchart{display:block;width:100%;max-width:230px;margin:0 auto;height:auto}
+.wdchart.big{max-width:100%;margin:6px 0 10px}
+.wdmkc em{margin-top:2px}
+.wdroll1{position:fixed;z-index:6;display:grid;place-items:center;pointer-events:none}
+.wdroll1 .in{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 14px 12px;border-radius:18px;background:radial-gradient(closest-side,rgba(12,6,26,.92),rgba(12,6,26,.75) 70%,transparent)}
+.wdroll1 .wddie.big b{font-size:15px;min-height:18px}
+.wdroll1 .call,.wdover .call{font-style:normal;font-size:12px;font-weight:900;padding:2px 9px;border-radius:8px;background:rgba(10,6,24,.9);border:1px solid var(--wline);white-space:nowrap}
+.wdroll1 .call.hit{color:#1A0E2E;background:#8BFFB0}
+.wdroll1 .call.bad{color:#fff;background:#E8455F}
+.wdroll1 .res{min-height:22px;animation:wdfin .3s both}
+.wdlvc{padding:9px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid var(--wline);margin-bottom:8px;display:flex;flex-direction:column;gap:7px}
+.wdlvc.ng{opacity:.85}
+.wdlvup{display:grid;grid-template-columns:auto auto auto 1fr;align-items:center;gap:8px}
+.wdlvup .f,.wdlvup .t{display:flex;flex-direction:column;align-items:center;padding:4px 10px;border-radius:10px;background:rgba(0,0,0,.3)}
+.wdlvup .t{background:linear-gradient(160deg,rgba(139,255,176,.25),rgba(0,0,0,.3));border:1px solid rgba(139,255,176,.5)}
+.wdlvup b{font-family:var(--wcz);font-size:16px}.wdlvup small{font-size:10px;color:var(--wmute)}
+.wdlvup .ar{font-style:normal;color:var(--wgold)}
+.wdlvup .gain{text-align:right;display:flex;flex-direction:column}
+.wdlvup .gain em{font-style:normal;font-family:var(--wcz);font-weight:900;color:#8BFFB0;font-size:17px}
+.wdpay{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:10px;padding:8px 10px;border-radius:12px;background:linear-gradient(110deg,rgba(255,122,146,.16),rgba(255,122,146,.04));border:1px solid rgba(255,122,146,.45)}
+.wdpay small{display:block;font-size:10px;color:#F2D6DD}
+.wdpay b{font-family:var(--wcz);font-size:18px;color:#FF9AAE}
+.wdpay .af{text-align:right}.wdpay .af b{font-size:13px;color:var(--wink)}.wdpay .af b.neg{color:#FF8FA3}
+.wdcoinpile{position:relative;width:30px;height:26px;display:block}
+.wdcoinpile i{position:absolute;left:3px;width:24px;height:9px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#FFFBE6,#FFD54A 45%,#B8860B);box-shadow:0 1px 0 #7A5A0B}
+.wdcoinpile i:nth-child(1){bottom:0}.wdcoinpile i:nth-child(2){bottom:6px;left:1px}.wdcoinpile i:nth-child(3){bottom:12px;left:5px}
+.wdmkb.on{box-shadow:0 0 0 2px var(--wgold),0 0 14px var(--wgold);background:rgba(255,231,163,.12)}
+#wdBuyPv{margin-top:8px}
+#wdBuyPv .wdpay{margin:8px 0}
+#wdBuyPv .wdbtn{width:100%}
+.wdcap .tx{margin:5px 0 0;font-size:11.5px;line-height:1.5;color:#E6DDFF}
+.wdcap .tx .cl{transition:opacity .25s,color .25s,background .25s;border-radius:4px}
+.wdcap .tx.has .cl{opacity:.42}
+.wdcap .tx.has .cl.hi{opacity:1;color:#fff;background:linear-gradient(90deg,color-mix(in srgb,var(--ac) 45%,transparent),color-mix(in srgb,var(--ac) 20%,transparent));box-shadow:0 0 0 1px color-mix(in srgb,var(--ac) 70%,transparent),0 0 12px color-mix(in srgb,var(--ac) 50%,transparent);padding:0 2px;font-weight:900;animation:wdclhi .7s ease-out}
+@keyframes wdclhi{0%{background:#fff;color:#1A0E2E}}
+.wdcap .res{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.wdcap .res .calc{font-size:11px;color:#E8E0FF;font-weight:700;font-family:var(--wcz)}
+.wdcap .res b{font-size:13.5px}
+.wdcap .res.bf{color:#FFE7A3}.wdcap .res.none{color:var(--wmute)}
+.wdover.buff .bf{font-size:11.5px;color:#1A0E2E;background:linear-gradient(110deg,#FFE7A3,#FFB8EC);box-shadow:0 0 16px rgba(255,231,163,.8);white-space:nowrap}
+.wdover.buff .bf.none{background:#3A2E52;color:#CFC4E8;box-shadow:none}
+.wdroll1 .in{flex-direction:row;gap:14px}
+.wdroll1 .one{display:flex;flex-direction:column;align-items:center;gap:4px}
+.wddie.mid2{width:70px;height:80px}.wddie.mid2 .wdd20{width:64px;height:64px}.wddie.mid2::before{top:58px}
+.wdtp-ab{margin-top:8px;padding:9px 11px;border-radius:12px;background:linear-gradient(110deg,rgba(255,231,163,.16),rgba(224,124,255,.1));border:1px solid rgba(255,231,163,.45)}
+.wdtp-ab small{display:block;font-size:10.5px;color:var(--wgold)}.wdtp-ab b{font-size:13px;line-height:1.5}
+.wdtrerel{margin-top:10px;padding:10px;border-radius:12px;background:rgba(255,231,163,.08);border:1px dashed rgba(255,231,163,.4);display:flex;flex-direction:column;gap:6px}
+.wdtrerel b{font-size:12.5px}
+.wdbtn.danger small{color:#FF8FA3}
+.stp{font-style:normal;font-family:var(--wcz);font-weight:900;font-size:11px;color:var(--wgold);margin-left:2px}
+.stp small{font-size:8.5px;color:var(--wmute)}
+.wdmeh .stp{font-size:13px}
+
 </style>
 </head>
 <body>
@@ -2237,7 +2386,7 @@ details.wdrc tr.sig th,details.wdrc tr.sig td{background:rgba(255,201,60,.14)}
    ============================================================ */
 const CFG_URL = "https://gcuddhongxvojabweclh.supabase.co";
 const CFG_KEY = "sb_publishable_E6PxQDZpmdfb6kjRPte3qw_goaYjKZB";
-const APP_VER = "v42";
+const APP_VER = "v47";
 
 const lsGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
 const lsSet = (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} };
@@ -5989,19 +6138,24 @@ const WD_LVT = { 低: [30, 100, 280, 700, 1600], 中: [50, 150, 400, 1000, 2200]
 const WD_LVUP = [0, 100, 500, 2000, 5000];
 const WD_GC = { 低: [150, 300, 600], 中: [200, 400, 800], 高: [250, 500, 1000] };
 const WD_SLOTS = 4, WD_WIN = 3, WD_START = 1000, WD_MAXR = 40;
+let WD_WIN_STARS = 8;   // 0なら「秘宝3つで勝ち」、数字なら「★の合計がこの数以上で勝ち」
 const WD_TRE = [
-  { id: "t1", n: "竜鱗の護符", r: 1, wp: 1500, cb: ["炎"] },
-  { id: "t2", n: "星砂の砂時計", r: 1, wp: 1500, cb: ["水"] },
-  { id: "t3", n: "世界樹の若枝", r: 2, wp: 2500, cb: ["木", "木"] },
-  { id: "t4", n: "海神の三叉槍", r: 2, wp: 2500, cb: ["水", "雷"] },
-  { id: "t5", n: "雷霆の戦鎚", r: 3, wp: 4000, cb: ["雷", "龍"] },
-  { id: "t6", n: "幻影の仮面", r: 3, wp: 4000, cb: ["幻", "水"] },
-  { id: "t7", n: "不死鳥の心臓", r: 4, wp: 6500, cb: ["炎", "炎", "雷"] },
-  { id: "t8", n: "冥府の鍵", r: 4, wp: 6500, cb: ["闇", "闇", "木"] },
-  { id: "t9", n: "創世の石版", r: 5, wp: 10000, cb: ["龍", "天", "水"] },
-  { id: "t10", n: "覇王の聖杯", r: 5, wp: 10000, cb: ["覇", "幻", "炎"] }
+  { id: "t1", n: "竜鱗の護符", r: 1, wp: 3000, cb: ["炎"], ab: "奪われるwpが、1回につき100少なくなる" },
+  { id: "t2", n: "星砂の砂時計", r: 1, wp: 3000, cb: ["水"], ab: "自分の手番の手順1で、ダイスを3つ振って選べる" },
+  { id: "t3", n: "世界樹の若枝", r: 2, wp: 5000, cb: ["木", "木"], ab: "属性付与のコストがいつも−100wp" },
+  { id: "t4", n: "海神の三叉槍", r: 2, wp: 5000, cb: ["水", "雷"], ab: "誰の手番でも、手順1で水か雷が選ばれるたびに+150wp" },
+  { id: "t5", n: "雷霆の戦鎚", r: 3, wp: 8000, cb: ["雷", "龍"], ab: "自分の手番の手順3で、キャラ1体（一番Lvが高い）が1回多く行動できる" },
+  { id: "t6", n: "幻影の仮面", r: 3, wp: 8000, cb: ["幻", "水"], ab: "ほかの人の手番ごとに、自分への干渉を最初の1回だけ防ぐ" },
+  { id: "t7", n: "不死鳥の心臓", r: 4, wp: 13000, cb: ["炎", "雷"], ab: "自分の手番の始めに+500wp" },
+  { id: "t8", n: "冥府の鍵", r: 4, wp: 13000, cb: ["闇", "木"], ab: "秘宝を獲得するとき、必要キューブ1つを好きな属性で払える" },
+  { id: "t9", n: "創世の石版", r: 5, wp: 20000, cb: ["龍", "天"], ab: "動いたキャラがもらうキャラLvのwpが2倍" },
+  { id: "t10", n: "覇王の聖杯", r: 5, wp: 20000, cb: ["覇", "幻"], ab: "自分の手番の始めに、1位の人から所持wpの8%を奪う（干渉）" }
 ];
+const wdHasT = (st, p, id) => !!(st.tre[p] && st.tre[p].some(t => t.id === id));
 const wdTreDef = id => WD_TRE.find(t => t.id === id);
+/* 秘宝の必要キューブ：ゲームごとにランダム（出やすさはダイスの目と同じ）。古い対戦は元の組み合わせ */
+const wdTreCb = (st, id) => (st && st.treCb && st.treCb[id]) || wdTreDef(id).cb;
+function wdRollTreCb(){ const o = {}; WD_TRE.forEach(t => { o[t.id] = t.cb.map(() => WD_DIE[Math.floor(Math.random() * WD_DIE.length)]); }); return o; }
 /* 相性：a が b に強い（wp獲得で2倍） */
 const WD_BEAT = { 水: "炎", 炎: "木", 木: "水", 龍: "覇", 覇: "天", 天: "幻", 幻: "龍" };
 const wdMult = (m, f) => !m ? 1 : (m === "雷" && f === "闇") || (m === "闇" && f === "雷") || WD_BEAT[m] === f ? 2 : WD_BEAT[f] === m ? 0.5 : 1;
@@ -6049,6 +6203,12 @@ function wdHit(x, q){
   x.hr = x.hr || {}; if (q in x.hr) return x.hr[q];
   const sh = st.sh[q] || {};
   let ok = true;
+  if (!sh.shield && wdHasT(st, q, "t6") && (st.mask || {})[q] !== st.no){
+    st.mask = st.mask || {}; st.mask[q] = st.no;
+    wdFx(st, { k: "block", p, q, v: 0, why: "幻影の仮面" });
+    wdL(st, `${wdNm(q)}は幻影の仮面で干渉を防いだ`);
+    x.hr[q] = false; return false;
+  }
   if (sh.shield){
     ok = false;
     let back = 0; if (sh.gTen) back = wdMove(st, p, q, 200);
@@ -6065,6 +6225,7 @@ function wdSteal(x, q, n, why){
   if (!wdHit(x, q)) return 0;
   let amt = Math.min(st.wp[q], Math.max(0, Math.round(n)));
   if (st.sh[q] && st.sh[q].halfSteal) amt = Math.floor(amt / 2);
+  if (wdHasT(st, q, "t1")) amt = Math.max(0, amt - 100);
   if (!amt) return 0;
   st.wp[q] -= amt; st.wp[p] += amt;
   wdFx(st, { k: "steal", p, q, v: amt, why: why || "" });
@@ -6095,6 +6256,7 @@ function wdLvDown(x, cid){
   else wdGain(x.st, x.p, 300, "Lvを下げられない");
 }
 const wdShield = x => { const prev = wdShielded(x.st, x.p) ? 1 : 0; x.st.sh[x.p] = { ...(x.st.sh[x.p] || {}), shield: 1 }; wdFx(x.st, { k: "shield", p: x.p, prev }); };
+const wdBuff = (x, t, hl, none) => wdFx(x.st, { k: "buff", p: x.p, cid: x.c && x.c.id, t, hl, none: none ? 1 : 0 });
 const wdNx = (st, q) => (st.nx[q] = st.nx[q] || {});
 const wdUntil = (st, q) => (st.until[q] = st.until[q] || {});
 /* コピーなど、あとから効果を差し込む */
@@ -6129,6 +6291,7 @@ function wdGrantCost(st, p, c, a){
     if (g.cid && g.cid !== c.id) return; if (g.attrs && !g.attrs.includes(a)) return; if (g.cond && !wdCond(st, p, c, a, g.cond)) return;
     if (g.half) half = true; else sub += (g.amtFor && g.amtFor[a]) || g.amt || 0;
   });
+  if (wdHasT(st, p, "t3")) sub += 100;
   v -= sub; if (half) v /= 2; return wdR(v + 5);
 }
 function wdLvCost(st, p, c, steps = 1){
@@ -6150,8 +6313,8 @@ function wdTrePlan(st, p, id){
   st.ch[p].forEach(c => { if (c.seal) return; c.s.forEach((a, i) => { if (a) pool.push({ cid: c.id, i, a }); }); });
   pool.sort((x, y) => (x.i === 0) - (y.i === 0) || WD_PAY(x.a) - WD_PAY(y.a));
   const used = [], miss = [];
-  t.cb.forEach(a => { const u = pool.find(z => z.a === a && !used.includes(z)); if (u) used.push(u); else miss.push(a); });
-  let free = T && T.p === p ? T.free || 0 : 0, wild = T && T.p === p ? T.wild || 0 : 0, fu = 0, wu = 0;
+  wdTreCb(st, id).forEach(a => { const u = pool.find(z => z.a === a && !used.includes(z)); if (u) used.push(u); else miss.push(a); });
+  let free = T && T.p === p ? T.free || 0 : 0, wild = (T && T.p === p ? T.wild || 0 : 0) + (wdHasT(st, p, "t8") ? 1 : 0), fu = 0, wu = 0;
   for (const a of miss){
     if (free > 0){ free--; fu++; continue; }
     const u = wild > 0 && pool.find(z => !used.includes(z));
@@ -6168,12 +6331,12 @@ const pctW = (x, pct, cap) => G(x, Math.min(cap || Infinity, wdR(x.st.wp[x.p] * 
 const allSteal = (x, f) => wdOthers(x.st, x.p).forEach(q => f(q));
 const seal2 = (n, cond) => [qOC("行動封じするキャラ", (x, c) => !c.seal), qOC("2体目に行動封じするキャラ", (x, c) => cond(x) && !c.seal && c.id !== x.ch[0])];
 const WD_CH = [
-  { n: "フェニックス", t: "中", sig: "炎", it: "固定", cost: 800, th: "再生", im: "灰から蘇る不死鳥", desc: "自分の「無」の枠や、秘宝に払ったキューブが多いほど強くなります。", e: {
+  { n: "フェニックス", t: "中", sig: "炎", it: "固定", cost: 800, th: "再生", im: "灰から蘇る不死鳥", desc: "自分の「無」の枠や、秘宝に払ったキューブが多いほど強くなる。", e: {
     無: { tx: "+20wp。秘宝にはめたキューブ1つにつき+10wp", f: x => G(x, 20 + 10 * wdTreCubes(x.st, x.p)) },
     炎: { tx: "+300wp。このキャラの無の枠1つにつき+100wp", f: x => G(x, 300 + 100 * wdNull(x.c)) },
     水: { tx: "+Lv×40wp。秘宝にはめたキューブ1つにつき+30wp", f: x => G(x, Lv(x) * 40 + 30 * wdTreCubes(x.st, x.p)) },
-    木: { tx: "このターン、このキャラへの属性付与コスト−100wp（無の枠が2つ以上なら−200wp）", f: x => wdGd(x, { cid: x.c.id, amt: wdNull(x.c) >= 2 ? 200 : 100 }) },
-    雷: { tx: "このキャラは手順3を2回行える。そのうち1回が属性付与なら、付与コスト−100wp", f: x => { x.st.T.extra[x.c.id] = (x.st.T.extra[x.c.id] || 0) + 1; wdGd(x, { cid: x.c.id, amt: 100 }); } },
+    木: { bf: "付与コスト割引", bh: "付与コスト", tx: "このターン、このキャラへの属性付与コスト−100wp（無の枠が2つ以上なら−200wp）", f: x => wdGd(x, { cid: x.c.id, amt: wdNull(x.c) >= 2 ? 200 : 100 }) },
+    雷: { bf: "行動+1・付与−100", bh: "手順3を2回", tx: "このキャラは手順3を2回行える。そのうち1回が属性付与なら、付与コスト−100wp", f: x => { x.st.T.extra[x.c.id] = (x.st.T.extra[x.c.id] || 0) + 1; wdGd(x, { cid: x.c.id, amt: 100 }); } },
     闇: { tx: "秘宝にはめたキューブ1つを、このキャラの無の枠に戻せる（秘宝は持ったまま）", need: [{ q: "このキャラに戻すキューブ", o: x => wdNull(x.c) ? x.st.tre[x.p].flatMap((t, ti) => t.cubes.map((a, j) => ({ v: `${ti}:${j}`, l: `${wdTreDef(t.id).n}の${a}` }))) : [] }],
       f: x => { const v = x.ch[0]; if (!v) return; const [ti, j] = v.split(":").map(Number), t = x.st.tre[x.p][ti]; if (!t) return; const a = t.cubes.splice(j, 1)[0]; const s2 = wdPut(x.c, a); wdFx(x.st, { k: "back", p: x.p, cid: x.c.id, a, ti, j, s: s2 }); wdL(x.st, `${wdNm(x.p)}は秘宝の${a}キューブをフェニックスに戻した`); } },
     龍: { tx: "他の全員から100wpずつ奪う。このキャラの無の枠1つにつき、1人あたり+50wp多く奪う", f: x => allSteal(x, q => wdSteal(x, q, 100 + 50 * wdNull(x.c))) },
@@ -6181,23 +6344,23 @@ const WD_CH = [
     天: { tx: "前の自分の手番から今までに干渉を受けていたら+600wp。次の自分の手番まで干渉無効", f: x => { if ((x.st.hitBy[x.p] || []).length) G(x, 600); wdShield(x); } },
     幻: { tx: "相手キャラ1体のサブ属性キューブ1つを無に戻す。さらに+200wp", need: [qOCube("無に戻すキューブ")], f: x => { wdRmCube(x, x.ch[0]); G(x, 200); } }
   } },
-  { n: "リヴァイアサン", t: "高", sig: "水", it: "割合", cost: 1300, th: "深海の財", im: "深海の王", desc: "自分の所持wpの何%、で増えます。お金持ちほど強くなります。", e: {
+  { n: "リヴァイアサン", t: "高", sig: "水", it: "割合", cost: 1300, th: "深海の財", im: "深海の王", desc: "自分の所持wpの何%、で増える。お金持ちほど強くなる。", e: {
     無: { tx: "所持wpの1%（最大50wp）", f: x => pctW(x, 1, 50) },
     炎: { tx: "所持wpの5%（最大400wp）", f: x => pctW(x, 5, 400) },
     水: { tx: "所持wpの12%（最大700wp）", f: x => pctW(x, 12, 700) },
-    木: { tx: "所持wpが3000以上なら、このターンLv上げコスト−300wp。3000未満なら+150wp", f: x => x.st.wp[x.p] >= 3000 ? wdLd(x, { amt: 300 }) : G(x, 150) },
+    木: { tx: "所持wpが3000以上なら、このターンLv上げコスト−300wp。3000未満なら+150wp", f: x => { if (x.st.wp[x.p] >= 3000){ wdLd(x, { amt: 300 }); wdBuff(x, "Lv上げ−300", "Lv上げコスト"); } else G(x, 150); } },
     雷: { tx: "所持wpの8%（最大600wp）。所持wpが1位ならさらに+200wp", f: x => { const top = wdIsTop(x.st, x.p); pctW(x, 8, 600); if (top) G(x, 200); } },
-    闇: { tx: "所持wpが1位なら、このターンの手順4で秘宝の必要キューブ1つを免除", f: x => { if (wdIsTop(x.st, x.p)) x.st.T.free = (x.st.T.free || 0) + 1; } },
+    闇: { tx: "所持wpが1位なら、このターンの手順4で秘宝の必要キューブ1つを免除", f: x => { if (wdIsTop(x.st, x.p)){ x.st.T.free = (x.st.T.free || 0) + 1; wdBuff(x, "秘宝のキューブ1つ免除", "免除"); } else wdBuff(x, "1位ではないので効果なし", "1位なら", 1); } },
     龍: { tx: "1人を選び、所持wpの10%を奪う。自分の所持wpの方が少なければ15%", need: [qPl("wpを奪う相手")], f: x => { const q = x.ch[0]; if (q) wdStealPct(x, q, x.st.wp[x.p] < x.st.wp[q] ? 15 : 10); } },
     覇: { tx: "自分より所持wpが少ない人全員から、所持wpの5%ずつ奪う", f: x => { const me0 = x.st.wp[x.p]; allSteal(x, q => { if (x.st.wp[q] < me0) wdStealPct(x, q, 5); }); } },
     天: { tx: "次の自分の手番まで干渉無効。さらに所持wpの5%（最大500wp）", f: x => { wdShield(x); pctW(x, 5, 500); } },
     幻: { tx: "1人を選ぶ。その人が次の自分の手番までに手順1でもらうwpは半分", need: [qPl("wpを半分にする相手")], f: x => { const q = x.ch[0]; if (q && wdHit(x, q)){ wdUntil(x.st, q).halfPay = 1; wdFx(x.st, { k: "curse", p: x.p, q, why: "手順1のwp半分" }); } } }
   } },
-  { n: "ドライアド", t: "低", sig: "木", it: "固定", cost: 400, th: "芽吹き", im: "森の精霊", desc: "自分の全キャラのキューブの数が多いほど強くなります。", e: {
+  { n: "ドライアド", t: "低", sig: "木", it: "固定", cost: 400, th: "芽吹き", im: "森の精霊", desc: "自分の全キャラのキューブの数が多いほど強くなる。", e: {
     無: { tx: "自分のキューブ1つにつき+10wp", f: x => G(x, 10 * wdMyCubes(x.st, x.p)) },
     炎: { tx: "+100wp。自分のキューブ1つにつき+30wp", f: x => G(x, 100 + 30 * wdMyCubes(x.st, x.p)) },
     水: { tx: "自分の木キューブ1つにつき+80wp", f: x => G(x, 80 * wdMyCubes(x.st, x.p, "木")) },
-    木: { tx: "このターン、自分の全キャラの属性付与コストが半額", f: x => wdGd(x, { half: 1 }) },
+    木: { bf: "付与コスト半額", bh: "半額", tx: "このターン、自分の全キャラの属性付与コストが半額", f: x => wdGd(x, { half: 1 }) },
     雷: { tx: "自分の他のキャラ1体の無の枠に、炎・水・木のどれかを1つ無料で付ける", need: [qMyC("無料で属性を付けるキャラ", (x, c) => c.id !== x.c.id && wdNull(c) > 0), qAt("付ける属性", ["炎", "水", "木"])],
       f: x => { const f = x.ch[0] && wdFind(x.st, x.ch[0]); if (f && x.ch[1]){ const i = wdPut(f.c, x.ch[1]); if (i >= 0) wdFx(x.st, { k: "grant", p: x.p, cid: f.c.id, a: x.ch[1], s: i, from: null }); } } },
     闇: { tx: "自分のキューブ1つにつき+50wp", f: x => G(x, 50 * wdMyCubes(x.st, x.p)) },
@@ -6206,23 +6369,23 @@ const WD_CH = [
     天: { tx: "次の自分の手番まで干渉無効。自分の全キャラの無の枠1つにつき+100wp", f: x => { wdShield(x); G(x, 100 * x.st.ch[x.p].reduce((n, c) => n + wdNull(c), 0)); } },
     幻: { tx: "相手キャラ1体のサブ属性キューブ1つを無に戻し、同じ属性を自分のキャラの無の枠に無料で付ける", need: [qOCube("奪うキューブ")], f: x => { const a = wdRmCube(x, x.ch[0]); if (a){ const u = wdPutAny(x.st, x.p, a, x.c); if (u) wdFx(x.st, { k: "grant", p: x.p, cid: u.c.id, a, s: u.i, from: null, from2: 1 }); } } }
   } },
-  { n: "サンダーバード", t: "中", sig: "雷", it: "割合", cost: 900, th: "連鎖", im: "嵐を呼ぶ巨鳥", desc: "追加でダイスを振り、当たると効果が続きます。", e: {
+  { n: "サンダーバード", t: "中", sig: "雷", it: "割合", cost: 900, th: "連鎖", im: "嵐を呼ぶ巨鳥", desc: "追加でダイスを振り、当たると効果が続く。", e: {
     無: { tx: "ダイスを1つ振る。雷・闇なら+60wp、それ以外は+10wp", f: x => { const d = wdRoll(); wdFx(x.st, { k: "die", p: x.p, a: d }); G(x, d === "雷" || d === "闇" ? 60 : 10); } },
     炎: { tx: "ダイスを1つ振る。炎・雷なら+250wpしてもう一度振る（最大3回）。それ以外は+80wp", f: x => { for (let i = 0; i < 3; i++){ const d = wdRoll(); wdFx(x.st, { k: "die", p: x.p, a: d }); if (d === "炎" || d === "雷") G(x, 250); else { G(x, 80); break; } } } },
     水: { tx: "+80wp。手順1で選ばなかった方の目が、このキャラの持つ属性なら+150wp", f: x => { G(x, 80); if ((x.st.T.unused || []).some(a => x.c.s.includes(a))) G(x, 150); } },
-    木: { tx: "このターン、このキャラのLv上げを2段階まとめて行える（コストは2段階分の合計）", f: x => { x.st.T.lv2[x.c.id] = 1; } },
+    木: { bf: "Lv上げ2段階OK", bh: "2段階", tx: "このターン、このキャラのLv上げを2段階まとめて行える（コストは2段階分の合計）", f: x => { x.st.T.lv2[x.c.id] = 1; } },
     雷: { tx: "+200wp。ダイスを1つ振り、雷・闇ならこの効果をもう一度（最大3回）", f: x => { for (let i = 0; i < 3; i++){ G(x, 200); if (i === 2) break; const d = wdRoll(); wdFx(x.st, { k: "die", p: x.p, a: d }); if (d !== "雷" && d !== "闇") break; } } },
     闇: { tx: "手順1で選ばなかった方の目でも、自分だけ手順1のwpをもらう。さらに+150wp", f: x => { const T = x.st.T; let best = 0; (T.unused || []).forEach(a => { best = Math.max(best, wdPayFor(x.st, x.p, a)); }); G(x, best + 150); } },
     龍: { tx: "ダイスを1つ振る。雷・闇なら他の全員から、それ以外なら1人から、所持wpの6%ずつ奪う", need: [qPl("雷・闇以外が出たときに奪う相手")], f: x => { const d = wdRoll(); wdFx(x.st, { k: "die", p: x.p, a: d }); if (d === "雷" || d === "闇") allSteal(x, q => wdStealPct(x, q, 6)); else if (x.ch[0]) wdStealPct(x, x.ch[0], 6); } },
     覇: { tx: "1位の人から所持wpの8%を奪う。さらにダイスを1つ振り、雷ならその人のキャラ1体に行動封じ", f: x => { const L = wdLeader(x.st, x.p); wdStealPct(x, L, 8); const d = wdRoll(); wdFx(x.st, { k: "die", p: x.p, a: d }); if (d === "雷"){ const c = x.st.ch[L].filter(c2 => !c2.seal).sort((a, b) => wdLvWp(b) - wdLvWp(a))[0]; if (c) wdSeal(x, c.id); } } },
-    天: { tx: "このキャラは手順3を3回行える", f: x => { x.st.T.extra[x.c.id] = (x.st.T.extra[x.c.id] || 0) + 2; } },
+    天: { bf: "行動+2", bh: "3回", tx: "このキャラは手順3を3回行える", f: x => { x.st.T.extra[x.c.id] = (x.st.T.extra[x.c.id] || 0) + 2; } },
     幻: { tx: "相手1人の次の手番、手順1のダイスは1つだけ。さらにダイスを1つ振り、幻ならもう1人にも", need: [qPl("ダイスを1つにする相手")], f: x => { const q = x.ch[0]; if (q && wdHit(x, q)){ wdNx(x.st, q).oneDie = 1; wdFx(x.st, { k: "curse", p: x.p, q, why: "ダイス1つ" }); } const d = wdRoll(); wdFx(x.st, { k: "die", p: x.p, a: d }); if (d === "幻"){ const r = wdOthers(x.st, x.p).filter(z => z !== q).sort((a, b) => x.st.wp[b] - x.st.wp[a])[0]; if (r && wdHit(x, r)){ wdNx(x.st, r).oneDie = 1; wdFx(x.st, { k: "curse", p: x.p, q: r, why: "ダイス1つ" }); } } } }
   } },
-  { n: "ヴァンパイア", t: "中", sig: "闇", it: "割合", cost: 900, th: "吸収", im: "夜の貴族", desc: "他の人が持つキューブの数が多いほど稼げます（他人の成長を養分にする）。", e: {
+  { n: "ヴァンパイア", t: "中", sig: "闇", it: "割合", cost: 900, th: "吸収", im: "夜の貴族", desc: "他の人が持つキューブの数が多いほど稼げる（他人の成長を養分にする）。", e: {
     無: { tx: "他の人全員のキューブの合計×5wp", f: x => G(x, 5 * wdOthers(x.st, x.p).reduce((n, q) => n + wdMyCubes(x.st, q), 0)) },
     炎: { tx: "他の人の炎キューブ1つにつき+60wp", f: x => G(x, 60 * wdOthers(x.st, x.p).reduce((n, q) => n + wdMyCubes(x.st, q, "炎"), 0)) },
     水: { tx: "他の人の水キューブ1つにつき+60wp", f: x => G(x, 60 * wdOthers(x.st, x.p).reduce((n, q) => n + wdMyCubes(x.st, q, "水"), 0)) },
-    木: { tx: "このターン、他の人が持っている属性を付与するなら、付与コスト−150wp", f: x => wdGd(x, { amt: 150, cond: "othersHave" }) },
+    木: { bf: "付与コスト−150", bh: "付与コスト", tx: "このターン、他の人が持っている属性を付与するなら、付与コスト−150wp", f: x => wdGd(x, { amt: 150, cond: "othersHave" }) },
     雷: { tx: "他の人全員のキューブの合計×15wp（最大500wp）", f: x => G(x, Math.min(500, 15 * wdOthers(x.st, x.p).reduce((n, q) => n + wdMyCubes(x.st, q), 0))) },
     闇: { tx: "他の人全員のキューブの合計×25wp（最大800wp）", f: x => G(x, Math.min(800, 25 * wdOthers(x.st, x.p).reduce((n, q) => n + wdMyCubes(x.st, q), 0))) },
     龍: { tx: "キューブを一番多く持つ人から、所持wpの10%を奪う", f: x => { const q = wdOthers(x.st, x.p).reduce((b, r) => wdMyCubes(x.st, r) > wdMyCubes(x.st, b) ? r : b); wdStealPct(x, q, 10); } },
@@ -6230,47 +6393,47 @@ const WD_CH = [
     天: { tx: "次の自分の手番まで干渉無効。このターンの手順1で他の人がもらったwpの合計の半分をもらう", f: x => { wdShield(x); G(x, wdR(wdOthers(x.st, x.p).reduce((n, q) => n + (x.st.T.paid[q] || 0), 0) / 2)); } },
     幻: { tx: "相手キャラ1体の、いま出ている属性の効果をコピーして使う", cp: 1, need: [qCopy("コピーする効果")], f: x => wdCopyRun(x, x.ch[0]) }
   } },
-  { n: "バハムート", t: "高", sig: "龍", it: "固定", cost: 1500, th: "竜王", im: "竜の王", desc: "Lvに比例する効果ばかりです。Lvを上げきると最強の稼ぎ頭になります。", e: {
+  { n: "バハムート", t: "高", sig: "龍", it: "固定", cost: 1500, th: "竜王", im: "竜の王", desc: "Lvに比例する効果ばかり。Lvを上げきると最強の稼ぎ頭になる。", e: {
     無: { tx: "+Lv×10wp", f: x => G(x, Lv(x) * 10) },
     炎: { tx: "+Lv×60wp", f: x => G(x, Lv(x) * 60) },
     水: { tx: "+Lv×40wp。Lv3以上なら+100wp", f: x => G(x, Lv(x) * 40 + (Lv(x) >= 3 ? 100 : 0)) },
-    木: { tx: "このターン、このキャラのLv上げコスト−Lv×100wp", f: x => wdLd(x, { cid: x.c.id, amt: Lv(x) * 100 }) },
+    木: { bf: "Lv上げコスト割引", bh: "Lv上げコスト", tx: "このターン、このキャラのLv上げコスト−Lv×100wp", f: x => wdLd(x, { cid: x.c.id, amt: Lv(x) * 100 }) },
     雷: { tx: "+Lv×90wp", f: x => G(x, Lv(x) * 90) },
-    闇: { tx: "このターン、このキャラのLv分のwpが2倍", f: x => { x.st.T.lvx2[x.c.id] = 1; } },
+    闇: { bf: "Lvのwp×2", bh: "2倍", tx: "このターン、このキャラのキャラLvのwpが2倍", f: x => { x.st.T.lvx2[x.c.id] = 1; } },
     龍: { tx: "他の全員から、Lv×80wpずつ奪う", f: x => allSteal(x, q => wdSteal(x, q, Lv(x) * 80)) },
     覇: { tx: "このキャラよりLvが低い相手キャラ1体に行動封じ。さらに+Lv×50wp", need: [qOC("行動封じするキャラ", (x, c) => !c.seal && c.lv < x.c.lv)], f: x => { wdSeal(x, x.ch[0]); G(x, Lv(x) * 50); } },
     天: { tx: "+Lv×120wp", f: x => G(x, Lv(x) * 120) },
     幻: { tx: "相手キャラ1体のLvを1下げる（下げられなければ+300wp）", need: [qOC("Lvを下げるキャラ")], f: x => wdLvDown(x, x.ch[0]) }
   } },
-  { n: "ナイトメア", t: "中", sig: "幻", it: "割合", cost: 800, th: "悪夢", im: "悪夢の黒馬", desc: "ダイスの目を操ります。他の人のダイスにも手を出します。", e: {
+  { n: "ナイトメア", t: "中", sig: "幻", it: "割合", cost: 800, th: "悪夢", im: "悪夢の黒馬", desc: "ダイスの目を操る。他の人のダイスにも手を出す。", e: {
     無: { tx: "手順1で2つのダイスが同じ目なら+80wp、違えば+15wp", f: x => { const d = x.st.T.dice || []; G(x, d.length >= 2 && d[0] === d[1] ? 80 : 15); } },
     炎: { tx: "ダイスを2つ振り、好きな方の目で判定。炎・水・木なら+250wp、それ以外は+80wp", f: x => { const a = wdRoll(), b = wdRoll(); wdFx(x.st, { k: "die", p: x.p, a }); wdFx(x.st, { k: "die", p: x.p, a: b }); G(x, [a, b].some(d => ["炎", "水", "木"].includes(d)) ? 250 : 80); } },
-    水: { tx: "+120wp。次の自分の手番、手順1のダイスの1つを好きな目に置き、もう1つだけ振る", f: x => { G(x, 120); wdNx(x.st, x.p).anyFace = 1; } },
-    木: { tx: "このターン、属性付与のコスト−150wp（付けられるのは手順1で出た2つの目のどちらか）", f: x => wdGd(x, { amt: 150, attrs: (x.st.T.dice || []).slice() }) },
-    雷: { tx: "手順1で選ばなかった方の目でも、自分のキャラがその属性の効果を行う", f: x => { if (x.act.alt) return; const T = x.st.T; const b = (T.unused || [])[0]; if (!b) return; const adds = []; x.st.ch[x.p].forEach(c => { if (c.seal) return; c.s.forEach(a => { if (a === b) adds.push({ cid: c.id, p: x.p, k: c.k, a: b, alt: 1 }); }); if (c.s.includes(b)) T.acting[c.id] = 1; }); T.q.unshift(...adds); wdL(x.st, `ナイトメア：もう1つの目「${b}」でも効果を行う`); } },
-    闇: { tx: "+300wp。次の自分の手番、手順1のダイスを3つ振って選べる", f: x => { G(x, 300); wdNx(x.st, x.p).three = 1; } },
+    水: { bf: "次の手番：好きな目", bh: "次の自分の手番", tx: "+120wp。次の自分の手番、手順1のダイスの1つを好きな目に置き、もう1つだけ振る", f: x => { G(x, 120); wdNx(x.st, x.p).anyFace = 1; } },
+    木: { bf: "付与コスト−150", bh: "付与のコスト", tx: "このターン、属性付与のコスト−150wp（付けられるのは手順1で出た2つの目のどちらか）", f: x => wdGd(x, { amt: 150, attrs: (x.st.T.dice || []).slice() }) },
+    雷: { bf: "もう1つの目でも行動", bh: "選ばなかった", tx: "手順1で選ばなかった方の目でも、自分のキャラがその属性の効果を行う", f: x => { if (x.act.alt) return; const T = x.st.T; const b = (T.unused || [])[0]; if (!b) return; const adds = []; x.st.ch[x.p].forEach(c => { if (c.seal) return; c.s.forEach(a => { if (a === b) adds.push({ cid: c.id, p: x.p, k: c.k, a: b, alt: 1 }); }); if (c.s.includes(b)) T.acting[c.id] = 1; }); T.q.unshift(...adds); wdL(x.st, `ナイトメア：もう1つの目「${b}」でも効果を行う`); } },
+    闇: { bf: "次の手番：ダイス3つ", bh: "ダイスを3つ", tx: "+300wp。次の自分の手番、手順1のダイスを3つ振って選べる", f: x => { G(x, 300); wdNx(x.st, x.p).three = 1; } },
     龍: { tx: "1人を選び、所持wpの10%を奪う", need: [qPl("wpを奪う相手")], f: x => { if (x.ch[0]) wdStealPct(x, x.ch[0], 10); } },
     覇: { tx: "他の人全員の次の手番（1巡だけ）、手順1でどちらの目を使うかは、あなたが選ぶ", f: x => allSteal(x, q => { if (wdHit(x, q)){ wdNx(x.st, q).chooser = x.p; wdFx(x.st, { k: "curse", p: x.p, q, why: "目を選ばれる" }); } }) },
     天: { tx: "次の自分の手番まで干渉無効。ダイスを1つ振り、出た属性の自分のキューブ1つにつき+100wp", f: x => { wdShield(x); const d = wdRoll(); wdFx(x.st, { k: "die", p: x.p, a: d }); G(x, 100 * wdMyCubes(x.st, x.p, d)); } },
     幻: { tx: "他の人全員の次の手番、手順1のダイスは1つだけ", f: x => allSteal(x, q => { if (wdHit(x, q)){ wdNx(x.st, q).oneDie = 1; wdFx(x.st, { k: "curse", p: x.p, q, why: "ダイス1つ" }); } }) }
   } },
-  { n: "セラフィム", t: "高", sig: "天", it: "固定", cost: 1400, th: "祝福", im: "六翼の熾天使", desc: "秘宝に関わる効果ばかりです。", e: {
+  { n: "セラフィム", t: "高", sig: "天", it: "固定", cost: 1400, th: "祝福", im: "六翼の熾天使", desc: "秘宝に関わる効果ばかり。", e: {
     無: { tx: "秘宝を1つ以上持っていれば+40wp、なければ+20wp", f: x => G(x, wdTreN(x.st, x.p) ? 40 : 20) },
-    炎: { tx: "+150wp。このターンに秘宝を獲得したら、さらに+300wp", f: x => { G(x, 150); x.st.T.treOnce = (x.st.T.treOnce || 0) + 300; } },
-    水: { tx: "このターンの手順4で、秘宝の必要wp−400", f: x => x.st.T.td.push({ amt: 400 }) },
-    木: { tx: "このターンの手順4で、★1・★2の秘宝の必要wp−600", f: x => x.st.T.td.push({ amt: 600, r: [1, 2] }) },
-    雷: { tx: "このターン、秘宝を1つ獲得するたびに+400wp", f: x => { x.st.T.treEach = (x.st.T.treEach || 0) + 400; } },
-    闇: { tx: "このターンの手順4で、秘宝の必要キューブ1つを好きな属性として払える", f: x => { x.st.T.wild = (x.st.T.wild || 0) + 1; } },
+    炎: { bf: "秘宝獲得で+300", bh: "獲得したら", tx: "+150wp。このターンに秘宝を獲得したら、さらに+300wp", f: x => { G(x, 150); x.st.T.treOnce = (x.st.T.treOnce || 0) + 300; } },
+    水: { bf: "秘宝−400wp", bh: "必要wp", tx: "このターンの手順4で、秘宝の必要wp−400", f: x => x.st.T.td.push({ amt: 400 }) },
+    木: { bf: "★1・★2の秘宝−600wp", bh: "必要wp", tx: "このターンの手順4で、★1・★2の秘宝の必要wp−600", f: x => x.st.T.td.push({ amt: 600, r: [1, 2] }) },
+    雷: { bf: "秘宝1つごとに+400", bh: "獲得するたびに", tx: "このターン、秘宝を1つ獲得するたびに+400wp", f: x => { x.st.T.treEach = (x.st.T.treEach || 0) + 400; } },
+    闇: { bf: "キューブ1つ自由", bh: "好きな属性", tx: "このターンの手順4で、秘宝の必要キューブ1つを好きな属性として払える", f: x => { x.st.T.wild = (x.st.T.wild || 0) + 1; } },
     龍: { tx: "秘宝を持つ他の人全員から、その人の秘宝1つにつき200wpずつ奪う", f: x => allSteal(x, q => { const n = wdTreN(x.st, q); if (n) wdSteal(x, q, 200 * n); }) },
     覇: { tx: "1人を選ぶ。その人は次の手番、秘宝を獲得できない。さらに+300wp", need: [qPl("秘宝を取れなくする相手")], f: x => { const q = x.ch[0]; if (q && wdHit(x, q)){ wdNx(x.st, q).noTre = 1; wdFx(x.st, { k: "curse", p: x.p, q, why: "秘宝禁止" }); } G(x, 300); } },
-    天: { tx: "このターンの手順4で、秘宝の必要wp−1500。次の自分の手番まで干渉無効", f: x => { x.st.T.td.push({ amt: 1500 }); wdShield(x); } },
+    天: { bf: "秘宝−1500wp", bh: "必要wp", tx: "このターンの手順4で、秘宝の必要wp−1500。次の自分の手番まで干渉無効", f: x => { x.st.T.td.push({ amt: 1500 }); wdShield(x); } },
     幻: { tx: "相手キャラ1体のサブ属性キューブ1つを無に戻す", need: [qOCube("無に戻すキューブ")], f: x => wdRmCube(x, x.ch[0]) }
   } },
-  { n: "ベヒモス", t: "高", sig: "覇", it: "割合", cost: 1500, th: "重鎮", im: "大地を統べる巨獣", desc: "持っている秘宝が多いほど強くなる、終盤型です。", e: {
+  { n: "ベヒモス", t: "高", sig: "覇", it: "割合", cost: 1500, th: "重鎮", im: "大地を統べる巨獣", desc: "持っている秘宝が多いほど強くなる、終盤型。", e: {
     無: { tx: "秘宝1つにつき+30wp（なければ+15wp）", f: x => { const t = wdTreN(x.st, x.p); G(x, t ? 30 * t : 15); } },
     炎: { tx: "+150wp。秘宝1つにつき+150wp", f: x => G(x, 150 + 150 * wdTreN(x.st, x.p)) },
     水: { tx: "+Lv×40wp。秘宝を持っていれば、さらに+Lv×40wp", f: x => G(x, Lv(x) * 40 * (wdTreN(x.st, x.p) ? 2 : 1)) },
-    木: { tx: "このターン、Lv上げコスト−200wp（秘宝を持っていれば−400wp）", f: x => wdLd(x, { amt: wdTreN(x.st, x.p) ? 400 : 200 }) },
+    木: { bf: "Lv上げコスト割引", bh: "Lv上げコスト", tx: "このターン、Lv上げコスト−200wp（秘宝を持っていれば−400wp）", f: x => wdLd(x, { amt: wdTreN(x.st, x.p) ? 400 : 200 }) },
     雷: { tx: "秘宝1つにつき+300wp（なければ+150wp）", f: x => { const t = wdTreN(x.st, x.p); G(x, t ? 300 * t : 150); } },
     闇: { tx: "自分の枠が1つ以上空いていれば+400wp、なければ+150wp", f: x => G(x, wdFreeSlots(x.st, x.p) > 0 ? 400 : 150) },
     龍: { tx: "自分より秘宝が少ない人全員から、所持wpの6%ずつ奪う", f: x => { const t = wdTreN(x.st, x.p); allSteal(x, q => { if (wdTreN(x.st, q) < t) wdStealPct(x, q, 6); }); } },
@@ -6278,11 +6441,11 @@ const WD_CH = [
     天: { tx: "次の自分の手番まで干渉無効。秘宝1つにつき+400wp", f: x => { wdShield(x); G(x, 400 * wdTreN(x.st, x.p)); } },
     幻: { tx: "1人を選ぶ。その人の次の手番、秘宝の必要wpは+1000", need: [qPl("秘宝を高くする相手")], f: x => { const q = x.ch[0]; if (q && wdHit(x, q)){ wdNx(x.st, q).tax = 1000; wdFx(x.st, { k: "curse", p: x.p, q, why: "秘宝+1000wp" }); } } }
   } },
-  { n: "ケルベロス", t: "中", sig: "炎", it: "割合", cost: 700, th: "三つ首", im: "冥府の番犬", desc: "同じ属性を3つそろえると、爆発的に強くなります。", e: {
+  { n: "ケルベロス", t: "中", sig: "炎", it: "割合", cost: 700, th: "三つ首", im: "冥府の番犬", desc: "同じ属性を3つそろえると、爆発的に強くなる。", e: {
     無: { tx: "+30wp", f: x => G(x, 30) },
     炎: { tx: "このキャラの炎キューブ1つにつき+200wp。炎が3つそろっていれば合計が2倍", f: x => { const n = x.c.s.filter(a => a === "炎").length; G(x, 200 * n * (n === 3 ? 2 : 1)); } },
     水: { tx: "このキャラに同じ属性が2つ以上あれば+250wp、なければ+100wp", f: x => G(x, wdMaxSame(wdCubes(x.c)) >= 2 ? 250 : 100) },
-    木: { tx: "このターン、このキャラに既にある属性と同じ属性を付与するなら、付与コスト半額", f: x => wdGd(x, { cid: x.c.id, half: 1, cond: "sameOnChar" }) },
+    木: { bf: "同じ属性の付与が半額", bh: "半額", tx: "このターン、このキャラに既にある属性と同じ属性を付与するなら、付与コスト半額", f: x => wdGd(x, { cid: x.c.id, half: 1, cond: "sameOnChar" }) },
     雷: { tx: "自分の全キャラで、一番多い属性のキューブ数×120wp", f: x => G(x, 120 * wdMaxSame(wdAllCubes(x.st, x.p))) },
     闇: { tx: "このキャラの3つの枠がすべて同じ属性なら+800wp、それ以外は+200wp", f: x => G(x, x.c.s[0] && x.c.s.every(a => a === x.c.s[0]) ? 800 : 200) },
     龍: { tx: "1人を選び、所持wpの10%を奪う。このキャラが同じ属性3つなら、3人から奪う", need: [{ ...qPl("wpを奪う相手"), o: x => x.c.s[0] && x.c.s.every(a => a === x.c.s[0]) ? [] : qPl("").o(x) }], f: x => { if (x.c.s[0] && x.c.s.every(a => a === x.c.s[0])) wdOthers(x.st, x.p).sort((a, b) => x.st.wp[b] - x.st.wp[a]).slice(0, 3).forEach(q => wdStealPct(x, q, 10)); else if (x.ch[0]) wdStealPct(x, x.ch[0], 10); } },
@@ -6290,11 +6453,11 @@ const WD_CH = [
     天: { tx: "次の自分の手番まで干渉無効。さらに+300wp", f: x => { wdShield(x); G(x, 300); } },
     幻: { tx: "相手キャラ1体の、いま出ている属性の効果をコピーして使う", cp: 1, need: [qCopy("コピーする効果")], f: x => wdCopyRun(x, x.ch[0]) }
   } },
-  { n: "クラーケン", t: "中", sig: "水", it: "固定", cost: 700, th: "触手", im: "海の大怪物", desc: "参加人数や、他の人のキャラの数が多いほど稼げます。", e: {
+  { n: "クラーケン", t: "中", sig: "水", it: "固定", cost: 700, th: "触手", im: "海の大怪物", desc: "参加人数や、他の人のキャラの数が多いほど稼げる。", e: {
     無: { tx: "他の人1人につき+10wp", f: x => G(x, 10 * wdOthers(x.st, x.p).length) },
     炎: { tx: "他の人のキャラ1体につき+40wp", f: x => G(x, 40 * wdOthers(x.st, x.p).reduce((n, q) => n + x.st.ch[q].length, 0)) },
     水: { tx: "他の人1人につき+100wp", f: x => G(x, 100 * wdOthers(x.st, x.p).length) },
-    木: { tx: "このターン、キャラ獲得のコスト−200wp", f: x => { x.st.T.buyDisc = (x.st.T.buyDisc || 0) + 200; } },
+    木: { bf: "キャラ獲得−200", bh: "キャラ獲得", tx: "このターン、キャラ獲得のコスト−200wp", f: x => { x.st.T.buyDisc = (x.st.T.buyDisc || 0) + 200; } },
     雷: { tx: "他の人全員のキャラの数×60wp", f: x => G(x, 60 * wdOthers(x.st, x.p).reduce((n, q) => n + x.st.ch[q].length, 0)) },
     闇: { tx: "場の3枚のうち1体の、いま出ている属性の効果を使う", cp: 1, need: [{ q: "効果を使う場のキャラ", o: x => x.st.mk.filter(k => k != null).map(k => ({ v: String(k), l: `${WD_CH[k].n}の「${x.a}」：${WD_CH[k].e[x.a].tx}` })) }],
       f: x => { const k = x.ch[0] == null ? null : +x.ch[0]; if (k == null) return; if (WD_CH[k].e[x.a].cp || x.act.copy){ G(x, 200); return; } wdL(x.st, `${wdNm(x.p)}は場の${WD_CH[k].n}の「${x.a}」を使う`); wdPush(x, k, x.a, { copy: 1 }); } },
@@ -6303,48 +6466,48 @@ const WD_CH = [
     天: { tx: "次の自分の手番まで干渉無効。他の人1人につき+100wp", f: x => { wdShield(x); G(x, 100 * wdOthers(x.st, x.p).length); } },
     幻: { tx: "相手2人を選び、それぞれのキャラ1体のLvを1下げる", need: [qOC("Lvを下げるキャラ（1人目）"), qOC("Lvを下げるキャラ（2人目）", (x, c, r) => { const f = x.ch[0] && wdFind(x.st, x.ch[0]); return !f || f.p !== r; })], f: x => { wdLvDown(x, x.ch[0]); wdLvDown(x, x.ch[1]); } }
   } },
-  { n: "ゴーレム", t: "低", sig: "木", it: "割合", cost: 350, th: "堅牢", im: "石の巨人", desc: "Lv上げのコストを下げる効果ばかりです。ゆっくり確実に育ちます。", e: {
+  { n: "ゴーレム", t: "低", sig: "木", it: "割合", cost: 350, th: "堅牢", im: "石の巨人", desc: "Lv上げのコストを下げる効果ばかり。ゆっくり確実に育つ。", e: {
     無: { tx: "+20wp。このキャラがLv2以上なら+40wp", f: x => G(x, Lv(x) >= 2 ? 40 : 20) },
     炎: { tx: "+Lv×50wp", f: x => G(x, Lv(x) * 50) },
-    水: { tx: "+100wp。次の自分の手番、このキャラのLv上げコスト−100wp", f: x => { G(x, 100); const n = wdNx(x.st, x.p); n.ld = (n.ld || []).concat([{ cid: x.c.id, amt: 100 }]); } },
-    木: { tx: "このターン、このキャラのLv上げコストが半額。さらに+100wp", f: x => { wdLd(x, { cid: x.c.id, half: 1 }); G(x, 100); } },
-    雷: { tx: "このターン、自分の全キャラのLv上げコスト−200wp", f: x => wdLd(x, { amt: 200 }) },
+    水: { bf: "次の手番：Lv上げ−100", bh: "次の自分の手番", tx: "+100wp。次の自分の手番、このキャラのLv上げコスト−100wp", f: x => { G(x, 100); const n = wdNx(x.st, x.p); n.ld = (n.ld || []).concat([{ cid: x.c.id, amt: 100 }]); } },
+    木: { bf: "Lv上げ半額", bh: "半額", tx: "このターン、このキャラのLv上げコストが半額。さらに+100wp", f: x => { wdLd(x, { cid: x.c.id, half: 1 }); G(x, 100); } },
+    雷: { bf: "全キャラLv上げ−200", bh: "Lv上げコスト", tx: "このターン、自分の全キャラのLv上げコスト−200wp", f: x => wdLd(x, { amt: 200 }) },
     闇: { tx: "Lv2以下の自分のキャラ1体のLvを1上げる（無料）", need: [qMyC("Lvを上げるキャラ", (x, c) => c.lv <= 2)], f: x => { const f = x.ch[0] && wdFind(x.st, x.ch[0]); if (f){ f.c.lv++; wdFx(x.st, { k: "lvup", p: x.p, cid: f.c.id, up: 1 }); } } },
     龍: { tx: "1人を選び、所持wpの8%を奪う", need: [qPl("wpを奪う相手")], f: x => { if (x.ch[0]) wdStealPct(x, x.ch[0], 8); } },
     覇: { tx: "Lvが一番高いキャラを持つ人から、所持wpの8%を奪う", f: x => { const mx = q => Math.max(0, ...x.st.ch[q].map(c => c.lv)); const q = wdOthers(x.st, x.p).reduce((b, r) => mx(r) > mx(b) ? r : b); wdStealPct(x, q, 8); } },
     天: { tx: "次の自分の手番まで干渉無効。さらに+Lv×80wp", f: x => { wdShield(x); G(x, Lv(x) * 80); } },
     幻: { tx: "相手キャラ1体のLvを1下げる（下げられなければ+300wp）", need: [qOC("Lvを下げるキャラ")], f: x => wdLvDown(x, x.ch[0]) }
   } },
-  { n: "グリフォン", t: "低", sig: "雷", it: "固定", cost: 450, th: "守護", im: "天空の守護獣", desc: "干渉を防いだり、跳ね返したりする、守りの専門家です。", e: {
+  { n: "グリフォン", t: "低", sig: "雷", it: "固定", cost: 450, th: "守護", im: "天空の守護獣", desc: "干渉を防いだり、跳ね返したりする、守りの専門家。", e: {
     無: { tx: "+20wp。自分が干渉無効の状態なら+40wp", f: x => G(x, wdShielded(x.st, x.p) ? 40 : 20) },
     炎: { tx: "+200wp", f: x => G(x, 200) },
-    水: { tx: "+100wp。次の自分の手番まで、自分が奪われるwpは半分", f: x => { G(x, 100); x.st.sh[x.p] = { ...(x.st.sh[x.p] || {}), halfSteal: 1 }; } },
-    木: { tx: "このターン、属性付与のコスト−100wp（天を付けるなら−300wp）", f: x => wdGd(x, { amt: 100, amtFor: { 天: 300 } }) },
+    水: { bf: "奪われるwp半分", bh: "半分", tx: "+100wp。次の自分の手番まで、自分が奪われるwpは半分", f: x => { G(x, 100); x.st.sh[x.p] = { ...(x.st.sh[x.p] || {}), halfSteal: 1 }; } },
+    木: { bf: "付与コスト−100", bh: "付与のコスト", tx: "このターン、属性付与のコスト−100wp（天を付けるなら−300wp）", f: x => wdGd(x, { amt: 100, amtFor: { 天: 300 } }) },
     雷: { tx: "次の自分の手番まで干渉無効。さらに+250wp", f: x => { wdShield(x); G(x, 250); } },
-    闇: { tx: "次の自分の手番までに干渉を受けたら、その相手から300wpを奪い返す", f: x => { x.st.sh[x.p] = { ...(x.st.sh[x.p] || {}), counter: 1 }; } },
+    闇: { bf: "反撃の構え", bh: "奪い返す", tx: "次の自分の手番までに干渉を受けたら、その相手から300wpを奪い返す", f: x => { x.st.sh[x.p] = { ...(x.st.sh[x.p] || {}), counter: 1 }; } },
     龍: { tx: "前の自分の手番から今までに自分に干渉した人全員から、400wpずつ奪う（いなければ+200wp）", f: x => { const hb = (x.st.hitBy[x.p] || []).filter(q => q !== x.p); if (hb.length) hb.forEach(q => wdSteal(x, q, 400)); else G(x, 200); } },
     覇: { tx: "相手キャラ1体に行動封じ。さらに次の自分の手番まで干渉無効", need: [qOC("行動封じするキャラ", (x, c) => !c.seal)], f: x => { wdSeal(x, x.ch[0]); wdShield(x); } },
-    天: { tx: "次の自分の手番まで干渉無効。自分に干渉しようとした人からは、1回につき200wpもらう", f: x => { wdShield(x); x.st.sh[x.p].gTen = 1; } },
+    天: { bf: "干渉した相手から200wp", bh: "200wpもらう", tx: "次の自分の手番まで干渉無効。自分に干渉しようとした人からは、1回につき200wpもらう", f: x => { wdShield(x); x.st.sh[x.p].gTen = 1; } },
     幻: { tx: "相手1人の次の手番、その人は龍・覇・幻の効果を使えない", need: [qPl("龍・覇・幻を封じる相手")], f: x => { const q = x.ch[0]; if (q && wdHit(x, q)){ wdNx(x.st, q).noInt = 1; wdFx(x.st, { k: "curse", p: x.p, q, why: "龍・覇・幻 禁止" }); } } }
   } },
-  { n: "リッチ", t: "中", sig: "闇", it: "固定", cost: 850, th: "禁術", im: "不死の魔導士", desc: "キューブを付け替えたり、別の属性として扱ったりします。", e: {
+  { n: "リッチ", t: "中", sig: "闇", it: "固定", cost: 850, th: "禁術", im: "不死の魔導士", desc: "キューブを付け替えたり、別の属性として扱ったりする。", e: {
     無: { tx: "+30wp", f: x => G(x, 30) },
     炎: { tx: "+150wp。このキャラのサブ属性キューブ1つを別の属性に付け替えられる", need: [{ ...qMyCube("付け替えるキューブ", (x, c) => c.id === x.c.id), opt: 1 }, { q: "新しい属性", o: x => x.ch[0] ? WD_AT.map(a => ({ v: a, l: a })) : [] }], f: x => { G(x, 150); wdRecolor(x, x.ch[0], x.ch[1]); } },
     水: { tx: "+100wp。自分のキャラ同士で、サブ属性キューブ1つずつを入れ替えられる", need: [{ ...qMyCube("入れ替えるキューブ（1つ目）"), opt: 1 }, { ...qMyCube("入れ替えるキューブ（2つ目）", (x, c) => x.ch[0] && x.ch[0].split(":")[0] !== c.id) }],
       f: x => { G(x, 100); const a = x.ch[0], b = x.ch[1]; if (!a || !b) return; const [ca, ia] = a.split(":"), [cb, ib] = b.split(":"); const A = wdFind(x.st, ca).c, B = wdFind(x.st, cb).c; [A.s[+ia], B.s[+ib]] = [B.s[+ib], A.s[+ia]]; wdFx(x.st, { k: "swap", p: x.p, c1: ca, i1: +ia, c2: cb, i2: +ib }); } },
-    木: { tx: "このターン、属性付与のコスト−150wp", f: x => wdGd(x, { amt: 150 }) },
+    木: { bf: "付与コスト−150", bh: "付与のコスト", tx: "このターン、属性付与のコスト−150wp", f: x => wdGd(x, { amt: 150 }) },
     雷: { tx: "自分のサブ属性キューブ1つを、雷か闇に付け替える", need: [qMyCube("付け替えるキューブ", (x, c, a) => a !== "雷" && a !== "闇"), { q: "新しい属性", o: x => x.ch[0] ? ["雷", "闇"].map(a => ({ v: a, l: a })) : [] }], f: x => wdRecolor(x, x.ch[0], x.ch[1]) },
-    闇: { tx: "このターンの手順4で、秘宝の必要キューブ2つまでを好きな属性として払える。さらに+150wp", f: x => { x.st.T.wild = (x.st.T.wild || 0) + 2; G(x, 150); } },
+    闇: { bf: "キューブ2つまで自由", bh: "好きな属性", tx: "このターンの手順4で、秘宝の必要キューブ2つまでを好きな属性として払える。さらに+150wp", f: x => { x.st.T.wild = (x.st.T.wild || 0) + 2; G(x, 150); } },
     龍: { tx: "1人を選び、500wp奪う", need: [qPl("wpを奪う相手")], f: x => { if (x.ch[0]) wdSteal(x, x.ch[0], 500); } },
     覇: { tx: "相手キャラ1体のサブ属性キューブ1つを、自分のキャラの無の枠へ移す（奪う）", need: [qOCube("奪うキューブ")], f: x => { const a = wdRmCube(x, x.ch[0]); if (a){ const u = wdPutAny(x.st, x.p, a, x.c); if (u) wdFx(x.st, { k: "grant", p: x.p, cid: u.c.id, a, s: u.i, from: null, from2: 1 }); } } },
     天: { tx: "次の自分の手番まで干渉無効。さらに+300wp", f: x => { wdShield(x); G(x, 300); } },
     幻: { tx: "相手キャラ1体のメイン属性を無に戻す（メインも外せる禁術）", need: [qOC("メイン属性を外すキャラ", (x, c) => !!c.s[0])], f: x => { const f = x.ch[0] && wdFind(x.st, x.ch[0]); if (f && f.c.s[0] && wdHit(x, f.p)){ const a = f.c.s[0]; f.c.s[0] = null; wdFx(x.st, { k: "rmcube", p: x.p, q: f.p, cid: f.c.id, a, s: 0 }); wdL(x.st, `${wdNm(f.p)}の${wdDef(f.c).n}のメイン属性（${a}）を外した`); } } }
   } },
-  { n: "ワイバーン", t: "低", sig: "龍", it: "割合", cost: 500, th: "急襲", im: "飛竜", desc: "序盤（所持wpが少ない・秘宝0個）ほど強くなります。", e: {
+  { n: "ワイバーン", t: "低", sig: "龍", it: "割合", cost: 500, th: "急襲", im: "飛竜", desc: "序盤（所持wpが少ない・秘宝0個）ほど強くなる。", e: {
     無: { tx: "秘宝が0個なら+40wp、それ以外は+10wp", f: x => G(x, wdTreN(x.st, x.p) ? 10 : 40) },
     炎: { tx: "所持wpが2000未満なら+300wp、それ以外は+100wp", f: x => G(x, x.st.wp[x.p] < 2000 ? 300 : 100) },
     水: { tx: "このキャラがLv2以下なら+200wp、それ以外は+80wp", f: x => G(x, Lv(x) <= 2 ? 200 : 80) },
-    木: { tx: "このターン、キャラ獲得のコスト−200wp", f: x => { x.st.T.buyDisc = (x.st.T.buyDisc || 0) + 200; } },
+    木: { bf: "キャラ獲得−200", bh: "キャラ獲得", tx: "このターン、キャラ獲得のコスト−200wp", f: x => { x.st.T.buyDisc = (x.st.T.buyDisc || 0) + 200; } },
     雷: { tx: "秘宝が0個なら+450wp、それ以外は+150wp", f: x => G(x, wdTreN(x.st, x.p) ? 150 : 450) },
     闇: { tx: "所持wpが最下位なら+500wp、それ以外は+150wp", f: x => G(x, wdIsLast(x.st, x.p) ? 500 : 150) },
     龍: { tx: "他の全員から、所持wpの7%ずつ奪う", f: x => allSteal(x, q => wdStealPct(x, q, 7)) },
@@ -6352,24 +6515,24 @@ const WD_CH = [
     天: { tx: "次の自分の手番まで干渉無効。秘宝が0個なら+400wp", f: x => { wdShield(x); if (!wdTreN(x.st, x.p)) G(x, 400); } },
     幻: { tx: "1人を選ぶ。その人の次の手番、手順3を行えるのはキャラ1体だけ", need: [qPl("手順3を1体だけにする相手")], f: x => { const q = x.ch[0]; if (q && wdHit(x, q)){ wdNx(x.st, q).one = 1; wdFx(x.st, { k: "curse", p: x.p, q, why: "手順3は1体だけ" }); } } }
   } },
-  { n: "キマイラ", t: "中", sig: "幻", it: "固定", cost: 750, th: "合成", im: "三つ首の合成獣", desc: "自分の全キャラで、違う属性を何種類持っているかで強くなります。", e: {
+  { n: "キマイラ", t: "中", sig: "幻", it: "固定", cost: 750, th: "合成", im: "三つ首の合成獣", desc: "自分の全キャラで、違う属性を何種類持っているかで強くなる。", e: {
     無: { tx: "属性の種類1つにつき+10wp", f: x => G(x, 10 * wdKinds(x.st, x.p)) },
     炎: { tx: "属性の種類1つにつき+60wp", f: x => G(x, 60 * wdKinds(x.st, x.p)) },
     水: { tx: "このキャラの3つの枠が全部違う属性なら+350wp、それ以外は+100wp", f: x => G(x, x.c.s.every(Boolean) && new Set(x.c.s).size === 3 ? 350 : 100) },
-    木: { tx: "このターン、自分がまだ持っていない属性を付与するなら、付与コスト−200wp", f: x => wdGd(x, { amt: 200, cond: "notOwn" }) },
+    木: { bf: "持っていない属性の付与−200", bh: "付与コスト", tx: "このターン、自分がまだ持っていない属性を付与するなら、付与コスト−200wp", f: x => wdGd(x, { amt: 200, cond: "notOwn" }) },
     雷: { tx: "属性の種類1つにつき+100wp", f: x => G(x, 100 * wdKinds(x.st, x.p)) },
-    闇: { tx: "このキャラの3つの属性の効果を、1回ずつ行う（龍・覇・天・幻は除く）", f: x => { if (x.act.copy) return; const adds = x.c.s.filter(a => a && !WD_RARE.includes(a) && a !== "闇").map(a => ({ cid: x.c.id, p: x.p, k: x.c.k, a, copy: 1 })); x.st.T.q.unshift(...adds); } },
+    闇: { bf: "3つの属性の効果", bh: "1回ずつ", tx: "このキャラの3つの属性の効果を、1回ずつ行う（龍・覇・天・幻は除く）", f: x => { if (x.act.copy) return; const adds = x.c.s.filter(a => a && !WD_RARE.includes(a) && a !== "闇").map(a => ({ cid: x.c.id, p: x.p, k: x.c.k, a, copy: 1 })); x.st.T.q.unshift(...adds); } },
     龍: { tx: "他の全員から、自分の属性の種類×40wpずつ奪う", f: x => { const k = wdKinds(x.st, x.p); allSteal(x, q => wdSteal(x, q, 40 * k)); } },
     覇: { tx: "相手キャラ1体に行動封じ。自分の属性が6種類以上なら2体", need: seal2(2, x => wdKinds(x.st, x.p) >= 6), f: x => { wdSeal(x, x.ch[0]); wdSeal(x, x.ch[1]); } },
     天: { tx: "次の自分の手番まで干渉無効。属性の種類1つにつき+60wp", f: x => { wdShield(x); G(x, 60 * wdKinds(x.st, x.p)); } },
     幻: { tx: "相手キャラ1体の、好きな属性の効果をコピーして使う（相手が持っている属性ならどれでも）", cp: 1, need: [{ q: "コピーする効果", o: x => wdOthers(x.st, x.p).flatMap(r => x.st.ch[r].flatMap(c => [...new Set(wdCubes(c))].map(a => ({ v: `${c.id}:${a}`, l: `${wdNm(r)}の${wdDef(c).n}の「${a}」：${wdDef(c).e[a].tx}` })))) }],
       f: x => { const v = x.ch[0]; if (!v) return; const [cid, a] = v.split(":"); const f = wdFind(x.st, cid); if (!f) return; if (wdDef(f.c).e[a].cp || x.act.copy){ G(x, 200); return; } wdL(x.st, `${wdNm(x.p)}は${wdDef(f.c).n}の「${a}」をコピー`); wdPush(x, f.c.k, a, { copy: 1 }); } }
   } },
-  { n: "ユニコーン", t: "低", sig: "天", it: "割合", cost: 400, th: "癒し", im: "聖なる一角獣", desc: "所持wpが最下位のときに強く、逆転を狙えます。", e: {
+  { n: "ユニコーン", t: "低", sig: "天", it: "割合", cost: 400, th: "癒し", im: "聖なる一角獣", desc: "所持wpが最下位のときに強く、逆転を狙える。", e: {
     無: { tx: "所持wpが最下位なら+60wp、それ以外は+15wp", f: x => G(x, wdIsLast(x.st, x.p) ? 60 : 15) },
     炎: { tx: "所持wpが最下位なら+400wp、それ以外は+100wp", f: x => G(x, wdIsLast(x.st, x.p) ? 400 : 100) },
     水: { tx: "1位の人との差の5%（最大500wp）をもらう", f: x => G(x, Math.min(500, wdR(Math.max(0, x.st.wp[wdLeader(x.st, x.p)] - x.st.wp[x.p]) * 0.05))) },
-    木: { tx: "所持wpが最下位なら、このターンのLv上げと属性付与のコストが半額", f: x => { if (wdIsLast(x.st, x.p)){ wdLd(x, { half: 1 }); wdGd(x, { half: 1 }); } } },
+    木: { tx: "所持wpが最下位なら、このターンのLv上げと属性付与のコストが半額", f: x => { if (wdIsLast(x.st, x.p)){ wdLd(x, { half: 1 }); wdGd(x, { half: 1 }); wdBuff(x, "Lv上げ・付与が半額", "半額"); } else wdBuff(x, "最下位ではないので効果なし", "最下位なら", 1); } },
     雷: { tx: "秘宝の数が一番少ないなら+500wp、それ以外は+150wp", f: x => G(x, wdOthers(x.st, x.p).every(q => wdTreN(x.st, x.p) <= wdTreN(x.st, q)) ? 500 : 150) },
     闇: { tx: "1位の人の所持wpが自分の2倍以上なら+800wp、それ以外は+200wp", f: x => G(x, x.st.wp[wdLeader(x.st, x.p)] >= 2 * x.st.wp[x.p] ? 800 : 200) },
     龍: { tx: "1位の人から、所持wpの10%を奪う", f: x => wdStealPct(x, wdLeader(x.st, x.p), 10) },
@@ -6377,10 +6540,10 @@ const WD_CH = [
     天: { tx: "次の自分の手番まで干渉無効。1位の人との差の10%（最大1000wp）をもらう", f: x => { wdShield(x); G(x, Math.min(1000, wdR(Math.max(0, x.st.wp[wdLeader(x.st, x.p)] - x.st.wp[x.p]) * 0.1))); } },
     幻: { tx: "1位の人のキャラ1体のLvを1下げる", need: [qOC("Lvを下げるキャラ", (x, c, r) => r === wdLeader(x.st, x.p))], f: x => wdLvDown(x, x.ch[0]) }
   } },
-  { n: "スフィンクス", t: "高", sig: "覇", it: "固定", cost: 1200, th: "謎かけ", im: "謎かけの守護者", desc: "次に出る目を予言し、当たれば大きなボーナスがもらえます。", e: {
+  { n: "スフィンクス", t: "高", sig: "覇", it: "固定", cost: 1200, th: "謎かけ", im: "謎かけの守護者", desc: "次に出る目を予言し、当たれば大きなボーナスがもらえる。", e: {
     無: { tx: "属性を1つ宣言して、ダイスを1つ振る。当たれば+150wp", need: [qAt("宣言する属性")], f: x => { if (wdGuess(x, x.ch[0])) G(x, 150); } },
     炎: { tx: "炎・水・木から1つ宣言して、ダイスを1つ振る。当たれば+700wp、外れたら+100wp", need: [qAt("宣言する属性", ["炎", "水", "木"])], f: x => G(x, wdGuess(x, x.ch[0]) ? 700 : 100) },
-    水: { tx: "次の人の手番で選ばれる目を予言する。当たれば+400wp", need: [qAt("次の人の手番で選ばれる目")], f: x => { const nx = wdOthers(x.st, x.p)[0]; x.st.pred.push({ by: x.p, tgt: nx, a: x.ch[0] }); wdL(x.st, `${wdNm(x.p)}は次の目を予言した`); } },
+    水: { tx: "次の人の手番で選ばれる目を予言する。当たれば+400wp", need: [qAt("次の人の手番で選ばれる目")], f: x => { const nx = wdOthers(x.st, x.p)[0]; x.st.pred.push({ by: x.p, tgt: nx, a: x.ch[0] }); wdBuff(x, `予言「${x.ch[0]}」`, "予言"); wdL(x.st, `${wdNm(x.p)}は次の目を予言した`); } },
     木: { tx: "属性を1つ宣言して、ダイスを振る。当たればこのキャラのLvを1上げる（無料）、外れたら+100wp", need: [qAt("宣言する属性")], f: x => { if (wdGuess(x, x.ch[0])){ if (x.c.lv < 5){ x.c.lv++; wdFx(x.st, { k: "lvup", p: x.p, cid: x.c.id, up: 1 }); } else G(x, 300); } else G(x, 100); } },
     雷: { tx: "雷か闇を宣言して、ダイスを1つ振る。当たれば+1200wp、外れたら+150wp", need: [qAt("宣言する属性", ["雷", "闇"])], f: x => G(x, wdGuess(x, x.ch[0]) ? 1200 : 150) },
     闇: { tx: "ダイスを2つ振る。同じ属性なら+1500wp、違えば+200wp", f: x => { const a = wdRoll(), b = wdRoll(); wdFx(x.st, { k: "die", p: x.p, a }); wdFx(x.st, { k: "die", p: x.p, a: b }); G(x, a === b ? 1500 : 200); } },
@@ -6392,23 +6555,23 @@ const WD_CH = [
     幻: { tx: "属性を1つ宣言し、相手キャラ1体のサブ属性キューブ1つを無に戻す。戻したのが宣言した属性なら、もう1つ戻す", need: [qAt("宣言する属性"), qOCube("無に戻すキューブ")],
       f: x => { const a = wdRmCube(x, x.ch[1]); if (a && a === x.ch[0]){ const f = wdFind(x.st, x.ch[1].split(":")[0]); const i = f ? f.c.s.findIndex((z, j) => z && j > 0) : -1; if (i > 0) wdRmCube(x, `${f.c.id}:${i}`); } } }
   } },
-  { n: "ヒュドラ", t: "中", sig: "龍", it: "固定", cost: 950, th: "九つ首", im: "九つ首の大蛇", desc: "同じ属性を重ねるほど、効果の回数が増えます。", e: {
+  { n: "ヒュドラ", t: "中", sig: "龍", it: "固定", cost: 950, th: "九つ首", im: "九つ首の大蛇", desc: "同じ属性を重ねるほど、効果の回数が増える。", e: {
     無: { tx: "自分の全キャラで、一番多い属性のキューブ数×15wp", f: x => G(x, 15 * wdMaxSame(wdAllCubes(x.st, x.p))) },
-    炎: { tx: "+100wp。このターン、炎の効果を行うたびに+100wp（他のキャラの分も数える）", f: x => { G(x, 100); x.st.T.fireB = (x.st.T.fireB || 0) + 100; } },
+    炎: { bf: "炎の効果ごとに+100", bh: "たびに", tx: "+100wp。このターン、炎の効果を行うたびに+100wp（他のキャラの分も数える）", f: x => { G(x, 100); x.st.T.fireB = (x.st.T.fireB || 0) + 100; } },
     水: { tx: "このキャラの同じ属性のキューブ1つにつき+100wp", f: x => G(x, 100 * wdMaxSame(wdCubes(x.c))) },
-    木: { tx: "このターン、このキャラに既にある属性を付与するなら、付与コスト−200wp", f: x => wdGd(x, { cid: x.c.id, amt: 200, cond: "sameOnChar" }) },
-    雷: { tx: "このキャラの雷キューブ1つにつき、手順3を1回追加で行える", f: x => { x.st.T.extra[x.c.id] = (x.st.T.extra[x.c.id] || 0) + 1; } },
-    闇: { tx: "このターン、選んだ目の属性を持つ自分の全キャラが、その効果をもう一度行う（龍・覇・天・幻は除く）", f: x => { if (x.act.copy) return; const a = x.a; if (WD_RARE.includes(a)) return; const adds = x.st.ch[x.p].filter(c => !c.seal && c.id !== x.c.id && c.s.includes(a)).map(c => ({ cid: c.id, p: x.p, k: c.k, a, copy: 1 })); x.st.T.q.unshift(...adds); } },
+    木: { bf: "同じ属性の付与−200", bh: "付与コスト", tx: "このターン、このキャラに既にある属性を付与するなら、付与コスト−200wp", f: x => wdGd(x, { cid: x.c.id, amt: 200, cond: "sameOnChar" }) },
+    雷: { bf: "行動+1", bh: "追加", tx: "このキャラの雷キューブ1つにつき、手順3を1回追加で行える", f: x => { x.st.T.extra[x.c.id] = (x.st.T.extra[x.c.id] || 0) + 1; } },
+    闇: { bf: "もう一度効果", bh: "もう一度", tx: "このターン、選んだ目の属性を持つ自分の全キャラが、その効果をもう一度行う（龍・覇・天・幻は除く）", f: x => { if (x.act.copy) return; const a = x.a; if (WD_RARE.includes(a)) return; const adds = x.st.ch[x.p].filter(c => !c.seal && c.id !== x.c.id && c.s.includes(a)).map(c => ({ cid: c.id, p: x.p, k: c.k, a, copy: 1 })); x.st.T.q.unshift(...adds); } },
     龍: { tx: "他の全員から150wpずつ奪う。このキャラの龍キューブが2つ以上なら、もう一度", f: x => { const n = x.c.s.filter(a => a === "龍").length >= 2 ? 2 : 1; for (let i = 0; i < n; i++){ x.hr = {}; allSteal(x, q => wdSteal(x, q, 150)); } } },
     覇: { tx: "相手キャラ1体に行動封じ。さらに+200wp", need: [qOC("行動封じするキャラ", (x, c) => !c.seal)], f: x => { wdSeal(x, x.ch[0]); G(x, 200); } },
     天: { tx: "次の自分の手番まで干渉無効。このキャラのキューブ1つにつき+100wp", f: x => { wdShield(x); G(x, 100 * wdCubes(x.c).length); } },
     幻: { tx: "相手キャラ1体のサブ属性キューブ1つを無に戻す", need: [qOCube("無に戻すキューブ")], f: x => wdRmCube(x, x.ch[0]) }
   } },
-  { n: "フェンリル", t: "高", sig: "覇", it: "割合", cost: 1300, th: "喰らう", im: "神をも喰らう狼", desc: "1位のプレイヤーを狙い撃ちます。", e: {
+  { n: "フェンリル", t: "高", sig: "覇", it: "割合", cost: 1300, th: "喰らう", im: "神をも喰らう狼", desc: "1位のプレイヤーを狙い撃つ。", e: {
     無: { tx: "1位の人との差が1000wp以上なら+40wp、それ以外は+15wp", f: x => G(x, x.st.wp[wdLeader(x.st, x.p)] - x.st.wp[x.p] >= 1000 ? 40 : 15) },
     炎: { tx: "自分が1位でなければ+300wp、1位なら+120wp", f: x => G(x, wdIsTop(x.st, x.p) ? 120 : 300) },
     水: { tx: "このターンの手順1で1位の人がもらったwpと、同じだけもらう", f: x => G(x, x.st.T.paid[wdLeader(x.st, x.p)] || 0) },
-    木: { tx: "1位の人が持っている属性を付与するなら、付与コスト半額", f: x => wdGd(x, { half: 1, cond: "leaderHas" }) },
+    木: { bf: "1位が持つ属性の付与半額", bh: "半額", tx: "1位の人が持っている属性を付与するなら、付与コスト半額", f: x => wdGd(x, { half: 1, cond: "leaderHas" }) },
     雷: { tx: "1位の人との差の8%（最大700wp）をもらう", f: x => G(x, Math.min(700, wdR(Math.max(0, x.st.wp[wdLeader(x.st, x.p)] - x.st.wp[x.p]) * 0.08))) },
     闇: { tx: "1位の人のキャラ1体の、いま出ている属性の効果をコピーして使う", cp: 1, need: [qCopy("コピーする効果", (x, c, r) => r === wdLeader(x.st, x.p))], f: x => wdCopyRun(x, x.ch[0]) },
     龍: { tx: "1位の人から、所持wpの12%を奪う", f: x => wdStealPct(x, wdLeader(x.st, x.p), 12) },
@@ -6434,7 +6597,7 @@ function wdPayFor(st, q, a){
 function wdNewChar(st, k){ st.cseq = (st.cseq || 0) + 1; return { id: "c" + st.cseq, k, lv: 1, s: [null, null, null], seal: 0 }; }
 function wdSetup(players){
   const deck = wdShuf(WD_CH.map((_, i) => i));
-  const st = { wd: 1, v: 1, order: players.slice(), ph: "draft", wp: {}, ch: {}, tre: {}, sh: {}, nx: {}, until: {}, hitBy: {}, pred: [], treL: WD_TRE.map(t => t.id), mk: [], round: 1, ti: 0, no: 0, fx: [], fxn: 0, status: "playing" };
+  const st = { wd: 1, v: 1, order: players.slice(), ph: "draft", wp: {}, ch: {}, tre: {}, sh: {}, nx: {}, until: {}, hitBy: {}, pred: [], treL: WD_TRE.map(t => t.id), treCb: wdRollTreCb(), mk: [], round: 1, ti: 0, no: 0, fx: [], fxn: 0, status: "playing" };
   const hand = {};
   players.forEach(p => { st.wp[p] = WD_START; st.ch[p] = []; st.tre[p] = []; hand[p] = deck.splice(0, 3); });
   st.deck = deck; st.dr = { step: 1, hand, pick: {} };
@@ -6466,9 +6629,11 @@ function wdStart(st){
   st.no++;
   st.sh[p] = {};                         // 「次の自分の手番まで」の効果はここで終わり
   const nx = st.nx[p] || {}; st.nx[p] = {};
-  const T = st.T = { p, ph: "roll", dice: [], face: null, unused: [], paid: {}, q: [], cur: null, acting: {}, acts: {}, extra: {}, gd: [], ld: (nx.ld || []).slice(), td: [], lv2: {}, lvx2: {}, nx, n: (nx.three ? 3 : 2) - (nx.oneDie ? 1 : 0), pickBy: nx.chooser || p, tax: nx.tax || 0 };
+  const T = st.T = { p, ph: "roll", dice: [], face: null, unused: [], paid: {}, q: [], cur: null, acting: {}, acts: {}, extra: {}, gd: [], ld: (nx.ld || []).slice(), td: [], lv2: {}, lvx2: {}, nx, n: (nx.three || wdHasT(st, p, "t2") ? 3 : 2) - (nx.oneDie ? 1 : 0), pickBy: nx.chooser || p, tax: nx.tax || 0 };
   st.ask = null;
   wdFx(st, { k: "turn", p, prevT, prevSh });
+  if (wdHasT(st, p, "t7")) wdGain(st, p, 500, "秘宝「不死鳥の心臓」", { tre: "t7" });
+  if (wdHasT(st, p, "t10") && st.order.length > 1) wdStealPct({ st, p, c: null }, wdLeader(st, p), 8, "秘宝「覇王の聖杯」");
   if (!wdMyCubes(st, p)){ T.ph = "eff"; T.skip = 1; wdFx(st, { k: "noroll", p }); wdBuildQ(st, null); wdRun(st); }
 }
 function wdRollDice(st, p){
@@ -6490,6 +6655,7 @@ function wdPickFace(st, by, a){
   st.pred = (st.pred || []).filter(pr => { if (pr.tgt !== T.p) return true; if (pr.a === a){ wdGain(st, pr.by, 400, "予言的中"); wdL(st, `${wdNm(pr.by)}の予言が的中！ +400wp`); } return false; });
   // 手順1：全員にwp
   st.order.forEach(q => { const n = wdPayFor(st, q, a); if (n){ T.paid[q] = n; wdGain(st, q, n, `手順1「${a}」`, { pay: 1, a }); } });
+  if (a === "水" || a === "雷") st.order.forEach(q => { if (wdHasT(st, q, "t4")) wdGain(st, q, 150, "秘宝「海神の三叉槍」", { tre: "t4" }); });
   T.ph = "eff"; wdBuildQ(st, a); wdRun(st);
   return true;
 }
@@ -6530,8 +6696,9 @@ function wdRun(st){
       return;
     }
     if (A.a === "炎" && T.fireB) wdGain(st, A.p, T.fireB, "ヒュドラ");
-    wdFx(st, { k: "eff", p: A.p, cid: A.cid, ck: A.k, a: A.a, copy: A.copy ? 1 : 0 });
+    wdFx(st, { k: "eff", p: A.p, cid: A.cid, ck: A.k, a: A.a, copy: A.copy ? 1 : 0, lv: f.c.lv });
     try { E.f(x); } catch (e){ if (typeof console !== "undefined") console.error(e); }
+    if (E.bf) wdBuff(x, E.bf, E.bh);
     T.cur = null;
   }
 }
@@ -6542,7 +6709,9 @@ function wdAnswer(st, p, v){
 }
 function wdEffDone(st){
   const T = st.T, p = T.p;
-  st.ch[p].forEach(c => { if (!T.acting[c.id] || c.seal) return; const n = wdLvWp(c) * (T.lvx2[c.id] ? 2 : 1); wdGain(st, p, n, `${wdDef(c).n} Lv${c.lv}`, { cid: c.id, lv: 1 }); T.acts[c.id] = 1 + (T.extra[c.id] || 0); });
+  const t9 = wdHasT(st, p, "t9") ? 2 : 1;
+  st.ch[p].forEach(c => { if (!T.acting[c.id] || c.seal) return; const n = wdLvWp(c) * (T.lvx2[c.id] ? 2 : 1) * t9; wdGain(st, p, n, `${wdDef(c).n} Lv${c.lv}`, { cid: c.id, lv: 1 }); T.acts[c.id] = 1 + (T.extra[c.id] || 0); });
+  if (wdHasT(st, p, "t5")){ const c = st.ch[p].filter(z => T.acts[z.id]).sort((a, b) => b.lv - a.lv)[0]; if (c){ T.acts[c.id]++; wdFx(st, { k: "buff", p, cid: c.id, t: "雷霆の戦鎚：行動+1", hl: "" }); } }
   T.ph = "act"; T.one = T.nx.one ? 1 : 0; T.lock = null;
 }
 const wdCanAct = (st, cid) => { const T = st.T; return T && T.ph === "act" && (T.acts[cid] || 0) > 0 && (!T.one || !T.lock || T.lock === cid); };
@@ -6579,15 +6748,33 @@ function wdAct(st, p, cid, kind, arg){
   T.acts[cid]--; if (T.one) T.lock = cid;
   return true;
 }
-function wdRelease(st, p, cid){
+/* 手放す：ふだんは獲得コストと同じwpを払う（秘宝を取るために手放すときは無料） */
+const wdRelCost = c => WD_CH[c.k].cost;
+function wdRelease(st, p, cid, free){
   const T = st.T; if (!T || T.p !== p || !["act", "tre"].includes(T.ph) || st.ask) return false;
   const i = st.ch[p].findIndex(z => z.id === cid); if (i < 0) return false;
+  const cost = free ? 0 : wdRelCost(st.ch[p][i]); if (st.wp[p] < cost) return false;
+  wdPay(st, p, cost);
   const c = st.ch[p].splice(i, 1)[0]; delete T.acts[cid];
   const mkb = st.mk.slice(), dl0 = st.deck.length;
   st.deck = wdShuf(st.deck.concat(st.mk.filter(k => k != null), [c.k])); st.mk = st.deck.splice(0, 3);
-  wdFx(st, { k: "release", p, ck: c.k, cid, c: JSON.parse(JSON.stringify(c)), idx: i, mkb, mka: st.mk.slice(), dl0, dl1: st.deck.length });
-  wdL(st, `${wdNm(p)}：${wdDef(c).n}を手放した（場をシャッフルしてめくり直し）`);
+  wdFx(st, { k: "release", p, ck: c.k, cid, c: JSON.parse(JSON.stringify(c)), idx: i, mkb, mka: st.mk.slice(), dl0, dl1: st.deck.length, v: cost, free: free ? 1 : 0 });
+  wdL(st, `${wdNm(p)}：${wdDef(c).n}を手放した${free ? "（秘宝のため）" : `（${cost}wp）`}・場をシャッフルしてめくり直し`);
   return true;
+}
+/* このキャラを手放せば、この秘宝を取れるか */
+function wdCanTreRel(st, p, id, cid){
+  const T = st.T; if (!T || T.p !== p || T.ph !== "tre" || !st.treL.includes(id) || T.nx.noTre) return false;
+  const i = st.ch[p].findIndex(z => z.id === cid); if (i < 0 || wdFreeSlots(st, p) >= 1) return false;
+  const c = st.ch[p].splice(i, 1)[0];
+  const r = wdCanTre(st, p, id);
+  st.ch[p].splice(i, 0, c);
+  return r.ok;
+}
+function wdTakeRel(st, p, id, cid){
+  if (!wdCanTreRel(st, p, id, cid)) return false;
+  wdRelease(st, p, cid, true);
+  return wdTake(st, p, id);
 }
 function wdToTre(st, p){ const T = st.T; if (!T || T.p !== p || T.ph !== "act" || st.ask) return false; T.ph = "tre"; return true; }
 function wdCanTre(st, p, id){
@@ -6606,7 +6793,7 @@ function wdTake(st, p, id){
   wdPay(st, p, pl.cost);
   const cubes = [], used = [];
   pl.used.forEach(u => { const c = st.ch[p].find(z => z.id === u.cid); if (c && c.s[u.i]){ cubes.push(c.s[u.i]); used.push({ cid: u.cid, i: u.i, a: c.s[u.i] }); c.s[u.i] = null; } });
-  T.free = (T.free || 0) - pl.fu; T.wild = (T.wild || 0) - pl.wu;
+  T.free = (T.free || 0) - pl.fu; T.wild = Math.max(0, (T.wild || 0) - pl.wu);
   T.td = T.td.filter(d => d.r && !d.r.includes(t.r));       // wpの割引は1回分
   T.tax = 0;
   st.tre[p].push({ id, cubes });
@@ -6615,7 +6802,7 @@ function wdTake(st, p, id){
   wdL(st, `${wdNm(p)}が秘宝「${t.n}」（★${t.r}）を獲得！（${pl.cost}wp）`);
   if (T.treOnce){ wdGain(st, p, T.treOnce, "セラフィム"); T.treOnce = 0; }
   if (T.treEach) wdGain(st, p, T.treEach, "セラフィム");
-  if (wdTreN(st, p) >= WD_WIN) wdFinish(st, [p], `${wdNm(p)}が秘宝を${WD_WIN}つそろえた！`);
+  if (WD_WIN_STARS ? wdStars(st, p) >= WD_WIN_STARS : wdTreN(st, p) >= WD_WIN) wdFinish(st, [p], WD_WIN_STARS ? `${wdNm(p)}の★が${WD_WIN_STARS}に届いた！` : `${wdNm(p)}が秘宝を${WD_WIN}つそろえた！`);
   else if (!st.treL.length) wdFinishStars(st, "秘宝がすべてなくなった");
   return true;
 }
@@ -6653,6 +6840,7 @@ function wdApply(st, p, mv){
   if (k === "ans") return wdAnswer(st, p, a);
   if (k === "act") return wdAct(st, p, a, b, c);
   if (k === "rel") return wdRelease(st, p, a);
+  if (k === "trerel") return wdTakeRel(st, p, a, b);
   if (k === "next") return wdToTre(st, p);
   if (k === "tre") return wdTake(st, p, a);
   if (k === "end") return wdEndTurn(st, p);
@@ -6690,6 +6878,14 @@ function wdCpuAns(st, p){
   });
   return ["ans", best];
 }
+/* ★で勝つルールのとき：この秘宝を取っても、残りの枠で目標の★に届くか */
+function wdStarOk(st, p, id){
+  if (!WD_WIN_STARS) return true;
+  const s1 = wdStars(st, p) + wdTreDef(id).r; if (s1 >= WD_WIN_STARS) return true;
+  const k = WD_SLOTS - 1 - (wdTreN(st, p) + 1); if (k <= 0) return false;
+  const rest = st.treL.filter(z => z !== id).map(z => wdTreDef(z).r).sort((a, b) => b - a).slice(0, k);
+  return s1 + rest.reduce((n, v) => n + v, 0) >= WD_WIN_STARS;
+}
 /* 目標の秘宝：残すキャラだけで必要キューブをそろえられるか、で選ぶ */
 function wdCpuGoal(st, p){
   const chs = st.ch[p], free = wdFreeSlots(st, p);
@@ -6698,13 +6894,14 @@ function wdCpuGoal(st, p){
   let best = null, bv = Infinity;
   st.treL.forEach(id => {
     const t = wdTreDef(id);
+    if (!wdStarOk(st, p, id)) return;
     keepSets.forEach(keep => {
       const pool = keep.flatMap(c => c.seal ? [] : wdCubes(c)); const miss = [];
-      t.cb.forEach(a => { const j = pool.indexOf(a); if (j >= 0) pool.splice(j, 1); else miss.push(a); });
+      wdTreCb(st, id).forEach(a => { const j = pool.indexOf(a); if (j >= 0) pool.splice(j, 1); else miss.push(a); });
       const nul = keep.reduce((n, c) => n + wdNull(c), 0);
       if (miss.length > nul) return;
       const cost = t.wp + miss.reduce((n, a) => n + (WD_RARE.includes(a) ? 800 : a === "雷" || a === "闇" ? 400 : 200), 0);
-      const v = cost - t.r * 300 + miss.length * 400;
+      const v = WD_WIN_STARS ? (cost + miss.length * 400) / Math.min(t.r, Math.max(1, WD_WIN_STARS - wdStars(st, p))) : cost - t.r * 300 + miss.length * 400;
       if (v < bv){ bv = v; best = { id, miss, cost, t, keep: keep.map(c => c.id) }; }
     });
   });
@@ -6744,7 +6941,7 @@ function wdCpuStep(st, p){
     // どの秘宝もそろえられない（枠がキューブで埋まった）→ 一番役に立たないキャラを手放して新しいキャラを入れる
     if (!goal && st.ch[p].length >= 2 && st.ch[p].some(c => wdCanAct(st, c.id))){
       const cand = st.ch[p].filter(c => !wdNull(c)).sort((a, b) => wdVal1(a) - wdVal1(b))[0];
-      if (cand && st.ch[p].some(c => c !== cand && wdCanAct(st, c.id))) return ["rel", cand.id];
+      if (cand && st.ch[p].some(c => c !== cand && wdCanAct(st, c.id)) && st.wp[p] >= wdRelCost(cand) + 400) return ["rel", cand.id];
     }
     const cs = st.ch[p].filter(c => wdCanAct(st, c.id));
     for (const c of cs){
@@ -6783,13 +6980,12 @@ function wdCpuStep(st, p){
   }
   if (T.ph === "tre"){
     const ids = st.treL.slice().sort((a, b) => wdTreDef(b).r - wdTreDef(a).r);
-    for (const id of ids){ if (wdCanTre(st, p, id).ok) return ["tre", id]; }
+    for (const id of ids){ if (wdStarOk(st, p, id) && wdCanTre(st, p, id).ok) return ["tre", id]; }
     if (wdFreeSlots(st, p) < 1 && st.ch[p].length > 1){
       for (const id of ids){
-        const pl = wdTrePlan(st, p, id); if (!pl.ok || st.wp[p] < pl.cost) continue;
-        const usedC = new Set(pl.used.map(u => u.cid));
-        const cand = st.ch[p].filter(c => !usedC.has(c.id)).sort((a, b) => wdVal1(a) - wdVal1(b))[0];
-        if (cand) return ["rel", cand.id];
+        if (!wdStarOk(st, p, id)) continue;
+        const cand = st.ch[p].slice().sort((a, b) => wdVal1(a) - wdVal1(b)).find(c => wdCanTreRel(st, p, id, c.id));
+        if (cand) return ["trerel", id, cand.id];
       }
     }
     return ["end"];
@@ -6820,7 +7016,7 @@ function wdFwd(D, e){
     case "lvdown": if (c) c.lv -= 1; break;
     case "seal": if (c) c.seal = 1; break;
     case "buy": D.wp[e.p] -= e.v; D.ch[e.p].push(JSON.parse(JSON.stringify(e.c))); D.mk[e.i] = e.nk; D.dl = e.dl1; break;
-    case "release": D.ch[e.p] = D.ch[e.p].filter(x => x.id !== e.cid); D.mk = e.mka.slice(); D.dl = e.dl1; break;
+    case "release": D.ch[e.p] = D.ch[e.p].filter(x => x.id !== e.cid); D.mk = e.mka.slice(); D.dl = e.dl1; D.wp[e.p] -= e.v || 0; break;
     case "tre": D.wp[e.p] -= e.v; e.used.forEach(u => { const c2 = wdDC(D, u.cid); if (c2) c2.s[u.i] = null; }); D.tre[e.p].push({ id: e.id, cubes: e.cubes.slice() }); D.treL = D.treL.filter(z => z !== e.id); break;
     case "back": { const t = D.tre[e.p][e.ti]; if (t) t.cubes.splice(e.j, 1); if (c && e.s >= 0) c.s[e.s] = e.a; break; }
     case "swap": { const A = wdDC(D, e.c1), B = wdDC(D, e.c2); if (A && B) [A.s[e.i1], B.s[e.i2]] = [B.s[e.i2], A.s[e.i1]]; break; }
@@ -6845,7 +7041,7 @@ function wdUndo(D, e){
     case "lvdown": if (c) c.lv += 1; break;
     case "seal": if (c) c.seal = e.prev || 0; break;
     case "buy": D.wp[e.p] += e.v; D.ch[e.p] = D.ch[e.p].filter(x => x.id !== e.cid); D.mk[e.i] = e.ck; D.dl = e.dl0; break;
-    case "release": D.ch[e.p].splice(e.idx, 0, JSON.parse(JSON.stringify(e.c))); D.mk = e.mkb.slice(); D.dl = e.dl0; break;
+    case "release": D.ch[e.p].splice(e.idx, 0, JSON.parse(JSON.stringify(e.c))); D.mk = e.mkb.slice(); D.dl = e.dl0; D.wp[e.p] += e.v || 0; break;
     case "tre": D.wp[e.p] += e.v; e.used.forEach(u => { const c2 = wdDC(D, u.cid); if (c2) c2.s[u.i] = u.a; }); { const k = D.tre[e.p].map(t => t.id).lastIndexOf(e.id); if (k >= 0) D.tre[e.p].splice(k, 1); } if (!D.treL.includes(e.id)) D.treL.push(e.id); break;
     case "back": { const t = D.tre[e.p][e.ti]; if (t) t.cubes.splice(e.j, 0, e.a); if (c && e.s >= 0) c.s[e.s] = null; break; }
     case "swap": { const A = wdDC(D, e.c1), B = wdDC(D, e.c2); if (A && B) [A.s[e.i1], B.s[e.i2]] = [B.s[e.i2], A.s[e.i1]]; break; }
@@ -6857,6 +7053,278 @@ function wdUndo(D, e){
     case "roll": if (D.T){ D.T.dice = []; D.T.ph = "roll"; } break;
     case "face": if (D.T){ D.T.face = null; D.T.ph = "pick"; } break;
   }
+}
+
+/* ---------- 秘宝の絵（48×48） ---------- */
+const WD_TA = {
+  // 竜鱗の護符：鱗の形のお守り＋紐
+  t1: { c: ["#FFB36B", "#C2361E"], l: "#FFE7A3", s: `
+    <path d="M17 6 C17 1 31 1 31 6" fill="none" stroke="#C9A35A" stroke-width="1.8"/>
+    <circle cx="24" cy="8.5" r="2.6" fill="none" stroke="#FFE7A3" stroke-width="1.6"/>
+    <path d="M24 11 C34 11 40 17 40 25 C40 34 31 41 24 45 C17 41 8 34 8 25 C8 17 14 11 24 11Z" fill="url(#G)" stroke="#FFE7A3" stroke-width="1.6"/>
+    <path d="M12.5 22 q5.75 -6 11.5 0 q5.75 -6 11.5 0 M15.5 30 q4.25 -5 8.5 0 q4.25 -5 8.5 0 M19.5 37.5 q2.25 -3.5 4.5 0 q2.25 -3.5 4.5 0" fill="none" stroke="rgba(255,231,163,.75)" stroke-width="1.4" stroke-linecap="round"/>
+    <path d="M14 18 C16 15 19 14 22 14" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="1.6" stroke-linecap="round"/>` },
+  // 星砂の砂時計
+  t2: { c: ["#BFE6FF", "#3F7FD0"], l: "#E9C27A", s: `
+    <rect x="11" y="4" width="26" height="4" rx="1.5" fill="#B9853B" stroke="#FFE7A3" stroke-width="1"/>
+    <rect x="11" y="40" width="26" height="4" rx="1.5" fill="#B9853B" stroke="#FFE7A3" stroke-width="1"/>
+    <path d="M13 8 V40 M35 8 V40" stroke="#C9A35A" stroke-width="1.8"/>
+    <path d="M16 8 C16 18 22.5 21 22.5 24 C22.5 27 16 30 16 40 H32 C32 30 25.5 27 25.5 24 C25.5 21 32 18 32 8Z" fill="url(#G)" fill-opacity=".55" stroke="#E8F6FF" stroke-width="1.3"/>
+    <path d="M18.5 12 H29.5 C28.5 17 25.5 19.5 24 21.5 C22.5 19.5 19.5 17 18.5 12Z" fill="#FFD86B"/>
+    <path d="M24 22 V33" stroke="#FFD86B" stroke-width="1" stroke-dasharray="1.2 1.6"/>
+    <path d="M17.5 39 C19.5 33.5 22 32.5 24 32 C26 32.5 28.5 33.5 30.5 39Z" fill="#FFD86B"/>
+    <circle cx="21" cy="35.5" r=".9" fill="#fff"/><circle cx="27" cy="36.5" r=".7" fill="#fff"/><circle cx="24.5" cy="15" r=".8" fill="#fff"/>` },
+  // 世界樹の若枝
+  t3: { c: ["#B6F5A0", "#2E9E4F"], l: "#E6FFD0", s: `
+    <path d="M12 45 C16 34 21 25 33 5" fill="none" stroke="#7A5A2E" stroke-width="2.6" stroke-linecap="round"/>
+    <path d="M17 33 C10 31 7 25 8 21 C13 22 17 27 17 33Z" fill="url(#G)" stroke="#E6FFD0" stroke-width="1"/>
+    <path d="M19.5 28 C25 28.5 31 25 33 20 C27 19 21.5 22 19.5 28Z" fill="url(#G)" stroke="#E6FFD0" stroke-width="1"/>
+    <path d="M24 19 C18.5 17 16.5 11 18 7 C22.5 9.5 24.5 14 24 19Z" fill="url(#G)" stroke="#E6FFD0" stroke-width="1"/>
+    <path d="M27.5 13.5 C32 14.5 37 12 39 8 C34 7 29.5 9 27.5 13.5Z" fill="url(#G)" stroke="#E6FFD0" stroke-width="1"/>
+    <circle cx="33" cy="5" r="2.4" fill="#FFF6B0"/><circle cx="33" cy="5" r="4.5" fill="#FFF6B0" opacity=".3"/>
+    <circle cx="11" cy="17" r="1" fill="#FFF6B0"/><circle cx="38" cy="24" r="1.1" fill="#FFF6B0"/>` },
+  // 海神の三叉槍
+  t4: { c: ["#C8FFF6", "#1C8FB8"], l: "#E8FFFB", s: `
+    <path d="M24 22 V46" stroke="#C9A35A" stroke-width="2.6" stroke-linecap="round"/>
+    <path d="M11 13 C11 21 17 24 24 24 C31 24 37 21 37 13" fill="none" stroke="url(#G)" stroke-width="3" stroke-linecap="round"/>
+    <path d="M24 24 V6 M11 13 V8 M37 13 V8" stroke="url(#G)" stroke-width="3" stroke-linecap="round"/>
+    <path d="M19.5 9 L24 1.5 L28.5 9 L24 7Z M7.5 11 L11 4 L14.5 11 L11 9Z M33.5 11 L37 4 L40.5 11 L37 9Z" fill="#E8FFFB" stroke="#7FE6FF" stroke-width=".8"/>
+    <circle cx="24" cy="24" r="3" fill="#4FD8FF" stroke="#E8FFFB" stroke-width="1"/>
+    <path d="M18 31 q3 2 6 0 q3 -2 6 0 M18 36 q3 2 6 0 q3 -2 6 0" fill="none" stroke="#7FE6FF" stroke-width="1.2" opacity=".8"/>` },
+  // 雷霆の戦鎚
+  t5: { c: ["#E2E8F2", "#6A7488"], l: "#FFE14A", s: `
+    <path d="M12 44 L27 23" stroke="#8A5A2E" stroke-width="3.2" stroke-linecap="round"/>
+    <path d="M11 41 L15 45" stroke="#C9A35A" stroke-width="2"/>
+    <g transform="rotate(-35 30 17)"><rect x="17" y="9.5" width="26" height="15" rx="2.5" fill="url(#G)" stroke="#FFF" stroke-width="1.2"/><rect x="15" y="11.5" width="3" height="11" rx="1" fill="#9AA4B8"/><rect x="42" y="11.5" width="3" height="11" rx="1" fill="#9AA4B8"/></g>
+    <path d="M32 7.5 L26.5 17 L30.5 17 L27.5 25.5 L35 14.5 L31 14.5 L34 7.5Z" fill="#FFE14A" stroke="#FFF7C0" stroke-width=".8"/>
+    <path d="M40 4 L42 8 M44 13 L47 13 M9 24 L5 22" stroke="#FFE14A" stroke-width="1.4" stroke-linecap="round"/>` },
+  // 幻影の仮面
+  t6: { c: ["#F6C8FF", "#8A3FD0"], l: "#FFFFFF", s: `
+    <path d="M5 18 C5 11 14 9 24 14 C34 9 43 11 43 18 C43 29 35 35 29 33 C26.5 32 25.5 28.5 24 28.5 C22.5 28.5 21.5 32 19 33 C13 35 5 29 5 18Z" fill="url(#G)" stroke="#FCE8FF" stroke-width="1.4"/>
+    <path d="M10 19.5 C12 16 17 15.5 20 19 C17 22.5 12 22.5 10 19.5Z M28 19 C31 15.5 36 16 38 19.5 C36 22.5 31 22.5 28 19Z" fill="#1A0A2E"/>
+    <path d="M24 14 C22 17 22 21 24 24 C26 21 26 17 24 14Z" fill="#FFE7A3" opacity=".9"/>
+    <path d="M8 26 C10 30 14 31 16 29 M40 26 C38 30 34 31 32 29" fill="none" stroke="#FCE8FF" stroke-width="1.1" stroke-linecap="round"/>
+    <path d="M5 18 C2 24 3 32 6 38 M43 18 C46 24 45 32 42 38" fill="none" stroke="#E07CFF" stroke-width="1.6" stroke-linecap="round" opacity=".8"/>
+    <circle cx="15" cy="12.5" r="1" fill="#fff"/><circle cx="33" cy="12.5" r="1" fill="#fff"/>` },
+  // 不死鳥の心臓
+  t7: { c: ["#FFE07A", "#E8301E"], l: "#FFE7A3", s: `
+    <path d="M24 13 C22 8 25 5 23.5 1 C28.5 4.5 30 8.5 27.5 13 C30 11 31 9 30.5 6.5 C33.5 9.5 33 13 30 15.5Z" fill="#FFB347"/>
+    <path d="M9 21 C4 19 2 14 3 10 C6 14 9 15 12 15 M39 21 C44 19 46 14 45 10 C42 14 39 15 36 15" fill="none" stroke="#FF7A3C" stroke-width="2" stroke-linecap="round"/>
+    <path d="M8 27 C4 27 2 24 1.5 21 M40 27 C44 27 46 24 46.5 21" fill="none" stroke="#FFB347" stroke-width="1.6" stroke-linecap="round"/>
+    <path d="M24 44 C14 36 8 30 8 22 C8 16 12 12 17 12 C20 12 22.5 14 24 17 C25.5 14 28 12 31 12 C36 12 40 16 40 22 C40 30 34 36 24 44Z" fill="url(#G)" stroke="#FFE7A3" stroke-width="1.5"/>
+    <path d="M24 37 C20 32 18.5 29 19.5 25.5 C21 27 22.5 27.5 23.5 26 C22.5 23 24 20.5 26.5 19 C26 22.5 29 24 29 28.5 C29 32 27 34.5 24 37Z" fill="#FFF3B0" opacity=".9"/>
+    <path d="M13 18 C14 16 15.5 15 17.5 15" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity=".8"/>` },
+  // 冥府の鍵
+  t8: { c: ["#9FFFE6", "#4A1E7A"], l: "#7FFFD8", s: `
+    <circle cx="24" cy="12" r="9.5" fill="url(#G)" stroke="#CFFFF2" stroke-width="1.4"/>
+    <circle cx="24" cy="12" r="4.5" fill="#12081F" stroke="#7FFFD8" stroke-width="1"/>
+    <path d="M24 7.5 V16.5 M19.5 12 H28.5" stroke="#7FFFD8" stroke-width="1"/>
+    <path d="M17 5 L14 2 M31 5 L34 2 M14.5 12 H11 M33.5 12 H37" stroke="#7FFFD8" stroke-width="1.3" stroke-linecap="round"/>
+    <rect x="22" y="21" width="4" height="23" rx="1.5" fill="url(#G)" stroke="#CFFFF2" stroke-width="1"/>
+    <path d="M26 33 H32 V36.5 H29 V39.5 H26 M26 41 H31 V44 H26" fill="url(#G)" stroke="#CFFFF2" stroke-width="1"/>
+    <path d="M20 24 H28" stroke="#CFFFF2" stroke-width="1.4"/>
+    <circle cx="24" cy="12" r="13" fill="none" stroke="#7FFFD8" stroke-width=".6" stroke-dasharray="1.5 2.5" opacity=".7"/>` },
+  // 創世の石版
+  t9: { c: ["#D8D2C4", "#6E6658"], l: "#FFE7A3", s: `
+    <path d="M9 45 V15 C9 7 15.5 3 24 3 C32.5 3 39 7 39 15 V45Z" fill="url(#G)" stroke="#F4EEDD" stroke-width="1.4"/>
+    <path d="M9 45 H39" stroke="#4A4438" stroke-width="2"/>
+    <circle cx="24" cy="15" r="5.5" fill="none" stroke="#FFE7A3" stroke-width="1.4"/>
+    <path d="M24 9.5 V20.5 M18.5 15 H29.5 M20 11 L28 19 M28 11 L20 19" stroke="#FFE7A3" stroke-width=".8" opacity=".8"/>
+    <path d="M15 26 H21 M23 26 H26 M28 26 H33 M15 31 H18 M20 31 H28 M30 31 H33 M15 36 H24 M26 36 H33 M15 40.5 H20 M22 40.5 H31" stroke="#FFE7A3" stroke-width="1.6" stroke-linecap="round"/>
+    <path d="M35 6 L32 13 L35 17 L33 22" fill="none" stroke="#4A4438" stroke-width="1" opacity=".7"/>
+    <circle cx="24" cy="15" r="9" fill="#FFE7A3" opacity=".15"/>` },
+  // 覇王の聖杯
+  t10: { c: ["#FFF1B8", "#C08A1E"], l: "#FFFFFF", s: `
+    <path d="M10 6 L14 9 L17 4 L20.5 8.5 L24 3 L27.5 8.5 L31 4 L34 9 L38 6 L37 11 H11Z" fill="#FFD86B" stroke="#FFF6D6" stroke-width=".8"/>
+    <path d="M11 11 H37 C37 22 31.5 28 24 28 C16.5 28 11 22 11 11Z" fill="url(#G)" stroke="#FFF6D6" stroke-width="1.4"/>
+    <circle cx="24" cy="18.5" r="4" fill="#E8455F" stroke="#FFD0DA" stroke-width="1"/><circle cx="22.8" cy="17.3" r="1.1" fill="#fff" opacity=".8"/>
+    <rect x="21.5" y="28" width="5" height="9" fill="url(#G)" stroke="#FFF6D6" stroke-width="1"/>
+    <path d="M20 31.5 H28" stroke="#E8455F" stroke-width="1.6"/>
+    <path d="M13 44 C13 39 18.5 37 24 37 C29.5 37 35 39 35 44Z" fill="url(#G)" stroke="#FFF6D6" stroke-width="1.4"/>
+    <path d="M14 14 C14.5 18 16 21 18 23" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity=".75"/>` }
+};
+function wdTreArt(id, cls = ""){
+  const a = WD_TA[id]; if (!a) return "";
+  const gid = "wdtg_" + id;
+  return `<svg class="wdta ${cls}" viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="${gid}" x1="0" y1="0" x2=".6" y2="1"><stop offset="0" stop-color="${a.c[0]}"/><stop offset="1" stop-color="${a.c[1]}"/></linearGradient></defs>${a.s.replace(/url\(#G\)/g, `url(#${gid})`)}</svg>`;
+}
+
+/* ---------- キャラの絵：影絵のシルエット＋属性の光（120×150） ---------- */
+const WDA = (() => {
+  const SIL = "#05020B";
+  const S = (d, rim, w = 1.3) => `<path d="${d}" fill="${SIL}" stroke="${rim}" stroke-width="${w}" stroke-opacity=".85" stroke-linejoin="round"/>`;
+  const M = s => `<g transform="translate(120 0) scale(-1 1)">${s}</g>`;
+  const SM = (d, rim, w) => S(d, rim, w) + M(S(d, rim, w));
+  const glow = (x, y, r, c, o = .5) => `<circle cx="${x}" cy="${y}" r="${r * 2.4}" fill="${c}" opacity="${o * .18}"/><circle cx="${x}" cy="${y}" r="${r * 1.5}" fill="${c}" opacity="${o * .35}"/><circle cx="${x}" cy="${y}" r="${r}" fill="${c}" opacity="${o}"/>`;
+  const eye = (x, y, c, rx = 2.2, ry = 1.1) => `<circle cx="${x}" cy="${y}" r="6" fill="${c}" opacity=".18"/><circle cx="${x}" cy="${y}" r="3.4" fill="${c}" opacity=".35"/><ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" fill="#fff"/><ellipse cx="${x}" cy="${y}" rx="${rx * .8}" ry="${ry * .8}" fill="${c}" opacity=".7"/>`;
+  const eyes = (x1, x2, y, c, rx, ry) => eye(x1, y, c, rx, ry) + eye(x2, y, c, rx, ry);
+  const stroke = (d, c, w, o = 1, cap = "round") => `<path d="${d}" fill="none" stroke="${c}" stroke-width="${w}" stroke-opacity="${o}" stroke-linecap="${cap}" stroke-linejoin="round"/>`;
+  const tube = (d, rim, w) => stroke(d, rim, w + 2.2, .85) + stroke(d, SIL, w, 1);
+  const flame = (x, y, h, c, s = 1) => `<path d="M${x} ${y} c${-4 * s} ${-h * .35} ${-1 * s} ${-h * .6} ${2 * s} ${-h} c${0} ${h * .35} ${5 * s} ${h * .45} ${3 * s} ${h * .78} c${2 * s} ${-2} ${3 * s} ${-5} ${3 * s} ${-8} c${3 * s} ${6} ${2 * s} ${h * .4} ${-8 * s} ${h * .3}z" fill="${c}"/>`;
+  const sparks = (pts, c) => pts.map(([x, y, r]) => `<circle cx="${x}" cy="${y}" r="${r || 1}" fill="${c}"/>`).join("");
+  const bolt = (x, y, s, c) => `<path d="M${x} ${y} l${-6 * s} ${12 * s} l${5 * s} 0 l${-4 * s} ${11 * s} l${10 * s} ${-14 * s} l${-5 * s} 0 l${4 * s} ${-9 * s}z" fill="${c}"/>`;
+  const fog = (c) => `<ellipse cx="30" cy="146" rx="50" ry="16" fill="${c}" opacity=".16"/><ellipse cx="92" cy="150" rx="46" ry="14" fill="${c}" opacity=".14"/><ellipse cx="60" cy="156" rx="70" ry="14" fill="#fff" opacity=".07"/>`;
+  return {
+    0: { bg: ["#FFB347", "#FF4A1C", "#2A0606"], d: r => // フェニックス
+      SM("M56 62 C44 58 30 46 14 20 C17 32 20 39 25 45 C17 43 11 39 5 33 C11 45 19 51 29 55 C21 57 15 57 7 55 C17 63 31 68 52 72Z", r) +
+      stroke("M56 62 C44 58 30 46 14 20 M29 55 C21 57 15 57 7 55", "#FFD36B", 1.6, .9) + M(stroke("M56 62 C44 58 30 46 14 20 M29 55 C21 57 15 57 7 55", "#FFD36B", 1.6, .9)) +
+      flame(14, 26, 16, "#FFB347", -1) + flame(106, 26, 16, "#FFB347") + flame(8, 58, 12, "#FF7A2E", -1) + flame(112, 58, 12, "#FF7A2E") +
+      S("M60 52 C56 52 54 56 55 60 C50 64 49 74 52 84 C48 92 44 106 46 124 C52 112 56 102 60 98 C64 102 68 112 74 124 C76 106 72 92 68 84 C71 74 70 64 65 60 C66 56 64 52 60 52Z", r) +
+      S("M60 41 C56 41 54 44 54 47 C54 51 57 54 60 54 C63 54 66 51 66 47 C66 44 64 41 60 41Z M60 49 L57.3 57 L60 55.4 L62.7 57Z M58 42 C54 35 54 28 58 21 C58.5 29 60 34 61 41Z M61 41 C62 33 66 27 73 24 C68 31 66 36 63 42Z M59 42 C55 37 49 34 43 34 C49 37 53 40 56 44Z", r) +
+      flame(58, 30, 12, "#FFD36B") + flame(50, 128, 20, "#FF7A2E") + flame(66, 130, 24, "#FFB347") + eyes(57.4, 62.6, 47.5, "#FFE07A", 1.4, .8) },
+    1: { bg: ["#7FD8FF", "#1A5FB8", "#03101F"], d: r => // リヴァイアサン
+      tube("M28 160 C26 128 84 128 86 104 C88 84 60 84 58 66", r, 17) +
+      S("M60 70 C52 60 50 48 56 40 C62 32 74 32 80 38 L98 32 L86 44 C92 48 90 56 82 57 L96 64 L76 64 C70 68 64 70 60 70Z", r) +
+      S("M70 98 L82 86 L80 102Z M84 112 L98 104 L92 118Z M40 128 L30 116 L46 124Z M56 40 L48 26 L62 36Z M64 34 L64 20 L70 34Z", r, 1) +
+      stroke("M80 38 L98 32 L86 44", "#E8F8FF", 1) + stroke("M82 57 L96 64 L76 64", "#E8F8FF", 1) +
+      eye(70, 44, "#7FFFF0", 2.4, 1.2) +
+      `<path d="M0 132 C14 124 24 136 38 130 C52 124 60 138 76 130 C92 122 102 136 120 128 V150 H0Z" fill="#0A2E5A" opacity=".85"/>` + stroke("M0 132 C14 124 24 136 38 130 C52 124 60 138 76 130 C92 122 102 136 120 128", "#BFF0FF", 1.4, .8) +
+      sparks([[20, 120, 1.4], [100, 118, 1.2], [88, 126, 1]], "#E8F8FF") },
+    2: { bg: ["#C6FF9E", "#2E9E4F", "#031A08"], d: r => // ドライアド
+      SM("M47 50 C38 62 36 82 28 102 C25 112 20 122 15 134 C29 126 37 113 41 99 C44 88 47 80 50 70Z", r) +
+      S("M60 37 C52 37 48 45 49 53 C50 61 55 67 60 67 C65 67 70 61 71 53 C72 45 68 37 60 37Z", r) +
+      S("M54 65 L52 75 C40 79 30 88 26 104 L24 150 L96 150 L94 104 C90 88 80 79 68 75 L66 65Z", r) +
+      stroke("M53 40 C46 30 40 25 33 18 M44 30 C40 29 35 31 31 34 M38 24 C38 19 36 15 33 11", SIL, 3) + M(stroke("M53 40 C46 30 40 25 33 18 M44 30 C40 29 35 31 31 34 M38 24 C38 19 36 15 33 11", SIL, 3)) +
+      [[33, 18], [31, 34], [33, 11], [44, 30]].map(([x, y]) => `<ellipse cx="${x}" cy="${y}" rx="4" ry="2.2" fill="#7DFF8A" transform="rotate(-35 ${x} ${y})"/><ellipse cx="${120 - x}" cy="${y}" rx="4" ry="2.2" fill="#7DFF8A" transform="rotate(35 ${120 - x} ${y})"/>`).join("") +
+      stroke("M30 150 C34 128 42 112 54 100 M90 150 C86 128 78 112 66 100", "#7DFF8A", 1.4, .7) +
+      eyes(55, 65, 54, "#B6FF9E", 2, .9) + sparks([[18, 70, 1.3], [102, 62, 1.1], [94, 88, 1.4], [26, 92, 1]], "#E8FFB0") },
+    3: { bg: ["#FFF1A0", "#E0A21A", "#1A1402"], d: r => // サンダーバード
+      bolt(16, 20, 1.4, "#FFF2A0") + bolt(104, 14, 1.2, "#FFF2A0") + bolt(8, 92, .9, "#FFE14A") + bolt(112, 96, 1, "#FFE14A") +
+      SM("M54 62 C40 56 26 54 3 60 C9 62 13 64 15 68 C9 68 5 70 1 74 C9 74 15 74 19 76 C13 78 9 82 7 86 C19 82 29 78 39 78 C45 76 50 72 54 70Z", r) +
+      S("M60 50 C53 50 50 58 51 66 C47 76 48 90 54 100 L49 118 L60 108 L71 118 L66 100 C72 90 73 76 69 66 C70 58 67 50 60 50Z", r) +
+      S("M60 33 C54 33 51 38 52 44 C53 49 56 52 60 54 C64 52 67 49 68 44 C69 38 66 33 60 33Z M60 44 L55 53 L60 58 L65 53Z", r) +
+      eyes(56.5, 63.5, 41, "#FFE14A", 1.8, 1) + stroke("M58 120 L52 134 L58 132 L54 146", "#FFF2A0", 1.6, .9) },
+    4: { bg: ["#FF6F8E", "#7A1A3A", "#0D0210"], d: r => // ヴァンパイア
+      `<circle cx="60" cy="48" r="32" fill="#FFB0C0" opacity=".55"/><circle cx="60" cy="48" r="32" fill="none" stroke="#FFD0DA" stroke-width="1" opacity=".6"/>` +
+      SM("M24 100 C14 80 6 70 0 60 C4 72 4 80 2 88 C8 84 12 86 14 92 C16 86 20 88 22 94Z", r) +
+      SM("M44 72 C39 60 37 48 40 36 C46 49 50 57 54 66Z", r) +
+      S("M54 64 L50 72 C36 76 24 86 18 104 L8 150 L112 150 L102 104 C96 86 84 76 70 72 L66 64Z", r) +
+      S("M60 35 C54 35 50 40 50 48 C50 56 54 62 60 64 C66 62 70 56 70 48 C70 40 66 35 60 35Z M50 48 L44 41 L51 53Z M70 48 L76 41 L69 53Z", r) +
+      stroke("M60 72 L60 92", "#E8455F", 1.4, .8) + `<circle cx="60" cy="94" r="2.6" fill="#FF4A6A"/>` +
+      eyes(56, 64, 48, "#FF4A6A", 2, .9) + sparks([[12, 30, 1.2], [104, 24, 1], [96, 66, 1.3]], "#FFD0DA") },
+    5: { bg: ["#FFC36B", "#B8460E", "#140602"], d: r => // バハムート
+      SM("M58 72 C44 52 28 32 6 14 C12 30 14 40 12 52 C20 46 26 48 28 56 C32 50 38 52 40 60 C44 56 50 60 52 68Z", r) +
+      S("M44 150 C44 120 48 102 50 88 L70 88 C72 102 76 120 76 150Z", r) +
+      SM("M50 52 C40 44 31 30 33 12 C37 27 45 37 56 45Z M46 64 L33 61 L46 70Z M47 76 L37 77 L48 82Z", r) +
+      S("M60 42 C50 42 44 50 44 58 C44 66 48 72 50 80 L52 96 C54 101 57 104 60 104 C63 104 66 101 68 96 L70 80 C72 72 76 66 76 58 C76 50 70 42 60 42Z", r) +
+      S("M57 42 L60 32 L63 42Z", r, 1) + stroke("M52 88 L56 90 M68 88 L64 90", "#FFD36B", 1, .8) +
+      glow(56.5, 99, 1.6, "#FFB347", .9) + glow(63.5, 99, 1.6, "#FFB347", .9) + glow(60, 110, 6, "#FF7A2E", .5) +
+      `<path d="M53 61 L58.5 63.5 L53 64.5Z M67 61 L61.5 63.5 L67 64.5Z" fill="#FFE07A"/>` + glow(55, 63, 2, "#FFD36B", .5) + glow(65, 63, 2, "#FFD36B", .5) +
+      sparks([[20, 110, 1.4], [98, 116, 1.2], [30, 126, 1], [90, 132, 1.3]], "#FFD36B") },
+    6: { bg: ["#E0A0FF", "#5A1F8A", "#0A0216"], d: r => // ナイトメア
+      S("M80 150 L76 112 C74 98 72 88 68 80 C62 72 54 66 46 64 C40 62 33 63 28 67 C23 71 21 78 23 82 C27 85 32 83 37 83 C43 85 47 89 49 95 C51 107 47 127 41 150Z", r) +
+      S("M57 66 L58 52 L64 67Z M50 64 L48 52 L55 64Z", r, 1) +
+      [[62, 62], [68, 72], [73, 84], [76, 98], [78, 112]].map(([x, y], i) => flame(x + 2, y + 6, 16 - i, i % 2 ? "#E07CFF" : "#B45CFF", 1)).join("") +
+      eye(38, 70, "#F0B0FF", 2.2, 1.1) + glow(24, 80, 3, "#E07CFF", .5) +
+      `<path d="M0 120 C20 112 30 124 50 118 C70 112 90 126 120 116 V150 H0Z" fill="#1A0630" opacity=".8"/>` +
+      sparks([[14, 30, 1.2], [100, 40, 1.4], [92, 20, 1]], "#F0B0FF") },
+    7: { bg: ["#FFFBE6", "#D8B65A", "#1A1408"], d: r => // セラフィム
+      `<ellipse cx="60" cy="36" rx="14" ry="4.5" fill="none" stroke="#FFF6C8" stroke-width="2.2"/><ellipse cx="60" cy="36" rx="18" ry="7" fill="#FFF6C8" opacity=".25"/>` +
+      ["M56 56 C44 40 30 26 12 18 C20 30 26 38 34 44 C24 42 16 40 8 40 C18 48 30 52 46 58Z", "M54 66 C40 62 24 62 6 70 C18 72 28 74 36 74 C26 78 18 84 12 90 C28 86 42 80 54 74Z", "M54 80 C44 86 34 98 30 116 C38 106 44 100 50 96 C46 104 44 112 44 122 C50 110 56 98 58 88Z"].map(d => `<path d="${d}" fill="#FFF8DC" opacity=".92" stroke="#FFFFFF" stroke-width="1"/>` + M(`<path d="${d}" fill="#FFF8DC" opacity=".92" stroke="#FFFFFF" stroke-width="1"/>`)).join("") +
+      S("M54 58 L50 66 C46 80 44 110 40 150 L80 150 C76 110 74 80 70 66 L66 58Z", "#FFF6C8") + S("M60 42 C55.5 42 53 46 53 50 C53 55 56 58 60 58 C64 58 67 55 67 50 C67 46 64.5 42 60 42Z", "#FFF6C8") +
+      eyes(57.5, 62.5, 50, "#FFFFFF", 1.4, .7) + sparks([[20, 130, 1.3], [100, 128, 1.1], [14, 104, 1], [108, 100, 1.2]], "#FFFFFF") },
+    8: { bg: ["#FF8A8A", "#8A1424", "#140204"], d: r => // ベヒモス
+      SM("M44 66 C32 62 20 50 18 32 C26 44 36 50 48 56Z", r) +
+      S("M6 150 C6 110 22 86 40 80 C46 70 54 66 60 66 C66 66 74 70 80 80 C98 86 114 110 114 150Z", r) +
+      S("M60 54 C48 54 40 65 40 80 C40 94 48 106 60 112 C72 106 80 94 80 80 C80 65 72 54 60 54Z", r) +
+      `<path d="M50 102 C45 110 45 118 49 124 C49 116 51 110 54 106Z M70 102 C75 110 75 118 71 124 C71 116 69 110 66 106Z" fill="#E8DCC0"/>` +
+      eyes(52, 68, 80, "#FF4A4A", 2.4, 1.2) +
+      stroke("M10 150 L24 138 L30 144 L42 132 M110 150 L96 140 L90 146 L80 134", "#FF6A3C", 1.6, .9) + glow(60, 146, 6, "#FF6A3C", .45) },
+    9: { bg: ["#FF9A5A", "#B8240E", "#140402"], d: r => // ケルベロス
+      flame(26, 60, 26, "#FF7A2E", -1) + flame(94, 60, 26, "#FF7A2E") + flame(60, 50, 22, "#FFB347") +
+      S("M8 150 C12 118 28 98 44 94 L76 94 C92 98 108 118 112 150Z", r) +
+      SM("M44 98 C38 92 34 86 32 80 L44 74 C46 82 48 88 52 94Z", r, 1) +
+      SM("M40 66 C32 63 24 65 18 71 L7 75 L13 79 L9 85 C17 88 25 86 31 84 C37 86 43 84 45 78Z M33 66 L35 53 L40 66Z", r) +
+      S("M60 52 C50 52 46 60 46 69 C46 79 52 87 60 91 C68 87 74 79 74 69 C74 60 70 52 60 52Z M48 61 L44 44 L54 57Z M72 61 L76 44 L66 57Z M54 82 C54 90 57 96 60 96 C63 96 66 90 66 82Z", r) +
+      eyes(55, 65, 69, "#FFB347", 1.8, .9) + eye(27, 71, "#FFB347", 1.6, .8) + eye(93, 71, "#FFB347", 1.6, .8) },
+    10: { bg: ["#8AE8FF", "#0E5A8A", "#020A16"], d: r => // クラーケン
+      ["M12 150 C14 126 4 112 6 96 C8 84 18 82 20 92", "M34 150 C30 118 22 104 28 86 C32 74 44 76 42 88", "M86 150 C90 118 98 104 92 86 C88 74 76 76 78 88", "M108 150 C106 126 116 112 114 96 C112 84 102 82 100 92"].map((d, i) => tube(d, r, 7 - (i % 2))).join("") +
+      S("M60 18 C40 18 30 38 32 58 C34 74 44 86 60 90 C76 86 86 74 88 58 C90 38 80 18 60 18Z", r) +
+      tube("M48 88 C44 110 52 124 46 150 M72 88 C76 110 68 124 74 150", r, 7) +
+      `<ellipse cx="60" cy="62" rx="11" ry="7" fill="#7FFFF0" opacity=".25"/><ellipse cx="60" cy="62" rx="8" ry="5" fill="#E8FFFB"/><ellipse cx="60" cy="62" rx="2" ry="4.6" fill="${SIL}"/>` +
+      sparks([[18, 100, 1.1], [26, 92, .9], [102, 100, 1.1], [94, 92, .9], [40, 84, .9], [80, 84, .9]], "#BFF0FF") +
+      `<path d="M0 138 C16 132 28 142 44 136 C60 130 72 142 88 136 C104 130 112 140 120 136 V150 H0Z" fill="#06244A" opacity=".8"/>` },
+    11: { bg: ["#B6FF9E", "#3E7A2E", "#040E04"], d: r => // ゴーレム
+      S("M30 60 L90 60 L96 100 L84 104 L80 150 L40 150 L36 104 L24 100Z", r) +
+      SM("M28 60 L12 66 L6 112 L22 114 L26 76Z", r) +
+      S("M48 32 L72 32 L74 56 L46 56Z", r) +
+      stroke("M36 70 L50 80 L44 96 M84 70 L70 80 L76 96 M60 104 L60 130 M50 124 L60 130 L70 124", "#7DFF8A", 1.6, .9) +
+      `<rect x="51" y="42" width="7" height="2.4" fill="#B6FF9E"/><rect x="62" y="42" width="7" height="2.4" fill="#B6FF9E"/>` + glow(60, 43, 4, "#7DFF8A", .35) +
+      glow(60, 88, 4, "#7DFF8A", .6) + stroke("M30 60 L40 70 M90 60 L80 70", "#0E2A10", 1.2) +
+      sparks([[14, 128, 1.4], [104, 132, 1.2], [96, 120, 1]], "#B6FF9E") },
+    12: { bg: ["#FFF1A0", "#C08A1E", "#140E02"], d: r => // グリフォン
+      S("M64 70 C62 50 68 30 90 12 C88 26 90 34 96 40 C90 40 88 44 90 50 C86 50 82 54 82 60Z", r) +
+      S("M54 72 C46 56 34 44 14 38 C22 46 24 52 24 58 C30 58 32 62 32 66Z", r) +
+      S("M48 70 C42 80 40 94 42 110 L38 150 L88 150 L86 110 C88 96 84 80 72 72Z M42 110 L28 116 L26 124 L36 122 L44 126Z", r) +
+      S("M70 48 C64 40 54 38 46 42 C40 45 36 50 34 56 L26 60 L34 62 C38 64 42 64 46 62 C50 68 56 72 62 74Z M34 56 C30 56 26 58 24 63 C28 63 30 65 34 62Z", r) +
+      stroke("M50 38 L46 30 M56 37 L55 28", SIL, 2.4) + eye(46, 50, "#FFE14A", 1.8, 1) +
+      `<path d="M74 96 L96 90 L100 112 C96 124 86 130 76 132 Z" fill="#2A1C06" stroke="#FFE7A3" stroke-width="1.4"/>` + bolt(90, 98, .6, "#FFE14A") },
+    13: { bg: ["#C89BFF", "#4A1E7A", "#08020F"], d: r => // リッチ
+      tube("M98 150 L98 26", "#C89BFF", 3) + glow(98, 22, 5, "#C89BFF", .9) + `<circle cx="98" cy="22" r="4" fill="#F0E0FF"/>` +
+      S("M60 30 C46 30 38 42 38 56 C38 64 40 70 44 74 C30 84 22 100 18 150 L102 150 C98 100 90 84 76 74 C80 70 82 64 82 56 C82 42 74 30 60 30Z", r) +
+      `<path d="M46 34 L48 21 L53 30 L60 17 L67 30 L72 21 L74 34Z" fill="#2A1C06" stroke="#FFE7A3" stroke-width="1"/>` +
+      `<ellipse cx="60" cy="56" rx="11" ry="13" fill="#170A26"/><path d="M54 64 L66 64 L64 70 L56 70Z" fill="#2A1A3E"/>` +
+      eyes(55.5, 64.5, 54, "#D8A8FF", 2, 1.4) +
+      S("M92 96 L98 92 L102 98 L98 104Z", r, 1) + stroke("M40 100 C50 108 70 108 80 100", "#C89BFF", 1, .6) +
+      sparks([[24, 40, 1.2], [14, 70, 1], [34, 22, 1]], "#E0C8FF") },
+    14: { bg: ["#FFC36B", "#B8460E", "#140602"], d: r => // ワイバーン
+      S("M58 64 C54 44 60 24 76 8 C78 20 82 26 90 30 C84 32 82 36 84 42 C78 42 76 46 76 52 C70 52 66 56 64 62Z", r) +
+      S("M20 46 C26 40 34 40 40 44 L47 39 L45 48 C51 54 57 62 61 70 C67 82 67 94 61 102 C55 110 45 116 31 124 L22 132 L26 122 C38 114 44 108 47 100 C45 90 41 80 35 72 C31 64 29 58 27 54 C23 54 19 52 15 50Z", r) +
+      S("M62 66 C76 52 96 46 118 48 C110 54 106 60 106 66 C100 64 96 66 94 70 C90 68 86 70 84 74Z", r) +
+      stroke("M15 50 L10 52 L16 53", "#FFE0A0", 1) + eye(24, 46, "#FFB347", 1.6, .9) +
+      `<circle cx="96" cy="118" r="18" fill="#FFD36B" opacity=".25"/>` + sparks([[100, 128, 1.2], [84, 136, 1], [108, 104, 1]], "#FFD36B") },
+    15: { bg: ["#FFB0F0", "#7A2A8A", "#0F0214"], d: r => // キマイラ
+      S("M100 150 C104 128 94 112 100 92 C104 78 104 66 96 58", r, 1) + tube("M102 150 C108 124 90 110 100 88 C106 74 104 62 96 56", r, 7) +
+      S("M96 56 C90 50 92 41 98 41 C104 41 107 48 104 54Z", r) +
+      S("M18 150 C22 118 40 100 60 100 C80 100 96 118 100 150Z", r) +
+      `<path d="${Array.from({ length: 18 }, (_, i) => { const a = i / 18 * Math.PI * 2, rr = i % 2 ? 24 : 34; return `${i ? "L" : "M"}${(60 + Math.cos(a) * rr).toFixed(1)} ${(72 + Math.sin(a) * rr).toFixed(1)}`; }).join(" ")}Z" fill="${SIL}" stroke="${r}" stroke-width="1.2"/>` +
+      `<circle cx="60" cy="74" r="17" fill="${SIL}"/>` +
+      S("M30 72 C24 68 18 68 14 72 L8 86 C12 86 16 84 18 82 C22 84 26 82 30 78Z M28 68 C24 56 30 48 38 48 C32 54 32 60 34 66Z", r) +
+      eyes(54, 66, 72, "#FF8AE8", 2, 1) + eye(20, 74, "#FF8AE8", 1.4, .7) + eye(100, 48, "#B6FF9E", 1.2, .7) },
+    16: { bg: ["#FFFFFF", "#B8C8FF", "#141A2E"], d: r => // ユニコーン
+      S("M40 150 C38 120 40 100 44 90 C46 76 50 64 58 56 C62 50 66 46 70 44 L72 37 L76 44 C80 46 84 50 86 54 C90 62 96 70 100 74 C102 78 100 82 96 82 C92 82 88 80 84 76 C80 74 76 76 74 80 C70 92 72 110 76 150Z", "#FFFFFF") +
+      S("M58 56 C50 62 42 66 36 76 C32 84 30 96 24 104 C34 100 38 92 40 84 C42 92 40 100 36 108 C46 100 48 90 48 80Z", "#FFFFFF") +
+      `<path d="M71 42 L92 10 L77 44Z" fill="#FFF6D0" stroke="#FFFFFF" stroke-width=".8"/>` + stroke("M74 36 L79 34 M77 30 L82 28 M80 24 L85 22 M83 18 L87 17", "#C8A040", 1) + glow(92, 10, 3, "#FFFFFF", .9) +
+      eye(84, 60, "#A8D8FF", 1.6, .9) +
+      [[20, 30], [104, 40], [96, 22], [30, 56], [108, 96], [16, 120]].map(([x, y], i) => `<path d="M${x} ${y - 4} L${x + 1} ${y - 1} L${x + 4} ${y} L${x + 1} ${y + 1} L${x} ${y + 4} L${x - 1} ${y + 1} L${x - 4} ${y} L${x - 1} ${y - 1}Z" fill="#FFFFFF" opacity="${.6 + i % 3 * .15}"/>`).join("") },
+    17: { bg: ["#FFD87A", "#B8461E", "#160802"], d: r => // スフィンクス
+      `<circle cx="60" cy="40" r="30" fill="#FFE7A3" opacity=".45"/><path d="M14 150 L60 92 L106 150Z" fill="#2A1404" opacity=".7"/>` +
+      S("M30 150 L28 112 C28 98 38 86 50 82 L70 82 C82 86 92 98 92 112 L94 150Z", r) +
+      SM("M24 150 L22 134 C22 128 28 126 34 128 L40 150Z", r) +
+      S("M60 26 C48 26 42 34 40 44 L36 72 L46 74 L48 56 C50 64 54 70 60 70 C66 70 70 64 72 56 L74 74 L84 72 L80 44 C78 34 72 26 60 26Z", r) +
+      stroke("M42 48 L48 47 M40 56 L47 55 M39 64 L46 63 M78 48 L72 47 M80 56 L73 55 M81 64 L74 63", "#FFE7A3", 1.4, .9) +
+      `<path d="M57 28 C57 22 63 22 63 28 L61 32 L59 32Z" fill="#FFD36B"/>` + eyes(55.5, 64.5, 52, "#FFE07A", 1.8, .9) + stroke("M56 76 L60 80 L64 76", "#FFE7A3", 1, .7) },
+    18: { bg: ["#C8FF9E", "#2A6E3A", "#020C04"], d: r => // ヒュドラ
+      [[20, 44], [36, 26], [60, 16], [84, 26], [100, 44]].map(([x, y]) => tube(`M60 118 C${(60 + x) / 2} ${100} ${x} ${y + 40} ${x} ${y + 8}`, r, 7)).join("") +
+      S("M12 150 C18 120 38 108 60 108 C82 108 102 120 108 150Z", r) +
+      [[20, 44, -1], [36, 26, -1], [60, 16, 0], [84, 26, 1], [100, 44, 1]].map(([x, y, s]) => S(`M${x - 6} ${y + 8} C${x - 7} ${y} ${x - 3} ${y - 6} ${x} ${y - 6} C${x + 3} ${y - 6} ${x + 7} ${y} ${x + 6} ${y + 8} L${x + 3} ${y + 12} L${x} ${y + 9} L${x - 3} ${y + 12}Z`, r, 1) + eyes(x - 2.4, x + 2.4, y + 1, "#B6FF9E", 1.1, .7) + `<path d="M${x - 2} ${y + 10} L${x - 1.3} ${y + 14} L${x - .6} ${y + 10} M${x + .6} ${y + 10} L${x + 1.3} ${y + 14} L${x + 2} ${y + 10}" fill="#E8FFD0"/>`).join("") +
+      glow(60, 130, 6, "#7DFF8A", .35) + sparks([[30, 140, 1], [92, 138, 1.2]], "#B6FF9E") },
+    19: { bg: ["#E8EEFF", "#5A6A9A", "#06080F"], d: r => // フェンリル
+      `<circle cx="86" cy="34" r="24" fill="#F4F0FF" opacity=".85"/><circle cx="86" cy="34" r="30" fill="#F4F0FF" opacity=".15"/>` +
+      S("M18 150 C20 120 28 100 38 88 C42 70 48 56 58 46 C62 40 66 32 70 22 L78 26 C76 32 78 36 82 38 L94 30 L90 40 C90 46 86 50 82 54 C86 60 84 66 78 66 C74 70 72 76 72 84 C76 100 88 120 94 150Z", r) +
+      S("M58 46 L55 29 L65 40Z M64 40 L64 25 L71 35Z", r, 1) +
+      S("M38 88 L30 84 L36 92 L26 94 L36 98 L28 106 L40 104Z M44 70 L36 64 L44 76Z", r, 1) +
+      stroke("M82 54 L90 52 M82 57 L88 58", "#E8EEFF", 1) + eye(74, 40, "#9FD8FF", 1.8, .9) +
+      ["M88 104 a5 3 0 1 0 10 0 a5 3 0 1 0 -10 0", "M98 112 a3 5 0 1 0 6 0 a3 5 0 1 0 -6 0", "M104 122 a5 3 0 1 0 10 0 a5 3 0 1 0 -10 0"].map(d => stroke(d, "#B8C0D8", 2)).join("") +
+      sparks([[14, 24, 1.2], [30, 12, 1], [110, 70, 1.1]], "#FFFFFF") }
+  };
+})();
+function wdCharArt(k, cls = ""){
+  const a = WDA[k]; if (!a) return "";
+  const d = WD_CH[k], rim = WD_COL[d.sig], id = "wdca" + k;
+  return `<svg class="wdart ${cls}" viewBox="0 0 120 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><radialGradient id="${id}" cx=".5" cy=".36" r=".78"><stop offset="0" stop-color="${a.bg[0]}"/><stop offset=".38" stop-color="${a.bg[1]}"/><stop offset="1" stop-color="${a.bg[2]}"/></radialGradient><linearGradient id="${id}v" x1="0" y1="0" x2="0" y2="1"><stop offset=".55" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".75"/></linearGradient></defs><rect width="120" height="150" fill="url(#${id})"/>${a.d(rim)}<ellipse cx="30" cy="146" rx="50" ry="16" fill="${rim}" opacity=".12"/><ellipse cx="92" cy="150" rx="46" ry="14" fill="${rim}" opacity=".1"/><rect width="120" height="150" fill="url(#${id}v)"/></svg>`;
+}
+/* ---------- 20面ダイス ---------- */
+const WD_D20 = (() => {
+  const H = [[50, 3], [91, 26.5], [91, 73.5], [50, 97], [9, 73.5], [9, 26.5]], A = [50, 25], B = [76.5, 70], C = [23.5, 70];
+  const P = (...pts) => pts.map(p => p.join(",")).join(" ");
+  return [[P(H[0], A, H[5]), .78], [P(H[0], H[1], A), .62], [P(H[5], A, C), .5], [P(H[1], B, A), .42], [P(H[5], C, H[4]), .34], [P(H[1], H[2], B), .28], [P(H[4], C, H[3]), .24], [P(H[2], H[3], B), .2], [P(C, B, H[3]), .38]];
+})();
+function wdD20(a, cls = ""){
+  const c = a ? WD_COL[a] : "#6E5F92";
+  const fac = WD_D20.map(([pts, o]) => `<polygon points="${pts}" fill="${c}" fill-opacity="${o}" stroke="#fff" stroke-opacity=".28" stroke-width=".8" stroke-linejoin="round"/>`).join("");
+  const g = a ? `<g transform="translate(38.5 42) scale(.96)" fill="#fff">${WD_GLYPH[a]}</g>` : `<text x="50" y="62" text-anchor="middle" font-family="Cinzel,serif" font-weight="900" font-size="22" fill="#fff" fill-opacity=".8">?</text>`;
+  return `<svg class="wdd20 ${cls}" viewBox="0 0 100 100" aria-hidden="true"><polygon points="50,3 91,26.5 91,73.5 50,97 9,73.5 9,26.5" fill="#12081F"/>${fac}<polygon points="50,25 76.5,70 23.5,70" fill="${c}" stroke="#fff" stroke-opacity=".7" stroke-width="1.2" stroke-linejoin="round"/><polygon points="50,25 63,47 37,47" fill="#fff" fill-opacity=".22"/>${g}<polygon points="50,3 91,26.5 91,73.5 50,97 9,73.5 9,26.5" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="1.4" stroke-linejoin="round"/></svg>`;
 }
 
 /* ======================= WYRDSTONE（画面・オンライン） ======================= */
@@ -6908,7 +7376,7 @@ const WD_GLYPH = { 炎: '<path d="M12 2c1 4 5 6 5 11a5 5 0 0 1-10 0c0-3 2-4 2-7 
 const wdIco = (a, cls = "") => a ? `<svg class="wdico ${cls}" viewBox="0 0 24 24" style="--ac:${WD_COL[a]}" aria-label="${a}"><g fill="currentColor">${WD_GLYPH[a]}</g></svg>` : `<i class="wdico none ${cls}"></i>`;
 const wdCube = (a, main, cls = "") => `<span class="wdcube ${a ? "" : "nul"} ${main ? "main" : ""} ${cls}" style="--ac:${WD_COL[a || "無"]}">${a ? wdIco(a) : "<b>無</b>"}</span>`;
 const WD_ICON = `<span class="gic wdi"><svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="wdig" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE7A3"/><stop offset=".5" stop-color="#E07CFF"/><stop offset="1" stop-color="#3FA9FF"/></linearGradient></defs><rect x="3" y="3" width="58" height="58" rx="12" fill="#120A24" stroke="url(#wdig)" stroke-width="2"/><path d="M32 8l18 14-6 26H20l-6-26z" fill="none" stroke="url(#wdig)" stroke-width="3" stroke-linejoin="round"/><path d="M32 8v40M14 22l18 8 18-8M20 48l12-18 12 18" fill="none" stroke="url(#wdig)" stroke-width="1.6" opacity=".7"/><circle cx="32" cy="30" r="4" fill="#FFE7A3"/></svg></span>`;
-const wdEmb = k => { const d = WD_CH[k]; return `<span class="wdemb" style="--ac:${WD_COL[d.sig]}"><svg viewBox="0 0 40 40"><path d="M20 2l16 9v18l-16 9-16-9V11z" fill="rgba(0,0,0,.35)" stroke="currentColor" stroke-width="1.6"/></svg><b>${d.n[0]}</b>${wdIco(d.sig, "sig")}</span>`; };
+const wdEmb = k => { const d = WD_CH[k]; return `<span class="wdemb" style="--ac:${WD_COL[d.sig]}">${wdCharArt(k)}${wdIco(d.sig, "sig")}</span>`; };
 const wdTypeB = d => `<i class="wdty t${{ 低: 1, 中: 2, 高: 3 }[d.t]}">${d.t}</i>`;
 const wdStarTx = r => "★".repeat(r);
 
@@ -6916,7 +7384,7 @@ const wdStarTx = r => "★".repeat(r);
 let wdId = null, wdSeenFx = {}, wdAnimUntil = 0;
 const wdGuideOn = () => lsGet("gl:wdGuide") !== "0";
 function openWd(id){ const g0 = wdById(id); wdId = id; if (g0 && g0.st) wdSeenFx[id] = g0.st.fxn || 0; $("#wdg").hidden = false; document.body.style.overflow = "hidden"; drawWd(); }
-function closeWd(){ if (wdPlay) wdSkip(); wdId = null; $("#wdg").hidden = true; document.body.style.overflow = ""; const h = document.getElementById("wdPop"); if (h) h.remove(); const l = document.getElementById("wdFxL"); if (l) l.innerHTML = ""; render(); }
+function closeWd(){ if (wdPlay) wdSkip(); wdId = null; $("#wdg").hidden = true; document.body.style.overflow = ""; ["wdPop", "wdPop2"].forEach(i => { const h = document.getElementById(i); if (h) h.remove(); }); const l = document.getElementById("wdFxL"); if (l) l.innerHTML = ""; render(); }
 const confirmWd = m => { try { return window.confirm(m); } catch (e) { return true; } };
 
 /* ---------- キャラの効果一覧（ポップアップ） ---------- */
@@ -6927,16 +7395,18 @@ function wdCharPop(k, c, st, owner){
     return `<div class="wdeff ${a === d.sig ? "sig" : ""} ${c && c.s.includes(a) ? "have" : ""}" style="--ac:${WD_COL[a]}"><span class="wdea">${a === "無" ? "<b>無</b>" : wdIco(a)}<em>${a}</em></span><p>${esc(d.e[a].tx)}</p><span class="wdec">${a === "無" ? "" : `${cost}<small>wp</small>`}</span></div>`;
   }).join("");
   const lv = WD_LVT[d.t].map((v, i) => `<span class="${c && c.lv === i + 1 ? "on" : ""}"><small>Lv${i + 1}</small>${v}</span>`).join("");
-  wdPopup(`<div class="wdcp-hd" style="--ac:${WD_COL[d.sig]}">${wdEmb(k)}<div><small>${d.th}・${esc(d.im)}</small><b>${d.n}</b><span>${wdTypeB(d)}得意 ${d.sig}・干渉 ${d.it}・獲得 ${d.cost}wp</span></div></div>
+  return wdPopup(`<div class="wdcp-hd" style="--ac:${WD_COL[d.sig]}">${wdEmb(k)}<div><small>${d.th}・${esc(d.im)}</small><b>${d.n}</b><span>${wdTypeB(d)}得意 ${d.sig}・干渉 ${d.it}・獲得 ${d.cost}wp</span></div></div>
     <p class="wdcp-desc">${esc(d.desc)}</p>
     ${c ? `<div class="wdcp-slots">${c.s.map((a, i) => `<div>${wdCube(a, i === 0)}<small>${i === 0 ? "メイン" : `サブ${i}`}</small></div>`).join("")}</div>` : ""}
-    <div class="wdcp-lv"><b>Lvごとのwp</b>${lv}</div>
+    <div class="wdcp-lv"><b>キャラLvごとのwp</b>${lv}</div>
     <div class="wdcp-tbl"><div class="wdcp-th"><span>属性</span><span>効果</span><span>付与</span></div>${rows}</div>
-    <p class="wdcp-note">★得意属性（${d.sig}）は付与コストが半額。</p>`);
+    <p class="wdcp-note">★得意属性（${d.sig}）は付与コストが半額。</p>`, "", !!document.getElementById("wdPop"));
 }
-function wdPopup(html, cls = ""){
-  let el = document.getElementById("wdPop");
-  if (!el){ el = document.createElement("div"); el.id = "wdPop"; el.className = "wdpop"; document.body.appendChild(el); el.addEventListener("click", e => { if (e.target === el || e.target.closest("[data-wdx]")) el.remove(); }); }
+function wdPopup(html, cls = "", over = false){
+  // over：開いているポップアップの上に重ねる（閉じると下の画面に戻る）
+  const id = over ? "wdPop2" : "wdPop";
+  let el = document.getElementById(id);
+  if (!el){ el = document.createElement("div"); el.id = id; el.className = "wdpop" + (over ? " over" : ""); document.body.appendChild(el); el.addEventListener("click", e => { if (e.target === el || e.target.closest("[data-wdx]")) el.remove(); }); }
   el.innerHTML = `<div class="wdpin ${cls}" role="dialog" aria-modal="true"><button class="wdx" data-wdx aria-label="閉じる">×</button>${html}</div>`;
   return el;
 }
@@ -6977,17 +7447,17 @@ function wdDraftHtml(st){
 const WD_LAY = { 0: [0, 0, 0], 1: [0, 1, 0], 2: [1, 0, 1], 3: [1, 1, 1], 4: [1, 2, 1] };
 const wdViewer = st => st.order.includes(me) ? me : st.order[0];
 const wdSpd = () => +(lsGet("gl:wdSpd") || 1) || 1;
-const WD_SPD_L = { 1: "ふつう", 1.6: "はやい", 2.5: "さくさく" };
+const WD_SPD_L = { .6: "ゆっくり", 1: "ふつう", 1.6: "はやい", 2.5: "さくさく" };
 const wdMini = (D, c) => {
   const d = wdDef(c);
-  return `<div class="wdmc ${c.seal ? "sealed" : ""} ${c.fresh ? "fresh" : ""}" data-ch="${c.id}" style="--ac:${WD_COL[d.sig]}"><span class="e">${d.n[0]}</span><span class="cs">${c.s.map((a, i) => `<i data-slot="${c.id}:${i}" class="${i === 0 ? "m" : ""} ${a ? "on" : ""}" style="--sc:${WD_COL[a || "無"]}"></i>`).join("")}</span><span class="lv">${c.lv}</span>${c.seal ? `<b class="sl">封</b>` : ""}</div>`;
+  return `<div class="wdmc ${c.seal ? "sealed" : ""} ${c.fresh ? "fresh" : ""}" data-ch="${c.id}" style="--ac:${WD_COL[d.sig]}"><span class="e">${wdCharArt(c.k)}</span><span class="cs">${c.s.map((a, i) => `<i data-slot="${c.id}:${i}" class="${i === 0 ? "m" : ""} ${a ? "on" : ""}" style="--sc:${WD_COL[a || "無"]}"></i>`).join("")}</span><span class="lv">${c.lv}</span>${c.seal ? `<b class="sl">封</b>` : ""}</div>`;
 };
-const wdGemMini = id => { const t = wdTreDef(id); return `<i class="tg r${t.r}" title="${t.n}"></i>`; };
+const wdGemMini = id => { const t = wdTreDef(id); return `<i class="tg art r${t.r}" title="${t.n}">${wdTreArt(id)}</i>`; };
 function wdPodH(D, p, side){
   const cur = D.T && D.T.p === p;
   return `<div class="wdpod ${side} ${cur ? "cur" : ""} ${D.sh[p] ? "shd" : ""}" data-seat="${p}" style="--pc:${pcolor(p)}">
     <div class="ph"><b class="nm">${esc(wdNm(p))}</b>${cur ? `<i class="tn">手番</i>` : ""}</div>
-    <div class="pw"><span class="wp" data-wp="${p}">${D.wp[p].toLocaleString()}</span><span class="tgs">${D.tre[p].map(t => wdGemMini(t.id)).join("")}${Array.from({ length: Math.max(0, WD_WIN - D.tre[p].length) }, () => `<i class="tg e"></i>`).join("")}</span></div>
+    <div class="pw"><span class="wp" data-wp="${p}">${D.wp[p].toLocaleString()}</span><span class="tgs">${D.tre[p].map(t => wdGemMini(t.id)).join("")}<i class="stp">★${D.tre[p].reduce((n, t) => n + wdTreDef(t.id).r, 0)}<small>/${WD_WIN_STARS}</small></i></span></div>
     <div class="pc">${D.ch[p].map(c => wdMini(D, c)).join("")}</div></div>`;
 }
 function wdFeltH(D, st, live){
@@ -6995,20 +7465,21 @@ function wdFeltH(D, st, live){
   const gems = WD_TRE.map(t => {
     const taken = !D.treL.includes(t.id), owner = taken ? D.order.find(q => D.tre[q].some(z => z.id === t.id)) : null;
     const can = mineTre && !taken && wdCanTre(st, me, t.id).ok;
-    return `<button class="wdgem r${t.r} ${taken ? "taken" : ""} ${can ? "can" : ""}" data-tre="${t.id}" ${owner ? `style="--pc:${pcolor(owner)}"` : ""}><span class="st">★${t.r}</span><span class="cb">${t.cb.map(a => `<i style="--sc:${WD_COL[a]}"></i>`).join("")}</span></button>`;
+    return `<button class="wdgem r${t.r} ${taken ? "taken" : ""} ${can ? "can" : ""}" data-tre="${t.id}" ${owner ? `style="--pc:${pcolor(owner)}"` : ""}>${wdTreArt(t.id)}<span class="st">${"★".repeat(t.r)}</span><span class="cb">${wdTreCb(st, t.id).map(a => `<i style="--sc:${WD_COL[a]}"></i>`).join("")}</span></button>`;
   }).join("");
   const steps = ["ダイス", "行動", "選ぶ", "秘宝"];
   const cur = !T ? -1 : T.ph === "roll" || T.ph === "pick" ? 0 : T.ph === "eff" ? 1 : T.ph === "act" ? 2 : T.ph === "tre" ? 3 : -1;
   const pickMine = live && T && T.ph === "pick" && st.T && st.T.pickBy === me && !st.ask;
-  const dice = T && T.dice && T.dice.length ? T.dice.map((a, i) => `<span class="wddie ${T.face === a && T.ph !== "pick" ? "chosen" : T.face && T.ph !== "pick" ? "off" : ""} ${pickMine ? "pick" : ""}" data-di="${a}" style="--ac:${WD_COL[a]}">${wdIco(a)}<b>${a}</b></span>`).join("") + (pickMine && st.T.nx && st.T.nx.anyFace ? `<button class="wddie any" id="wdAny">好き<b>な目</b></button>` : "")
-    : T && T.skip ? `<small class="skip">キューブなし<br>手順1はとばし</small>` : `<span class="wddie idle">?</span><span class="wddie idle">?</span>`;
-  const mkt = D.mk.map((k, i) => k == null ? `<span class="wdmkc empty"></span>` : `<span class="wdmkc" data-mk="${i}" style="--ac:${WD_COL[WD_CH[k].sig]}"><b>${WD_CH[k].n[0]}</b><small>${WD_CH[k].n}</small><em>${WD_CH[k].cost}</em></span>`).join("");
+  const dice = T && T.dice && T.dice.length ? T.dice.map((a, i) => `<span class="wddie ${T.face === a && T.ph !== "pick" ? "chosen" : T.face && T.ph !== "pick" ? "off" : ""} ${pickMine ? "pick" : ""}" data-di="${a}" style="--ac:${WD_COL[a]}">${wdD20(a)}<b>${a}</b></span>`).join("") + (pickMine && st.T.nx && st.T.nx.anyFace ? `<button class="wddie any" id="wdAny">好き<b>な目</b></button>` : "")
+    : T && T.skip ? `<small class="skip">キューブなし<br>手順1はとばし</small>` : `<span class="wddie idle">${wdD20(null)}</span><span class="wddie idle">${wdD20(null)}</span>`;
+  const mkt = D.mk.map((k, i) => k == null ? `<span class="wdmkc empty"></span>` : `<span class="wdmkc" data-mk="${i}" style="--ac:${WD_COL[WD_CH[k].sig]}"><span class="ar">${wdCharArt(k)}</span><em>${WD_CH[k].cost}</em></span>`).join("");
   return `<div class="wdfelt" id="wdFelt">
     <div class="wdgems">${gems}</div>
     <div class="wdtray" style="--pc:${T ? pcolor(T.p) : "#888"}">
       <div class="wdturn">${T ? `<i class="dot"></i><b>${esc(wdNm(T.p))}</b><span class="ph">${steps.map((s, i) => `<i class="${i === cur ? "on" : i < cur ? "done" : ""}">${i + 1}</i>`).join("")}</span>` : `<b>準備中</b>`}</div>
       <div class="wddice" id="wdDice">${dice}</div>
     </div>
+    <button class="wdchartb" id="wdChart" aria-label="属性の相性">${wdChart()}</button>
     <div class="wdmkt"><span class="wddeck" id="wdDeck"><b>${D.dl}</b><small>山札</small></span>${mkt}</div>
   </div>`;
 }
@@ -7017,14 +7488,14 @@ function wdMeH(D, st, live){
   const cards = D.ch[p].map(c => {
     const d = wdDef(c), can = mineAct && wdCanAct(st, c.id), n = can ? st.T.acts[c.id] : 0, acting = live && st.T && st.T.p === p && st.T.acting[c.id];
     return `<div class="wdcard ${can ? "can" : ""} ${acting ? "acting" : ""} ${c.seal ? "sealed" : ""}" data-ch="${c.id}" style="--ac:${WD_COL[d.sig]}">
-      ${wdEmb(c.k)}<b class="n">${d.n}</b><span class="lv"><em>Lv${c.lv}</em>${wdLvWp(c)}</span>
+      <span class="ar">${wdCharArt(c.k)}<b class="n">${d.n}</b>${wdIco(d.sig, "sig")}</span><span class="lv"><em>Lv${c.lv}</em>${wdLvWp(c)}wp</span>
       <span class="sl">${c.s.map((a, i) => `<span data-slot="${c.id}:${i}" class="wdcube ${a ? "" : "nul"} ${i === 0 ? "main" : ""}" style="--ac:${WD_COL[a || "無"]}">${a ? wdIco(a) : ""}</span>`).join("")}</span>
       ${can ? `<i class="wdact">${n}</i>` : ""}${c.seal ? `<b class="seal">行動封じ</b>` : ""}${c.fresh ? `<i class="wdnew">NEW</i>` : ""}</div>`;
   }).join("");
-  const tres = D.tre[p].map(t => { const td = wdTreDef(t.id); return `<div class="wdcard tre r${td.r}" data-tre="${t.id}"><span class="st">${wdStarTx(td.r)}</span><b class="n">${td.n}</b><span class="cb">${t.cubes.map(a => wdIco(a)).join("")}</span></div>`; }).join("");
+  const tres = D.tre[p].map(t => { const td = wdTreDef(t.id); return `<div class="wdcard tre r${td.r}" data-tre="${t.id}">${wdTreArt(t.id)}<span class="st">${wdStarTx(td.r)}</span><b class="n">${td.n}</b><span class="cb">${t.cubes.map(a => wdIco(a)).join("")}</span></div>`; }).join("");
   const free = Math.max(0, WD_SLOTS - D.ch[p].length - D.tre[p].length);
   return `<div class="wdme ${T && T.p === p ? "cur" : ""} ${D.sh[p] ? "shd" : ""}" data-seat="${p}" style="--pc:${pcolor(p)}">
-    <div class="wdmeh"><b class="nm">${p === me ? "あなた" : esc(wdNm(p))}</b><span class="wp" data-wp="${p}">${D.wp[p].toLocaleString()}<small>wp</small></span><span class="tgs">${D.tre[p].map(t => wdGemMini(t.id)).join("")}${Array.from({ length: Math.max(0, WD_WIN - D.tre[p].length) }, () => `<i class="tg e"></i>`).join("")}</span><span class="sc">枠 ${WD_SLOTS - free}/${WD_SLOTS}</span></div>
+    <div class="wdmeh"><b class="nm">${p === me ? "あなた" : esc(wdNm(p))}</b><span class="wp" data-wp="${p}">${D.wp[p].toLocaleString()}<small>wp</small></span><span class="tgs">${D.tre[p].map(t => wdGemMini(t.id)).join("")}<i class="stp">★${D.tre[p].reduce((n, t) => n + wdTreDef(t.id).r, 0)}<small>/${WD_WIN_STARS}</small></i></span><span class="sc">枠 ${WD_SLOTS - free}/${WD_SLOTS}</span></div>
     <div class="wdcards n${D.ch[p].length + D.tre[p].length + free}">${cards}${tres}${Array.from({ length: free }, () => `<div class="wdcard free">空き枠</div>`).join("")}</div></div>`;
 }
 function wdBarH(st, live){
@@ -7074,7 +7545,7 @@ function wdEnsureRoot(root){
 }
 
 /* ======================= 進行：新しい出来事があれば再生してから操作できるようにする ======================= */
-let wdPlay = null, wdSkipAll = false, wdWaitR = null;
+let wdPlay = null, wdSkipAll = false, wdWaitR = null, wdCapCtx = null;
 function drawWd(){
   setTimeout(cpuKick, 0);
   if (!wdId) return;
@@ -7115,6 +7586,7 @@ function wdSteps(nw){
     else if (e.k === "eff") while (nx() && nx().k === "gain" && nx().p === e.p && !nx().pay && !nx().lv) fx.push(nw[++i]);
     else if (e.k === "gain" && e.lv) while (nx() && nx().k === "gain" && nx().lv) fx.push(nw[++i]);
     else if (e.k === "die" && e.earn){ if (nx() && nx().k === "gain") fx.push(nw[++i]); }
+    else if (e.k === "die"){ while (nx() && nx().k === "die" && !nx().earn) fx.push(nw[++i]); }
     else if (e.k === "turn"){ if (nx() && nx().k === "noroll") fx.push(nw[++i]); }
     else if (e.k === "roll" || e.k === "end") {}
     out.push({ k: e.k === "gain" && e.lv ? "lvpay" : e.k === "die" && e.earn ? "earn" : e.k, e, fx });
@@ -7176,10 +7648,90 @@ function wdCapShow(html, ac){
   c.style.setProperty("--ac", ac || "#fff"); c.innerHTML = html; c.classList.remove("on"); void c.offsetWidth; c.classList.add("on");
 }
 function wdCapAdd(html){ const c = document.getElementById("wdCap"); if (c) c.insertAdjacentHTML("beforeend", html); }
-function wdCapHide(now){ const c = document.getElementById("wdCap"); if (!c) return; if (now) c.remove(); else { c.classList.remove("on"); setTimeout(() => { if (!c.classList.contains("on")) c.remove(); }, 300); } }
+function wdCapHide(now){ wdCapCtx = null; const c = document.getElementById("wdCap"); if (!c) return; if (now) c.remove(); else { c.classList.remove("on"); setTimeout(() => { if (!c.classList.contains("on")) c.remove(); }, 300); } }
 const wdPN = p => `<b class="pn" style="--pc:${pcolor(p)}">${esc(wdNm(p))}</b>`;
 function wdPlayTx(t){ const el = document.getElementById("wdPlayTx"); if (el) el.innerHTML = "▶ " + t; }
 
+/* 20面ダイスが転がる */
+function wdRollAnim(final){
+  const ds = [...document.querySelectorAll("#wdMain #wdDice .wddie")]; if (!ds.length || wdSkipAll) return Promise.resolve();
+  const sp = wdSpd(), dur = 1500 / sp;
+  return Promise.all(ds.map((d, i) => new Promise(res => {
+    const svg = d.querySelector("svg"), lab = d.querySelector("b"), fa = final[i];
+    if (lab) lab.style.opacity = 0;
+    const tick = setInterval(() => { const a = WD_AT[Math.floor(Math.random() * WD_AT.length)]; if (svg) svg.outerHTML = wdD20(a); }, 75);
+    const dir = i % 2 ? 1 : -1;
+    const an = d.animate([
+      { transform: `translate(${dir * 150}px,-110px) rotate(${-dir * 700}deg) scale(.55)`, opacity: 0 },
+      { transform: `translate(${dir * 70}px,-30px) rotate(${-dir * 380}deg) scale(.95)`, opacity: 1, offset: .3 },
+      { transform: `translate(${dir * 30}px,-26px) rotate(${-dir * 200}deg) scale(1.05)`, offset: .48 },
+      { transform: `translate(${dir * 12}px,4px) rotate(${-dir * 70}deg) scale(1.12,.9)`, offset: .64 },
+      { transform: `translate(${dir * 4}px,-8px) rotate(${-dir * 18}deg) scale(1)`, offset: .78 },
+      { transform: `translate(${-dir * 2}px,2px) rotate(${dir * 6}deg) scale(1.06,.95)`, offset: .9 },
+      { transform: "none", opacity: 1 }
+    ], { duration: dur, delay: i * 140 / sp, easing: "cubic-bezier(.25,.8,.35,1)", fill: "both" });
+    setTimeout(() => { clearInterval(tick); const s2 = d.querySelector("svg"); if (s2) s2.outerHTML = wdD20(fa); if (lab) lab.style.opacity = 1; d.classList.add("land"); setTimeout(() => d.classList.remove("land"), 500); }, dur * .74 + i * 140 / sp);
+    an.finished.then(res, res);
+  })));
+}
+/* ダイスを卓の中央で転がす（効果・wp獲得）。items: [{a, res, pre}] */
+function wdRollMany(items){
+  const r = wdR2(wdFelt()); if (!r || wdSkipAll || !items.length) return Promise.resolve();
+  const sp = wdSpd(), dur = 1300 / sp;
+  const box = document.createElement("div"); box.className = "wdroll1";
+  Object.assign(box.style, { left: r.left + "px", top: r.top + "px", width: r.width + "px", height: r.height + "px" });
+  box.innerHTML = `<div class="in">${items.map(it => `<div class="one">${it.pre || ""}<span class="wddie ${items.length > 1 ? "mid2" : "big"}">${wdD20(WD_AT[0])}<b></b></span><div class="res"></div></div>`).join("")}</div>`;
+  wdLayer().appendChild(box);
+  box.animate([{ opacity: 0 }, { opacity: 1, offset: .1 }, { opacity: 1 }], { duration: dur, fill: "both" });
+  const ones = [...box.querySelectorAll(".one")];
+  ones.forEach((o, n) => {
+    const d = o.querySelector(".wddie"), dir = n % 2 ? 1 : -1;
+    o._t = setInterval(() => { const s2 = d.querySelector("svg"); if (s2) s2.outerHTML = wdD20(WD_AT[Math.floor(Math.random() * WD_AT.length)]); }, 75);
+    d.animate([
+      { transform: `translate(${dir * 110}px,-90px) rotate(${-dir * 720}deg) scale(.5)` },
+      { transform: `translate(${dir * 40}px,-20px) rotate(${-dir * 380}deg) scale(.95)`, offset: .32 },
+      { transform: `translate(${dir * 12}px,-28px) rotate(${-dir * 170}deg) scale(1.05)`, offset: .5 },
+      { transform: `translate(0,4px) rotate(${-dir * 50}deg) scale(1.12,.9)`, offset: .68 },
+      { transform: `translate(${-dir * 2}px,-6px) rotate(${-dir * 12}deg)`, offset: .82 },
+      { transform: "none" }
+    ], { duration: dur, delay: n * 120 / sp, easing: "cubic-bezier(.25,.8,.35,1)", fill: "both" });
+  });
+  return new Promise(res => {
+    ones.forEach((o, n) => setTimeout(() => {
+      clearInterval(o._t); const d = o.querySelector(".wddie"), s2 = d.querySelector("svg"); if (s2) s2.outerHTML = wdD20(items[n].a);
+      d.querySelector("b").textContent = items[n].a; d.classList.add("land"); o.querySelector(".res").innerHTML = items[n].res || "";
+    }, dur * .78 + n * 120 / sp));
+    setTimeout(() => { box.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 300 / sp, fill: "both" }).finished.then(() => box.remove(), () => box.remove()); res(); }, dur + (items.length - 1) * 120 / sp + 800 / sp);
+  });
+}
+const wdRollOne = (a, res, pre) => wdRollMany([{ a, res, pre }]);
+/* 効果の説明文：どの条件に当てはまったか・いくらになったかを求める */
+const wdClauses = tx => tx.split(/(?<=[、。])/);
+function wdExplain(tx, lv, G){
+  const cl = wdClauses(tx), V = cl.map(c => {
+    const o = {}; let m;
+    if ((m = c.match(/Lv×(\d+)wp/))) o.lv = +m[1];
+    else if ((m = c.match(/につき\+?(\d+)wp/))) o.per = +m[1];
+    else if ((m = c.match(/(\d+)%/))){ o.pct = +m[1]; const cp = c.match(/最大(\d+)wp/); if (cp) o.cap = +cp[1]; }
+    else if ((m = c.match(/\+(\d+)wp/))) o.fix = +m[1];
+    return o;
+  });
+  const val = o => o.fix != null ? o.fix : o.lv != null ? o.lv * lv : null;
+  const lvN = o => `Lv${lv}×${o.lv}`;
+  const term = o => o.fix != null ? `${o.fix}` : lvN(o);
+  for (let i = 0; i < V.length; i++) if (val(V[i]) === G) return { hi: [i], note: V[i].lv != null ? `${lvN(V[i])} = ${G}wp` : "" };
+  for (let i = 0; i < V.length; i++) for (let j = i + 1; j < V.length; j++){
+    const a = val(V[i]), b = val(V[j]);
+    if (a != null && b != null && a + b === G) return { hi: [i, j], note: `${term(V[i])} + ${term(V[j])} = ${G}wp` };
+    for (const [x, y, p, q] of [[V[i], V[j], i, j], [V[j], V[i], j, i]]){ const bx = val(x); if (bx != null && y.per && G > bx && (G - bx) % y.per === 0) return { hi: [p, q].sort(), note: `${term(x)} + ${(G - bx) / y.per}×${y.per} = ${G}wp` }; }
+  }
+  for (let i = 0; i < V.length; i++) if (V[i].per && G % V[i].per === 0) return { hi: [i], note: `${G / V[i].per} × ${V[i].per} = ${G}wp` };
+  for (let i = 0; i < V.length; i++) if (V[i].pct) return { hi: [i], note: `${V[i].pct}% → ${G}wp${V[i].cap && G === V[i].cap ? "（上限）" : ""}` };
+  return { hi: cl.map((c, i) => /wp/.test(c) ? i : -1).filter(i => i >= 0), note: "" };
+}
+function wdCapMarkIdx(idx){ const c = document.getElementById("wdCap"); if (!c) return; const p = c.querySelector(".tx"); if (!p) return; p.classList.add("has"); idx.forEach(i => { const sp = p.querySelector(`[data-cl="${i}"]`); if (sp){ sp.classList.remove("hi"); void sp.offsetWidth; sp.classList.add("hi"); } }); }
+function wdCapMark(re){ const c = document.getElementById("wdCap"); if (!c) return; const idx = [...c.querySelectorAll(".tx [data-cl]")].filter(sp => re.test(sp.textContent)).map(sp => +sp.dataset.cl); if (idx.length) wdCapMarkIdx(idx.slice(0, 1)); }
+const WD_CURSE_RE = { "ダイス1つ": /ダイスは1つ/, "目を選ばれる": /あなたが選ぶ/, "秘宝禁止": /獲得できない/, "秘宝+1000wp": /\+1000/, "龍・覇・幻 禁止": /使えない/, "手順3は1体だけ": /1体だけ/, "手順1のwp半分": /半分/ };
 /* ---------- 1ステップの演出 ---------- */
 async function wdStep(s){
   const P = wdPlay, D = P.D, g = P.g, e = s.e;
@@ -7202,8 +7754,8 @@ async function wdStep(s){
     case "round": { wdCapHide(); apply(); wdBanner(`ROUND <b>${e.v}</b>`, "round", 1100); await W(1000); return; }
     case "roll": {
       apply(); wdPlayTx(`${wdPN(e.p)}がダイスを振った`);
-      document.querySelectorAll("#wdMain .wddie").forEach((d, i) => { d.style.setProperty("--i", i); d.classList.add("rolling"); });
-      await W(1050); return;
+      await wdRollAnim(e.dice);
+      await W(250); return;
     }
     case "face": {
       const pays = s.fx.slice(1);
@@ -7224,21 +7776,23 @@ async function wdStep(s){
     case "noroll": apply(); return;
     case "eff": {
       const ch = wdChEl(e.cid), d = WD_CH[e.ck], tx = d.e[e.a].tx;
+      wdCapCtx = { tx, lv: e.lv || 1, p: e.p };
       wdHl(ch, "wdhl", 1200);
-      wdCapShow(`<div class="ch">${wdEmb(e.ck)}<div><small>${wdPN(e.p)}${e.copy ? "・コピー" : ""}</small><b>${d.n}<em style="--sc:${WD_COL[e.a] || "#aaa"}">${e.a === "無" ? "無" : wdIco(e.a) + e.a}</em></b></div></div><p>${esc(tx)}</p>`, WD_COL[e.a] || "#aaa");
+      wdCapShow(`<div class="ch">${wdEmb(e.ck)}<div><small>${wdPN(e.p)}${e.copy ? "・コピー" : ""}</small><b>${d.n}<em style="--sc:${WD_COL[e.a] || "#aaa"}">${e.a === "無" ? "無" : wdIco(e.a) + e.a}</em></b></div></div><p class="tx">${wdClauses(tx).map((c, i) => `<span class="cl" data-cl="${i}">${esc(c)}</span>`).join("")}</p>`, WD_COL[e.a] || "#aaa");
       wdPlayTx(`${wdPN(e.p)}の${d.n}「${e.a}」`);
       await W(800);
       const gs = s.fx.slice(1);
       if (gs.length){
         const tot = gs.reduce((n, f) => n + f.v, 0);
         await wdCoins(ch || wdSeatEl(e.p), wdWpEl(e.p), tot);
-        apply(gs); wdFloat(wdWpEl(e.p), `+${tot}`, "plus"); wdHl(wdWpEl(e.p), "wdbump", 600); wdCapAdd(`<div class="res">+${tot}wp</div>`);
+        const ex = wdExplain(tx, e.lv || 1, tot); wdCapMarkIdx(ex.hi);
+        apply(gs); wdFloat(wdWpEl(e.p), `+${tot}`, "plus"); wdHl(wdWpEl(e.p), "wdbump", 600); wdCapAdd(`<div class="res">${ex.note ? `<span class="calc">${esc(ex.note)}</span>` : ""}<b>+${tot}wp</b></div>`);
         await W(550);
       } else await W(250);
       return;
     }
     case "lvpay": {
-      wdPlayTx(`動いたキャラのLv分のwp`);
+      wdPlayTx(`動いたキャラのキャラLvのwp`);
       await Promise.all(s.fx.map(f => wdCoins(wdChEl(f.cid) || wdSeatEl(f.p), wdWpEl(f.p), f.v, "lv")));
       apply(); const tot = {}; s.fx.forEach(f => { tot[f.p] = (tot[f.p] || 0) + f.v; });
       Object.keys(tot).forEach(p => { wdFloat(wdWpEl(p), `+${tot[p]}`, "plus"); wdHl(wdWpEl(p), "wdbump", 600); });
@@ -7246,6 +7800,12 @@ async function wdStep(s){
     }
     case "gain": {
       wdPlayTx(`${wdPN(e.p)} +${e.v}wp ${esc(e.why || "")}`);
+      if (wdCapCtx && wdCapCtx.p === e.p && !e.pay && !e.lv && !e.tre && document.getElementById("wdCap")){
+        const ex = wdExplain(wdCapCtx.tx, wdCapCtx.lv, e.v); wdCapMarkIdx(ex.hi);
+        wdCapAdd(`<div class="res">${ex.note ? `<span class="calc">${esc(ex.note)}</span>` : ""}<b>+${e.v}wp</b></div>`);
+      }
+      if (/予言/.test(e.why || "")) wdBanner(`<span style="--pc:${pcolor(e.p)}">${esc(wdNm(e.p))}</span><small>予言的中！ +${e.v}wp</small>`, "tre", 1100);
+      if (/セラフィム|ヒュドラ/.test(e.why || "")) wdCapMark(/秘宝|炎の効果/);
       await wdCoins(wdFelt(), wdWpEl(e.p), e.v);
       apply(); wdFloat(wdWpEl(e.p), `+${e.v}`, "plus"); wdHl(wdWpEl(e.p), "wdbump", 600);
       await W(450); return;
@@ -7253,7 +7813,7 @@ async function wdStep(s){
     case "steal": {
       wdPlayTx(`${wdPN(e.p)}が${wdPN(e.q)}から${e.v}wp奪った`);
       wdHl(wdSeatEl(e.q), "wdhurt", 900); wdFloat(wdWpEl(e.q), `−${e.v}`, "minus");
-      wdCapAdd(`<div class="res rob">${esc(wdNm(e.q))}から ${e.v}wp 奪取</div>`);
+      wdCapMark(/奪|反撃/); wdCapAdd(`<div class="res rob">${esc(wdNm(e.q))}から ${e.v}wp 奪取</div>`);
       await wdCoins(wdWpEl(e.q), wdWpEl(e.p), e.v, "red");
       apply(); wdFloat(wdWpEl(e.p), `+${e.v}`, "rob"); wdHl(wdWpEl(e.p), "wdbump", 600);
       await W(500); return;
@@ -7261,7 +7821,7 @@ async function wdStep(s){
     case "block": {
       wdPlayTx(`${wdPN(e.q)}が干渉無効で防いだ`);
       wdOver(wdSeatEl(e.q), `<span class="shd"></span><b>防いだ！</b>`, "block", 1100);
-      wdCapAdd(`<div class="res">${esc(wdNm(e.q))}は干渉無効</div>`);
+      wdCapMark(/奪|封|戻|下げ|ダイス|選ぶ|使えない|1体|秘宝/); wdCapAdd(`<div class="res">${esc(wdNm(e.q))}は干渉無効で防いだ</div>`);
       if (e.v){ await wdCoins(wdWpEl(e.p), wdWpEl(e.q), e.v); apply(); wdFloat(wdWpEl(e.q), `+${e.v}`, "plus"); } else apply();
       await W(800); return;
     }
@@ -7270,13 +7830,13 @@ async function wdStep(s){
       const t = wdChEl(e.cid);
       await wdFly(wdSeatEl(e.p), t, `<b class="wdstamp">封</b>`, { dur: 600, s0: .6, sm: 1.8, s1: 1.1, arc: -60 });
       apply(); wdHl(wdChEl(e.cid), "wdshake", 500); wdOver(wdChEl(e.cid), `<b class="stamp">封</b>`, "seal", 900);
-      wdCapAdd(`<div class="res rob">${esc(wdNm(e.q))}の${cn(e.cid)}を封じた</div>`);
+      wdCapMark(/行動封じ|封じる/); wdCapAdd(`<div class="res rob">${esc(wdNm(e.q))}の${cn(e.cid)}を封じた</div>`);
       await W(700); return;
     }
     case "rmcube": {
       wdPlayTx(`${wdPN(e.q)}の${cn(e.cid)}の${e.a}が無に戻った`);
       const sl = wdQ(`[data-slot="${e.cid}:${e.s}"]`);
-      wdOver(sl, `<i class="shard"></i><i class="shard b"></i><i class="shard c"></i>`, "break", 800); wdHl(sl, "wdshake", 500);
+      wdOver(sl, `<i class="shard"></i><i class="shard b"></i><i class="shard c"></i>`, "break", 800); wdHl(sl, "wdshake", 500); wdCapMark(/無に戻|外す|移す/); wdCapAdd(`<div class="res rob">${esc(wdNm(e.q))}の${e.a}キューブが外れた</div>`);
       await W(450); apply(); await W(400); return;
     }
     case "grant": {
@@ -7309,7 +7869,8 @@ async function wdStep(s){
     }
     case "release": {
       wdCapHide(); const d = WD_CH[e.ck];
-      wdPlayTx(`${wdPN(e.p)}が${d.n}を手放した → 場をシャッフル`);
+      wdPlayTx(`${wdPN(e.p)}が${d.n}を手放した${e.free ? "（秘宝のため無料）" : `（${e.v}wp）`} → 場をシャッフル`);
+      if (e.v) wdFloat(wdWpEl(e.p), `−${e.v}`, "minus");
       const from = wdChEl(e.cid);
       const fl = wdFly(from, wdQ("#wdDeck"), `<span class="wdflycard" style="--ac:${WD_COL[d.sig]}">${wdEmb(e.ck)}<b>${d.n}</b></span>`, { dur: 750, s1: .4, arc: -40 });
       await W(150); apply(); await fl;
@@ -7324,39 +7885,50 @@ async function wdStep(s){
       const gem = wdQ(`[data-tre="${e.id}"]`);
       wdHl(gem, "wdpopx", 700);
       await Promise.all(e.used.map(u => wdFly(wdQ(`[data-slot="${u.cid}:${u.i}"]`), gem, `<span class="wdcube big" style="--ac:${WD_COL[u.a]}">${wdIco(u.a)}</span>`, { dur: 520, s1: .5, arc: -30 })));
-      await wdFly(gem, wdSeatEl(e.p), `<span class="wdflygem r${t.r}">★${t.r}</span>`, { dur: 900, s0: 1, sm: 2.4, s1: .8, arc: -90 });
+      await wdFly(gem, wdSeatEl(e.p), `<span class="wdflygem r${t.r}">${wdTreArt(e.id)}</span>`, { dur: 900, s0: 1, sm: 2.4, s1: .8, arc: -90 });
       apply();
-      wdBanner(`<span style="--pc:${pcolor(e.p)}">${esc(wdNm(e.p))}</span><small>秘宝「${esc(t.n)}」${wdStarTx(t.r)} 獲得！ あと${Math.max(0, WD_WIN - D.tre[e.p].length)}つ</small>`, "tre", 1500);
+      wdBanner(`<span style="--pc:${pcolor(e.p)}">${esc(wdNm(e.p))}</span><small>秘宝「${esc(t.n)}」${wdStarTx(t.r)} 獲得！ ★${D.tre[e.p].reduce((n, z) => n + wdTreDef(z.id).r, 0)}/${WD_WIN_STARS}</small>`, "tre", 1500);
       wdHl(wdSeatEl(e.p), "wdspot", 1400);
       await W(1300); return;
     }
     case "shield": {
       wdPlayTx(`${wdPN(e.p)}が干渉無効に（次の自分の手番まで）`);
-      apply(); wdOver(wdSeatEl(e.p), `<span class="shd"></span><b>干渉無効</b>`, "block", 900);
+      apply(); wdOver(wdSeatEl(e.p), `<span class="shd"></span><b>干渉無効</b>`, "block", 900); wdCapMark(/干渉無効/);
       await W(700); return;
     }
     case "curse": {
       wdPlayTx(`${wdPN(e.q)}に「${esc(e.why)}」`);
       await wdFly(wdSeatEl(e.p), wdSeatEl(e.q), `<span class="wdhex"></span>`, { dur: 600, s0: .5, sm: 1.4, s1: 1.2 });
       apply(); wdOver(wdSeatEl(e.q), `<b class="cur">${esc(e.why)}</b>`, "curse", 1100);
-      wdCapAdd(`<div class="res rob">${esc(wdNm(e.q))}：${esc(e.why)}</div>`);
+      if (WD_CURSE_RE[e.why]) wdCapMark(WD_CURSE_RE[e.why]); wdCapAdd(`<div class="res rob">${esc(wdNm(e.q))}：${esc(e.why)}</div>`);
       await W(800); return;
     }
     case "die": {
-      apply();
-      wdPlayTx(`ダイス：「${e.a}」${e.call ? `（宣言「${e.call}」${e.call === e.a ? "的中！" : "はずれ"}）` : ""}`);
-      wdOver(wdFelt(), `<span class="wddie big" style="--ac:${WD_COL[e.a]}">${wdIco(e.a)}<b>${e.a}</b></span>${e.call ? `<i class="call ${e.call === e.a ? "hit" : ""}">${e.call === e.a ? "的中！" : `宣言 ${e.call}`}</i>` : ""}`, "die", 900);
-      wdCapAdd(`<div class="res">ダイス ${e.a}${e.call ? (e.call === e.a ? "・的中！" : "・はずれ") : ""}</div>`);
+      apply(); wdCapMark(/ダイス|宣言|振/);
+      const items = s.fx.map(f => ({ a: f.a, pre: f.call ? `<i class="call">宣言「${f.call}」</i>` : "", res: f.call ? `<i class="call ${f.call === f.a ? "hit" : "bad"}">${f.call === f.a ? "的中！" : "はずれ"}</i>` : "" }));
+      wdPlayTx(`ダイスを${items.length > 1 ? items.length + "つ" : ""}振る${s.fx[0].call ? `（宣言「${s.fx[0].call}」）` : ""}`);
+      await wdRollMany(items);
+      const txt = s.fx.map(f => `${f.a}${f.call ? (f.call === f.a ? "・的中！" : "・はずれ") : ""}`).join(" ／ ");
+      wdPlayTx(`ダイス：${txt}`); wdCapAdd(`<div class="res">ダイス ${txt}</div>`);
+      return;
+    }
+    case "buff": {
+      apply(); const t = (e.cid && wdChEl(e.cid)) || wdSeatEl(e.p);
+      if (e.hl) wdCapMark(new RegExp(e.hl.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+      wdOver(t, `<b class="bf ${e.none ? "none" : ""}">${esc(e.t)}</b>`, "buff", 1200);
+      wdCapAdd(`<div class="res ${e.none ? "none" : "bf"}">${esc(e.t)}</div>`);
+      wdPlayTx(`${wdPN(e.p)}：${esc(e.t)}`);
       await W(800); return;
     }
     case "earn": {
-      wdCapHide(); const c = wdDC(D, e.cid), gg = s.fx[1];
-      wdPlayTx(`${wdPN(e.p)}の${c ? wdDef(c).n : ""}がwp獲得：「${e.a}」${e.m === 2 ? "有利×2" : e.m === .5 ? "不利×½" : ""}`);
-      const t = wdChEl(e.cid);
-      wdOver(t, `<span class="wddie mid" style="--ac:${WD_COL[e.a]}">${wdIco(e.a)}</span>${e.m !== 1 ? `<i class="call ${e.m === 2 ? "hit" : ""}">${e.m === 2 ? "×2" : "×½"}</i>` : ""}`, "die", 1000);
-      await W(450);
-      if (gg){ await wdCoins(t || wdSeatEl(e.p), wdWpEl(e.p), gg.v); }
-      apply(); if (gg) wdFloat(wdWpEl(e.p), `+${gg.v}`, "plus");
+      wdCapHide(); const c = wdDC(D, e.cid), gg = s.fx[1], m = c && c.s[0];
+      wdPlayTx(`${wdPN(e.p)}の${c ? wdDef(c).n : ""}がwp獲得のダイスを振る`);
+      const t = wdChEl(e.cid); wdHl(t, "wdhl", 1600);
+      const res = `<i class="call ${e.m === 2 ? "hit" : e.m === .5 ? "bad" : ""}">${!m ? "メインが無：そのまま" : e.m === 2 ? `メイン「${m}」に有利 ×2` : e.m === .5 ? `メイン「${m}」に不利 ×½` : `メイン「${m}」と中立 ×1`}</i>`;
+      await wdRollOne(e.a, res, m ? `<i class="call">メイン ${m}</i>` : "");
+      wdPlayTx(`${wdPN(e.p)}の${c ? wdDef(c).n : ""}：「${e.a}」${e.m === 2 ? "有利×2" : e.m === .5 ? "不利×½" : ""}${gg ? ` +${gg.v}wp` : ""}`);
+      if (gg){ await wdCoins(wdFelt(), wdWpEl(e.p), gg.v); }
+      apply(); if (gg){ wdFloat(wdWpEl(e.p), `+${gg.v}`, "plus"); wdHl(wdWpEl(e.p), "wdbump", 600); }
       await W(350); return;
     }
     case "back": case "swap": {
@@ -7393,9 +7965,10 @@ function wdInput(root){
     const g = wdById(wdId); if (!g) return; const id = b.id;
     if (id === "wdBack") closeWd();
     else if (id === "wdGuide"){ lsSet("gl:wdGuide", wdGuideOn() ? "0" : "1"); if (!wdPlay) drawWd(); else { const x = root.querySelector("#wdGuide"); if (x) x.outerHTML = wdTopH(g.st).match(/<button class="wdchip[^"]*" id="wdGuide"[\s\S]*?<\/button>/)[0]; } }
-    else if (id === "wdSpdB"){ const order = [1, 1.6, 2.5], cur = wdSpd(); lsSet("gl:wdSpd", String(order[(order.indexOf(cur) + 1) % order.length])); b.querySelector("i").textContent = WD_SPD_L[wdSpd()]; toast(`演出の速さ：${WD_SPD_L[wdSpd()]}`, 1200); }
+    else if (id === "wdSpdB"){ const order = [.6, 1, 1.6, 2.5], cur = wdSpd(); lsSet("gl:wdSpd", String(order[(order.indexOf(cur) + 1) % order.length])); b.querySelector("i").textContent = WD_SPD_L[wdSpd()]; toast(`演出の速さ：${WD_SPD_L[wdSpd()]}`, 1200); }
     else if (id === "wdMenu") wdMenu(g);
     else if (id === "wdSkip") wdSkip();
+    else if (id === "wdChart") wdPopup(`<h4 class="wdh5 big">属性の相性</h4>${wdChart(true)}<p class="wdcp-desc">・水→炎→木→水 の三すくみ<br>・雷と闇は、どちらから見ても有利<br>・龍→覇→天→幻→龍 の四すくみ<br>手順3の「wp獲得」で、メイン属性が出た目に強ければ×2、弱ければ×½。</p>`);
     else if (wdPlay) return;
     else if (id === "wdRoll") wdDo(g.id, me, ["roll"]);
     else if (id === "wdNext") wdDo(g.id, me, ["next"]);
@@ -7448,18 +8021,18 @@ function wd2tap(btn, label, run){
 function wdCharMine(g, c){
   const st = g.st, d = wdDef(c);
   const el = wdPopup(`<div class="wdas-hd" style="--ac:${WD_COL[d.sig]}">${wdEmb(c.k)}<div><b>${d.n}</b><span>Lv${c.lv}・${c.s.map(a => a || "無").join("・")}</span></div></div>
-    <p class="wdcp-desc">${st.T.ph === "tre" ? "秘宝を取るのに枠が足りないときは、キャラを手放して枠を空けます。手放したキャラは山札に戻り、付いていたキューブもなくなります。" : "このキャラは今回の手番では行動できません。"}</p>
-    <div class="wdas-row foot"><button class="wdbtn ghost" data-i>効果を見る</button><button class="wdbtn danger" data-r>手放す</button></div>`);
+    <p class="wdcp-desc">${st.T.ph === "tre" ? "秘宝を取るために枠を空けたいときは、秘宝をタップして「手放して獲得」を選ぶと無料です。" : "このキャラは今回の手番では行動できません。"}手放すだけなら、獲得コストと同じ${wdRelCost(c)}wpを払います。手放したキャラは山札に戻り、付いていたキューブもなくなります。</p>
+    <div class="wdas-row foot"><button class="wdbtn ghost" data-i>効果を見る</button><button class="wdbtn danger" data-r ${st.wp[me] < wdRelCost(c) ? "disabled" : ""}>手放す<small>${wdRelCost(c)}wp</small></button></div>`);
   el.querySelector("[data-i]").onclick = () => wdCharPop(c.k, c, st, me);
-  wd2tap(el.querySelector("[data-r]"), "もう一度タップで手放す", () => { el.remove(); wdDo(g.id, me, ["rel", c.id]); });
+  wd2tap(el.querySelector("[data-r]"), `もう一度タップで手放す（${wdRelCost(c)}wp）`, () => { el.remove(); wdDo(g.id, me, ["rel", c.id]); });
 }
 function wdMarketPop(g, i){
   const st = g.st, k = st.mk[i]; if (k == null) return;
   const T = st.T, d = WD_CH[k];
   const acting = !wdPlay && T && T.p === me && T.ph === "act" && !st.ask ? st.ch[me].filter(c => wdCanAct(st, c.id)) : [];
-  wdCharPop(k);
+  const pop = wdCharPop(k);
   if (!acting.length) return;
-  const pop = document.getElementById("wdPop"), cost = wdBuyCost(st, me, k), ok = wdFreeSlots(st, me) >= 1 && st.wp[me] >= cost;
+  const cost = wdBuyCost(st, me, k), ok = wdFreeSlots(st, me) >= 1 && st.wp[me] >= cost;
   pop.querySelector(".wdpin").insertAdjacentHTML("afterbegin", `<div class="wdbuyb"><b>${d.n}を獲得する（${cost}wp）</b><small>${wdFreeSlots(st, me) < 1 ? "枠が空いていません（キャラを手放すと空きます）" : st.wp[me] < cost ? `wpが${cost - st.wp[me]}足りません` : "どのキャラの行動を使いますか？（獲得したキャラは次の手番から行動）"}</small><div>${acting.map(c => `<button class="wdbtn sm" data-by="${c.id}" ${ok ? "" : "disabled"}>${wdDef(c).n}の行動で</button>`).join("")}</div></div>`);
   pop.querySelectorAll("[data-by]").forEach(b => b.onclick = () => { pop.remove(); wdDo(g.id, me, ["act", b.dataset.by, "buy", i]); });
 }
@@ -7468,21 +8041,27 @@ function wdTrePop(g, id){
   const owner = taken ? st.order.find(q => st.tre[q].some(z => z.id === id)) : null;
   const T = st.T, mine = !wdPlay && T && T.p === me && T.ph === "tre" && !st.ask && !taken;
   const r = mine ? wdCanTre(st, me, id) : null;
+  const relOk = mine && !r.ok && wdFreeSlots(st, me) < 1 ? st.ch[me].filter(c => wdCanTreRel(st, me, id, c.id)) : [];
+  const warn = st.order.includes(me) && !taken && !wdStarOk(st, me, id);
   const own = st.order.includes(me) ? wdAllCubes(st, me) : [];
-  const pool = own.slice(); const have = t.cb.map(a => { const j = pool.indexOf(a); if (j >= 0){ pool.splice(j, 1); return true; } return false; });
+  const pool = own.slice(); const cbs = wdTreCb(st, id), have = cbs.map(a => { const j = pool.indexOf(a); if (j >= 0){ pool.splice(j, 1); return true; } return false; });
   const cost = st.order.includes(me) && T && T.p === me ? wdTreCost(st, me, id) : t.wp;
-  const el = wdPopup(`<div class="wdtp r${t.r}"><span class="gem">★${t.r}</span><div><small>${wdStarTx(t.r)}</small><b>${t.n}</b><span>${taken ? `${esc(wdNm(owner))}が獲得済み` : "まだ誰も持っていない"}</span></div></div>
+  const el = wdPopup(`<div class="wdtp r${t.r}"><span class="gem">${wdTreArt(id)}</span><div><small>${wdStarTx(t.r)}</small><b>${t.n}</b><span>${taken ? `${esc(wdNm(owner))}が獲得済み` : "まだ誰も持っていない"}</span></div></div>
     <div class="wdtp-need"><div><small>必要wp</small><b>${cost.toLocaleString()}</b>${cost !== t.wp ? `<s>${t.wp.toLocaleString()}</s>` : ""}${st.order.includes(me) && !taken ? `<em class="${st.wp[me] >= cost ? "ok" : ""}">所持 ${st.wp[me].toLocaleString()}</em>` : ""}</div>
-    <div><small>必要キューブ</small><span class="cbs">${t.cb.map((a, i) => `<span class="${have[i] ? "ok" : ""}">${wdCube(a)}${!taken && st.order.includes(me) ? `<i>${have[i] ? "✓" : "✕"}</i>` : ""}</span>`).join("")}</span></div></div>
-    <p class="wdcp-note">獲得すると、キューブはキャラから外れて秘宝にはまります（サブの枠から優先）。秘宝も枠を1つ使います。秘宝を${WD_WIN}つそろえたら勝ち。</p>
-    ${mine ? `<div class="wdas-row foot"><button class="wdbtn ${r.ok ? "main" : ""}" data-take ${r.ok ? "" : "disabled"}>${r.ok ? `獲得する（${r.pl.cost.toLocaleString()}wp）` : esc(r.why)}</button></div>` : ""}`);
+    <div><small>必要キューブ</small><span class="cbs">${cbs.map((a, i) => `<span class="${have[i] ? "ok" : ""}">${wdCube(a)}${!taken && st.order.includes(me) ? `<i>${have[i] ? "✓" : "✕"}</i>` : ""}</span>`).join("")}</span></div></div>
+    ${warn ? `<div class="wdas-why">注意：これを取ると★${WD_WIN_STARS}に届かなくなります<small>秘宝は最大3つ（キャラが最低1体必要）。残りの枠で取れる秘宝の★を足しても${WD_WIN_STARS}に届きません。</small></div>` : ""}
+    <div class="wdtp-ab"><small>持っている間ずっと効く能力</small><b>${esc(t.ab)}</b></div>
+    <p class="wdcp-note">獲得すると、キューブはキャラから外れて秘宝にはまります（サブの枠から優先）。秘宝も枠を1つ使います。★の合計が${WD_WIN_STARS}以上で勝ち。</p>
+    ${mine ? `<div class="wdas-row foot"><button class="wdbtn ${r.ok ? "main" : ""}" data-take ${r.ok ? "" : "disabled"}>${r.ok ? `獲得する（${r.pl.cost.toLocaleString()}wp）` : esc(r.why)}</button></div>` : ""}
+    ${mine && !r.ok && relOk.length ? `<div class="wdtrerel"><b>キャラを手放せば獲得できます（手放すのは無料）</b>${relOk.map(c => `<button class="wdbtn" data-trel="${c.id}">${wdDef(c).n}を手放して獲得</button>`).join("")}</div>` : ""}`);
   const b = el.querySelector("[data-take]"); if (b && r.ok) b.onclick = () => { el.remove(); wdDo(g.id, me, ["tre", id]); };
+  el.querySelectorAll("[data-trel]").forEach(x => wd2tap(x, "もう一度タップで決定", () => { el.remove(); wdDo(g.id, me, ["trerel", id, x.dataset.trel]); }));
 }
 function wdDiePop(g, a){
   const st = g.st;
   const rows = st.order.map(q => { const n = wdPayFor(st, q, a); return `<div class="wddp" style="--pc:${pcolor(q)}"><b>${esc(wdNm(q))}</b><span>${n ? `+${n}wp` : "−"}</span></div>`; }).join("");
   const cur = st.T && st.T.p, acts = cur ? st.ch[cur].filter(c => !c.seal && c.s.includes(a)).map(c => `${wdDef(c).n}「${a}」：${WD_CH[c.k].e[a].tx}`) : [];
-  wdPopup(`<div class="wdcp-hd" style="--ac:${WD_COL[a]}"><span class="wddie mid" style="--ac:${WD_COL[a]}">${wdIco(a)}</span><div><small>この目を選ぶと</small><b>「${a}」</b><span>キューブ1つにつき ${WD_PAY(a)}wp（メイン枠は2倍）</span></div></div>
+  wdPopup(`<div class="wdcp-hd" style="--ac:${WD_COL[a]}"><span class="wddie mid" style="--ac:${WD_COL[a]}">${wdD20(a)}</span><div><small>この目を選ぶと</small><b>「${a}」</b><span>キューブ1つにつき ${WD_PAY(a)}wp（メイン枠は2倍）</span></div></div>
     <div class="wddps">${rows}</div>${acts.length ? `<h5 class="wdh5">${esc(wdNm(cur))}のキャラが行う効果</h5>${acts.map(t => `<p class="wdcp-desc">・${esc(t)}</p>`).join("")}` : ""}`);
 }
 function wdSeatPop(g, p){
@@ -7508,37 +8087,74 @@ function wdActSheet(g, cid){
   const el = wdPopup(`<div class="wdas-hd" style="--ac:${WD_COL[d.sig]}">${wdEmb(c.k)}<div><b>${d.n}</b><span>Lv${c.lv}・あと${T.acts[cid]}回行動できる・所持 ${wp.toLocaleString()}wp</span></div><button class="mini" data-i>効果一覧</button></div>
     <div class="wdas-tabs"><button data-t="g" class="on">属性付与</button><button data-t="l">Lv上げ</button><button data-t="b">キャラ獲得</button><button data-t="e">wp獲得</button></div>
     <div class="wdas-pane" data-p="g">${free.length ? `<div class="wdas-slots">${free.map(i => `<button class="wdslotb ${i === slot ? "on" : ""}" data-slot2="${i}">${i === 0 ? "メイン枠" : `サブ${i}`}</button>`).join("")}<small>${slot === 0 ? "メインは手順1で2倍・一度付けると動かせない" : ""}</small></div>
-      <div class="wdas-attrs">${WD_AT.map(a => { const cost = wdGrantCost(st, me, c, a); return `<button class="wdattr ${a === d.sig ? "sig" : ""}" data-ga="${a}" ${cost > wp ? "disabled" : ""} style="--ac:${WD_COL[a]}">${wdIco(a)}<b>${a}</b><small>${cost}</small></button>`; }).join("")}</div>
-      <div class="wdas-prev" id="wdGPrev"><small>属性をタップすると、その属性の効果がここに出ます</small></div>` : `<p class="wdcp-desc">空いている枠がありません。</p>`}</div>
-    <div class="wdas-pane" data-p="l" hidden><div class="wdlvtbl">${WD_LVT[d.t].map((v, i) => `<span class="${c.lv === i + 1 ? "on" : c.lv > i + 1 ? "done" : ""}"><small>Lv${i + 1}</small>${v}</span>`).join("")}</div>
-      <p class="wdcp-desc">Lvを上げると、動いたときにもらえるwp（Lv分のwp）と wp獲得の額が増えます。</p>
-      <div class="wdas-row"><button class="wdbtn main" data-lv="1" ${c.lv >= 5 || lvc > wp ? "disabled" : ""}>${c.lv < 5 ? `Lv${c.lv} → ${c.lv + 1}（${lvc}wp）<small>${wdLvWp(c)} → ${WD_LVT[d.t][c.lv]}wp</small>` : "最大Lvです"}</button></div>
-      ${lv2 ? `<div class="wdas-row"><button class="wdbtn" data-lv="2" ${lv2 > wp ? "disabled" : ""}>2段階まとめて Lv${c.lv + 2}へ（${lv2}wp）</button></div>` : ""}</div>
-    <div class="wdas-pane" data-p="b" hidden><p class="wdcp-desc">${wdFreeSlots(st, me) < 1 ? "枠が空いていません（キャラか秘宝で4枠）。" : "獲得したキャラは次の手番から行動します。長押しで効果を確認。"}</p><div class="wdas-mk">${st.mk.map((k, i) => k == null ? "" : `<button class="wdmkb" data-buy="${i}" data-info2="${k}" ${wdFreeSlots(st, me) < 1 || wdBuyCost(st, me, k) > wp ? "disabled" : ""} style="--ac:${WD_COL[WD_CH[k].sig]}">${wdEmb(k)}<b>${WD_CH[k].n}</b><small>${wdBuyCost(st, me, k)}wp</small></button>`).join("")}</div></div>
-    <div class="wdas-pane" data-p="e" hidden><p class="wdcp-desc">ダイスを1つ振って、Lv分のwp（${wdLvWp(c)}wp）をもらいます。${m ? `メイン属性「${m}」に有利な目なら2倍、不利な目なら半分。` : "メインが無なので、どの目でもそのまま。"}</p><div class="wdas-row"><button class="wdbtn main" data-earn>ダイスを振る</button></div></div>
-    <div class="wdas-row foot"><button class="wdbtn ghost" data-skip>この行動はしない</button><button class="wdbtn danger" data-rel>手放す</button></div>`, "act");
+      <div class="wdas-attrs">${WD_AT.map(a => { const cost = wdGrantCost(st, me, c, a); return `<button class="wdattr ${a === d.sig ? "sig" : ""} ${cost > wp ? "short" : ""}" data-ga="${a}" ${cost > wp ? `data-short="${cost - wp}"` : ""} style="--ac:${WD_COL[a]}">${wdIco(a)}<b>${a}</b><small>${cost}</small></button>`; }).join("")}</div>
+      <div class="wdas-prev" id="wdGPrev"><small>属性をタップすると、その属性の効果がここに出ます。${WD_AT.some(a => wdGrantCost(st, me, c, a) > wp) ? "暗い属性はwpが足りず付与できません（タップで理由）。" : ""}</small></div>` : `<p class="wdcp-desc">空いている枠がありません。</p>`}</div>
+    <div class="wdas-pane" data-p="l" hidden>${wdLvPane(st, c, lvc, lv2, wp)}</div>
+    <div class="wdas-pane" data-p="b" hidden>${wdBuyPane(st, wp)}</div>
+    <div class="wdas-pane" data-p="e" hidden><p class="wdcp-desc">ダイスを1つ振って、キャラLvのwpをもらいます。メイン属性に有利な目なら2倍、不利な目なら半分です。</p>${wdEarnTbl(c)}<div class="wdas-row"><button class="wdbtn main" data-earn>ダイスを振る</button></div></div>
+    <div class="wdas-row foot"><button class="wdbtn ghost" data-skip>この行動はしない</button><button class="wdbtn danger" data-rel ${wp < wdRelCost(c) ? "disabled" : ""}>手放す<small>${wdRelCost(c)}wp</small></button></div>`, "act");
   const go = mv => { el.remove(); wdDo(g.id, me, mv); };
   el.querySelectorAll("[data-t]").forEach(b => b.onclick = () => { el.querySelectorAll("[data-t]").forEach(x => x.classList.toggle("on", x === b)); el.querySelectorAll("[data-p]").forEach(p => p.hidden = p.dataset.p !== b.dataset.t); });
   el.querySelector("[data-i]").onclick = () => wdCharPop(c.k, c, st, me);
   const prev = () => {
     const box = el.querySelector("#wdGPrev"); if (!box || !attr) return;
-    const cost = wdGrantCost(st, me, c, attr);
-    box.innerHTML = `<div class="wdas-pv" style="--ac:${WD_COL[attr]}">${wdIco(attr)}<div><b>「${attr}」の目が出たときの効果</b><p>${esc(d.e[attr].tx)}</p></div></div><button class="wdbtn main" data-gok>${slot === 0 ? "メイン枠" : `サブ${slot}`}に「${attr}」を付与（${cost}wp）</button>`;
-    box.querySelector("[data-gok]").onclick = () => go(["act", cid, "grant", { s: slot, a: attr }]);
+    const cost = wdGrantCost(st, me, c, attr), short = cost - wp;
+    box.innerHTML = `${short > 0 ? `<div class="wdas-why">付与できません：wpが足りません<small>付与コスト ${cost}wp ／ 所持 ${wp}wp（あと ${short}wp）</small></div>` : ""}<div class="wdas-pv" style="--ac:${WD_COL[attr]}">${wdIco(attr)}<div><b>「${attr}」の目が出たときの効果</b><p>${esc(d.e[attr].tx)}</p></div></div>${short > 0 ? "" : `<button class="wdbtn main" data-gok>${slot === 0 ? "メイン枠" : `サブ${slot}`}に「${attr}」を付与（${cost}wp）</button>`}`;
+    const ok = box.querySelector("[data-gok]"); if (ok) ok.onclick = () => go(["act", cid, "grant", { s: slot, a: attr }]);
   };
   el.querySelectorAll("[data-slot2]").forEach(b => b.onclick = () => { slot = +b.dataset.slot2; el.querySelectorAll("[data-slot2]").forEach(x => x.classList.toggle("on", x === b)); const sm = el.querySelector(".wdas-slots small"); if (sm) sm.textContent = slot === 0 ? "メインは手順1で2倍・一度付けると動かせない" : ""; prev(); });
   el.querySelectorAll("[data-ga]").forEach(b => b.onclick = () => { attr = b.dataset.ga; el.querySelectorAll("[data-ga]").forEach(x => x.classList.toggle("on", x === b)); prev(); });
   el.querySelectorAll("[data-lv]").forEach(b => b.onclick = () => go(["act", cid, b.dataset.lv === "2" ? "lv2" : "lv"]));
-  el.querySelectorAll("[data-buy]").forEach(b => { let lt = null; b.onpointerdown = () => { lt = setTimeout(() => { lt = "L"; wdCharPop(+b.dataset.info2); }, 420); }; b.onpointerup = b.onpointerleave = () => { if (lt && lt !== "L") clearTimeout(lt); }; b.onclick = () => { if (lt === "L"){ lt = null; return; } go(["act", cid, "buy", +b.dataset.buy]); }; b.oncontextmenu = e => e.preventDefault(); });
+  let buyI = null;
+  el.querySelectorAll("[data-buy]").forEach(b => { let lt = null; b.onpointerdown = () => { lt = setTimeout(() => { lt = "L"; wdCharPop(+b.dataset.info2); }, 420); }; b.onpointerup = b.onpointerleave = () => { if (lt && lt !== "L") clearTimeout(lt); }; b.oncontextmenu = e => e.preventDefault();
+    b.onclick = () => { if (lt === "L"){ lt = null; return; } buyI = +b.dataset.buy; el.querySelectorAll("[data-buy]").forEach(x => x.classList.toggle("on", x === b)); const box = el.querySelector("#wdBuyPv"), k = st.mk[buyI], cost = wdBuyCost(st, me, k), dd = WD_CH[k], ok = wdFreeSlots(st, me) >= 1 && cost <= wp;
+      box.innerHTML = `<div class="wdas-pv" style="--ac:${WD_COL[dd.sig]}">${wdIco(dd.sig)}<div><b>${dd.n}（${dd.t}・得意${dd.sig}）</b><p>${esc(dd.desc)}</p></div></div>${ok ? `<div class="wdpay"><span class="wdcoinpile"><i></i><i></i><i></i></span><div><small>支払うコスト</small><b>${cost.toLocaleString()}wp</b></div><div class="af"><small>支払い後の所持</small><b>${wp.toLocaleString()} → ${(wp - cost).toLocaleString()}</b></div></div><button class="wdbtn main" data-buyok>${dd.n}を獲得する</button>` : `<div class="wdas-why">${wdFreeSlots(st, me) < 1 ? "枠が空いていません<small>キャラか秘宝で4枠が埋まっています。キャラを手放すと空きます。</small>" : `wpが足りません<small>獲得コスト ${cost}wp ／ 所持 ${wp}wp（あと ${cost - wp}wp）</small>`}</div>`}`;
+      const okb = box.querySelector("[data-buyok]"); if (okb) okb.onclick = () => go(["act", cid, "buy", buyI]); }; });
   el.querySelector("[data-earn]").onclick = () => go(["act", cid, "earn"]);
   el.querySelector("[data-skip]").onclick = () => go(["act", cid, "skip"]);
-  wd2tap(el.querySelector("[data-rel]"), "もう一度タップで手放す", () => go(["rel", cid]));
+  wd2tap(el.querySelector("[data-rel]"), `もう一度タップで手放す（${wdRelCost(c)}wp）`, () => go(["rel", cid]));
+}
+/* Lv上げの図解：払うwpと増えるwp */
+function wdLvPane(st, c, lvc, lv2, wp){
+  const d = wdDef(c), tbl = `<div class="wdlvtbl">${WD_LVT[d.t].map((v, i) => `<span class="${c.lv === i + 1 ? "on" : c.lv > i + 1 ? "done" : ""}"><small>Lv${i + 1}</small>${v}</span>`).join("")}</div>`;
+  if (c.lv >= 5) return tbl + `<p class="wdcp-desc">最大Lvです。</p>`;
+  const card = (n, cost, key) => {
+    const to = c.lv + n, w0 = wdLvWp(c), w1 = WD_LVT[d.t][to - 1], ok = cost <= wp;
+    return `<div class="wdlvc ${ok ? "" : "ng"}"><div class="wdlvup"><div class="f"><b>Lv${c.lv}</b><small>${w0}wp</small></div><i class="ar">▶</i><div class="t"><b>Lv${to}</b><small>${w1}wp</small></div><div class="gain"><small>動いたときにもらえるwp</small><em>+${w1 - w0}</em></div></div>
+      <div class="wdpay"><span class="wdcoinpile"><i></i><i></i><i></i></span><div><small>支払うコスト</small><b>${cost.toLocaleString()}wp</b></div><div class="af"><small>支払い後の所持</small><b class="${ok ? "" : "neg"}">${wp.toLocaleString()} → ${ok ? (wp - cost).toLocaleString() : "足りない"}</b></div></div>
+      ${ok ? `<button class="wdbtn main" data-lv="${key}">Lv${to}に上げる</button>` : `<div class="wdas-why">wpが足りません<small>あと ${(cost - wp).toLocaleString()}wp</small></div>`}</div>`;
+  };
+  return tbl + card(1, lvc, "1") + (lv2 ? card(2, lv2, "2") : "");
+}
+function wdBuyPane(st, wp){
+  return `<p class="wdcp-desc">${wdFreeSlots(st, me) < 1 ? "枠が空いていません（キャラか秘宝で4枠）。" : "獲得するキャラを選んでください（長押しで効果）。獲得したキャラは次の手番から行動します。"}</p><div class="wdas-mk">${st.mk.map((k, i) => k == null ? "" : `<button class="wdmkb" data-buy="${i}" data-info2="${k}" style="--ac:${WD_COL[WD_CH[k].sig]}">${wdEmb(k)}<b>${WD_CH[k].n}</b><small>${wdBuyCost(st, me, k)}wp</small>${wdFreeSlots(st, me) >= 1 && wdBuyCost(st, me, k) > wp ? `<i class="sh">あと${wdBuyCost(st, me, k) - wp}wp</i>` : ""}</button>`).join("")}</div><div id="wdBuyPv" class="wdas-prev"></div>`;
+}
+/* wp獲得の図解 */
+function wdEarnTbl(c){
+  const m = c.s[0], w = wdLvWp(c), pr = fs => `${fs.reduce((n, f) => n + WD_DIE.filter(z => z === f).length, 0)}/20`;
+  const ics = fs => fs.map(f => `<span class="ic">${wdIco(f)}<small>${f}</small></span>`).join("");
+  const head = `<div class="r head"><span class="k">メイン属性</span><span class="v">${m ? `${wdIco(m)}<b>${m}</b>` : "<b>無</b>"}</span><span class="lv">キャラLv${c.lv}</span><b class="w">${w}wp</b></div>`;
+  if (!m) return `<div class="wdearn">${head}<div class="r neu"><span class="k">どの目でも</span><span class="v">${ics(WD_AT)}</span><em>×1</em><b class="w">= ${w}wp</b></div><p class="note">メイン枠に属性を付けると、有利・不利が生まれます。</p></div>`;
+  const adv = WD_AT.filter(f => wdMult(m, f) === 2), dis = WD_AT.filter(f => wdMult(m, f) === .5), neu = WD_AT.filter(f => wdMult(m, f) === 1);
+  const row = (cls, k, fs, x, v) => fs.length ? `<div class="r ${cls}"><span class="k">${k}<small>${pr(fs)}</small></span><span class="v">${ics(fs)}</span><em>${x}</em><b class="w">= ${v}wp</b></div>` : "";
+  return `<div class="wdearn">${head}${row("adv", "有利", adv, "×2", w * 2)}${row("dis", "不利", dis, "×½", Math.round(w / 2))}${row("neu", "中立", neu, "×1", w)}</div>`;
+}
+/* 属性の相性の早見図（矢印の先に強い） */
+function wdChart(big){
+  const P = { 水: [30, 16], 炎: [50, 50], 木: [10, 50], 雷: [88, 16], 闇: [88, 50], 龍: [128, 16], 覇: [168, 16], 天: [168, 50], 幻: [128, 50] };
+  const R = 10, id = big ? "wdarB" : "wdarS";
+  const ar = (a, b, two) => { const [x1, y1] = P[a], [x2, y2] = P[b], dx = x2 - x1, dy = y2 - y1, L = Math.hypot(dx, dy), ux = dx / L, uy = dy / L;
+    return `<line x1="${(x1 + ux * (R + 1.5)).toFixed(1)}" y1="${(y1 + uy * (R + 1.5)).toFixed(1)}" x2="${(x2 - ux * (R + 3)).toFixed(1)}" y2="${(y2 - uy * (R + 3)).toFixed(1)}" stroke="#FFE7A3" stroke-width="1.6" marker-end="url(#${id})"${two ? ` marker-start="url(#${id})"` : ""}/>`; };
+  const dot = a => { const [x, y] = P[a]; return `<circle cx="${x}" cy="${y}" r="${R}" fill="${WD_COL[a]}" stroke="#fff" stroke-opacity=".6" stroke-width="1"/><text x="${x}" y="${y + 4}" text-anchor="middle" font-size="11" font-weight="900" fill="${["天", "雷"].includes(a) ? "#2A1C06" : "#fff"}" ${["天", "雷"].includes(a) ? "" : 'stroke="#000" stroke-opacity=".35" stroke-width=".6"'}>${a}</text>`; };
+  return `<svg class="wdchart ${big ? "big" : ""}" viewBox="-2 2 182 ${big ? 76 : 64}" aria-hidden="true"><defs><marker id="${id}" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10Z" fill="#FFE7A3"/></marker></defs>
+    ${ar("水", "炎")}${ar("炎", "木")}${ar("木", "水")}${ar("雷", "闇", true)}${ar("龍", "覇")}${ar("覇", "天")}${ar("天", "幻")}${ar("幻", "龍")}
+    ${Object.keys(P).map(dot).join("")}${big ? `<text x="90" y="74" text-anchor="middle" font-size="8" fill="#A99CC9">矢印の先の属性に強い（wp獲得で×2、逆向きは×½）</text>` : ""}</svg>`;
 }
 /* キャラ図鑑（20体） */
 function wdZukan(){
   const el = wdPopup(`<h4 class="wdh5 big">キャラ図鑑（全${WD_CH.length}体）</h4><p class="wdcp-note">タップで10種類の効果と付与コスト。カッコ内は獲得コスト。</p>
     <div class="wdzk">${["高", "中", "低"].map(t => `<h5 class="wdh5">${t}タイプ<small>${t === "高" ? "高い・稼ぎ頭" : t === "中" ? "標準" : "安い・小器用"}　Lv1 ${WD_LVT[t][0]} → Lv5 ${WD_LVT[t][4]}wp</small></h5>${WD_CH.map((d, k) => ({ d, k })).filter(z => z.d.t === t).map(({ d, k }) => `<button class="wdzr" data-z="${k}" style="--ac:${WD_COL[d.sig]}">${wdEmb(k)}<div><b>${d.n}<small>（${d.cost}wp）</small></b><span>${d.th}・得意${wdIco(d.sig)}${d.sig}・干渉${d.it}</span><p>${esc(d.desc)}</p></div></button>`).join("")}`).join("")}</div>`);
-  el.querySelectorAll("[data-z]").forEach(b => b.onclick = () => { wdCharPop(+b.dataset.z); const p = document.getElementById("wdPop"); p.querySelector(".wdpin").insertAdjacentHTML("afterbegin", `<button class="wdbackz" data-bz>‹ 図鑑にもどる</button>`); p.querySelector("[data-bz]").onclick = wdZukan; });
+  el.querySelectorAll("[data-z]").forEach(b => b.onclick = () => wdCharPop(+b.dataset.z));
 }
 
 function wdMenu(g){
@@ -7551,9 +8167,9 @@ function wdMenu(g){
 const wdEndSeen = {};
 function wdEndShow(g){
   const st = g.st; if (wdEndSeen[g.id] === g.version) return; wdEndSeen[g.id] = g.version;
-  const rk = st.order.slice().sort((a, b) => (st.wins.includes(b) - st.wins.includes(a)) || wdTreN(st, b) - wdTreN(st, a) || wdStars(st, b) - wdStars(st, a) || st.wp[b] - st.wp[a]);
+  const rk = st.order.slice().sort((a, b) => (st.wins.includes(b) - st.wins.includes(a)) || wdStars(st, b) - wdStars(st, a) || wdTreN(st, b) - wdTreN(st, a) || st.wp[b] - st.wp[a]);
   const el = wdPopup(`<div class="wdend"><small>${esc(st.endWhy || "")}</small><h2>${st.wins.includes(me) ? "VICTORY" : "GAME SET"}</h2><b class="w">${st.wins.map(p => esc(wdNm(p))).join("・")} の勝ち！</b>
-    <div class="wdrank">${rk.map((p, i) => `<div class="${st.wins.includes(p) ? "win" : ""}" style="--pc:${pcolor(p)}"><i>${i + 1}</i><b>${esc(wdNm(p))}</b><span>${st.tre[p].map(t => `<em class="r${wdTreDef(t.id).r}">${wdStarTx(wdTreDef(t.id).r)}</em>`).join("") || "秘宝なし"}</span><small>${st.wp[p].toLocaleString()}wp</small></div>`).join("")}</div>
+    <div class="wdrank">${rk.map((p, i) => `<div class="${st.wins.includes(p) ? "win" : ""}" style="--pc:${pcolor(p)}"><i>${i + 1}</i><b>${esc(wdNm(p))}</b><span>★${wdStars(st, p)}　${st.tre[p].map(t => `<em class="r${wdTreDef(t.id).r}">${wdTreDef(t.id).n}</em>`).join("・") || "秘宝なし"}</span><small>${st.wp[p].toLocaleString()}wp</small></div>`).join("")}</div>
     <div class="btns"><button class="wdbtn ghost" id="wdEndClose">盤面を見る</button><button class="wdbtn main" id="wdAgain">もう一度</button></div></div>`, "end");
   el.querySelector("#wdEndClose").onclick = () => el.remove();
   el.querySelector("#wdAgain").onclick = () => { el.remove(); closeWd(); openWdNew(); };
@@ -7564,7 +8180,7 @@ function wdEndShow(g){
 function openWdNew(){
   let order = db.players.map(p => p.id).slice(0, 5);
   const s = openSheet("WYRDSTONEを始める", `
-    <p class="note">【オリジナル・開発中】運命の力 wp を集めて、属性キューブと合わせて秘宝を手に入れる。秘宝を3つ最初にそろえた人の勝ち（2〜5人・30〜45分）。キャラは20体、それぞれ10種類の効果を持つ。</p>
+    <p class="note">【オリジナル・開発中】運命の力 wp を集めて、属性キューブと合わせて秘宝を手に入れる。秘宝の★の合計が最初に${WD_WIN_STARS}以上になった人の勝ち（2〜5人・45〜60分）。キャラは20体、それぞれ10種類の効果を持つ。</p>
     <div class="btns"><button type="button" class="grbtn" data-grule="wd">ルールを見る</button><button type="button" class="grbtn" id="wdZkN">キャラ図鑑</button></div>
     <div class="f"><span>参加者（タップで選ぶ・2〜5人）</span>${chipPlayers(db.players.map(p => p.id), order)}${cpuChips(order)}</div>
     <div class="f"><span>手番の順番・名前を指で動かして並べ替え（1番の人から。2番手以降は開始wpが${WD_SEAT_BONUS}ずつ多い）</span><div id="wdOrder" class="norder"></div><button class="shufbtn" id="wdShuf">順番をシャッフル</button></div>
@@ -7593,17 +8209,17 @@ function openWdNew(){
 
 /* ---------- ルール ---------- */
 function wdRulesHtml(){
-  return `<h4>目的</h4><p>運命の力 <b>wp</b>（Wyrd Point）を集め、属性キューブと合わせて<b>秘宝を3つ最初に手に入れた人の勝ち</b>。3つそろう前に秘宝が全部なくなったら、★の合計が多い人の勝ち（同じならwpが多い人）。wpは全員に公開。</p>
+  return `<h4>目的</h4><p>運命の力 <b>wp</b>（Wyrd Point）を集め、属性キューブと合わせて<b>秘宝の★の合計が最初に${WD_WIN_STARS}以上になった人の勝ち</b>（★1〜★5、各2つ）。届く前に秘宝が全部なくなったら、★の合計が多い人の勝ち（同じならwpが多い人）。枠は4つでキャラが最低1体いるので、秘宝は最大3つ。安い秘宝で枠を埋めると★が届かなくなるので注意。wpは全員に公開。</p>
   <h4>準備</h4><p>全員1000wp（2番手以降は${WD_SEAT_BONUS}wpずつ多い）。キャラを3体配り、1体取って残り2体を次の人へ。受け取った2体から1体取り、残りは山札へ（1人2体）。場にキャラを3体並べる。キャラは3つの枠がすべて「無」、Lv1から。</p>
   <h4>手番の流れ</h4>
   <p><b>手順1：ダイス</b> 属性ダイス（20面：炎・水・木 各4、雷・闇 各2、龍・幻・天・覇 各1）を2つ振り、1つの目を選ぶ。その属性のキューブを持つ人は全員（振った人も）キューブ1つにつき 炎水木100・雷闇200・龍幻天覇400wp。メイン枠（一番上）のキューブは2倍。自分のキャラにキューブが1つもなければ、手順1はとばす。</p>
-  <p><b>手順2：キャラが行動</b> 「無」の枠があるキャラと、選んだ目の属性を持つキャラが動く。無の枠1つにつき無の効果を1回、選んだ目のキューブ1つにつきその属性の効果を1回。動いたキャラは1体につき1回、Lvに応じたwpをもらう。</p>
-  <p><b>手順3：1つ選ぶ</b>（手順2で動いたキャラだけ）<br>・属性付与：空いている枠に好きな属性を付ける（コストはキャラごと。得意属性は半額）<br>・Lv上げ：1→2 100、2→3 500、3→4 2000、4→5 5000wp<br>・キャラ獲得：場の3体から1体（次の手番から行動）<br>・wp獲得：ダイスを1つ振り、メイン属性に有利な目ならLv分の2倍、不利なら半分</p>
+  <p><b>手順2：キャラが行動</b> 「無」の枠があるキャラと、選んだ目の属性を持つキャラが動く。無の枠1つにつき無の効果を1回、選んだ目のキューブ1つにつきその属性の効果を1回。動いたキャラは1体につき1回、キャラLvに応じたwpをもらう。</p>
+  <p><b>手順3：1つ選ぶ</b>（手順2で動いたキャラだけ）<br>・属性付与：空いている枠に好きな属性を付ける（コストはキャラごと。得意属性は半額）<br>・Lv上げ：1→2 100、2→3 500、3→4 2000、4→5 5000wp<br>・キャラ獲得：場の3体から1体（次の手番から行動）<br>・wp獲得：ダイスを1つ振り、メイン属性に有利な目ならキャラLvのwpの2倍、不利なら半分</p>
   <p><b>手順4：秘宝</b> 何個でも。必要wpを払い、必要なキューブをキャラから外して秘宝にはめる。メインを外したら、メインは無に戻ってまた決め直せる。</p>
-  <h4>枠</h4><p>1人4枠。キャラと秘宝が1つずつ使う。枠が足りないときはキャラを手放す。手放したキャラは山札へ戻し、場も含めてシャッフルして3体めくり直す。メイン属性は一度付けたら動かせない（メインを無のまま、サブだけ付けてもよい）。3枠すべて埋まると無の効果はなくなる。</p>
+  <h4>枠</h4><p>1人4枠。キャラと秘宝が1つずつ使う。キャラを手放すときは、そのキャラの獲得コストと同じwpを払う（秘宝を取るために手放すときは無料）。手放したキャラは山札へ戻し、場も含めてシャッフルして3体めくり直す。メイン属性は一度付けたら動かせない（メインを無のまま、サブだけ付けてもよい）。3枠すべて埋まると無の効果はなくなる。</p>
   <h4>相性（wp獲得で使う）</h4><p>水→炎→木→水（矢印の先に強い）／雷と闇はお互いに有利／龍→覇→天→幻→龍</p>
   <h4>干渉</h4><p>他人の邪魔をする効果は龍・覇・幻だけ。天の「干渉無効」は、奪う・キューブを無に戻す・行動封じ・Lvを下げる、など全部を防ぐ（次の自分の手番まで）。行動封じされたキャラは次の手番の終わりまで行動できず、手順1のwpももらえない。</p>
-  <h4>秘宝</h4><p>${WD_TRE.map(t => `${wdStarTx(t.r)} ${t.n}：${t.wp}wp＋${t.cb.join("・")}`).join("<br>")}</p>
+  <h4>秘宝</h4><p>持っている間ずっと効く能力がある。必要な属性キューブの組み合わせは、ゲームごとにランダムに決まる（出やすさはダイスの目と同じ）。</p><p>${WD_TRE.map(t => `${wdStarTx(t.r)} <b>${t.n}</b>：${t.wp.toLocaleString()}wp＋属性キューブ${t.cb.length}つ<br><small>能力：${t.ab}</small>`).join("<br>")}</p>
   <h4>画面の操作</h4><p>・タップで操作、<b>長押しで詳しく</b>（キャラの効果一覧・秘宝の条件・ダイスの目で誰がいくらもらえるか・プレイヤーの持ち物）。<br>・効果の対象を選ぶときは、卓の光っているキャラやキューブを直接タップしても選べます。<br>・ほかの人の手番は、ダイス・効果・wpの移動などを順番に再生します。右上の「演出」で速さを変えられ、「スキップ」で飛ばせます。</p>
   <h4>キャラクター一覧（全${WD_CH.length}体）</h4><p class="wdrn">付与コストは「炎水木／雷闇／龍覇天幻」。★は得意属性（付与コスト半額）。</p>
   ${WD_CH.map((d, k) => `<details class="wdrc"><summary><b>${d.n}</b><small>${d.t}・得意${d.sig}・${d.it}・${d.cost}wp・${d.th}</small></summary><p>${esc(d.desc)}<br><small>Lvごとのwp：${WD_LVT[d.t].join(" / ")}　付与：${[0, 1, 2].map(i => WD_GC[d.t][i]).join(" / ")}（得意は半額）</small></p><table>${["無", ...WD_AT].map(a => `<tr${a === d.sig ? ' class="sig"' : ""}><th>${a}${a === d.sig ? "★" : ""}</th><td>${esc(d.e[a].tx)}</td></tr>`).join("")}</table></details>`).join("")}`;
@@ -7632,8 +8248,8 @@ const GAMES = [
     start: () => openLmNew(), open: g => openLm(g.id),
     winners: g => { const E = g.st && g.st.end; return E && E.total ? maxOf(g.st.players, p => E.total[p] || 0) : []; },
     liveTx: g => `ラウンド${Math.min(g.st.round, LM_ROUNDS)}/${LM_ROUNDS}` },
-  { id: "wd", name: "WYRDSTONE", en: "THE STONES OF FATE", players: "2〜5人", time: "30〜45分",
-    desc: "運命の力wpを集め、神話の魔獣20体に属性キューブを付けて育てる。20面の属性ダイスで出た目のキューブを持つ人は全員wpを獲得。秘宝を3つ最初にそろえた人の勝ち。",
+  { id: "wd", name: "WYRDSTONE", en: "THE STONES OF FATE", players: "2〜5人", time: "45〜60分",
+    desc: "運命の力wpを集め、神話の魔獣20体に属性キューブを付けて育てる。20面の属性ダイスで出た目のキューブを持つ人は全員wpを獲得。秘宝の★の合計が最初に8以上になった人の勝ち。",
     icon: () => WD_ICON, list: () => wdGames(), live: () => wdLive(), myTurn: g => wdMyTurn(g),
     start: () => openWdNew(), open: g => openWd(g.id),
     winners: g => (g.st && g.st.wins) || [],
