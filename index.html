@@ -2756,6 +2756,104 @@ img.wdta.im{display:block;object-fit:contain;-webkit-user-drag:none}
 .wdopps.g3{grid-template-areas:". . t t . ." "a a ch ch b b"}
 .wdopps.g4{grid-template-areas:". t t u u ." "a a ch ch b b"}
 
+/* ===== v16：左右の相手を少し上に・秘宝を大きく・場のキャラはカード型 ===== */
+.wdopps.g3{grid-template-areas:"a a t t b b" "a a ch ch b b"}
+.wdopps.g4{grid-template-areas:"a t t u u b" "a a ch ch b b"}
+.wdopps.g4{grid-template-areas:". t t u u ." "a a ch ch b b"}
+.wdopps.g3 .wdpod.side[style*="grid-area:a;"],.wdopps.g3 .wdpod.side[style*="grid-area:b;"]{align-self:center}
+.wdopps.g4 .wdpod[style*="grid-area:a;"],.wdopps.g4 .wdpod[style*="grid-area:b;"]{margin-top:-34px;align-self:end;position:relative;z-index:1}
+.wdtri{max-height:104px}
+/* 秘宝：空いた高さを最大限使う */
+.wdtable.v2 .wdgems{flex:1 1 0;min-height:0;align-content:space-evenly}
+.wdtable.v2 .wdgem img.wdta.im{height:clamp(24px,calc(30cqh - 30px),110px)!important;max-width:clamp(26px,calc(32cqh - 28px),116px)!important;width:100%}
+.wdtable.v2 .wdgem .st{font-size:8.5px}
+/* 場のキャラ：縦長のカード */
+.wdtable.v2 .wdmkt{flex:none;display:flex;justify-content:center;align-items:stretch;gap:7px;height:clamp(64px,30cqh,150px)}
+.wdtable.v2 .wdmkc{flex:none;height:100%;aspect-ratio:4/5;width:auto;padding:0;position:relative;overflow:hidden;border-radius:9px}
+.wdtable.v2 .wdmkc .ar{position:absolute!important;inset:0;height:auto!important;border:0}
+.wdtable.v2 .wdmkc em{position:absolute;left:0;right:0;bottom:0;margin:0;padding:8px 0 2px;text-align:center;background:linear-gradient(transparent,rgba(0,0,0,.85));font-size:10.5px}
+.wdtable.v2 .wddeck{height:100%;aspect-ratio:4/5;width:auto;flex:none}
+
+.wdtable.v2 .wdmkt{height:min(clamp(60px,30cqh,150px),calc((100cqw - 40px) / 3.3))}
+.wdtable.v2 .wdgem img.wdta.im{max-width:min(clamp(26px,calc(32cqh - 28px),116px),calc((100cqw - 40px) / 5))!important;height:min(clamp(24px,calc(30cqh - 30px),110px),calc((100cqw - 40px) / 5.2))!important}
+@media (max-height:740px){.wdtable.v2 .wdmkt{height:min(clamp(54px,26cqh,150px),calc((100cqw - 40px) / 3.3))}}
+
+/* 相手の領域をはっきり線で囲う */
+.wdopps .wdpod{border:1.5px solid color-mix(in srgb,var(--pc) 75%,transparent)!important;background:linear-gradient(170deg,color-mix(in srgb,var(--pc) 18%,rgba(22,10,44,.9)),rgba(16,8,32,.9))!important;border-radius:12px;box-shadow:0 0 10px -4px var(--pc)}
+.wdopps .wdpod.cur{box-shadow:0 0 0 1.5px var(--pc),0 0 18px -2px var(--pc)}
+.wdopps .wdpod::before{left:10px;right:10px}
+
+.wdopps.g4 .wdpod[style*="grid-area:a;"],.wdopps.g4 .wdpod[style*="grid-area:b;"]{margin-top:0;align-self:stretch}
+.wdopps.g4{row-gap:4px}
+/* 相手のカードを大きく */
+.wdopps .wdmc2{width:46px!important}
+.wdopps .wdpod.side .pslots,.wdopps.g2 .wdpod.side .pslots{grid-template-columns:repeat(2,46px)!important;gap:4px}
+.wdopps.g1 .wdpod .pslots{grid-template-columns:repeat(4,50px)!important;gap:5px}
+.wdopps.g1 .wdmc2{width:50px!important}
+.wdopps .wdmc2 .lv{font-size:10px}
+.wdopps .wdmc2 .cs i{width:8px;height:8px}.wdopps .wdmc2 .cs i.m{width:10px;height:10px}
+@media (max-height:740px){
+  .wdopps .wdmc2{width:38px!important}
+  .wdopps .wdpod.side .pslots,.wdopps.g2 .wdpod.side .pslots{grid-template-columns:repeat(2,38px)!important}
+  .wdopps.g1 .wdpod .pslots{grid-template-columns:repeat(4,44px)!important}.wdopps.g1 .wdmc2{width:44px!important}
+}
+@media (max-height:740px){
+  .wdopps.g4 .wdmc2,.wdopps.g3 .wdmc2{width:32px!important}
+  .wdopps.g4 .wdpod.side .pslots,.wdopps.g3 .wdpod.side .pslots{grid-template-columns:repeat(2,32px)!important;gap:3px}
+  .wdopps.g4 .wdpod .ph,.wdopps.g3 .wdpod .ph{font-size:10px}
+  .wdtable.v2 .wdgem img.wdta.im{height:max(16px,min(calc(30cqh - 26px),calc((100cqw - 40px) / 5.2)))!important}
+  .wdtable.v2 .wdmkt{height:max(40px,min(26cqh,calc((100cqw - 40px) / 3.3)))}
+  .wdtable.v2 .wdgem .st{font-size:7px}
+}
+
+/* ===== 属性エフェクト ===== */
+.wdtw.x>.efx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;mix-blend-mode:screen;overflow:visible}
+.efx *{transform-box:view-box}
+.efx .bolt{animation:wdbolt 1.1s steps(1) infinite;filter:drop-shadow(0 0 2px #fff)}
+@keyframes wdbolt{0%,100%{opacity:0}8%{opacity:1}14%{opacity:.2}20%{opacity:1}30%{opacity:0}}
+.efx .zap{animation:wdzap .9s linear infinite}
+@keyframes wdzap{to{stroke-dashoffset:-20}}
+.efx .flame{animation:wdflame 1.3s ease-in infinite;transform-box:fill-box;transform-origin:50% 100%}
+@keyframes wdflame{0%{transform:scale(.6,.5);opacity:0}25%{opacity:.95}100%{transform:translateY(-16px) scale(1.1,1.4);opacity:0}}
+.efx .ember{animation:wdember 1.6s linear infinite}
+@keyframes wdember{0%{transform:translateY(0);opacity:0}20%{opacity:1}100%{transform:translateY(-30px);opacity:0}}
+.efx .bub{animation:wdbub 2.2s ease-in infinite}
+@keyframes wdbub{0%{transform:translate(0,0);opacity:0}15%{opacity:1}50%{transform:translate(2px,-24px)}100%{transform:translate(-2px,-52px);opacity:0}}
+.efx .rip{transform-box:fill-box;transform-origin:50% 50%;animation:wdrip 2.2s ease-out infinite}
+@keyframes wdrip{0%{transform:scale(.4);opacity:.9}100%{transform:scale(1.6);opacity:0}}
+.efx .leaf{animation:wdleaf 6s linear infinite}
+@keyframes wdleaf{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.efx .smoke{animation:wdsmoke 3.4s ease-in-out infinite;opacity:.55}
+@keyframes wdsmoke{0%,100%{transform:translate(0,0) scale(1);opacity:.25}50%{transform:translate(4px,-8px) scale(1.25);opacity:.75}}
+.efx .smoke2{mix-blend-mode:multiply;opacity:.6}
+.efx .orbit{animation:wdleaf 5s linear infinite}
+.efx .orbit2{animation:wdleaf 7s linear infinite reverse}
+.efx .scale{animation:wdzap 1.6s linear infinite;opacity:.7}
+.efx .rays{animation:wdrays 2.4s ease-in-out infinite}
+@keyframes wdrays{0%,100%{opacity:.35;transform:scale(.95) rotate(0)}50%{opacity:.95;transform:scale(1.08) rotate(8deg)}}
+.efx .crown{animation:wdcrown 2.4s ease-in-out infinite;filter:drop-shadow(0 0 2px #FFE7A3)}
+@keyframes wdcrown{50%{transform:translateY(-2px)}}
+.efx .halo{animation:wdhalo 2.6s ease-in-out infinite;filter:drop-shadow(0 0 3px #fff)}
+@keyframes wdhalo{50%{opacity:.5}}
+.efx .beam{opacity:.12;animation:wdbeam 3s ease-in-out infinite}
+@keyframes wdbeam{50%{opacity:.3}}
+.efx .twk{transform-box:fill-box;transform-origin:50% 50%;animation:wdtwk 1.8s ease-in-out infinite}
+@keyframes wdtwk{0%,100%{transform:scale(.2);opacity:0}50%{transform:scale(1.2);opacity:1}}
+.efx .prism{animation:wdprism 3s linear infinite}
+@keyframes wdprism{from{stroke-dashoffset:0;filter:hue-rotate(0)}to{stroke-dashoffset:-40;filter:hue-rotate(360deg)}}
+/* 相手の小さいカードでは控えめに */
+.wdmc2 .wdtw.x>.efx .beam,.wdmc2 .wdtw.x>.efx .smoke2{display:none}
+
+/* ===== 最大4人：相手は最大3人。カードを大きく ===== */
+.wdopps .wdmc2{width:50px!important}
+.wdopps .wdpod.side .pslots,.wdopps.g2 .wdpod.side .pslots,.wdopps.g3 .wdpod.side .pslots{grid-template-columns:repeat(2,50px)!important;gap:5px}
+.wdopps.g1 .wdpod .pslots{grid-template-columns:repeat(4,54px)!important}.wdopps.g1 .wdmc2{width:54px!important}
+@media (max-height:740px){
+  .wdopps .wdmc2,.wdopps.g3 .wdmc2{width:40px!important}
+  .wdopps .wdpod.side .pslots,.wdopps.g2 .wdpod.side .pslots,.wdopps.g3 .wdpod.side .pslots{grid-template-columns:repeat(2,40px)!important;gap:4px}
+  .wdopps.g1 .wdpod .pslots{grid-template-columns:repeat(4,46px)!important}.wdopps.g1 .wdmc2{width:46px!important}
+}
+
 </style>
 </head>
 <body>
@@ -2788,7 +2886,7 @@ img.wdta.im{display:block;object-fit:contain;-webkit-user-drag:none}
    ============================================================ */
 const CFG_URL = "https://gcuddhongxvojabweclh.supabase.co";
 const CFG_KEY = "sb_publishable_E6PxQDZpmdfb6kjRPte3qw_goaYjKZB";
-const APP_VER = "v63";
+const APP_VER = "v66";
 
 const lsGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
 const lsSet = (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} };
@@ -7901,13 +7999,54 @@ function wdTintBg(c){
 const wdCAc = c => WD_COL[c.s[0] || c.s.find(Boolean) || "無"];
 /* 手元のキャラ：絵は元の色のまま。サブ属性が付くと、キャラ本体が変わる
    サブ1つ目 → 目がその色に光り、体がその色を帯びる ／ サブ2つ目 → 体にその色のエネルギーが巻きつく */
+/* 属性ごとのエフェクト（キャラの体のまわり）。cx,cy：体の中心、rx,ry：体の大きさ（SVG座標 100×125） */
+function wdElFx(a, col, cx, cy, rx, ry, k){
+  const R = (i, n, f = 1) => { const t = (i / n) * Math.PI * 2 + k; return [cx + Math.cos(t) * rx * f, cy + Math.sin(t) * ry * f]; };
+  const d = i => `style="animation-delay:-${(i * 0.37).toFixed(2)}s"`;
+  let h = "";
+  if (a === "雷"){
+    for (let i = 0; i < 4; i++){ const [x, y] = R(i, 4, .95), s = i % 2 ? -1 : 1;
+      const pts = `${x},${y - 14} ${x + 5 * s},${y - 5} ${x - 3 * s},${y - 2} ${x + 4 * s},${y + 8} ${x - 2 * s},${y + 5} ${x + 2 * s},${y + 15}`;
+      h += `<g class="bolt" ${d(i)}><polyline points="${pts}" stroke="${col}" stroke-width="3.2" opacity=".6"/><polyline points="${pts}" stroke="#fff" stroke-width="1.1"/></g>`; }
+    h += `<ellipse class="zap" cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" stroke="${col}" stroke-width="1.2" stroke-dasharray="3 7 1 9"/>`;
+  } else if (a === "炎"){
+    for (let i = 0; i < 7; i++){ const x = cx - rx * .9 + (rx * 1.8) * (i / 6), y = cy + ry * (.55 + (i % 3) * .12);
+      h += `<path class="flame" ${d(i)} d="M${x} ${y} c-4 -6 -2 -11 0 -17 c2 6 6 9 4 14 c-1 2 -3 3 -4 3z" fill="${col}"/><circle class="ember" ${d(i + 3)} cx="${x + 2}" cy="${y - 6}" r="1.1" fill="#FFE2A0"/>`; }
+  } else if (a === "水"){
+    for (let i = 0; i < 7; i++){ const x = cx - rx * .8 + (rx * 1.6) * ((i * 37 % 7) / 6), y = cy + ry * .7;
+      h += `<circle class="bub" ${d(i)} cx="${x}" cy="${y}" r="${1.4 + (i % 3) * .8}" stroke="#E8FBFF" stroke-width=".7" fill="${col}" fill-opacity=".35"/>`; }
+    h += `<ellipse class="rip" cx="${cx}" cy="${cy + ry * .95}" rx="${rx * .6}" ry="${ry * .12}" stroke="${col}" stroke-width="1.4"/><ellipse class="rip" style="animation-delay:-1.1s" cx="${cx}" cy="${cy + ry * .95}" rx="${rx * .6}" ry="${ry * .12}" stroke="#E8FBFF" stroke-width=".8"/>`;
+  } else if (a === "木"){
+    for (let i = 0; i < 7; i++){ const [x, y] = R(i, 7, 1.02);
+      h += `<g class="leaf" ${d(i)} style="transform-origin:${cx}px ${cy}px;animation-delay:-${(i * .9).toFixed(1)}s"><path d="M${x} ${y} q3 -4 7 -1 q-3 4 -7 1z" fill="${col}" stroke="#D8FFB0" stroke-width=".4"/></g>`; }
+  } else if (a === "闇"){
+    for (let i = 0; i < 4; i++){ const [x, y] = R(i, 4, .75);
+      h += `<ellipse class="smoke" ${d(i)} cx="${x}" cy="${y}" rx="${rx * .55}" ry="${ry * .3}" fill="${col}" filter="url(#wdblur)"/>`; }
+    h += `<ellipse class="smoke2" cx="${cx}" cy="${cy + ry * .6}" rx="${rx * .9}" ry="${ry * .35}" fill="#140024" filter="url(#wdblur)"/>`;
+  } else if (a === "龍"){
+    h += `<g class="orbit" style="transform-origin:${cx}px ${cy}px">${Array.from({ length: 8 }, (_, i) => { const [x, y] = R(i, 8, 1.05); return `<circle cx="${x}" cy="${y}" r="${i % 2 ? 1.3 : 2.1}" fill="${i % 2 ? "#FFE7A3" : col}"/>`; }).join("")}</g>`;
+    h += `<ellipse class="scale" cx="${cx}" cy="${cy}" rx="${rx * .8}" ry="${ry * .8}" stroke="${col}" stroke-width="2.4" stroke-dasharray="2 4"/>`;
+  } else if (a === "覇"){
+    h += `<g class="rays" style="transform-origin:${cx}px ${cy}px">${Array.from({ length: 10 }, (_, i) => { const [x1, y1] = R(i, 10, .55), [x2, y2] = R(i, 10, 1.25); return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${col}" stroke-width="${i % 2 ? 1.2 : 2.2}"/>`; }).join("")}</g>`;
+    h += `<path class="crown" d="M${cx - 8} ${cy - ry - 2} l3 -7 l3 4 l2 -6 l2 6 l3 -4 l3 7z" fill="${col}" stroke="#FFE7A3" stroke-width=".6"/>`;
+  } else if (a === "天"){
+    h += `<ellipse class="halo" cx="${cx}" cy="${cy - ry * .95}" rx="${rx * .45}" ry="${ry * .1}" stroke="#FFF8DC" stroke-width="2"/>`;
+    for (let i = 0; i < 3; i++) h += `<polygon class="beam" ${d(i)} points="${cx - 6 + i * 6},0 ${cx - 2 + i * 6},0 ${cx - 10 + i * 10},125 ${cx - 18 + i * 10},125" fill="${col}"/>`;
+    for (let i = 0; i < 6; i++){ const [x, y] = R(i, 6, 1.05); h += `<path class="twk" ${d(i)} d="M${x} ${y - 3} L${x + .8} ${y} L${x} ${y + 3} L${x - .8} ${y}Z M${x - 3} ${y} L${x} ${y + .8} L${x + 3} ${y} L${x} ${y - .8}Z" fill="#fff"/>`; }
+  } else if (a === "幻"){
+    h += `<g class="orbit2" style="transform-origin:${cx}px ${cy}px">${Array.from({ length: 6 }, (_, i) => { const [x, y] = R(i, 6, 1.0); return `<path d="M${x} ${y - 4} L${x + 2.4} ${y} L${x} ${y + 4} L${x - 2.4} ${y}Z" fill="hsl(${i * 60},90%,75%)" stroke="#fff" stroke-width=".4"/>`; }).join("")}</g>`;
+    h += `<ellipse class="prism" cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" stroke="${col}" stroke-width="1.6" stroke-dasharray="6 4"/>`;
+  }
+  return `<svg class="efx e-${WD_ELF[a]}" viewBox="0 0 100 125" preserveAspectRatio="none" aria-hidden="true"><defs><filter id="wdblur"><feGaussianBlur stdDeviation="2.4"/></filter></defs><g fill="none" stroke-linecap="round" stroke-linejoin="round">${h}</g></svg>`;
+}
 const wdArtC = (c, cls = "") => {
   const subs = c.s.slice(1).filter(Boolean), F = WD_ARTF[c.k];
   if (!subs.length || !F) return `<span class="wdtw o ${cls}">${wdCharArt(c.k)}</span>`;
   const a1 = WD_COL[subs[0]], a2 = WD_COL[subs[1] || subs[0]], [bx, by, rx, ry] = F.b;
   const body = `--bx:${bx}%;--by:${by}%;--rx:${rx}%;--ry:${ry}%`;
   const eyes = F.e.map(([x, y]) => `<i class="ey" style="left:${x}%;top:${y}%"></i>`).join("");
-  return `<span class="wdtw x n${subs.length} ${cls}" style="--s1:${a1};--s2:${a2};${body}">${wdCharArt(c.k)}<i class="bd"></i>${subs[1] ? `<i class="wr"></i>` : ""}${eyes}</span>`;
+  const fx = [...new Set(subs)].map((a, i) => wdElFx(a, WD_COL[a], bx, by * 1.25, rx * .95, ry * 1.25 * .95, i * 1.7)).join("");
+  return `<span class="wdtw x n${subs.length} ${cls}" style="--s1:${a1};--s2:${a2};${body}">${wdCharArt(c.k)}<i class="bd"></i>${subs[1] ? `<i class="wr"></i>` : ""}${eyes}${fx}</span>`;
 };
 const wdEmbC = c => `<span class="wdemb wdembc" style="--ac:${wdCAc(c)}">${wdArtC(c)}</span>`;
 
@@ -8033,7 +8172,7 @@ function wdOppsH(D, opp){
   else if (n === 2) at.push([opp[0], "a", "side"], [opp[1], "b", "side"]);
   else if (n === 3) at.push([opp[0], "a", "side"], [opp[1], "t", "side"], [opp[2], "b", "side"]);
   else at.push([opp[0], "a", "side"], [opp[1], "t", "side"], [opp[2], "u", "side"], [opp[3], "b", "side"]);
-  return `<div class="wdopps g${Math.min(n, 4)}">${at.map(([p, ar, side]) => wdPodH(D, p, side).replace('class="wdpod', `style="grid-area:${ar}" class="wdpod`)).join("")}<button class="wdchartb tri" id="wdChart" style="grid-area:ch" aria-label="属性の相性（タップで大きく）">${wdChartTri()}</button></div>`;
+  return `<div class="wdopps g${Math.min(n, 4)}">${at.map(([p, ar, side]) => wdPodH(D, p, side).replace('style="--pc:', `style="grid-area:${ar};--pc:`)).join("")}<button class="wdchartb tri" id="wdChart" style="grid-area:ch" aria-label="属性の相性（タップで大きく）">${wdChartTri()}</button></div>`;
 }
 /* 早見表：三すくみは三角形、四すくみは四角形、雷と闇は相互 */
 function wdChartTri(){
@@ -8044,7 +8183,7 @@ function wdChartTri(){
   return `<svg class="wdtri" viewBox="-4 0 132 100" aria-hidden="true"><defs><marker id="wdarT" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10Z" fill="#FFE7A3"/></marker></defs>
     <path d="M30 13 L52 50 L8 50Z" fill="rgba(255,255,255,.04)" stroke="rgba(255,231,163,.18)"/><path d="M76 13 H116 V50 H76Z" fill="rgba(255,255,255,.04)" stroke="rgba(255,231,163,.18)"/>
     ${ar("水", "炎")}${ar("炎", "木")}${ar("木", "水")}${ar("龍", "覇")}${ar("覇", "天")}${ar("天", "幻")}${ar("幻", "龍")}${ar("雷", "闇", true)}
-    ${Object.keys(P).map(ic).join("")}</svg><small>矢印の先に強い</small>`;
+    ${Object.keys(P).map(ic).join("")}</svg>`;
 }
 function wdFeltH(D, st, live){
   const T = D.T, mineTre = live && T && T.p === me && T.ph === "tre" && !st.ask;
@@ -9037,11 +9176,11 @@ function wdEndShow(g){
 
 /* ---------- 新しく始める ---------- */
 function openWdNew(){
-  let order = db.players.map(p => p.id).slice(0, 5);
+  let order = db.players.map(p => p.id).slice(0, 4);
   const s = openSheet("WARDENS OF RELICを始める", `
-    <p class="note">【オリジナル・開発中】守護者の力 wp（Wardens Point）を集めて、属性キューブと合わせて秘宝を手に入れる。秘宝の★の合計が最初に${WD_WIN_STARS}以上になった人の勝ち（2〜5人・45〜60分）。キャラは20体、それぞれ10種類の効果を持つ。</p>
+    <p class="note">【オリジナル・開発中】守護者の力 wp（Wardens Point）を集めて、属性キューブと合わせて秘宝を手に入れる。秘宝の★の合計が最初に${WD_WIN_STARS}以上になった人の勝ち（2〜4人・45〜60分）。キャラは20体、それぞれ10種類の効果を持つ。</p>
     <div class="btns"><button type="button" class="grbtn" data-grule="wd">ルールを見る</button><button type="button" class="grbtn" id="wdZkN">キャラ図鑑</button></div>
-    <div class="f"><span>参加者（タップで選ぶ・2〜5人）</span>${chipPlayers(db.players.map(p => p.id), order)}${cpuChips(order)}</div>
+    <div class="f"><span>参加者（タップで選ぶ・2〜4人）</span>${chipPlayers(db.players.map(p => p.id), order)}${cpuChips(order)}</div>
     <div class="f"><span>手番の順番・名前を指で動かして並べ替え（1番の人から。2番手以降は開始wpが${WD_SEAT_BONUS}ずつ多い）</span><div id="wdOrder" class="norder"></div><button class="shufbtn" id="wdShuf">順番をシャッフル</button></div>
     <div class="btns"><button class="btn" id="wdGo">はじめる</button></div>`);
   s.querySelector("[data-close]").onclick = openGames;
@@ -9049,14 +9188,14 @@ function openWdNew(){
   const draw = () => { $("#wdOrder").innerHTML = seatHtml(order); seatDrag($("#wdOrder"), () => order, o => order = o, draw); };
   s.querySelectorAll("[data-p]").forEach(b => b.onclick = () => {
     const id = b.dataset.p, on = b.getAttribute("aria-pressed") !== "true";
-    if (on && order.length >= 5){ toast("最大5人です"); return; }
+    if (on && order.length >= 4){ toast("最大4人です"); return; }
     b.setAttribute("aria-pressed", String(on)); order = on ? [...order, id] : order.filter(x => x !== id); draw();
   });
   $("#wdShuf").onclick = () => { order = shuffle(order); draw(); };
   draw();
   $("#wdGo").onclick = async () => {
     if (!order.some(id => !isCpu(id))){ toast("人間のプレイヤーを1人以上入れてください"); return; }
-    if (order.length < 2 || order.length > 5){ toast("参加者は2〜5人です"); return; }
+    if (order.length < 2 || order.length > 4){ toast("参加者は2〜4人です"); return; }
     $("#wdGo").disabled = true;
     if (sbWd && sbWd !== sb){ const pl = db.players.filter(p => order.includes(p.id)).map(p => ({ id: p.id, name: p.name, color: p.color, sort: p.sort || 0 })); if (pl.length) try { await sbWd.from("players").upsert(pl); } catch (e) {} }
     const r = await wdCall({ op: "new", players: order, by: me || null });
@@ -9107,7 +9246,7 @@ const GAMES = [
     start: () => openLmNew(), open: g => openLm(g.id),
     winners: g => { const E = g.st && g.st.end; return E && E.total ? maxOf(g.st.players, p => E.total[p] || 0) : []; },
     liveTx: g => `ラウンド${Math.min(g.st.round, LM_ROUNDS)}/${LM_ROUNDS}` },
-  { id: "wd", name: "WARDENS OF RELIC", en: "THE GUARDIANS OF TREASURE", players: "2〜5人", time: "45〜60分",
+  { id: "wd", name: "WARDENS OF RELIC", en: "THE GUARDIANS OF TREASURE", players: "2〜4人", time: "45〜60分",
     desc: "守護者の力wp（Wardens Point）を集め、神話の魔獣20体に属性キューブを付けて育てる。20面の属性ダイスで出た目のキューブを持つ人は全員wpを獲得。秘宝の★の合計が最初に8以上になった人の勝ち。",
     icon: () => WD_ICON, list: () => wdGames(), live: () => wdLive(), myTurn: g => wdMyTurn(g),
     start: () => openWdNew(), open: g => openWd(g.id),
