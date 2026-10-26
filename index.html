@@ -2752,6 +2752,10 @@ img.wdta.im{display:block;object-fit:contain;-webkit-user-drag:none}
 .wdopps.g2 .wdpod.side .pslots{grid-template-columns:repeat(2,34px)!important;justify-content:center}
 @media (max-height:740px){.wdopps.g2 .wdpod.side .pslots{grid-template-columns:repeat(2,30px)!important}}
 
+/* 上の段の相手は、早見表と同じくらいの幅に */
+.wdopps.g3{grid-template-areas:". . t t . ." "a a ch ch b b"}
+.wdopps.g4{grid-template-areas:". t t u u ." "a a ch ch b b"}
+
 </style>
 </head>
 <body>
@@ -2784,7 +2788,7 @@ img.wdta.im{display:block;object-fit:contain;-webkit-user-drag:none}
    ============================================================ */
 const CFG_URL = "https://gcuddhongxvojabweclh.supabase.co";
 const CFG_KEY = "sb_publishable_E6PxQDZpmdfb6kjRPte3qw_goaYjKZB";
-const APP_VER = "v62";
+const APP_VER = "v63";
 
 const lsGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
 const lsSet = (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} };
@@ -8027,8 +8031,8 @@ function wdOppsH(D, opp){
   const n = opp.length, at = [];
   if (n === 1) at.push([opp[0], "a", "top"]);
   else if (n === 2) at.push([opp[0], "a", "side"], [opp[1], "b", "side"]);
-  else if (n === 3) at.push([opp[0], "a", "side"], [opp[1], "t", "top"], [opp[2], "b", "side"]);
-  else at.push([opp[0], "a", "side"], [opp[1], "t", "top"], [opp[2], "u", "top"], [opp[3], "b", "side"]);
+  else if (n === 3) at.push([opp[0], "a", "side"], [opp[1], "t", "side"], [opp[2], "b", "side"]);
+  else at.push([opp[0], "a", "side"], [opp[1], "t", "side"], [opp[2], "u", "side"], [opp[3], "b", "side"]);
   return `<div class="wdopps g${Math.min(n, 4)}">${at.map(([p, ar, side]) => wdPodH(D, p, side).replace('class="wdpod', `style="grid-area:${ar}" class="wdpod`)).join("")}<button class="wdchartb tri" id="wdChart" style="grid-area:ch" aria-label="属性の相性（タップで大きく）">${wdChartTri()}</button></div>`;
 }
 /* 早見表：三すくみは三角形、四すくみは四角形、雷と闇は相互 */
