@@ -2854,6 +2854,28 @@ img.wdta.im{display:block;object-fit:contain;-webkit-user-drag:none}
   .wdopps.g1 .wdpod .pslots{grid-template-columns:repeat(4,46px)!important}.wdopps.g1 .wdmc2{width:46px!important}
 }
 
+/* ===== v19：4人対戦の上の相手は横1列・秘宝は残りの高さいっぱい（重ならない） ===== */
+.wdopps.g3{grid-template-areas:". t t t t ." "a a ch ch b b"}
+.wdopps.g3 .wdpod.top .pslots{grid-template-columns:repeat(4,46px)!important;gap:5px;justify-content:center}
+.wdopps.g3 .wdpod.top .wdmc2{width:46px!important}
+.wdopps.g3 .wdpod.side[style*="grid-area:a;"],.wdopps.g3 .wdpod.side[style*="grid-area:b;"]{align-self:stretch}
+@media (max-height:740px){.wdopps.g3 .wdpod.top .pslots{grid-template-columns:repeat(4,40px)!important}.wdopps.g3 .wdpod.top .wdmc2{width:40px!important}}
+/* 秘宝：2段で、残った高さを全部使う */
+.wdtable.v2 .wdfelt{justify-content:flex-start}
+.wdtable.v2 .wdgems{flex:1 1 0!important;min-height:0;display:grid;grid-template-rows:1fr 1fr;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px}
+.wdtable.v2 .wdgem{height:100%;min-height:0;display:flex!important;flex-direction:column;align-items:center;justify-content:center;gap:1px;padding:2px 0}
+.wdtable.v2 .wdgem img.wdta.im{flex:1 1 0;min-height:0;height:auto!important;width:100%!important;max-width:none!important;max-height:100%;object-fit:contain;border-radius:0}
+.wdtable.v2 .wdgem .st,.wdtable.v2 .wdgem .cb{flex:none}
+.wdtable.v2 .wdmkt{height:min(26cqh,calc((100cqw - 40px) / 3.3))!important;min-height:44px}
+
+/* 相手のキューブも属性アイコンで */
+.wdmc2 .cs{gap:1px;bottom:1px}
+.wdmc2 .cs i.on.ic{width:14px;height:14px;background:none;border:0;box-shadow:none;display:grid;place-items:center}
+.wdmc2 .cs i.on.ic.m{width:16px;height:16px}
+.wdmc2 .cs i.on.ic img.wdico.im{width:100%;height:100%;filter:drop-shadow(0 0 2px rgba(0,0,0,.9)) drop-shadow(0 0 3px var(--sc))}
+.wdmc2 .cs i:not(.on){width:9px;height:9px}
+@media (max-height:740px){.wdmc2 .cs i.on.ic{width:12px;height:12px}.wdmc2 .cs i.on.ic.m{width:13px;height:13px}}
+
 </style>
 </head>
 <body>
@@ -2886,7 +2908,7 @@ img.wdta.im{display:block;object-fit:contain;-webkit-user-drag:none}
    ============================================================ */
 const CFG_URL = "https://gcuddhongxvojabweclh.supabase.co";
 const CFG_KEY = "sb_publishable_E6PxQDZpmdfb6kjRPte3qw_goaYjKZB";
-const APP_VER = "v66";
+const APP_VER = "v67";
 
 const lsGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
 const lsSet = (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} };
@@ -8155,8 +8177,8 @@ const wdViewer = st => st.order.includes(me) ? me : st.order[0];
 const wdSpd = () => +(lsGet("gl:wdSpd") || 1) || 1;
 const WD_SPD_L = { .6: "ゆっくり", 1: "ふつう", 1.6: "はやい", 2.5: "さくさく" };
 /* 相手の手元：キャラも秘宝も同じ大きさのカード。空き枠は点線 */
-const wdMiniCard = c => `<div class="wdmc2 ${c.seal ? "sealed" : ""} ${c.fresh ? "fresh" : ""}" data-ch="${c.id}" style="--ac:${wdCAc(c)}">${wdArtC(c)}<span class="lv">${c.lv}</span><span class="cs">${c.s.map((a, i) => `<i data-slot="${c.id}:${i}" class="${i === 0 ? "m" : ""} ${a ? "on" : ""}" style="--sc:${WD_COL[a || "無"]}"></i>`).join("")}</span>${c.seal ? `<b class="sl">封</b>` : ""}</div>`;
-const wdMiniTre = t => { const td = wdTreDef(t.id); return `<div class="wdmc2 tre r${td.r}" data-tre="${t.id}">${wdTreArt(t.id)}<span class="st">★${td.r}</span><span class="cs">${t.cubes.map(a => `<i class="on" style="--sc:${WD_COL[a]}"></i>`).join("")}</span></div>`; };
+const wdMiniCard = c => `<div class="wdmc2 ${c.seal ? "sealed" : ""} ${c.fresh ? "fresh" : ""}" data-ch="${c.id}" style="--ac:${wdCAc(c)}">${wdArtC(c)}<span class="lv">${c.lv}</span><span class="cs">${c.s.map((a, i) => `<i data-slot="${c.id}:${i}" class="${i === 0 ? "m" : ""} ${a ? "on ic" : ""}" style="--sc:${WD_COL[a || "無"]}">${a ? wdIco(a) : ""}</i>`).join("")}</span>${c.seal ? `<b class="sl">封</b>` : ""}</div>`;
+const wdMiniTre = t => { const td = wdTreDef(t.id); return `<div class="wdmc2 tre r${td.r}" data-tre="${t.id}">${wdTreArt(t.id)}<span class="st">★${td.r}</span><span class="cs">${t.cubes.map(a => `<i class="on ic" style="--sc:${WD_COL[a]}">${wdIco(a)}</i>`).join("")}</span></div>`; };
 const wdGemMini = id => { const t = wdTreDef(id); return `<i class="tg art r${t.r}" title="${t.n}">${wdTreArt(id)}</i>`; };
 function wdPodH(D, p, side){
   const cur = D.T && D.T.p === p, free = Math.max(0, WD_SLOTS - D.ch[p].length - D.tre[p].length);
@@ -8170,7 +8192,7 @@ function wdOppsH(D, opp){
   const n = opp.length, at = [];
   if (n === 1) at.push([opp[0], "a", "top"]);
   else if (n === 2) at.push([opp[0], "a", "side"], [opp[1], "b", "side"]);
-  else if (n === 3) at.push([opp[0], "a", "side"], [opp[1], "t", "side"], [opp[2], "b", "side"]);
+  else if (n === 3) at.push([opp[0], "a", "side"], [opp[1], "t", "top"], [opp[2], "b", "side"]);
   else at.push([opp[0], "a", "side"], [opp[1], "t", "side"], [opp[2], "u", "side"], [opp[3], "b", "side"]);
   return `<div class="wdopps g${Math.min(n, 4)}">${at.map(([p, ar, side]) => wdPodH(D, p, side).replace('style="--pc:', `style="grid-area:${ar};--pc:`)).join("")}<button class="wdchartb tri" id="wdChart" style="grid-area:ch" aria-label="属性の相性（タップで大きく）">${wdChartTri()}</button></div>`;
 }
