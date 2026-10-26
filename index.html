@@ -2695,6 +2695,63 @@ img.wdta.im{display:block;object-fit:contain;-webkit-user-drag:none}
 .wdmc2 .wdtw.x>.ey::after{display:none}
 .wdmc2 .wdtw.x>.wr{opacity:.5}
 
+/* ===== v14：スクロールなしの配置（相手と早見表を上に・中央は秘宝と場・下に自分） ===== */
+.wdmain{overflow:hidden}
+.wdtable.v2{flex:1 1 0;min-height:0}
+.wdbar{position:static}
+.wdme{flex:none}
+.wdopps{display:grid!important;grid-template-columns:repeat(6,minmax(0,1fr));gap:5px;flex:none}
+.wdopps.g1{grid-template-areas:"a a a a ch ch"}
+.wdopps.g2{grid-template-areas:"a a ch ch b b"}
+.wdopps.g3{grid-template-areas:"t t t t t t" "a a ch ch b b"}
+.wdopps.g4{grid-template-areas:"t t t u u u" "a a ch ch b b"}
+.wdopps .wdpod{min-width:0;display:flex!important;flex-direction:column;padding:4px 6px 5px}
+.wdopps .wdpod .ph .wp{font-size:12px}
+.wdopps .wdpod .nm{font-size:10.5px}
+.wdopps .wdpod .stm{font-size:8px}
+.wdopps .wdpod.top .pslots{grid-template-columns:repeat(4,minmax(0,36px))}
+.wdopps .wdpod.side .pslots{grid-template-columns:repeat(2,minmax(0,1fr));gap:3px}
+.wdopps .wdpod.side .wdmc2,.wdopps .wdpod.top .wdmc2{width:auto}
+.wdopps .wdpod.top .wdmc2{width:36px}
+.wdopps.g2 .wdpod.side .pslots,.wdopps.g1 .wdpod .pslots{grid-template-columns:repeat(4,minmax(0,1fr))}
+.wdchartb.tri{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:3px 3px 2px;border-radius:12px;background:rgba(10,5,22,.55);border:1px solid rgba(255,231,163,.22);color:inherit;font-family:inherit;min-width:0}
+.wdtri{width:100%;height:auto;max-height:110px;display:block}
+.wdchartb.tri small{font-size:8px;color:var(--wmute);line-height:1.1}
+/* 中央：空いた高さに合わせて伸び縮み */
+.wdtable.v2 .wdfelt{flex:1 1 0;min-height:0;container-type:size;overflow:hidden;display:flex;flex-direction:column;justify-content:space-evenly;padding:5px 7px;gap:3px}
+.wdtable.v2 .wdgems{flex:none}
+.wdtable.v2 .wdgem img.wdta.im{height:clamp(16px,calc(26cqh - 24px),78px)!important;max-width:clamp(18px,calc(28cqh - 22px),82px)!important}
+.wdtable.v2 .wdmkt .wdmkc .ar{height:clamp(20px,22cqh,90px)!important}
+.wdtable.v2 .wdmkt .wdmkc em{font-size:10px}
+/* ヘッダーに手番の情報 */
+.wdttl small.tsub{display:flex;align-items:center;gap:4px;letter-spacing:.06em;font-size:10px;white-space:nowrap;overflow:hidden;max-width:100%}
+.wdttl .tdot{width:7px;height:7px;border-radius:50%;background:var(--pc);box-shadow:0 0 6px var(--pc);display:inline-block;flex:none;margin-left:2px}
+.wdttl .tnm{font-family:"Zen Kaku Gothic New",sans-serif;font-size:10.5px;color:#fff;letter-spacing:0;overflow:hidden;text-overflow:ellipsis;max-width:6em;background:none;-webkit-text-fill-color:#fff}
+.wdttl .tph{font-style:normal;font-family:"Zen Kaku Gothic New",sans-serif;font-size:9.5px;letter-spacing:0;padding:0 5px;border-radius:6px;background:var(--wgold);color:#1A0E2E;font-weight:900}
+.wdttl .tfc{display:inline-flex;align-items:center;gap:1px;font-family:"Zen Kaku Gothic New",sans-serif;letter-spacing:0;font-size:9.5px;color:#fff;padding:0 5px 0 1px;border-radius:999px;border:1px solid var(--ac);background:color-mix(in srgb,var(--ac) 30%,transparent)}
+.wdttl .tfc img.wdico.im{width:12px;height:12px}
+.wdguide p{-webkit-line-clamp:1}
+/* 相手のカードはどこでも同じ大きさ */
+.wdopps .wdpod .pslots{justify-content:start}
+.wdopps .wdpod.top .pslots,.wdopps.g2 .wdpod.side .pslots,.wdopps.g1 .wdpod .pslots{grid-template-columns:repeat(4,34px)!important}
+.wdopps .wdpod.side .pslots{grid-template-columns:repeat(2,34px)!important;justify-content:center}
+.wdopps .wdmc2{width:34px!important}
+.wdopps .wdpod.side{align-items:stretch}
+.wdtri{max-height:96px}
+@media (max-height:740px){
+  .wdguide{display:none}
+  .wdopps .wdpod .pw{display:none}
+  .wdopps .wdpod.top .pslots,.wdopps.g2 .wdpod.side .pslots,.wdopps.g1 .wdpod .pslots{grid-template-columns:repeat(4,30px)!important}
+  .wdopps .wdpod.side .pslots{grid-template-columns:repeat(2,30px)!important}
+  .wdopps .wdmc2{width:30px!important}
+  .wdtri{max-height:80px}
+  .wdcard .ar{height:44px}
+  .wdbar{padding-top:6px;padding-bottom:calc(var(--safe-b) + 6px)}
+}
+
+.wdopps.g2 .wdpod.side .pslots{grid-template-columns:repeat(2,34px)!important;justify-content:center}
+@media (max-height:740px){.wdopps.g2 .wdpod.side .pslots{grid-template-columns:repeat(2,30px)!important}}
+
 </style>
 </head>
 <body>
@@ -2727,7 +2784,7 @@ img.wdta.im{display:block;object-fit:contain;-webkit-user-drag:none}
    ============================================================ */
 const CFG_URL = "https://gcuddhongxvojabweclh.supabase.co";
 const CFG_KEY = "sb_publishable_E6PxQDZpmdfb6kjRPte3qw_goaYjKZB";
-const APP_VER = "v61";
+const APP_VER = "v62";
 
 const lsGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
 const lsSet = (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} };
@@ -7965,6 +8022,26 @@ function wdPodH(D, p, side){
     <div class="pw">${wdStarMeter(D.tre[p].reduce((n, t) => n + wdTreDef(t.id).r, 0))}</div>
     <div class="pslots">${D.ch[p].map(wdMiniCard).join("")}${D.tre[p].map(wdMiniTre).join("")}${Array.from({ length: free }, () => `<i class="wdmc2 free"></i>`).join("")}</div></div>`;
 }
+/* 相手と早見表の配置：上の段に相手、2段目は 左の相手｜早見表｜右の相手 */
+function wdOppsH(D, opp){
+  const n = opp.length, at = [];
+  if (n === 1) at.push([opp[0], "a", "top"]);
+  else if (n === 2) at.push([opp[0], "a", "side"], [opp[1], "b", "side"]);
+  else if (n === 3) at.push([opp[0], "a", "side"], [opp[1], "t", "top"], [opp[2], "b", "side"]);
+  else at.push([opp[0], "a", "side"], [opp[1], "t", "top"], [opp[2], "u", "top"], [opp[3], "b", "side"]);
+  return `<div class="wdopps g${Math.min(n, 4)}">${at.map(([p, ar, side]) => wdPodH(D, p, side).replace('class="wdpod', `style="grid-area:${ar}" class="wdpod`)).join("")}<button class="wdchartb tri" id="wdChart" style="grid-area:ch" aria-label="属性の相性（タップで大きく）">${wdChartTri()}</button></div>`;
+}
+/* 早見表：三すくみは三角形、四すくみは四角形、雷と闇は相互 */
+function wdChartTri(){
+  const P = { 水: [30, 13], 炎: [52, 50], 木: [8, 50], 龍: [76, 13], 覇: [116, 13], 天: [116, 50], 幻: [76, 50], 雷: [44, 87], 闇: [84, 87] }, R = 10;
+  const ar = (a, b, two) => { const [x1, y1] = P[a], [x2, y2] = P[b], dx = x2 - x1, dy = y2 - y1, L = Math.hypot(dx, dy), ux = dx / L, uy = dy / L;
+    return `<line x1="${(x1 + ux * (R + 2)).toFixed(1)}" y1="${(y1 + uy * (R + 2)).toFixed(1)}" x2="${(x2 - ux * (R + 3.5)).toFixed(1)}" y2="${(y2 - uy * (R + 3.5)).toFixed(1)}" stroke="#FFE7A3" stroke-width="1.8" marker-end="url(#wdarT)"${two ? ' marker-start="url(#wdarT)"' : ""}/>`; };
+  const ic = a => { const [x, y] = P[a]; return `<circle cx="${x}" cy="${y}" r="${R + 1.5}" fill="${WD_COL[a]}" opacity=".35"/><image href="el_${WD_ELF[a]}.webp" x="${x - R}" y="${y - R}" width="${R * 2}" height="${R * 2}"/>`; };
+  return `<svg class="wdtri" viewBox="-4 0 132 100" aria-hidden="true"><defs><marker id="wdarT" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10Z" fill="#FFE7A3"/></marker></defs>
+    <path d="M30 13 L52 50 L8 50Z" fill="rgba(255,255,255,.04)" stroke="rgba(255,231,163,.18)"/><path d="M76 13 H116 V50 H76Z" fill="rgba(255,255,255,.04)" stroke="rgba(255,231,163,.18)"/>
+    ${ar("水", "炎")}${ar("炎", "木")}${ar("木", "水")}${ar("龍", "覇")}${ar("覇", "天")}${ar("天", "幻")}${ar("幻", "龍")}${ar("雷", "闇", true)}
+    ${Object.keys(P).map(ic).join("")}</svg><small>矢印の先に強い</small>`;
+}
 function wdFeltH(D, st, live){
   const T = D.T, mineTre = live && T && T.p === me && T.ph === "tre" && !st.ask;
   const gems = WD_TRE.map(t => {
@@ -7977,9 +8054,7 @@ function wdFeltH(D, st, live){
   const fc = T && T.face ? `<span class="wdfc" style="--ac:${WD_COL[T.face]}">${wdIco(T.face)}${T.face}</span>` : T && T.skip ? `<span class="wdfc skip">ダイスなし</span>` : "";
   const mkt = D.mk.map((k, i) => k == null ? `<span class="wdmkc empty"></span>` : `<span class="wdmkc" data-mk="${i}" style="--ac:${WD_COL[WD_CH[k].sig]}"><span class="ar">${wdCharArt(k)}</span><em>${WD_CH[k].cost}</em></span>`).join("");
   return `<div class="wdfelt" id="wdFelt">
-    <div class="wdturn" style="--pc:${T ? pcolor(T.p) : "#888"}">${T ? `<i class="dot"></i><b>${esc(wdNm(T.p))}</b><span class="ph">${steps.map((s, i) => `<i class="${i === cur ? "on" : i < cur ? "done" : ""}">${i + 1}</i>`).join("")}</span>${fc}` : `<b>準備中</b>`}</div>
     <div class="wdgems">${gems}</div>
-    <button class="wdchartb mini" id="wdChart" aria-label="属性の相性（タップで大きく）">${wdChartMini()}</button>
     <div class="wdmkt"><span class="wddeck" id="wdDeck"><b>${D.dl}</b><small>山札</small></span>${mkt}</div>
   </div>`;
 }
@@ -8069,7 +8144,7 @@ function wdRender(g, D, live){
   const guide = !wdGuideOn() ? "" : live ? `<div class="wdguide"><i>GUIDE</i><p>${wdGuide(st, g)}</p></div>` : `<div class="wdguide play"><i>PLAY</i><p>ひとつずつ順番に再生しています。下の「スキップ」で飛ばせます。キャラは長押しで効果を確認できます。</p></div>`;
   main.innerHTML = `${wdTopH(st, D)}${guide}
     <div class="wdtable v2">
-      <div class="wdopps n${opp.length}">${opp.map(p => wdPodH(D, p, "top")).join("")}</div>
+      ${wdOppsH(D, opp)}
       ${wdFeltH(D, st, live)}
     </div>
     ${wdMeH(D, st, live)}${g.status === "finished" ? "" : wdBarH(st, live)}${live ? wdAskH(st) : ""}`;
@@ -8079,8 +8154,10 @@ function wdRender(g, D, live){
   if (live) wdDiceSync(st);
 }
 function wdTopH(st, D){
-  const r = D ? D.round : st.round;
-  return `<div class="wdtop"><button class="wdback" id="wdBack" aria-label="もどる">‹</button><div class="wdttl"><b>WARDENS OF RELIC</b><small>${st.ph === "draft" ? "DRAFT" : `ROUND ${r}`}</small></div><button class="wdchip" id="wdSpdB" title="演出の速さ">演出<i>${WD_SPD_L[wdSpd()] || "ふつう"}</i></button><button class="wdchip ${wdGuideOn() ? "on" : ""}" id="wdGuide">ガイド<i>${wdGuideOn() ? "ON" : "OFF"}</i></button><button class="wdmenu" id="wdMenu" aria-label="メニュー">⋯</button></div>`;
+  const r = D ? D.round : st.round, T = D ? D.T : null;
+  const cur = !T ? -1 : T.ph === "roll" || T.ph === "pick" ? 1 : T.ph === "eff" ? 2 : T.ph === "act" ? 3 : T.ph === "tre" ? 4 : 0;
+  const sub = st.ph === "draft" ? "DRAFT" : `R${r}${T ? `<i class="tdot" style="--pc:${pcolor(T.p)}"></i><b class="tnm">${esc(wdNm(T.p))}</b><em class="tph">手順${cur}</em>${T.face ? `<span class="tfc" style="--ac:${WD_COL[T.face]}">${wdIco(T.face)}${T.face}</span>` : ""}` : ""}`;
+  return `<div class="wdtop"><button class="wdback" id="wdBack" aria-label="もどる">‹</button><div class="wdttl"><b>WARDENS OF RELIC</b><small class="tsub">${sub}</small></div><button class="wdchip" id="wdSpdB" title="演出の速さ">演出<i>${WD_SPD_L[wdSpd()] || "ふつう"}</i></button><button class="wdchip ${wdGuideOn() ? "on" : ""}" id="wdGuide">ガイド<i>${wdGuideOn() ? "ON" : "OFF"}</i></button><button class="wdmenu" id="wdMenu" aria-label="メニュー">⋯</button></div>`;
 }
 function wdEnsureRoot(root){
   if (root.querySelector("#wdMain")) return;
