@@ -2616,6 +2616,85 @@ img.wdta.im{display:block;object-fit:contain;-webkit-user-drag:none}
 .wdfelt{min-height:0;overflow:hidden}
 .wdbar{position:sticky;bottom:0;z-index:4}
 
+/* ★の合計メーター */
+.stm{display:inline-flex;align-items:center;font-size:10px;letter-spacing:-.06em;line-height:1;color:rgba(255,231,163,.32);white-space:nowrap;vertical-align:middle}
+.stm b{color:var(--wgold);font-weight:400;text-shadow:0 0 6px rgba(255,231,163,.8)}
+.wdmeh .stm{font-size:13px}
+.wdpod .pw{gap:2px 6px}
+.wdside .wdpod .stm{font-size:9px}
+.wdban .stm{font-size:16px;margin-top:2px}
+.wdplp .stm,.wdrank .stm{font-size:12px}
+.wdrank span.rs{display:flex;flex-direction:column;align-items:flex-start;gap:3px;min-width:0}
+.wdrank span.rs .tn{font-size:10.5px;line-height:1.4;white-space:normal}
+
+/* ===== v12：配置の見直し（相手は上にまとめる・中央は横いっぱい・自分は常に見える） ===== */
+.wdtable.v2{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;gap:6px}
+.wdopps{flex:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.wdopps.n1{grid-template-columns:1fr}
+.wdopps .wdpod{padding:5px 7px 6px;gap:2px;flex:none}
+.wdopps .wdpod .ph{gap:5px}
+.wdopps .wdpod .ph .wp{margin-left:auto;font-family:var(--wcz);font-weight:900;font-size:13px}
+.wdopps .wdpod .tn{margin-left:0}
+.wdopps .wdpod .pw{min-height:12px}
+.wdopps .wdpod .stm{font-size:9.5px}
+.wdopps .wdpod .pslots{display:grid;grid-template-columns:repeat(4,40px);gap:4px;margin-top:2px;justify-content:start}
+.wdopps .wdmc2{width:40px}
+/* 相手が1人のときは横1列にまとめる */
+.wdopps.n1 .wdpod{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"ph sl" "pw sl";align-items:center;column-gap:10px}
+.wdopps.n1 .wdpod .ph{grid-area:ph}.wdopps.n1 .wdpod .pw{grid-area:pw}.wdopps.n1 .wdpod .pslots{grid-area:sl;margin:0}
+.wdopps.n1 .wdpod .ph .wp{margin-left:6px}
+/* 中央：横いっぱいに広げる */
+.wdtable.v2 .wdfelt{flex:1 1 auto;min-height:0;padding:7px 8px;gap:6px;overflow:hidden}
+.wdtable.v2 .wdgems{gap:5px 4px}
+.wdtable.v2 .wdgem img.wdta.im{max-width:50px;height:44px}
+.wdtable.v2 .wdmkt .wdmkc .ar{height:44px}
+.wdtable.v2 .wdmkt{min-height:0}
+/* 案内は2行まで */
+.wdguide p{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+/* 自分の手元：少しコンパクトに */
+.wdme{padding:6px 7px 7px}
+.wdmeh{margin:0 2px 5px}
+.wdcard .ar{height:56px}
+.wdcard.free{min-height:0}
+/* 中央：空いた高さに合わせて秘宝・場のキャラを大きく、狭いときは小さく（切れない） */
+.wdtable.v2 .wdfelt{overflow:visible;min-height:auto;justify-content:space-evenly}
+.wdtable.v2 .wdgem img.wdta.im{height:clamp(32px,5.4dvh,60px);max-width:clamp(36px,6dvh,64px)}
+.wdtable.v2 .wdmkt .wdmkc .ar{height:clamp(32px,6dvh,66px)}
+@media (max-height:760px){
+  .wdguide{padding:4px 8px}.wdguide p{-webkit-line-clamp:1;font-size:11px}
+  .wdopps .wdmc2{width:34px}.wdopps .wdpod .pslots{grid-template-columns:repeat(4,34px);gap:3px}
+  .wdopps .wdpod{padding:4px 6px 5px}
+  .wdcard .ar{height:48px}
+  .wdtable.v2 .wdfelt{padding:5px 7px;gap:4px}
+}
+.wdtable.v2{flex:1 0 auto}
+.wdtable.v2 .wdfelt .wdchartb.mini{margin-top:0}
+.wdtable.v2:has(.wdopps.n1) .wdgem img.wdta.im,.wdtable.v2:has(.wdopps.n2) .wdgem img.wdta.im{height:clamp(32px,7.4dvh,76px);max-width:clamp(36px,8dvh,80px)}
+.wdtable.v2:has(.wdopps.n1) .wdmkt .wdmkc .ar,.wdtable.v2:has(.wdopps.n2) .wdmkt .wdmkc .ar{height:clamp(32px,8.5dvh,86px)}
+.wdtable.v2:has(.wdopps.n1) .wdchartb.mini .ci img.wdico.im,.wdtable.v2:has(.wdopps.n2) .wdchartb.mini .ci img.wdico.im{width:21px;height:21px}
+@media (max-height:700px){
+  .wdmain:has(.wdopps.n4) .wdguide,.wdmain:has(.wdopps.n3) .wdguide{display:none}
+  .wdtable.v2:has(.wdopps.n4) .wdgem img.wdta.im{height:28px;max-width:32px}
+  .wdtable.v2:has(.wdopps.n4) .wdmkt .wdmkc .ar{height:30px}
+  .wdopps.n4 .wdmc2,.wdopps.n3 .wdmc2{width:31px}.wdopps.n4 .wdpod .pslots,.wdopps.n3 .wdpod .pslots{grid-template-columns:repeat(4,31px)}
+  .wdopps.n4 .wdpod .pw,.wdopps.n3 .wdpod .pw{display:none}
+}
+
+/* ===== v13：サブ属性でキャラ本体が変わる（目・体・巻きつくエネルギー） ===== */
+.wdtw.x>i{position:absolute;pointer-events:none;display:block}
+/* 体がその色を帯びる（体のまわりだけ・背景はそのまま） */
+.wdtw.x>.bd{inset:0;background:radial-gradient(var(--rx) var(--ry) at var(--bx) var(--by),var(--s1) 0%,color-mix(in srgb,var(--s1) 70%,transparent) 55%,transparent 100%);mix-blend-mode:color;opacity:.78}
+.wdtw.x>.bd::after{content:"";position:absolute;inset:0;background:radial-gradient(calc(var(--rx) * .8) calc(var(--ry) * .8) at var(--bx) var(--by),var(--s1),transparent 80%);mix-blend-mode:soft-light;opacity:.9}
+/* 2つ目：体に巻きつくエネルギー */
+.wdtw.x>.wr{inset:0;background:repeating-linear-gradient(115deg,transparent 0 9%,color-mix(in srgb,var(--s2) 85%,#fff) 10%,transparent 12.5% 21%);-webkit-mask:radial-gradient(var(--rx) var(--ry) at var(--bx) var(--by),#000 25%,rgba(0,0,0,.6) 60%,transparent 95%);mask:radial-gradient(var(--rx) var(--ry) at var(--bx) var(--by),#000 25%,rgba(0,0,0,.6) 60%,transparent 95%);mix-blend-mode:screen;opacity:.75;background-size:100% 220%;animation:wdwrap 3.2s linear infinite}
+@keyframes wdwrap{from{background-position:0 0}to{background-position:0 -220%}}
+/* 目が光る */
+.wdtw.x>.ey{width:9%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,#fff 0 9%,color-mix(in srgb,var(--s1) 60%,#fff) 16%,var(--s1) 30%,color-mix(in srgb,var(--s1) 45%,transparent) 52%,transparent 72%);mix-blend-mode:screen;animation:wdeye 2.2s ease-in-out infinite}
+.wdtw.x>.ey::after{content:"";position:absolute;left:50%;top:50%;width:220%;height:8%;transform:translate(-50%,-50%);border-radius:50%;background:linear-gradient(90deg,transparent,var(--s1),#fff,var(--s1),transparent);opacity:.55}
+@keyframes wdeye{50%{transform:translate(-50%,-50%) scale(1.25);filter:brightness(1.3)}}
+.wdmc2 .wdtw.x>.ey::after{display:none}
+.wdmc2 .wdtw.x>.wr{opacity:.5}
+
 </style>
 </head>
 <body>
@@ -2648,7 +2727,7 @@ img.wdta.im{display:block;object-fit:contain;-webkit-user-drag:none}
    ============================================================ */
 const CFG_URL = "https://gcuddhongxvojabweclh.supabase.co";
 const CFG_KEY = "sb_publishable_E6PxQDZpmdfb6kjRPte3qw_goaYjKZB";
-const APP_VER = "v58";
+const APP_VER = "v61";
 
 const lsGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
 const lsSet = (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} };
@@ -7622,6 +7701,16 @@ const WDA = (() => {
       sparks([[14, 24, 1.2], [30, 12, 1], [110, 70, 1.1]], "#FFFFFF") }
   };
 })();
+/* 絵の中の目の位置と体の範囲（%）。サブ属性を付けたとき、目と体をその色に変える */
+const WD_ARTF = {
+  0: { e: [[46, 24]], b: [50, 42, 30, 30] }, 1: { e: [[33, 20]], b: [50, 50, 36, 34] }, 2: { e: [[46, 26], [54, 26]], b: [50, 50, 17, 38] },
+  3: { e: [[30, 58]], b: [52, 42, 34, 24] }, 4: { e: [[70, 19], [72.5, 19]], b: [74, 55, 14, 38] }, 5: { e: [[54, 16]], b: [50, 45, 28, 36] },
+  6: { e: [[52, 13], [56, 13]], b: [52, 45, 22, 40] }, 7: { e: [[48, 25], [52, 25]], b: [50, 50, 14, 34] }, 8: { e: [[29, 27]], b: [45, 55, 34, 30] },
+  9: { e: [[22, 32], [60, 25], [78, 18]], b: [50, 55, 35, 30] }, 10: { e: [[61, 33]], b: [60, 40, 30, 25] }, 11: { e: [[59, 32], [68, 32]], b: [55, 50, 34, 40] },
+  12: { e: [[21, 33]], b: [40, 45, 28, 20] }, 13: { e: [[58, 26], [64, 26]], b: [60, 55, 24, 38] }, 14: { e: [[82, 41]], b: [70, 50, 22, 30] },
+  15: { e: [[15, 23], [21, 23]], b: [40, 45, 34, 30] }, 16: { e: [[60, 54]], b: [35, 45, 34, 34] }, 17: { e: [[56, 26]], b: [45, 45, 28, 25] },
+  18: { e: [[14, 49], [47, 22], [80, 33]], b: [50, 50, 35, 38] }, 19: { e: [[82, 22]], b: [55, 45, 37, 30] }
+};
 /* キャラの絵：Geminiで描いたイラスト（ch00.webp〜ch19.webp：index.html と同じ場所に置く） */
 function wdCharArt(k, cls = ""){
   if (!WD_CH[k]) return "";
@@ -7735,6 +7824,8 @@ const WD_ICON = `<span class="gic wdi"><svg viewBox="0 0 64 64" aria-hidden="tru
 const wdEmb = k => { const d = WD_CH[k]; return `<span class="wdemb" style="--ac:${WD_COL[d.sig]}">${wdCharArt(k)}${wdIco(d.sig, "sig")}</span>`; };
 const wdTypeB = d => `<i class="wdty t${{ 低: 1, 中: 2, 高: 3 }[d.t]}">${d.t}</i>`;
 const wdStarTx = r => "★".repeat(r);
+/* 獲得した秘宝の★の合計：目標の数だけ並べて、取った分を塗る（例：3つなら ★★★☆☆☆☆☆） */
+const wdStarMeter = n => { const goal = WD_WIN_STARS || 8, k = Math.min(n, goal); return `<span class="stm" aria-label="★${n}/${goal}"><b>${"★".repeat(k)}</b>${"☆".repeat(goal - k)}${n > goal ? `<b>${"★".repeat(n - goal)}</b>` : ""}</span>`; };
 /* ---------- 手元のキャラの色：付いている属性に染まる（無属性なら色なし）。山札・図鑑・ルールでは得意属性の色のまま ---------- */
 function wdTintBg(c){
   const m = c.s[0], subs = c.s.slice(1).filter(Boolean);
@@ -7747,12 +7838,15 @@ function wdTintBg(c){
   return `linear-gradient(165deg,${stops.join(",")})`;
 }
 const wdCAc = c => WD_COL[c.s[0] || c.s.find(Boolean) || "無"];
-/* 手元のキャラ：絵は元の色のまま。サブ属性が付くと、その色のオーラ・光彩・光の粒を派手にまとう */
+/* 手元のキャラ：絵は元の色のまま。サブ属性が付くと、キャラ本体が変わる
+   サブ1つ目 → 目がその色に光り、体がその色を帯びる ／ サブ2つ目 → 体にその色のエネルギーが巻きつく */
 const wdArtC = (c, cls = "") => {
-  const subs = c.s.slice(1).filter(Boolean);
-  if (!subs.length) return `<span class="wdtw o ${cls}">${wdCharArt(c.k)}</span>`;
-  const s1 = subs[0], s2 = subs[1] || subs[0];
-  return `<span class="wdtw x n${subs.length} ${cls}" style="--s1:${WD_COL[s1]};--s2:${WD_COL[s2]}">${wdCharArt(c.k)}<i class="sw"></i><i class="au"></i><i class="sp"></i><i class="rm"></i></span>`;
+  const subs = c.s.slice(1).filter(Boolean), F = WD_ARTF[c.k];
+  if (!subs.length || !F) return `<span class="wdtw o ${cls}">${wdCharArt(c.k)}</span>`;
+  const a1 = WD_COL[subs[0]], a2 = WD_COL[subs[1] || subs[0]], [bx, by, rx, ry] = F.b;
+  const body = `--bx:${bx}%;--by:${by}%;--rx:${rx}%;--ry:${ry}%`;
+  const eyes = F.e.map(([x, y]) => `<i class="ey" style="left:${x}%;top:${y}%"></i>`).join("");
+  return `<span class="wdtw x n${subs.length} ${cls}" style="--s1:${a1};--s2:${a2};${body}">${wdCharArt(c.k)}<i class="bd"></i>${subs[1] ? `<i class="wr"></i>` : ""}${eyes}</span>`;
 };
 const wdEmbC = c => `<span class="wdemb wdembc" style="--ac:${wdCAc(c)}">${wdArtC(c)}</span>`;
 
@@ -7867,8 +7961,8 @@ const wdGemMini = id => { const t = wdTreDef(id); return `<i class="tg art r${t.
 function wdPodH(D, p, side){
   const cur = D.T && D.T.p === p, free = Math.max(0, WD_SLOTS - D.ch[p].length - D.tre[p].length);
   return `<div class="wdpod ${side} ${cur ? "cur" : ""} ${D.sh[p] ? "shd" : ""}" data-seat="${p}" style="--pc:${pcolor(p)}">
-    <div class="ph"><b class="nm">${esc(wdNm(p))}</b>${cur ? `<i class="tn">手番</i>` : ""}</div>
-    <div class="pw"><span class="wp" data-wp="${p}">${D.wp[p].toLocaleString()}</span><i class="stp">★${D.tre[p].reduce((n, t) => n + wdTreDef(t.id).r, 0)}<small>/${WD_WIN_STARS}</small></i></div>
+    <div class="ph"><b class="nm">${esc(wdNm(p))}</b>${cur ? `<i class="tn">手番</i>` : ""}<span class="wp" data-wp="${p}">${D.wp[p].toLocaleString()}</span></div>
+    <div class="pw">${wdStarMeter(D.tre[p].reduce((n, t) => n + wdTreDef(t.id).r, 0))}</div>
     <div class="pslots">${D.ch[p].map(wdMiniCard).join("")}${D.tre[p].map(wdMiniTre).join("")}${Array.from({ length: free }, () => `<i class="wdmc2 free"></i>`).join("")}</div></div>`;
 }
 function wdFeltH(D, st, live){
@@ -7901,7 +7995,7 @@ function wdMeH(D, st, live){
   const tres = D.tre[p].map(t => { const td = wdTreDef(t.id); return `<div class="wdcard tre r${td.r}" data-tre="${t.id}">${wdTreArt(t.id)}<span class="st">${wdStarTx(td.r)}</span><b class="n">${td.n}</b><span class="cb">${t.cubes.map(a => wdIco(a)).join("")}</span></div>`; }).join("");
   const free = Math.max(0, WD_SLOTS - D.ch[p].length - D.tre[p].length);
   return `<div class="wdme ${T && T.p === p ? "cur" : ""} ${D.sh[p] ? "shd" : ""}" data-seat="${p}" style="--pc:${pcolor(p)}">
-    <div class="wdmeh"><b class="nm">${p === me ? "あなた" : esc(wdNm(p))}</b><span class="wp" data-wp="${p}">${D.wp[p].toLocaleString()}<small>wp</small></span><span class="tgs">${D.tre[p].map(t => wdGemMini(t.id)).join("")}<i class="stp">★${D.tre[p].reduce((n, t) => n + wdTreDef(t.id).r, 0)}<small>/${WD_WIN_STARS}</small></i></span><span class="sc">枠 ${WD_SLOTS - free}/${WD_SLOTS}</span></div>
+    <div class="wdmeh"><b class="nm">${p === me ? "あなた" : esc(wdNm(p))}</b><span class="wp" data-wp="${p}">${D.wp[p].toLocaleString()}<small>wp</small></span><span class="tgs">${D.tre[p].map(t => wdGemMini(t.id)).join("")}${wdStarMeter(D.tre[p].reduce((n, t) => n + wdTreDef(t.id).r, 0))}</span><span class="sc">枠 ${WD_SLOTS - free}/${WD_SLOTS}</span></div>
     <div class="wdcards n${D.ch[p].length + D.tre[p].length + free}">${cards}${tres}${Array.from({ length: free }, () => `<div class="wdcard free">空き枠</div>`).join("")}</div></div>`;
 }
 function wdBarH(st, live){
@@ -7971,13 +8065,12 @@ function wdRender(g, D, live){
     main.innerHTML = `${wdTopH(st)}${wdGuideOn() ? `<div class="wdguide"><i>GUIDE</i><p>${wdGuide(st, g)}</p></div>` : ""}<div class="wdscroll">${wdDraftHtml(st)}</div>`;
     return;
   }
-  const v = wdViewer(st), opp = wdOthers(st, v), [nl, nt] = WD_LAY[opp.length] || [1, 2, 1];
-  const L = opp.slice(0, nl), Tp = opp.slice(nl, nl + nt), R = opp.slice(nl + nt);
+  const v = wdViewer(st), opp = wdOthers(st, v);
   const guide = !wdGuideOn() ? "" : live ? `<div class="wdguide"><i>GUIDE</i><p>${wdGuide(st, g)}</p></div>` : `<div class="wdguide play"><i>PLAY</i><p>ひとつずつ順番に再生しています。下の「スキップ」で飛ばせます。キャラは長押しで効果を確認できます。</p></div>`;
   main.innerHTML = `${wdTopH(st, D)}${guide}
-    <div class="wdtable l${L.length} r${R.length}">
-      ${Tp.length ? `<div class="wdtop2 n${Tp.length}">${Tp.map(p => wdPodH(D, p, "top")).join("")}</div>` : ""}
-      <div class="wdmid">${L.length ? `<div class="wdside">${L.map(p => wdPodH(D, p, "side")).join("")}</div>` : ""}${wdFeltH(D, st, live)}${R.length ? `<div class="wdside">${R.map(p => wdPodH(D, p, "side")).join("")}</div>` : ""}</div>
+    <div class="wdtable v2">
+      <div class="wdopps n${opp.length}">${opp.map(p => wdPodH(D, p, "top")).join("")}</div>
+      ${wdFeltH(D, st, live)}
     </div>
     ${wdMeH(D, st, live)}${g.status === "finished" ? "" : wdBarH(st, live)}${live ? wdAskH(st) : ""}`;
   main.classList.toggle("asking", !!(live && st.ask && st.ask.pid === me && wdAskBoard(st.ask)));
@@ -8559,7 +8652,7 @@ async function wdStep(s){
       const pt = wdBurst(gem, t.r >= 4 ? "#FF9AE0" : "#FFE7A3");
       await wdFly(gem, wdSeatEl(e.p), `<span class="wdflygem r${t.r}">${wdTreArt(e.id)}</span>`, { dur: 1000, s0: 1, sm: 2.6, s1: .8, arc: -100 });
       apply();
-      wdBanner(`<span style="--pc:${pcolor(e.p)}">${esc(wdNm(e.p))}</span><small>秘宝「${esc(t.n)}」${wdStarTx(t.r)} 獲得！ ★${D.tre[e.p].reduce((n, z) => n + wdTreDef(z.id).r, 0)}/${WD_WIN_STARS}</small>`, "tre", 1800);
+      wdBanner(`<span style="--pc:${pcolor(e.p)}">${esc(wdNm(e.p))}</span><small>秘宝「${esc(t.n)}」${wdStarTx(t.r)} 獲得！<br>${wdStarMeter(D.tre[e.p].reduce((n, z) => n + wdTreDef(z.id).r, 0))}</small>`, "tre", 1800);
       wdHl(wdSeatEl(e.p), "wdspot", 1600); wdHl(wdQ(`[data-tre="${e.id}"]`), "wdpopx", 900);
       await W(1700); return;
     }
@@ -8746,7 +8839,7 @@ function wdDiePop(g, a){
 }
 function wdSeatPop(g, p){
   const st = g.st; if (!st.ch[p]) return;
-  const el = wdPopup(`<div class="wdplp" style="--pc:${pcolor(p)}"><b>${esc(wdNm(p))}</b><span>${st.wp[p].toLocaleString()}wp・秘宝${wdTreN(st, p)}つ（★${wdStars(st, p)}）${wdShielded(st, p) ? "・干渉無効中" : ""}</span></div>
+  const el = wdPopup(`<div class="wdplp" style="--pc:${pcolor(p)}"><b>${esc(wdNm(p))}</b><span>${st.wp[p].toLocaleString()}wp・秘宝${wdTreN(st, p)}つ ${wdStarMeter(wdStars(st, p))}${wdShielded(st, p) ? "・干渉無効中" : ""}</span></div>
     <div class="wdplc">${st.ch[p].map(c => { const d = wdDef(c); return `<button class="wdplr" data-c="${c.id}" style="--ac:${wdCAc(c)}">${wdEmbC(c)}<div><b>${d.n}</b><small>Lv${c.lv}（${wdLvWp(c)}wp）${c.seal ? "・行動封じ" : ""}</small></div><span class="sl">${c.s.map((a, i) => wdCube(a, i === 0)).join("")}</span></button>`; }).join("")}
     ${st.tre[p].map(t => `<div class="wdmytre r${wdTreDef(t.id).r}"><span>${wdStarTx(wdTreDef(t.id).r)}</span><b>${wdTreDef(t.id).n}</b><span class="cb">${t.cubes.map(a => wdIco(a)).join("")}</span></div>`).join("")}</div>
     <p class="wdcp-note">キャラをタップで効果一覧</p>`);
@@ -8854,7 +8947,7 @@ function wdEndShow(g){
   const st = g.st; if (wdEndSeen[g.id] === g.version) return; wdEndSeen[g.id] = g.version;
   const rk = st.order.slice().sort((a, b) => (st.wins.includes(b) - st.wins.includes(a)) || wdStars(st, b) - wdStars(st, a) || wdTreN(st, b) - wdTreN(st, a) || st.wp[b] - st.wp[a]);
   const el = wdPopup(`<div class="wdend"><small>${esc(st.endWhy || "")}</small><h2>${st.wins.includes(me) ? "VICTORY" : "GAME SET"}</h2><b class="w">${st.wins.map(p => esc(wdNm(p))).join("・")} の勝ち！</b>
-    <div class="wdrank">${rk.map((p, i) => `<div class="${st.wins.includes(p) ? "win" : ""}" style="--pc:${pcolor(p)}"><i>${i + 1}</i><b>${esc(wdNm(p))}</b><span>★${wdStars(st, p)}　${st.tre[p].map(t => `<em class="r${wdTreDef(t.id).r}">${wdTreDef(t.id).n}</em>`).join("・") || "秘宝なし"}</span><small>${st.wp[p].toLocaleString()}wp</small></div>`).join("")}</div>
+    <div class="wdrank">${rk.map((p, i) => `<div class="${st.wins.includes(p) ? "win" : ""}" style="--pc:${pcolor(p)}"><i>${i + 1}</i><b>${esc(wdNm(p))}</b><span class="rs">${wdStarMeter(wdStars(st, p))}<small class="tn">${st.tre[p].map(t => `<em class="r${wdTreDef(t.id).r}">${wdTreDef(t.id).n}</em>`).join("・") || "秘宝なし"}</small></span><small>${st.wp[p].toLocaleString()}wp</small></div>`).join("")}</div>
     <div class="btns"><button class="wdbtn ghost" id="wdEndClose">盤面を見る</button><button class="wdbtn main" id="wdAgain">もう一度</button></div></div>`, "end");
   el.querySelector("#wdEndClose").onclick = () => el.remove();
   el.querySelector("#wdAgain").onclick = () => { el.remove(); closeWd(); openWdNew(); };
