@@ -2547,6 +2547,75 @@ img.wdart{display:block;width:100%;height:100%;object-fit:cover;-webkit-user-dra
 .wdmkc.flipin{animation:wdflipin .55s cubic-bezier(.2,.8,.3,1.2) both}
 @keyframes wdflipin{from{transform:perspective(300px) rotateY(90deg) scale(.85);opacity:.3}to{transform:none;opacity:1}}
 
+/* 効果の対象を卓で選ぶ（2段階） */
+.wdask.board .wdaskin{max-height:none;padding:10px 12px}
+.wdask.board .wdaskin .tx{margin:2px 0 5px;font-size:11.5px}
+.wdask.board .wdaskin>b{font-size:13.5px;margin-bottom:6px}
+.wdask.board .wdaskin>b em{display:block;margin:2px 0 0;font-size:10.5px;color:var(--wgold)}
+.wdask .selrow{display:flex;gap:6px;align-items:center}
+.wdask .seltx{flex:1;min-width:0;font-size:12px;color:var(--wmute)}
+.wdask .seltx b{color:#fff;font-size:13px}
+.wdask .seltx small{display:block;font-size:10px}
+.wdask .selrow .wdbtn.main{flex:none;min-width:96px}
+.wdask .selrow .wdbtn:disabled{opacity:.4;filter:grayscale(1)}
+.wdsel{outline:3px solid #8BFFB0!important;outline-offset:2px;animation:none!important;box-shadow:0 0 22px #8BFFB0!important;position:relative;z-index:3}
+.wdsel[data-ch]::after,.wdsel.wdpod::after{content:"✓";position:absolute;right:-6px;top:-8px;width:20px;height:20px;border-radius:50%;background:#8BFFB0;color:#0A2A14;font-weight:900;font-size:13px;display:grid;place-items:center;z-index:4;box-shadow:0 2px 8px rgba(0,0,0,.5)}
+.wdmc2.wdsel::after{right:2px!important;top:2px!important;width:16px!important;height:16px!important;font-size:11px!important}
+.wdmain.asking{padding-bottom:calc(var(--safe-b) + 190px)}
+.wdmain.asking .wdbar{display:none}
+
+.wdask .selrow{flex-wrap:wrap}.wdask .seltx{flex-basis:100%}.wdask .selrow .wdbtn{flex:1}
+
+/* ===== v8：絵は元の色。サブ属性を派手にまとう ===== */
+.wdtw.o>img,.wdtw.x>img,.wdtw.o>svg,.wdtw.x>svg{filter:none}
+.wdtw.x{--pw:.85}.wdtw.x.n2{--pw:1}
+.wdtw.x>i{position:absolute;inset:0;pointer-events:none;display:block}
+/* 体にまとわりつく渦（回転する光） */
+.wdtw.x>.sw{inset:-35%;background:conic-gradient(from 0deg,transparent 0 12%,var(--s1) 18%,transparent 26% 46%,var(--s2) 54%,transparent 62% 78%,var(--s1) 86%,transparent 94%);-webkit-mask:radial-gradient(closest-side,transparent 52%,#000 64%,transparent 76%);mask:radial-gradient(closest-side,transparent 52%,#000 64%,transparent 76%);mix-blend-mode:screen;opacity:calc(.75 * var(--pw));animation:wdrot 6s linear infinite}
+/* 足元と左右から立ちのぼるオーラ */
+.wdtw.x>.au{background:radial-gradient(90% 50% at 50% 110%,var(--s1),transparent 70%),radial-gradient(48% 60% at -6% 55%,var(--s1),transparent 70%),radial-gradient(48% 60% at 106% 50%,var(--s2),transparent 70%),radial-gradient(60% 30% at 50% -6%,var(--s2),transparent 70%);mix-blend-mode:screen;opacity:var(--pw);animation:wdaura2 2.4s ease-in-out infinite alternate}
+@keyframes wdaura2{from{opacity:calc(.65 * var(--pw))}to{opacity:var(--pw)}}
+/* 舞い上がる光の粒 */
+.wdtw.x>.sp{background:radial-gradient(2.2px 2.2px at 14% 80%,#fff,transparent 70%),radial-gradient(3px 3px at 28% 92%,var(--s1),transparent 70%),radial-gradient(2px 2px at 70% 86%,#fff,transparent 70%),radial-gradient(3px 3px at 86% 74%,var(--s2),transparent 70%),radial-gradient(2.6px 2.6px at 50% 96%,var(--s1),transparent 70%),radial-gradient(2.4px 2.4px at 8% 52%,var(--s2),transparent 70%),radial-gradient(2.4px 2.4px at 92% 46%,var(--s1),transparent 70%),radial-gradient(1.8px 1.8px at 40% 70%,#fff,transparent 70%);mix-blend-mode:screen;animation:wdspark2 2.8s linear infinite}
+@keyframes wdspark2{0%{transform:translateY(10%);opacity:0}20%{opacity:1}100%{transform:translateY(-30%);opacity:0}}
+/* 縁の光彩 */
+.wdtw.x>.rm{box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--s1) 85%,#fff),inset 0 0 16px 2px var(--s1),inset 0 -18px 24px -8px var(--s2);opacity:var(--pw)}
+.wdmc2 .wdtw.x>.sp{display:none}
+.wdmc2 .wdtw.x>.rm{box-shadow:inset 0 0 0 1px var(--s1),inset 0 0 8px 1px var(--s1)}
+
+/* 属性アイコン（画像） */
+img.wdico.im{object-fit:contain;border-radius:50%;filter:drop-shadow(0 0 3px color-mix(in srgb,var(--ac) 70%,transparent));-webkit-user-drag:none;vertical-align:middle}
+.wdemb img.wdico.sig{position:absolute;inset:auto;right:2px;bottom:2px;padding:0;background:none}
+.wdcard .ar img.wdico.sig{position:absolute;inset:auto 3px auto auto;top:3px;padding:0;background:none}
+.wdcube img.wdico.im{width:84%;height:84%}
+
+/* 秘宝の絵（画像） */
+img.wdta.im{display:block;object-fit:contain;-webkit-user-drag:none}
+.wdgem img.wdta.im{width:100%;max-width:44px;height:38px;object-fit:cover;border-radius:50%}
+.wdgem.r4 img.wdta.im,.wdgem.r5 img.wdta.im{filter:drop-shadow(0 0 5px rgba(255,170,240,.7))}
+.wdmc2.tre img.wdta.im{width:82%;height:62%;object-fit:cover;border-radius:50%}
+.wdcard.tre img.wdta.im{width:56px;height:56px}
+
+.wdattr img.wdico.im{width:28px;height:28px}
+.wdsl3 img.wdico.im{width:28px;height:28px}
+.wdcp-tbl img.wdico.im,.wdeff img.wdico.im{width:24px;height:24px}
+
+/* ===== 卓の中央：はみ出さないように ===== */
+.wdchartb.mini{display:flex;flex-direction:column;align-items:center;gap:1px;padding:4px 4px 3px;margin-top:2px;border-radius:10px;color:inherit;font-family:inherit}
+.wdchartb.mini .cm{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:2px 8px}
+.wdchartb.mini .cy{display:inline-flex;align-items:center;gap:1px;white-space:nowrap}
+.wdchartb.mini .ci img.wdico.im{width:17px;height:17px}
+.wdchartb.mini .ca{font-style:normal;font-size:12px;font-weight:900;color:var(--wgold);line-height:1;margin:0 -1px}
+.wdchartb.mini .ca.two{font-size:11px;margin:0 1px}
+.wdchartb.mini .cc{font-style:normal;font-size:11px;color:var(--wgold);opacity:.8;margin-left:1px}
+.wdchartb.mini .ch{font-size:8.5px;color:var(--wmute);line-height:1.2}
+.wdfelt .wdchartb.mini{margin-top:auto}
+/* 画面が低いときは、重ならずにスクロール */
+.wdtable{flex:1 0 auto}
+.wdmid{min-height:0}
+.wdfelt{min-height:0;overflow:hidden}
+.wdbar{position:sticky;bottom:0;z-index:4}
+
 </style>
 </head>
 <body>
@@ -2579,7 +2648,7 @@ img.wdart{display:block;width:100%;height:100%;object-fit:cover;-webkit-user-dra
    ============================================================ */
 const CFG_URL = "https://gcuddhongxvojabweclh.supabase.co";
 const CFG_KEY = "sb_publishable_E6PxQDZpmdfb6kjRPte3qw_goaYjKZB";
-const APP_VER = "v54";
+const APP_VER = "v58";
 
 const lsGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
 const lsSet = (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} };
@@ -6342,6 +6411,13 @@ const WD_LVUP = [0, 100, 500, 2000, 5000];
 const WD_GC = { 低: [150, 300, 600], 中: [200, 400, 800], 高: [250, 500, 1000] };
 const WD_SLOTS = 4, WD_WIN = 3, WD_START = 1000, WD_MAXR = 40;
 let WD_WIN_STARS = 8;   // 0なら「秘宝3つで勝ち」、数字なら「★の合計がこの数以上で勝ち」
+/* 乱数：対戦ごとの種（st.rs）から決まる。サーバーと端末が同じ手を計算すると同じ結果になるので、端末は待たずに先に表示できる */
+let WD_RNG = () => Math.random();
+function wdSeeded(st){
+  if (st.rs == null) return () => Math.random();
+  return () => { let t = (st.rs = (st.rs + 0x6D2B79F5) >>> 0); t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
+}
+function wdWithRng(st, fn){ const prev = WD_RNG; WD_RNG = wdSeeded(st); try { return fn(); } finally { WD_RNG = prev; } }
 const WD_TRE = [
   { id: "t1", n: "竜鱗の護符", r: 1, wp: 3000, cb: ["炎"], ab: "奪われるwpが、1回につき100少なくなる" },
   { id: "t2", n: "星砂の砂時計", r: 1, wp: 3000, cb: ["水"], ab: "自分の手番の手順1で、ダイスを3つ振って選べる" },
@@ -6358,15 +6434,15 @@ const wdHasT = (st, p, id) => !!(st.tre[p] && st.tre[p].some(t => t.id === id));
 const wdTreDef = id => WD_TRE.find(t => t.id === id);
 /* 秘宝の必要キューブ：ゲームごとにランダム（出やすさはダイスの目と同じ）。古い対戦は元の組み合わせ */
 const wdTreCb = (st, id) => (st && st.treCb && st.treCb[id]) || wdTreDef(id).cb;
-function wdRollTreCb(){ const o = {}; WD_TRE.forEach(t => { o[t.id] = t.cb.map(() => WD_DIE[Math.floor(Math.random() * WD_DIE.length)]); }); return o; }
+function wdRollTreCb(){ const o = {}; WD_TRE.forEach(t => { o[t.id] = t.cb.map(() => WD_DIE[Math.floor(WD_RNG() * WD_DIE.length)]); }); return o; }
 /* 相性：a が b に強い（wp獲得で2倍） */
 const WD_BEAT = { 水: "炎", 炎: "木", 木: "水", 龍: "覇", 覇: "天", 天: "幻", 幻: "龍" };
 const wdMult = (m, f) => !m ? 1 : (m === "雷" && f === "闇") || (m === "闇" && f === "雷") || WD_BEAT[m] === f ? 2 : WD_BEAT[f] === m ? 0.5 : 1;
 
 /* ---------- 小さな道具 ---------- */
 const wdR = n => Math.max(0, Math.floor(n / 10) * 10);
-const wdRoll = () => WD_DIE[Math.floor(Math.random() * WD_DIE.length)];
-const wdShuf = a => { const b = a.slice(); for (let i = b.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [b[i], b[j]] = [b[j], b[i]]; } return b; };
+const wdRoll = () => WD_DIE[Math.floor(WD_RNG() * WD_DIE.length)];
+const wdShuf = a => { const b = a.slice(); for (let i = b.length - 1; i > 0; i--){ const j = Math.floor(WD_RNG() * (i + 1)); [b[i], b[j]] = [b[j], b[i]]; } return b; };
 const wdNm = p => { const n = typeof pname === "function" ? pname(p) : p; return String(n).replace(/[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}️‍]/gu, ""); };
 const wdL = (st, m) => { (st._log = st._log || []).push(m); };
 const wdFx = (st, e) => { st.fxn = (st.fxn || 0) + 1; e.n = st.fxn; e.no = st.no; st.fx = (st.fx || []).concat([e]).slice(-400); };
@@ -6513,8 +6589,8 @@ function wdTreCost(st, p, id){
 function wdTrePlan(st, p, id){
   const t = wdTreDef(id), T = st.T;
   const pool = [];
-  st.ch[p].forEach(c => { if (c.seal) return; c.s.forEach((a, i) => { if (a) pool.push({ cid: c.id, i, a }); }); });
-  pool.sort((x, y) => (x.i === 0) - (y.i === 0) || WD_PAY(x.a) - WD_PAY(y.a));
+  st.ch[p].forEach(c => { if (c.seal) return; c.s.forEach((a, i) => { if (a && i > 0) pool.push({ cid: c.id, i, a }); }); });   // メインは固定なので秘宝には使えない
+  pool.sort((x, y) => WD_PAY(x.a) - WD_PAY(y.a));
   const used = [], miss = [];
   wdTreCb(st, id).forEach(a => { const u = pool.find(z => z.a === a && !used.includes(z)); if (u) used.push(u); else miss.push(a); });
   let free = T && T.p === p ? T.free || 0 : 0, wild = (T && T.p === p ? T.wild || 0 : 0) + (wdHasT(st, p, "t8") ? 1 : 0), fu = 0, wu = 0;
@@ -6704,7 +6780,7 @@ const WD_CH = [
     龍: { tx: "1人を選び、500wp奪う", need: [qPl("wpを奪う相手")], f: x => { if (x.ch[0]) wdSteal(x, x.ch[0], 500); } },
     覇: { tx: "相手キャラ1体のサブ属性キューブ1つを、自分のキャラの無の枠へ移す（奪う）", need: [qOCube("奪うキューブ")], f: x => { const a = wdRmCube(x, x.ch[0]); if (a){ const u = wdPutAny(x.st, x.p, a, x.c); if (u) wdFx(x.st, { k: "grant", p: x.p, cid: u.c.id, a, s: u.i, from: null, from2: 1 }); } } },
     天: { tx: "次の自分の手番まで干渉無効。さらに+300wp", f: x => { wdShield(x); G(x, 300); } },
-    幻: { tx: "相手キャラ1体のメイン属性を無に戻す（メインも外せる禁術）", need: [qOC("メイン属性を外すキャラ", (x, c) => !!c.s[0])], f: x => { const f = x.ch[0] && wdFind(x.st, x.ch[0]); if (f && f.c.s[0] && wdHit(x, f.p)){ const a = f.c.s[0]; f.c.s[0] = null; wdFx(x.st, { k: "rmcube", p: x.p, q: f.p, cid: f.c.id, a, s: 0 }); wdL(x.st, `${wdNm(f.p)}の${wdDef(f.c).n}のメイン属性（${a}）を外した`); } } }
+    幻: { tx: "相手キャラ1体のサブ属性キューブを、すべて無に戻す（禁術）", need: [qOC("サブ属性を消すキャラ", (x, c) => c.s.slice(1).some(Boolean))], f: x => { const f = x.ch[0] && wdFind(x.st, x.ch[0]); if (!f || !wdHit(x, f.p)) return; for (let i = 1; i < 3; i++){ const a = f.c.s[i]; if (a){ f.c.s[i] = null; wdFx(x.st, { k: "rmcube", p: x.p, q: f.p, cid: f.c.id, a, s: i }); } } wdL(x.st, `${wdNm(f.p)}の${wdDef(f.c).n}のサブ属性をすべて無に戻した`); } },
   } },
   { n: "ワイバーン", t: "低", sig: "龍", it: "割合", cost: 500, th: "急襲", im: "飛竜", desc: "序盤（所持wpが少ない・秘宝0個）ほど強くなる。", e: {
     無: { tx: "秘宝が0個なら+40wp、それ以外は+10wp", f: x => G(x, wdTreN(x.st, x.p) ? 10 : 40) },
@@ -6797,8 +6873,12 @@ function wdPayFor(st, q, a){
 }
 
 /* ======================= 進行 ======================= */
-function wdNewChar(st, k){ st.cseq = (st.cseq || 0) + 1; return { id: "c" + st.cseq, k, lv: 1, s: [null, null, null], seal: 0 }; }
-function wdSetup(players){
+function wdNewChar(st, k){ st.cseq = (st.cseq || 0) + 1; return { id: "c" + st.cseq, k, lv: 1, s: [WD_CH[k].sig, null, null], seal: 0 }; }   // メインは得意属性で固定
+function wdSetup(players, seed){
+  const st0 = { rs: seed != null ? seed >>> 0 : Math.floor(Math.random() * 4294967296) };
+  return wdWithRng(st0, () => { const st = wdSetup0(players); st.rs = st0.rs; return st; });
+}
+function wdSetup0(players){
   const deck = wdShuf(WD_CH.map((_, i) => i));
   const st = { wd: 1, v: 1, order: players.slice(), ph: "draft", wp: {}, ch: {}, tre: {}, sh: {}, nx: {}, until: {}, hitBy: {}, pred: [], treL: WD_TRE.map(t => t.id), treCb: wdRollTreCb(), mk: [], round: 1, ti: 0, no: 0, fx: [], fxn: 0, status: "playing" };
   const hand = {};
@@ -6922,7 +7002,7 @@ function wdAct(st, p, cid, kind, arg){
   const T = st.T; if (!T || T.p !== p || !wdCanAct(st, cid) || st.ask) return false;
   const c = st.ch[p].find(z => z.id === cid); if (!c) return false;
   if (kind === "grant"){
-    const { s, a } = arg || {}; if (!WD_AT.includes(a) || c.s[s] !== null || s == null) return false;
+    const { s, a } = arg || {}; if (!WD_AT.includes(a) || s == null || c.s[s] !== null || (s === 0 && c.s[0] !== null)) return false;
     const cost = wdGrantCost(st, p, c, a); if (st.wp[p] < cost) return false;
     wdPay(st, p, cost); c.s[s] = a; wdFx(st, { k: "grant", p, cid, a, v: cost, s, from: null, act: 1 });
     wdL(st, `${wdNm(p)}：${wdDef(c).n}に${a}を付与（${cost}wp）`);
@@ -7034,7 +7114,8 @@ function wdEndTurn(st, p){
   return true;
 }
 /* 操作をまとめて受け付ける */
-function wdApply(st, p, mv){
+function wdApply(st, p, mv){ return wdWithRng(st, () => wdApply0(st, p, mv)); }
+function wdApply0(st, p, mv){
   if (st.status !== "playing") return false;
   const [k, a, b, c] = mv;
   if (k === "draft") return wdDraftPick(st, p, +a);
@@ -7058,6 +7139,33 @@ const wdActors = st => {
 };
 
 /* ======================= コンピューター ======================= */
+const wdIsCpu = id => typeof id === "string" && /^cpu\d$/.test(id);
+/* コンピューターの手が通らなかったときの非常手段 */
+function wdCpuFallback(s2, p){
+  const T = s2.T;
+  if (s2.ask && s2.ask.pid === p) return wdAnswer(s2, p, s2.ask.opts[0].v);
+  if (s2.ph === "draft"){ const h = s2.dr && s2.dr.hand[p]; return !!(h && h.length && wdDraftPick(s2, p, h[0])); }
+  if (!T) return false;
+  if (T.ph === "pick" && T.pickBy === p) return wdPickFace(s2, p, wdFaceOpts(s2)[0]);
+  if (T.p !== p) return false;
+  if (T.ph === "roll") return wdRollDice(s2, p);
+  if (T.ph === "act"){ const c = s2.ch[p].find(z => wdCanAct(s2, z.id)); return c ? wdAct(s2, p, c.id, "skip") : wdToTre(s2, p); }
+  if (T.ph === "tre") return wdEndTurn(s2, p);
+  return false;
+}
+/* 人間の番になるまで、コンピューターの手を進める（サーバーでも端末でも同じ結果になる） */
+function wdRunCpu(st, limit = 400){
+  let n = 0;
+  while (n < limit && st.status === "playing"){
+    const p = wdActors(st).find(wdIsCpu); if (!p) break;
+    let ok = false;
+    try { const mv = wdWithRng(st, () => wdCpuStep(st, p)); ok = !!(mv && wdApply(st, p, mv)); } catch (e) { console.error("cpu", e); }
+    if (!ok){ try { ok = wdWithRng(st, () => wdCpuFallback(st, p)); } catch (e) { console.error("cpuFallback", e); } }
+    if (!ok) break;
+    n++;
+  }
+  return n;
+}
 const wdClone = o => JSON.parse(JSON.stringify(o));
 function wdVal(st, p){
   let v = st.wp[p];
@@ -7077,7 +7185,7 @@ function wdCpuAns(st, p){
   let best = null, bv = -Infinity;
   A.opts.forEach(o => {
     let s = 0; for (let r = 0; r < 3; r++){ const s2 = wdClone(st); if (!wdAnswer(s2, p, o.v)) continue; s += wdRel(s2, p); }
-    s += Math.random() * 5; if (s > bv){ bv = s; best = o.v; }
+    s += WD_RNG() * 5; if (s > bv){ bv = s; best = o.v; }
   });
   return ["ans", best];
 }
@@ -7099,7 +7207,7 @@ function wdCpuGoal(st, p){
     const t = wdTreDef(id);
     if (!wdStarOk(st, p, id)) return;
     keepSets.forEach(keep => {
-      const pool = keep.flatMap(c => c.seal ? [] : wdCubes(c)); const miss = [];
+      const pool = keep.flatMap(c => c.seal ? [] : c.s.slice(1).filter(Boolean)); const miss = [];   // メインは秘宝に使えない
       wdTreCb(st, id).forEach(a => { const j = pool.indexOf(a); if (j >= 0) pool.splice(j, 1); else miss.push(a); });
       const nul = keep.reduce((n, c) => n + wdNull(c), 0);
       if (miss.length > nul) return;
@@ -7118,7 +7226,7 @@ function wdCpuFace(st, p){
     st.order.forEach(q => { const n = wdPayFor(st, q, a); v += q === p ? n : -n * 0.5; });
     if (cur === p) st.ch[p].forEach(c => { if (!c.seal) v += c.s.filter(z => z === a).length * 220; });
     else st.ch[cur].forEach(c => { if (!c.seal) v -= c.s.filter(z => z === a).length * 150; });
-    v += Math.random() * 20;
+    v += WD_RNG() * 20;
     if (v > bv){ bv = v; best = a; }
   });
   return best;
@@ -7127,7 +7235,7 @@ function wdCpuStep(st, p){
   if (st.status !== "playing") return null;
   if (st.ph === "draft"){
     const h = st.dr.hand[p]; if (!h || st.dr.pick[p] != null) return null;
-    const k = h.slice().sort((a, b) => (WD_CH[b].cost + Math.random() * 400) - (WD_CH[a].cost + Math.random() * 400))[0];
+    const k = h.slice().sort((a, b) => (WD_CH[b].cost + WD_RNG() * 400) - (WD_CH[a].cost + WD_RNG() * 400))[0];
     return ["draft", k];
   }
   if (st.ask) return st.ask.pid === p ? wdCpuAns(st, p) : null;
@@ -7346,10 +7454,10 @@ const WD_TA = {
     <path d="M13 44 C13 39 18.5 37 24 37 C29.5 37 35 39 35 44Z" fill="url(#G)" stroke="#FFF6D6" stroke-width="1.4"/>
     <path d="M14 14 C14.5 18 16 21 18 23" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity=".75"/>` }
 };
+/* 秘宝の絵：Geminiで描いたイラスト（tr_t1.webp〜tr_t10.webp を index.html と同じ場所に置く） */
 function wdTreArt(id, cls = ""){
-  const a = WD_TA[id]; if (!a) return "";
-  const gid = "wdtg_" + id;
-  return `<svg class="wdta ${cls}" viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="${gid}" x1="0" y1="0" x2=".6" y2="1"><stop offset="0" stop-color="${a.c[0]}"/><stop offset="1" stop-color="${a.c[1]}"/></linearGradient></defs>${a.s.replace(/url\(#G\)/g, `url(#${gid})`)}</svg>`;
+  if (!WD_TA[id]) return "";
+  return `<img class="wdta im ${cls}" src="tr_${id}.webp" alt="" draggable="false" decoding="async">`;
 }
 
 /* ---------- キャラの絵：影絵のシルエット＋属性の光（120×150） ---------- */
@@ -7567,22 +7675,40 @@ function wdGot(row){
   else if ((row.version || 1) >= (g.version || 1)) Object.assign(g, row);
 }
 const wdBusy = {};
-/* 1手を送る。ダイスなどの運が絡まない手は、送る前に画面だけ先に進める（体感を速く） */
+/* 1手を送る。乱数は対戦ごとの種で決まるので、端末で先に計算して（コンピューターの番も含めて）すぐ表示する。
+   サーバーも同じ計算をするので結果は一致する。送信は裏で順番に行い、操作は待たせない */
+const wdSendQ = {};
+function wdSend(id, p, mv){
+  const run = async () => { const r = await wdCall({ op: "move", id, p, mv }); if (r && r.ok){ wdGot(r.row); drawWd(); turnBuzz(); return; } throw r || {}; };
+  wdSendQ[id] = (wdSendQ[id] || Promise.resolve()).then(run).catch(async r => {
+    wdSendQ[id] = Promise.resolve();
+    try { await loadTable("wd_games"); } catch (e) {}
+    drawWd(); toast((r && r.error) || "送れませんでした。最新の状態に戻しました", 2800);
+  });
+}
 async function wdDo(id, p, mv){
   const g = wdById(id); if (!g || g.status !== "playing" || !g.st) return false;
   if (wdBusy[id]) return false;
   const st = JSON.parse(JSON.stringify(g.st)); st._log = [];
-  let rnd = 0; const R = Math.random; Math.random = () => { rnd++; return R(); };
-  let ok = false; try { ok = wdApply(st, p, mv); } catch (e) { console.error(e); } finally { Math.random = R; }
+  const seeded = st.rs != null;
+  let rnd = 0; const R = Math.random; if (!seeded) Math.random = () => { rnd++; return R(); };
+  let ok = false; try { ok = wdApply(st, p, mv); if (ok && seeded) wdRunCpu(st); } catch (e) { console.error(e); ok = false; } finally { Math.random = R; }
   if (!ok) return false;
-  delete st._log;
-  const undo = rnd ? null : optimistic(g, { st }, drawWd);   // 版番号は変えない（サーバーの結果で上書きされる）
+  const lines = st._log; delete st._log;
+  if (seeded || !rnd){
+    const body = { st, version: (g.version || 1) + 1 };
+    if (st.status !== "playing"){ body.status = "finished"; body.winner = (st.wins || [])[0] || null; }
+    if (lines.length){ const lg = (g.log || []).slice(), now = Date.now(); lines.forEach((m, i) => lg.push({ t: new Date(now + i).toISOString(), m })); body.log = lg.slice(-150); }
+    optimistic(g, body, drawWd);
+    wdSend(id, p, mv);
+    return true;
+  }
+  // 古い対戦（乱数の種がない）でダイスが絡むときだけは、サーバーの結果を待つ
   wdBusy[id] = 1;
-  const slow = setTimeout(() => toast("通信中…", 1500), rnd ? 350 : 1500);
+  const slow = setTimeout(() => toast("通信中…", 1500), 1200);
   let r;
-  try { r = await wdCall({ op: "move", id, p, mv }); } finally { clearTimeout(slow); delete wdBusy[id]; }
+  try { await (wdSendQ[id] || Promise.resolve()); r = await wdCall({ op: "move", id, p, mv }); } finally { clearTimeout(slow); delete wdBusy[id]; }
   if (r && r.ok){ wdGot(r.row); drawWd(); turnBuzz(); return true; }
-  if (undo) undo();
   if (r && r.row) wdGot(r.row); else { try { await loadTable("wd_games"); } catch (e) {} }
   drawWd(); toast((r && r.error) || "送れませんでした", 2600);
   return false;
@@ -7601,7 +7727,9 @@ CPU_AI.wd_games = g => {
 
 /* ---------- 絵 ---------- */
 const WD_GLYPH = { 炎: '<path d="M12 2c1 4 5 6 5 11a5 5 0 0 1-10 0c0-3 2-4 2-7 1 1 2 2 2 4 1-2 1-5 1-8z"/>', 水: '<path d="M12 2c3 5 6 8 6 12a6 6 0 0 1-12 0c0-4 3-7 6-12z"/>', 木: '<path d="M12 2c5 3 7 8 4 13-1 2-3 3-4 3v4h-1v-4c-2 0-5-2-5-6 0-4 3-7 6-10z"/>', 雷: '<path d="M14 1 5 13h6l-2 10 10-13h-6z"/>', 闇: '<path d="M15 3a9 9 0 1 0 6 13A8 8 0 0 1 15 3z"/>', 龍: '<path d="M4 18c3-1 4-4 4-7l-4-3 6 1 2-6 2 6 6-1-4 3c0 3 1 6 4 7-4 1-6-1-8-3-2 2-4 4-8 3z"/>', 覇: '<path d="M3 8l4 3 5-7 5 7 4-3-2 11H5z"/>', 天: '<path d="M12 1l2.5 7.5H22l-6 4.5 2.3 7.5L12 16l-6.3 4.5L8 13 2 8.5h7.5z"/>', 幻: '<path d="M12 3c5 0 9 4 9 9s-4 9-9 9c3-2 4-5 4-9s-1-7-4-9zm-1 4a5 5 0 1 0 0 10 3 3 0 1 1 0-10z"/>' };
-const wdIco = (a, cls = "") => a ? `<svg class="wdico ${cls}" viewBox="0 0 24 24" style="--ac:${WD_COL[a]}" aria-label="${a}"><g fill="currentColor">${WD_GLYPH[a]}</g></svg>` : `<i class="wdico none ${cls}"></i>`;
+/* 属性アイコン（Geminiで描いたメダル：el_*.webp を index.html と同じ場所に置く） */
+const WD_ELF = { 炎: "fire", 水: "water", 木: "wood", 雷: "thunder", 闇: "dark", 龍: "dragon", 覇: "supremacy", 天: "heaven", 幻: "illusion" };
+const wdIco = (a, cls = "") => a ? `<img class="wdico im ${cls}" src="el_${WD_ELF[a]}.webp" alt="${a}" style="--ac:${WD_COL[a]}" draggable="false" decoding="async">` : `<i class="wdico none ${cls}"></i>`;
 const wdCube = (a, main, cls = "") => `<span class="wdcube ${a ? "" : "nul"} ${main ? "main" : ""} ${cls}" style="--ac:${WD_COL[a || "無"]}">${a ? wdIco(a) : "<b>無</b>"}</span>`;
 const WD_ICON = `<span class="gic wdi"><svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="wdig" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFE7A3"/><stop offset=".5" stop-color="#E07CFF"/><stop offset="1" stop-color="#3FA9FF"/></linearGradient></defs><rect x="3" y="3" width="58" height="58" rx="12" fill="#120A24" stroke="url(#wdig)" stroke-width="2"/><path d="M32 8l18 14-6 26H20l-6-26z" fill="none" stroke="url(#wdig)" stroke-width="3" stroke-linejoin="round"/><path d="M32 8v40M14 22l18 8 18-8M20 48l12-18 12 18" fill="none" stroke="url(#wdig)" stroke-width="1.6" opacity=".7"/><circle cx="32" cy="30" r="4" fill="#FFE7A3"/></svg></span>`;
 const wdEmb = k => { const d = WD_CH[k]; return `<span class="wdemb" style="--ac:${WD_COL[d.sig]}">${wdCharArt(k)}${wdIco(d.sig, "sig")}</span>`; };
@@ -7619,14 +7747,12 @@ function wdTintBg(c){
   return `linear-gradient(165deg,${stops.join(",")})`;
 }
 const wdCAc = c => WD_COL[c.s[0] || c.s.find(Boolean) || "無"];
-/* 属性をまとう：絵は色を抜いたまま、足元から立ちのぼるオーラ・縁の光彩・影の色・舞う光の粒で属性を表す
-   メイン属性はオーラ（足元・縁）と影に、サブ属性は左右の光と光の粒に入る */
+/* 手元のキャラ：絵は元の色のまま。サブ属性が付くと、その色のオーラ・光彩・光の粒を派手にまとう */
 const wdArtC = (c, cls = "") => {
-  const m = c.s[0], subs = c.s.slice(1).filter(Boolean), main = m || subs[0];
-  if (!main) return `<span class="wdtw g ${cls}">${wdCharArt(c.k)}</span>`;
-  const s1 = m ? subs[0] : subs[1], s2 = m ? subs[1] : null, n = c.s.filter(Boolean).length;
-  const v = `--m:${WD_COL[main]};--s1:${s1 ? WD_COL[s1] : "transparent"};--s2:${s2 ? WD_COL[s2] : s1 ? WD_COL[s1] : "transparent"};--pw:${m ? (n >= 3 ? 1 : n === 2 ? .85 : .7) : .5}`;
-  return `<span class="wdtw t ${m ? "" : "weak"} ${cls}" style="${v}">${wdCharArt(c.k)}<i class="sh"></i><i class="tc"></i><i class="au"></i><i class="sp"></i><i class="rm"></i></span>`;
+  const subs = c.s.slice(1).filter(Boolean);
+  if (!subs.length) return `<span class="wdtw o ${cls}">${wdCharArt(c.k)}</span>`;
+  const s1 = subs[0], s2 = subs[1] || subs[0];
+  return `<span class="wdtw x n${subs.length} ${cls}" style="--s1:${WD_COL[s1]};--s2:${WD_COL[s2]}">${wdCharArt(c.k)}<i class="sw"></i><i class="au"></i><i class="sp"></i><i class="rm"></i></span>`;
 };
 const wdEmbC = c => `<span class="wdemb wdembc" style="--ac:${wdCAc(c)}">${wdArtC(c)}</span>`;
 
@@ -7759,7 +7885,7 @@ function wdFeltH(D, st, live){
   return `<div class="wdfelt" id="wdFelt">
     <div class="wdturn" style="--pc:${T ? pcolor(T.p) : "#888"}">${T ? `<i class="dot"></i><b>${esc(wdNm(T.p))}</b><span class="ph">${steps.map((s, i) => `<i class="${i === cur ? "on" : i < cur ? "done" : ""}">${i + 1}</i>`).join("")}</span>${fc}` : `<b>準備中</b>`}</div>
     <div class="wdgems">${gems}</div>
-    <button class="wdchartb" id="wdChart" aria-label="属性の相性">${wdChart()}</button>
+    <button class="wdchartb mini" id="wdChart" aria-label="属性の相性（タップで大きく）">${wdChartMini()}</button>
     <div class="wdmkt"><span class="wddeck" id="wdDeck"><b>${D.dl}</b><small>山札</small></span>${mkt}</div>
   </div>`;
 }
@@ -7788,10 +7914,53 @@ function wdBarH(st, live){
   if (T.ph === "tre"){ const any = st.treL.some(id => wdCanTre(st, me, id).ok); return `<div class="wdbar"><span class="lbl">${any ? "光っている秘宝をタップで獲得" : "いま獲得できる秘宝はありません"}</span><button class="wdbtn main" id="wdEnd">ターン終了</button></div>`; }
   return "";
 }
+/* 効果の選択：キャラ・キューブ・プレイヤーが対象なら、卓で直接タップして選ぶ（選ぶ→「決定」の2段階。長押しで情報） */
+const wdAskBoard = A => !!A && A.opts.some(o => o.v !== "") && A.opts.every(o => o.v === "" || !WD_AT.includes(o.v));
+let wdAskSel = null, wdAskKey = "";
+const wdAskId = st => st.ask ? `${st.no}:${st.fxn}:${st.ask.q}:${st.ask.opts.map(o => o.v).join(",")}` : "";
 function wdAskH(st){
   const A = st.ask; if (!A || A.pid !== me) return "";
   const d = WD_CH[A.k];
-  return `<div class="wdask"><div class="wdaskin" style="--ac:${WD_COL[A.a] || "#ccc"}"><small>${A.owner === me ? `${d.n}「${A.a}」` : `${esc(wdNm(A.owner))}の${d.n}「${A.a}」`}</small><p class="tx">${esc(d.e[A.a].tx)}</p><b>${esc(A.q)}<em>（光っているところを卓でタップしてもOK）</em></b><div class="opts">${A.opts.map(o => `<button class="wdopt" data-ans="${esc(o.v)}">${WD_AT.includes(o.v) ? wdIco(o.v) : ""}${esc(o.l)}</button>`).join("")}</div></div></div>`;
+  if (wdAskId(st) !== wdAskKey){ wdAskKey = wdAskId(st); wdAskSel = null; }
+  const head = `<small>${A.owner === me ? `${d.n}「${A.a}」` : `${esc(wdNm(A.owner))}の${d.n}「${A.a}」`}</small><p class="tx">${esc(d.e[A.a].tx)}</p>`;
+  if (wdAskBoard(A)){
+    const what = A.opts.some(o => /:/.test(String(o.v))) ? "キューブ（キャラ）" : A.opts.some(o => st.order.includes(o.v)) ? "プレイヤー" : "キャラ";
+    const none = A.opts.find(o => o.v === "");
+    const sel = A.opts.find(o => String(o.v) === String(wdAskSel));
+    return `<div class="wdask board"><div class="wdaskin" style="--ac:${WD_COL[A.a] || "#ccc"}">${head}<b>${esc(A.q)}<em>光っている${what}をタップ → 「決定」（長押しで詳しく）</em></b>
+      <div class="selrow"><span class="seltx" id="wdAskTx">${sel ? `選択中：<b>${esc(sel.l)}</b>` : "まだ選んでいません"}</span>${none ? `<button class="wdbtn sm ghost" data-ans="">${esc(none.l)}</button>` : ""}<button class="wdbtn main sm" id="wdAskOk" ${sel ? "" : "disabled"}>決定</button></div></div></div>`;
+  }
+  return `<div class="wdask"><div class="wdaskin" style="--ac:${WD_COL[A.a] || "#ccc"}">${head}<b>${esc(A.q)}</b><div class="opts">${A.opts.map(o => `<button class="wdopt" data-ans="${esc(o.v)}">${WD_AT.includes(o.v) ? wdIco(o.v) : ""}${esc(o.l)}</button>`).join("")}</div></div></div>`;
+}
+/* 卓のどこが選べるか・どれを選んでいるかを表示 */
+function wdAskMark(st){
+  const main = document.getElementById("wdMain"); if (!main) return;
+  main.querySelectorAll(".wdsel").forEach(x => x.classList.remove("wdsel"));
+  st.ask.opts.forEach(o => { const v = String(o.v); if (!v) return;
+    main.querySelectorAll(`[data-ch="${v}"],[data-slot="${v}"],[data-seat="${v}"]`).forEach(el => el.classList.add("wdpick"));
+    if (v.includes(":")) main.querySelectorAll(`[data-ch="${v.split(":")[0]}"]`).forEach(el => el.classList.add("wdpick"));
+  });
+  if (wdAskSel != null){
+    const v = String(wdAskSel);
+    main.querySelectorAll(`[data-ch="${v}"],[data-slot="${v}"],[data-seat="${v}"]`).forEach(el => el.classList.add("wdsel"));
+    if (v.includes(":")) main.querySelectorAll(`[data-ch="${v.split(":")[0]}"]`).forEach(el => el.classList.add("wdsel"));
+  }
+}
+function wdAskSelect(st, k){
+  const A = st.ask, vals = A.opts.map(o => String(o.v)).filter(Boolean);
+  let cand = [];
+  if (k.dataset.slot && vals.includes(k.dataset.slot)) cand = [k.dataset.slot];
+  else if (k.dataset.ch) cand = vals.filter(v => v === k.dataset.ch || v.startsWith(k.dataset.ch + ":"));
+  else if (k.dataset.seat && vals.includes(k.dataset.seat)) cand = [k.dataset.seat];
+  if (!cand.length) return false;
+  const i = cand.indexOf(String(wdAskSel));
+  wdAskSel = cand[(i + 1) % cand.length];   // 同じキャラに選べるキューブが複数あれば、タップするたびに次へ
+  try { navigator.vibrate && navigator.vibrate(10); } catch (e) {}
+  wdAskMark(st);
+  const o = A.opts.find(z => String(z.v) === wdAskSel), tx = document.getElementById("wdAskTx"), ok = document.getElementById("wdAskOk");
+  if (tx && o) tx.innerHTML = `選択中：<b>${esc(o.l)}</b>${cand.length > 1 ? `<small>（もう一度タップで次の候補）</small>` : ""}`;
+  if (ok) ok.disabled = false;
+  return true;
 }
 /* 画面全体を描く（D：表示する盤面。live＝操作できる状態） */
 function wdRender(g, D, live){
@@ -7811,9 +7980,8 @@ function wdRender(g, D, live){
       <div class="wdmid">${L.length ? `<div class="wdside">${L.map(p => wdPodH(D, p, "side")).join("")}</div>` : ""}${wdFeltH(D, st, live)}${R.length ? `<div class="wdside">${R.map(p => wdPodH(D, p, "side")).join("")}</div>` : ""}</div>
     </div>
     ${wdMeH(D, st, live)}${g.status === "finished" ? "" : wdBarH(st, live)}${live ? wdAskH(st) : ""}`;
-  if (live && st.ask && st.ask.pid === me){
-    st.ask.opts.forEach(o => { const v2 = String(o.v); if (!v2) return; main.querySelectorAll(`[data-ch="${v2}"],[data-slot="${v2}"],[data-seat="${v2}"]`).forEach(el => el.classList.add("wdpick")); });
-  }
+  main.classList.toggle("asking", !!(live && st.ask && st.ask.pid === me && wdAskBoard(st.ask)));
+  if (live && st.ask && st.ask.pid === me) wdAskMark(st);
   const f = document.getElementById("wdFoc"); if (f && f._cid){ const s = wdChEl(f._cid); if (s) s.classList.add("wdfocsrc"); }
   if (live) wdDiceSync(st);
 }
@@ -8483,6 +8651,7 @@ function wdInput(root){
     else if (id === "wdNext") wdDo(g.id, me, ["next"]);
     else if (id === "wdEnd") wdDo(g.id, me, ["end"]);
     else if (id === "wdAny") wdAnyFace(g);
+    else if (id === "wdAskOk"){ const st = g.st; if (st.ask && st.ask.pid === me && wdAskSel != null && st.ask.opts.some(o => String(o.v) === String(wdAskSel))){ const v = wdAskSel; wdAskSel = null; wdDo(g.id, me, ["ans", v]); } }
   });
 }
 function wdTap(t){
@@ -8494,7 +8663,9 @@ function wdTap(t){
   if (t.dataset.info != null){ wdCharPop(+t.dataset.info); return; }
   // 効果の対象を卓でタップして選ぶ
   if (live && st.ask && st.ask.pid === me){
-    const k = t.closest(".wdpick"); if (k){ const v = k.dataset.slot || k.dataset.ch || k.dataset.seat; if (st.ask.opts.some(o => String(o.v) === v)){ wdDo(g.id, me, ["ans", v]); return; } }
+    const k = t.closest(".wdpick");
+    if (k && wdAskBoard(st.ask) && wdAskSelect(st, k)) return;
+    if (k && !wdAskBoard(st.ask)){ const v = k.dataset.slot || k.dataset.ch || k.dataset.seat; if (st.ask.opts.some(o => String(o.v) === v)){ wdDo(g.id, me, ["ans", v]); return; } }
   }
   const ch = t.closest("[data-ch]");
   if (t.dataset.slot != null || ch){ const cid = (ch || t).dataset.ch || t.dataset.slot.split(":")[0]; return wdTapChar(g, cid); }
@@ -8552,7 +8723,7 @@ function wdTrePop(g, id){
   const r = mine ? wdCanTre(st, me, id) : null;
   const relOk = mine && !r.ok && wdFreeSlots(st, me) < 1 ? st.ch[me].filter(c => wdCanTreRel(st, me, id, c.id)) : [];
   const warn = st.order.includes(me) && !taken && !wdStarOk(st, me, id);
-  const own = st.order.includes(me) ? wdAllCubes(st, me) : [];
+  const own = st.order.includes(me) ? st.ch[me].flatMap(c => c.s.slice(1).filter(Boolean)) : [];
   const pool = own.slice(); const cbs = wdTreCb(st, id), have = cbs.map(a => { const j = pool.indexOf(a); if (j >= 0){ pool.splice(j, 1); return true; } return false; });
   const cost = st.order.includes(me) && T && T.p === me ? wdTreCost(st, me, id) : t.wp;
   const el = wdPopup(`<div class="wdtp r${t.r}"><span class="gem">${wdTreArt(id)}</span><div><small>${wdStarTx(t.r)}</small><b>${t.n}</b><span>${taken ? `${esc(wdNm(owner))}が獲得済み` : "まだ誰も持っていない"}</span></div></div>
@@ -8560,7 +8731,7 @@ function wdTrePop(g, id){
     <div><small>必要キューブ</small><span class="cbs">${cbs.map((a, i) => `<span class="${have[i] ? "ok" : ""}">${wdCube(a)}${!taken && st.order.includes(me) ? `<i>${have[i] ? "✓" : "✕"}</i>` : ""}</span>`).join("")}</span></div></div>
     ${warn ? `<div class="wdas-why">注意：これを取ると★${WD_WIN_STARS}に届かなくなります<small>秘宝は最大3つ（キャラが最低1体必要）。残りの枠で取れる秘宝の★を足しても${WD_WIN_STARS}に届きません。</small></div>` : ""}
     <div class="wdtp-ab"><small>持っている間ずっと効く能力</small><b>${esc(t.ab)}</b></div>
-    <p class="wdcp-note">獲得すると、キューブはキャラから外れて秘宝にはまります（サブの枠から優先）。秘宝も枠を1つ使います。★の合計が${WD_WIN_STARS}以上で勝ち。</p>
+    <p class="wdcp-note">獲得すると、キューブはキャラのサブの枠から外れて秘宝にはまります（メイン属性は使えません）。秘宝も枠を1つ使います。★の合計が${WD_WIN_STARS}以上で勝ち。</p>
     ${mine ? `<div class="wdas-row foot"><button class="wdbtn ${r.ok ? "main" : ""}" data-take ${r.ok ? "" : "disabled"}>${r.ok ? `獲得する（${r.pl.cost.toLocaleString()}wp）` : esc(r.why)}</button></div>` : ""}
     ${mine && !r.ok && relOk.length ? `<div class="wdtrerel"><b>キャラを手放せば獲得できます（手放すのは無料）</b>${relOk.map(c => `<button class="wdbtn" data-trel="${c.id}">${wdDef(c).n}を手放して獲得</button>`).join("")}</div>` : ""}`);
   const b = el.querySelector("[data-take]"); if (b && r.ok) b.onclick = () => { el.remove(); wdDo(g.id, me, ["tre", id]); };
@@ -8595,7 +8766,7 @@ function wdActSheet(g, cid){
   const m = c.s[0];
   const el = wdPopup(`<div class="wdas-hd" style="--ac:${wdCAc(c)}">${wdEmbC(c)}<div><b>${d.n}</b><span>Lv${c.lv}・あと${T.acts[cid]}回行動できる・所持 ${wp.toLocaleString()}wp</span></div><button class="mini" data-i>効果一覧</button></div>
     <div class="wdas-tabs"><button data-t="g" class="on">属性付与</button><button data-t="l">Lv上げ</button><button data-t="b">キャラ獲得</button><button data-t="e">wp獲得</button></div>
-    <div class="wdas-pane" data-p="g"><div class="wdas-cur"><small>いま付いている属性（空いている枠をタップして選ぶ）</small><div class="sl3">${c.s.map((a, i) => `<button class="wdsl3 ${a ? "have" : "free"} ${!a && i === slot ? "on" : ""}" ${a ? "disabled" : `data-slot2="${i}"`} style="--ac:${WD_COL[a || "無"]}">${a ? wdIco(a) : `<i class="wdico none"></i>`}<b>${a || "空き"}</b><small>${i === 0 ? "メイン" : `サブ${i}`}${a ? "・付与済み" : ""}</small></button>`).join("")}</div><small class="h">${slot === 0 ? "メインは手順1で2倍・一度付けると動かせない" : ""}</small></div>${free.length ? `
+    <div class="wdas-pane" data-p="g"><div class="wdas-cur"><small>いま付いている属性（空いているサブの枠をタップして選ぶ）</small><div class="sl3">${c.s.map((a, i) => `<button class="wdsl3 ${a ? "have" : "free"} ${!a && i === slot ? "on" : ""}" ${a ? "disabled" : `data-slot2="${i}"`} style="--ac:${WD_COL[a || "無"]}">${a ? wdIco(a) : `<i class="wdico none"></i>`}<b>${a || "空き"}</b><small>${i === 0 ? "メイン" : `サブ${i}`}${a ? "・付与済み" : ""}</small></button>`).join("")}</div><small class="h">${slot === 0 ? "メインは手順1で2倍" : "メイン属性は固定。属性を付けられるのはサブの枠"}</small></div>${free.length ? `
       <div class="wdas-attrs">${WD_AT.map(a => { const cost = wdGrantCost(st, me, c, a); return `<button class="wdattr ${a === d.sig ? "sig" : ""} ${cost > wp ? "short" : ""}" data-ga="${a}" ${cost > wp ? `data-short="${cost - wp}"` : ""} style="--ac:${WD_COL[a]}">${wdIco(a)}<b>${a}</b><small>${cost}</small></button>`; }).join("")}</div>
       <div class="wdas-prev" id="wdGPrev"><small>属性をタップすると、その属性の効果がここに出ます。${WD_AT.some(a => wdGrantCost(st, me, c, a) > wp) ? "暗い属性はwpが足りず付与できません（タップで理由）。" : ""}</small></div>` : `<p class="wdcp-desc">空いている枠がありません。</p>`}</div>
     <div class="wdas-pane" data-p="l" hidden>${wdLvPane(st, c, lvc, lv2, wp)}</div>
@@ -8611,7 +8782,7 @@ function wdActSheet(g, cid){
     box.innerHTML = `${short > 0 ? `<div class="wdas-why">付与できません：wpが足りません<small>付与コスト ${cost}wp ／ 所持 ${wp}wp（あと ${short}wp）</small></div>` : ""}<div class="wdas-pv" style="--ac:${WD_COL[attr]}">${wdIco(attr)}<div><b>「${attr}」の目が出たときの効果</b><p>${esc(d.e[attr].tx)}</p></div></div>${short > 0 ? "" : `<button class="wdbtn main" data-gok>${slot === 0 ? "メイン枠" : `サブ${slot}`}に「${attr}」を付与（${cost}wp）</button>`}`;
     const ok = box.querySelector("[data-gok]"); if (ok) ok.onclick = () => go(["act", cid, "grant", { s: slot, a: attr }]);
   };
-  el.querySelectorAll("[data-slot2]").forEach(b => b.onclick = () => { slot = +b.dataset.slot2; el.querySelectorAll("[data-slot2]").forEach(x => x.classList.toggle("on", x === b)); const sm = el.querySelector(".wdas-cur .h"); if (sm) sm.textContent = slot === 0 ? "メインは手順1で2倍・一度付けると動かせない" : ""; prev(); });
+  el.querySelectorAll("[data-slot2]").forEach(b => b.onclick = () => { slot = +b.dataset.slot2; el.querySelectorAll("[data-slot2]").forEach(x => x.classList.toggle("on", x === b)); const sm = el.querySelector(".wdas-cur .h"); if (sm) sm.textContent = slot === 0 ? "メインは手順1で2倍" : "メイン属性は固定。属性を付けられるのはサブの枠"; prev(); });
   el.querySelectorAll("[data-ga]").forEach(b => b.onclick = () => { attr = b.dataset.ga; el.querySelectorAll("[data-ga]").forEach(x => x.classList.toggle("on", x === b)); prev(); });
   el.querySelectorAll("[data-lv]").forEach(b => b.onclick = () => go(["act", cid, b.dataset.lv === "2" ? "lv2" : "lv"]));
   let buyI = null;
@@ -8647,6 +8818,11 @@ function wdEarnTbl(c){
   const adv = WD_AT.filter(f => wdMult(m, f) === 2), dis = WD_AT.filter(f => wdMult(m, f) === .5), neu = WD_AT.filter(f => wdMult(m, f) === 1);
   const row = (cls, k, fs, x, v) => fs.length ? `<div class="r ${cls}"><span class="k">${k}<small>${pr(fs)}</small></span><span class="v">${ics(fs)}</span><em>${x}</em><b class="w">= ${v}wp</b></div>` : "";
   return `<div class="wdearn">${head}${row("adv", "有利", adv, "×2", w * 2)}${row("dis", "不利", dis, "×½", Math.round(w / 2))}${row("neu", "中立", neu, "×1", w)}</div>`;
+}
+/* 卓に置く小さな早見表：アイコンを矢印でつないだ1行（狭いときは折り返す）。タップで大きな図 */
+function wdChartMini(){
+  const I = a => `<span class="ci">${wdIco(a)}</span>`, ar = `<i class="ca">›</i>`, cyc = `<i class="cc">↻</i>`;
+  return `<span class="cm"><span class="cy">${I("水")}${ar}${I("炎")}${ar}${I("木")}${cyc}</span><span class="cy">${I("雷")}<i class="ca two">⇄</i>${I("闇")}</span><span class="cy">${I("龍")}${ar}${I("覇")}${ar}${I("天")}${ar}${I("幻")}${cyc}</span></span><small class="ch">矢印の先に強い</small>`;
 }
 /* 属性の相性の早見図（矢印の先に強い） */
 function wdChart(big){
@@ -8719,13 +8895,13 @@ function openWdNew(){
 /* ---------- ルール ---------- */
 function wdRulesHtml(){
   return `<h4>目的</h4><p>守護者の力 <b>wp</b>（Wardens Point）を集め、属性キューブと合わせて<b>秘宝の★の合計が最初に${WD_WIN_STARS}以上になった人の勝ち</b>（★1〜★5、各2つ）。届く前に秘宝が全部なくなったら、★の合計が多い人の勝ち（同じならwpが多い人）。枠は4つでキャラが最低1体いるので、秘宝は最大3つ。安い秘宝で枠を埋めると★が届かなくなるので注意。wpは全員に公開。</p>
-  <h4>準備</h4><p>全員1000wp（2番手以降は${WD_SEAT_BONUS}wpずつ多い）。キャラを3体配り、1体取って残り2体を次の人へ。受け取った2体から1体取り、残りは山札へ（1人2体）。場にキャラを3体並べる。キャラは3つの枠がすべて「無」、Lv1から。</p>
+  <h4>準備</h4><p>全員1000wp（2番手以降は${WD_SEAT_BONUS}wpずつ多い）。キャラを3体配り、1体取って残り2体を次の人へ。受け取った2体から1体取り、残りは山札へ（1人2体）。場にキャラを3体並べる。キャラはLv1から。<b>メイン枠（一番上）は、そのキャラの得意属性で最初から固定</b>（付け替え・取り外しはできない）。サブの2枠は「無」から始まる。</p>
   <h4>手番の流れ</h4>
   <p><b>手順1：ダイス</b> 属性ダイス（20面：炎・水・木 各4、雷・闇 各2、龍・幻・天・覇 各1）を2つ振り、1つの目を選ぶ。その属性のキューブを持つ人は全員（振った人も）キューブ1つにつき 炎水木100・雷闇200・龍幻天覇400wp。メイン枠（一番上）のキューブは2倍。自分のキャラにキューブが1つもなければ、手順1はとばす。</p>
   <p><b>手順2：キャラが行動</b> 「無」の枠があるキャラと、選んだ目の属性を持つキャラが動く。無の枠1つにつき無の効果を1回、選んだ目のキューブ1つにつきその属性の効果を1回。動いたキャラは1体につき1回、キャラLvに応じたwpをもらう。</p>
-  <p><b>手順3：1つ選ぶ</b>（手順2で動いたキャラだけ）<br>・属性付与：空いている枠に好きな属性を付ける（コストはキャラごと。得意属性は半額）<br>・Lv上げ：1→2 100、2→3 500、3→4 2000、4→5 5000wp<br>・キャラ獲得：場の3体から1体（次の手番から行動）<br>・wp獲得：ダイスを1つ振り、メイン属性に有利な目ならキャラLvのwpの2倍、不利なら半分</p>
-  <p><b>手順4：秘宝</b> 何個でも。必要wpを払い、必要なキューブをキャラから外して秘宝にはめる。メインを外したら、メインは無に戻ってまた決め直せる。</p>
-  <h4>枠</h4><p>1人4枠。キャラと秘宝が1つずつ使う。キャラを手放すときは、そのキャラの獲得コストと同じwpを払う（秘宝を取るために手放すときは無料）。手放したキャラは山札へ戻し、場も含めてシャッフルして3体めくり直す。メイン属性は一度付けたら動かせない（メインを無のまま、サブだけ付けてもよい）。3枠すべて埋まると無の効果はなくなる。</p>
+  <p><b>手順3：1つ選ぶ</b>（手順2で動いたキャラだけ）<br>・属性付与：空いているサブの枠に好きな属性を付ける（コストはキャラごと。得意属性は半額）<br>・Lv上げ：1→2 100、2→3 500、3→4 2000、4→5 5000wp<br>・キャラ獲得：場の3体から1体（次の手番から行動）<br>・wp獲得：ダイスを1つ振り、メイン属性に有利な目ならキャラLvのwpの2倍、不利なら半分</p>
+  <p><b>手順4：秘宝</b> 何個でも。必要wpを払い、必要なキューブをキャラのサブの枠から外して秘宝にはめる（メイン属性は固定なので使えない）。外したサブの枠は無に戻り、また付け直せる。</p>
+  <h4>枠</h4><p>1人4枠。キャラと秘宝が1つずつ使う。キャラを手放すときは、そのキャラの獲得コストと同じwpを払う（秘宝を取るために手放すときは無料）。手放したキャラは山札へ戻し、場も含めてシャッフルして3体めくり直す。メイン属性は得意属性で固定。サブの2枠が両方埋まると、無の効果はなくなる。</p>
   <h4>相性（wp獲得で使う）</h4><p>水→炎→木→水（矢印の先に強い）／雷と闇はお互いに有利／龍→覇→天→幻→龍</p>
   <h4>干渉</h4><p>他人の邪魔をする効果は龍・覇・幻だけ。天の「干渉無効」は、奪う・キューブを無に戻す・行動封じ・Lvを下げる、など全部を防ぐ（次の自分の手番まで）。行動封じされたキャラは次の手番の終わりまで行動できず、手順1のwpももらえない。</p>
   <h4>秘宝</h4><p>持っている間ずっと効く能力がある。必要な属性キューブの組み合わせは、ゲームごとにランダムに決まる（出やすさはダイスの目と同じ）。</p><p>${WD_TRE.map(t => `${wdStarTx(t.r)} <b>${t.n}</b>：${t.wp.toLocaleString()}wp＋属性キューブ${t.cb.length}つ<br><small>能力：${t.ab}</small>`).join("<br>")}</p>
