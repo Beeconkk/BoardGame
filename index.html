@@ -2984,6 +2984,10 @@ img.wdta.im{display:block;object-fit:contain;-webkit-user-drag:none}
 
 .wdme .wdcards .wdcard .ar .wdico.sig{display:none!important}
 
+/* 行動回数バッジ：カードの内側に */
+.wdme .wdcards .wdcard .wdact{right:3px;top:3px;width:19px;height:19px;font-size:11px;z-index:3;box-shadow:0 0 0 1.5px rgba(0,0,0,.5),0 2px 8px rgba(0,0,0,.5)}
+.wdme .wdcards .wdcard .wdnew{left:auto;right:3px;top:auto;bottom:34px;z-index:3}
+
 </style>
 </head>
 <body>
@@ -3016,7 +3020,7 @@ img.wdta.im{display:block;object-fit:contain;-webkit-user-drag:none}
    ============================================================ */
 const CFG_URL = "https://gcuddhongxvojabweclh.supabase.co";
 const CFG_KEY = "sb_publishable_E6PxQDZpmdfb6kjRPte3qw_goaYjKZB";
-const APP_VER = "v76";
+const APP_VER = "v77";
 
 const lsGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
 const lsSet = (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} };
