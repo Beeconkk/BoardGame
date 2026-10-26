@@ -2362,9 +2362,19 @@ img.wdart{display:block;width:100%;height:100%;object-fit:cover;-webkit-user-dra
 /* 手元のキャラ：属性の色に染まる（無属性は色なし） */
 .wdtw{position:relative;display:block;width:100%;height:100%;overflow:hidden;isolation:isolate}
 .wdemb>.wdtw,.wdcard .ar>.wdtw,.wdmc2>.wdtw{position:absolute;inset:0}
-.wdtw>img,.wdtw>svg{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;filter:grayscale(1) brightness(.78) contrast(1.08)}
-.wdtw.t>img,.wdtw.t>svg{filter:grayscale(1) brightness(1) contrast(1.12)}
-.wdtw.t::after{content:"";position:absolute;inset:0;background:var(--tg);mix-blend-mode:color;pointer-events:none}
+.wdtw>img,.wdtw>svg{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;filter:saturate(.28) brightness(1.08) contrast(1.02)}
+/* 属性をまとう（全面は塗らない） */
+.wdtw.t>img,.wdtw.t>svg{filter:saturate(.32) brightness(1.06) contrast(1.06)}
+.wdtw.t>i{position:absolute;inset:0;pointer-events:none;display:block}
+.wdtw.t>.sh{background:radial-gradient(120% 90% at 50% 40%,transparent 35%,var(--m) 100%);mix-blend-mode:multiply;opacity:calc(.55 * var(--pw))}
+.wdtw.t>.tc{background:radial-gradient(55% 50% at 50% 62%,var(--m),transparent 78%),radial-gradient(30% 35% at 20% 40%,var(--s1),transparent 75%),radial-gradient(30% 35% at 80% 45%,var(--s2),transparent 75%);mix-blend-mode:color;opacity:calc(.5 * var(--pw))}
+.wdtw.t>.au{background:radial-gradient(85% 45% at 50% 108%,var(--m),transparent 72%),radial-gradient(42% 38% at -4% 30%,var(--s1),transparent 72%),radial-gradient(42% 38% at 104% 40%,var(--s2),transparent 72%);mix-blend-mode:screen;opacity:calc(.95 * var(--pw));animation:wdaura 3.2s ease-in-out infinite alternate}
+.wdtw.t>.sp{background:radial-gradient(1.6px 1.6px at 18% 78%,#fff,transparent 70%),radial-gradient(2px 2px at 30% 88%,var(--m),transparent 70%),radial-gradient(1.4px 1.4px at 72% 82%,#fff,transparent 70%),radial-gradient(2.2px 2.2px at 84% 70%,var(--s1),transparent 70%),radial-gradient(1.8px 1.8px at 52% 92%,var(--m),transparent 70%),radial-gradient(1.6px 1.6px at 10% 55%,var(--s2),transparent 70%),radial-gradient(1.6px 1.6px at 90% 50%,var(--m),transparent 70%);mix-blend-mode:screen;opacity:var(--pw);animation:wdspark 4s linear infinite}
+.wdtw.t>.rm{box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--m) 75%,transparent),inset 0 -14px 18px -8px var(--m),inset 0 0 12px -2px color-mix(in srgb,var(--m) 70%,transparent);opacity:var(--pw)}
+.wdtw.t.weak>img{filter:saturate(.3) brightness(1.06) contrast(1.04)}
+@keyframes wdaura{from{opacity:calc(.7 * var(--pw))}to{opacity:var(--pw)}}
+@keyframes wdspark{0%{transform:translateY(8%);opacity:0}25%{opacity:var(--pw)}100%{transform:translateY(-22%);opacity:0}}
+.wdmc2 .wdtw.t>.sp{display:none}
 /* タイトル（長い名前でもかぶらない） */
 .wdttl b{font-size:11.5px;letter-spacing:.02em;max-width:100%;overflow:hidden;text-overflow:ellipsis}
 /* 属性テーマの背景 */
@@ -2525,6 +2535,18 @@ img.wdart{display:block;width:100%;height:100%;object-fit:cover;-webkit-user-dra
 .wdcf p b{display:inline;font-size:inherit;margin:0;color:var(--wgold)}
 .wdcf .wdas-row .wdbtn{justify-content:center;min-height:48px}
 
+/* 山札のシャッフル */
+.wdcback{display:block;width:46px;height:58px;border-radius:7px;background:radial-gradient(70% 50% at 50% 50%,rgba(224,124,255,.35),transparent 70%),repeating-linear-gradient(135deg,#2E1A58 0 5px,#241446 5px 10px);border:1.5px solid rgba(255,231,163,.7);box-shadow:0 4px 12px rgba(0,0,0,.55);position:relative}
+.wdcback i{position:absolute;inset:7px;border:1px solid rgba(255,231,163,.5);border-radius:4px;background:radial-gradient(circle at 50% 50%,#FFE7A3 0 2.5px,transparent 3px),radial-gradient(circle,rgba(224,124,255,.45),transparent 65%)}
+.wdshuf{position:fixed;z-index:7;width:0;height:0}
+.wdshuf .wdcback{position:absolute;left:-23px;top:-29px}
+.wdshuf .lb{position:absolute;left:0;top:-70px;transform:translateX(-50%);font-family:var(--wcz);font-weight:900;font-size:15px;letter-spacing:.25em;color:var(--wgold);text-shadow:0 0 12px rgba(255,231,163,.8),0 2px 4px #000;white-space:nowrap}
+.wdflycard.mk{display:block;width:40px;height:50px;border-radius:6px;overflow:hidden;border:1px solid rgba(255,231,163,.6);padding:0}
+.wdflycard.mk img{width:100%;height:100%;object-fit:cover;display:block}
+.wdmkc.hid{opacity:0}
+.wdmkc.flipin{animation:wdflipin .55s cubic-bezier(.2,.8,.3,1.2) both}
+@keyframes wdflipin{from{transform:perspective(300px) rotateY(90deg) scale(.85);opacity:.3}to{transform:none;opacity:1}}
+
 </style>
 </head>
 <body>
@@ -2557,7 +2579,7 @@ img.wdart{display:block;width:100%;height:100%;object-fit:cover;-webkit-user-dra
    ============================================================ */
 const CFG_URL = "https://gcuddhongxvojabweclh.supabase.co";
 const CFG_KEY = "sb_publishable_E6PxQDZpmdfb6kjRPte3qw_goaYjKZB";
-const APP_VER = "v52";
+const APP_VER = "v54";
 
 const lsGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
 const lsSet = (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} };
@@ -7597,7 +7619,15 @@ function wdTintBg(c){
   return `linear-gradient(165deg,${stops.join(",")})`;
 }
 const wdCAc = c => WD_COL[c.s[0] || c.s.find(Boolean) || "無"];
-const wdArtC = (c, cls = "") => { const tg = wdTintBg(c); return `<span class="wdtw ${tg ? "t" : "g"} ${cls}"${tg ? ` style="--tg:${tg}"` : ""}>${wdCharArt(c.k)}</span>`; };
+/* 属性をまとう：絵は色を抜いたまま、足元から立ちのぼるオーラ・縁の光彩・影の色・舞う光の粒で属性を表す
+   メイン属性はオーラ（足元・縁）と影に、サブ属性は左右の光と光の粒に入る */
+const wdArtC = (c, cls = "") => {
+  const m = c.s[0], subs = c.s.slice(1).filter(Boolean), main = m || subs[0];
+  if (!main) return `<span class="wdtw g ${cls}">${wdCharArt(c.k)}</span>`;
+  const s1 = m ? subs[0] : subs[1], s2 = m ? subs[1] : null, n = c.s.filter(Boolean).length;
+  const v = `--m:${WD_COL[main]};--s1:${s1 ? WD_COL[s1] : "transparent"};--s2:${s2 ? WD_COL[s2] : s1 ? WD_COL[s1] : "transparent"};--pw:${m ? (n >= 3 ? 1 : n === 2 ? .85 : .7) : .5}`;
+  return `<span class="wdtw t ${m ? "" : "weak"} ${cls}" style="${v}">${wdCharArt(c.k)}<i class="sh"></i><i class="tc"></i><i class="au"></i><i class="sp"></i><i class="rm"></i></span>`;
+};
 const wdEmbC = c => `<span class="wdemb wdembc" style="--ac:${wdCAc(c)}">${wdArtC(c)}</span>`;
 
 /* ---------- 属性テーマ：出た目の属性に背景が染まる（次の目が決まるまで） ---------- */
@@ -8087,6 +8117,56 @@ function wdExplain(tx, lv, G){
 function wdCapMarkIdx(idx){ const c = document.getElementById("wdCap"); if (!c) return; const p = c.querySelector(".tx"); if (!p) return; p.classList.add("has"); idx.forEach(i => { const sp = p.querySelector(`[data-cl="${i}"]`); if (sp){ sp.classList.remove("hi"); void sp.offsetWidth; sp.classList.add("hi"); } }); }
 function wdCapMark(re){ const c = document.getElementById("wdCap"); if (!c) return; const idx = [...c.querySelectorAll(".tx [data-cl]")].filter(sp => re.test(sp.textContent)).map(sp => +sp.dataset.cl); if (idx.length) wdCapMarkIdx(idx.slice(0, 1)); }
 const WD_CURSE_RE = { "ダイス1つ": /ダイスは1つ/, "目を選ばれる": /あなたが選ぶ/, "秘宝禁止": /獲得できない/, "秘宝+1000wp": /\+1000/, "龍・覇・幻 禁止": /使えない/, "手順3は1体だけ": /1体だけ/, "手順1のwp半分": /半分/ };
+/* ---------- 山札のシャッフル：場のキャラを山札に集め、中央で切り混ぜて、3体配り直す ---------- */
+const WD_BACK = `<span class="wdcback"><i></i></span>`;
+async function wdShuffleAnim(gather){
+  if (wdSkipAll) return null;
+  const sp = wdSpd(), deck = wdQ("#wdDeck");
+  if (gather && gather.length && deck){
+    await Promise.all(gather.map((m, i) => { const f = wdFly(m, deck, `<span class="wdflycard mk">${(m.querySelector(".ar") || m).innerHTML}</span>`, { dur: 650, delay: i * 140, s1: .45, arc: -40 }); setTimeout(() => m.classList.add("hid"), (i * 140 + 60) / sp); return f; }));
+  }
+  document.querySelectorAll("#wdMain .wdmkc[data-mk]").forEach(m => m.classList.add("hid"));
+  const fr = wdR2(wdFelt()), dr = wdR2(deck), c = fr ? wdC(fr) : { x: innerWidth / 2, y: innerHeight * .45 };
+  const box = document.createElement("div"); box.className = "wdshuf"; box.style.cssText = `left:${c.x}px;top:${c.y}px`;
+  box.innerHTML = `<b class="lb">SHUFFLE</b>` + Array.from({ length: 10 }, () => WD_BACK).join("");
+  wdLayer().appendChild(box);
+  const cards = [...box.querySelectorAll(".wdcback")];
+  // 山札の位置から中央へ
+  if (dr){ const d = wdC(dr); box.animate([{ transform: `translate(${d.x - c.x}px,${d.y - c.y}px) scale(.55)` }, { transform: "none" }], { duration: 520 / sp, easing: "cubic-bezier(.2,.8,.3,1.1)", fill: "both" }); }
+  await wdWait(520);
+  wdPlayTx("山札をシャッフル");
+  // 左右に割って、交互に重ねる（リフルシャッフル）を3回
+  const R = 3, dur = 2100 / sp;
+  cards.forEach((el, i) => {
+    const side = i % 2 ? 1 : -1, kf = [{ transform: `translate(0,${-i * 1.5}px) rotate(0deg)` }];
+    for (let r = 0; r < R; r++){
+      const o = (r + .5) / R;
+      kf.push({ transform: `translate(${side * (52 + (i % 3) * 4)}px,${-i * 1.2 + (r % 2 ? 6 : -4)}px) rotate(${side * (10 + r * 3)}deg)`, offset: Math.min(.98, o - .5 / R + .22 / R) });
+      kf.push({ transform: `translate(${side * 3}px,${-((i * 7 + r * 3) % 10) * 1.5}px) rotate(${side * 2}deg)`, offset: Math.min(.99, o + .3 / R) });
+    }
+    kf.push({ transform: `translate(0,${-i * 1.5}px) rotate(0deg)` });
+    el.animate(kf, { duration: dur, delay: (i % 2) * 40 / sp, easing: "ease-in-out", fill: "both" });
+  });
+  box.querySelector(".lb").animate([{ opacity: 0, transform: "translate(-50%,0) scale(.7)" }, { opacity: 1, transform: "translate(-50%,0) scale(1)", offset: .15 }, { opacity: 1, offset: .85 }, { opacity: 0 }], { duration: dur, fill: "both" });
+  await wdWait(2150);
+  return box;
+}
+/* シャッフルした山から、場の3体をめくって配る */
+async function wdDealAnim(box){
+  const els = [...document.querySelectorAll("#wdMain .wdmkc[data-mk]")];
+  if (wdSkipAll || !box){ if (box) box.remove(); return; }
+  els.forEach(m => m.classList.add("hid"));
+  const cards = [...box.querySelectorAll(".wdcback")];
+  wdPlayTx("場に3体めくる");
+  for (let i = 0; i < els.length; i++){
+    const top = cards.pop(); if (top) top.remove();
+    await wdFly(box, els[i], WD_BACK, { dur: 520, s0: 1, sm: 1.25, s1: .9, arc: -50 });
+    els[i].classList.remove("hid"); els[i].classList.add("flipin");
+    await wdWait(120);
+  }
+  box.animate([{ opacity: 1 }, { opacity: 0, transform: "scale(.6)" }], { duration: 300 / wdSpd(), fill: "both" }).finished.then(() => box.remove(), () => box.remove());
+  await wdWait(400);
+}
 /* ---------- 1ステップの演出 ---------- */
 const wdHd = (p, name, tag, cls = "", sc) => `<div class="hd"><small>${wdPN(p)}</small><b>${name}</b>${tag ? `<em class="${cls}"${sc ? ` style="--sc:${sc}"` : ""}>${tag}</em>` : ""}</div>`;
 async function wdStep(s){
@@ -8100,6 +8180,12 @@ async function wdStep(s){
   switch (s.k){
     case "turn": {
       wdFocusEnd(); wdDiceHide(true);
+      if (e.no === 1 && !e.prevT){
+        wdBanner(`ゲームスタート<small>山札をシャッフルして、場に3体めくる</small>`, "round", 1400);
+        await W(900);
+        const box = await wdShuffleAnim(null);
+        apply(); await wdDealAnim(box); await W(400);
+      }
       apply();
       wdPlayTx(`${wdPN(e.p)}の手番`);
       wdHl(wdSeatEl(e.p), "wdspot", 1500);
@@ -8283,11 +8369,13 @@ async function wdStep(s){
       if (e.v) wdFloat(wdWpEl(e.p), `−${e.v}`, "minus");
       const fromEl = wdFocCard() || wdChEl(e.cid);
       const fl = wdFly(fromEl, wdQ("#wdDeck"), `<span class="wdflycard" style="--ac:${WD_COL[d.sig]}">${wdEmb(e.ck)}<b>${d.n}</b></span>`, { dur: 850, s1: .4, arc: -40 });
-      wdFocusEnd(true);
-      await W(150); apply(); await fl;
-      wdPlayTx(`場のキャラと山札をシャッフルして、3体めくり直し`);
-      document.querySelectorAll("#wdMain .wdmkc").forEach((m, i) => { m.style.setProperty("--i", i); m.classList.add("deal"); });
-      await W(900); return;
+      wdFocusEnd(true); await fl;
+      wdPlayTx(`${d.n}は山札へ。場のキャラも山札に戻してシャッフル`);
+      wdBanner(`山札をシャッフル<small>場の3体も混ぜて、めくり直す</small>`, "sub", 1200);
+      const box = await wdShuffleAnim([...document.querySelectorAll("#wdMain .wdmkc[data-mk]")]);
+      apply();
+      await wdDealAnim(box);
+      await W(500); return;
     }
     case "tre": {
       wdFocusEnd(); const t = wdTreDef(e.id);
