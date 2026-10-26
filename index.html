@@ -2978,6 +2978,12 @@ img.wdta.im{display:block;object-fit:contain;-webkit-user-drag:none}
 .wdtable.v2 .fin .wdmkt .wdmkc .ar{position:absolute!important;inset:0!important;height:100%!important;width:100%}
 .wdtable.v2 .fin .wdmkt .wdmkc em{padding:6px 0 1px!important;background:linear-gradient(transparent,rgba(0,0,0,.75))!important;font-size:10px}
 
+/* 自分のカードのLvは相手と同じ見た目（wp表記なし） */
+.wdme .wdcards .wdcard .lv.mlv{left:2px;top:2px;padding:1px 3px;border-radius:4px;background:rgba(0,0,0,.7);font-family:var(--wcz);font-weight:900;font-size:10px;line-height:1;color:var(--wgold)}
+.wdme .wdcards .wdcard .lv.mlv::before{content:"Lv";font-size:7px;color:var(--wmute);margin-right:1px}
+
+.wdme .wdcards .wdcard .ar .wdico.sig{display:none!important}
+
 </style>
 </head>
 <body>
@@ -3010,7 +3016,7 @@ img.wdta.im{display:block;object-fit:contain;-webkit-user-drag:none}
    ============================================================ */
 const CFG_URL = "https://gcuddhongxvojabweclh.supabase.co";
 const CFG_KEY = "sb_publishable_E6PxQDZpmdfb6kjRPte3qw_goaYjKZB";
-const APP_VER = "v74";
+const APP_VER = "v76";
 
 const lsGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
 const lsSet = (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} };
@@ -8330,7 +8336,7 @@ function wdMeH(D, st, live){
   const cards = D.ch[p].map(c => {
     const d = wdDef(c), can = mineAct && wdCanAct(st, c.id), n = can ? st.T.acts[c.id] : 0, acting = live && st.T && st.T.p === p && st.T.acting[c.id];
     return `<div class="wdcard ${can ? "can" : ""} ${acting ? "acting" : ""} ${c.seal ? "sealed" : ""}" data-ch="${c.id}" style="--ac:${wdCAc(c)}">
-      <span class="ar">${wdArtC(c)}<b class="n">${d.n}</b>${wdIco(d.sig, "sig")}</span><span class="lv"><em>Lv${c.lv}</em>${wdLvWp(c)}wp</span>
+      <span class="ar">${wdArtC(c)}<b class="n">${d.n}</b>${wdIco(d.sig, "sig")}</span><span class="lv mlv">${c.lv}</span>
       <span class="sl">${c.s.map((a, i) => `<span data-slot="${c.id}:${i}" class="wdcube ${a ? "" : "nul"} ${i === 0 ? "main" : ""}" style="--ac:${WD_COL[a || "無"]}">${a ? wdIco(a) : ""}</span>`).join("")}</span>
       ${can ? `<i class="wdact">${n}</i>` : ""}${c.seal ? `<b class="seal">行動封じ</b>` : ""}${c.fresh ? `<i class="wdnew">NEW</i>` : ""}</div>`;
   }).join("");
