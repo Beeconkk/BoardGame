@@ -2919,6 +2919,65 @@ img.wdta.im{display:block;object-fit:contain;-webkit-user-drag:none}
   .wdtable.v2 .wdfelt>.fin{--mw:min(calc((100cqw - 44px) / 4.4),calc(24cqh * .8));--gi:min(calc((100cqw - 14px) / 5 - 10px),calc((100cqh - var(--mw) * 1.25 - 26px) / 2 - 30px))}
 }
 
+/* ===== v21 ===== */
+.wdopps .wdpod .ph .wp small{font-size:8.5px;margin-left:1px;color:var(--wmute);font-family:inherit}
+/* 一番下のボタンの下の余白を詰める */
+.wdbar{padding-bottom:calc(var(--safe-b) * .35 + 4px)!important;padding-top:5px!important}
+/* 秘宝：★と必要キューブを横に並べ、絵を大きく */
+.wdtable.v2 .fin .wdgem{display:grid!important;grid-template-columns:auto auto;grid-template-rows:auto auto;grid-template-areas:"i i" "s c";justify-content:center;align-items:center;column-gap:3px;row-gap:0}
+.wdtable.v2 .fin .wdgem img.wdta.im{grid-area:i;justify-self:center}
+.wdtable.v2 .fin .wdgem .st{grid-area:s}
+.wdtable.v2 .fin .wdgem .cb{grid-area:c;margin:0}
+.wdtable.v2 .wdfelt>.fin{--gi:min(calc((100cqw - 2 * var(--mw) - 30px) / 5 - 2px),calc((100cqh - 12px) / 2 - 16px));gap:4px}
+@container (min-height:300px){
+  .wdtable.v2 .wdfelt>.fin{--gi:min(calc((100cqw - 14px) / 5 - 4px),calc((100cqh - var(--mw) * 1.25 - 22px) / 2 - 16px))}
+}
+.wdtable.v2 .fin .wdgems{gap:1px!important}
+.wdtable.v2 .fin .wdgem{align-content:center}
+.wdtable.v2 .fin .wdgem .st .full{display:none}.wdtable.v2 .fin .wdgem .st .cmp{display:inline;font-size:10px;font-weight:900}
+@container (min-height:300px){.wdtable.v2 .fin .wdgem .st .full{display:inline}.wdtable.v2 .fin .wdgem .st .cmp{display:none}}
+
+/* ===== v22：場のキャラにwp表示・自分のカードは絵をカードいっぱいに ===== */
+.wdmkc em small{font-size:7.5px;margin-left:1px;color:var(--wmute)}
+.wdtable.v2 .wdfelt .wdmkc em{padding:10px 0 2px;font-size:10px;text-shadow:0 1px 3px #000}
+/* 自分の手元のカード：絵を全面に、文字やキューブは絵の上に重ねる */
+.wdme .wdcards .wdcard{padding:0!important;aspect-ratio:4/5;display:block;overflow:hidden}
+.wdme .wdcards .wdcard .ar{position:absolute!important;inset:0;height:auto!important;border:0}
+.wdme .wdcards .wdcard .ar .n{bottom:auto;top:auto;position:absolute;left:0;right:0;bottom:30px;font-size:10.5px;text-shadow:0 1px 3px #000,0 0 6px #000;z-index:2}
+.wdme .wdcards .wdcard .lv{position:absolute;left:3px;top:3px;margin:0;z-index:2;padding:1px 5px;border-radius:6px;background:rgba(0,0,0,.66);font-size:9px;color:#E6DDFF}
+.wdme .wdcards .wdcard .lv em{font-size:10.5px}
+.wdme .wdcards .wdcard .sl{position:absolute;left:0;right:0;bottom:0;margin:0;z-index:2;justify-content:center;padding:14px 0 4px;background:linear-gradient(transparent,rgba(0,0,0,.82) 55%)}
+.wdme .wdcards .wdcard .ar .wdico.sig{z-index:2}
+.wdme .wdcards .wdcard.free{display:flex;align-items:center;justify-content:center}
+.wdme .wdcards .wdcard.tre{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.wdme .wdcards .wdcard.tre img.wdta.im{width:72%;height:auto;aspect-ratio:1}
+.wdme .wdcards .wdcard .seal{z-index:3}
+/* 2人対戦など縦に余裕があるときは、キューブを★の下に */
+@container (min-height:300px){
+  .wdtable.v2 .fin .wdgem{grid-template-columns:auto!important;grid-template-areas:"i" "s" "c"!important;row-gap:2px}
+  .wdtable.v2 .fin .wdgem .cb{justify-self:center}
+  .wdtable.v2 .wdfelt>.fin{--gi:min(calc((100cqw - 14px) / 5 - 4px),calc((100cqh - var(--mw) * 1.25 - 22px) / 2 - 28px))}
+}
+/* 4人対戦でもキューブは★の下に */
+.wdtable.v2 .fin .wdgem{grid-template-columns:auto!important;grid-template-areas:"i" "s" "c"!important;row-gap:1px}
+.wdtable.v2 .fin .wdgem .cb{justify-self:center}
+.wdtable.v2 .fin .wdgem .st .full{display:inline;font-size:8.5px;letter-spacing:-.08em}.wdtable.v2 .fin .wdgem .st .cmp{display:none}
+.wdtable.v2 .wdfelt>.fin{--gi:min(calc((100cqw - 2 * var(--mw) - 30px) / 5 - 2px),calc((100cqh - 12px) / 2 - 26px))}
+@container (min-height:300px){
+  .wdtable.v2 .wdfelt>.fin{--gi:min(calc((100cqw - 14px) / 5 - 4px),calc((100cqh - var(--mw) * 1.25 - 22px) / 2 - 28px))}
+}
+/* 場のキャラを大きく（山札は細くして、その分キャラに回す） */
+.wdtable.v2 .wdfelt>.fin{--mw:min(calc(var(--mh) * .8),17.5cqw)}
+@container (min-height:300px){
+  .wdtable.v2 .wdfelt>.fin{--mw:min(calc((100cqw - 34px) / 3.45),calc(31cqh * .8));--gi:min(calc((100cqw - 14px) / 5 - 4px),calc((100cqh - var(--mw) * 1.25 - 22px) / 2 - 28px))}
+  .wdtable.v2 .fin .wdmkt{grid-template-columns:calc(var(--mw) * .45) repeat(3,var(--mw))!important}
+  .wdtable.v2 .fin .wddeck b{font-size:12px}
+}
+.wdtable.v2 .fin .wdmkc .ar img.wdart{object-position:50% 20%}
+/* 場のキャラ：絵をカードの下端まで。値段は絵の上に小さく重ねる */
+.wdtable.v2 .fin .wdmkt .wdmkc .ar{position:absolute!important;inset:0!important;height:100%!important;width:100%}
+.wdtable.v2 .fin .wdmkt .wdmkc em{padding:6px 0 1px!important;background:linear-gradient(transparent,rgba(0,0,0,.75))!important;font-size:10px}
+
 </style>
 </head>
 <body>
@@ -2951,7 +3010,7 @@ img.wdta.im{display:block;object-fit:contain;-webkit-user-drag:none}
    ============================================================ */
 const CFG_URL = "https://gcuddhongxvojabweclh.supabase.co";
 const CFG_KEY = "sb_publishable_E6PxQDZpmdfb6kjRPte3qw_goaYjKZB";
-const APP_VER = "v68";
+const APP_VER = "v74";
 
 const lsGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
 const lsSet = (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} };
@@ -8226,7 +8285,7 @@ const wdGemMini = id => { const t = wdTreDef(id); return `<i class="tg art r${t.
 function wdPodH(D, p, side){
   const cur = D.T && D.T.p === p, free = Math.max(0, WD_SLOTS - D.ch[p].length - D.tre[p].length);
   return `<div class="wdpod ${side} ${cur ? "cur" : ""} ${D.sh[p] ? "shd" : ""}" data-seat="${p}" style="--pc:${pcolor(p)}">
-    <div class="ph"><b class="nm">${esc(wdNm(p))}</b>${cur ? `<i class="tn">手番</i>` : ""}<span class="wp" data-wp="${p}">${D.wp[p].toLocaleString()}</span></div>
+    <div class="ph"><b class="nm">${esc(wdNm(p))}</b>${cur ? `<i class="tn">手番</i>` : ""}<span class="wp" data-wp="${p}">${D.wp[p].toLocaleString()}<small>wp</small></span></div>
     <div class="pw">${wdStarMeter(D.tre[p].reduce((n, t) => n + wdTreDef(t.id).r, 0))}</div>
     <div class="pslots">${D.ch[p].map(wdMiniCard).join("")}${D.tre[p].map(wdMiniTre).join("")}${Array.from({ length: free }, () => `<i class="wdmc2 free"></i>`).join("")}</div></div>`;
 }
@@ -8260,7 +8319,7 @@ function wdFeltH(D, st, live){
   const steps = ["ダイス", "行動", "選ぶ", "秘宝"];
   const cur = !T ? -1 : T.ph === "roll" || T.ph === "pick" ? 0 : T.ph === "eff" ? 1 : T.ph === "act" ? 2 : T.ph === "tre" ? 3 : -1;
   const fc = T && T.face ? `<span class="wdfc" style="--ac:${WD_COL[T.face]}">${wdIco(T.face)}${T.face}</span>` : T && T.skip ? `<span class="wdfc skip">ダイスなし</span>` : "";
-  const mkt = D.mk.map((k, i) => k == null ? `<span class="wdmkc empty"></span>` : `<span class="wdmkc" data-mk="${i}" style="--ac:${WD_COL[WD_CH[k].sig]}"><span class="ar">${wdCharArt(k)}</span><em>${WD_CH[k].cost}</em></span>`).join("");
+  const mkt = D.mk.map((k, i) => k == null ? `<span class="wdmkc empty"></span>` : `<span class="wdmkc" data-mk="${i}" style="--ac:${WD_COL[WD_CH[k].sig]}"><span class="ar">${wdCharArt(k)}</span><em>${WD_CH[k].cost.toLocaleString()}<small>wp</small></em></span>`).join("");
   return `<div class="wdfelt" id="wdFelt">
     <div class="fin"><div class="wdgems">${gems}</div>
     <div class="wdmkt"><span class="wddeck" id="wdDeck"><b>${D.dl}</b><small>山札</small></span>${mkt}</div></div>
