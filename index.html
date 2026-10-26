@@ -2384,9 +2384,9 @@ details.wdrc tr.sig th,details.wdrc tr.sig td{background:rgba(255,201,60,.14)}
    ★ 新しいSupabaseの接続先（Project Settings → API）をここに入れる
    空のままでも、アプリの最初の画面から入力できます（その端末にだけ保存）
    ============================================================ */
-const CFG_URL = "https://gcuddhongxvojabweclh.supabase.co";
-const CFG_KEY = "sb_publishable_E6PxQDZpmdfb6kjRPte3qw_goaYjKZB";
-const APP_VER = "v47";
+const CFG_URL = "https://mspzgfkommmuucjvdvbm.supabase.co";
+const CFG_KEY = "sb_publishable_sj2rETV0MdsP1hA56C70kQ_F5eS1Via";
+const APP_VER = "v49";
 
 const lsGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
 const lsSet = (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} };
@@ -6478,7 +6478,7 @@ const WD_CH = [
     天: { tx: "次の自分の手番まで干渉無効。さらに+Lv×80wp", f: x => { wdShield(x); G(x, Lv(x) * 80); } },
     幻: { tx: "相手キャラ1体のLvを1下げる（下げられなければ+300wp）", need: [qOC("Lvを下げるキャラ")], f: x => wdLvDown(x, x.ch[0]) }
   } },
-  { n: "グリフォン", t: "低", sig: "雷", it: "固定", cost: 450, th: "守護", im: "天空の守護獣", desc: "干渉を防いだり、跳ね返したりする、守りの専門家。", e: {
+  { n: "ライジュウ", t: "低", sig: "雷", it: "固定", cost: 450, th: "守護", im: "社を守る雷の獣", desc: "干渉を防いだり、跳ね返したりする、守りの専門家。", e: {
     無: { tx: "+20wp。自分が干渉無効の状態なら+40wp", f: x => G(x, wdShielded(x.st, x.p) ? 40 : 20) },
     炎: { tx: "+200wp", f: x => G(x, 200) },
     水: { bf: "奪われるwp半分", bh: "半分", tx: "+100wp。次の自分の手番まで、自分が奪われるwpは半分", f: x => { G(x, 100); x.st.sh[x.p] = { ...(x.st.sh[x.p] || {}), halfSteal: 1 }; } },
@@ -7252,13 +7252,15 @@ const WDA = (() => {
       `<rect x="51" y="42" width="7" height="2.4" fill="#B6FF9E"/><rect x="62" y="42" width="7" height="2.4" fill="#B6FF9E"/>` + glow(60, 43, 4, "#7DFF8A", .35) +
       glow(60, 88, 4, "#7DFF8A", .6) + stroke("M30 60 L40 70 M90 60 L80 70", "#0E2A10", 1.2) +
       sparks([[14, 128, 1.4], [104, 132, 1.2], [96, 120, 1]], "#B6FF9E") },
-    12: { bg: ["#FFF1A0", "#C08A1E", "#140E02"], d: r => // グリフォン
-      S("M64 70 C62 50 68 30 90 12 C88 26 90 34 96 40 C90 40 88 44 90 50 C86 50 82 54 82 60Z", r) +
-      S("M54 72 C46 56 34 44 14 38 C22 46 24 52 24 58 C30 58 32 62 32 66Z", r) +
-      S("M48 70 C42 80 40 94 42 110 L38 150 L88 150 L86 110 C88 96 84 80 72 72Z M42 110 L28 116 L26 124 L36 122 L44 126Z", r) +
-      S("M70 48 C64 40 54 38 46 42 C40 45 36 50 34 56 L26 60 L34 62 C38 64 42 64 46 62 C50 68 56 72 62 74Z M34 56 C30 56 26 58 24 63 C28 63 30 65 34 62Z", r) +
-      stroke("M50 38 L46 30 M56 37 L55 28", SIL, 2.4) + eye(46, 50, "#FFE14A", 1.8, 1) +
-      `<path d="M74 96 L96 90 L100 112 C96 124 86 130 76 132 Z" fill="#2A1C06" stroke="#FFE7A3" stroke-width="1.4"/>` + bolt(90, 98, .6, "#FFE14A") },
+    12: { bg: ["#FFF6A8", "#C8A010", "#120E02"], d: r => // ライジュウ（社を守る雷の獣）
+      `<path d="M6 30 H114 M12 38 H108" stroke="#2A2006" stroke-width="5"/><path d="M22 36 V150 M98 36 V150" stroke="#2A2006" stroke-width="6"/>` +
+      stroke("M84 128 L96 112 L90 108 L104 88 L98 84 L110 60", r, 6.5, .9) + stroke("M84 128 L96 112 L90 108 L104 88 L98 84 L110 60", "#FFF6A8", 2.2) +
+      S("M54 58 C70 60 82 70 86 90 C90 108 88 126 84 150 L40 150 C40 136 42 124 46 112 C48 96 46 80 50 66Z", r) +
+      S("M45 98 L41 150 L52 150 L55 104Z", r) +
+      S("M36 50 C34 42 40 34 50 34 C58 34 64 40 64 48 C64 54 60 58 56 60 L50 60 C46 62 40 62 36 60 L25 58 L33 53Z M48 36 L45 21 L54 33Z M58 37 L63 23 L64 40Z", r) +
+      S("M60 52 L72 50 L66 58 L80 60 L70 66 L84 72 L72 76 L82 84 L66 82Z", r, 1) +
+      eye(42, 46, "#FFE14A", 2, 1) + bolt(16, 66, .8, "#FFF2A0") + bolt(104, 18, .7, "#FFF2A0") +
+      sparks([[30, 82, 1.2], [70, 40, 1], [94, 140, 1.3], [34, 120, 1]], "#FFF6A8") },
     13: { bg: ["#C89BFF", "#4A1E7A", "#08020F"], d: r => // リッチ
       tube("M98 150 L98 26", "#C89BFF", 3) + glow(98, 22, 5, "#C89BFF", .9) + `<circle cx="98" cy="22" r="4" fill="#F0E0FF"/>` +
       S("M60 30 C46 30 38 42 38 56 C38 64 40 70 44 74 C30 84 22 100 18 150 L102 150 C98 100 90 84 76 74 C80 70 82 64 82 56 C82 42 74 30 60 30Z", r) +
