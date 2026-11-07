@@ -3242,6 +3242,30 @@ img.wdta.im{display:block;object-fit:contain;-webkit-user-drag:none}
 .gfc.t-b.gt.gt-ok.gt-d::before{background:rgba(255,46,140,.6);box-shadow:inset 0 0 0 3px #FF2E8C}
 .gfc.t-b.gt.gt-ok.gt-l::before{background:rgba(255,140,200,.5);box-shadow:inset 0 0 0 3px #FF8CC8}
 
+/* コースの保存 */
+.gfsvh{margin-top:2px;font-size:13px;padding:8px 14px}
+.gfsvh.done{opacity:.7}
+.gfsvrow{display:flex;gap:8px;overflow-x:auto;padding:6px 2px;justify-content:center}
+.gfsvrow .gfboard.mini{--cs:10px}
+.gfsvrow .gfhc small{font-size:10px}
+
+.gfsvh3{margin:14px 0 2px;font-size:15px;text-align:left}
+.gfsvrow{justify-content:flex-start;gap:10px;padding:6px 2px 10px}
+.gfsvc{flex:none;display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px;border-radius:12px;border:1px solid rgba(127,127,127,.3)}
+.gfsvc .gfboard.mini{--cs:15px}
+.gfsvc .hn{font-size:13px}.gfsvc .nm{font-size:11px;max-width:110px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.gfsvc small{font-size:10px;opacity:.7}
+.gfsvc .btn{padding:6px 10px;font-size:12px;min-height:0}
+
+/* 回るホールの入れ替え */
+.gfpk .mv{display:flex;gap:4px;margin-top:2px}
+.gfpk .mv button{width:28px;height:26px;border-radius:8px;border:1px solid rgba(127,127,127,.4);background:rgba(127,127,127,.12);color:inherit;font:900 12px/1 inherit;font-family:inherit;padding:0}
+.gfpk .mv button:disabled{opacity:.3}
+.gfpk .mv button[data-rm]{color:#E0405A}
+
+/* ほかの人が狙っている範囲（見るだけ） */
+.gfmid.remote .gfc.gt::before{opacity:.55}
+.gfmid.remote .gfc.sel{outline:3px dashed #fff;outline-offset:-3px}
+
 </style>
 </head>
 <body>
@@ -3275,7 +3299,7 @@ img.wdta.im{display:block;object-fit:contain;-webkit-user-drag:none}
    ============================================================ */
 const CFG_URL = "https://gcuddhongxvojabweclh.supabase.co";
 const CFG_KEY = "sb_publishable_E6PxQDZpmdfb6kjRPte3qw_goaYjKZB";
-const APP_VER = "v97";
+const APP_VER = "v103";
 
 const lsGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
 const lsSet = (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} };
@@ -9614,7 +9638,7 @@ function wdRulesHtml(){
 
 /* ======================= タイルゴルフ（TILE GOLF） ======================= */
 const GF_TITLE = "タイルゴルフ";
-const GF_W = 4, GF_H = 10, GF_MAXS = 12;
+const GF_W = 4, GF_H = 10, GF_MAXS = 20;
 const GF_TILE = { f: { n: "芝", ic: "" }, t: { n: "木（障害物）", ic: "🌳" }, w: { n: "池", ic: "" }, b: { n: "バンカー", ic: "" }, r: { n: "ラフ", ic: "" }, g: { n: "グリーン", ic: "" }, e: { n: "空き", ic: "" } };
 /* クラブ：[横, 前, 濃さ]。濃い（d）は障害物を1つまで越えられる。薄い（l）は越えられない */
 const GF_CLUB = {
@@ -9665,7 +9689,7 @@ function gfRevAny(c, pat0){
    空きマスは芝として考える。木・池・コースの外には止まれない。風は考えない */
 function gfReach(c0){
   const c = { ...c0, t: c0.t.replace(/e/g, "f") }, W = gfW(c), seen = new Set(), q = [{ x: c.sx, y: -1 }];
-  const goal = (x, y) => Math.abs(x - c.cup[0]) <= 1 && Math.abs(y - c.cup[1]) <= 1;
+  const goal = (x, y) => { const ax = Math.abs(x - c.cup[0]), ay = Math.abs(y - c.cup[1]); return ax + ay <= 1 || (ax === 1 && ay === 1 && gfTile(c, x, y) === "g"); };
   seen.add(c.sx + ",-1");
   while (q.length){
     const b = q.shift();
@@ -9727,9 +9751,9 @@ const gfRaw = (c, x, y) => (x < 0 || x >= gfW(c) || y < 0 || y >= gfH(c)) ? null
 const gfTile = (c, x, y) => { const z = gfRaw(c, x, y); return z === "x" ? null : z; };   // 「x」はコースの外（OB）
 const gfHole = st => st.holes[st.hi];
 const gfIsCup = (c, x, y) => c.cup[0] === x && c.cup[1] === y;
-/* カップの上下左右の隣：パット（カード1枚）。斜め隣：ロングパット（カード2枚） */
+/* カップの上下左右の隣：パット（カード1枚）。グリーン上の斜め隣：ロングパット（カード2枚） */
 const gfAdj = (st, p) => { const b = st.ball[p], c = gfHole(st); return !b.done && b.y >= 0 && Math.abs(b.x - c.cup[0]) + Math.abs(b.y - c.cup[1]) <= 1; };
-const gfDiag = (st, p) => { const b = st.ball[p], c = gfHole(st); return !b.done && b.y >= 0 && Math.abs(b.x - c.cup[0]) === 1 && Math.abs(b.y - c.cup[1]) === 1; };
+const gfDiag = (st, p) => { const b = st.ball[p], c = gfHole(st); return !b.done && b.y >= 0 && gfTile(c, b.x, b.y) === "g" && Math.abs(b.x - c.cup[0]) === 1 && Math.abs(b.y - c.cup[1]) === 1; };   // ロングパットはグリーンの上だけ
 
 /* ---------- 打てるマス ---------- */
 /* 打つ向き：0=前（ゴール側） 1=右 2=後ろ 3=左。F=前に進む向き、Rt=その右手 */
@@ -9762,7 +9786,7 @@ const gfCanAny = (st, p) => [...st.hand[p], "pt"].some(k => [0, 1, 2, 3].some(d 
 function gfSetup(order, holes){
   const st = { gf: 1, v: 1, order: order.slice(), holes: holes.map(h => JSON.parse(JSON.stringify(h))), hi: 0, ball: {}, sc: {}, hand: {}, deck: {}, ev: GF_EVDECK(), n: 0, last: null, status: "playing" };
   order.forEach(p => { st.sc[p] = []; st.deck[p] = GF_DECK(); st.hand[p] = st.deck[p].splice(0, 3); });
-  st.revPool = shuffle(GF_REVSET.map((_, i) => i)); st.revRow = st.revPool.splice(0, 4);
+  st.revPool = shuffle(GF_REVSET.map((_, i) => i)); st.revRow = st.revPool.splice(0, Math.max(0, holes.length - 1));   // 逆転タイルは「ホール数−1」枚を表にする
   gfPrep(st);
   return st;
 }
@@ -9779,10 +9803,12 @@ function gfPrep(st){
     return;
   }
   delete st.build;
-  if (st.place && st.place.q.length){ st.turn = { pid: st.place.q[0] }; return; }
+  if (st.place && st.place.q.length){ gfRevFill(st); st.turn = { pid: st.place.q[0] }; return; }
   delete st.place;
   gfStartHole(st);
 }
+/* 置く人がいるのに表のタイルが無いとき（同点で2人以上が置く等）だけ、山から1枚出す */
+function gfRevFill(st){ if (st.place && st.place.q.length && !st.revRow.filter(z => z != null).length && st.revPool.length) st.revRow.push(st.revPool.shift()); }
 function gfStartHole(st){
   const c = gfHole(st);
   st.order.forEach(p => { st.ball[p] = { x: c.sx, y: -1, s: 0, done: 0, on: 0 }; });
@@ -9835,7 +9861,8 @@ function gfApply(st, p, mv){
     let pat = GF_REVSET[id]; for (let r = 0; r < ((+mv[4] || 0) % 4); r++) pat = gfRot(pat);
     const x = +mv[2], y = +mv[3]; if (gfRevOk(c, x, y, pat)) return false;
     const a = c.t.split(""); [[0, 1], [1, 1], [0, 0], [1, 0]].forEach(([dx, dy], j) => { a[(y + dy) * gfW(c) + x + dx] = pat[j]; }); c.t = a.join("");
-    st.revRow[ri] = st.revPool.length ? st.revPool.shift() : null;
+    st.revRow.splice(ri, 1);                              // 使ったタイルは場から消える（補充しない）
+    gfRevFill(st);
     st.last = { n: ++st.n, p, kind: "place", pat, id, x, y };
     gfL(st, `${pname(p)}：逆転タイル No.${id + 1} を置いた`);
     st.place.q.shift();
@@ -10001,7 +10028,31 @@ function gfBoardH(c, o = {}){
 
 /* ======================= 画面 ======================= */
 let gfDir = 0, gfBhi = null, gfBsel = null, gfRev = {}, gfId = null, gfSel = null, gfAim = null, gfSeen = {}, gfPlaying = false;
-function openGf(id){ const g0 = gfById(id); gfId = id; gfSel = null; gfAim = null; if (g0 && g0.st) gfSeen[id] = (g0.st.last && g0.st.last.n) || 0; $("#gfg").hidden = false; document.body.style.overflow = "hidden"; drawGf(); }
+/* ---------- 打つ向き・狙いを、ほかの人の画面にもリアルタイムで見せる（Supabaseのbroadcast。データベースは使わない） ---------- */
+let gfCh = null, gfRemote = {}, gfSentKey = "";
+function gfChan(){
+  if (gfCh || typeof sb === "undefined" || !sb.channel) return gfCh;
+  try {
+    gfCh = sb.channel("gf-live", { config: { broadcast: { self: false } } });
+    gfCh.on("broadcast", { event: "aim" }, msg => {
+      const d = msg && msg.payload; if (!d || !d.gid) return;
+      gfRemote[d.gid] = d;
+      if (gfId === d.gid && !gfPlaying){ const g = gfById(d.gid); if (g) gfRender(g, false); }
+    });
+    gfCh.on("broadcast", { event: "hello" }, msg => { const d = msg && msg.payload; if (d && d.gid === gfId){ gfSentKey = ""; const g = gfById(gfId); if (g) gfSendAim(g, true); } });
+    gfCh.subscribe(st => { if (st === "SUBSCRIBED" && gfId) try { gfCh.send({ type: "broadcast", event: "hello", payload: { gid: gfId } }); } catch (e) {} });
+  } catch (e) { gfCh = null; }
+  return gfCh;
+}
+function gfSendAim(g, force){
+  const st = g && g.st; if (!st || !st.gf || g.status !== "playing" || gfActor(st) !== me || st.build || st.place) return;
+  const club = gfSel === -1 ? "pt" : gfSel != null ? st.hand[me][gfSel] : null;
+  const d = { gid: g.id, p: me, n: st.n, dir: gfDir, club, aim: gfAim };
+  const key = JSON.stringify(d); if (!force && key === gfSentKey) return; gfSentKey = key;
+  const ch = gfChan(); if (ch) try { ch.send({ type: "broadcast", event: "aim", payload: d }); } catch (e) {}
+}
+function openGf(id){ const g0 = gfById(id); gfId = id; gfSel = null; gfAim = null; if (g0 && g0.st) gfSeen[id] = (g0.st.last && g0.st.last.n) || 0; $("#gfg").hidden = false; document.body.style.overflow = "hidden"; drawGf();
+  const ch = gfChan(); if (ch) try { ch.send({ type: "broadcast", event: "hello", payload: { gid: id } }); } catch (e) {} }
 function closeGf(){ gfId = null; $("#gfg").hidden = true; document.body.style.overflow = ""; render(); }
 function drawGf(){
   setTimeout(cpuKick, 0);
@@ -10025,6 +10076,14 @@ function gfRender(g, anim){
   const balls = st.order.filter(p => !st.ball[p].done || (anim && st.last && st.last.p === p)).map(p => ({ p, x: anim && st.last && st.last.p === p && st.last.from ? st.last.from.x : st.ball[p].x, y: anim && st.last && st.last.p === p && st.last.from ? st.last.from.y : st.ball[p].y }));
   // 自分の番：自分のボールに打つ向きの三角
   if (mine && !st.build && !st.place && b && !gfAdj(st, me)) balls.forEach(z => { if (z.p === me) z.dir = atTee ? 0 : gfDir; });
+  // ほかの人の番：その人が選んでいる向き（届いていなければ前向き）と狙っているマス
+  let rAim = null, rClub = null;
+  if (!anim && !mine && cur && cur !== me && g.status === "playing" && !st.build && !st.place && st.ball[cur] && !gfAdj(st, cur)){
+    const r = gfRemote[g.id], ok = r && r.p === cur && r.n === st.n, bb = st.ball[cur];
+    balls.forEach(z => { if (z.p === cur) z.dir = bb.y < 0 ? 0 : ok ? r.dir : 0; });
+    if (ok){ rAim = r.aim; rClub = r.club; }
+  }
+  if (rClub && GF_CLUB[rClub]) tg = gfTargets(st, cur, rClub, (gfRemote[g.id] || {}).dir || 0).map(o => ({ ...o, remote: 1 }));
   const tot = p => st.sc[p].reduce((a, v) => a + v, 0);
   const sbd = st.order.map(p => { const bb = st.ball[p]; return `<div class="gfsc ${p === cur ? "cur" : ""} ${bb.done ? "done" : ""}" style="--pc:${pcolor(p)}"><i class="dot"></i><b>${esc(pname(p))}</b><span>${ending ? st.sc[p][hv] : bb.s}<small>打</small></span><em>計${tot(p) + (st.status === "playing" ? 0 : 0)}</em>${ending ? `<i class="ok">IN</i>` : st.build ? "" : st.place ? (st.place.q.includes(p) ? `<i class="ok">タイル</i>` : "") : bb.done ? `<i class="ok">${bb.cap ? "上限" : "IN"}</i>` : bb.on ? `<i class="gr">ON</i>` : ""}</div>`; }).join("");
   let act = "", pv = null;
@@ -10045,11 +10104,11 @@ function gfRender(g, anim){
     const sel = gfRev.i != null && st.revRow[gfRev.i] != null ? st.revRow[gfRev.i] : null;
     let pat = sel != null ? GF_REVSET[sel] : null; for (let r = 0; pat && r < (gfRev.r || 0); r++) pat = gfRot(pat);
     if (myP && pat && gfRev.x != null) pv = { pat, x: gfRev.x, y: gfRev.y, bad: !!gfRevOk(c, gfRev.x, gfRev.y, pat) };
-    act = myP ? `<div class="gfmsg">逆転タイル：表の4枚から1枚選び、コースをタップして置く場所を決める</div><div class="gfrev">${st.revRow.map((id, ri) => id == null ? "" : `<button class="gfrv ${gfRev.i === ri ? "on" : ""}" data-rv="${ri}">${gfRevTile(ri === gfRev.i && pat ? pat : GF_REVSET[id])}<small>No.${id + 1}</small></button>`).join("")}${pat ? `<button class="gfrv rot" id="gfRot">↻<small>回転</small></button>` : ""}</div>${pv && !pv.bad ? `<button class="btn gfgo" id="gfPlace">ここに置く</button>` : pv ? `<div class="gfmsg bad">${gfRevOk(c, pv.x, pv.y, pv.pat)}</div>` : ""}`
+    act = myP ? `<div class="gfmsg">逆転タイル：表のタイルから1枚選び、コースをタップして置く場所を決める</div><div class="gfrev">${st.revRow.map((id, ri) => id == null ? "" : `<button class="gfrv ${gfRev.i === ri ? "on" : ""}" data-rv="${ri}">${gfRevTile(ri === gfRev.i && pat ? pat : GF_REVSET[id])}<small>No.${id + 1}</small></button>`).join("")}${pat ? `<button class="gfrv rot" id="gfRot">↻<small>回転</small></button>` : ""}</div>${pv && !pv.bad ? `<button class="btn gfgo" id="gfPlace">ここに置く</button>` : pv ? `<div class="gfmsg bad">${gfRevOk(c, pv.x, pv.y, pv.pat)}</div>` : ""}`
       : `<div class="gfmsg">${esc(pname(cur))}が逆転タイルを置いています…（前のホールでビリ）</div>`;
   }
   else if (g.status === "finished") act = `<div class="gfmsg">ゲーム終了</div>`;
-  else if (!mine) act = `<div class="gfmsg">${cur ? `${esc(pname(cur))}の番です` : ""}</div>`;
+  else if (!mine) act = `<div class="gfmsg">${cur ? `${esc(pname(cur))}の番です${rClub && GF_CLUB[rClub] ? `：<b>${GF_CLUB[rClub].n}</b>・${GF_DIRN[(gfRemote[g.id] || {}).dir || 0]}向きで${rAim ? "狙いを決めた" : "考え中…"}` : ""}` : ""}</div>`;
   else if (gfAdj(st, me)) act = `<div class="gfmsg">カップの隣：パット（成功カード1枚で入る）</div><button class="btn gfgo" id="gfPutt">パット ⛳</button>`;
   else if (gfDiag(st, me) && gfSel == null) act = `<div class="gfmsg">カップの斜め隣：ロングパット（成功カード2枚で入る）か、クラブ・パターで寄せる</div><button class="btn gfgo" id="gfLPutt">ロングパット 🎯</button>`;
   else if (!gfCanAny(st, me)) act = `<div class="gfmsg">どのクラブでも打てるマスがありません</div><button class="btn gfgo" id="gfPass">1打罰で手札を入れ替える</button>`;
@@ -10062,11 +10121,12 @@ function gfRender(g, anim){
   root.innerHTML = `<div class="gfwrap">
     <div class="gftop"><button class="gfbk" id="gfBack">‹</button><div class="gfttl"><b>TILE GOLF</b><small>第${hv + 1}/${st.holes.length}ホール「${esc(c.name)}」</small></div><button class="gfbk" id="gfMenu">⋯</button></div>
     <div class="gfscs">${sbd}</div>
-    ${st.revRow && (!st.place || ending) ? `<div class="gfrow"><small>逆転タイル</small>${st.revRow.map(id => id == null ? "" : gfRevTile(GF_REVSET[id], "mini")).join("")}</div>` : ""}
-    <div class="gfmid">${gfBoardH(c, { tg, sel: gfAim, balls: ending ? (st.last.from ? [{ p: st.last.p, x: st.last.from.x, y: st.last.from.y }] : []) : st.place || st.build ? [] : balls, pv, hl: anim && st.last && st.last.kind === "place" ? st.last : null, hl1: anim && st.last && st.last.kind === "build" ? st.last : null })}</div>
+    ${st.revRow && st.revRow.length && (!st.place || ending) ? `<div class="gfrow"><small>逆転タイル</small>${st.revRow.map(id => id == null ? "" : gfRevTile(GF_REVSET[id], "mini")).join("")}</div>` : ""}
+    <div class="gfmid ${rClub ? "remote" : ""}">${gfBoardH(c, { tg, sel: rClub ? rAim : gfAim, balls: ending ? (st.last.from ? [{ p: st.last.p, x: st.last.from.x, y: st.last.from.y }] : []) : st.place || st.build ? [] : balls, pv, hl: anim && st.last && st.last.kind === "place" ? st.last : null, hl1: anim && st.last && st.last.kind === "build" ? st.last : null })}</div>
     <div class="gfbot">${act}<div class="gfhand ${st.order.includes(me) && !ending ? "" : "hid"} ${st.place || st.build ? "sm" : ""}">${st.place || st.build ? `<small class="gfhl2">クラブの手札</small>` : ""}${hand}</div></div>
     <div class="gffx" id="gfFx"></div></div>`;
   root.onclick = e => gfTap(g, e);
+  if (mine) gfSendAim(g);
 }
 function gfTap(g, e){
   const t = e.target, st = g.st;
@@ -10234,7 +10294,7 @@ async function gfPlay(g, L){
       }
       if (aim) aim.classList.remove("aimfx");
       // 5) 結果
-      const R = { tree: [`<b class="big r">木の中…</b><p>次のショットはどのクラブでも1マスだけ</p>`, "bad"], cupin: [`<b class="big">CUP IN!!</b><p>${L.ev === "tail" ? "追い風" : "強風"}に乗ってカップイン！ ${L.s}打でホールアウト</p>`, "win"], chipin: [`<b class="big">CHIP IN!!</b><p>${L.s}打でホールアウト</p>`, "win"], green: [`<b class="big g">GREEN ON</b><p>${(() => { const cu = g.st.holes[L.holeEnd ? L.holeEnd - 1 : g.st.hi].cup, ax = Math.abs(L.to.x - cu[0]), ay = Math.abs(L.to.y - cu[1]); return ax + ay <= 1 ? "カップの隣：次のパットで確実にカップイン" : ax === 1 && ay === 1 ? "カップの斜め隣：ロングパットに挑戦できる" : "パターは1マスずつ転がす"; })()}</p>`, ""], water: [`<b class="big w">池ポチャ…</b><p>1打罰で打つ前の場所に戻る</p>`, "bad"], ob: [`<b class="big w">OB…</b><p>コースの外へ。1打罰で打つ前の場所に戻る</p>`, "bad"], bunker: [`<b class="big b">バンカー</b><p>次のショットは1マス短くなる</p>`, ""], rough: [`<b class="big r">ラフ</b><p>次のショットは1マス短くなる</p>`, ""], fair: [`<b class="big">フェアウェイ</b><p>${L.s}打目</p>`, ""] }[L.res];
+      const R = { tree: [`<b class="big r">木の中…</b><p>次のショットはどのクラブでも1マスだけ</p>`, "bad"], cupin: [`<b class="big">CUP IN!!</b><p>${L.ev === "tail" ? "追い風" : "強風"}に乗ってカップイン！ ${L.s}打でホールアウト</p>`, "win"], chipin: [`<b class="big">CHIP IN!!</b><p>${L.s}打でホールアウト</p>`, "win"], green: [`<b class="big g">GREEN ON</b><p>${(() => { const cu = g.st.holes[L.holeEnd ? L.holeEnd - 1 : g.st.hi].cup, ax = Math.abs(L.to.x - cu[0]), ay = Math.abs(L.to.y - cu[1]); return ax + ay <= 1 ? "カップの隣：次のパットで確実にカップイン" : ax === 1 && ay === 1 ? "カップの斜め隣：ロングパットに挑戦できる（グリーンの上だけ）" : "パターは1マスずつ転がす"; })()}</p>`, ""], water: [`<b class="big w">池ポチャ…</b><p>1打罰で打つ前の場所に戻る</p>`, "bad"], ob: [`<b class="big w">OB…</b><p>コースの外へ。1打罰で打つ前の場所に戻る</p>`, "bad"], bunker: [`<b class="big b">バンカー</b><p>次のショットは1マス短くなる</p>`, ""], rough: [`<b class="big r">ラフ</b><p>次のショットは1マス短くなる</p>`, ""], fair: [`<b class="big">フェアウェイ</b><p>${L.s}打目</p>`, ""] }[L.res];
       gfImpact(c, L.to.x, L.to.y, L.res);
       await gfWait(L.res === "fair" ? 150 : 300);
       await show(R[0], L.res === "chipin" || L.res === "cupin" ? 2000 : 1400, `${R[1]} slam res-${L.res}`);
@@ -10279,10 +10339,25 @@ function gfMenu(g){
   const ab = s.querySelector("#gfAbort"); if (ab) ab.onclick = async () => { if (!confirm("この対戦をやめますか？")) return; const { error } = await sb.from("gf_games").update({ status: "aborted" }).eq("id", g.id); if (error) return fail(error, "中止"); await loadTable("gf_games"); closeSheet(); closeGf(); };
 }
 const gfEndSeen = {};
+/* 遊び終わったホールをコース一覧に保存する（逆転タイルを置いたあとの形のまま） */
+const gfSaved = {};
+async function gfSaveHole(g, h, btn){
+  const key = g.id + ":" + h; if (gfSaved[key]) { toast("このホールは保存済みです"); return; }
+  const c = g.st.holes[h]; if (!c || c.t.includes("e")) { toast("まだコースが完成していません"); return; }
+  const d = new Date(), def = `${c.shape || c.name.replace(/（.*）$/, "")} ${d.getMonth() + 1}/${d.getDate()}`;
+  const name = (prompt("保存するコースの名前", def) || "").trim(); if (!name) return;
+  const cc = { id: "c" + Date.now().toString(36), name: name.slice(0, 16), w: gfW(c), h: gfH(c), sx: c.sx, cup: c.cup.slice(), t: c.t };
+  if (btn) btn.disabled = true;
+  if (!(await putSetting("gf_courses", [...gfCourses(), cc]))){ if (btn) btn.disabled = false; return; }
+  await loadTable("app_settings"); gfSaved[key] = 1;
+  if (btn){ btn.textContent = "✓ 保存済み"; btn.disabled = true; }
+  toast(`「${cc.name}」をコース一覧に保存しました`);
+}
 function gfEndShow(g){
   const st = g.st; if (gfEndSeen[g.id]) return; gfEndSeen[g.id] = 1;
   const tot = p => st.sc[p].reduce((a, v) => a + v, 0), rk = st.order.slice().sort((a, b) => tot(a) - tot(b));
-  const s = openSheet("結果", `<div class="gfend"><h2>${(st.wins || []).includes(me) ? "VICTORY" : "GAME SET"}</h2><table><tr><th></th>${st.holes.map((h, i) => `<th>H${i + 1}</th>`).join("")}<th>計</th></tr>${rk.map(p => `<tr class="${(st.wins || []).includes(p) ? "win" : ""}"><td style="color:${pcolor(p)}">${esc(pname(p))}</td>${st.sc[p].map(v => `<td>${v}</td>`).join("")}<td><b>${tot(p)}</b></td></tr>`).join("")}</table></div><div class="btns"><button class="btn" id="gfAgain">もう一度</button></div>`);
+  const s = openSheet("結果", `<div class="gfend"><h2>${(st.wins || []).includes(me) ? "VICTORY" : "GAME SET"}</h2><table><tr><th></th>${st.holes.map((h, i) => `<th>H${i + 1}</th>`).join("")}<th>計</th></tr>${rk.map(p => `<tr class="${(st.wins || []).includes(p) ? "win" : ""}"><td style="color:${pcolor(p)}">${esc(pname(p))}</td>${st.sc[p].map(v => `<td>${v}</td>`).join("")}<td><b>${tot(p)}</b></td></tr>`).join("")}</table><h3 class="gfsvh3">今回のホール</h3><p class="note">気に入ったホールは保存すると、次から「作ってあるコース」で選べます</p><div class="gfsvrow">${st.holes.map((c, i) => { const best = Math.min(...st.order.map(p => st.sc[p][i])); return `<div class="gfsvc"><b class="hn">H${i + 1}</b>${gfBoardH(c, { cls: "mini" })}<b class="nm">${esc(c.shape || c.name)}</b><small>ベスト ${best}打</small><button type="button" class="btn ghost" data-svh="${i}" ${gfSaved[g.id + ":" + i] ? "disabled" : ""}>${gfSaved[g.id + ":" + i] ? "✓ 保存済み" : "💾 保存"}</button></div>`; }).join("")}</div></div><div class="btns"><button class="btn" id="gfAgain">もう一度</button></div>`);
+  s.querySelectorAll("[data-svh]").forEach(b => b.onclick = () => gfSaveHole(g, +b.dataset.svh, b));
   s.querySelector("#gfAgain").onclick = () => { closeSheet(); closeGf(); openGfNew(); };
 }
 
@@ -10294,7 +10369,7 @@ function openGfNew(){
     <div class="btns"><button type="button" class="grbtn" data-grule="gf">ルールを見る</button><button type="button" class="grbtn" id="gfEdit">コースを作る・編集</button></div>
     <div class="f"><span>参加者（タップで選ぶ・1〜4人）</span>${chipPlayers(db.players.map(p => p.id), order)}${cpuChips(order)}</div>
     <div class="f"><span>打つ順番（指で動かして並べ替え。ホールごとに1番手が交代）</span><div id="gfOrder" class="norder"></div><button class="shufbtn" id="gfShuf">順番をシャッフル</button></div>
-    <div class="f"><span>回るホール（この順に回る。タップで外す・最大9ホール）</span><div id="gfSel" class="gfhl gfsel"></div></div>
+    <div class="f"><span>回るホール（この順に回る。◀▶で入れ替え・✕で外す・最大9ホール）</span><div id="gfSel" class="gfhl gfsel"></div></div>
     <div class="f"><span>「みんなで作る」ホールを足す（土台の形をタップ）</span><div id="gfShps" class="gfhl"></div></div>
     <div class="f"><span>作ってあるコースを足す</span><div id="gfHoles" class="gfhl"></div></div>
     <div class="btns"><button class="btn" id="gfGo">はじめる</button></div>`);
@@ -10304,8 +10379,9 @@ function openGfNew(){
   const holeOf = e => e.b || gfCourses().find(c => c.id === e.id);
   const drawH = () => {
     // 選んだホール（番号つき・タップで外す）
-    $("#gfSel").innerHTML = pick.length ? pick.map((e, i) => { const h = holeOf(e); return h ? `<button type="button" class="gfhc on" data-rm="${i}"><i>${i + 1}</i>${gfBoardH(h, { cls: "mini" })}<b>${esc(e.b ? (h.shape || "みんなで作る") : h.name)}</b><small>${e.b ? "みんなで作る" : "コース"}・✕外す</small></button>` : ""; }).join("") : `<p class="note">下からホールを選んでください</p>`;
+    $("#gfSel").innerHTML = pick.length ? pick.map((e, i) => { const h = holeOf(e); return h ? `<div class="gfhc on gfpk"><i>${i + 1}</i>${gfBoardH(h, { cls: "mini" })}<b>${esc(e.b ? (h.shape || "みんなで作る") : h.name)}</b><small>${e.b ? "みんなで作る" : "コース"}</small><span class="mv"><button type="button" data-mv="${i}" data-d="-1" ${i === 0 ? "disabled" : ""}>◀</button><button type="button" data-rm="${i}">✕</button><button type="button" data-mv="${i}" data-d="1" ${i === pick.length - 1 ? "disabled" : ""}>▶</button></span></div>` : ""; }).join("") : `<p class="note">下からホールを選んでください</p>`;
     $("#gfSel").querySelectorAll("[data-rm]").forEach(b => b.onclick = () => { pick.splice(+b.dataset.rm, 1); drawH(); });
+    $("#gfSel").querySelectorAll("[data-mv]").forEach(b => b.onclick = () => { const i = +b.dataset.mv, j = i + +b.dataset.d; if (j < 0 || j >= pick.length) return; [pick[i], pick[j]] = [pick[j], pick[i]]; drawH(); });
     // 土台の形（プレビューは固定）
     $("#gfShps").innerHTML = `<button type="button" class="gfhc build" data-shp="-1"><span class="bico">？</span><b>おまかせ</b><small>形をランダムで1つ</small></button>` + GF_SHAPES.map((z, i) => { const n = pick.filter(e => e.b && e.b.shape === z.n).length; return `<button type="button" class="gfhc ${n ? "on" : ""}" data-shp="${i}">${n ? `<i>${n}</i>` : ""}${gfBoardH(gfFromShape(i, "e", 1), { cls: "mini" })}<b>${z.n}</b></button>`; }).join("");
     $("#gfShps").querySelectorAll("[data-shp]").forEach(b => b.onclick = () => add({ b: gfNewBuild(+b.dataset.shp) }));
@@ -10399,8 +10475,8 @@ function gfRulesHtml(){
   <p><b>打つ向き</b>：2打目からは「←↑→↓」で前・右・後ろ・左のどれかに向きを変えられる。クラブの形もその向きに回る（ティーショットは前だけ）。</p>
   <p>Sがボールの位置、黄色のマスが狙えるマス。<b>濃い黄色</b>はボールの真っすぐ前にある木を<b>1本まで</b>越えられる。<b>薄い黄色</b>は木を越えられない。</p>
   <h4>手番の流れ</h4><p>① クラブを1枚選び、黄色のマスから狙うマスを選ぶ<br>② クラブを公開して、イベントカードを1枚めくる<br>・ナイスショット（50%）：狙ったマスに止まる<br>・強風（25%）：打った向きの左に1マスそれる<br>・追い風（25%）：打った向きの前に1マス流れる<br>それた先が木なら、木のマスに入る（次はどのクラブでも1マスだけ）。<b>流された先がカップならカップイン！</b><b>コースの外に出たらOB</b>：1打罰で打つ前の場所に戻る。</p>
-  <h4>カップイン</h4><p>カップに入るかどうかは<b>成功/失敗カードの山札</b>（成功80枚・失敗20枚。全員で1つの山を使う）からめくって決める。めくる枚数：<b>ドライバー5枚・アイアン4枚・ウェッジ3枚・ロングパット2枚・パター1枚</b>。すべて「成功」なら入る。<br><b>カップの上下左右の隣</b>からは<b>パット</b>（1枚）。失敗ならその場に止まる。<br><b>カップの斜め隣</b>からは<b>ロングパット</b>（2枚）。失敗ならその場に止まる。クラブやパターで上下左右の隣まで寄せてもよい。<br>それ以外の場所でのパターは、選んだ向きに<b>1マス分</b>転がるだけ。<br>クラブで<b>カップのマスを直接狙う</b>と<b>チップインチャレンジ</b>：クラブの枚数をめくり、1枚でも失敗ならカップのマスで止まる（次はパット）。チップインチャレンジのときはイベントカードはめくらない。</p>
-  <h4>逆転タイル</h4><p>2×2の柄の逆転タイルが全50種類。毎ゲーム、そのうち<b>4枚を表にして場に置く</b>。ホールが終わったら、そのホールの打数が一番多かった人（同じなら全員）が、表の4枚から1枚選び（回転もできる）、次のホールのコースに上から被せる。使ったタイルの場所には次の1枚が補充される。カップのマスには被せられない。全員が同じ打数なら置かない。</p>
+  <h4>カップイン</h4><p>カップに入るかどうかは<b>成功/失敗カードの山札</b>（成功80枚・失敗20枚。全員で1つの山を使う）からめくって決める。めくる枚数：<b>ドライバー5枚・アイアン4枚・ウェッジ3枚・ロングパット2枚・パター1枚</b>。すべて「成功」なら入る。<br><b>カップの上下左右の隣</b>からは<b>パット</b>（1枚）。失敗ならその場に止まる。<br><b>グリーンの上</b>で<b>カップの斜め隣</b>にいるときは<b>ロングパット</b>（2枚）。失敗ならその場に止まる。クラブやパターで上下左右の隣まで寄せてもよい。<br>それ以外の場所でのパターは、選んだ向きに<b>1マス分</b>転がるだけ。<br>クラブで<b>カップのマスを直接狙う</b>と<b>チップインチャレンジ</b>：クラブの枚数をめくり、1枚でも失敗ならカップのマスで止まる（次はパット）。チップインチャレンジのときはイベントカードはめくらない。</p>
+  <h4>逆転タイル</h4><p>2×2の柄の逆転タイルが全50種類。毎ゲーム、そのうち<b>「ホール数−1」枚を表にして場に置く</b>（3ホールなら2枚）。ホールが終わったら、そのホールの打数が一番多かった人（同じなら全員）が、表のタイルから1枚選び（回転もできる）、次のホールのコースに上から被せる。<b>使ったタイルは場から消え、補充はしない</b>（置く人がいるのに表のタイルが無いときだけ山から1枚出す）。カップのマスには被せられない。全員が同じ打数なら置かない。</p>
   <h4>そのほか</h4><p>どのクラブでも打てるマスがないときは、1打罰で手札を3枚入れ替える。1ホール${GF_MAXS}打で打ち切り。</p>`;
 }
 
