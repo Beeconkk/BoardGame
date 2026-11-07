@@ -3007,7 +3007,7 @@ img.wdta.im{display:block;object-fit:contain;-webkit-user-drag:none}
 .gfsc .gr{background:#7DFFA8}
 .gfmid{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;container-type:size}
 /* 盤面 */
-.gfboard{--cs:min(calc((100cqw - 6px) / var(--gw,4) - 2px), calc((100cqh - 6px) / (var(--gh,10) + 1) - 2px));display:grid;grid-template-columns:repeat(var(--gw,4),var(--cs));grid-auto-rows:var(--cs);gap:2px;padding:3px;border-radius:12px;background:rgba(0,0,0,.35);border:1px solid rgba(180,255,210,.2)}
+.gfboard{--cs:min(calc((100cqw - 6px) / 4), calc((100cqh - 6px) / 11));display:grid;grid-template-columns:repeat(4,var(--cs));grid-auto-rows:var(--cs);gap:2px;padding:3px;border-radius:12px;background:rgba(0,0,0,.35);border:1px solid rgba(180,255,210,.2)}
 .gfc{position:relative;border-radius:5px;overflow:hidden;display:grid;place-items:center}
 .gfc.t-f{background:repeating-linear-gradient(0deg,#3D9A4E 0 25%,#46A857 25% 50%)}
 .gfc.t-t{background:#2C6B36}
@@ -3086,7 +3086,7 @@ img.wdta.im{display:block;object-fit:contain;-webkit-user-drag:none}
 .gfhc>i{position:absolute;right:-6px;top:-6px;width:22px;height:22px;border-radius:50%;background:#7DFFA8;color:#0A2A14;font-style:normal;font-weight:900;font-size:12px;display:grid;place-items:center;z-index:2}
 .gfboard.mini{--cs:18px;gap:1px;padding:2px;border-radius:6px}
 .gfboard.mini .gfc{border-radius:2px}
-.gfboard.edit{--cs:min(calc((100vw - 60px) / var(--gw,4)),36px);margin:0 auto}
+.gfboard.edit{--cs:min(calc((100vw - 60px) / 4),36px);margin:0 auto}
 .gftools{display:flex;flex-wrap:wrap;gap:5px;margin:6px 0}
 .gft{display:flex;align-items:center;gap:4px;padding:6px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.05);color:inherit;font-family:inherit;font-size:12px}
 .gft[aria-pressed="true"]{border-color:#7DFFA8;background:rgba(125,255,168,.18);font-weight:900}
@@ -3159,130 +3159,77 @@ img.wdta.im{display:block;object-fit:contain;-webkit-user-drag:none}
 .gfhand{gap:6px}
 .gfcard{width:min(23vw,92px)}
 
-/* タイルの手札 */
-.gfbh{display:flex;gap:10px;justify-content:center;margin:4px 0}
-.gfbh .gftile{background:rgba(0,0,0,.3);border:2px solid rgba(255,255,255,.2);border-radius:12px;padding:6px 8px;color:#fff;font-family:inherit}
-.gfbh .gftile.on{border-color:#FFE600;box-shadow:0 0 12px -2px #FFE600;transform:translateY(-4px)}
-.gfbh .gftile.dim{opacity:.6}
-
-/* ホール終了 */
-.gfshow.gfhe{pointer-events:auto;min-width:240px}
-.gfhe table{border-collapse:collapse;font-size:14px;margin:2px 0}
-.gfhe td{padding:4px 10px;border-bottom:1px solid rgba(255,255,255,.12);text-align:left}
-.gfhe td:nth-child(2),.gfhe td:nth-child(3){text-align:right}
-.gfhe .dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--pc);margin-right:6px}
-.gfhe .rv{color:#FFE36A}
-.gfhe .gfgo{margin-top:4px}
-
-/* コースの外（土台の形） */
-.gfc.t-x{background:transparent!important;box-shadow:none!important;border:none!important;pointer-events:none}
-.gfboard.edit .gfc.t-x{pointer-events:auto;outline:1px dashed rgba(255,255,255,.15)}
-.gft.t-x i{background:#111;border:1px dashed rgba(255,255,255,.4)}
-/* 土台の形の選択 */
-#gfShps{align-items:stretch}
-#gfShps .gfboard.mini{--cs:11px}
-#gfShps .gfhc.build{min-height:0;min-width:76px}
-#gfShps .gfc.tee b{font-size:7px}
-
-/* ===== 派手な演出 ===== */
-#gfFxL{position:fixed;inset:0;pointer-events:none;z-index:96;overflow:hidden}
-.gfp{position:absolute;left:0;top:0;border-radius:50%;margin:-4px 0 0 -4px;box-shadow:0 0 6px currentColor;will-change:transform}
-.gfp.sq{border-radius:2px}
-.gfp.em{background:none;box-shadow:none;line-height:1}
-.gfring{position:absolute;left:0;top:0;border:4px solid #fff;border-radius:50%;box-shadow:0 0 18px currentColor,inset 0 0 12px rgba(255,255,255,.5)}
-.gfflash{position:absolute;inset:0;mix-blend-mode:screen}
-.gfstreak{position:absolute;left:0;top:0;width:140px;height:3px;border-radius:3px;transform-origin:center}
-.gfshow{position:relative;overflow:hidden}
-.gfshow>*{position:relative;z-index:1}
-.gfshow>.gfrays{position:absolute;z-index:0;left:50%;top:50%;width:520px;height:520px;margin:-260px 0 0 -260px;background:repeating-conic-gradient(rgba(255,227,106,.22) 0 10deg,transparent 10deg 20deg);animation:gfspin 6s linear infinite;-webkit-mask:radial-gradient(circle,#000 20%,transparent 65%);mask:radial-gradient(circle,#000 20%,transparent 65%)}
-.gfshow.rev>.gfrays{background:repeating-conic-gradient(rgba(255,46,106,.28) 0 10deg,transparent 10deg 20deg)}
-@keyframes gfspin{to{transform:rotate(360deg)}}
-.gfshow.slam{animation:gfslam .45s cubic-bezier(.2,1.6,.4,1) both}
-@keyframes gfslam{from{transform:scale(2.2);opacity:0;filter:blur(6px)}60%{opacity:1;filter:none}}
-.gfshow.win{border-color:#FFE36A;box-shadow:0 0 40px -6px #FFB800,0 20px 50px rgba(0,0,0,.6)}
-.gfshow.win .big{background:linear-gradient(100deg,#FFE36A 30%,#fff 50%,#FFE36A 70%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gfwin .8s ease-in-out infinite alternate,gfshine 1.6s linear infinite}
-@keyframes gfshine{from{background-position:100% 0}to{background-position:-150% 0}}
-.gfshow.bad{animation-name:gfslam}
-.gfshow.res-ob,.gfshow.res-water{border-color:#FF6A7A;box-shadow:0 0 30px -6px #FF2E4A,0 20px 50px rgba(0,0,0,.6)}
-.gfshow.res-green{border-color:#7DFFA8;box-shadow:0 0 30px -6px #3FD67A,0 20px 50px rgba(0,0,0,.6)}
-.gfshow.club .gfcard{box-shadow:0 0 30px -4px #FFE36A}
-.gfshow.chipc .big{font-size:26px;line-height:1.05;color:#FFE36A;text-shadow:0 0 18px #FFB800}
-.gfshow.ev-wind{animation:gfin .3s both,gfwobble .5s .45s ease-in-out 2}
-@keyframes gfwobble{25%{transform:translateX(-10px) rotate(-3deg)}75%{transform:translateX(10px) rotate(3deg)}}
-.gfshow.ev-ok .gfev{box-shadow:0 0 30px -4px #7DFFA8}
-.gfchip.tense{animation:gftense .42s ease-in-out}
-@keyframes gftense{30%{transform:scale(1.12) rotate(-4deg)}60%{transform:scale(1.12) rotate(4deg)}100%{transform:scale(1)}}
-.gfchip.ok.flipin{box-shadow:0 0 22px #FFE36A}
-.gfchip.ng.flipin{box-shadow:0 0 22px #FF4A6A;animation:gfflip .5s cubic-bezier(.2,.8,.3,1.2) both,gfwobble .35s .5s}
-.gfball.fly{filter:drop-shadow(0 0 6px #fff) drop-shadow(0 0 10px var(--pc))}
-.gfhe table tr{animation:gfrow .45s both}
-.gfhe table tr:nth-child(2){animation-delay:.12s}.gfhe table tr:nth-child(3){animation-delay:.24s}.gfhe table tr:nth-child(4){animation-delay:.36s}
-.gfhe table tr:first-child td{color:#FFE36A;font-weight:900}
-@keyframes gfrow{from{transform:translateX(-30px);opacity:0}}
-.gftag{font-size:20px!important;font-weight:900;animation:gfslam .4s both;text-shadow:0 0 12px #9AD6FF}
-.gfsel{min-height:60px}
-.gfsel .gfhc small,#gfShps .gfhc small{font-size:9px;color:#9CC9AC}
-#gfHoles .gfboard.mini,.gfsel .gfboard.mini{--cs:11px}
-
-/* タイル配置中も見えるクラブの手札（小さめ・押せない） */
-.gfhand.sm{flex-wrap:wrap;gap:4px;pointer-events:none;opacity:.9;margin-top:4px}
-.gfhand.sm .gfhl2{flex-basis:100%;text-align:center;font-size:10.5px;color:#9CC9AC}
-.gfhand.sm .gfcard{width:min(17vw,64px);padding:4px 2px 5px;gap:2px;border-radius:9px}
-.gfhand.sm .gfcard b{font-size:10px}
-.gfhand.sm .gfpat{grid-template-columns:repeat(3,8px);grid-auto-rows:8px;gap:1px}
-.gfhand.sm .gfpat i.s{font-size:6px}
-
-/* 打つ向きの三角 */
-.gfball.dir{position:relative;overflow:visible}
-.gfball.dir::after{content:"";position:absolute;left:50%;top:50%;width:0;height:0;border-left:8px solid transparent;border-right:8px solid transparent;border-bottom:12px solid #FFE600;transform:translate(-50%,-50%) rotate(var(--rot)) translateY(calc(-50% - 15px));filter:drop-shadow(0 0 2px #000) drop-shadow(0 0 6px #FFE600);animation:gfdirp 1s ease-in-out infinite;transition:transform .2s}
-@keyframes gfdirp{50%{opacity:.55}}
-.gfc:has(.gfball.dir){z-index:6;overflow:visible}
-.gfc:has(.gfball.dir) .bs{overflow:visible;z-index:6}
-/* バンカーの上の狙えるマスは黄色が見えにくいのでピンク */
-.gfc.t-b.gt.gt-ok.gt-d::before{background:rgba(255,46,140,.6);box-shadow:inset 0 0 0 3px #FF2E8C}
-.gfc.t-b.gt.gt-ok.gt-l::before{background:rgba(255,140,200,.5);box-shadow:inset 0 0 0 3px #FF8CC8}
-
-/* コースの保存 */
-.gfsvh{margin-top:2px;font-size:13px;padding:8px 14px}
-.gfsvh.done{opacity:.7}
-.gfsvrow{display:flex;gap:8px;overflow-x:auto;padding:6px 2px;justify-content:center}
-.gfsvrow .gfboard.mini{--cs:10px}
-.gfsvrow .gfhc small{font-size:10px}
-
-.gfsvh3{margin:14px 0 2px;font-size:15px;text-align:left}
-.gfsvrow{justify-content:flex-start;gap:10px;padding:6px 2px 10px}
-.gfsvc{flex:none;display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px;border-radius:12px;border:1px solid rgba(127,127,127,.3)}
-.gfsvc .gfboard.mini{--cs:15px}
-.gfsvc .hn{font-size:13px}.gfsvc .nm{font-size:11px;max-width:110px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.gfsvc small{font-size:10px;opacity:.7}
-.gfsvc .btn{padding:6px 10px;font-size:12px;min-height:0}
-
-/* 回るホールの入れ替え */
-.gfpk .mv{display:flex;gap:4px;margin-top:2px}
-.gfpk .mv button{width:28px;height:26px;border-radius:8px;border:1px solid rgba(127,127,127,.4);background:rgba(127,127,127,.12);color:inherit;font:900 12px/1 inherit;font-family:inherit;padding:0}
-.gfpk .mv button:disabled{opacity:.3}
-.gfpk .mv button[data-rm]{color:#E0405A}
-
-/* ほかの人が狙っている範囲（見るだけ） */
-.gfmid.remote .gfc.gt::before{opacity:.55}
-.gfmid.remote .gfc.sel{outline:3px dashed #fff;outline-offset:-3px}
-
-/* いつでも押せる「1打罰で手札入れ替え」 */
-.gfpassb{display:block;margin:4px auto 2px;padding:5px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.3);color:#CFEFD9;font-family:inherit;font-weight:700;font-size:12px;line-height:1.2}
-.gfpassb.arm{border-color:#FF6A7A;color:#FFB3BE;background:rgba(120,20,40,.5);animation:gfdirp .8s ease-in-out infinite}
-
-.gfpk.rand{justify-content:space-between;min-width:96px;border-style:dashed}
-.gfpk.rand .bico{font-size:40px;font-weight:900;color:#7DFFA8;margin:20px 0}
-
-/* 追加のイベントカード */
-.gfev.rwind{background:linear-gradient(170deg,#7A4A6E,#2A1326);border-color:#FFB3E0}
-.gfev.head{background:linear-gradient(170deg,#7A6A3F,#2A2413);border-color:#FFE7A3}
-.gfev.duff{background:linear-gradient(170deg,#6B4A2A,#2A1A0E);border-color:#FF9A5A}
-.gfshow.ev-rwind,.gfshow.ev-head{animation:gfin .3s both,gfwobble .5s .45s ease-in-out 2}
-.gfshow.ev-duff{animation:gfin .3s both,gfwobble .35s .45s ease-in-out 3}
-
-/* コースの最高成績 */
-.gfbest{font-style:normal;font-size:10px;font-weight:900;color:#C99A1A;background:rgba(255,227,106,.18);border-radius:999px;padding:2px 7px;white-space:nowrap;max-width:110px;overflow:hidden;text-overflow:ellipsis}
-
+/* ===== 勇者ミリオン ===== */
+.arena.mlg{height:100dvh;overflow:hidden;padding:0;color:#F4F1FF;background:radial-gradient(120% 55% at 50% 0%,#2A2160,transparent 60%),linear-gradient(180deg,#0E1230,#05070F);font-family:"Zen Kaku Gothic New",sans-serif;-webkit-user-select:none;user-select:none}
+.mlwrap{height:100%;display:flex;flex-direction:column;gap:6px;padding:calc(var(--safe-t) + 4px) 10px calc(var(--safe-b) + 6px);position:relative}
+.mltop{display:flex;align-items:center;gap:8px;flex:none}
+.mlttl{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.1}
+.mlttl b{font-family:Cinzel,serif;font-weight:900;letter-spacing:.1em;background:linear-gradient(180deg,#fff,#FFD35A);-webkit-background-clip:text;background-clip:text;color:transparent}
+.mlttl small{font-size:11px;color:#B9B2E0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mlscs{display:flex;gap:5px;flex:none;overflow-x:auto;padding:2px 1px 4px}
+.mlsc{flex:1 0 82px;display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto auto;column-gap:5px;padding:5px 7px;border-radius:10px;background:rgba(0,0,0,.32);border:1.5px solid color-mix(in srgb,var(--pc) 40%,transparent);text-align:left;font-size:11px}
+.mlsc.cur{border-color:var(--pc);box-shadow:0 0 12px -2px var(--pc)}
+.mlsc.vw{background:rgba(255,255,255,.1)}
+.mlsc .dot{width:8px;height:8px;border-radius:50%;background:var(--pc);align-self:center}
+.mlsc b{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.mlsc span{grid-column:1/3;font-family:Cinzel,serif;font-weight:900;font-size:15px;color:#FFD35A}
+.mlsc em{grid-column:1/3;font-style:normal;font-size:9.5px;color:#B9B2E0}
+.mllog{flex:none;font-size:11.5px;line-height:1.35;color:#CFC9EE;background:rgba(0,0,0,.25);border-radius:9px;padding:4px 8px;max-height:3.9em;overflow:hidden}
+.mllog p{margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mlmain{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:2px 1px 8px}
+.mlgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;align-items:start}
+.mlgrid.one{grid-template-columns:minmax(0,1fr)}
+@media (min-width:640px){.mlgrid{grid-template-columns:repeat(3,minmax(0,1fr))}.mlgrid.one{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.mlq,.mls,.mlb{display:flex;height:auto;min-height:max-content;overflow:visible;flex-direction:column;gap:3px;text-align:left;padding:8px 10px;border-radius:12px;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.14);color:#F4F1FF;width:100%}
+.mlq:disabled,.mls:disabled,.mlb:disabled{opacity:.55}
+.mlq:not(:disabled),.mls:not(:disabled),.mlb:not(:disabled){border-color:#FFD35A;box-shadow:0 0 10px -4px #FFD35A}
+.mlq .qh{display:flex;gap:6px;align-items:center}.mlq .qh b{flex:1;font-size:14px}
+.mlq .qh i{font-style:normal;font-size:10px;font-weight:900;padding:1px 7px;border-radius:7px;background:#3FD67A;color:#052}
+.mlq.ローリスク .qh i{background:#FFD35A;color:#4A3300}.mlq.ハイリスク .qh i{background:#FF5A75;color:#fff}
+.mlq small,.mls small,.mlb small{font-size:11px;color:#B9B2E0}
+.mlq .ql{display:flex;flex-direction:column;gap:1px;font-size:12px}
+.mlq .ql span{display:flex;gap:6px}.mlq .ql em{font-style:normal;flex:none;min-width:54px;color:#FFD35A;font-size:11px}
+.mlq .ql .z{color:#9A93C4}
+.mlqw{display:flex;flex-direction:column;gap:3px}
+.mlkb{align-self:flex-end;font-size:11px;font-weight:900;padding:3px 10px;border-radius:8px;background:#8B5CFF;color:#fff}
+.mls{border-left:5px solid var(--ac,#9CA8FF)}
+.mls .sh,.mlb .bh{display:flex;gap:6px;align-items:center;flex-wrap:wrap}.mls .sh b,.mlb .bh b{font-size:13.5px}
+.mls .pw,.mlb .pw{font-size:11px;color:#B9B2E0;margin-left:auto}
+.mls em{font-style:normal;font-family:Cinzel,serif;font-weight:900;color:#FFD35A;font-size:14px}
+.mlb{border-left:5px solid var(--ac,#999)}.mlb em{font-style:normal;font-weight:900;color:#7DFFA8;font-size:12px}
+.mlat{font-style:normal;font-weight:900;font-size:10.5px;padding:1px 6px;border-radius:7px;background:var(--ac,#999);color:#10121C}
+.mlmain h4{margin:12px 2px 5px;font-size:12px;letter-spacing:.08em;color:#FFD35A}.mlmain h4.now{color:#7DFFA8}
+.mlnone{margin:4px 2px;font-size:12px;color:#9A93C4}
+.mlpow{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;padding:8px 10px;border-radius:12px;background:rgba(255,211,90,.1);border:1px solid rgba(255,211,90,.35)}
+.mlpow small{color:#B9B2E0}.mlpow b{font-family:Cinzel,serif;font-size:28px;color:#FFD35A}.mlpow em{font-style:normal;font-size:11px;color:#B9B2E0}
+.mlrow,.mlchips,.mlatt{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.mlrow span,.mlchips span{display:flex;flex-direction:column;padding:5px 10px;border-radius:10px;background:rgba(255,255,255,.07);font-size:13px}
+.mlrow small,.mlchips small{font-size:10px;color:#B9B2E0}.mlrow b,.mlchips b{font-weight:900}
+.mlatt span{display:flex;gap:6px;align-items:center;padding:5px 10px;border-radius:10px;background:rgba(255,255,255,.07);font-size:12.5px}
+.mlgsw{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}
+.mlgs{display:grid;grid-template-columns:auto auto 1fr;gap:4px 6px;align-items:center;padding:6px 9px;border-radius:10px;background:rgba(255,255,255,.07);border-left:5px solid var(--ac,#555);font-size:12px}
+.mlgs.empty{opacity:.5;border-left-color:#555}.mlgs span{text-align:right;font-weight:900;color:#FFD35A}.mlgs small{grid-column:1/4;font-size:10.5px;color:#B9B2E0}
+.mlts{padding:5px 9px;border-radius:9px;background:rgba(255,255,255,.06);margin-bottom:4px}.mlts b{font-size:12.5px}.mlts small{display:block;font-size:11px;color:#B9B2E0}
+.mldf{margin:2px 2px;font-size:12.5px}
+.mlbot{flex:none;display:flex;flex-direction:column;gap:6px;padding:7px 8px;border-radius:12px;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.1)}
+.mlmsg{font-size:12.5px;line-height:1.4}.mlmsg b{color:#FFD35A}
+.mlbtns{display:flex;gap:8px}.mlbtns .btn{padding:10px 6px;font-size:13px}.mlbtns .btn:disabled{opacity:.4}
+.mlnav{flex:none;display:grid;grid-template-columns:repeat(4,1fr);gap:5px}
+.mlnav button{padding:9px 0;border-radius:11px;font-weight:900;font-size:13px;background:rgba(255,255,255,.07);color:#B9B2E0}
+.mlnav button.on{background:linear-gradient(110deg,#FFD35A,#FF9F43);color:#2A1A00}
+.mlfx{position:absolute;inset:0;display:none;place-items:center;background:rgba(3,4,12,.72);z-index:5;pointer-events:none}
+.mlfx.on{display:grid}
+.mlroul{text-align:center;padding:18px 28px;border-radius:22px;background:linear-gradient(160deg,#241A5A,#0B0F2A);border:2px solid #FFD35A;box-shadow:0 0 40px -8px #FFD35A;max-width:86vw}
+.mlroul small{color:#B9B2E0;font-size:12px}
+.mlbig{font-family:Cinzel,serif;font-weight:900;font-size:84px;line-height:1.1;color:#FFD35A;min-width:2ch;transition:transform .2s}
+.mlbig.land{transform:scale(1.25);text-shadow:0 0 24px #FFD35A}
+.mlroul p{margin:4px 0 0;font-size:14px;font-weight:700;min-height:1.4em;line-height:1.4}
+.mlend table td:nth-child(n+2){text-align:right}
+.poster.t-ml{--g1:#FFD35A;--g2:#FF2E6A;--g3:#8B5CFF;--pbg:radial-gradient(100% 80% at 50% -10%,rgba(139,92,255,.4),transparent 60%),radial-gradient(70% 60% at 100% 100%,rgba(255,201,60,.28),transparent 60%),linear-gradient(170deg,#1A1346,#080A1C 70%);--pfont:"Cinzel",serif;--pglow:rgba(255,211,90,.6);--ctash:rgba(255,201,60,.5);--cta:linear-gradient(110deg,#FFF3C2,#FFD35A 40%,#FF9F43 75%,#FF2E6A)}
+.poster.t-ml .ptop h3{font-weight:900;letter-spacing:.06em;background:linear-gradient(180deg,#fff,#FFD35A);-webkit-background-clip:text;background-clip:text;color:transparent;font-size:25px}
+.poster.t-ml .art svg{position:absolute;right:-14px;bottom:-6px;width:210px;opacity:.35}
+.mlq>*,.mls>*,.mlb>*{width:100%;text-align:left}
+.mls em,.mlb em{text-align:right}
 </style>
 </head>
 <body>
@@ -3304,6 +3251,7 @@ img.wdta.im{display:block;object-fit:contain;-webkit-user-drag:none}
 <div class="arena lmg" id="lmg" hidden></div>
 <div class="arena wdg" id="wdg" hidden></div>
 <div class="arena gfg" id="gfg" hidden></div>
+<div class="arena mlg" id="mlg" hidden></div>
 <div class="sheet" id="sheet"><div class="in" id="sheetIn" role="dialog" aria-modal="true"></div></div>
 <div class="toast" id="toast" role="status"></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
@@ -3316,7 +3264,7 @@ img.wdta.im{display:block;object-fit:contain;-webkit-user-drag:none}
    ============================================================ */
 const CFG_URL = "https://gcuddhongxvojabweclh.supabase.co";
 const CFG_KEY = "sb_publishable_E6PxQDZpmdfb6kjRPte3qw_goaYjKZB";
-const APP_VER = "v113";
+const APP_VER = "v86";
 
 const lsGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
 const lsSet = (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} };
@@ -3325,12 +3273,12 @@ const SUPABASE_KEY = (CFG_KEY || lsGet("gl:sbKey") || "").trim();
 const sb = SUPABASE_URL && SUPABASE_KEY && window.supabase ? supabase.createClient(SUPABASE_URL, SUPABASE_KEY, { auth: { persistSession: false } }) : null;
 
 const COLORS = ["#FFC93C", "#FF2E6A", "#19C9E6", "#8B5CFF", "#3FD67A", "#FF8A3D", "#FF6FB5", "#5A6378"];
-const GAME_TBL = ["hx_games", "sz_games", "lm_games", "wd_games", "gf_games"];
+const GAME_TBL = ["hx_games", "sz_games", "lm_games", "wd_games", "gf_games", "ml_games"];
 const TABLES = ["players", "app_settings", ...GAME_TBL];
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 
-const db = { players: [], app_settings: [], hx_games: [], sz_games: [], lm_games: [], wd_games: [], gf_games: [] };
+const db = { players: [], app_settings: [], hx_games: [], sz_games: [], lm_games: [], wd_games: [], gf_games: [], ml_games: [] };
 let tab = lsGet("gl:tab") || "done", loaded = false;
 let me = lsGet("gl:me") || "";
 
@@ -3371,8 +3319,8 @@ async function loadAll(){
   await Promise.all([...TABLES.map(loadTable), extra]); loaded = true;
 }
 const reloadTimer = {};
-const GAME_HOOK = { hx_games: () => [hxId, drawHx], sz_games: () => [szId, drawSz], lm_games: () => [lmId, drawLm], wd_games: () => [wdId, drawWd], gf_games: () => [gfId, drawGf] };
-const inGame = () => !!(hxId || szId || lmId || wdId || gfId);
+const GAME_HOOK = { hx_games: () => [hxId, drawHx], sz_games: () => [szId, drawSz], lm_games: () => [lmId, drawLm], wd_games: () => [wdId, drawWd], gf_games: () => [gfId, drawGf], ml_games: () => [mlId, drawMl] };
+const inGame = () => !!(hxId || szId || lmId || wdId || gfId || mlId);
 /* リアルタイムで届いた変更を反映 */
 function rtChange(payload){
   const t = payload.table;
@@ -3437,8 +3385,8 @@ function flash(big, small){
 
 /* ---------- ルール ---------- */
 function openGameRules(k){
-  const title = { hx: "どんぐり戦争のルール", sz: "四季の巡りのルール", lm: "LEMNISCATEのルール", wd: "WARDENS OF RELICのルール" , gf: "タイルゴルフのルール" }[k];
-  const html = { hx: hxRulesHtml, sz: szRulesHtml, lm: lmRulesHtml, wd: wdRulesHtml, gf: gfRulesHtml }[k]();
+  const title = { hx: "どんぐり戦争のルール", sz: "四季の巡りのルール", lm: "LEMNISCATEのルール", wd: "WARDENS OF RELICのルール" , gf: "タイルゴルフのルール", ml: "勇者ミリオンのルール" }[k];
+  const html = { hx: hxRulesHtml, sz: szRulesHtml, lm: lmRulesHtml, wd: wdRulesHtml, gf: gfRulesHtml, ml: mlRulesHtml }[k]();
   let el = $("#artpop");
   if (!el){ el = document.createElement("div"); el.id = "artpop"; el.className = "artpop"; document.body.appendChild(el); el.addEventListener("click", e => { if (e.target === el || e.target.closest("[data-artclose]")) el.classList.remove("on"); }); }
   el.innerHTML = `<div class="artin wide" role="dialog" aria-modal="true"><div class="arth"><b>${title}</b><button class="artx" data-artclose aria-label="閉じる">×</button></div><div class="gr">${html}</div></div>`;
@@ -3454,8 +3402,8 @@ function pickMine(list){ return list.find(g => me && (g.players || []).includes(
 const turnSeen = {};
 function turnBuzz(){
   if (!me || !loaded) return;
-  [...hxLive(), ...szLive(), ...lmLive(), ...wdLive(), ...gfLive()].filter(g => (g.players || []).includes(me)).forEach(g => {
-    const now = g.st && g.st.gf ? gfMyTurn(g) : g.st && g.st.wd ? wdMyTurn(g) : g.st && g.st.lm ? lmMyTurn(g) : g.st && g.st.hx ? hxMyTurn(g) : szMyTurn(g);
+  [...hxLive(), ...szLive(), ...lmLive(), ...wdLive(), ...gfLive(), ...mlLive()].filter(g => (g.players || []).includes(me)).forEach(g => {
+    const now = g.st && g.st.ml ? mlMyTurn(g) : g.st && g.st.gf ? gfMyTurn(g) : g.st && g.st.wd ? wdMyTurn(g) : g.st && g.st.lm ? lmMyTurn(g) : g.st && g.st.hx ? hxMyTurn(g) : szMyTurn(g);
     const prev = turnSeen[g.id];
     turnSeen[g.id] = now;
     if (prev === false && now){ try { if (navigator.vibrate) navigator.vibrate([120, 70, 120, 70, 200]); } catch (e) {} }
@@ -9655,32 +9603,21 @@ function wdRulesHtml(){
 
 /* ======================= タイルゴルフ（TILE GOLF） ======================= */
 const GF_TITLE = "タイルゴルフ";
-const GF_W = 4, GF_H = 10, GF_MAXS = 20;
+const GF_W = 4, GF_H = 10, GF_MAXS = 12;
 const GF_TILE = { f: { n: "芝", ic: "" }, t: { n: "木（障害物）", ic: "🌳" }, w: { n: "池", ic: "" }, b: { n: "バンカー", ic: "" }, r: { n: "ラフ", ic: "" }, g: { n: "グリーン", ic: "" }, e: { n: "空き", ic: "" } };
 /* クラブ：[横, 前, 濃さ]。濃い（d）は障害物を1つまで越えられる。薄い（l）は越えられない */
 const GF_CLUB = {
   dr: { n: "ドライバー", s: "DR", c: [[-1, 3, "l"], [0, 3, "d"], [1, 3, "l"], [-1, 2, "d"], [0, 2, "d"], [1, 2, "d"]] },
   ir: { n: "アイアン", s: "IR", c: [[-1, 2, "l"], [0, 2, "d"], [1, 2, "l"], [-1, 1, "d"], [0, 1, "d"], [1, 1, "d"]] },
-  wd: { n: "ウェッジ", s: "WG", c: [[0, 2, "l"], [-1, 1, "l"], [0, 1, "l"], [1, 1, "l"]] },
+  wd: { n: "ウッド", s: "WD", c: [[0, 2, "l"], [-1, 1, "l"], [0, 1, "l"], [1, 1, "l"]] },
   pt: { n: "パター", s: "PT", c: [[0, 1, "l"]] }            // 手札とは別に、いつでも使える
 };
 const GF_DECK = () => shuffle([..."drdrdrdrdr".match(/../g), ..."iririririr".match(/../g), ..."wdwdwdwdwd".match(/../g)]);
-/* イベントカード（向きは打った向きが基準）。wind＝左、rwind＝右、tail＝追い風（前）、head＝向かい風（手前）、duff＝ダフってその場に留まる */
-const GF_EV = { ok: { n: "ナイスショット", d: "", ic: "⛳" }, wind: { n: "左の風", d: "左に1マスそれた", ic: "🌀", lb: "🌀 左へそれた！" }, rwind: { n: "右の風", d: "右に1マスそれた", ic: "🌪️", lb: "🌪️ 右へそれた！" }, tail: { n: "追い風", d: "1マス前に流れた", ic: "💨", lb: "💨 追い風で流れた！" }, head: { n: "向かい風", d: "1マス手前に戻された", ic: "🌬️", lb: "🌬️ 向かい風で押し戻された！" }, duff: { n: "ダフった！", d: "ボールはその場に留まる", ic: "💥" } };
-/* 20枚：ナイスショット11・左2・右2・追い風2・向かい風2・ダフり1 */
-const GF_EVDECK = () => shuffle([..."ooooooooooo"].map(() => "ok").concat(["wind", "wind", "rwind", "rwind", "tail", "tail", "head", "head", "duff"]));
-/* 成功/失敗カードの山札（成功70枚・失敗30枚）。チップイン・ロングパット・パットすべてこの1つの山を全員で使い、なくなったら作り直す */
-const GF_CHIPDECK = () => shuffle([...Array(70).fill("ok"), ...Array(30).fill("ng")]);
-/* カップを狙うときにめくる枚数（すべて成功で入る） */
-const GF_CHIPN = { dr: 5, ir: 4, wd: 3, lputt: 2, pt: 1 };
-const gfChipN = k => GF_CHIPN[k] || 1;
-/* 山から順にめくる。失敗が出たらそこで終わり */
-function gfFlip(st, n){
-  const out = [];
-  for (let i = 0; i < n; i++){ if (!st.cd || !st.cd.length) st.cd = GF_CHIPDECK(); const z = st.cd.shift(); out.push(z); if (z === "ng") break; }
-  return out;
-}
-/* 逆転タイル（2×2）：ここまでの合計打数がビリの人が、次のホールのコースに上から被せる */
+const GF_EV = { ok: { n: "ナイスショット", d: "何も起きない" }, wind: { n: "強風", d: "左に1マスそれた" }, tail: { n: "追い風", d: "1マス前に流れた" } };
+const GF_EVDECK = () => shuffle(["ok", "ok", "ok", "ok", "wind", "wind", "tail", "tail"]);
+const GF_CHIPDECK = () => shuffle(["ok", "ok", "ok", "ok", "ok", "ok", "ng", "ng", "ng", "ng"]);
+const gfChipN = dy => dy <= 1 ? 2 : 3;
+/* 逆転タイル（2×2）：ホールのビリの人が、次のホールのコースに上から被せる */
 /* 逆転タイル50種類：1マスのタイルが混ざった2×2の柄（[左上, 右上, 左下, 右下]。上がゴール側）。どの端末でも同じになるよう固定の乱数で作る */
 const GF_REVSET = (() => {
   let a = 20261108; const R = () => { a = (a + 0x6D2B79F5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
@@ -9689,47 +9626,10 @@ const GF_REVSET = (() => {
   return out;
 })();
 const gfRot = p => p[2] + p[0] + p[3] + p[1];            // 右に90度回す
-function gfRevOk(c, x, y, pat){
-  for (const [dx, dy] of [[0, 0], [1, 0], [0, 1], [1, 1]]) if (gfTile(c, x + dx, y + dy) == null) return "コースからはみ出す";
+function gfRevOk(c, x, y){
+  if (x < 0 || y < 0 || x > GF_W - 2 || y > GF_H - 2) return "コースからはみ出す";
   for (const [dx, dy] of [[0, 0], [1, 0], [0, 1], [1, 1]]) if (gfIsCup(c, x + dx, y + dy)) return "カップには被せられない";
-  if (pat && !gfReach(gfRevPut(c, x, y, pat)) && gfRevAny(c, pat)) return "ここに置くとスタートからカップまで行けなくなる";
   return "";
-}
-const gfRevPut = (c, x, y, pat) => { const a = c.t.split(""); [[0, 1], [1, 1], [0, 0], [1, 0]].forEach(([dx, dy], j) => { a[(y + dy) * gfW(c) + x + dx] = pat[j]; }); return { ...c, t: a.join("") }; };
-/* このタイルを詰まずに置ける場所が1つでもあるか（どこに置いても詰むなら、仕方ないので置ける） */
-function gfRevAny(c, pat0){
-  for (let r = 0, pat = pat0; r < 4; r++, pat = gfRot(pat)) for (let y = 0; y < gfH(c) - 1; y++) for (let x = 0; x < gfW(c) - 1; x++){
-    let bad = 0; for (const [dx, dy] of [[0, 0], [1, 0], [0, 1], [1, 1]]) if (gfTile(c, x + dx, y + dy) == null || gfIsCup(c, x + dx, y + dy)) bad = 1;
-    if (!bad && gfReach(gfRevPut(c, x, y, pat))) return true;
-  }
-  return false;
-}
-/* ---------- 詰みチェック：スタートからカップ（とその隣）までショットでたどり着けるか ----------
-   空きマスは芝として考える。木・池・コースの外には止まれない。風は考えない */
-function gfReach(c0){
-  const c = { ...c0, t: c0.t.replace(/e/g, "f") }, W = gfW(c), seen = new Set(), q = [{ x: c.sx, y: -1 }];
-  const goal = (x, y) => { const ax = Math.abs(x - c.cup[0]), ay = Math.abs(y - c.cup[1]); return ax + ay <= 1 || (ax === 1 && ay === 1 && gfTile(c, x, y) === "g"); };
-  seen.add(c.sx + ",-1");
-  while (q.length){
-    const b = q.shift();
-    for (const k of ["dr", "ir", "wd", "pt"]) for (const d of (b.y < 0 ? [0] : [0, 1, 2, 3])){
-      for (const o of gfTargetsAt(c, b, k, d)){
-        if (!o.ok) continue;
-        if (goal(o.x, o.y)) return true;
-        const t = gfTile(c, o.x, o.y), key = o.x + "," + o.y;
-        if (t === "w" || seen.has(key)) continue;
-        seen.add(key); q.push({ x: o.x, y: o.y });
-      }
-    }
-  }
-  return false;
-}
-/* タイルをこのマスに置いても詰まないか（手札のどれをどこに置いても詰むなら、仕方ないので置ける） */
-function gfBuildOk(c, tile, x, y, hand){
-  const put = (t, xx, yy) => { const a = c.t.split(""); a[yy * gfW(c) + xx] = t; return { ...c, t: a.join("") }; };
-  if (gfReach(put(tile, x, y))) return true;
-  for (const t of hand || []) for (let yy = 0; yy < gfH(c); yy++) for (let xx = 0; xx < gfW(c); xx++) if (gfTile(c, xx, yy) === "e" && gfReach(put(t, xx, yy))) return false;
-  return true;
 }
 /* 最初から入っているコース（t は手前の列から4文字ずつ） */
 const GF_DEF = [
@@ -9737,68 +9637,35 @@ const GF_DEF = [
   { id: "d2", name: "池越え", sx: 2, cup: [1, 9], t: "ffff" + "fftf" + "ffff" + "wwwf" + "wwff" + "ffff" + "ftff" + "ffff" + "bggf" + "fggt" },
   { id: "d3", name: "林の迷路", sx: 0, cup: [0, 9], t: "ffff" + "tfft" + "ffff" + "ftff" + "fftf" + "tfff" + "ffft" + "fbff" + "gggf" + "gggb" }
 ];
-/* 土台の形。上の行がゴール側。「.」＝タイルを置くマス、「g」＝グリーン（固定）、「x」＝コースの外（OB）、ほかの文字はそのタイルで固定 */
-const GF_SHAPES = [
-  { n: "ストレート", m: [".gg.", ".gg.", "....", "....", "....", "....", "....", "....", "....", "...."] },
-  { n: "ドッグレッグ右", m: ["....gg", "....gg", "......", "....xx", "....xx", "....xx", "....xx", "....xx", "....xx"] },
-  { n: "ドッグレッグ左", m: ["gg....", "gg....", "......", "xx....", "xx....", "xx....", "xx....", "xx....", "xx...."] },
-  { n: "ワイド", m: ["..gg..", "..gg..", "......", "......", "......", "......", "......"] },
-  { n: "ロング", m: ["gg.", "gg.", "...", "...", "...", "...", "...", "...", "...", "...", "...", "..."] },
-  { n: "クランク", m: ["xx.gg", "xx.gg", "xx...", ".....", "...xx", "...xx", "...xx", ".....", "xx...", "xx..."] },
-  { n: "くびれ", m: ["..gg.", "..gg.", ".....", ".....", "x...x", "xx.xx", "x...x", ".....", ".....", "....."] },
-  { n: "アイランド", m: [".....", ".wggw", ".wggw", ".www.", ".....", ".....", ".....", ".....", "....."] }
-];
-/* 形からコースを作る（fill：「.」を何で埋めるか） */
-function gfFromShape(si, fill, fixed){
-  const S = GF_SHAPES[si] || GF_SHAPES[0], rows = S.m.slice().reverse(), w = rows[0].length, h = rows.length;
-  const t = rows.map(r => [...r].map(z => z === "." ? fill : z).join("")).join("");
-  const gs = [], ss = [];
-  for (let y = 0; y < h; y++) for (let x = 0; x < w; x++){ if (t[y * w + x] === "g") gs.push([x, y]); if (y === 0 && t[x] !== "x") ss.push(x); }
-  const r = n => fixed ? 0 : Math.floor(Math.random() * n);
-  return { w, h, t, cup: gs[r(gs.length)], sx: ss[r(ss.length)], shape: S.n };
-}
-/* みんなで作るホール：形の「.」は空き。グリーンは形ごとに固定、カップはその中のどこか。si が無ければ形はおまかせ */
-function gfNewBuild(si){
-  if (si == null || si < 0) si = Math.floor(Math.random() * GF_SHAPES.length);
-  const b = gfFromShape(si, "e");
-  return { id: "b" + Math.random().toString(36).slice(2, 7), name: `みんなで作るホール（${b.shape}）`, build: 1, ...b };
+/* みんなで作るホール：手前8列（と奥の角）は空き。グリーンは奥の中央2×2で固定、カップはその中のどこか */
+function gfNewBuild(){
+  const cups = [[1, 8], [2, 8], [1, 9], [2, 9]], cup = cups[Math.floor(Math.random() * 4)];
+  return { id: "b" + Math.random().toString(36).slice(2, 7), name: "みんなで作るホール", build: 1, sx: Math.floor(Math.random() * GF_W), cup, t: "e".repeat(GF_W * 8) + "egge" + "egge" };
 }
 const GF_PILE = () => shuffle([..."f".repeat(14), ..."r".repeat(9), ..."t".repeat(6), ..."w".repeat(4), ..."b".repeat(3)]);
 const gfCourses = () => { const v = setting("gf_courses"); return Array.isArray(v) && v.length ? v : GF_DEF; };
-const gfW = c => c.w || GF_W, gfH = c => c.h || GF_H;
-const gfRaw = (c, x, y) => (x < 0 || x >= gfW(c) || y < 0 || y >= gfH(c)) ? null : c.t[y * gfW(c) + x];
-const gfTile = (c, x, y) => { const z = gfRaw(c, x, y); return z === "x" ? null : z; };   // 「x」はコースの外（OB）
+const gfTile = (c, x, y) => (x < 0 || x >= GF_W || y < 0 || y >= GF_H) ? null : c.t[y * GF_W + x];
 const gfHole = st => st.holes[st.hi];
 const gfIsCup = (c, x, y) => c.cup[0] === x && c.cup[1] === y;
-/* パット（カード1枚）：グリーンの上で、カップの上下左右の隣
-   ロングパット（カード2枚）：グリーンの上でカップの斜め隣／グリーンの外からカップの上下左右の隣（パターで入れる） */
-const gfCupD = (st, p) => { const b = st.ball[p], c = gfHole(st); return { ax: Math.abs(b.x - c.cup[0]), ay: Math.abs(b.y - c.cup[1]), on: gfTile(c, b.x, b.y) === "g", ok: !b.done && b.y >= 0 }; };
-const gfAdj = (st, p) => { const d = gfCupD(st, p); return d.ok && d.on && d.ax + d.ay <= 1; };
-const gfDiag = (st, p) => { const d = gfCupD(st, p); return d.ok && ((d.on && d.ax === 1 && d.ay === 1) || (!d.on && d.ax + d.ay === 1)); };
 
 /* ---------- 打てるマス ---------- */
 /* 打つ向き：0=前（ゴール側） 1=右 2=後ろ 3=左。F=前に進む向き、Rt=その右手 */
 const GF_DIRV = [{ F: [0, 1], R: [1, 0] }, { F: [1, 0], R: [0, -1] }, { F: [0, -1], R: [-1, 0] }, { F: [-1, 0], R: [0, 1] }];
 const GF_DIRN = ["前", "右", "後ろ", "左"];
-function gfTargets(st, p, k, dir = 0){ return gfTargetsAt(gfHole(st), st.ball[p], k, dir); }
-function gfTargetsAt(c, b, k, dir = 0){
-  const bt = gfTile(c, b.x, b.y);
-  // ラフ：1マス短く（ドライバーは2マス）／バンカー：1マス短く／木の中：どのクラブでも真っすぐ1マスだけ
-  const short = bt === "r" ? (k === "dr" ? 2 : 1) : bt === "b" ? (k === "wd" ? 0 : 1) : 0 /* ウェッジはバンカーの影響を受けない */, cells = bt === "t" ? [[0, 1, "l"]] : GF_CLUB[k].c;
+function gfTargets(st, p, k, dir = 0){
+  const c = gfHole(st), b = st.ball[p], short = ["b", "r"].includes(gfTile(c, b.x, b.y)) ? 1 : 0;
   dir = ((+dir || 0) % 4 + 4) % 4; if (b.y < 0) dir = 0;            // ティーショットは前だけ
   const { F, R: Rt } = GF_DIRV[dir];
-  const cs = cells.map(([dx, dy0, m]) => [dx, dy0 - short, m]);
-  if (bt === "r" && k === "ir" && !cs.some(z => z[0] === 0 && z[1] === 2)) cs.push([0, 2, "d"]);   // アイアンはラフからでも真っすぐ2マス
-  return cs.map(([dx, dy, m]) => {
-    const x = b.x + dx * Rt[0] + dy * F[0], y = b.y + dx * Rt[1] + dy * F[1];
-    const o = { x, y, dx, dy, m, dir, k, ok: false, why: "" };
+  return GF_CLUB[k].c.map(([dx, dy0, m]) => {
+    const dy = dy0 - short, x = b.x + dx * Rt[0] + dy * F[0], y = b.y + dx * Rt[1] + dy * F[1];
+    const o = { x, y, dx, dy, m, dir, ok: false, why: "" };
     if (dy < 1) { o.why = `${gfTile(c, b.x, b.y) === "r" ? "ラフ" : "バンカー"}なので届かない`; return o; }
     const t = gfTile(c, x, y);
     if (t == null){ o.why = "コースの外"; return o; }
     if (t === "t"){ o.why = "木には止まれない"; return o; }
     let trees = 0; for (let i = 1; i < dy; i++) if (gfTile(c, b.x + F[0] * i, b.y + F[1] * i) === "t") trees++;
     if (trees > (m === "d" ? 1 : 0)){ o.why = m === "d" ? "障害物が2つ以上ある" : "障害物を越えられない"; return o; }
-    o.ok = true; o.chip = gfIsCup(c, x, y) && k !== "pt"; return o;
+    o.ok = true; o.chip = gfIsCup(c, x, y) && !b.on; return o;
   }).filter(o => o.dy >= 1);
 }
 const gfCanAny = (st, p) => [...st.hand[p], "pt"].some(k => [0, 1, 2, 3].some(d => gfTargets(st, p, k, d).some(o => o.ok)));
@@ -9807,30 +9674,26 @@ const gfCanAny = (st, p) => [...st.hand[p], "pt"].some(k => [0, 1, 2, 3].some(d 
 function gfSetup(order, holes){
   const st = { gf: 1, v: 1, order: order.slice(), holes: holes.map(h => JSON.parse(JSON.stringify(h))), hi: 0, ball: {}, sc: {}, hand: {}, deck: {}, ev: GF_EVDECK(), n: 0, last: null, status: "playing" };
   order.forEach(p => { st.sc[p] = []; st.deck[p] = GF_DECK(); st.hand[p] = st.deck[p].splice(0, 3); });
-  st.revPool = shuffle(GF_REVSET.map((_, i) => i)); st.revRow = st.revPool.splice(0, Math.max(0, holes.length - 1));   // 逆転タイルは「ホール数−1」枚を表にする
+  st.revPool = shuffle(GF_REVSET.map((_, i) => i)); st.revRow = st.revPool.splice(0, 4);
   gfPrep(st);
   return st;
 }
 /* ホールを始める前の準備：①みんなでコースを作る ②逆転タイル ③ティーショット */
 function gfPrep(st){
-  if (st.holes[st.hi] && st.holes[st.hi].rand) st.holes[st.hi] = gfNewBuild(-1);   // おまかせ：ホールが始まるときに形を決める
   const c = gfHole(st);
   st.order.forEach(p => { st.ball[p] = { x: c.sx, y: -1, s: 0, done: 1, on: 0 }; });
   if (c.t.includes("e")){
-    if (!st.build){ st.build = { pile: GF_PILE(), i: st.hi % st.order.length }; gfL(st, `第${st.hi + 1}ホール：各自タイルを3枚引いて、1枚ずつ置いてコースを作る`); }
-    // 最初に各自3枚引く（古い対戦の続きにも配る）
-    if (!st.build.hands){ st.build.hands = {}; st.order.forEach(p => { st.build.hands[p] = []; for (let i = 0; i < 3; i++) gfBDraw(st, p); }); }
-    delete st.build.cur;
+    if (!st.build){ st.build = { pile: GF_PILE(), i: st.hi % st.order.length }; gfL(st, `第${st.hi + 1}ホール：タイルを1枚ずつ引いて、みんなでコースを作る`); }
+    if (!st.build.pile.length) st.build.pile = GF_PILE();
+    st.build.cur = st.build.pile.shift();
     st.turn = { pid: st.order[st.build.i % st.order.length] };
     return;
   }
   delete st.build;
-  if (st.place && st.place.q.length){ gfRevFill(st); st.turn = { pid: st.place.q[0] }; return; }
+  if (st.place && st.place.q.length){ st.turn = { pid: st.place.q[0] }; return; }
   delete st.place;
   gfStartHole(st);
 }
-/* 置く人がいるのに表のタイルが無いとき（同点で2人以上が置く等）だけ、山から1枚出す */
-function gfRevFill(st){ if (st.place && st.place.q.length && !st.revRow.filter(z => z != null).length && st.revPool.length) st.revRow.push(st.revPool.shift()); }
 function gfStartHole(st){
   const c = gfHole(st);
   st.order.forEach(p => { st.ball[p] = { x: c.sx, y: -1, s: 0, done: 0, on: 0 }; });
@@ -9838,21 +9701,14 @@ function gfStartHole(st){
   st.turn = { pid: st.order[r] };
   gfL(st, `第${st.hi + 1}ホール「${c.name}」スタート`);
 }
-function gfBDraw(st, p){ if (!st.build.pile.length) st.build.pile = GF_PILE(); st.build.hands[p].push(st.build.pile.shift()); }
 const gfL = (st, m) => { (st._log = st._log || []).push(m); };
 function gfDraw(st, p){
   if (!st.deck[p].length) st.deck[p] = GF_DECK();
   st.hand[p].push(st.deck[p].shift());
 }
 function gfNext(st){
-  // 次に打つのは、まだカップインしていない人のうち「カップからいちばん遠い人」（リアルのゴルフと同じ）。同じ距離ならこのホールの打順が先の人
-  const o = st.order, c = gfHole(st), r0 = st.hi % o.length;
-  const left = o.map((p, i) => ({ p, k: (i - r0 + o.length) % o.length })).filter(z => !st.ball[z.p].done);
-  if (left.length){
-    const dist = p => { const b = st.ball[p]; return Math.hypot(b.x - c.cup[0], b.y - c.cup[1]); };
-    left.sort((a, b) => (dist(b.p) - dist(a.p)) || (a.k - b.k));
-    st.turn = { pid: left[0].p }; return;
-  }
+  const o = st.order, i0 = o.indexOf(st.turn.pid);
+  for (let k = 1; k <= o.length; k++){ const q = o[(i0 + k) % o.length]; if (!st.ball[q].done){ st.turn = { pid: q }; return; } }
   // 全員カップイン：ホール終了
   o.forEach(p => st.sc[p].push(st.ball[p].s));
   st.last = { ...(st.last || {}), holeEnd: st.hi + 1 };
@@ -9862,8 +9718,8 @@ function gfNext(st){
     gfL(st, `ゲーム終了！ ${st.wins.map(p => pname(p)).join("・")}の勝ち（${best}打）`);
     return;
   }
-  // 逆転タイル：ここまでの合計打数が一番多い人（トータルビリ。同点なら全員、全員同じなら無し）
-  const sc = p => st.sc[p].reduce((a, v) => a + v, 0), worst = Math.max(...o.map(sc)), lasts = o.filter(p => sc(p) === worst);
+  // 逆転タイル：このホールで一番打数が多かった人（全員同じなら無し）
+  const h = st.hi, sc = p => st.sc[p][h], worst = Math.max(...o.map(sc)), lasts = o.filter(p => sc(p) === worst);
   st.hi++;
   if (o.length > 1 && lasts.length < o.length){ st.place = { q: lasts.slice() }; gfL(st, `逆転タイル：${lasts.map(p => pname(p)).join("・")}が次のホールに2×2のタイルを置く`); }
   gfPrep(st);
@@ -9873,24 +9729,19 @@ function gfApply(st, p, mv){
   const b = st.ball[p], c = gfHole(st), [k] = mv;
   if (st.build){
     if (k !== "build") return false;
-    const hd = st.build.hands[p], bi = +mv[1], x = +mv[2], y = +mv[3], tile = hd && hd[bi];
-    if (!tile || gfTile(c, x, y) !== "e") return false;
-    if (!gfBuildOk(c, tile, x, y, hd)) return false;      // スタートから詰んでしまう置き方はできない
-    hd.splice(bi, 1);
-    const a = c.t.split(""); a[y * gfW(c) + x] = tile; c.t = a.join("");
-    st.last = { n: ++st.n, p, kind: "build", tile, x, y };
-    gfL(st, `${pname(p)}：「${GF_TILE[tile].n}」を置いた`);
-    gfBDraw(st, p);                                  // 置いたら1枚引く
+    const x = +mv[1], y = +mv[2]; if (gfTile(c, x, y) !== "e") return false;
+    const a = c.t.split(""); a[y * GF_W + x] = st.build.cur; c.t = a.join("");
+    st.last = { n: ++st.n, p, kind: "build", tile: st.build.cur, x, y };
+    gfL(st, `${pname(p)}：「${GF_TILE[st.build.cur].n}」を置いた`);
     st.build.i++;
     gfPrep(st); return true;
   }
   if (st.place){
     const ri = +mv[1], id = st.revRow[ri]; if (k !== "place" || id == null) return false;
     let pat = GF_REVSET[id]; for (let r = 0; r < ((+mv[4] || 0) % 4); r++) pat = gfRot(pat);
-    const x = +mv[2], y = +mv[3]; if (gfRevOk(c, x, y, pat)) return false;
-    const a = c.t.split(""); [[0, 1], [1, 1], [0, 0], [1, 0]].forEach(([dx, dy], j) => { a[(y + dy) * gfW(c) + x + dx] = pat[j]; }); c.t = a.join("");
-    st.revRow.splice(ri, 1);                              // 使ったタイルは場から消える（補充しない）
-    gfRevFill(st);
+    const x = +mv[2], y = +mv[3]; if (gfRevOk(c, x, y)) return false;
+    const a = c.t.split(""); [[0, 1], [1, 1], [0, 0], [1, 0]].forEach(([dx, dy], j) => { a[(y + dy) * GF_W + x + dx] = pat[j]; }); c.t = a.join("");
+    st.revRow[ri] = st.revPool.length ? st.revPool.shift() : null;
     st.last = { n: ++st.n, p, kind: "place", pat, id, x, y };
     gfL(st, `${pname(p)}：逆転タイル No.${id + 1} を置いた`);
     st.place.q.shift();
@@ -9898,21 +9749,19 @@ function gfApply(st, p, mv){
     else { delete st.place; gfPrep(st); }
     return true;
   }
-  if (k === "putt" || k === "lputt"){               // パット：カード1枚／ロングパット：カード2枚。すべて成功で入る。失敗ならその場に止まる
-    if (k === "putt" ? !gfAdj(st, p) : !gfDiag(st, p)) return false;
-    b.s++;
-    const n = gfChipN(k === "putt" ? "pt" : "lputt"), cards = gfFlip(st, n), ok = cards.length === n && cards.every(z => z === "ok"), from = { x: b.x, y: b.y };
-    st.last = { n: ++st.n, p, kind: k, from, to: { x: c.cup[0], y: c.cup[1] }, cards, need: n, res: ok ? "cupin" : "miss", s: b.s };
-    if (ok){ b.done = 1; b.x = c.cup[0]; b.y = c.cup[1]; }
-    gfL(st, `${pname(p)}：${k === "putt" ? "パット" : "ロングパット"}→${ok ? "カップイン！" : "外れた"}（${b.s}打）`);
-    if (!b.done && b.s >= GF_MAXS){ b.done = 1; b.cap = 1; }
+  if (k === "putt"){
+    if (!b.on) return false;
+    b.s++; b.done = 1;
+    st.last = { n: ++st.n, p, kind: "putt", from: { x: b.x, y: b.y }, to: { x: c.cup[0], y: c.cup[1] }, res: "cupin", s: b.s };
+    b.x = c.cup[0]; b.y = c.cup[1];
+    gfL(st, `${pname(p)}：パットでカップイン（${b.s}打）`);
     gfNext(st); return true;
   }
   if (k === "pass"){
-    if (st.ball[p].done) return false;                    // 1打罰の手札入れ替えはいつでもできる
+    if (gfCanAny(st, p)) return false;
     b.s++; st.hand[p] = []; for (let i = 0; i < 3; i++) gfDraw(st, p);
     st.last = { n: ++st.n, p, kind: "pass", res: "pass", s: b.s };
-    gfL(st, `${pname(p)}：1打罰で手札を入れ替え`);
+    gfL(st, `${pname(p)}：打てるクラブがないので1打罰で手札を入れ替え`);
     if (b.s >= GF_MAXS){ b.done = 1; b.cap = 1; }
     gfNext(st); return true;
   }
@@ -9920,27 +9769,25 @@ function gfApply(st, p, mv){
   const hi = +mv[1], tx = +mv[2], ty = +mv[3], dir = +mv[4] || 0, club = hi < 0 ? "pt" : st.hand[p][hi];
   if (!club) return false;
   const tg = gfTargets(st, p, club, dir).find(o => o.ok && o.x === tx && o.y === ty); if (!tg) return false;
-  if (club === "pt" && gfIsCup(c, tx, ty)) return gfApply(st, p, [gfAdj(st, p) ? "putt" : "lputt"]);   // パターでカップを狙う＝グリーン上はパット、グリーンの外からはロングパット
   if (hi >= 0) st.hand[p].splice(hi, 1);
   b.s++;
   const from = { x: b.x, y: b.y }, L = { n: ++st.n, p, kind: "shot", club, from, aim: { x: tx, y: ty }, m: tg.m, dir: tg.dir };
   let to = { x: tx, y: ty };
   if (tg.chip){
-    const need = gfChipN(club); L.chip = gfFlip(st, need); L.need = need;
-    if (L.chip.length === need && L.chip.every(z => z === "ok")){ L.res = "chipin"; b.done = 1; }
+    const dk = GF_CHIPDECK(), need = gfChipN(tg.dy); L.chip = dk.slice(0, need);
+    if (L.chip.every(z => z === "ok")){ L.res = "chipin"; b.done = 1; }
     else L.res = "green";
   } else {
     if (!st.ev.length) st.ev = GF_EVDECK();
     const ev = st.ev.shift(); L.ev = ev;
-    if (ev === "duff") to = { x: from.x, y: from.y };            // ダフり：打つ前の場所から動かない（1打は数える）
-    else if (ev !== "ok"){
-      // 打った向きが基準：左の風＝左へ1マス、右の風＝右へ1マス、追い風＝前へ1マス、向かい風＝手前へ1マス
-      const V = GF_DIRV[tg.dir], d = ev === "wind" ? [-V.R[0], -V.R[1]] : ev === "rwind" ? V.R : ev === "head" ? [-V.F[0], -V.F[1]] : V.F, nx = tx + d[0], ny = ty + d[1], t2 = gfTile(c, nx, ny);
-      to = { x: nx, y: ny }; if (t2 == null && !(ny === -1 && ev === "head")) L.ob = 1;          // 木のマスにも入る（次はどのクラブでも1マスだけ）
-      if (ny === -1) to = { x: from.x, y: from.y };              // ティーグラウンドまで戻されたら打つ前の場所
+    if (ev !== "ok"){
+      // 強風＝打った向きの左へ1マス、追い風＝打った向きの前へ1マス
+      const V = GF_DIRV[tg.dir], d = ev === "wind" ? [-V.R[0], -V.R[1]] : V.F, nx = tx + d[0], ny = ty + d[1], t2 = gfTile(c, nx, ny);
+      if (t2 === "t") L.stop = "木に当たって止まった";
+      else { to = { x: nx, y: ny }; if (t2 == null) L.ob = 1; }
     }
     const t = gfTile(c, to.x, to.y);
-    L.res = L.ob ? "ob" : ev === "duff" ? "duff" : gfIsCup(c, to.x, to.y) ? "cupin" : t === "w" ? "water" : t === "t" ? "tree" : t === "g" ? "green" : t === "b" ? "bunker" : t === "r" ? "rough" : "fair";
+    L.res = L.ob ? "ob" : gfIsCup(c, to.x, to.y) ? "cupin" : t === "w" ? "water" : t === "g" ? "green" : t === "b" ? "bunker" : t === "r" ? "rough" : "fair";
   }
   L.to = to;
   if (L.res === "water" || L.res === "ob"){ b.s++; L.back = from; }
@@ -9948,47 +9795,32 @@ function gfApply(st, p, mv){
   if (L.res === "cupin") b.done = 1;
   if (L.res === "chipin" || L.res === "cupin"){ b.x = c.cup[0]; b.y = c.cup[1]; }
   L.s = b.s; st.last = L;
-  gfL(st, `${pname(p)}：${GF_CLUB[club].n}${L.chip ? `でチップイン挑戦→${L.res === "chipin" ? "成功！" : "失敗（グリーンオン）"}` : `・${GF_EV[L.ev].n}→${{ cupin: "流されてカップイン！", duff: "その場に留まる", tree: "木の中へ", ob: "OB（1打罰）", water: "池（1打罰）", green: "グリーンオン", bunker: "バンカー", rough: "ラフ", fair: "フェアウェイ" }[L.res]}`}（${b.s}打）`);
+  gfL(st, `${pname(p)}：${GF_CLUB[club].n}${L.chip ? `でチップイン挑戦→${L.res === "chipin" ? "成功！" : "失敗（グリーンオン）"}` : `・${GF_EV[L.ev].n}→${{ cupin: "流されてカップイン！", ob: "OB（1打罰）", water: "池（1打罰）", green: "グリーンオン", bunker: "バンカー", rough: "ラフ", fair: "フェアウェイ" }[L.res]}`}（${b.s}打）`);
   if (hi >= 0) gfDraw(st, p);
   if (!b.done && b.s >= GF_MAXS){ b.done = 1; b.cap = 1; gfL(st, `${pname(p)}は${GF_MAXS}打に達したのでこのホール終了`); }
   gfNext(st); return true;
 }
 
 /* ---------- コンピューター ---------- */
-/* カップまでの道のり（コース外を避けて上下左右に何マスか。木と池は遠回り扱い） */
-let gfDistMemo = {};
-function gfDist(c){
-  const key = c.t + c.cup.join(","); if (gfDistMemo[key]) return gfDistMemo[key];
-  const W = gfW(c), H = gfH(c), d = Array(W * H).fill(99), q = [c.cup]; d[c.cup[1] * W + c.cup[0]] = 0;
-  // 木・池は飛び越せるので通れるが遠回り扱い（+3）
-  while (q.length){ const [x, y] = q.shift(), d0 = d[y * W + x]; for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]){ const nx = x + dx, ny = y + dy, t = gfTile(c, nx, ny); if (t == null) continue; const nd = d0 + (t === "t" || t === "w" ? 3 : 1); if (nd >= d[ny * W + nx]) continue; d[ny * W + nx] = nd; q.push([nx, ny]); } }
-  gfDistMemo = { [key]: d }; return d;
-}
 function gfCpuStep(st, p){
   const b = st.ball[p], c = gfHole(st);
   if (st.build){
-    const em = []; for (let y = 0; y < gfH(c); y++) for (let x = 0; x < gfW(c); x++) if (gfTile(c, x, y) === "e") em.push([x, y]);
-    const hd = st.build.hands[p];
-    for (let i = 0; i < 60; i++){ const [x, y] = em[Math.floor(Math.random() * em.length)], bi = Math.floor(Math.random() * hd.length); if (gfBuildOk(c, hd[bi], x, y, hd)) return ["build", bi, x, y]; }
-    for (const [x, y] of em) for (let bi = 0; bi < hd.length; bi++) if (gfBuildOk(c, hd[bi], x, y, hd)) return ["build", bi, x, y];
-    const [x, y] = em[0]; return ["build", 0, x, y];
+    const em = []; for (let y = 0; y < GF_H; y++) for (let x = 0; x < GF_W; x++) if (gfTile(c, x, y) === "e") em.push([x, y]);
+    const [x, y] = em[Math.floor(Math.random() * em.length)]; return ["build", x, y];
   }
   if (st.place){
     // 中ほどに池か林を置いて、ほかの人の邪魔をする
     const bad = id => id == null ? -9 : [...GF_REVSET[id]].filter(z => "twbr".includes(z)).length;
     const ri = st.revRow.map((id, i) => [bad(id), i]).sort((a, b) => b[0] - a[0])[0][1];
-    const patR = r => { let q = GF_REVSET[st.revRow[ri]]; for (let i = 0; i < r; i++) q = gfRot(q); return q; };
-    for (let i = 0; i < 60; i++){ const x = Math.floor(Math.random() * (gfW(c) - 1)), y = 2 + Math.floor(Math.random() * Math.max(1, gfH(c) - 5)), r = Math.floor(Math.random() * 4); if (!gfRevOk(c, x, y, patR(r))) return ["place", ri, x, y, r]; }
-    for (let r = 0; r < 4; r++) for (let y = 0; y < gfH(c) - 1; y++) for (let x = 0; x < gfW(c) - 1; x++) if (!gfRevOk(c, x, y, patR(r))) return ["place", ri, x, y, r];
+    for (let i = 0; i < 40; i++){ const x = Math.floor(Math.random() * 3), y = 2 + Math.floor(Math.random() * 5); if (!gfRevOk(c, x, y)) return ["place", ri, x, y, Math.floor(Math.random() * 4)]; }
     return ["place", ri, 0, 0, 0];
   }
-  if (gfAdj(st, p)) return ["putt"];
-  if (gfDiag(st, p)) return ["lputt"];
+  if (b.on) return ["putt"];
   let best = null, bv = Infinity;
   [...st.hand[p].map((k, hi) => [k, hi]), ["pt", -1]].forEach(([k, hi]) => [0, 1, 2, 3].forEach(dir => gfTargets(st, p, k, dir).forEach(o => {
     if (!o.ok) return;
-    const t = gfTile(c, o.x, o.y), dd = gfDist(c)[o.y * gfW(c) + o.x];
-    let v = o.chip ? (1 - Math.pow(.8, gfChipN(k))) * 1.4 : t === "g" ? 1 : Math.min(dd, 30) / 2.3 + 1;
+    const t = gfTile(c, o.x, o.y), ry = c.cup[1] - o.y;
+    let v = o.chip ? 0.3 : t === "g" ? 1 : Math.max(0, ry) / 2.5 + Math.abs(c.cup[0] - o.x) * .4 + (ry < 0 ? 2 : 0) + 1;
     if (t === "w") v += 6; if (t === "b" || t === "r") v += .6;
     if (k !== "pt") v += .05;                       // 同じならパター（手札を残す）
     v += Math.random() * .2;
@@ -10028,7 +9860,7 @@ CPU_AI.gf_games = g => {
   const st = g.st; if (!st || !st.gf || g.status !== "playing") return null;
   const p = gfActor(st); if (!isCpu(p)) return null;
   const mv = gfCpuStep(st, p);
-  return { wait: Math.max(1300, gfAnimUntil - Date.now() + 500), run: async () => { while (gfPlaying && gfId === g.id) await gfWait(400); return gfDo(g.id, p, mv); } };   // 演出（ホール終了の画面など）を見ているあいだは待つ
+  return { wait: Math.max(1300, gfAnimUntil - Date.now() + 500), run: () => gfDo(g.id, p, mv) };
 };
 
 /* ======================= 絵 ======================= */
@@ -10039,50 +9871,24 @@ function gfPat(k, big){
   return `<span class="gfpat ${big ? "big" : ""}">${rows.map(dy => [-1, 0, 1].map(dx => { const f = cs.find(z => z[0] === dx && z[1] === dy); return `<i class="${f ? f[2] : ""}"></i>`; }).join("")).join("")}<i class="s">S</i></span>`;
 }
 const gfCard = (k, cls = "", data = "", dir = 0) => `<button class="gfcard ${k} ${cls}" ${data}><b>${GF_CLUB[k].n}</b><span class="gfpr" style="--rot:${dir * 90}deg">${gfPat(k)}</span></button>`;
-const gfEvCard = ev => { const E = GF_EV[ev] || GF_EV.ok; return `<span class="gfev ${ev}"><b>${E.n}</b>${E.d ? `<small>${E.d}</small>` : ""}<i>${E.ic}</i></span>`; };
+const gfEvCard = ev => `<span class="gfev ${ev}"><b>${GF_EV[ev].n}</b>${ev === "ok" ? "" : `<small>${GF_EV[ev].d}</small>`}<i>${ev === "ok" ? "⛳" : ev === "wind" ? "🌀" : "💨"}</i></span>`;
 const gfChipCard = z => `<span class="gfchip ${z}"><b>${z === "ok" ? "成功" : "失敗"}</b><i>${z === "ok" ? "◎" : "×"}</i></span>`;
 const gfRevTile = (pat, cls = "", data = "") => `<span class="gfrt ${cls}" ${data}>${[...pat].map(z => `<i class="t-${z}">${z === "t" ? "🌳" : ""}</i>`).join("")}</span>`;
-/* ボール。dir があれば打つ向きの三角をつける（0=前 1=右 2=後ろ 3=左） */
-const gfBallH = (p, dir) => `<i class="gfball ${dir != null ? "dir" : ""}" data-gb="${p}" style="--pc:${pcolor(p)};--rot:${(dir || 0) * 90}deg" title="${esc(pname(p))}"></i>`;
+const gfBallH = p => `<i class="gfball" data-gb="${p}" style="--pc:${pcolor(p)}" title="${esc(pname(p))}"></i>`;
 /* コースの盤面（上がゴール側） */
 function gfBoardH(c, o = {}){
   const cells = [];
-  const W = gfW(c), H = gfH(c);
-  for (let y = H - 1; y >= 0; y--) for (let x = 0; x < W; x++){
-    const pv = o.pv && x >= o.pv.x && x <= o.pv.x + (o.pv.one ? 0 : 1) && y >= o.pv.y && y <= o.pv.y + (o.pv.one ? 0 : 1), t = pv ? (o.pv.pat ? o.pv.pat[(y === o.pv.y ? 2 : 0) + (x - o.pv.x)] : o.pv.k) : gfRaw(c, x, y), cup = gfIsCup(c, x, y), tg = o.tg && o.tg.find(z => z.x === x && z.y === y), balls = (o.balls || []).filter(z => z.x === x && z.y === y);
-    cells.push(`<div class="gfc t-${t} ${tg ? `gt gt-${tg.m} ${tg.ok ? "gt-ok" : "gt-ng"} ${tg.chip ? "gt-chip" : ""}` : ""} ${o.sel && o.sel.x === x && o.sel.y === y ? "sel" : ""} ${pv ? `pv ${o.pv.bad ? "bad" : ""}` : ""} ${(o.hl && x >= o.hl.x && x <= o.hl.x + 1 && y >= o.hl.y && y <= o.hl.y + 1) || (o.hl1 && o.hl1.x === x && o.hl1.y === y) ? "drop" : ""}" data-gx="${x}" data-gy="${y}">${t === "t" ? `<span class="tree">🌳</span>` : ""}${cup ? `<span class="cup"><i></i></span>` : ""}${tg && tg.chip && tg.ok ? `<em class="chipb">チップイン<br>${gfChipN(tg.k)}枚</em>` : ""}<span class="bs">${balls.map(z => gfBallH(z.p, z.dir)).join("")}</span></div>`);
+  for (let y = GF_H - 1; y >= 0; y--) for (let x = 0; x < GF_W; x++){
+    const pv = o.pv && x >= o.pv.x && x <= o.pv.x + (o.pv.one ? 0 : 1) && y >= o.pv.y && y <= o.pv.y + (o.pv.one ? 0 : 1), t = pv ? (o.pv.pat ? o.pv.pat[(y === o.pv.y ? 2 : 0) + (x - o.pv.x)] : o.pv.k) : gfTile(c, x, y), cup = gfIsCup(c, x, y), tg = o.tg && o.tg.find(z => z.x === x && z.y === y), balls = (o.balls || []).filter(z => z.x === x && z.y === y);
+    cells.push(`<div class="gfc t-${t} ${tg ? `gt gt-${tg.m} ${tg.ok ? "gt-ok" : "gt-ng"} ${tg.chip ? "gt-chip" : ""}` : ""} ${o.sel && o.sel.x === x && o.sel.y === y ? "sel" : ""} ${pv ? `pv ${o.pv.bad ? "bad" : ""}` : ""} ${(o.hl && x >= o.hl.x && x <= o.hl.x + 1 && y >= o.hl.y && y <= o.hl.y + 1) || (o.hl1 && o.hl1.x === x && o.hl1.y === y) ? "drop" : ""}" data-gx="${x}" data-gy="${y}">${t === "t" ? `<span class="tree">🌳</span>` : ""}${cup ? `<span class="cup"><i></i></span>` : ""}${tg && tg.chip && tg.ok ? `<em class="chipb">チップイン<br>${gfChipN(tg.dy)}枚</em>` : ""}<span class="bs">${balls.map(z => gfBallH(z.p)).join("")}</span></div>`);
   }
-  const tee = Array.from({ length: W }, (_, x) => { const balls = (o.balls || []).filter(z => z.y === -1 && z.x === x), tg = o.tg && o.tg; return `<div class="gfc tee ${x === c.sx ? "on" : ""}" data-gx="${x}" data-gy="-1">${x === c.sx ? `<b class="s">S</b>` : ""}<span class="bs">${balls.map(z => gfBallH(z.p, z.dir)).join("")}</span></div>`; }).join("");
-  return `<div class="gfboard ${o.cls || ""}" style="--gw:${W};--gh:${H}">${cells.join("")}${tee}</div>`;
+  const tee = Array.from({ length: GF_W }, (_, x) => { const balls = (o.balls || []).filter(z => z.y === -1 && z.x === x), tg = o.tg && o.tg; return `<div class="gfc tee ${x === c.sx ? "on" : ""}" data-gx="${x}" data-gy="-1">${x === c.sx ? `<b class="s">S</b>` : ""}<span class="bs">${balls.map(z => gfBallH(z.p)).join("")}</span></div>`; }).join("");
+  return `<div class="gfboard ${o.cls || ""}">${cells.join("")}${tee}</div>`;
 }
 
 /* ======================= 画面 ======================= */
-let gfPassArm = 0, gfPassT = 0, gfDir = 0, gfBhi = null, gfBsel = null, gfRev = {}, gfId = null, gfSel = null, gfAim = null, gfSeen = {}, gfPlaying = false;
-/* ---------- 打つ向き・狙いを、ほかの人の画面にもリアルタイムで見せる（Supabaseのbroadcast。データベースは使わない） ---------- */
-let gfCh = null, gfRemote = {}, gfSentKey = "";
-function gfChan(){
-  if (gfCh || typeof sb === "undefined" || !sb.channel) return gfCh;
-  try {
-    gfCh = sb.channel("gf-live", { config: { broadcast: { self: false } } });
-    gfCh.on("broadcast", { event: "aim" }, msg => {
-      const d = msg && msg.payload; if (!d || !d.gid) return;
-      gfRemote[d.gid] = d;
-      if (gfId === d.gid && !gfPlaying){ const g = gfById(d.gid); if (g) gfRender(g, false); }
-    });
-    gfCh.on("broadcast", { event: "hello" }, msg => { const d = msg && msg.payload; if (d && d.gid === gfId){ gfSentKey = ""; const g = gfById(gfId); if (g) gfSendAim(g, true); } });
-    gfCh.subscribe(st => { if (st === "SUBSCRIBED" && gfId) try { gfCh.send({ type: "broadcast", event: "hello", payload: { gid: gfId } }); } catch (e) {} });
-  } catch (e) { gfCh = null; }
-  return gfCh;
-}
-function gfSendAim(g, force){
-  const st = g && g.st; if (!st || !st.gf || g.status !== "playing" || gfActor(st) !== me || st.build || st.place) return;
-  const club = gfSel === -1 ? "pt" : gfSel != null ? st.hand[me][gfSel] : null;
-  const d = { gid: g.id, p: me, n: st.n, dir: gfDir, club, aim: gfAim };
-  const key = JSON.stringify(d); if (!force && key === gfSentKey) return; gfSentKey = key;
-  const ch = gfChan(); if (ch) try { ch.send({ type: "broadcast", event: "aim", payload: d }); } catch (e) {}
-}
-function openGf(id){ const g0 = gfById(id); gfId = id; gfSel = null; gfAim = null; if (g0 && g0.st) gfSeen[id] = (g0.st.last && g0.st.last.n) || 0; $("#gfg").hidden = false; document.body.style.overflow = "hidden"; drawGf();
-  const ch = gfChan(); if (ch) try { ch.send({ type: "broadcast", event: "hello", payload: { gid: id } }); } catch (e) {} }
+let gfDir = 0, gfBsel = null, gfRev = {}, gfId = null, gfSel = null, gfAim = null, gfSeen = {}, gfPlaying = false;
+function openGf(id){ const g0 = gfById(id); gfId = id; gfSel = null; gfAim = null; if (g0 && g0.st) gfSeen[id] = (g0.st.last && g0.st.last.n) || 0; $("#gfg").hidden = false; document.body.style.overflow = "hidden"; drawGf(); }
 function closeGf(){ gfId = null; $("#gfg").hidden = true; document.body.style.overflow = ""; render(); }
 function drawGf(){
   setTimeout(cpuKick, 0);
@@ -10095,68 +9901,47 @@ function drawGf(){
   if (g.status === "finished") gfEndShow(g);
 }
 function gfRender(g, anim){
-  // ホールが終わった演出のあいだは、終わったホールの盤面のまま見せる
-  const ending = !!(anim && g.st.last && g.st.last.holeEnd), hv = ending ? g.st.last.holeEnd - 1 : g.st.hi;
-  const st = g.st, c = st.holes[hv], root = $("#gfg"), cur = gfActor(st), mine = !anim && cur === me && g.status === "playing";
+  const st = g.st, c = gfHole(st), root = $("#gfg"), cur = gfActor(st), mine = !anim && cur === me && g.status === "playing";
   const b = st.ball[me];
   let tg = null;
   const selK = gfSel === -1 ? "pt" : gfSel != null ? st.hand[me][gfSel] : null;
   const atTee = b && b.y < 0; if (atTee) gfDir = 0;
   if (mine && selK) tg = gfTargets(st, me, selK, gfDir);
   const balls = st.order.filter(p => !st.ball[p].done || (anim && st.last && st.last.p === p)).map(p => ({ p, x: anim && st.last && st.last.p === p && st.last.from ? st.last.from.x : st.ball[p].x, y: anim && st.last && st.last.p === p && st.last.from ? st.last.from.y : st.ball[p].y }));
-  // 自分の番：自分のボールに打つ向きの三角
-  if (mine && !st.build && !st.place && b && !gfAdj(st, me)) balls.forEach(z => { if (z.p === me) z.dir = atTee ? 0 : gfDir; });
-  // ほかの人の番：その人が選んでいる向き（届いていなければ前向き）と狙っているマス
-  let rAim = null, rClub = null;
-  if (!anim && !mine && cur && cur !== me && g.status === "playing" && !st.build && !st.place && st.ball[cur] && !gfAdj(st, cur)){
-    const r = gfRemote[g.id], ok = r && r.p === cur && r.n === st.n, bb = st.ball[cur];
-    balls.forEach(z => { if (z.p === cur) z.dir = bb.y < 0 ? 0 : ok ? r.dir : 0; });
-    if (ok){ rAim = r.aim; rClub = r.club; }
-  }
-  if (rClub && GF_CLUB[rClub]) tg = gfTargets(st, cur, rClub, (gfRemote[g.id] || {}).dir || 0).map(o => ({ ...o, remote: 1 }));
   const tot = p => st.sc[p].reduce((a, v) => a + v, 0);
-  const sbd = st.order.map(p => { const bb = st.ball[p]; return `<div class="gfsc ${p === cur ? "cur" : ""} ${bb.done ? "done" : ""}" style="--pc:${pcolor(p)}"><i class="dot"></i><b>${esc(pname(p))}</b><span>${ending ? st.sc[p][hv] : bb.s}<small>打</small></span><em>計${tot(p) + (st.status === "playing" ? 0 : 0)}</em>${ending ? `<i class="ok">IN</i>` : st.build ? "" : st.place ? (st.place.q.includes(p) ? `<i class="ok">タイル</i>` : "") : bb.done ? `<i class="ok">${bb.cap ? "上限" : "IN"}</i>` : bb.on ? `<i class="gr">ON</i>` : ""}</div>`; }).join("");
+  const sbd = st.order.map(p => { const bb = st.ball[p]; return `<div class="gfsc ${p === cur ? "cur" : ""} ${bb.done ? "done" : ""}" style="--pc:${pcolor(p)}"><i class="dot"></i><b>${esc(pname(p))}</b><span>${bb.s}<small>打</small></span><em>計${tot(p) + (st.status === "playing" ? 0 : 0)}</em>${st.build ? "" : st.place ? (st.place.q.includes(p) ? `<i class="ok">タイル</i>` : "") : bb.done ? `<i class="ok">${bb.cap ? "上限" : "IN"}</i>` : bb.on ? `<i class="gr">ON</i>` : ""}</div>`; }).join("");
   let act = "", pv = null;
-  if (ending) act = "";
-  else if (st.build){
-    const myB = !anim && cur === me, hd = (st.build.hands && st.build.hands[me]) || [], left = (c.t.match(/e/g) || []).length;
-    if (gfBhi != null && gfBhi >= hd.length) gfBhi = null;
-    const k = gfBhi != null ? hd[gfBhi] : null;
-    if (myB && k && gfBsel && gfTile(c, gfBsel.x, gfBsel.y) === "e") pv = { k, x: gfBsel.x, y: gfBsel.y, one: 1, bad: !gfBuildOk(c, k, gfBsel.x, gfBsel.y, hd) };
-    const desc = k => k === "r" ? "ラフ：ここから打つと1マス短くなる（ドライバーは2マス、アイアンは真っすぐ2マスも可）" : k === "b" ? "バンカー：ここから打つと1マス短くなる（ウェッジは影響なし）" : k === "t" ? "木：止まれない障害物" : k === "w" ? "池：入ると1打罰" : "フェアウェイ";
-    const msg = !myB ? `${esc(pname(cur))}がタイルを置いています…` : !k ? "手札のタイルを1枚選ぶ" : !gfBsel ? "空いているマスをタップして置く場所を選ぶ" : "";
-    act = `<div class="gfmsg">${myB && k ? `${GF_TILE[k].n}｜${desc(k)}` : "タイルの手札（置いたら1枚引く）"}<small>　空きマス あと${left}</small></div>
-      ${st.order.includes(me) ? `<div class="gfbh">${hd.map((t, i) => `<button class="gftile t-${t} ${gfBhi === i && myB ? "on" : ""} ${myB ? "" : "dim"}" data-bt="${i}"><i></i><b>${GF_TILE[t].n.replace("（障害物）", "")}</b></button>`).join("")}</div>` : ""}
-      ${pv && pv.bad ? `<div class="gfmsg bad">ここに置くとスタートからカップまで行けなくなる（詰み）</div>` : pv ? `<button class="btn gfgo" id="gfBuild">ここに置く</button>` : msg ? `<div class="gfmsg">${msg}</div>` : ""}`;
+  if (st.build){
+    const myB = !anim && cur === me, k = st.build.cur, left = (c.t.match(/e/g) || []).length;
+    if (myB && gfBsel && gfTile(c, gfBsel.x, gfBsel.y) === "e") pv = { k, x: gfBsel.x, y: gfBsel.y, one: 1 };
+    act = `<div class="gfbuild"><span class="gftile t-${k} big"><i></i><b>${GF_TILE[k].n}</b></span><div><b>${myB ? "あなたが引いたタイル" : `${esc(pname(cur))}が引いたタイル`}</b><small>${k === "r" ? "ラフ：ここから打つと1マス短くなる" : k === "b" ? "バンカー：ここから打つと1マス短くなる" : k === "t" ? "木：止まれない障害物" : k === "w" ? "池：入ると1打罰" : "フェアウェイ"}</small><small>空きマス あと${left}</small></div></div>${myB ? (pv ? `<button class="btn gfgo" id="gfBuild">ここに置く</button>` : `<div class="gfmsg">空いているマスをタップして置く場所を選ぶ</div>`) : `<div class="gfmsg">${esc(pname(cur))}がタイルを置いています…</div>`}`;
   }
   else if (st.place){
     const myP = !anim && cur === me;
     const sel = gfRev.i != null && st.revRow[gfRev.i] != null ? st.revRow[gfRev.i] : null;
     let pat = sel != null ? GF_REVSET[sel] : null; for (let r = 0; pat && r < (gfRev.r || 0); r++) pat = gfRot(pat);
-    if (myP && pat && gfRev.x != null) pv = { pat, x: gfRev.x, y: gfRev.y, bad: !!gfRevOk(c, gfRev.x, gfRev.y, pat) };
-    act = myP ? `<div class="gfmsg">逆転タイル：表のタイルから1枚選び、コースをタップして置く場所を決める</div><div class="gfrev">${st.revRow.map((id, ri) => id == null ? "" : `<button class="gfrv ${gfRev.i === ri ? "on" : ""}" data-rv="${ri}">${gfRevTile(ri === gfRev.i && pat ? pat : GF_REVSET[id])}<small>No.${id + 1}</small></button>`).join("")}${pat ? `<button class="gfrv rot" id="gfRot">↻<small>回転</small></button>` : ""}</div>${pv && !pv.bad ? `<button class="btn gfgo" id="gfPlace">ここに置く</button>` : pv ? `<div class="gfmsg bad">${gfRevOk(c, pv.x, pv.y, pv.pat)}</div>` : ""}`
-      : `<div class="gfmsg">${esc(pname(cur))}が逆転タイルを置いています…（ここまでの合計でビリ）</div>`;
+    if (myP && pat && gfRev.x != null) pv = { pat, x: gfRev.x, y: gfRev.y, bad: !!gfRevOk(c, gfRev.x, gfRev.y) };
+    act = myP ? `<div class="gfmsg">逆転タイル：表の4枚から1枚選び、コースをタップして置く場所を決める</div><div class="gfrev">${st.revRow.map((id, ri) => id == null ? "" : `<button class="gfrv ${gfRev.i === ri ? "on" : ""}" data-rv="${ri}">${gfRevTile(ri === gfRev.i && pat ? pat : GF_REVSET[id])}<small>No.${id + 1}</small></button>`).join("")}${pat ? `<button class="gfrv rot" id="gfRot">↻<small>回転</small></button>` : ""}</div>${pv && !pv.bad ? `<button class="btn gfgo" id="gfPlace">ここに置く</button>` : pv ? `<div class="gfmsg bad">${gfRevOk(c, pv.x, pv.y)}</div>` : ""}`
+      : `<div class="gfmsg">${esc(pname(cur))}が逆転タイルを置いています…（前のホールでビリ）</div>`;
   }
   else if (g.status === "finished") act = `<div class="gfmsg">ゲーム終了</div>`;
-  else if (!mine) act = `<div class="gfmsg">${cur ? `${esc(pname(cur))}の番です${rClub && GF_CLUB[rClub] ? `：<b>${GF_CLUB[rClub].n}</b>・${GF_DIRN[(gfRemote[g.id] || {}).dir || 0]}向きで${rAim ? "狙いを決めた" : "考え中…"}` : ""}` : ""}</div>`;
-  else if (gfAdj(st, me)) act = `<div class="gfmsg">グリーンの上・カップの隣：パット（成功カード1枚で入る・成功7割）</div><button class="btn gfgo" id="gfPutt">パット ⛳</button>`;
-  else if (gfDiag(st, me) && gfSel == null) act = `<div class="gfmsg">${gfCupD(st, me).on ? "カップの斜め隣" : "グリーンの外からパターで"}：ロングパット（成功カード2枚で入る）か、クラブ・パターで寄せる</div><button class="btn gfgo" id="gfLPutt">ロングパット 🎯</button>`;
+  else if (!mine) act = `<div class="gfmsg">${cur ? `${esc(pname(cur))}の番です` : ""}</div>`;
+  else if (b.on) act = `<div class="gfmsg">グリーンの上：パットで確実にカップイン</div><button class="btn gfgo" id="gfPutt">パット ⛳</button>`;
   else if (!gfCanAny(st, me)) act = `<div class="gfmsg">どのクラブでも打てるマスがありません</div><button class="btn gfgo" id="gfPass">1打罰で手札を入れ替える</button>`;
   else {
     const t2 = tg && gfAim ? tg.find(z => z.x === gfAim.x && z.y === gfAim.y && z.ok) : null;
     const dirs = atTee ? "" : `<div class="gfdir"><small>打つ向き</small>${[3, 0, 1, 2].map(d => `<button class="${gfDir === d ? "on" : ""}" data-dir="${d}">${"↑→↓←"[d]}<small>${GF_DIRN[d]}</small></button>`).join("")}</div>`;
-    act = dirs + `<div class="gfmsg">${gfSel == null ? "クラブを1枚選ぶ" : !t2 ? "黄色のマスをタップして狙う（濃い黄色は木を1本まで越えられる）" : t2.chip ? `カップを狙う：チップインチャレンジ（${gfChipN(t2.k)}枚すべて成功で入る）` : "狙うマスを決めた。ショット！"}</div>${t2 ? `<button class="btn gfgo" id="gfShot">${t2.chip ? "チップインに挑戦" : "ショット！"}</button>` : ""}`;
+    act = dirs + `<div class="gfmsg">${gfSel == null ? "クラブを1枚選ぶ" : !t2 ? "黄色のマスをタップして狙う（濃い黄色は木を1本まで越えられる）" : t2.chip ? `カップを狙う：チップインチャレンジ（${gfChipN(t2.dy)}枚すべて成功で入る）` : "狙うマスを決めた。ショット！"}</div>${t2 ? `<button class="btn gfgo" id="gfShot">${t2.chip ? "チップインに挑戦" : "ショット！"}</button>` : ""}`;
   }
-  const hand = (st.hand[me] || []).map((k, i) => gfCard(k, `${mine && gfSel === i ? "on" : ""} ${mine && !gfAdj(st, me) ? "" : "dim"}`, `data-hc="${i}"`, mine ? gfDir : 0)).join("") + gfCard("pt", `pt ${mine && gfSel === -1 ? "on" : ""} ${mine && !gfAdj(st, me) ? "" : "dim"}`, `data-hc="-1"`, mine ? gfDir : 0);
+  const hand = (st.hand[me] || []).map((k, i) => gfCard(k, `${mine && gfSel === i ? "on" : ""} ${mine && !b.on ? "" : "dim"}`, `data-hc="${i}"`, mine ? gfDir : 0)).join("") + gfCard("pt", `pt ${mine && gfSel === -1 ? "on" : ""} ${mine && !b.on ? "" : "dim"}`, `data-hc="-1"`, mine ? gfDir : 0);
   root.innerHTML = `<div class="gfwrap">
-    <div class="gftop"><button class="gfbk" id="gfBack">‹</button><div class="gfttl"><b>TILE GOLF</b><small>第${hv + 1}/${st.holes.length}ホール「${esc(c.name)}」</small></div><button class="gfbk" id="gfMenu">⋯</button></div>
+    <div class="gftop"><button class="gfbk" id="gfBack">‹</button><div class="gfttl"><b>TILE GOLF</b><small>第${st.hi + 1}/${st.holes.length}ホール「${esc(c.name)}」</small></div><button class="gfbk" id="gfMenu">⋯</button></div>
     <div class="gfscs">${sbd}</div>
-    ${st.revRow && st.revRow.length && (!st.place || ending) ? `<div class="gfrow"><small>逆転タイル</small>${st.revRow.map(id => id == null ? "" : gfRevTile(GF_REVSET[id], "mini")).join("")}</div>` : ""}
-    <div class="gfmid ${rClub ? "remote" : ""}">${gfBoardH(c, { tg, sel: rClub ? rAim : gfAim, balls: ending ? (st.last.from ? [{ p: st.last.p, x: st.last.from.x, y: st.last.from.y }] : []) : st.place || st.build ? [] : balls, pv, hl: anim && st.last && st.last.kind === "place" ? st.last : null, hl1: anim && st.last && st.last.kind === "build" ? st.last : null })}</div>
-    <div class="gfbot">${act}${mine && !st.build && !st.place && b && !b.done && gfCanAny(st, me) ? `<button class="gfpassb ${gfPassArm ? "arm" : ""}" id="gfPass2">${gfPassArm ? "もう一度押すと入れ替え（＋1打）" : "🔄 1打罰で手札を入れ替える"}</button>` : ""}<div class="gfhand ${st.order.includes(me) && !ending ? "" : "hid"} ${st.place || st.build ? "sm" : ""}">${st.place || st.build ? `<small class="gfhl2">クラブの手札</small>` : ""}${hand}</div></div>
+    ${st.revRow && !st.place ? `<div class="gfrow"><small>逆転タイル</small>${st.revRow.map(id => id == null ? "" : gfRevTile(GF_REVSET[id], "mini")).join("")}</div>` : ""}
+    <div class="gfmid">${gfBoardH(c, { tg, sel: gfAim, balls: st.place || st.build ? [] : balls, pv, hl: anim && st.last && st.last.kind === "place" ? st.last : null, hl1: anim && st.last && st.last.kind === "build" ? st.last : null })}</div>
+    <div class="gfbot">${act}<div class="gfhand ${st.order.includes(me) && !st.place && !st.build ? "" : "hid"}">${hand}</div></div>
     <div class="gffx" id="gfFx"></div></div>`;
   root.onclick = e => gfTap(g, e);
-  if (mine) gfSendAim(g);
 }
 function gfTap(g, e){
   const t = e.target, st = g.st;
@@ -10165,14 +9950,13 @@ function gfTap(g, e){
   if (gfPlaying || gfActor(st) !== me || g.status !== "playing") return;
   if (st.build){
     const cl = t.closest("[data-gx]"); if (cl){ const x = +cl.dataset.gx, y = +cl.dataset.gy; if (gfTile(gfHole(st), x, y) !== "e"){ toast("空いているマスに置いてください", 1400); return; } gfBsel = { x, y }; return gfRender(g, false); }
-    const bt = t.closest("[data-bt]"); if (bt){ const i = +bt.dataset.bt; gfBhi = gfBhi === i ? null : i; return gfRender(g, false); }
-    if (t.closest("#gfBuild") && gfBsel && gfBhi != null){ const mv = ["build", gfBhi, gfBsel.x, gfBsel.y]; gfBsel = null; gfBhi = null; return gfDo(g.id, me, mv); }
+    if (t.closest("#gfBuild") && gfBsel){ const mv = ["build", gfBsel.x, gfBsel.y]; gfBsel = null; return gfDo(g.id, me, mv); }
     return;
   }
   if (st.place){
     if (t.closest("#gfRot")){ gfRev.r = ((gfRev.r || 0) + 1) % 4; return gfRender(g, false); }
     const rv = t.closest("[data-rv]"); if (rv){ const ri = +rv.dataset.rv; if (gfRev.i !== ri) gfRev.r = 0; gfRev.i = ri; return gfRender(g, false); }
-    const cl = t.closest("[data-gx]"); if (cl && +cl.dataset.gy >= 0){ if (gfRev.i == null){ toast("先に表のタイルを1枚選んでください"); return; } gfRev.x = Math.min(gfW(gfHole(st)) - 2, +cl.dataset.gx); gfRev.y = Math.min(gfH(gfHole(st)) - 2, +cl.dataset.gy); return gfRender(g, false); }
+    const cl = t.closest("[data-gx]"); if (cl && +cl.dataset.gy >= 0){ if (gfRev.i == null){ toast("先に表のタイルを1枚選んでください"); return; } gfRev.x = Math.min(GF_W - 2, +cl.dataset.gx); gfRev.y = Math.min(GF_H - 2, +cl.dataset.gy); return gfRender(g, false); }
     if (t.closest("#gfPlace") && gfRev.i != null && gfRev.x != null){ const mv = ["place", gfRev.i, gfRev.x, gfRev.y, gfRev.r || 0]; gfRev = {}; return gfDo(g.id, me, mv); }
     return;
   }
@@ -10188,167 +9972,56 @@ function gfTap(g, e){
   }
   if (t.closest("#gfShot") && gfAim){ const mv = ["shot", gfSel, gfAim.x, gfAim.y, gfDir]; gfSel = null; gfAim = null; gfDir = 0; return gfDo(g.id, me, mv); }
   if (t.closest("#gfPutt")) return gfDo(g.id, me, ["putt"]);
-  if (t.closest("#gfLPutt")) return gfDo(g.id, me, ["lputt"]);
   if (t.closest("#gfPass")) return gfDo(g.id, me, ["pass"]);
-  if (t.closest("#gfPass2")){
-    if (!gfPassArm){ gfPassArm = 1; clearTimeout(gfPassT); gfPassT = setTimeout(() => { gfPassArm = 0; const g2 = gfById(gfId); if (g2 && !gfPlaying) gfRender(g2, false); }, 3000); return gfRender(g, false); }
-    gfPassArm = 0; gfSel = null; gfAim = null; return gfDo(g.id, me, ["pass"]);
-  }
 }
 
 /* ---------- 演出 ---------- */
 const gfWait = ms => new Promise(r => setTimeout(r, ms));
 function gfCellEl(x, y){ return document.querySelector(`#gfg .gfboard [data-gx="${x}"][data-gy="${y}"]`); }
 function gfCenter(el){ const r = el.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 }; }
-/* ---------- 派手な演出のための道具 ---------- */
-function gfLayer(){ let l = document.getElementById("gfFxL"); if (!l){ l = document.createElement("div"); l.id = "gfFxL"; document.body.appendChild(l); } return l; }
-/* 粒を飛ばす（x,y は画面の座標） */
-function gfParts(x, y, o = {}){
-  const L = gfLayer(), n = o.n || 18, cols = o.c || ["#FFE36A", "#fff", "#7DFFA8"], sp = o.sp || 90, sz = o.sz || 8, dur = o.dur || 800, gr = o.gr == null ? 60 : o.gr;
-  for (let i = 0; i < n; i++){
-    const e = document.createElement("i"); e.className = "gfp" + (o.sq ? " sq" : "");
-    if (o.em){ e.textContent = o.em[i % o.em.length]; e.className = "gfp em"; e.style.fontSize = sz * 2 + "px"; }
-    else { e.style.background = cols[i % cols.length]; e.style.width = e.style.height = (sz * (.5 + Math.random() * .8)) + "px"; }
-    L.appendChild(e);
-    const a = (o.a0 == null ? 0 : o.a0) + (o.ar == null ? Math.PI * 2 : o.ar) * (o.ar == null ? Math.random() : (Math.random() - .5)), r = sp * (.4 + Math.random() * .8);
-    const dx = Math.cos(a) * r, dy = Math.sin(a) * r;
-    e.animate([{ transform: `translate(${x}px,${y}px) scale(1) rotate(0deg)`, opacity: 1 }, { transform: `translate(${x + dx}px,${y + dy + gr}px) scale(${o.end == null ? .2 : o.end}) rotate(${Math.random() * 720 - 360}deg)`, opacity: 0 }], { duration: dur * (.7 + Math.random() * .5), easing: "cubic-bezier(.15,.7,.3,1)", fill: "forwards" }).onfinish = () => e.remove();
-  }
-}
-function gfRing(x, y, col = "#FFE36A", size = 120, dur = 600){
-  const e = document.createElement("i"); e.className = "gfring"; e.style.borderColor = col; gfLayer().appendChild(e);
-  e.animate([{ transform: `translate(${x}px,${y}px) translate(-50%,-50%) scale(.1)`, opacity: 1 }, { transform: `translate(${x}px,${y}px) translate(-50%,-50%) scale(1)`, opacity: 0 }], { duration: dur, easing: "ease-out", fill: "forwards" }).onfinish = () => e.remove();
-  e.style.width = e.style.height = size + "px";
-}
-function gfFlash(col = "#fff", op = .7, dur = 450){
-  const e = document.createElement("i"); e.className = "gfflash"; e.style.background = col; gfLayer().appendChild(e);
-  e.animate([{ opacity: op }, { opacity: 0 }], { duration: dur, easing: "ease-out", fill: "forwards" }).onfinish = () => e.remove();
-}
-function gfShake(px = 8, dur = 420){ const w = document.querySelector("#gfg .gfwrap"); if (!w) return; w.animate([0, 1, 2, 3, 4, 5, 6].map(i => ({ transform: i === 6 ? "none" : `translate(${(Math.random() - .5) * px * 2}px,${(Math.random() - .5) * px}px)` })), { duration: dur, easing: "linear" }); }
-/* 風の筋（dx,dy：流れる向き） */
-function gfStreaks(dx, dy, col = "rgba(220,240,255,.8)", n = 16){
-  const L = gfLayer(), W = innerWidth, H = innerHeight;
-  for (let i = 0; i < n; i++){
-    const e = document.createElement("i"); e.className = "gfstreak"; e.style.background = `linear-gradient(90deg,transparent,${col},transparent)`; L.appendChild(e);
-    const x = Math.random() * W, y = Math.random() * H, ang = Math.atan2(dy, dx) * 180 / Math.PI, d = 260 + Math.random() * 200;
-    e.animate([{ transform: `translate(${x - dx * d}px,${y - dy * d}px) rotate(${ang}deg) scaleX(.3)`, opacity: 0 }, { opacity: 1, offset: .3 }, { transform: `translate(${x + dx * d}px,${y + dy * d}px) rotate(${ang}deg) scaleX(1)`, opacity: 0 }], { duration: 700 + Math.random() * 400, delay: Math.random() * 300, easing: "ease-in", fill: "both" }).onfinish = () => e.remove();
-  }
-}
-const gfCellPt = (x, y) => { const el = gfCellEl(x, y); return el ? gfCenter(el) : { x: innerWidth / 2, y: innerHeight / 2 }; };
-/* マスに着いたときの演出（タイルごと） */
-function gfImpact(c, x, y, res){
-  const p = gfCellPt(x, y), t = gfTile(c, x, y);
-  if (res === "ob"){ gfFlash("#FF2E4A", .45); gfShake(10); gfParts(p.x, p.y, { n: 14, c: ["#FF4A6A", "#fff"], sp: 70, gr: 20 }); return; }
-  if (res === "water" || t === "w"){ gfShake(6); gfRing(p.x, p.y, "#9AD6FF", 110); gfRing(p.x, p.y, "#fff", 70, 450); gfParts(p.x, p.y, { n: 26, c: ["#BFE8FF", "#5FB8FF", "#fff"], sp: 70, a0: -Math.PI / 2, ar: 1.6, gr: 90, sz: 9 }); return; }
-  if (res === "bunker" || t === "b"){ gfShake(4); gfParts(p.x, p.y, { n: 24, c: ["#F2D79A", "#E0BC6E", "#FFF2C4"], sp: 60, a0: -Math.PI / 2, ar: 2.4, gr: 50, sz: 7 }); return; }
-  if (res === "tree" || t === "t"){ gfShake(6); gfParts(p.x, p.y, { n: 12, em: ["🍃", "🍂"], sp: 80, gr: 70, sz: 9, dur: 1100, end: .8 }); return; }
-  if (res === "rough" || t === "r"){ gfParts(p.x, p.y, { n: 16, c: ["#2F7A3A", "#5FB84F", "#9BE07A"], sp: 50, a0: -Math.PI / 2, ar: 2, gr: 40, sz: 6, sq: 1 }); gfRing(p.x, p.y, "#9BE07A", 70, 450); return; }
-  if (res === "cupin" || res === "chipin"){ gfCupFx(p); return; }
-  gfRing(p.x, p.y, t === "g" ? "#B6FFC4" : "#fff", 80, 500); gfParts(p.x, p.y, { n: 10, c: ["#9BE07A", "#fff"], sp: 40, gr: 20, sz: 5 });
-}
-function gfCupFx(p){
-  gfFlash("#FFF4C0", .6); gfShake(5);
-  gfRing(p.x, p.y, "#FFE36A", 160, 700); setTimeout(() => gfRing(p.x, p.y, "#fff", 230, 800), 120);
-  gfParts(p.x, p.y, { n: 40, c: ["#FFE36A", "#FFB800", "#fff", "#7DFFA8", "#FF2E6A"], sp: 150, gr: 90, sz: 10, dur: 1200 });
-  gfParts(p.x, p.y, { n: 10, em: ["⭐", "✨"], sp: 120, gr: 30, sz: 11, dur: 1300, end: .6 });
-  if (typeof lmConfetti === "function") try { lmConfetti(); } catch (e) {}
-}
-/* 成功/失敗カードをめくる（1枚ずつ、ためてから） */
-async function gfFlipCards(fx, cards){
-  const els = [...fx.querySelectorAll(".gfchip")];
-  for (let i = 0; i < cards.length; i++){
-    els[i].classList.add("tense"); await gfWait(420);
-    const nw = document.createElement("span"); nw.innerHTML = gfChipCard(cards[i]); const card = nw.firstChild; card.classList.add("flipin"); els[i].replaceWith(card);
-    const r = card.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
-    if (cards[i] === "ok"){ gfParts(cx, cy, { n: 16, c: ["#FFE36A", "#fff", "#FFB800"], sp: 70, gr: 10, sz: 7 }); gfRing(cx, cy, "#FFE36A", 110, 500); }
-    else { gfShake(9); gfFlash("#FF2E4A", .3, 350); gfParts(cx, cy, { n: 14, c: ["#FF4A6A", "#2A0E14"], sp: 60, gr: 50, sz: 7, sq: 1 }); }
-    await gfWait(cards[i] === "ng" ? 700 : 480);
-  }
-}
 async function gfPlay(g, L){
   gfPlaying = true; gfAnimUntil = Date.now() + 9000;
   const fx = $("#gfFx"), ballEl = document.querySelector(`#gfg [data-gb="${L.p}"]`);
-  const show = async (html, ms, cls = "") => { fx.innerHTML = `<div class="gfshow ${cls}">${/win|rays/.test(cls) ? `<i class="gfrays"></i>` : ""}${html}</div>`; await gfWait(ms); };
-  const c = g.st.holes[L.holeEnd ? L.holeEnd - 1 : g.st.hi];
+  const show = async (html, ms, cls = "") => { fx.innerHTML = `<div class="gfshow ${cls}">${html}</div>`; await gfWait(ms); };
   try {
-    if (L.kind === "build"){
-      await show(`<b class="t">${esc(pname(L.p))}</b><div class="flip"><span class="gftile t-${L.tile}"><i></i><b>${GF_TILE[L.tile].n}</b></span></div>`, 750);
-      fx.innerHTML = ""; await gfWait(380);                 // 盤面のマスに落ちてくる（drop）のに合わせて
-      const p = gfCellPt(L.x, L.y); gfRing(p.x, p.y, "#fff", 90, 450); gfParts(p.x, p.y, { n: 14, c: L.tile === "w" ? ["#BFE8FF", "#5FB8FF"] : L.tile === "b" ? ["#F2D79A", "#FFF2C4"] : ["#9BE07A", "#fff"], sp: 55, gr: 20, sz: 6 }); gfShake(4, 250);
-      await gfWait(450);
-    }
-    else if (L.kind === "place"){
-      await show(`<b class="t">${esc(pname(L.p))}の逆転タイル</b><div class="flip">${gfRevTile(L.pat, "big")}</div><p>No.${L.id + 1} を叩きつけた！</p>`, 1300, "rays rev");
-      fx.innerHTML = ""; await gfWait(420);
-      const a = gfCellPt(L.x, L.y), b = gfCellPt(L.x + 1, L.y + 1), p = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
-      gfFlash("#FF2E6A", .35); gfShake(14, 520); gfRing(p.x, p.y, "#FF2E6A", 220, 700); gfParts(p.x, p.y, { n: 34, c: ["#FF2E6A", "#FFE36A", "#fff", "#5a3a20"], sp: 140, gr: 70, sz: 9, sq: 1 });
-      await gfWait(800);
-    }
-    else if (L.kind === "pass"){ gfShake(6); await show(`<b class="big w">ペナルティ</b><p>${esc(pname(L.p))}：1打罰で<br>クラブの手札を3枚入れ替え！</p>`, 1700, "bad"); }
-    else if (L.kind === "putt" || L.kind === "lputt"){
-      const nm = L.kind === "putt" ? "パット" : "ロングパット", cards = L.cards || (L.card ? [L.card] : ["ok"]), need = L.need || cards.length;
-      { const p = gfCellPt(L.from.x, L.from.y); gfRing(p.x, p.y, "#B6FFC4", 90, 500); }
-      await show(`<b class="t">${esc(pname(L.p))}</b><b class="big g">${nm}！</b>`, 800, "slam");
-      fx.innerHTML = `<div class="gfshow"><b class="t">${nm}（${need}枚すべて成功で入る）</b><div class="chips">${Array.from({ length: need }, () => `<span class="gfchip back"></span>`).join("")}</div></div>`;
-      await gfWait(500);
-      await gfFlipCards(fx, cards);
-      await gfWait(300); fx.innerHTML = "";
-      if (L.res === "cupin"){ await gfFlyBall(L, L.from, L.to, 700, 10); gfImpact(c, L.to.x, L.to.y, "cupin"); await show(`<b class="big">CUP IN!!</b><p>${nm}成功！ ${L.s}打でホールアウト</p>`, 1900, "win slam"); }
-      else { const p = gfCellPt(L.from.x, L.from.y), q = gfCellPt(L.to.x, L.to.y); gfParts(p.x + (q.x - p.x) * .6, p.y + (q.y - p.y) * .6, { n: 10, c: ["#fff", "#B6FFC4"], sp: 40, gr: 10, sz: 5 }); gfShake(5); await show(`<b class="big w">惜しい…</b><p>カップの縁で止まった（${L.s}打）</p>`, 1500, "bad slam"); }
+    if (L.kind === "build"){ await show(`<b class="t">${esc(pname(L.p))}</b><div class="flip"><span class="gftile t-${L.tile}"><i></i><b>${GF_TILE[L.tile].n}</b></span></div>`, 1000); }
+    else if (L.kind === "place"){ await show(`<b class="t">${esc(pname(L.p))}の逆転タイル</b><div class="flip">${gfRevTile(L.pat, "big")}</div><p>No.${L.id + 1} を置いた！</p>`, 1700); }
+    else if (L.kind === "pass"){ await show(`<b class="t">${esc(pname(L.p))}</b><p>打てるクラブがない…<br>1打罰で手札を入れ替え</p>`, 1600); }
+    else if (L.kind === "putt"){
+      await show(`<b class="t">${esc(pname(L.p))}</b><p>パット！</p>`, 700);
+      fx.innerHTML = "";
+      await gfFlyBall(L, L.from, L.to, 600, 10);
+      await show(`<b class="big">CUP IN!</b><p>${L.s}打でホールアウト</p>`, 1400, "win");
     } else {
       // 1) クラブを公開
-      fx.innerHTML = `<div class="gfshow rays club"><i class="gfrays"></i><b class="t">${esc(pname(L.p))}</b><div class="flip">${gfCard(L.club, "big")}</div></div>`;
-      await gfWait(250); gfFlash("#fff", .25, 300); { const r = fx.querySelector(".gfcard"); if (r){ const q = r.getBoundingClientRect(); gfParts(q.left + q.width / 2, q.top + q.height / 2, { n: 22, c: ["#FFE36A", "#fff"], sp: 110, gr: 0, sz: 6 }); } }
-      await gfWait(1050);
+      await show(`<b class="t">${esc(pname(L.p))}</b><div class="flip">${gfCard(L.club, "big")}</div>`, 1300);
       // 2) 狙ったマスを示す
       const aim = gfCellEl(L.aim.x, L.aim.y); if (aim) aim.classList.add("aimfx");
       // 3) イベントカード or チップインカード
       if (L.chip){
-        gfFlash("#FFE36A", .3);
-        fx.innerHTML = `<div class="gfshow rays chipc"><i class="gfrays"></i><b class="big">CHIP-IN<br>CHALLENGE!</b><b class="t">${L.need || L.chip.length}枚すべて成功で入る</b><div class="chips">${Array.from({ length: L.need || L.chip.length }, () => `<span class="gfchip back"></span>`).join("")}</div></div>`;
-        await gfWait(800);
-        await gfFlipCards(fx, L.chip);
-        await gfWait(400);
+        fx.innerHTML = `<div class="gfshow"><b class="t">チップインチャレンジ！</b><div class="chips">${L.chip.map(() => `<span class="gfchip back"></span>`).join("")}</div></div>`;
+        await gfWait(700);
+        const els = [...fx.querySelectorAll(".gfchip")];
+        for (let i = 0; i < L.chip.length; i++){ els[i].outerHTML = gfChipCard(L.chip[i]).replace('class="gfchip', 'class="gfchip flipin'); await gfWait(650); if (L.chip[i] === "ng") break; }
+        await gfWait(600);
       } else {
-        fx.innerHTML = `<div class="gfshow ev-${L.ev}"><b class="t">イベントカード</b><div class="flip">${gfEvCard(L.ev)}</div></div>`;
-        await gfWait(450);
-        const V = GF_DIRV[L.dir || 0];
-        if (L.ev === "wind"){ gfStreaks(-V.R[0], V.R[1], "rgba(200,225,255,.85)", 22); gfShake(8, 600); }
-        else if (L.ev === "rwind"){ gfStreaks(V.R[0], -V.R[1], "rgba(255,210,240,.85)", 22); gfShake(8, 600); }
-        else if (L.ev === "tail"){ gfStreaks(V.F[0], -V.F[1], "rgba(160,255,220,.85)", 22); }
-        else if (L.ev === "head"){ gfStreaks(-V.F[0], V.F[1], "rgba(255,230,160,.85)", 22); gfShake(6, 500); }
-        else if (L.ev === "duff"){ gfFlash("#8B5A2B", .45); gfShake(12, 600); { const p = gfCellPt(L.from.x, L.from.y); gfParts(p.x, p.y, { n: 30, c: ["#6B4A2A", "#8B6A3A", "#3D9A4E"], sp: 80, a0: -Math.PI / 2, ar: 2.4, gr: 70, sz: 8, sq: 1 }); } }
-        else { const r = fx.querySelector(".gfev"); if (r){ const q = r.getBoundingClientRect(); gfParts(q.left + q.width / 2, q.top + q.height / 2, { n: 20, c: ["#7DFFA8", "#FFE36A", "#fff"], sp: 100, gr: 10, sz: 6 }); gfRing(q.left + q.width / 2, q.top + q.height / 2, "#7DFFA8", 180, 600); } }
-        await gfWait(1100);
+        await show(`<b class="t">イベントカード</b><div class="flip">${gfEvCard(L.ev)}</div>`, 1400);
       }
       fx.innerHTML = "";
       // 4) ボールが飛ぶ
       if (L.chip && L.res === "chipin") await gfFlyBall(L, L.from, L.aim, 900, 70);
-      else if (L.res === "duff"){ const p = gfCellPt(L.from.x, L.from.y); gfParts(p.x, p.y, { n: 20, c: ["#6B4A2A", "#3D9A4E", "#fff"], sp: 50, a0: -Math.PI / 2, ar: 2, gr: 40, sz: 7, sq: 1 }); gfShake(6); await gfWait(400); }
       else {
         await gfFlyBall(L, L.from, L.aim, 900, 70);
-        if (L.to.x !== L.aim.x || L.to.y !== L.aim.y){ const p = gfCellPt(L.aim.x, L.aim.y); gfRing(p.x, p.y, "#fff", 60, 400); await gfFlyBall(L, L.aim, L.to, 550, 14, (GF_EV[L.ev] || {}).lb || "流された！"); }
+        if (L.to.x !== L.aim.x || L.to.y !== L.aim.y) await gfFlyBall(L, L.aim, L.to, 500, 6, L.ev === "wind" ? "強風でそれた" : "追い風で流れた");
         else if (L.stop) await show(`<p>${L.stop}</p>`, 900);
       }
       if (aim) aim.classList.remove("aimfx");
       // 5) 結果
-      const R = { duff: [`<b class="big w">ダフった…</b><p>ボールはその場に留まる（${L.s}打目）</p>`, "bad"], tree: [`<b class="big r">木の中…</b><p>次のショットはどのクラブでも1マスだけ</p>`, "bad"], cupin: [`<b class="big">CUP IN!!</b><p>${(GF_EV[L.ev] || {}).n || "風"}に乗ってカップイン！ ${L.s}打でホールアウト</p>`, "win"], chipin: [`<b class="big">CHIP IN!!</b><p>${L.s}打でホールアウト</p>`, "win"], green: [`<b class="big g">GREEN ON</b><p>${(() => { const cu = g.st.holes[L.holeEnd ? L.holeEnd - 1 : g.st.hi].cup, ax = Math.abs(L.to.x - cu[0]), ay = Math.abs(L.to.y - cu[1]); return ax + ay <= 1 ? "カップの隣：次はパット（成功7割）" : ax === 1 && ay === 1 ? "カップの斜め隣：次はロングパット（成功カード2枚）" : "パターは1マスずつ転がす"; })()}</p>`, ""], water: [`<b class="big w">池ポチャ…</b><p>1打罰で打つ前の場所に戻る</p>`, "bad"], ob: [`<b class="big w">OB…</b><p>コースの外へ。1打罰で打つ前の場所に戻る</p>`, "bad"], bunker: [`<b class="big b">バンカー</b><p>次のショットは1マス短くなる（ウェッジなら影響なし）</p>`, ""], rough: [`<b class="big r">ラフ</b><p>次のショットは1マス短くなる</p>`, ""], fair: [`<b class="big">フェアウェイ</b><p>${L.s}打目</p>`, ""] }[L.res];
-      gfImpact(c, L.to.x, L.to.y, L.res);
-      await gfWait(L.res === "fair" ? 150 : 300);
-      await show(R[0], L.res === "chipin" || L.res === "cupin" ? 2000 : 1400, `${R[1]} slam res-${L.res}`);
+      const R = { cupin: [`<b class="big">CUP IN!!</b><p>${L.ev === "tail" ? "追い風" : "強風"}に乗ってカップイン！ ${L.s}打でホールアウト</p>`, "win"], chipin: [`<b class="big">CHIP IN!!</b><p>${L.s}打でホールアウト</p>`, "win"], green: [`<b class="big g">GREEN ON</b><p>次のパットで確実にカップイン</p>`, ""], water: [`<b class="big w">池ポチャ…</b><p>1打罰で打つ前の場所に戻る</p>`, "bad"], ob: [`<b class="big w">OB…</b><p>コースの外へ。1打罰で打つ前の場所に戻る</p>`, "bad"], bunker: [`<b class="big b">バンカー</b><p>次のショットは1マス短くなる</p>`, ""], rough: [`<b class="big r">ラフ</b><p>次のショットは1マス短くなる</p>`, ""], fair: [`<b class="big">フェアウェイ</b><p>${L.s}打目</p>`, ""] }[L.res];
+      await show(R[0], 1300, R[1]);
+      if ((L.res === "chipin" || L.res === "cupin") && typeof lmConfetti === "function") try { lmConfetti(); } catch (e) {}
     }
-    if (L.holeEnd){
-      document.querySelectorAll("#gfg .gfboard .gfball").forEach(e => e.remove());   // カップインしたボールは盤面から消す
-      await gfWait(600);
-      const st = g.st, h = L.holeEnd - 1, tot = p => st.sc[p].reduce((a, v) => a + v, 0);
-      const rows = st.order.slice().sort((a, b) => st.sc[a][h] - st.sc[b][h]).map(p => `<tr><td><i class="dot" style="--pc:${pcolor(p)}"></i>${esc(pname(p))}</td><td><b>${st.sc[p][h]}</b>打</td><td>計${tot(p)}</td></tr>`).join("");
-      const rev = st.place ? `<p class="rv">逆転タイル：<b>${st.place.q.map(p => esc(pname(p))).join("・")}</b>が次のホールに2×2のタイルを置く</p>` : "";
-      if (st.status === "playing"){
-        gfFlash("#fff", .35); if (typeof lmConfetti === "function") try { lmConfetti(); } catch (e) {}
-        fx.innerHTML = `<div class="gfshow gfhe rays"><i class="gfrays"></i><b class="big">HOLE ${L.holeEnd} 終了</b><table>${rows}</table>${rev}<button class="btn gfgo" id="gfNextH">第${L.holeEnd + 1}ホールへ ▶</button></div>`;
-        await new Promise(r => { const bt = fx.querySelector("#gfNextH"); bt.onclick = e => { e.stopPropagation(); r(); }; });
-      } else { gfFlash("#fff", .35); await show(`<b class="big">HOLE ${L.holeEnd} 終了</b><table>${rows}</table>`, 2400, "gfhe rays"); }
-    }
+    if (L.holeEnd){ await show(`<b class="big">HOLE ${L.holeEnd} 終了</b>`, 1400); if (g.st.place) await show(`<b class="t">逆転タイル</b><p>${g.st.place.q.map(p => esc(pname(p))).join("・")}が次のホールに<br>2×2のタイルを被せる</p>`, 1800); }
   } catch (e) { console.error(e); }
   fx.innerHTML = ""; gfPlaying = false; gfAnimUntil = 0;
   drawGf();
@@ -10363,10 +10036,6 @@ function gfFlyBall(L, from, to, dur, arc, label){
   const mid = { x: (p0.x + p1.x) / 2, y: (p0.y + p1.y) / 2 - arc };
   const kf = [0, .25, .5, .75, 1].map(t => { const x = (1 - t) * (1 - t) * p0.x + 2 * (1 - t) * t * mid.x + t * t * p1.x, y = (1 - t) * (1 - t) * p0.y + 2 * (1 - t) * t * mid.y + t * t * p1.y, s = 1 + Math.sin(t * Math.PI) * arc / 60; return { transform: `translate(${x - 9}px,${y - 9}px) scale(${s})` }; });
   el.animate(kf, { duration: dur, easing: "ease-in-out", fill: "both" });
-  // 飛んでいる軌跡に光の粒を残す
-  const ez = t => t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
-  for (let i = 1; i < 14; i++){ const t0 = i / 14; setTimeout(() => { const t = t0, x = (1 - t) * (1 - t) * p0.x + 2 * (1 - t) * t * mid.x + t * t * p1.x, y = (1 - t) * (1 - t) * p0.y + 2 * (1 - t) * t * mid.y + t * t * p1.y; gfParts(x, y, { n: 2, c: [pcolor(L.p), "#fff"], sp: 8, gr: 6, sz: 7, dur: 500 }); }, dur * ez(t0)); }
-  if (arc > 30) { gfParts(p0.x, p0.y, { n: 12, c: ["#9BE07A", "#fff"], sp: 45, a0: -Math.PI / 2, ar: 2.2, gr: 30, sz: 6 }); gfRing(p0.x, p0.y, "#fff", 70, 400); }
   sh.animate([{ transform: `translate(${p0.x - 8}px,${p0.y + 2}px)` }, { transform: `translate(${p1.x - 8}px,${p1.y + 2}px)` }], { duration: dur, easing: "ease-in-out", fill: "both" });
   return gfWait(dur + 60).then(() => { el.remove(); sh.remove(); real.forEach(r => r.style.visibility = ""); if (label) fx.innerHTML = ""; });
 }
@@ -10377,73 +10046,29 @@ function gfMenu(g){
   const ab = s.querySelector("#gfAbort"); if (ab) ab.onclick = async () => { if (!confirm("この対戦をやめますか？")) return; const { error } = await sb.from("gf_games").update({ status: "aborted" }).eq("id", g.id); if (error) return fail(error, "中止"); await loadTable("gf_games"); closeSheet(); closeGf(); };
 }
 const gfEndSeen = {};
-/* 遊び終わったホールをコース一覧に保存する（逆転タイルを置いたあとの形のまま） */
-const gfSaved = {};
-async function gfSaveHole(g, h, btn){
-  const key = g.id + ":" + h; if (gfSaved[key]) { toast("このホールは保存済みです"); return; }
-  const c = g.st.holes[h]; if (!c || c.t.includes("e")) { toast("まだコースが完成していません"); return; }
-  const d = new Date(), def = `${c.shape || c.name.replace(/（.*）$/, "")} ${d.getMonth() + 1}/${d.getDate()}`;
-  const name = (prompt("保存するコースの名前", def) || "").trim(); if (!name) return;
-  const b = gfHoleBest(g.st, h);
-  const cc = { id: "c" + Date.now().toString(36), name: name.slice(0, 16), w: gfW(c), h: gfH(c), sx: c.sx, cup: c.cup.slice(), t: c.t, ...(b ? { best: { ...b, at: new Date().toISOString().slice(0, 10) } } : {}) };
-  if (btn) btn.disabled = true;
-  if (!(await putSetting("gf_courses", [...gfCourses(), cc]))){ if (btn) btn.disabled = false; return; }
-  await loadTable("app_settings"); gfSaved[key] = 1;
-  if (btn){ btn.textContent = "✓ 保存済み"; btn.disabled = true; }
-  toast(`「${cc.name}」をコース一覧に保存しました`);
-}
-/* このゲームでのホールごとのベスト（打数が少ない人。同点なら打順が先の人） */
-function gfHoleBest(st, i){
-  let best = null; st.order.forEach(p => { const s = st.sc[p][i]; if (s == null) return; if (!best || s < best.s) best = { s, p, n: pname(p) }; });
-  return best;
-}
-const gfBestH = c => c && c.best ? `<em class="gfbest">🏆 ${esc(c.best.n)} ${c.best.s}打</em>` : "";
-/* 保存してあるコースを遊んだら、最高成績を更新する */
-async function gfUpdateBests(g){
-  const st = g.st, list = gfCourses(); if (list === GF_DEF) return;
-  let ch = false; const nx = list.map(c => {
-    const i = st.holes.findIndex(h => h.id === c.id); if (i < 0) return c;   // 逆転タイルで変わっていても同じコースとして数える
-    const b = gfHoleBest(st, i); if (!b || (c.best && c.best.s <= b.s)) return c;
-    ch = true; return { ...c, best: { ...b, at: new Date().toISOString().slice(0, 10) } };
-  });
-  if (ch && (await putSetting("gf_courses", nx))){ await loadTable("app_settings"); toast("🏆 コースの最高成績を更新しました！", 2400); }
-}
 function gfEndShow(g){
   const st = g.st; if (gfEndSeen[g.id]) return; gfEndSeen[g.id] = 1;
-  { const writer = g.created_by || st.order.filter(p => !isCpu(p)).sort()[0]; if (writer === me) gfUpdateBests(g); }   // 書き込むのは1人だけ（対戦を作った人）
   const tot = p => st.sc[p].reduce((a, v) => a + v, 0), rk = st.order.slice().sort((a, b) => tot(a) - tot(b));
-  const s = openSheet("結果", `<div class="gfend"><h2>${(st.wins || []).includes(me) ? "VICTORY" : "GAME SET"}</h2><table><tr><th></th>${st.holes.map((h, i) => `<th>H${i + 1}</th>`).join("")}<th>計</th></tr>${rk.map(p => `<tr class="${(st.wins || []).includes(p) ? "win" : ""}"><td style="color:${pcolor(p)}">${esc(pname(p))}</td>${st.sc[p].map(v => `<td>${v}</td>`).join("")}<td><b>${tot(p)}</b></td></tr>`).join("")}</table><h3 class="gfsvh3">今回のホール</h3><p class="note">気に入ったホールは保存すると、次から「作ってあるコース」で選べます</p><div class="gfsvrow">${st.holes.map((c, i) => { const best = Math.min(...st.order.map(p => st.sc[p][i])); return `<div class="gfsvc"><b class="hn">H${i + 1}</b>${gfBoardH(c, { cls: "mini" })}<b class="nm">${esc(c.shape || c.name)}</b><small>ベスト ${best}打</small><button type="button" class="btn ghost" data-svh="${i}" ${gfSaved[g.id + ":" + i] ? "disabled" : ""}>${gfSaved[g.id + ":" + i] ? "✓ 保存済み" : "💾 保存"}</button></div>`; }).join("")}</div></div><div class="btns"><button class="btn" id="gfAgain">もう一度</button></div>`);
-  s.querySelectorAll("[data-svh]").forEach(b => b.onclick = () => gfSaveHole(g, +b.dataset.svh, b));
+  const s = openSheet("結果", `<div class="gfend"><h2>${(st.wins || []).includes(me) ? "VICTORY" : "GAME SET"}</h2><table><tr><th></th>${st.holes.map((h, i) => `<th>H${i + 1}</th>`).join("")}<th>計</th></tr>${rk.map(p => `<tr class="${(st.wins || []).includes(p) ? "win" : ""}"><td style="color:${pcolor(p)}">${esc(pname(p))}</td>${st.sc[p].map(v => `<td>${v}</td>`).join("")}<td><b>${tot(p)}</b></td></tr>`).join("")}</table></div><div class="btns"><button class="btn" id="gfAgain">もう一度</button></div>`);
   s.querySelector("#gfAgain").onclick = () => { closeSheet(); closeGf(); openGfNew(); };
 }
 
 /* ======================= 新しく始める ======================= */
 function openGfNew(){
-  let order = db.players.map(p => p.id).slice(0, 4), pick = [{ b: gfNewBuild(0) }];   // 回るホール（選んだ時点で形・カップ・スタートが決まる）
+  let order = db.players.map(p => p.id).slice(0, 4), pick = ["__build"];
   const s = openSheet(`${GF_TITLE}を始める`, `
-    <p class="note">【オリジナル・開発中】クラブカードで飛ばせる範囲を選び、イベントカードの風に気をつけながら、少ない打数でカップを目指す。カップの近くからはパット、遠くからはチップインに挑戦。</p>
+    <p class="note">【オリジナル・開発中】クラブカードで飛ばせる範囲を選び、イベントカードの風に気をつけながら、少ない打数でカップを目指す。グリーンに乗れば次のパットで確実にカップイン。</p>
     <div class="btns"><button type="button" class="grbtn" data-grule="gf">ルールを見る</button><button type="button" class="grbtn" id="gfEdit">コースを作る・編集</button></div>
     <div class="f"><span>参加者（タップで選ぶ・1〜4人）</span>${chipPlayers(db.players.map(p => p.id), order)}${cpuChips(order)}</div>
-    <div class="f"><span>ティーショットの順番（指で動かして並べ替え。ホールごとに1番手が交代。2打目からはカップから遠い人から）</span><div id="gfOrder" class="norder"></div><button class="shufbtn" id="gfShuf">順番をシャッフル</button></div>
-    <div class="f"><span>回るホール（この順に回る。◀▶で入れ替え・✕で外す・最大9ホール）</span><div id="gfSel" class="gfhl gfsel"></div></div>
-    <div class="f"><span>「みんなで作る」ホールを足す（土台の形をタップ）</span><div id="gfShps" class="gfhl"></div></div>
-    <div class="f"><span>作ってあるコースを足す</span><div id="gfHoles" class="gfhl"></div></div>
+    <div class="f"><span>打つ順番（指で動かして並べ替え。ホールごとに1番手が交代）</span><div id="gfOrder" class="norder"></div><button class="shufbtn" id="gfShuf">順番をシャッフル</button></div>
+    <div class="f"><span>回るホール（タップした順に回る。「みんなで作る」はタップするたびに1ホール追加、4回目で解除）</span><div id="gfHoles" class="gfhl"></div></div>
     <div class="btns"><button class="btn" id="gfGo">はじめる</button></div>`);
   s.querySelector("[data-close]").onclick = openGames;
   const draw = () => { $("#gfOrder").innerHTML = seatHtml(order); seatDrag($("#gfOrder"), () => order, o => order = o, draw); };
-  const add = e => { if (pick.length >= 9){ toast("ホールは9つまでです"); return; } pick.push(e); drawH(); };
-  const holeOf = e => e.b || gfCourses().find(c => c.id === e.id);
   const drawH = () => {
-    // 選んだホール（番号つき・タップで外す）
-    $("#gfSel").innerHTML = pick.length ? pick.map((e, i) => { if (e.rand) return `<div class="gfhc on gfpk rand"><i>${i + 1}</i><span class="bico">？</span><b>おまかせ</b><small>始まるまで秘密</small><span class="mv"><button type="button" data-mv="${i}" data-d="-1" ${i === 0 ? "disabled" : ""}>◀</button><button type="button" data-rm="${i}">✕</button><button type="button" data-mv="${i}" data-d="1" ${i === pick.length - 1 ? "disabled" : ""}>▶</button></span></div>`; const h = holeOf(e); return h ? `<div class="gfhc on gfpk"><i>${i + 1}</i>${gfBoardH(h, { cls: "mini" })}<b>${esc(e.b ? (h.shape || "みんなで作る") : h.name)}</b><small>${e.b ? "みんなで作る" : "コース"}</small><span class="mv"><button type="button" data-mv="${i}" data-d="-1" ${i === 0 ? "disabled" : ""}>◀</button><button type="button" data-rm="${i}">✕</button><button type="button" data-mv="${i}" data-d="1" ${i === pick.length - 1 ? "disabled" : ""}>▶</button></span></div>` : ""; }).join("") : `<p class="note">下からホールを選んでください</p>`;
-    $("#gfSel").querySelectorAll("[data-rm]").forEach(b => b.onclick = () => { pick.splice(+b.dataset.rm, 1); drawH(); });
-    $("#gfSel").querySelectorAll("[data-mv]").forEach(b => b.onclick = () => { const i = +b.dataset.mv, j = i + +b.dataset.d; if (j < 0 || j >= pick.length) return; [pick[i], pick[j]] = [pick[j], pick[i]]; drawH(); });
-    // 土台の形（プレビューは固定）
-    $("#gfShps").innerHTML = `<button type="button" class="gfhc build" data-shp="-1"><span class="bico">？</span><b>おまかせ</b><small>始まるまで形は秘密</small></button>` + GF_SHAPES.map((z, i) => { const n = pick.filter(e => e.b && e.b.shape === z.n).length; return `<button type="button" class="gfhc ${n ? "on" : ""}" data-shp="${i}">${n ? `<i>${n}</i>` : ""}${gfBoardH(gfFromShape(i, "e", 1), { cls: "mini" })}<b>${z.n}</b></button>`; }).join("");
-    $("#gfShps").querySelectorAll("[data-shp]").forEach(b => b.onclick = () => add(+b.dataset.shp < 0 ? { rand: 1 } : { b: gfNewBuild(+b.dataset.shp) }));
-    // 作ってあるコース
-    $("#gfHoles").innerHTML = gfCourses().map(c => { const n = pick.filter(e => e.id === c.id).length; return `<button type="button" class="gfhc ${n ? "on" : ""}" data-hid="${c.id}">${n ? `<i>${n}</i>` : ""}${gfBoardH(c, { cls: "mini" })}<b>${esc(c.name)}</b>${gfBestH(c)}</button>`; }).join("");
-    $("#gfHoles").querySelectorAll("[data-hid]").forEach(b => b.onclick = () => add({ id: b.dataset.hid }));
+    const bi = pick.map((id, i) => id === "__build" ? i + 1 : 0).filter(Boolean);
+    $("#gfHoles").innerHTML = `<button type="button" class="gfhc build ${bi.length ? "on" : ""}" data-hid="__build">${bi.length ? `<i>${bi.join(",")}</i>` : ""}<span class="bico">＋</span><b>みんなで作る</b><small>タップで1ホール追加</small></button>` + gfCourses().map(c => { const i = pick.indexOf(c.id); return `<button type="button" class="gfhc ${i >= 0 ? "on" : ""}" data-hid="${c.id}">${i >= 0 ? `<i>${i + 1}</i>` : ""}${gfBoardH(c, { cls: "mini" })}<b>${esc(c.name)}</b></button>`; }).join("");
+    $("#gfHoles").querySelectorAll("[data-hid]").forEach(b => b.onclick = () => { const id = b.dataset.hid; pick = id === "__build" ? (pick.filter(x => x === "__build").length >= 3 ? pick.filter(x => x !== "__build") : [...pick, id]) : pick.includes(id) ? pick.filter(x => x !== id) : [...pick, id]; drawH(); });
   };
   s.querySelectorAll("[data-p]").forEach(b => b.onclick = () => {
     const id = b.dataset.p, on = b.getAttribute("aria-pressed") !== "true";
@@ -10456,7 +10081,7 @@ function openGfNew(){
   $("#gfGo").onclick = async () => {
     if (!order.some(id => !isCpu(id))){ toast("人間のプレイヤーを1人以上入れてください"); return; }
     if (!order.length || order.length > 4){ toast("参加者は1〜4人です"); return; }
-    const holes = pick.map(e => e.rand ? { id: "r" + Math.random().toString(36).slice(2, 7), name: "おまかせ", rand: 1, t: "" } : e.b ? { ...e.b, id: "b" + Math.random().toString(36).slice(2, 7) } : holeOf(e)).filter(Boolean);
+    const holes = pick.map(id => id === "__build" ? gfNewBuild() : gfCourses().find(c => c.id === id)).filter(Boolean);
     if (!holes.length){ toast("ホールを1つ以上選んでください"); return; }
     const st = gfSetup(order, holes); const lg = st._log || []; delete st._log;
     const row = { status: "playing", players: order, st, created_by: me || null, log: lg.map((m, i) => ({ t: new Date(Date.now() + i).toISOString(), m })) };
@@ -10469,17 +10094,16 @@ function openGfNew(){
 /* ======================= コースを作る ======================= */
 function gfCourseList(){
   const cs = gfCourses();
-  const s = openSheet("コース一覧", `<p class="note">タップで編集。コースは全員の端末で共通です。</p><div class="gfhl">${cs.map(c => `<button type="button" class="gfhc" data-eid="${c.id}">${gfBoardH(c, { cls: "mini" })}<b>${esc(c.name)}</b>${gfBestH(c)}</button>`).join("")}</div>
+  const s = openSheet("コース一覧", `<p class="note">タップで編集。コースは全員の端末で共通です。</p><div class="gfhl">${cs.map(c => `<button type="button" class="gfhc" data-eid="${c.id}">${gfBoardH(c, { cls: "mini" })}<b>${esc(c.name)}</b></button>`).join("")}</div>
     <div class="btns"><button class="btn ghost" id="gfBackN">戻る</button><button class="btn" id="gfNewC">＋ 新しいコース</button></div>`);
   s.querySelectorAll("[data-eid]").forEach(b => b.onclick = () => gfEditor(JSON.parse(JSON.stringify(cs.find(c => c.id === b.dataset.eid)))));
-  $("#gfNewC").onclick = () => { const b = gfFromShape(0, "f"); gfEditor({ id: "c" + Date.now().toString(36), name: "新しいコース", w: b.w, h: b.h, t: b.t, cup: b.cup, sx: b.sx, isNew: 1 }); }
+  $("#gfNewC").onclick = () => gfEditor({ id: "c" + Date.now().toString(36), name: "新しいコース", sx: 1, cup: [1, 9], t: "f".repeat(GF_W * (GF_H - 2)) + "fggf" + "fggf", isNew: 1 });
   $("#gfBackN").onclick = openGfNew;
 }
 function gfEditor(c){
   let tool = "t";
-  const tools = [["f", "芝"], ["t", "木"], ["w", "池"], ["r", "ラフ"], ["b", "バンカー"], ["g", "グリーン"], ["x", "コース外"], ["cup", "カップ"], ["s", "スタート"]];
+  const tools = [["f", "芝"], ["t", "木"], ["w", "池"], ["r", "ラフ"], ["b", "バンカー"], ["g", "グリーン"], ["cup", "カップ"], ["s", "スタート"]];
   const s = openSheet("コースを作る", `<label class="f"><span>コースの名前</span><input id="gfCn" maxlength="16" value="${esc(c.name)}"></label>
-    <label class="f"><span>土台の形（選ぶと作り直し）</span><select id="gfShp"><option value="">そのまま</option>${GF_SHAPES.map((z, i) => `<option value="${i}">${z.n}（${z.m[0].length}×${z.m.length}）</option>`).join("")}</select></label>
     <div class="gftools">${tools.map(([k, n]) => `<button type="button" class="gft t-${k}" data-tl="${k}" aria-pressed="${k === tool}"><i></i>${n}</button>`).join("")}</div>
     <p class="note">道具を選んでマスをタップ。上がゴール側、一番下の段がスタート（ティー）。カップはグリーンの上に置きます。</p>
     <div id="gfEd"></div>
@@ -10491,21 +10115,18 @@ function gfEditor(c){
       if (y < 0){ c.sx = x; return draw(); }
       if (tool === "s") return;
       const a = c.t.split("");
-      if (tool === "cup"){ a[y * gfW(c) + x] = "g"; c.cup = [x, y]; }
-      else { if (tool === "x" && gfIsCup(c, x, y)) return; a[y * gfW(c) + x] = tool; }
+      if (tool === "cup"){ a[y * GF_W + x] = "g"; c.cup = [x, y]; }
+      else { a[y * GF_W + x] = tool; }
       c.t = a.join(""); draw();
     });
   };
-  $("#gfShp").onchange = e => { const v = e.target.value; if (v === "") return; const b = gfFromShape(+v, "f"); Object.assign(c, { w: b.w, h: b.h, t: b.t, cup: b.cup, sx: b.sx }); draw(); };
   s.querySelectorAll("[data-tl]").forEach(b => b.onclick = () => { tool = b.dataset.tl; s.querySelectorAll("[data-tl]").forEach(x => x.setAttribute("aria-pressed", String(x === b))); });
   draw();
   $("#gfEBack").onclick = gfCourseList;
   $("#gfSave").onclick = async () => {
     c.name = ($("#gfCn").value || "").trim() || "名前なしのコース";
     if (gfTile(c, c.cup[0], c.cup[1]) !== "g"){ toast("カップをグリーンの上に置いてください"); return; }
-    if (gfTile(c, c.sx, 0) == null || !gfReach(c)){ toast("スタートからカップまでたどり着けないコースです（詰み）", 2600); return; }
-    const list = gfCourses().filter(z => z.id !== c.id), cc = { id: c.id, name: c.name, w: gfW(c), h: gfH(c), sx: c.sx, cup: c.cup, t: c.t };
-    { const o0 = gfCourses().find(z => z.id === c.id); if (o0 && o0.best && o0.t === c.t && o0.sx === c.sx && String(o0.cup) === String(c.cup)) cc.best = o0.best; }   // 形を変えたら最高成績はリセット
+    const list = gfCourses().filter(z => z.id !== c.id), cc = { id: c.id, name: c.name, sx: c.sx, cup: c.cup, t: c.t };
     const old = gfCourses(), i = old.findIndex(z => z.id === c.id);
     const nx = i >= 0 ? old.map(z => z.id === c.id ? cc : z) : [...list, cc];
     if (!(await putSetting("gf_courses", nx))) return;
@@ -10524,22 +10145,586 @@ function gfEditor(c){
 /* ======================= ルール ======================= */
 function gfRulesHtml(){
   return `<h4>目的</h4><p>スタート（S）からカップまで、<b>少ない打数</b>でボールを運ぶ。全ホールの打数の合計が一番少ない人の勝ち。</p>
-  <h4>みんなでコースを作る</h4><p>「みんなで作る」ホールは、空いた土台（横4×縦10）から始まる。グリーンは奥の中央2×2で固定、カップはその中のどこか。最初に<b>各自タイルを3枚引いて手札にする</b>。順番に手札から1枚選んで空いているマスに置き、<b>置いたら山から1枚引く</b>（手札は常に3枚）。<b>スタートからカップまでたどり着けなくなる（詰む）置き方はできない</b>（逆転タイルも同じ）。空きがなくなったらティーショット開始。タイルは フェアウェイ・ラフ・木・池・バンカー。</p>
-  <h4>コース</h4><p>横4×縦10マス。マスの種類：<b>芝（フェアウェイ）</b>・<b>ラフ</b>（次のショットが1マス短くなる。<b>ドライバーは2マス</b>短くなる。<b>アイアンはラフからでも真っすぐ2マス</b>は打てる）・<b>木</b>（障害物。狙っては止まれない。<b>風で流されたときだけ木のマスに入り</b>、次のショットはどのクラブでも真っすぐ1マスしか進めない）・<b>池</b>（入ったら1打罰で打つ前の場所に戻る）・<b>バンカー</b>（次のショットが1マス短くなる。<b>ウェッジは影響を受けない</b>）・<b>グリーン</b>。コースは「コースを作る・編集」で自由に作れる。</p>
+  <h4>みんなでコースを作る</h4><p>「みんなで作る」ホールは、空いた土台（横4×縦10）から始まる。グリーンは奥の中央2×2で固定、カップはその中のどこか。全員が順番に<b>タイルを1枚ずつ引いて、空いているマスに置く</b>。空きがなくなったらティーショット開始。タイルは フェアウェイ・ラフ・木・池・バンカー。</p>
+  <h4>コース</h4><p>横4×縦10マス。マスの種類：<b>芝（フェアウェイ）</b>・<b>ラフ</b>（次のショットが1マス短くなる）・<b>木</b>（障害物。止まれない）・<b>池</b>（入ったら1打罰で打つ前の場所に戻る）・<b>バンカー</b>（次のショットが1マス短くなる）・<b>グリーン</b>。コースは「コースを作る・編集」で自由に作れる。</p>
   <h4>手札</h4><p>クラブカードを3枚持つ。毎ターン1枚使い、ターンの終わりに1枚引くので、手札は常に3枚。</p>
   <h4>クラブの飛距離</h4><div class="gfrcl">${Object.keys(GF_CLUB).map(k => `<div>${gfPat(k, true)}<b>${GF_CLUB[k].n}</b></div>`).join("")}</div>
-  <p><b>パター</b>（選んだ向きに1マス。グリーンの上でカップの上下左右の隣ならパット、グリーンの外からならロングパット）は手札とは別に、いつでも使える。パターを使ったターンはクラブを引かない。</p>
+  <p><b>パター</b>（真っすぐ前に1マス）は手札とは別に、いつでも使える。パターを使ったターンはクラブを引かない。</p>
   <p><b>打つ向き</b>：2打目からは「←↑→↓」で前・右・後ろ・左のどれかに向きを変えられる。クラブの形もその向きに回る（ティーショットは前だけ）。</p>
   <p>Sがボールの位置、黄色のマスが狙えるマス。<b>濃い黄色</b>はボールの真っすぐ前にある木を<b>1本まで</b>越えられる。<b>薄い黄色</b>は木を越えられない。</p>
-  <h4>打つ順番</h4><p>リアルのゴルフと同じく、<b>カップからいちばん遠い人</b>から打つ（交互ではない）。同じ距離なら、そのホールの打順が先の人から。ティーショットはホールごとに1番手が交代。</p>
-  <h4>手番の流れ</h4><p>① クラブを1枚選び、黄色のマスから狙うマスを選ぶ<br>② クラブを公開して、イベントカードを1枚めくる<br>イベントカードは20枚：<br>・ナイスショット（11枚）：狙ったマスに止まる<br>・左の風（2枚）：打った向きの左に1マスそれる<br>・右の風（2枚）：打った向きの右に1マスそれる<br>・追い風（2枚）：打った向きの前に1マス流れる<br>・向かい風（2枚）：打った向きの手前に1マス戻される<br>・ダフった！（1枚だけ）：ボールはその場に留まる（1打は数える）<br>それた先が木なら、木のマスに入る（次はどのクラブでも1マスだけ）。<b>流された先がカップならカップイン！</b><b>コースの外に出たらOB</b>：1打罰で打つ前の場所に戻る。</p>
-  <h4>カップイン</h4><p>カップに入るかどうかは<b>成功/失敗カードの山札</b>（成功70枚・失敗30枚。チップインもロングパットもパットも、全員で1つの山を使う）からめくって決める。めくる枚数：<b>ドライバー5枚・アイアン4枚・ウェッジ3枚・ロングパット2枚・パター1枚</b>。すべて「成功」なら入る。<br><b>パット</b>（1枚）：<b>グリーンの上</b>で<b>カップの上下左右の隣</b>にいるとき。失敗ならその場に止まる。<br><b>ロングパット</b>（2枚）：<b>グリーンの上でカップの斜め隣</b>、または<b>グリーンの外からカップの上下左右の隣</b>（パターで入れる）にいるとき。失敗ならその場に止まる。クラブやパターで寄せてもよい。<br>それ以外の場所でのパターは、選んだ向きに<b>1マス分</b>転がるだけ。<br>クラブで<b>カップのマスを直接狙う</b>と<b>チップインチャレンジ</b>：クラブの枚数をめくり、1枚でも失敗ならカップのマスで止まる（次はパット）。チップインチャレンジのときはイベントカードはめくらない。</p>
-  <h4>逆転タイル</h4><p>2×2の柄の逆転タイルが全50種類。毎ゲーム、そのうち<b>「ホール数−1」枚を表にして場に置く</b>（3ホールなら2枚）。ホールが終わったら、<b>ここまでの合計打数が一番多い人（トータルビリ。同点なら全員）</b>が、表のタイルから1枚選び（回転もできる）、次のホールのコースに上から被せる。<b>使ったタイルは場から消え、補充はしない</b>（置く人がいるのに表のタイルが無いときだけ山から1枚出す）。カップのマスには被せられない。全員が同じ打数なら置かない。</p>
-  <h4>そのほか</h4><p><b>1打罰で手札を3枚入れ替える</b>ことが、自分のショットの番ならいつでもできる（画面下の「🔄 1打罰で手札を入れ替える」を2回押す）。打てるマスがないときも同じ。1ホール${GF_MAXS}打で打ち切り。</p>`;
+  <h4>手番の流れ</h4><p>① クラブを1枚選び、黄色のマスから狙うマスを選ぶ<br>② クラブを公開して、イベントカードを1枚めくる<br>・ナイスショット（50%）：狙ったマスに止まる<br>・強風（25%）：打った向きの左に1マスそれる<br>・追い風（25%）：打った向きの前に1マス流れる<br>それた先が木なら、狙ったマスで止まる。<b>流された先がカップならカップイン！</b><b>コースの外に出たらOB</b>：1打罰で打つ前の場所に戻る。</p>
+  <h4>カップイン</h4><p><b>グリーンに乗ったら</b>、次の手番のパットで<b>確実にカップイン</b>（1打）。<br>グリーンの外から<b>カップのマスを直接狙う</b>と<b>チップインチャレンジ</b>：1マス先なら2枚、2マス以上先なら3枚のカードをめくり、すべて「成功」ならチップイン。1枚でも失敗ならグリーンに乗る。チップインチャレンジのときはイベントカードはめくらない。</p>
+  <h4>逆転タイル</h4><p>2×2の柄の逆転タイルが全50種類。毎ゲーム、そのうち<b>4枚を表にして場に置く</b>。ホールが終わったら、そのホールの打数が一番多かった人（同じなら全員）が、表の4枚から1枚選び（回転もできる）、次のホールのコースに上から被せる。使ったタイルの場所には次の1枚が補充される。カップのマスには被せられない。全員が同じ打数なら置かない。</p>
+  <h4>そのほか</h4><p>どのクラブでも打てるマスがないときは、1打罰で手札を3枚入れ替える。1ホール${GF_MAXS}打で打ち切り。</p>`;
+}
+
+/* ======================= 勇者ミリオン（YUSHA MILLION） ======================= */
+const ML_TITLE = "勇者ミリオン";
+const ML_D = {"BASE":[10000,100000,1000000,2000000],"UNIT":[5,10,10,10],"POW":[{"-2":20,"-1":25,"0":30,"1":35,"2":40},{"-2":80,"-1":90,"0":100,"1":110,"2":120},{"-2":280,"-1":290,"0":300,"1":310,"2":320},{"-2":280,"-1":290,"0":300,"1":310,"2":320}],"CAP":[{"魔道具(低)":50000,"魔道具(高)":150000,"武具":300000},{"魔道具(低)":200000,"魔道具(高)":500000,"武具":800000},{"魔道具(低)":500000,"魔道具(高)":1200000,"武具":2000000},{"魔道具(低)":500000,"魔道具(高)":1200000,"武具":2000000}],"Q":[["ノーリスク","ゴールドのみ","薬草の納品","確定",-2],["ノーリスク","ゴールドのみ","鉱石の採掘","確定",-1],["ノーリスク","ゴールドのみ","毛皮の納品","確定",0],["ノーリスク","ゴールドのみ","魔石の回収","確定",0],["ノーリスク","ゴールドのみ","キノコ狩り","確定",1],["ノーリスク","ゴールドのみ","木材の伐採","確定",2],["ノーリスク","ゴールドのみ","香辛料の運搬","確定",-1],["ノーリスク","ゴールドのみ","織物の納品","確定",0],["ノーリスク","ゴールドのみ","川魚の釣り","確定",1],["ノーリスク","ゴールドのみ","蜂蜜の採取","確定",0],["ノーリスク","戦闘力UPのみ","素振り千回","確定",-2],["ノーリスク","戦闘力UPのみ","早朝の走り込み","確定",-1],["ノーリスク","戦闘力UPのみ","丸太担ぎ","確定",0],["ノーリスク","戦闘力UPのみ","型稽古","確定",0],["ノーリスク","戦闘力UPのみ","瞑想修行","確定",1],["ノーリスク","戦闘力UPのみ","滝行","確定",2],["ノーリスク","戦闘力UPのみ","弓の的当て","確定",-1],["ノーリスク","戦闘力UPのみ","受け身の特訓","確定",0],["ノーリスク","戦闘力UPのみ","盾の構え練習","確定",1],["ノーリスク","戦闘力UPのみ","戦術書の読破","確定",0],["ノーリスク","戦闘力UP＋ゴールド","山賊の見回り","確定",-2],["ノーリスク","戦闘力UP＋ゴールド","野犬の駆除","確定",-1],["ノーリスク","戦闘力UP＋ゴールド","害虫の駆除","確定",0],["ノーリスク","戦闘力UP＋ゴールド","街道の魔物退治","確定",0],["ノーリスク","戦闘力UP＋ゴールド","畑荒らしの討伐","確定",1],["ノーリスク","戦闘力UP＋ゴールド","倉庫の鼠退治","確定",2],["ノーリスク","戦闘力UP＋ゴールド","洞窟の巡回","確定",-1],["ノーリスク","戦闘力UP＋ゴールド","沼の調査","確定",0],["ノーリスク","戦闘力UP＋ゴールド","見張り塔の警備","確定",1],["ノーリスク","戦闘力UP＋ゴールド","城壁の補修と警備","確定",0],["ローリスク","ゴールドのみ","行商人の護衛","L1",-2],["ローリスク","ゴールドのみ","古道の巡回","L2",-1],["ローリスク","ゴールドのみ","市場の荷運び","L3",0],["ローリスク","ゴールドのみ","酒場の用心棒","L4",0],["ローリスク","ゴールドのみ","畑の害獣追い","L1",1],["ローリスク","ゴールドのみ","灯台の見張り","L2",2],["ローリスク","ゴールドのみ","迷子の捜索","L3",-1],["ローリスク","ゴールドのみ","手紙の配達","L4",0],["ローリスク","ゴールドのみ","街道の整備","L1",1],["ローリスク","ゴールドのみ","仕入れの交渉","L2",0],["ローリスク","戦闘力UPのみ","模擬戦","L3",-2],["ローリスク","戦闘力UPのみ","傭兵団との合同訓練","L4",-1],["ローリスク","戦闘力UPのみ","師範代との立ち合い","L1",0],["ローリスク","戦闘力UPのみ","山籠もり","L2",0],["ローリスク","戦闘力UPのみ","魔物相手の実戦訓練","L3",1],["ローリスク","戦闘力UPのみ","魔法使いの補助訓練","L4",2],["ローリスク","戦闘力UPのみ","古い闘技場の稽古","L1",-1],["ローリスク","戦闘力UPのみ","武闘会の予選","L2",0],["ローリスク","戦闘力UPのみ","剣豪の指南","L3",1],["ローリスク","戦闘力UPのみ","狩猟の遠征","L4",0],["ローリスク","戦闘力UP＋ゴールド","盗賊団の捕縛","L1",-2],["ローリスク","戦闘力UP＋ゴールド","荒れ地の魔物調査","L2",-1],["ローリスク","戦闘力UP＋ゴールド","護送任務","L3",0],["ローリスク","戦闘力UP＋ゴールド","鉱山の魔物退治","L4",0],["ローリスク","戦闘力UP＋ゴールド","森の主の偵察","L1",1],["ローリスク","戦闘力UP＋ゴールド","村の防衛","L2",2],["ローリスク","戦闘力UP＋ゴールド","逃亡者の追跡","L3",-1],["ローリスク","戦闘力UP＋ゴールド","関所の警備","L4",0],["ローリスク","戦闘力UP＋ゴールド","遺跡の外周調査","L1",1],["ローリスク","戦闘力UP＋ゴールド","迷宮の入口調査","L2",0],["ローリスク","アイテム獲得","遺跡の宝箱探し","I1",-2],["ローリスク","アイテム獲得","行商人からの謝礼","I2",-1],["ローリスク","アイテム獲得","古道具の発掘","I1",0],["ローリスク","アイテム獲得","沈没船の引き揚げ","I2",0],["ローリスク","アイテム獲得","魔術師の遺品整理","I1",1],["ハイリスク","ゴールドのみ","闇市の取引","H1",-2],["ハイリスク","ゴールドのみ","財宝探し","H2",-1],["ハイリスク","ゴールドのみ","賭け試合","H3",0],["ハイリスク","ゴールドのみ","危険地帯の採掘","H4",0],["ハイリスク","ゴールドのみ","海賊船への潜入","H1",1],["ハイリスク","ゴールドのみ","魔物の巣の宝回収","H2",2],["ハイリスク","ゴールドのみ","賞金首の追跡","H3",-1],["ハイリスク","ゴールドのみ","禁断の遺跡調査","H4",0],["ハイリスク","ゴールドのみ","魔石の相場勝負","H1",1],["ハイリスク","ゴールドのみ","密輸船の積荷奪取","H2",0],["ハイリスク","戦闘力UPのみ","死の山籠もり","H3",-2],["ハイリスク","戦闘力UPのみ","魔の森の修行","H4",-1],["ハイリスク","戦闘力UPのみ","伝説の剣豪への挑戦","H1",0],["ハイリスク","戦闘力UPのみ","闘技場の連戦","H2",0],["ハイリスク","戦闘力UPのみ","竜の谷の試練","H3",1],["ハイリスク","戦闘力UPのみ","禁じ手の特訓","H4",2],["ハイリスク","戦闘力UPのみ","呪われた修行場","H1",-1],["ハイリスク","戦闘力UPのみ","一撃必殺の決闘","H2",0],["ハイリスク","戦闘力UPのみ","地下闘技場の勝ち抜き","H3",1],["ハイリスク","戦闘力UPのみ","魔界の試練","H4",0],["ハイリスク","戦闘力UP＋ゴールド","迷宮の最深部調査","H1",-2],["ハイリスク","戦闘力UP＋ゴールド","魔物の巣の殲滅","H2",-1],["ハイリスク","戦闘力UP＋ゴールド","凶悪犯の討伐","H3",0],["ハイリスク","戦闘力UP＋ゴールド","古城の亡霊退治","H4",0],["ハイリスク","戦闘力UP＋ゴールド","嵐の海の護衛航海","H1",1],["ハイリスク","戦闘力UP＋ゴールド","竜の巣の偵察","H2",2],["ハイリスク","戦闘力UP＋ゴールド","魔王軍の斥候狩り","H3",-1],["ハイリスク","戦闘力UP＋ゴールド","禁断の森の調査","H4",0],["ハイリスク","戦闘力UP＋ゴールド","暗殺者との対決","H1",1],["ハイリスク","戦闘力UP＋ゴールド","大型魔獣の討伐","H2",0],["ハイリスク","次ターン報酬UP","商人ギルドへの投資","N1",-2],["ハイリスク","次ターン報酬UP","来季の契約交渉","N2",-1],["ハイリスク","次ターン報酬UP","豪商への売り込み","N3",0],["ハイリスク","次ターン報酬UP","領主への献上品","N1",0],["ハイリスク","次ターン報酬UP","貿易船への出資","N2",1]],"T":{"L1":[[1,3,0.5],[4,8,1.0],[9,10,1.7]],"L2":[[1,5,0.7],[6,10,1.3]],"L3":[[1,2,0.5],[3,8,1.0],[9,10,1.7]],"L4":[[1,4,0.7],[5,9,1.1],[10,10,1.7]],"H1":[[1,6,0.0],[7,10,3.0]],"H2":[[1,4,0.0],[5,8,1.5],[9,10,3.0]],"H3":[[1,3,0.0],[4,8,1.2],[9,10,3.0]],"H4":[[1,5,0.0],[6,10,2.4]],"I1":[[1,3,"魔道具(低)"],[4,8,"魔道具(高)"],[9,10,"武具"]],"I2":[[1,6,"魔道具(高)"],[7,10,"武具"]],"N1":[[1,5,0],[6,8,100],[9,10,150]],"N2":[[1,6,0],[7,10,150]],"N3":[[1,4,0],[5,8,60],[9,10,180]]},"GEAR":[["武器","火",50,750000,null],["武器","火",50,750000,null],["武器","水",50,750000,null],["武器","水",50,750000,null],["武器","風",50,750000,null],["武器","風",50,750000,null],["武器","雷",50,750000,null],["武器","雷",50,750000,null],["武器","無",50,750000,"W1"],["武器","無",50,750000,"W2"],["胴","火",40,600000,null],["胴","火",40,600000,null],["胴","水",40,600000,null],["胴","水",40,600000,null],["胴","風",40,600000,null],["胴","風",40,600000,null],["胴","雷",40,600000,null],["胴","雷",40,600000,null],["胴","無",40,600000,"T1"],["胴","無",40,600000,"T2"],["頭","火",30,450000,null],["頭","火",30,450000,null],["頭","水",30,450000,null],["頭","水",30,450000,null],["頭","風",30,450000,null],["頭","風",30,450000,null],["頭","雷",30,450000,null],["頭","雷",30,450000,null],["頭","無",30,450000,"H1"],["頭","無",30,450000,"H2"],["腰","火",20,300000,null],["腰","火",20,300000,null],["腰","水",20,300000,null],["腰","水",20,300000,null],["腰","風",20,300000,null],["腰","風",20,300000,null],["腰","雷",20,300000,null],["腰","雷",20,300000,null],["腰","無",20,300000,"L1"],["腰","無",20,300000,"L2"],["籠手","火",15,200000,null],["籠手","火",15,200000,null],["籠手","水",15,200000,null],["籠手","水",15,200000,null],["籠手","風",15,200000,null],["籠手","風",15,200000,null],["籠手","雷",15,200000,null],["籠手","雷",15,200000,null],["籠手","無",15,200000,"K1"],["籠手","無",15,200000,"K2"],["脚","火",10,100000,null],["脚","火",10,100000,null],["脚","水",10,100000,null],["脚","水",10,100000,null],["脚","風",10,100000,null],["脚","風",10,100000,null],["脚","雷",10,100000,null],["脚","雷",10,100000,null],["脚","無",10,100000,"F1"],["脚","無",10,100000,"F2"]],"TOOLS":[["力の指輪","戦闘力（固定）","戦闘力+30（永続）",30000,"F",30,""],["力の指輪","戦闘力（固定）","戦闘力+30（永続）",30000,"F",30,""],["力の指輪","戦闘力（固定）","戦闘力+30（永続）",30000,"F",30,""],["力の指輪","戦闘力（固定）","戦闘力+30（永続）",30000,"F",30,""],["剛力の腕輪","戦闘力（固定）","戦闘力+50（永続）",60000,"F",50,""],["剛力の腕輪","戦闘力（固定）","戦闘力+50（永続）",60000,"F",50,""],["剛力の腕輪","戦闘力（固定）","戦闘力+50（永続）",60000,"F",50,""],["剛力の腕輪","戦闘力（固定）","戦闘力+50（永続）",60000,"F",50,""],["勇猛の首飾り","戦闘力（固定）","戦闘力+100（永続）",150000,"F",100,""],["勇猛の首飾り","戦闘力（固定）","戦闘力+100（永続）",150000,"F",100,""],["勇猛の首飾り","戦闘力（固定）","戦闘力+100（永続）",150000,"F",100,""],["勇猛の首飾り","戦闘力（固定）","戦闘力+100（永続）",150000,"F",100,""],["英雄の紋章","戦闘力（固定）","戦闘力+200（永続）",400000,"F",200,""],["英雄の紋章","戦闘力（固定）","戦闘力+200（永続）",400000,"F",200,""],["英雄の紋章","戦闘力（固定）","戦闘力+200（永続）",400000,"F",200,""],["覇者の証","戦闘力（固定）","戦闘力+300（永続）",700000,"F",300,""],["闘志のお守り","戦闘力（%）","戦闘力+10%（加算）",150000,"PCT",10,""],["狂戦士の護符","戦闘力（%）","戦闘力+20%（加算）",350000,"PCT",20,""],["狂戦士の護符","戦闘力（%）","戦闘力+20%（加算）",350000,"PCT",20,""],["覇王の宝珠","戦闘力（%）","戦闘力+30%（加算）",600000,"PCT",30,""],["武器の砥石","武具強化","装備中の武器の戦闘力+200（武器を装備していること）",250000,"UPG",200,"武器"],["武器の砥石","武具強化","装備中の武器の戦闘力+200（武器を装備していること）",250000,"UPG",200,"武器"],["胴の補強板","武具強化","装備中の胴の戦闘力+150（胴を装備していること）",200000,"UPG",150,"胴"],["胴の補強板","武具強化","装備中の胴の戦闘力+150（胴を装備していること）",200000,"UPG",150,"胴"],["兜の飾り","武具強化","装備中の頭の戦闘力+125（頭を装備していること）",150000,"UPG",125,"頭"],["兜の飾り","武具強化","装備中の頭の戦闘力+125（頭を装備していること）",150000,"UPG",125,"頭"],["腰の留め金","武具強化","装備中の腰の戦闘力+100（腰を装備していること）",120000,"UPG",100,"腰"],["腰の留め金","武具強化","装備中の腰の戦闘力+100（腰を装備していること）",120000,"UPG",100,"腰"],["籠手の鋲","武具強化","装備中の籠手の戦闘力+75（籠手を装備していること）",90000,"UPG",75,"籠手"],["籠手の鋲","武具強化","装備中の籠手の戦闘力+75（籠手を装備していること）",90000,"UPG",75,"籠手"],["脚の脚絆","武具強化","装備中の脚の戦闘力+50（脚を装備していること）",60000,"UPG",50,"脚"],["脚の脚絆","武具強化","装備中の脚の戦闘力+50（脚を装備していること）",60000,"UPG",50,"脚"],["万能の研磨剤","武具強化","装備中の武具1つの戦闘力+150（何か1つ装備していること）",200000,"UNIV",150,""],["万能の研磨剤","武具強化","装備中の武具1つの戦闘力+150（何か1つ装備していること）",200000,"UNIV",150,""],["商人の手形","報酬アップ","基本報酬・クエスト報酬+5%（加算）",100000,"REW",5,""],["商人の手形","報酬アップ","基本報酬・クエスト報酬+5%（加算）",100000,"REW",5,""],["商人の手形","報酬アップ","基本報酬・クエスト報酬+5%（加算）",100000,"REW",5,""],["金貨の袋","報酬アップ","基本報酬・クエスト報酬+10%（加算）",250000,"REW",10,""],["金貨の袋","報酬アップ","基本報酬・クエスト報酬+10%（加算）",250000,"REW",10,""],["金貨の袋","報酬アップ","基本報酬・クエスト報酬+10%（加算）",250000,"REW",10,""],["黄金の天秤","報酬アップ","基本報酬・クエスト報酬+20%（加算）",600000,"REW",20,""],["黄金の天秤","報酬アップ","基本報酬・クエスト報酬+20%（加算）",600000,"REW",20,""],["幸運のダイス","出目補正","出目+1（クエスト・ボス討伐に使用可）",600000,"ROLL",1,""],["幸運のダイス","出目補正","出目+1（クエスト・ボス討伐に使用可）",600000,"ROLL",1,""],["幸運のダイス","出目補正","出目+1（クエスト・ボス討伐に使用可）",600000,"ROLL",1,""],["幸運のダイス","出目補正","出目+1（クエスト・ボス討伐に使用可）",600000,"ROLL",1,""],["女神の祝福","出目補正","出目+2（クエスト・ボス討伐に使用可）",950000,"ROLL",2,""],["運命の砂時計(ボス)","振り直し","ボス討伐の出目を1ターンに1回振り直せる",300000,"BRR",1,""],["運命の砂時計(ボス)","振り直し","ボス討伐の出目を1ターンに1回振り直せる",300000,"BRR",1,""],["運命の砂時計(クエスト)","振り直し","クエストの出目を1ターンに1回振り直せる",400000,"QRR",1,""],["運命の砂時計(クエスト)","振り直し","クエストの出目を1ターンに1回振り直せる",400000,"QRR",1,""],["商人の特約","強力効果","1ターンの購入上限+1個（3個まで購入可）",1400000,"BUYS",1,""],["冒険者の特別許可","強力効果","1ターンのクエスト受注上限+1（2つ受注可）",1800000,"QSLOT",1,""],["再挑戦の巻物","強力効果","ボス討伐に失敗した時、同ターンにもう一度挑戦できる（1ターン1回）",1000000,"RETRY",1,""],["商店の会員証","強力効果","購入する商品が10%引き（10G未満切り捨て）",1000000,"DISC",1,""],["保険証書","その他","ハイリスククエストで0倍だった時、基本報酬の0.5倍を得る",50000,"INS",1,""],["保険証書","その他","ハイリスククエストで0倍だった時、基本報酬の0.5倍を得る",50000,"INS",1,""],["保険証書","その他","ハイリスククエストで0倍だった時、基本報酬の0.5倍を得る",50000,"INS",1,""],["掲示板の鍵","その他","ターン中1回、掲示板のクエスト1枚を入れ替えられる",30000,"NOP",0,""],["商店の合鍵","その他","ターン中1回、商店のランダム商品を全て引き直せる",50000,"NOP",0,""]],"BOSS":[[["ぷるぷるスライム",150,"無",100000,null,6],["ヘルパピー",165,"火",150000,null,6],["ポイズントード",180,"水",190000,null,6],["ウィンドバット",200,"風",230000,null,6],["スパークコボルト",220,"雷",280000,null,6],["フレイムスライム",240,"火",320000,null,6],["ブルースライム",255,"水",370000,null,6],["風切りゴブリン",270,"風",410000,null,6],["サンダースライム",285,"雷",450000,null,6],["ジャイアントスライム",300,"無",500000,null,6]],[["鉄兜のオーク兵",1000,"無",1000000,null,6],["炎尾のリザードマン",1060,"火",1500000,null,6],["沼地のトロール",1130,"水",1900000,null,6],["疾風の狼騎兵",1200,"風",2300000,null,6],["雷鳴のオークシャーマン",1280,"雷",2800000,null,6],["業火のオーク将軍",1360,"火",3200000,null,6],["氷牙のサハギン戦士長",1430,"水",3700000,null,6],["ハーピークイーン",1500,"風",4100000,null,6],["雷槌のトロールロード",1560,"雷",4500000,null,6],["オークの親分",1600,"無",5000000,null,6]],[["暗黒騎士王ヴォルガ",2000,"無",2000000,null,6],["嵐魔王ゼファロス",2400,"風",3000000,null,6],["炎魔王イグニス",2900,"火",3800000,null,6],["雷魔王ライゴウ",3400,"雷",4600000,null,6],["海魔王ネレウス",3900,"水",5600000,null,6],["焔の悪魔公爵ベルゾア",4400,"火",6400000,2000000,6],["深海魔王リヴァーナ",4900,"水",7400000,2500000,6],["疾風の悪魔王アルザード",5400,"風",8600000,3000000,6],["雷帝魔王ヴォルティア",6000,"雷",10000000,4000000,6],["大魔王ゼルドラス",10000,"無",24000000,6000000,8]]],"GEFF":{"W1":"装備している武具の数×20の戦闘力を得る","W2":"戦闘力1.2倍（+20%・加算）","T1":"クエスト報酬+10%（加算）","T2":"ハイリスククエストで得られる報酬を1.2倍する","H1":"クエストの出目+1","H2":"クエストの出目が9または10の時、基本報酬の0.3倍を得る","L1":"基本報酬+10%（加算）","L2":"ターン開始時、強化ポーション(低)の効果（戦闘力+20）を得る","K1":"クエストの振り直し1回/ターン","K2":"ボス討伐の出目が1〜3の時、振り直せる（1回）","F1":"戦闘力+10","F2":"戦闘力+10%（加算）","BS":"最初のボス討伐失敗時のみ、同ターンにもう一度挑戦できる","BO":"ボス討伐の出目+2"}};
+const ML_RN = ["スライム", "オーク", "ワイバーン", "ドラゴン"], ML_ROUNDS = 15, ML_START = 2000, ML_POT = 10000, ML_GP = 50000;
+/* ワイバーン級・ドラゴン級の戦闘力UPクエストの上がり幅にかける倍率（1＝そのまま。大魔王の討伐割合を上げたいときに大きくする） */
+const ML_LATE = 4;
+const ML_WEAK = { "火": "水", "水": "雷", "雷": "風", "風": "火" };
+const ML_AC = { "火": "#FF6A2A", "水": "#3FA9FF", "風": "#52E08A", "雷": "#FFD23C", "無": "#B8BCCB" };
+const ML_Q = ML_D.Q.map(([type, eff, name, table, d], i) => ({ i, type, eff, name, table, d }));
+const ML_NEUT = { "胴": "BS", "武器": "BO" };
+const mlG = n => Math.round(n).toLocaleString("ja-JP") + "G";
+const mlRnd10 = x => Math.floor(x / 1000 + 0.5) * 1000;
+const mlRndU = (x, u) => Math.floor(Math.round(x / u * 1e6) / 1e6 + 0.5) * u;
+const mlTier = (tab, x) => { const t = ML_D.T[tab].find(z => z[0] <= x && x <= z[1]); return t ? t[2] : undefined; };
+const mlCard = id => id < 100 ? { kind: "gear", id, part: ML_D.GEAR[id][0], attr: ML_D.GEAR[id][1], power: ML_D.GEAR[id][2], price: ML_D.GEAR[id][3], eff: ML_D.GEAR[id][4] }
+  : { kind: "tool", id, name: ML_D.TOOLS[id - 100][0], cat: ML_D.TOOLS[id - 100][1], tx: ML_D.TOOLS[id - 100][2], price: ML_D.TOOLS[id - 100][3], tk: ML_D.TOOLS[id - 100][4], tv: ML_D.TOOLS[id - 100][5], tp: ML_D.TOOLS[id - 100][6] };
+const mlBossItem = (r, bi) => bi < 5 ? null : r === 0 ? { gear: ["胴", 40, 600000] } : r === 1 ? { gear: ["武器", 50, 750000] } : { gem: ML_D.BOSS[2][bi][4] };
+const mlNewP = gold => ({ rank: 0, gold, qpow: 0, potion: 0, flat: 0, pct: 0, rew: 0, roll: 0, brr: 0, qrr: 0, buys: 2, qslots: 1, retry: 0, disc: 0, ins: 0, univ: 0, upg: {}, gear: {}, gem: 0, next: 0, gp: 0, kb: 0, sk: 0, tools: [], def: [] });
+
+function mlDerive(p){
+  let flat = 100 + p.qpow + p.potion + p.flat, pct = p.pct, rq = p.roll, rb = p.roll, qpct = p.rew, bpct = p.rew, hi = 0, qrr = p.qrr, k2 = false, h9 = false, retry = p.retry;
+  const gs = Object.entries(p.gear), n = gs.length, cnt = {};
+  for (const [slot, [a, pw, e]] of gs){
+    flat += pw + (p.upg[slot] || 0);
+    if (a !== "無") cnt[a] = (cnt[a] || 0) + 1;
+    if (e === "W1") flat += 20 * n; else if (e === "W2") pct += 20; else if (e === "F1") flat += 10; else if (e === "F2") pct += 10;
+    else if (e === "H1") rq += 1; else if (e === "T1") qpct += 10; else if (e === "T2") hi += 20; else if (e === "L1") bpct += 10;
+    else if (e === "K1") qrr += 1; else if (e === "K2") k2 = true; else if (e === "H2") h9 = true; else if (e === "BS") retry += 1; else if (e === "BO") rb += 2;
+  }
+  if (n && p.univ) flat += 150 * p.univ;
+  let am = 1; Object.values(cnt).forEach(c => { am *= c >= 6 ? 10 : c >= 4 ? 4 : c >= 2 ? 1.5 : 1; });
+  return { power: Math.floor(flat * (1 + pct / 100) * am + 1e-9), flat, pct, am, rq, rb, qpct, bpct, hi, qrr, k2, h9, retry, cnt, n };
+}
+function mlQOut(q, rank, x){
+  const B = ML_D.BASE[rank], u = ML_D.UNIT[rank], pw = ML_D.POW[rank][q.d] * (rank >= 2 ? ML_LATE : 1);
+  const o = { gold: 0, power: 0, item: null, nextpct: 0, zero: false };
+  if (q.eff === "アイテム獲得"){ const kind = mlTier(q.table, x); o.item = [kind, ML_D.CAP[rank][kind]]; return o; }
+  if (q.eff === "次ターン報酬UP"){ o.nextpct = mlTier(q.table, x); o.zero = q.type === "ハイリスク" && o.nextpct === 0; return o; }
+  const m = q.table === "確定" ? 1 : mlTier(q.table, x);
+  if (q.eff === "ゴールドのみ") o.gold = mlRndU(B * m, 1000);
+  else if (q.eff === "戦闘力UPのみ") o.power = mlRndU(pw * m, u);
+  else { o.gold = mlRndU(B * 0.6 * m, 1000); o.power = mlRndU(pw * 0.6 * m, u); }
+  o.zero = q.type === "ハイリスク" && m === 0;
+  return o;
+}
+/* クエストの結果を、ルーレットの出目つきで文章にする（画面用） */
+function mlQLines(q, rank){
+  const tiers = q.table === "確定" ? [[1, 10]] : ML_D.T[q.table];
+  return tiers.map(t => {
+    const o = mlQOut(q, rank, t[0]), parts = [];
+    if (o.gold) parts.push(mlG(o.gold)); if (o.power) parts.push(`戦闘力+${o.power}`);
+    if (o.item) parts.push(`${o.item[0].startsWith("魔道具") ? "魔道具" : "武具"}1つ（${mlG(o.item[1])}以下）`);
+    if (o.nextpct) parts.push(`次ターン基本報酬+${o.nextpct}%`);
+    if (!parts.length) parts.push("失敗（0）");
+    return [q.table === "確定" ? "確定" : t[0] === t[1] ? `${t[0]}` : `${t[0]}〜${t[1]}`, parts.join("・"), !!o.zero];
+  });
+}
+const mlName = st => pid => pname(pid);
+const mlL = (st, m) => { (st._log = st._log || []).push(m); };
+const mlRoll = () => 1 + Math.floor(Math.random() * 10);
+const mlPrice = (p, price) => p.disc ? Math.floor(price * (1 - 0.1 * p.disc) / 10) * 10 : price;
+const mlPower = p => mlDerive(p).power;
+
+function mlDrawQ(st){
+  if (!st.qdeck.length){ st.qdeck = shuffle(ML_Q.map(q => q.i).filter(i => !st.board.includes(i))); }
+  return st.qdeck.length ? st.qdeck.pop() : null;
+}
+function mlGetGear(st, pid, p, part, attr, power, eff, force){
+  const nw = [attr, power, eff];
+  if (!p.gear[part]){ p.gear[part] = nw; return true; }
+  if (!force){
+    const p2 = JSON.parse(JSON.stringify(p)); p2.gear[part] = nw;
+    if (mlScore(st, p2, mlCtx(st, p2), mlR(st)) <= mlScore(st, p, mlCtx(st, p), mlR(st))) return false;
+  }
+  p.gear[part] = nw; return true;
+}
+function mlGetTool(p, id){
+  const c = mlCard(id); p.tools.push(id);
+  switch (c.tk){
+    case "F": p.flat += c.tv; break; case "PCT": p.pct += c.tv; break; case "UPG": p.upg[c.tp] = (p.upg[c.tp] || 0) + c.tv; break;
+    case "UNIV": p.univ++; break; case "REW": p.rew += c.tv; break; case "ROLL": p.roll += c.tv; break; case "BRR": p.brr++; break; case "QRR": p.qrr++; break;
+    case "BUYS": p.buys++; break; case "QSLOT": p.qslots++; break; case "RETRY": p.retry++; break; case "DISC": p.disc++; break; case "INS": p.ins++; break;
+    case "NOP": if (c.name === "掲示板の鍵") p.kb++; else p.sk++; break;
+  }
+}
+const mlR = st => ML_ROUNDS - st.rd;
+
+/* ---------- 手番の始まり：基本報酬 ---------- */
+function mlBegin(st){
+  const pid = st.order[((st.rd - 1) + st.ti) % st.order.length], p = st.pl[pid];
+  if (Object.values(p.gear).some(g => g[2] === "L2")) p.potion += 20;
+  const d = mlDerive(p), B = ML_D.BASE[p.rank], pot = p.gp > 0 ? 0.1 : 0;
+  if (p.gp > 0) p.gp--;
+  const g = mlRnd10(B * (1 + d.bpct / 100 + p.next / 100 + pot));
+  p.next = 0; p.gold += g;
+  st.turn = { pid, ph: "quest", qn: 0, qpool: d.qrr, qr: null, kb: 0, sk: 0, bought: 0 };
+  mlL(st, `【第${st.rd}ラウンド】${pname(pid)}（${ML_RN[p.rank]}級）の冒険：基本報酬 ${mlG(g)}${pot ? "（金運ポーション）" : ""}`);
+}
+function mlNext(st){
+  st.ti++;
+  if (st.ti >= st.order.length){
+    st.ti = 0; st.rd++;
+    st.sdeck.push(...st.shop); st.sdeck = shuffle(st.sdeck); st.shop = st.sdeck.splice(Math.max(0, st.sdeck.length - 10), 10);
+    if (st.rd > ML_ROUNDS) return mlFinish(st);
+  }
+  mlBegin(st);
+}
+function mlFinish(st){
+  st.status = "finished"; st.turn = null;
+  const fin = {}; st.order.forEach(id => { const p = st.pl[id]; fin[id] = p.gold + p.gem; });
+  const best = Math.max(...st.order.map(id => fin[id]));
+  let w = st.order.filter(id => fin[id] === best);
+  if (w.length > 1){
+    const sg = id => Math.max(0, ...st.pl[id].def.filter(z => z[0] === 2).map(z => z[2]));
+    const m = Math.max(...w.map(sg)); w = w.filter(id => sg(id) === m);
+  }
+  st.wins = w; st.fin = fin;
+  mlL(st, `ゲーム終了！ 勝者：${w.map(pname).join("・")}`);
+}
+
+/* ---------- クエスト ---------- */
+function mlQFin(st, pid, p){
+  const t = st.turn, r = t.qr, q = ML_Q[r.q], d = mlDerive(p), x = Math.min(10, r.nat + d.rq), o = mlQOut(q, p.rank, x), B = ML_D.BASE[p.rank];
+  let g = o.gold;
+  if (g){ const pc = d.qpct + (q.type === "ハイリスク" ? d.hi : 0); g = mlRnd10(g * (1 + pc / 100)); }
+  if (d.h9 && q.type !== "ノーリスク" && x >= 9) g += mlRnd10(0.3 * B);
+  if (o.zero && p.ins) g += mlRnd10(0.5 * B * p.ins);
+  p.gold += g; p.qpow += o.power;
+  const parts = []; if (g) parts.push(mlG(g)); if (o.power) parts.push(`戦闘力+${o.power}`);
+  if (o.nextpct){ p.next = o.nextpct; parts.push(`次ターン基本報酬+${o.nextpct}%`); }
+  if (o.item){
+    const [kind, cap] = o.item, want = kind === "武具" ? "gear" : "tool";
+    const cs = st.sdeck.filter(id => mlCard(id).kind === want && mlCard(id).price <= cap);
+    if (cs.length){
+      const id = cs[Math.floor(Math.random() * cs.length)], c = mlCard(id); st.sdeck.splice(st.sdeck.indexOf(id), 1);
+      if (c.kind === "gear"){ const ok = mlGetGear(st, pid, p, c.part, c.attr, c.power, c.eff); parts.push(`${c.part}（${c.attr}）${ok ? "を装備" : "は今の装備より弱いので見送り"}`); }
+      else { mlGetTool(p, id); parts.push(`魔道具「${c.name}」`); }
+    } else parts.push("獲得できるアイテムがなかった");
+  }
+  mlL(st, `${pname(pid)}は「${q.name}」に挑戦：出目${r.nat}${d.rq ? `（補正+${d.rq}→${x}）` : ""} → ${parts.join("・") || "成果なし"}`);
+  st.last = { n: (st.last.n || 0) + 1, kind: "q", p: pid, nat: r.nat, x, txt: parts.join("・") || "成果なし" };
+  t.qn++; t.qr = null;
+}
+
+/* ---------- 討伐 ---------- */
+function mlHuntInfo(p, d, b){
+  const P = d.power;
+  if (P < b[1]) return { can: false, pr: 0 };
+  if (P >= 1.5 * b[1]) return { can: true, auto: true, pr: 1 };
+  const wk = ML_WEAK[b[2]], c = wk ? (d.cnt[wk] || 0) : 0, wb = c >= 4 ? 2 : c >= 2 ? 1 : 0;
+  const pr1 = Math.min(1, Math.max(0, (11 - b[5] + d.rb + wb) / 10)), k = 1 + p.brr + d.retry;
+  return { can: true, auto: false, wb, pr: 1 - Math.pow(1 - pr1, k), pr1 };
+}
+function mlHunt(st, pid, p, bi){
+  const r = p.rank, b = ML_D.BOSS[r][bi], d = mlDerive(p), inf = mlHuntInfo(p, d, b);
+  if (!inf.can) return false;
+  let ok = false; const rolls = [];
+  if (inf.auto) ok = true;
+  else {
+    let pool = p.brr;
+    for (let a = 0; a < 1 + d.retry && !ok; a++){
+      let nat = mlRoll(); rolls.push(nat); ok = nat + d.rb + inf.wb >= b[5];
+      if (!ok && d.k2 && nat <= 3){ nat = mlRoll(); rolls.push(nat); ok = nat + d.rb + inf.wb >= b[5]; }
+      while (!ok && pool > 0){ pool--; nat = mlRoll(); rolls.push(nat); ok = nat + d.rb + inf.wb >= b[5]; }
+    }
+  }
+  st.last = { n: (st.last.n || 0) + 1, kind: "hunt", p: pid, rolls, ok, auto: !!inf.auto, boss: b[0], need: b[5] - d.rb - (inf.wb || 0) };
+  if (!ok){ mlL(st, `${pname(pid)}は${b[0]}に挑戦…出目${rolls.join("→")}で失敗（次のターンまで再挑戦できない）`); return true; }
+  st.boards[r].splice(st.boards[r].indexOf(bi), 1);
+  p.gold += b[3]; p.def.push([r, b[0], b[1]]);
+  const parts = [mlG(b[3])], it = mlBossItem(r, bi);
+  if (it && it.gem){ p.gem += it.gem; parts.push(`戦利品の宝玉（${mlG(it.gem)}分）`); }
+  else if (it && it.gear){ const eff = b[2] === "無" ? ML_NEUT[it.gear[0]] : null; mlGetGear(st, pid, p, it.gear[0], b[2], it.gear[1], eff, !isCpu(pid)); parts.push(`${it.gear[0]}（${b[2]}）`); }
+  p.rank++;
+  mlL(st, `${pname(pid)}は${b[0]}を${inf.auto ? "圧倒して" : `出目${rolls.join("→")}で`}討伐！ ${ML_RN[p.rank]}級に昇格（${parts.join("・")}）`);
+  return true;
+}
+
+/* ---------- 一手を実行 ---------- */
+function mlApply(st, pid, mv){
+  const t = st.turn; if (!t || st.status !== "playing" || t.pid !== pid) return false;
+  const p = st.pl[pid];
+  switch (mv.t){
+    case "q": {
+      if (t.ph !== "quest" || t.qr || t.qn >= p.qslots || st.board[mv.i] == null) return false;
+      const qi = st.board[mv.i]; st.board[mv.i] = mlDrawQ(st);
+      const nat = mlRoll(); t.qr = { q: qi, nat };
+      st.last = { n: (st.last.n || 0) + 1, kind: "roll", p: pid, nat };
+      if (t.qpool <= 0) mlQFin(st, pid, p);
+      return true;
+    }
+    case "qre": if (!t.qr || t.qpool <= 0) return false; t.qpool--; t.qr.nat = mlRoll(); st.last = { n: (st.last.n || 0) + 1, kind: "roll", p: pid, nat: t.qr.nat }; return true;
+    case "qok": if (!t.qr) return false; mlQFin(st, pid, p); return true;
+    case "qend": if (t.ph !== "quest" || t.qr) return false; t.ph = "shop"; return true;
+    case "kb": {
+      if (t.ph !== "quest" || t.qr || p.kb <= 0 || t.kb || st.board[mv.i] == null) return false;
+      t.kb = 1; const old = st.board[mv.i]; st.qdeck.unshift(old); st.board[mv.i] = mlDrawQ(st); mlL(st, `${pname(pid)}は掲示板の鍵でクエストを入れ替えた`); return true;
+    }
+    case "sk": {
+      if (t.ph !== "shop" || p.sk <= 0 || t.sk) return false;
+      t.sk = 1; st.sdeck.push(...st.shop); st.sdeck = shuffle(st.sdeck); st.shop = st.sdeck.splice(Math.max(0, st.sdeck.length - 10), 10); mlL(st, `${pname(pid)}は商店の合鍵で商品を引き直した`); return true;
+    }
+    case "buy": {
+      if (t.ph !== "shop" || t.bought >= p.buys) return false;
+      if (mv.k === "pot"){ const pr = mlPrice(p, ML_POT); if (p.gold < pr) return false; p.gold -= pr; p.potion += 20; mlL(st, `${pname(pid)}は強化ポーション(低)を購入（戦闘力+20）`); }
+      else if (mv.k === "gp"){ const pr = mlPrice(p, ML_GP); if (p.gold < pr || p.gp > 0) return false; p.gold -= pr; p.gp = 1; mlL(st, `${pname(pid)}は金運ポーション(低)を購入（次ターンの基本報酬1.1倍）`); }
+      else {
+        const id = st.shop[mv.i]; if (id == null) return false;
+        const c = mlCard(id), pr = mlPrice(p, c.price); if (p.gold < pr) return false;
+        if (c.kind === "tool" && ((c.tk === "UPG" && !p.gear[c.tp]) || (c.tk === "UNIV" && !Object.keys(p.gear).length))) return false;
+        p.gold -= pr;
+        if (c.kind === "gear"){ p.gear[c.part] = [c.attr, c.power, c.eff]; mlL(st, `${pname(pid)}は${c.part}（${c.attr}）を購入して装備`); }
+        else { mlGetTool(p, id); mlL(st, `${pname(pid)}は魔道具「${c.name}」を購入`); }
+        if (st.sdeck.length) st.shop[mv.i] = st.sdeck.pop(); else st.shop.splice(mv.i, 1);
+      }
+      t.bought++; return true;
+    }
+    case "sd": if (t.ph !== "shop") return false; t.ph = "hunt"; return true;
+    case "hunt": {
+      if (t.ph !== "hunt" || p.rank >= 3 || !st.boards[p.rank].includes(mv.b)) return false;
+      if (!mlHunt(st, pid, p, mv.b)) return false;
+      mlNext(st); return true;
+    }
+    case "end": if (t.ph !== "hunt") return false; mlNext(st); return true;
+  }
+  return false;
+}
+function mlSetup(order){
+  const N = order.length, st = { ml: 1, order, N, rd: 1, ti: 0, status: "playing", pl: {}, qdeck: [], board: [], sdeck: [], shop: [], boards: [], turn: null, last: { n: 0 }, wins: [] };
+  order.forEach((id, i) => { st.pl[id] = mlNewP(i * ML_START); });
+  st.qdeck = shuffle(ML_Q.map(q => q.i)); st.board = Array.from({ length: 6 }, () => st.qdeck.pop());
+  st.sdeck = shuffle([...Array.from({ length: 60 }, (_, i) => i), ...Array.from({ length: 60 }, (_, i) => 100 + i)]);
+  st.shop = st.sdeck.splice(st.sdeck.length - 10, 10);
+  st.boards = [0, 1, 2].map(() => shuffle(Array.from({ length: 10 }, (_, i) => i)).slice(0, N).sort((a, b) => a - b));
+  mlL(st, `勇者ミリオン開始！ 手番：${order.map(pname).join("→")}`);
+  mlBegin(st);
+  return st;
+}
+
+/* ======================= CPU（シミュレーターと同じ考え方） ======================= */
+function mlCtx(st, p){
+  const r = p.rank, bs = r < 3 ? st.boards[r] : [];
+  if (!bs.length) return { T: null };
+  const bi = bs.reduce((a, b) => ML_D.BOSS[r][b][1] < ML_D.BOSS[r][a][1] ? b : a), wk = ML_D.BOSS[r][bi], it = mlBossItem(r, bi);
+  const iv = !it ? 0 : it.gear ? 0.5 * it.gear[2] : it.gem, dInc = (ML_D.BASE[r + 1] - ML_D.BASE[r]) * 2, R = mlR(st);
+  return { T: wk[1], V: wk[3] + iv + dInc * Math.max(0, R - 2), lamf: [14, 65, 20][r] * 100, dInc };
+}
+function mlScore(st, p, ctx, R){
+  const d = mlDerive(p); let P = d.power;
+  const ks = Object.keys(d.cnt);
+  if (ks.length){
+    const ab = ks.reduce((a, b) => d.cnt[b] > d.cnt[a] ? b : a), c2 = { ...d.cnt }; c2[ab] = Math.min(6, d.cnt[ab] + Math.floor(R / 4));
+    let amp = 1; Object.values(c2).forEach(c => { amp *= c >= 6 ? 10 : c >= 4 ? 4 : c >= 2 ? 1.5 : 1; });
+    if (amp > d.am) P = Math.floor(d.flat * (1 + d.pct / 100) * d.am * Math.pow(amp / d.am, 0.6));
+  }
+  const B = ML_D.BASE[p.rank]; let sc = 0;
+  if (ctx.T){
+    const T = ctx.T, V = ctx.V;
+    sc += V * Math.min(1, P / T) + 0.3 * V * Math.min(1, Math.max(0, (P - T) / (0.5 * T))) + ctx.lamf * Math.max(0, P - T);
+    if (P >= T && P < 1.5 * T){
+      const pr = Math.min(1, Math.max(0, (5 + d.rb) / 10)), k = 1 + p.brr + d.retry, pt = 1 - Math.pow(1 - pr, k);
+      sc -= ctx.dInc * Math.min(R, 1 / Math.max(pt, 0.05) - 1);
+    }
+  }
+  const Bb = B * (1 + d.bpct / 100), qm = Math.min(3, Math.max(1.2, 1.2 + 0.3 * d.rq));
+  let qinc = (1 + 0.9 * (p.qslots - 1)) * B * qm * (1 + (d.qpct + 0.5 * d.hi) / 100);
+  qinc += d.qrr * 0.1 * B;
+  if (d.h9) qinc += 0.3 * B * Math.min(1, 0.2 + 0.1 * d.rq) * 0.7;
+  qinc += p.ins * 0.5 * B * 0.2;
+  sc += R * (Bb + qinc);
+  sc += R * (p.buys - 2) * (0.15 * B + 15000);
+  sc += p.disc * R * 0.05 * (B + 50000);
+  return sc;
+}
+function mlTryCard(st, p, id, R){
+  const c = mlCard(id), p2 = JSON.parse(JSON.stringify(p));
+  if (c.kind === "gear") p2.gear[c.part] = [c.attr, c.power, c.eff];
+  else { if ((c.tk === "UPG" && !p.gear[c.tp]) || (c.tk === "UNIV" && !Object.keys(p.gear).length) || c.tk === "NOP") return null; mlGetTool(p2, id); }
+  return p2;
+}
+function mlCpuQVals(st, p, q, d, lam){
+  const B = ML_D.BASE[p.rank], out = [];
+  for (let r = 1; r <= 10; r++){
+    const x = Math.min(10, r + d.rq), o = mlQOut(q, p.rank, x); let g = o.gold;
+    if (g){ const pc = d.qpct + (q.type === "ハイリスク" ? d.hi : 0); g = mlRnd10(g * (1 + pc / 100)); }
+    if (d.h9 && q.type !== "ノーリスク" && x >= 9) g += mlRnd10(0.3 * B);
+    if (o.zero && p.ins) g += mlRnd10(0.5 * B * p.ins);
+    let v = g + lam * o.power * (1 + d.pct / 100) * d.am;
+    if (o.item) v += 0.35 * o.item[1];
+    if (o.nextpct && st.rd < ML_ROUNDS) v += o.nextpct / 100 * B;
+    out.push(v);
+  }
+  return out;
+}
+function mlCpuStep(st, pid){
+  const t = st.turn, p = st.pl[pid], R = mlR(st), d = mlDerive(p), ctx = mlCtx(st, p);
+  if (t.ph === "quest"){
+    const base = mlScore(st, p, ctx, R), p2 = JSON.parse(JSON.stringify(p)); p2.potion += 20;
+    const lam = Math.max(0, (mlScore(st, p2, ctx, R) - base) / 20);
+    if (t.qr){
+      const vals = mlCpuQVals(st, p, ML_Q[t.qr.q], d, lam), ev = vals.reduce((a, b) => a + b, 0) / 10;
+      return t.qpool > 0 && vals[t.qr.nat - 1] < ev - 1e-9 ? { t: "qre" } : { t: "qok" };
+    }
+    if (t.qn >= p.qslots) return { t: "qend" };
+    let best = null;
+    st.board.forEach((qi, i) => { if (qi == null) return; const v = mlCpuQVals(st, p, ML_Q[qi], d, lam), ev = v.reduce((a, b) => a + b, 0) / 10; if (!best || ev > best.ev) best = { ev, i }; });
+    return best ? { t: "q", i: best.i } : { t: "qend" };
+  }
+  if (t.ph === "shop"){
+    if (t.bought >= p.buys) return { t: "sd" };
+    const base = mlScore(st, p, ctx, R); let best = null;
+    const pp = mlPrice(p, ML_POT);
+    if (p.gold >= pp){ const p2 = JSON.parse(JSON.stringify(p)); p2.potion += 20; best = { dl: mlScore(st, p2, ctx, R) - base - pp, mv: { t: "buy", k: "pot" } }; }
+    const gp = mlPrice(p, ML_GP);
+    if (p.gp === 0 && p.gold >= gp && st.rd < ML_ROUNDS){ const dl = 0.1 * ML_D.BASE[p.rank] * (1 + d.bpct / 100) - gp; if (!best || dl > best.dl) best = { dl, mv: { t: "buy", k: "gp" } }; }
+    st.shop.forEach((id, i) => {
+      const c = mlCard(id), pr = mlPrice(p, c.price); if (p.gold < pr) return;
+      const p2 = mlTryCard(st, p, id, R); if (!p2) return;
+      const dl = mlScore(st, p2, ctx, R) - base - pr; if (!best || dl > best.dl) best = { dl, mv: { t: "buy", k: "card", i } };
+    });
+    return best && best.dl > 0 ? best.mv : { t: "sd" };
+  }
+  if (p.rank >= 3) return { t: "end" };
+  const cands = st.boards[p.rank].filter(bi => mlHuntInfo(p, d, ML_D.BOSS[p.rank][bi]).can);
+  if (!cands.length) return { t: "end" };
+  const dInc = (ML_D.BASE[p.rank + 1] - ML_D.BASE[p.rank]) * 2;
+  const val = bi => { const b = ML_D.BOSS[p.rank][bi], it = mlBossItem(p.rank, bi), iv = !it ? 0 : it.gear ? 0.5 * it.gear[2] : it.gem, pr = mlHuntInfo(p, d, b).pr; return pr * (b[3] + iv) - (1 - pr) * dInc; };
+  return { t: "hunt", b: cands.reduce((a, b) => val(b) > val(a) ? b : a) };
+}
+
+/* ======================= 通信・状態 ======================= */
+const mlGames = () => db.ml_games || [];
+const mlLive = () => mlGames().filter(g => g.status === "playing" && g.st && g.st.ml).sort((a, b) => b.created_at.localeCompare(a.created_at));
+const mlById = id => mlGames().find(g => g.id === id);
+const mlActor = st => st && st.turn ? st.turn.pid : null;
+function mlMyTurn(g){ const st = g && g.st; return !!(st && st.ml && g.status === "playing" && me && mlActor(st) === me); }
+async function mlCommit(id, fn){
+  for (let tries = 0; tries < 6; tries++){
+    const g = mlById(id); if (!g || g.status !== "playing") return false;
+    const st = JSON.parse(JSON.stringify(g.st)); st._log = [];
+    const r = fn(st, g); if (!r) return false;
+    const lines = st._log; delete st._log;
+    const body = { st, version: (g.version || 1) + 1, updated_at: new Date().toISOString() };
+    if (st.status !== "playing"){ body.status = "finished"; body.winner = (st.wins || [])[0] || null; }
+    if (lines.length){ const lg = (g.log || []).slice(), now = Date.now(); lines.forEach((m, i) => lg.push({ t: new Date(now + i).toISOString(), m })); body.log = lg.slice(-150); }
+    const ver0 = g.version || 1, undo = optimistic(g, body, drawMl);
+    let data, error;
+    try { ({ data, error } = await sb.from("ml_games").update(body).eq("id", id).eq("version", ver0).select()); } catch (e) { error = e; }
+    if (error && dmNetErr(error) && tries < 5){ undo(); await new Promise(r2 => setTimeout(r2, 600 * (tries + 1))); await loadTable("ml_games"); continue; }
+    if (error){ undo(); drawMl(); fail(error, "保存"); return false; }
+    if (data && data.length){ Object.assign(g, data[0]); drawMl(); return true; }
+    undo(); await loadTable("ml_games");
+  }
+  drawMl(); toast("混み合っています。もう一度タップしてください", 2000); return false;
+}
+const mlDo = (id, p, mv) => mlCommit(id, st => mlApply(st, p, mv));
+let mlAnimUntil = 0;
+CPU_AI.ml_games = g => {
+  const st = g.st; if (!st || !st.ml || g.status !== "playing") return null;
+  const p = mlActor(st); if (!isCpu(p)) return null;
+  const mv = mlCpuStep(st, p);
+  return { wait: Math.max(1100, mlAnimUntil - Date.now() + 500), run: () => mlDo(g.id, p, mv) };
+};
+
+/* ======================= 絵 ======================= */
+const ML_ICON = `<span class="gic mli"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="3" y="3" width="58" height="58" rx="12" fill="#101A36" stroke="#FFD35A" stroke-width="2"/><circle cx="32" cy="34" r="17" fill="#FFC93C" stroke="#B8860B" stroke-width="2"/><circle cx="32" cy="34" r="12" fill="none" stroke="#B8860B" stroke-width="1.4" stroke-dasharray="2 2.4"/><path d="M27 40V28l5 7 5-7v12" fill="none" stroke="#7A5200" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><path d="M14 20l5-9 5 6 4-8 4 8 5-6 5 9z" fill="#FF2E6A" stroke="#FFD35A" stroke-width="1.2" stroke-linejoin="round" transform="translate(-1 -3) scale(1.03)"/></svg></span>`;
+const mlShort = n => n >= 100000000 ? (n / 100000000).toFixed(2).replace(/\.?0+$/, "") + "億" : n >= 10000 ? (n / 10000).toFixed(n % 10000 ? 1 : 0).replace(/\.0$/, "") + "万" : String(n);
+const mlAttrB = a => `<i class="mlat" style="--ac:${ML_AC[a] || "#999"}">${a}</i>`;
+const ML_PARTS = ["武器", "胴", "頭", "腰", "籠手", "脚"];
+const ML_TOOLS_DESC = ML_D.GEFF;
+
+/* ======================= 画面 ======================= */
+let mlId = null, mlTab = "quest", mlView = null, mlSeen = {}, mlPlaying = false, mlLastKey = "";
+function openMl(id){ const g0 = mlById(id); mlId = id; mlView = null; mlLastKey = ""; if (g0 && g0.st) mlSeen[id] = (g0.st.last && g0.st.last.n) || 0; $("#mlg").hidden = false; document.body.style.overflow = "hidden"; drawMl(); }
+function closeMl(){ mlId = null; $("#mlg").hidden = true; document.body.style.overflow = ""; render(); }
+function drawMl(){
+  setTimeout(cpuKick, 0);
+  if (!mlId) return;
+  const g = mlById(mlId); if (!g || !g.st || g.status === "aborted") return closeMl();
+  if (mlPlaying) return;
+  const L = g.st.last;
+  if (L && L.n > (mlSeen[g.id] || 0)){ mlSeen[g.id] = L.n; mlRender(g); mlPlay(g, L); return; }
+  mlRender(g);
+  if (g.status === "finished") mlEndShow(g);
+}
+const mlWait = ms => new Promise(r => setTimeout(r, ms));
+async function mlPlay(g, L){
+  const fx = $("#mlFx"); if (!fx) return;
+  mlPlaying = true;
+  const nums = L.kind === "hunt" ? (L.rolls || []) : L.nat ? [L.nat] : [];
+  mlAnimUntil = Date.now() + 1000 + nums.length * 1300;
+  const who = esc(pname(L.p));
+  fx.innerHTML = `<div class="mlroul"><small>${who}${L.kind === "hunt" ? `の討伐「${esc(L.boss)}」` : "のルーレット"}</small><div class="mlbig" id="mlBig">？</div><p id="mlCap"></p></div>`; fx.classList.add("on");
+  const big = $("#mlBig"), cap = $("#mlCap");
+  try {
+    for (const v of nums){
+      for (let i = 0; i < 11; i++){ big.textContent = 1 + Math.floor(Math.random() * 10); await mlWait(55 + i * 8); }
+      big.textContent = v; big.classList.add("land"); await mlWait(520); big.classList.remove("land");
+    }
+    if (L.kind === "q") cap.textContent = L.txt;
+    else if (L.kind === "hunt") cap.textContent = L.ok ? (L.auto ? "戦闘力が圧倒的！ 挑戦なしで討伐" : "討伐成功！") : `失敗…（必要な出目は${Math.max(1, L.need)}以上）`;
+    else cap.textContent = "";
+    await mlWait(L.kind === "roll" ? 350 : 1100);
+  } catch (e) { console.error(e); }
+  fx.classList.remove("on"); mlPlaying = false; mlAnimUntil = 0;
+  drawMl();
+}
+
+function mlQHtml(q, rank, mine, can, p){
+  const lines = mlQLines(q, rank);
+  return `<button class="mlq ${q.type}" data-mq="${q.i}" ${can ? "" : "disabled"}><span class="qh"><b>${esc(q.name)}</b><i>${q.type}</i></span><small>${q.eff}</small>
+    <span class="ql">${lines.map(([r, tx, z]) => `<span class="${z ? "z" : ""}"><em>${r === "確定" ? "確定" : "出目" + r}</em>${esc(tx)}</span>`).join("")}</span></button>`;
+}
+function mlGearTx(c){ return c.eff ? (ML_D.GEFF[c.eff] || "") : `同じ属性が2個で戦闘力×1.5、4個で×4、6個で×10`; }
+function mlShopHtml(st, p, canBuy){
+  const t = st.turn, left = p ? p.buys - t.bought : 0, cards = st.shop.map((id, i) => {
+    const c = mlCard(id), pr = p ? mlPrice(p, c.price) : c.price;
+    const ng = !canBuy || p.gold < pr || left <= 0 || (c.kind === "tool" && ((c.tk === "UPG" && !p.gear[c.tp]) || (c.tk === "UNIV" && !Object.keys(p.gear).length)));
+    const hd = c.kind === "gear" ? `${mlAttrB(c.attr)}<b>${c.part}</b><span class="pw">戦闘力${c.power}</span>` : `<b>${esc(c.name)}</b><span class="pw">${esc(c.cat)}</span>`;
+    return `<button class="mls ${c.kind}" style="--ac:${c.kind === "gear" ? ML_AC[c.attr] : "#9CA8FF"}" data-mb="card" data-i="${i}" ${ng ? "disabled" : ""}><span class="sh">${hd}</span><small>${esc(c.kind === "gear" ? mlGearTx(c) : c.tx)}</small><em>${mlG(pr)}</em></button>`;
+  }).join("");
+  const pp = p ? mlPrice(p, ML_POT) : ML_POT, gg = p ? mlPrice(p, ML_GP) : ML_GP;
+  const fx = `<button class="mls fixed" data-mb="pot" ${!canBuy || p.gold < pp || left <= 0 ? "disabled" : ""}><span class="sh"><b>強化ポーション(低)</b><span class="pw">固定商品</span></span><small>戦闘力+20（永続）</small><em>${mlG(pp)}</em></button>
+    <button class="mls fixed" data-mb="gp" ${!canBuy || p.gold < gg || left <= 0 || p.gp > 0 ? "disabled" : ""}><span class="sh"><b>金運ポーション(低)</b><span class="pw">固定商品</span></span><small>次のターン開始時、基本報酬が1.1倍</small><em>${mlG(gg)}</em></button>`;
+  return `<div class="mlgrid">${fx}${cards}</div>`;
+}
+function mlBossHtml(st, p, canHunt){
+  if (!p) return "";
+  const d = mlDerive(p), out = [];
+  const blocks = [0, 1, 2].map(r => {
+    const mineR = r === p.rank;
+    const list = st.boards[r].map(bi => {
+      const b = ML_D.BOSS[r][bi], it = mlBossItem(r, bi), inf = mineR ? mlHuntInfo(p, d, b) : null;
+      const rw = !it ? "なし" : it.gem ? `戦利品の宝玉（${mlG(it.gem)}分）` : `${it.gear[0]}（${b[2]}属性）`;
+      const pr = inf ? (inf.can ? (inf.auto ? "挑戦なしで討伐" : `成功率 ${Math.round(inf.pr * 100)}%${inf.wb ? `（弱点+${inf.wb}）` : ""}`) : `戦闘力が足りない（${b[1]}〜）`) : "";
+      return `<button class="mlb" style="--ac:${ML_AC[b[2]]}" data-mh="${bi}" ${canHunt && mineR && inf.can ? "" : "disabled"}><span class="bh">${mlAttrB(b[2])}<b>${esc(b[0])}</b><span class="pw">戦闘力${b[1]}</span></span>
+        <small>討伐条件：出目${b[5]}以上　弱点：${ML_WEAK[b[2]] ? ML_WEAK[b[2]] + "属性の武具" : "なし"}</small><small>報酬：${mlG(b[3])}／${rw}</small>${pr ? `<em>${pr}</em>` : ""}</button>`;
+    }).join("") || `<p class="mlnone">この階級のボスは全員討伐された</p>`;
+    return `<h4 class="${mineR ? "now" : ""}">${ML_RN[r]}級ボス${mineR ? "（あなたの階級）" : ""}</h4><div class="mlgrid one">${list}</div>`;
+  });
+  return (p.rank >= 3 ? `<p class="mlnone">ドラゴン級：もうボスはいない。高い基本報酬で稼ごう</p>` : "") + blocks.join("");
+}
+function mlMeHtml(st, pid){
+  const p = st.pl[pid], d = mlDerive(p);
+  const slots = ML_PARTS.map(s => { const gr = p.gear[s]; return gr ? `<div class="mlgs" style="--ac:${ML_AC[gr[0]]}"><b>${s}</b>${mlAttrB(gr[0])}<span>${gr[1] + (p.upg[s] || 0)}</span>${gr[2] ? `<small>${esc(ML_D.GEFF[gr[2]] || "")}</small>` : ""}</div>` : `<div class="mlgs empty"><b>${s}</b><span>—</span></div>`; }).join("");
+  const att = Object.entries(d.cnt).map(([a, c]) => `<span style="--ac:${ML_AC[a]}">${mlAttrB(a)}${c}個${c >= 2 ? ` → ×${c >= 6 ? 10 : c >= 4 ? 4 : 1.5}` : "（2個で発動）"}</span>`).join("") || `<span>属性の武具なし</span>`;
+  const tc = {}; p.tools.forEach(id => { tc[id] = (tc[id] || 0) + 1; });
+  const tools = Object.entries(tc).map(([id, n]) => { const c = mlCard(+id); return `<div class="mlts"><b>${esc(c.name)}${n > 1 ? ` ×${n}` : ""}</b><small>${esc(c.tx)}</small></div>`; }).join("") || `<p class="mlnone">まだ魔道具を持っていない</p>`;
+  const chips = [["クエスト出目", "+" + d.rq], ["ボス出目", "+" + d.rb], ["基本報酬", "+" + d.bpct + "%"], ["クエスト報酬", "+" + d.qpct + "%"], ["購入枠", p.buys], ["クエスト枠", p.qslots], ["クエスト振り直し", d.qrr + "回"], ["ボス振り直し", p.brr + "回"], ["再挑戦", d.retry + "回"], ["割引", p.disc ? "10%" : "なし"]].map(([k, v]) => `<span><small>${k}</small><b>${v}</b></span>`).join("");
+  return `<div class="mlme"><div class="mlpow"><small>戦闘力</small><b>${d.power.toLocaleString()}</b><em>（基礎${d.flat}${d.pct ? ` ×${(1 + d.pct / 100).toFixed(2)}` : ""}${d.am > 1 ? ` ×属性${d.am}` : ""}）</em></div>
+    <div class="mlrow"><span><small>階級</small><b>${ML_RN[p.rank]}級</b></span><span><small>所持金</small><b>${mlG(p.gold)}</b></span>${p.gem ? `<span><small>宝玉</small><b>${mlG(p.gem)}</b></span>` : ""}${p.gp ? `<span><small>金運</small><b>使用待ち</b></span>` : ""}${p.next ? `<span><small>次ターン</small><b>報酬+${p.next}%</b></span>` : ""}</div>
+    <h4>発動中の属性</h4><div class="mlatt">${att}</div><h4>装備</h4><div class="mlgsw">${slots}</div><h4>魔道具</h4>${tools}<h4>効果のまとめ</h4><div class="mlchips">${chips}</div>
+    <h4>討伐したボス</h4>${p.def.length ? p.def.map(z => `<p class="mldf">${ML_RN[z[0]]}級　${esc(z[1])}（戦闘力${z[2]}）</p>`).join("") : `<p class="mlnone">まだ討伐していない</p>`}</div>`;
+}
+function mlRender(g){
+  const st = g.st, root = $("#mlg"), cur = mlActor(st), t = st.turn, mine = cur === me && g.status === "playing";
+  const inGame = st.order.includes(me), viewer = mlView && st.pl[mlView] ? mlView : inGame ? me : cur || st.order[0];
+  const key = (t ? t.pid + ":" + t.ph : "end");
+  if (key !== mlLastKey){ mlLastKey = key; if (mine) mlTab = t.ph === "quest" ? "quest" : t.ph === "shop" ? "shop" : "boss"; mlView = null; }
+  const vp = st.pl[viewer], rankV = (st.pl[inGame ? me : cur] || vp).rank;
+  const strips = st.order.map(pid => { const p = st.pl[pid]; return `<button class="mlsc ${pid === cur ? "cur" : ""} ${pid === viewer ? "vw" : ""}" data-pv="${pid}" style="--pc:${pcolor(pid)}"><i class="dot"></i><b>${esc(pname(pid))}</b><span>${mlShort(p.gold + p.gem)}</span><em>${ML_RN[p.rank]}・${mlPower(p).toLocaleString()}</em></button>`; }).join("");
+  const lg = (g.log || []).slice(-3).map(l => `<p>${colorizeLog(g.players, l.m)}</p>`).join("");
+  let body = "", act = "";
+  const myp = st.pl[me];
+  if (mlTab === "quest"){
+    const can = mine && t.ph === "quest" && !t.qr && t.qn < myp.qslots;
+    body = `<div class="mlgrid one">${st.board.map((qi, i) => qi == null ? "" : `<div class="mlqw">${mlQHtml(ML_Q[qi], rankV, mine, can, myp)}${mine && t.ph === "quest" && !t.qr && myp.kb > 0 && !t.kb ? `<button class="mlkb" data-kbq="${i}">鍵で入れ替え</button>` : ""}</div>`).join("")}</div>`;
+  } else if (mlTab === "shop") body = mlShopHtml(st, inGame ? myp : null, mine && t.ph === "shop");
+  else if (mlTab === "boss") body = mlBossHtml(st, st.pl[inGame ? me : cur], mine && t.ph === "hunt");
+  else body = mlMeHtml(st, viewer);
+  if (g.status === "finished") act = `<div class="mlmsg">ゲーム終了</div>`;
+  else if (!mine) act = `<div class="mlmsg">${cur ? `${esc(pname(cur))}の番（${t.ph === "quest" ? "冒険" : t.ph === "shop" ? "買い物" : "討伐"}）` : ""}</div>`;
+  else if (t.ph === "quest" && t.qr){
+    const q = ML_Q[t.qr.q], d = mlDerive(myp), x = Math.min(10, t.qr.nat + d.rq), ln = mlQLines(q, myp.rank).find(z => { const m = z[0].match(/(\d+)(?:〜(\d+))?/); return z[0] === "確定" || (x >= +m[1] && x <= +(m[2] || m[1])); });
+    act = `<div class="mlmsg"><b>${esc(q.name)}</b>：出目${t.qr.nat}${d.rq ? `＋補正${d.rq}＝${x}` : ""} → ${ln ? esc(ln[1]) : ""}</div><div class="mlbtns"><button class="btn sub" data-act="qre" ${t.qpool > 0 ? "" : "disabled"}>振り直す（あと${t.qpool}回）</button><button class="btn" data-act="qok">この結果で確定</button></div>`;
+  } else if (t.ph === "quest") act = `<div class="mlmsg">掲示板からクエストを選ぶ（あと${myp.qslots - t.qn}件）。ルーレットで結果が決まる</div><div class="mlbtns"><button class="btn sub" data-act="qend">${t.qn ? "買い物へ" : "受けずに買い物へ"}</button></div>`;
+  else if (t.ph === "shop") act = `<div class="mlmsg">買い物（あと${myp.buys - t.bought}個）。売却はできない</div><div class="mlbtns">${myp.sk > 0 && !t.sk ? `<button class="btn sub" data-act="sk">合鍵で商品を引き直す</button>` : ""}<button class="btn" data-act="sd">討伐へ</button></div>`;
+  else act = `<div class="mlmsg">${myp.rank >= 3 ? "ドラゴン級：討伐はありません" : "「討伐」タブから挑むボスを選ぶ。失敗しても次のターンまで再挑戦できないだけ"}</div><div class="mlbtns"><button class="btn sub" data-act="end">討伐せずにターン終了</button></div>`;
+  const nav = [["quest", "掲示板"], ["shop", "商店"], ["boss", "討伐"], ["me", "ステータス"]].map(([k, n]) => `<button class="${mlTab === k ? "on" : ""}" data-mt="${k}">${n}</button>`).join("");
+  root.innerHTML = `<div class="mlwrap"><div class="mltop"><button class="gfbk" id="mlBack">‹</button><div class="mlttl"><b>YUSHA MILLION</b><small>第${Math.min(st.rd, ML_ROUNDS)}/${ML_ROUNDS}ラウンド${t ? ` ・ ${esc(pname(t.pid))}の番` : ""}</small></div><button class="gfbk" id="mlMenu">⋯</button></div>
+    <div class="mlscs">${strips}</div><div class="mllog">${lg}</div>
+    <div class="mlmain" id="mlMain">${body}</div><div class="mlbot">${act}</div><div class="mlnav">${nav}</div><div class="mlfx" id="mlFx"></div></div>`;
+  const keep = mlRender.sc; if (keep != null && mlRender.tab === mlTab) $("#mlMain").scrollTop = keep;
+  $("#mlMain").onscroll = e => { mlRender.sc = e.target.scrollTop; mlRender.tab = mlTab; };
+  root.onclick = e => mlTap(g, e);
+}
+function mlTap(g, e){
+  const t = e.target, st = g.st, me_ = me, p = st.pl[me_];
+  const q = s => t.closest(s);
+  if (q("#mlBack")) return closeMl();
+  if (q("#mlMenu")) return mlMenu(g);
+  let b;
+  if ((b = q("[data-mt]"))){ mlTab = b.dataset.mt; mlRender.sc = 0; return mlRender(g); }
+  if ((b = q("[data-pv]"))){ mlView = b.dataset.pv; mlTab = "me"; mlRender.sc = 0; return mlRender(g); }
+  if (!mlMyTurn(g)) return;
+  if ((b = q("[data-kbq]"))) return void mlDo(g.id, me_, { t: "kb", i: +b.dataset.kbq });
+  if ((b = q("[data-mq]"))){ const i = st.board.indexOf(+b.dataset.mq); if (i >= 0 && !b.disabled) mlDo(g.id, me_, { t: "q", i }); return; }
+  if ((b = q("[data-mb]"))){
+    if (b.disabled) return;
+    const k = b.dataset.mb;
+    if (k === "card"){ const c = mlCard(st.shop[+b.dataset.i]); if (c.kind === "gear" && p.gear[c.part] && !confirm(`今の${c.part}（${p.gear[c.part][0]}・戦闘力${p.gear[c.part][1]}）を、${c.part}（${c.attr}・戦闘力${c.power}）に交換しますか？\n交換すると前の武具の戦闘力は引き継げません。`)) return; return void mlDo(g.id, me_, { t: "buy", k, i: +b.dataset.i }); }
+    return void mlDo(g.id, me_, { t: "buy", k });
+  }
+  if ((b = q("[data-mh]"))){ if (!b.disabled) mlDo(g.id, me_, { t: "hunt", b: +b.dataset.mh }); return; }
+  if ((b = q("[data-act]"))){ if (!b.disabled) mlDo(g.id, me_, { t: b.dataset.act }); }
+}
+function mlMenu(g){
+  const mine = (g.players || []).includes(me);
+  const s = openSheet(ML_TITLE, `<div class="btns col"><button class="btn sub" data-grule="ml">ルールを見る</button><button class="btn sub" id="mlLogB">ログを見る</button>${mine && g.status === "playing" ? `<button class="btn danger" id="mlAbort">この対戦をやめる</button>` : ""}</div>`);
+  s.querySelector("#mlLogB").onclick = () => openSheet("ログ", `<div class="wdlog">${(g.log || []).slice().reverse().map(l => `<p>${colorizeLog(g.players, l.m)}</p>`).join("")}</div>`);
+  const ab = s.querySelector("#mlAbort"); if (ab) ab.onclick = async () => { if (!confirm("この対戦をやめますか？")) return; const { error } = await sb.from("ml_games").update({ status: "aborted" }).eq("id", g.id); if (error) return fail(error, "中止"); await loadTable("ml_games"); closeSheet(); closeMl(); };
+}
+const mlEndSeen = {};
+function mlEndShow(g){
+  const st = g.st; if (mlEndSeen[g.id]) return; mlEndSeen[g.id] = 1;
+  const rk = st.order.slice().sort((a, b) => st.fin[b] - st.fin[a]);
+  const s = openSheet("結果", `<div class="gfend mlend"><h2>${(st.wins || []).includes(me) ? "VICTORY" : "GAME SET"}</h2><table><tr><th></th><th>最終</th><th>ゴールド</th><th>宝玉</th><th>階級</th></tr>${rk.map(p => `<tr class="${(st.wins || []).includes(p) ? "win" : ""}"><td style="color:${pcolor(p)}">${esc(pname(p))}</td><td><b>${mlG(st.fin[p])}</b></td><td>${mlG(st.pl[p].gold)}</td><td>${st.pl[p].gem ? mlG(st.pl[p].gem) : "—"}</td><td>${ML_RN[st.pl[p].rank]}</td></tr>`).join("")}</table><div class="btns"><button class="btn ghost" id="mlClose">閉じる</button><button class="btn" id="mlAgain">もう一度</button></div></div>`);
+  s.querySelector("#mlClose").onclick = () => { closeSheet(); closeMl(); };
+  s.querySelector("#mlAgain").onclick = () => { closeSheet(); closeMl(); openMlNew(); };
+}
+
+/* ======================= 新しく始める ======================= */
+function openMlNew(){
+  let order = db.players.map(p => p.id).slice(0, 4);
+  const s = openSheet(`${ML_TITLE}を始める`, `
+    <p class="note">【オリジナル・開発中】冒険→買い物→討伐を繰り返し、15ラウンドで一番ゴールドを稼いだ人の勝ち。ボスを倒して階級を上げ、武具の属性をそろえて戦闘力を何倍にもしよう。</p>
+    <div class="btns"><button type="button" class="grbtn" data-grule="ml">ルールを見る</button></div>
+    <div class="f"><span>参加者（タップで選ぶ・2〜6人）</span>${chipPlayers(db.players.map(p => p.id), order)}${cpuChips(order)}</div>
+    <div class="f"><span>最初のラウンドの手番（指で動かして並べ替え。ラウンドごとに先頭が1人ずつずれる。最初の持ち金は 左から 0・2,000・4,000…）</span><div id="mlOrder" class="norder"></div><button class="shufbtn" id="mlShuf">順番をシャッフル</button></div>
+    <div class="btns"><button class="btn" id="mlGo">はじめる</button></div>`);
+  s.querySelector("[data-close]").onclick = openGames;
+  const draw = () => { $("#mlOrder").innerHTML = seatHtml(order); seatDrag($("#mlOrder"), () => order, o => order = o, draw); };
+  s.querySelectorAll("[data-p]").forEach(b => b.onclick = () => {
+    const id = b.dataset.p, on = b.getAttribute("aria-pressed") !== "true";
+    if (on && order.length >= 6){ toast("最大6人です"); return; }
+    b.setAttribute("aria-pressed", String(on)); order = on ? [...order, id] : order.filter(x => x !== id); draw();
+  });
+  $("#mlShuf").onclick = () => { order = shuffle(order); draw(); };
+  draw();
+  $("#mlGo").onclick = async () => {
+    if (!order.some(id => !isCpu(id))){ toast("人間のプレイヤーを1人以上入れてください"); return; }
+    if (order.length < 2 || order.length > 6){ toast("参加者は2〜6人です"); return; }
+    const st = mlSetup(order); const lg = st._log || []; delete st._log;
+    const row = { status: "playing", players: order, st, created_by: me || null, log: lg.map((m, i) => ({ t: new Date(Date.now() + i).toISOString(), m })) };
+    const { data: res, error } = await sb.from("ml_games").insert(row).select().single();
+    if (error){ if (/ml_games|relation|exist|schema|permission/i.test(error.message || "")) toast("勇者ミリオンを使うには、SupabaseでSQLを実行してください（ml_games）", 4200); else fail(error, "作成"); return; }
+    await loadTable("ml_games"); closeSheet(); openMl(res.id);
+  };
+}
+
+/* ======================= ルール ======================= */
+function mlRulesHtml(){
+  return `<h4>目的</h4><p>${ML_ROUNDS}ラウンドの間に、<b>一番多くのゴールド</b>を持っていた人の勝ち（戦利品の宝玉はゴールドに換算）。同額なら、より強いワイバーン級ボスを倒した人の勝ち。全員が同じ手番数でゲームが終わる。</p>
+  <h4>手番の流れ</h4><p>全員が1周すると1ラウンド。先頭の人は毎ラウンド1人ずつずれる。最初の持ち金は手番順に 0・2,000・4,000…G。戦闘力は100からスタート。<br><b>① 冒険</b>：階級に応じた基本報酬をもらい、掲示板のクエストを1つ受ける（ルーレットで結果が決まる）。<br><b>② 買い物</b>：商店で合計2個まで買える（固定商品も含む・売却不可）。<br><b>③ 討伐</b>：自分の階級のボスに挑む。</p>
+  <h4>階級と基本報酬（1ラウンドごと）</h4><p>${ML_RN.map((n, i) => `${n}級 ${mlG(ML_D.BASE[i])}`).join(" ／ ")}</p>
+  <h4>ルーレット</h4><p>1〜10の出目。クエストの結果や、ボス討伐の成否を決める。魔道具で出目に+1などの補正や振り直しができる。</p>
+  <h4>クエスト</h4><p>掲示板には常に6枚。階級ごとに報酬が変わる。<b>ノーリスク</b>は確定、<b>ローリスク</b>は基本報酬の0.5〜1.7倍、<b>ハイリスク</b>は0〜3倍（失敗は0でマイナスはない）。戦闘力UP、戦闘力＋ゴールド、ゴールド、アイテム獲得、次ターン報酬UPの種類がある。</p>
+  <h4>討伐</h4><p>自分の階級のボスで、<b>戦闘力がボスの戦闘力以上</b>なら挑める。ボスの条件（基本は出目6以上、大魔王は8以上）をルーレットで満たせば討伐成功で階級が1つ上がる。<b>戦闘力がボスの1.5倍以上</b>なら挑戦なしで討伐。失敗しても次のターンまで再挑戦できないだけ。ボスは早い者勝ちで、各階級1体まで。弱点属性（火＜水＜雷＜風＜火）の武具を2個以上で出目+1、4個以上で+2。</p>
+  <p>報酬：ゴールドと、スライム級=胴、オーク級=武器の武具（そのボスの属性）、ワイバーン級=戦利品の宝玉（ゴールド換算額つき）。ドラゴン級になるとボスはいない。</p>
+  <h4>武具と属性</h4><p>武器・胴・頭・腰・籠手・脚の6か所に1つずつ。戦闘力は武器50・胴40・頭30・腰20・籠手15・脚10。<b>同じ属性の武具が2〜3個で戦闘力×1.5、4〜5個で×4、6個で×10</b>（属性ごとに掛け算）。無属性の武具はそれぞれ固有の効果を持つ。交換できるが、前の武具の戦闘力は引き継げない。</p>
+  <h4>魔道具</h4><p>戦闘力アップ、武具強化、報酬アップ、出目補正、振り直し、購入枠+1・クエスト枠+1などの永続効果。置ける数に上限はない。</p>
+  <h4>固定商品</h4><p>強化ポーション(低)：戦闘力+20（${mlG(ML_POT)}）。金運ポーション(低)：次のターン開始時、基本報酬1.1倍（${mlG(ML_GP)}）。</p>
+  <h4>商店</h4><p>ランダム商品は常に10個。誰かが買うとすぐ補充され、ラウンドの終わりにすべて山に戻してシャッフルされる。</p>`;
 }
 
 /* ======================= ここからロビー（ゲームの棚・戦績・設定） ======================= */
-const DEFAULT_STAGES = { hx: "dev", sz: "done", lm: "done", wd: "dev", gf: "dev" };
+const DEFAULT_STAGES = { hx: "dev", sz: "done", lm: "done", wd: "dev", gf: "dev", ml: "dev" };
 const stages = () => ({ ...DEFAULT_STAGES, ...(setting("stages") || {}) });
 const maxOf = (ids, val) => { const best = Math.max(...ids.map(val)); return ids.filter(p => val(p) === best); };
 const GAMES = [
@@ -10574,6 +10759,12 @@ GAMES.push({ id: "gf", name: "タイルゴルフ", en: "TILE GOLF", players: "1�
     start: () => openGfNew(), open: g => openGf(g.id),
     winners: g => (g.st && g.st.wins) || [],
     liveTx: g => `第${g.st.hi + 1}ホール` });
+GAMES.push({ id: "ml", name: "勇者ミリオン", en: "YUSHA MILLION", players: "2〜6人", time: "30〜45分",
+    desc: "冒険・買い物・討伐を繰り返す15ラウンド。クエストと武具・魔道具で戦闘力を育ててボスを倒し、階級を上げて一番ゴールドを稼いだ人の勝ち。同じ属性の武具をそろえると戦闘力が何倍にも。",
+    icon: () => ML_ICON, list: () => mlGames(), live: () => mlLive(), myTurn: g => mlMyTurn(g),
+    start: () => openMlNew(), open: g => openMl(g.id),
+    winners: g => (g.st && g.st.wins) || [],
+    liveTx: g => `第${Math.min(g.st.rd, ML_ROUNDS)}ラウンド` });
 const gameById = id => GAMES.find(x => x.id === id);
 const finished = gm => gm.list().filter(g => g.status === "finished");
 /* 人間が1人だけ（あとはCPU）の対戦＝「CPU戦」。メインの戦績には入れず、別枠で集計する */
@@ -10589,6 +10780,7 @@ const ART = {
 };
 
 ART.gf = `<svg viewBox="0 0 200 120" aria-hidden="true"><ellipse cx="110" cy="96" rx="70" ry="16" fill="#3FD67A" opacity=".5"/><path d="M118 96V24" stroke="#fff" stroke-width="3"/><path d="M118 24l34 12-34 12z" fill="#FF2E6A"/><circle cx="60" cy="88" r="7" fill="#fff"/></svg>`;
+ART.ml = `<svg viewBox="0 0 200 120" aria-hidden="true"><g fill="#FFC93C" stroke="#B8860B" stroke-width="3"><circle cx="70" cy="80" r="30"/><circle cx="125" cy="62" r="34"/><circle cx="160" cy="95" r="22"/></g><g fill="none" stroke="#7A5200" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M114 74V50l11 14 11-14v24"/></g></svg>`;
 function viewShelf(st){
   const S = stages(), list = GAMES.filter(gm => S[gm.id] === st);
   const dev = st === "dev";
@@ -10767,7 +10959,7 @@ $("#gearBtn").onclick = openSettings;
 $("#meBtn").onclick = () => sb ? openMe() : toast("先にSupabaseにつないでください");
 document.addEventListener("visibilitychange", async () => {
   if (document.hidden || !sb) return;
-  try { await loadAll(); if (!inGame()) render(); drawHx(); drawSz(); drawLm(); drawWd(); drawGf(); } catch (e) { console.error(e); }
+  try { await loadAll(); if (!inGame()) render(); drawHx(); drawSz(); drawLm(); drawWd(); drawGf(); drawMl(); } catch (e) { console.error(e); }
 });
 (async () => {
   render();
