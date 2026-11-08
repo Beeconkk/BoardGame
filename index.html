@@ -3599,24 +3599,7 @@ img.wdta.im{display:block;object-fit:contain;-webkit-user-drag:none}
 .gfspd>div{display:flex;flex-wrap:wrap;gap:6px}
 .gfspd button{flex:1 1 auto;padding:8px 10px;border-radius:10px;border:1px solid rgba(127,127,127,.35);background:rgba(127,127,127,.1);color:inherit;font-family:inherit;font-size:12px;font-weight:700}
 .gfspd button.on{border-color:#3FD67A;background:rgba(63,214,122,.2);color:#3FD67A}
-/* ===== パー・スコア表示（実際のゴルフ） ===== */
-.gfttl small .par{font-weight:900;color:#FFE7A3;margin:0 2px}
-.gfsc em .tp{font-style:normal;margin-left:4px;font-weight:900;color:#FFE7A3}
-.gfpar{font-family:Cinzel,serif;font-weight:900;letter-spacing:.2em;color:#FFE7A3;margin-top:-6px}
-.gfsn{font-style:normal;font-weight:900;font-size:12px;padding:2px 8px;border-radius:999px;white-space:nowrap}
-.gfsn.ace{background:linear-gradient(90deg,#FFE36A,#FF6AD5);color:#2A0A20}
-.gfsn.eagle{background:#FFB800;color:#2A1A00}
-.gfsn.birdie{background:#FF4A6A;color:#fff}
-.gfsn.par{background:rgba(255,255,255,.15);color:#fff}
-.gfsn.bogey{background:#3F7FD6;color:#fff}
-.gfsn.dbl{background:#1F3F7A;color:#CFE0FF}
-.gfcardt th,.gfcardt td{text-align:center}
-.gfcardt tr.parr td{font-weight:900;color:#C99A1A;background:rgba(255,227,106,.08)}
-.gfcardt .sc{display:inline-grid;place-items:center;min-width:24px;height:24px;font-weight:900}
-.gfcardt .sc.birdie{border:2px solid #FF4A6A;border-radius:50%}
-.gfcardt .sc.eagle,.gfcardt .sc.ace{border:2px solid #FFB800;border-radius:50%;box-shadow:0 0 0 2px rgba(255,184,0,.4)}
-.gfcardt .sc.bogey{border:2px solid #3F7FD6}
-.gfcardt .sc.dbl{border:2px double #1F3F7A;border-width:4px}
+
 .g3flash{position:absolute;inset:0;z-index:1;background:#fff;opacity:0;pointer-events:none}
 .g3flash.on{animation:g3cut .35s ease-out}
 @keyframes g3cut{0%{opacity:.85}100%{opacity:0}}
@@ -3654,7 +3637,7 @@ img.wdta.im{display:block;object-fit:contain;-webkit-user-drag:none}
    ============================================================ */
 const CFG_URL = "https://gcuddhongxvojabweclh.supabase.co";
 const CFG_KEY = "sb_publishable_E6PxQDZpmdfb6kjRPte3qw_goaYjKZB";
-const APP_VER = "v121";
+const APP_VER = "v122";
 
 const lsGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
 const lsSet = (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} };
@@ -10169,36 +10152,8 @@ function gfPrep(st){
 }
 /* 置く人がいるのに表のタイルが無いとき（同点で2人以上が置く等）だけ、山から1枚出す */
 function gfRevFill(st){ if (st.place && st.place.q.length && !st.revRow.filter(z => z != null).length && st.revPool.length) st.revRow.push(st.revPool.shift()); }
-/* ---------- パー（実際のゴルフのように、ホールごとの基準打数） ----------
-   スタートからグリーン上のカップの隣まで最短で何打で行けるか ＋ 2（パットと余裕）。3〜6 */
-function gfPar(c0){
-  if (!c0 || !c0.t) return 4;
-  if (c0.par) return c0.par;
-  const c = { ...c0, t: c0.t.replace(/e/g, "f") };
-  const goal = (x, y) => Math.abs(x - c.cup[0]) + Math.abs(y - c.cup[1]) <= 1 && gfTile(c, x, y) === "g";
-  let fr = [{ x: c.sx, y: -1 }], seen = new Set([c.sx + ",-1"]), d = 1;
-  for (; d < 9; d++){
-    const nx = []; let hit = false;
-    for (const b of fr) for (const k of ["dr", "ir", "wd", "pt"]) for (const dd of (b.y < 0 ? [0] : [0, 1, 2, 3])) for (const o of gfTargetsAt(c, b, k, dd)){
-      if (!o.ok) continue; const t = gfTile(c, o.x, o.y); if (t === "w") continue;
-      if (goal(o.x, o.y)){ hit = true; break; }
-      const key = o.x + "," + o.y; if (!seen.has(key)){ seen.add(key); nx.push({ x: o.x, y: o.y }); }
-    }
-    if (hit) break; fr = nx; if (!fr.length) break;
-  }
-  return Math.max(3, Math.min(6, d + 2));
-}
-const gfParTot = (st, n) => st.holes.slice(0, n).reduce((a, h) => a + gfPar(h), 0);
-const gfToPar = v => v === 0 ? "E" : (v > 0 ? "+" : "") + v;
-/* 打数の呼び名（実際のゴルフ） */
-function gfScoreName(s, par){
-  if (s === 1) return { n: "ホールインワン！", c: "ace" };
-  const d = s - par;
-  return d <= -3 ? { n: "アルバトロス！", c: "ace" } : d === -2 ? { n: "イーグル！", c: "eagle" } : d === -1 ? { n: "バーディー！", c: "birdie" } : d === 0 ? { n: "パー", c: "par" } : d === 1 ? { n: "ボギー", c: "bogey" } : d === 2 ? { n: "ダブルボギー", c: "dbl" } : d === 3 ? { n: "トリプルボギー", c: "dbl" } : { n: `+${d}`, c: "dbl" };
-}
 function gfStartHole(st){
   const c = gfHole(st);
-  c.par = gfPar(c);
   st.order.forEach(p => { st.ball[p] = { x: c.sx, y: -1, s: 0, done: 0, on: 0 }; });
   const r = st.hi % st.order.length;            // ホールごとに1番手が交代
   st.turn = { pid: st.order[r] };
@@ -10504,7 +10459,7 @@ function gfRender(g, anim){
   }
   // ほかの人の番：狙える範囲（＝クラブ）は見せない。狙ったマスと向きだけ
   const tot = p => st.sc[p].reduce((a, v) => a + v, 0);
-  const sbd = st.order.map(p => { const bb = st.ball[p]; return `<div class="gfsc ${p === cur ? "cur" : ""} ${bb.done ? "done" : ""}" style="--pc:${pcolor(p)}"><i class="dot"></i><b>${esc(pname(p))}</b><span>${ending ? st.sc[p][hv] : bb.s}<small>打</small></span><em>計${tot(p)}<i class="tp">${st.sc[p].length ? gfToPar(tot(p) - gfParTot(st, st.sc[p].length)) : ""}</i></em>${ending ? `<i class="ok">IN</i>` : st.build ? "" : st.place ? (st.place.q.includes(p) ? `<i class="ok">タイル</i>` : "") : bb.done ? `<i class="ok">${bb.cap ? "上限" : "IN"}</i>` : bb.on ? `<i class="gr">ON</i>` : ""}</div>`; }).join("");
+  const sbd = st.order.map(p => { const bb = st.ball[p]; return `<div class="gfsc ${p === cur ? "cur" : ""} ${bb.done ? "done" : ""}" style="--pc:${pcolor(p)}"><i class="dot"></i><b>${esc(pname(p))}</b><span>${ending ? st.sc[p][hv] : bb.s}<small>打</small></span><em>計${tot(p)}</em>${ending ? `<i class="ok">IN</i>` : st.build ? "" : st.place ? (st.place.q.includes(p) ? `<i class="ok">タイル</i>` : "") : bb.done ? `<i class="ok">${bb.cap ? "上限" : "IN"}</i>` : bb.on ? `<i class="gr">ON</i>` : ""}</div>`; }).join("");
   let act = "", pv = null;
   if (ending) act = "";
   else if (st.build){
@@ -10539,7 +10494,7 @@ function gfRender(g, anim){
   const live = gf3dLiveWanted(g) && !ending && !!window.THREE && !GF3D.fail;
   const hand = (st.hand[me] || []).map((k, i) => gfCard(k, `${mine && gfSel === i ? "on" : ""} ${mine && !gfAdj(st, me) ? "" : "dim"}`, `data-hc="${i}"`, mine ? gfDir : 0)).join("") + gfCard("pt", `pt ${mine && gfSel === -1 ? "on" : ""} ${mine && !gfAdj(st, me) ? "" : "dim"}`, `data-hc="-1"`, mine ? gfDir : 0);
   root.innerHTML = `<div class="gfwrap">
-    <div class="gftop"><button class="gfbk" id="gfBack">‹</button><div class="gfttl"><b>TILE GOLF</b><small>第${hv + 1}/${st.holes.length}ホール <b class="par">PAR ${gfPar(c)}</b>「${esc(c.name)}」</small></div><button class="gfbk" id="gfMenu">⋯</button></div>
+    <div class="gftop"><button class="gfbk" id="gfBack">‹</button><div class="gfttl"><b>TILE GOLF</b><small>第${hv + 1}/${st.holes.length}ホール「${esc(c.name)}」</small></div><button class="gfbk" id="gfMenu">⋯</button></div>
     <div class="gfscs">${sbd}</div>
     ${st.revRow && st.revRow.length && (!st.place || ending) ? `<div class="gfrow"><small>逆転タイル</small>${st.revRow.map(id => id == null ? "" : gfRevTile(GF_REVSET[id], "mini")).join("")}</div>` : ""}
     <div class="gfmid ${rClub ? "remote" : ""} ${live ? "live" : ""}">${live ? `<div class="g3live"></div><div class="gfmini">` : ""}${gfBoardH(c, { tg, sel: rClub ? rAim : gfAim, balls: ending ? (st.last.from ? [{ p: st.last.p, x: st.last.from.x, y: st.last.from.y }] : []) : st.place || st.build ? [] : balls, pv, hl: anim && st.last && st.last.kind === "place" ? st.last : null, hl1: anim && st.last && st.last.kind === "build" ? st.last : null })}${live ? `</div>` : ""}</div>
@@ -10752,11 +10707,11 @@ async function gfPlay(g, L){
       document.querySelectorAll("#gfg .gfboard .gfball").forEach(e => e.remove());   // カップインしたボールは盤面から消す
       await gfWait(600);
       const st = g.st, h = L.holeEnd - 1, tot = p => st.sc[p].reduce((a, v) => a + v, 0);
-      const rows = st.order.slice().sort((a, b) => st.sc[a][h] - st.sc[b][h]).map(p => { const sn = gfScoreName(st.sc[p][h], gfPar(st.holes[h])); return `<tr><td><i class="dot" style="--pc:${pcolor(p)}"></i>${esc(pname(p))}</td><td><b>${st.sc[p][h]}</b>打</td><td><em class="gfsn ${sn.c}">${sn.n}</em></td><td>${gfToPar(tot(p) - gfParTot(st, st.sc[p].length))}</td></tr>`; }).join("");
+      const rows = st.order.slice().sort((a, b) => st.sc[a][h] - st.sc[b][h]).map(p => `<tr><td><i class="dot" style="--pc:${pcolor(p)}"></i>${esc(pname(p))}</td><td><b>${st.sc[p][h]}</b>打</td><td>計${tot(p)}</td></tr>`).join("");
       const rev = st.place ? `<p class="rv">逆転タイル：<b>${st.place.q.map(p => esc(pname(p))).join("・")}</b>が次のホールに2×2のタイルを置く</p>` : "";
       if (st.status === "playing"){
         gfFlash("#fff", .35); if (typeof lmConfetti === "function") try { lmConfetti(); } catch (e) {}
-        fx.innerHTML = `<div class="gfshow gfhe rays"><i class="gfrays"></i><b class="big">HOLE ${L.holeEnd} 終了</b><small class="gfpar">PAR ${gfPar(st.holes[h])}</small><table>${rows}</table>${rev}<button class="btn gfgo" id="gfNextH">第${L.holeEnd + 1}ホールへ ▶</button></div>`;
+        fx.innerHTML = `<div class="gfshow gfhe rays"><i class="gfrays"></i><b class="big">HOLE ${L.holeEnd} 終了</b><table>${rows}</table>${rev}<button class="btn gfgo" id="gfNextH">第${L.holeEnd + 1}ホールへ ▶</button></div>`;
         await new Promise(r => { const bt = fx.querySelector("#gfNextH"); bt.onclick = e => { e.stopPropagation(); r(); }; });
       } else { gfFlash("#fff", .35); await show(`<b class="big">HOLE ${L.holeEnd} 終了</b><table>${rows}</table>`, 2400, "gfhe rays"); }
     }
@@ -10826,7 +10781,7 @@ function gfEndShow(g){
   const st = g.st; if (gfEndSeen[g.id]) return; gfEndSeen[g.id] = 1;
   { const writer = g.created_by || st.order.filter(p => !isCpu(p)).sort()[0]; if (writer === me) gfUpdateBests(g); }   // 書き込むのは1人だけ（対戦を作った人）
   const tot = p => st.sc[p].reduce((a, v) => a + v, 0), rk = st.order.slice().sort((a, b) => tot(a) - tot(b));
-  const s = openSheet("結果", `<div class="gfend"><h2>${(st.wins || []).includes(me) ? "VICTORY" : "GAME SET"}</h2><table class="gfcardt"><tr><th>HOLE</th>${st.holes.map((h, i) => `<th>${i + 1}</th>`).join("")}<th>計</th></tr><tr class="parr"><td>PAR</td>${st.holes.map(h => `<td>${gfPar(h)}</td>`).join("")}<td>${gfParTot(st, st.holes.length)}</td></tr>${rk.map(p => `<tr class="${(st.wins || []).includes(p) ? "win" : ""}"><td style="color:${pcolor(p)}">${esc(pname(p))}</td>${st.sc[p].map((v, i) => `<td><span class="sc ${gfScoreName(v, gfPar(st.holes[i])).c}">${v}</span></td>`).join("")}<td><b>${tot(p)}</b><small> ${gfToPar(tot(p) - gfParTot(st, st.sc[p].length))}</small></td></tr>`).join("")}</table><h3 class="gfsvh3">今回のホール</h3><p class="note">気に入ったホールは保存すると、次から「作ってあるコース」で選べます</p><div class="gfsvrow">${st.holes.map((c, i) => { const best = Math.min(...st.order.map(p => st.sc[p][i])); return `<div class="gfsvc"><b class="hn">H${i + 1}</b>${gfBoardH(c, { cls: "mini" })}<b class="nm">${esc(c.shape || c.name)}</b><small>ベスト ${best}打</small><button type="button" class="btn ghost" data-svh="${i}" ${gfSaved[g.id + ":" + i] ? "disabled" : ""}>${gfSaved[g.id + ":" + i] ? "✓ 保存済み" : "💾 保存"}</button></div>`; }).join("")}</div></div><div class="btns"><button class="btn" id="gfAgain">もう一度</button></div>`);
+  const s = openSheet("結果", `<div class="gfend"><h2>${(st.wins || []).includes(me) ? "VICTORY" : "GAME SET"}</h2><table><tr><th></th>${st.holes.map((h, i) => `<th>H${i + 1}</th>`).join("")}<th>計</th></tr>${rk.map(p => `<tr class="${(st.wins || []).includes(p) ? "win" : ""}"><td style="color:${pcolor(p)}">${esc(pname(p))}</td>${st.sc[p].map(v => `<td>${v}</td>`).join("")}<td><b>${tot(p)}</b></td></tr>`).join("")}</table><h3 class="gfsvh3">今回のホール</h3><p class="note">気に入ったホールは保存すると、次から「作ってあるコース」で選べます</p><div class="gfsvrow">${st.holes.map((c, i) => { const best = Math.min(...st.order.map(p => st.sc[p][i])); return `<div class="gfsvc"><b class="hn">H${i + 1}</b>${gfBoardH(c, { cls: "mini" })}<b class="nm">${esc(c.shape || c.name)}</b><small>ベスト ${best}打</small><button type="button" class="btn ghost" data-svh="${i}" ${gfSaved[g.id + ":" + i] ? "disabled" : ""}>${gfSaved[g.id + ":" + i] ? "✓ 保存済み" : "💾 保存"}</button></div>`; }).join("")}</div></div><div class="btns"><button class="btn" id="gfAgain">もう一度</button></div>`);
   s.querySelectorAll("[data-svh]").forEach(b => b.onclick = () => gfSaveHole(g, +b.dataset.svh, b));
   s.querySelector("#gfAgain").onclick = () => { closeSheet(); closeGf(); openGfNew(); };
 }
