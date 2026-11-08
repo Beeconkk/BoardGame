@@ -3637,7 +3637,7 @@ img.wdta.im{display:block;object-fit:contain;-webkit-user-drag:none}
    ============================================================ */
 const CFG_URL = "https://gcuddhongxvojabweclh.supabase.co";
 const CFG_KEY = "sb_publishable_E6PxQDZpmdfb6kjRPte3qw_goaYjKZB";
-const APP_VER = "v123";
+const APP_VER = "v124";
 
 const lsGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
 const lsSet = (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} };
@@ -11251,21 +11251,23 @@ async function gf3dPlay(g, L){
     const holed = (L.res === "cupin" || L.res === "chipin") && !L.dchip;   // 風でカップのマスへ行ったときは、このあと2Dでカードをめくる
     R.ball.position.copy(from); R.ball.visible = true; R.ballRing.material.color.set(col); R.ballRing.position.set(from.x, from.y - .045, from.z);
     R.trail.visible = !putt;
-    const camAt = (pos, look) => { R.cam.position.copy(pos); R.cam.lookAt(look); };
+    // カメラはなめらかに追いかける（急に切り替えない）
+    let camSnap = true; R.camLook = R.camLook || new T.Vector3();
+    const camAt = (pos, look, k = .06) => { if (camSnap){ R.cam.position.copy(pos); R.camLook.copy(look); camSnap = false; } else { R.cam.position.lerp(pos, k); R.camLook.lerp(look, k * 1.4); } R.cam.lookAt(R.camLook); };
     const club = L.club ? GF_CLUB[L.club].n : putt ? (L.kind === "putt" ? "パット" : "ロングパット") : "";
     const steps = [];
     // 0) 構え：ボールの後ろから
     steps.push({ d: putt ? .7 : 1, on: () => gf3dCap(R, club ? `${esc(pname(L.p))}<b>${club}</b>` : "", L.kind === "shot" && L.ev && GF_EV[L.ev] ? `${GF_EV[L.ev].ic} ${GF_EV[L.ev].n}` : ""), f: k => {
       // テレビ中継のように、ボールの真後ろの低い位置から
-      const e = gf3dEase(k), back = putt ? .9 : 1.25 - e * .2, up = putt ? .32 : .5 - e * .08;
-      camAt(gf3dV(R, from.x - dirV.x * back + side.x * .5 * (1 - e), from.y + up, from.z - dirV.z * back + side.z * .5 * (1 - e)), gf3dV(R, from.x + dirV.x * 4, from.y + .35, from.z + dirV.z * 4));
+      const e = gf3dEase(k), back = putt ? 1.6 : 2.6, up = putt ? .8 : 1.15;
+      camAt(gf3dV(R, from.x - dirV.x * back + side.x * .4, from.y + up, from.z - dirV.z * back + side.z * .4), gf3dV(R, from.x + dirV.x * 3.5, from.y + .2, from.z + dirV.z * 3.5));
     } });
     // ダフり：その場で土が爆発
     if (L.res === "duff"){
-      steps.push({ d: 1.1, on: () => { gf3dBurst(R, from, { n: 90, c: ["#6B4A2A", "#8B6A3A", "#3D9A4E"], sp: 2.2, up: .8, g: 5, normal: 1, size: .1, life: 1.2 }); R.shake = .12; gf3dCap(R, "ダフった…", "ボールはその場に留まる", "bad"); }, f: k => { R.ball.position.y = from.y + Math.sin(k * Math.PI) * .12; } });
+      steps.push({ d: 1.1, on: () => { gf3dBurst(R, from, { n: 90, c: ["#6B4A2A", "#8B6A3A", "#3D9A4E"], sp: 2.2, up: .8, g: 5, normal: 1, size: .1, life: 1.2 }); R.shake = .04; gf3dCap(R, "ダフった…", "ボールはその場に留まる", "bad"); }, f: k => { R.ball.position.y = from.y + Math.sin(k * Math.PI) * .12; } });
     } else {
       // 1) インパクト
-      steps.push({ d: .12, on: () => { gf3dRing(R, from, "#ffffff", 1, .5); if (!putt){ gf3dBurst(R, from, { n: 30, c: ["#9BE07A", "#ffffff"], sp: 1.4, up: .6, g: 4, size: .08, life: .7 }); R.shake = .05; } } });
+      steps.push({ d: .12, on: () => { gf3dRing(R, from, "#ffffff", .5, .4); if (!putt){ gf3dBurst(R, from, { n: 30, c: ["#9BE07A", "#ffffff"], sp: 1.4, up: .6, g: 4, size: .08, life: .7 }); R.shake = .05; } } });
       // 2) 飛行（カメラが追いかける）
       // 本物っぽい弾道：はじめ速く（空気抵抗で減速）、頂点は後半寄り、落ちるときは急
       // カメラ：前半は打った人の後ろから見上げ、後半は落ちる場所の横にカット（中継風）
@@ -11273,15 +11275,11 @@ async function gf3dPlay(g, L){
         const e = putt ? 1 - Math.pow(1 - k, 2.2) : 1 - Math.pow(1 - k, 1.35), p = new T.Vector3().lerpVectors(a, b, e); p.y += h > 0 ? Math.sin(Math.PI * Math.pow(e, 1.3)) * h : 0;
         R.ball.position.copy(p); R.ball.rotation.x -= .4; R.ballRing.position.set(p.x, Math.min(a.y, b.y) - .045 + .003, p.z); R.ballRing.material.opacity = .8 - Math.min(.75, (p.y - Math.min(a.y, b.y)) * .9);
         gf3dTrailPush(R, p, col);
-        if (putt){ camAt(gf3dV(R, p.x - dirV.x * .9 + side.x * .15, p.y + .3, p.z - dirV.z * .9 + side.z * .15), gf3dV(R, p.x + dirV.x * .8, p.y, p.z + dirV.z * .8)); return; }
-        if (cut && k > .5){
-          if (!lc){ lc = gf3dV(R, b.x + side.x * 1.6 - dirV.x * .3, b.y + .55, b.z + side.z * 1.6 - dirV.z * .3); if (R.wrap) { const fl = R.wrap.querySelector(".g3flash"); if (fl){ fl.classList.remove("on"); void fl.offsetWidth; fl.classList.add("on"); } } }
-          lc.lerp(gf3dV(R, b.x + side.x * 1.3 - dirV.x * .2, b.y + .45, b.z + side.z * 1.3 - dirV.z * .2), .02);
-          camAt(lc, p);
-        } else {
-          const st0 = gf3dV(R, a.x - dirV.x * (1.05 + k * .6), a.y + .45 + k * .9, a.z - dirV.z * (1.05 + k * .6));
-          camAt(st0, gf3dV(R, p.x, p.y * .9, p.z));
-        }
+        if (putt){ camAt(gf3dV(R, p.x - dirV.x * 1.5 + side.x * .3, p.y + .75, p.z - dirV.z * 1.5 + side.z * .3), gf3dV(R, p.x + dirV.x * .9, p.y, p.z + dirV.z * .9), .08); return; }
+        // ボールの斜め後ろ・少し高い位置から、ゆったり追いかける
+        const mid = new T.Vector3().lerpVectors(a, b, .5);
+        const ce = gf3dEase(k), base = new T.Vector3().lerpVectors(a, mid, ce * .8);
+        camAt(gf3dV(R, base.x - dirV.x * 2.6 + side.x * (.4 + ce * 1.1), Math.max(a.y, b.y) + 1.3 + h * .45, base.z - dirV.z * 2.6 + side.z * (.4 + ce * 1.1)), gf3dV(R, p.x * .6 + b.x * .4, p.y * .5 + b.y * .5, p.z * .6 + b.z * .4), .05);
       } }); };
       const flightT = putt ? .55 + dist * .25 : 1.25 + dist * .2;
       if (holed && (L.chip || putt || L.dchip == null && L.res === "cupin" && !(L.to.x !== (L.aim || L.to).x || L.to.y !== (L.aim || L.to).y))){
@@ -11308,22 +11306,22 @@ async function gf3dPlay(g, L){
         steps.push({ d: .9, on: () => { R.slow = .35; gf3dCap(R, "", ""); }, f: k => {
           const p = new T.Vector3().lerpVectors(R.ball.position, cupP, Math.min(1, k * 2)); p.y = cupP.y + .05 - Math.max(0, (k - .45) / .55) * .2; R.ball.position.copy(p);
           R.ballRing.material.opacity = .3 * (1 - k);
-          const a = k * 1.0 + 2.2; camAt(gf3dV(R, cupP.x + Math.cos(a) * .85, cupP.y + .28 - k * .1, cupP.z + Math.sin(a) * .85), gf3dV(R, cupP.x, cupP.y + .04, cupP.z));
+          const a = k * .6 + 2.2; camAt(gf3dV(R, cupP.x + Math.cos(a) * 1.7, cupP.y + .75, cupP.z + Math.sin(a) * 1.7), gf3dV(R, cupP.x, cupP.y + .05, cupP.z), .06);
         } });
         steps.push({ d: 2.3, on: () => {
-          R.slow = 1; R.ball.visible = false; R.shake = .08;
+          R.slow = 1; R.ball.visible = false; R.shake = .03;
           gf3dBeam(R, cupP); gf3dRing(R, cupP, "#FFE36A", 2.2, 1); gf3dRing(R, cupP, "#ffffff", 3.2, 1.3);
           gf3dBurst(R, cupP, { n: 120, c: ["#FFE36A", "#FFB800", "#ffffff", "#7DFFA8", "#FF2E6A"], sp: 3.2, up: 1.2, upr: 1.5, g: 3.5, size: .14, life: 1.8 });
           [0, 1, 2, 3, 4].forEach(i => setTimeout(() => { if (!R.wrap.hidden) gf3dBurst(R, gf3dV(R, cupP.x + (Math.random() - .5) * 3.5, 2.6 + Math.random() * 1.8, cupP.z + (Math.random() - .5) * 3), { n: 110, c: [["#FF2E6A", "#FFE36A"], ["#7DFFA8", "#ffffff"], ["#5FB8FF", "#FFE36A"], ["#C17BFF", "#ffffff"], ["#FFB800", "#FF4A6A"]][i], sp: 2.6, sphere: 1, g: 1.2, drag: .97, size: .16, life: 1.9 }); }, 250 + i * 330 / (GF3D.skip ? 5 : 1)));
           gf3dCap(R, L.res === "chipin" ? "CHIP IN!!" : "CUP IN!!", `${L.s}打でホールアウト`, "win");
-        }, f: k => { const e = gf3dEase(k), a = 3.4 + e * 1.4, r = 2.6 + e * 2.4; camAt(gf3dV(R, cupP.x + Math.cos(a) * r, cupP.y + 1.1 + e * 2.2, cupP.z + Math.sin(a) * r), gf3dV(R, cupP.x, cupP.y + .9 + e * 1.8, cupP.z)); } });
+        }, f: k => { const e = gf3dEase(k), a = 2.8 + e * .9, r = 2.6 + e * 1.8; camAt(gf3dV(R, cupP.x + Math.cos(a) * r, cupP.y + 1.2 + e * 1.6, cupP.z + Math.sin(a) * r), gf3dV(R, cupP.x, cupP.y + .8 + e * 1.4, cupP.z), .04); } });
       } else {
         let cap = "", sub = "", cls = "";
         steps.push({ d: 1.15, on: () => {
-          if (L.res === "ob"){ R.shake = .14; gf3dBurst(R, land, { n: 50, c: ["#FF4A6A", "#ffffff"], sp: 2, size: .1, life: 1 }); cap = "OB"; sub = "1打罰で打つ前の場所へ"; cls = "bad"; }
-          else if (L.res === "water"){ R.shake = .08; gf3dRing(R, land, "#BFE8FF", 1.6, .9); gf3dRing(R, land, "#ffffff", 1, .6); gf3dBurst(R, land, { n: 110, c: ["#BFE8FF", "#5FB8FF", "#ffffff"], sp: 1.6, up: 1.8, upr: 1, flat: .45, g: 6, size: .1, life: 1.2 }); cap = "池ポチャ…"; sub = "1打罰で打つ前の場所へ"; cls = "water"; }
+          if (L.res === "ob"){ R.shake = .05; gf3dBurst(R, land, { n: 50, c: ["#FF4A6A", "#ffffff"], sp: 2, size: .1, life: 1 }); cap = "OB"; sub = "1打罰で打つ前の場所へ"; cls = "bad"; }
+          else if (L.res === "water"){ R.shake = .03; gf3dRing(R, land, "#BFE8FF", 1.6, .9); gf3dRing(R, land, "#ffffff", 1, .6); gf3dBurst(R, land, { n: 110, c: ["#BFE8FF", "#5FB8FF", "#ffffff"], sp: 1.6, up: 1.8, upr: 1, flat: .45, g: 6, size: .1, life: 1.2 }); cap = "池ポチャ…"; sub = "1打罰で打つ前の場所へ"; cls = "water"; }
           else if (L.res === "bunker"){ R.shake = .05; gf3dBurst(R, land, { n: 90, c: ["#F2D79A", "#E0BC6E", "#FFF2C4"], sp: 1.4, up: 1, flat: .6, g: 3, size: .1, life: 1.3, normal: 1 }); cap = "バンカー"; cls = "sand"; }
-          else if (L.res === "tree"){ R.shake = .07; gf3dBurst(R, land.clone().setY(land.y + .5), { n: 60, c: ["#3AA64A", "#5CC86A", "#C8A040"], sp: 1.2, up: .3, g: 1.6, size: .1, life: 1.5, normal: 1 }); cap = "木の中…"; cls = "bad"; }
+          else if (L.res === "tree"){ R.shake = .03; gf3dBurst(R, land.clone().setY(land.y + .5), { n: 60, c: ["#3AA64A", "#5CC86A", "#C8A040"], sp: 1.2, up: .3, g: 1.6, size: .1, life: 1.5, normal: 1 }); cap = "木の中…"; cls = "bad"; }
           else if (L.res === "rough"){ gf3dBurst(R, land, { n: 40, c: ["#2F7A3A", "#5FB84F", "#9BE07A"], sp: 1, up: .9, flat: .5, g: 4, size: .08, life: .9, normal: 1 }); gf3dRing(R, land, "#9BE07A", .8, .5); cap = "ラフ"; }
           else if (L.res === "green"){ gf3dRing(R, land, "#B6FFC4", 1.3, .8); gf3dBurst(R, land, { n: 40, c: ["#B6FFC4", "#ffffff"], sp: 1.2, up: .8, size: .09, life: .9 }); cap = "GREEN ON"; cls = "green"; }
           else if (L.dchip){ gf3dRing(R, land, "#FFE36A", 1.4, .8); gf3dBurst(R, land, { n: 50, c: ["#FFE36A", "#ffffff"], sp: 1.4, up: .9, size: .1, life: 1 }); cap = "カップのマスへ！"; sub = "チップインチャレンジ"; cls = "win"; }
@@ -11336,7 +11334,7 @@ async function gf3dPlay(g, L){
           else if (L.res === "miss"){ R.ball.position.x = land.x + Math.sin(k * 20) * .02 * (1 - k); }
           else if (L.res === "bunker"){ R.ball.position.y = land.y - .02 * k; }
           const a = k * .5, b = R.ball.position;
-          camAt(gf3dV(R, b.x - dirV.x * (.4 - k * .1) + side.x * (1.25 + a * .5), b.y + .45 + k * .15, b.z - dirV.z * (.4 - k * .1) + side.z * (1.25 + a * .5)), gf3dV(R, b.x, b.y, b.z));
+          camAt(gf3dV(R, b.x - dirV.x * 1.8 + side.x * (1.4 + a * .3), b.y + 1.2, b.z - dirV.z * 1.8 + side.z * (1.4 + a * .3)), gf3dV(R, b.x, b.y, b.z), .05);
         } });
       }
     }
@@ -11425,8 +11423,8 @@ function gf3dLive(g, o){
   const B = R.curBall ? R.curBall.clone() : P(c.sx, -1), goalKey = `${cur}|${dir}|${o.sel ? o.sel.x + "," + o.sel.y : ""}|${B.x.toFixed(2)},${B.z.toFixed(2)}`;
   if (goalKey !== R.goalKey){ if (!R.goalKey || R.goalKey.split("|")[0] !== String(cur) || R.goalKey.split("|")[3] !== goalKey.split("|")[3]) R.yaw = 0; R.goalKey = goalKey; }
   let look, pos;
-  if (o.sel){ const A = P(o.sel.x, o.sel.y); look = B.clone().lerp(A, .6); look.y += .05; pos = B.clone().addScaledVector(dW, -1.8); pos.y += 1.35; }
-  else { look = B.clone().addScaledVector(dW, 2.2); look.y += .2; pos = B.clone().addScaledVector(dW, -1.5); pos.y += .85; }
+  if (o.sel){ const A = P(o.sel.x, o.sel.y); look = B.clone().lerp(A, .55); pos = B.clone().addScaledVector(dW, -2.8); pos.y += 2.3; }
+  else { look = B.clone().addScaledVector(dW, 2.4); look.y += .1; pos = B.clone().addScaledVector(dW, -2.5); pos.y += 1.6; }
   R.goal = { pos, look, B };
   // ホールに入ったとき：グリーンからティーまで飛んでくる
   const lk = g.id + ":" + st.hi;
@@ -11461,7 +11459,7 @@ function gf3dLiveLoop(){
         R.cam.position.copy(mid); R.look.copy(R.intro.al.clone().lerp(look, e));
         if (k >= 1) R.intro = null;
       } else {
-        const f = 1 - Math.exp(-dt * 4);
+        const f = 1 - Math.exp(-dt * 1.8);
         R.cam.position.lerp(pos, f); R.look.lerp(look, f);
       }
       R.cam.lookAt(R.look);
