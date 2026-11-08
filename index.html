@@ -3283,6 +3283,77 @@ img.wdta.im{display:block;object-fit:contain;-webkit-user-drag:none}
 /* コースの最高成績 */
 .gfbest{font-style:normal;font-size:10px;font-weight:900;color:#C99A1A;background:rgba(255,227,106,.18);border-radius:999px;padding:2px 7px;white-space:nowrap;max-width:110px;overflow:hidden;text-overflow:ellipsis}
 
+/* ===== 勇者ミリオン ===== */
+.arena.mlg{height:100dvh;overflow:hidden;padding:0;color:#F4F1FF;background:radial-gradient(120% 55% at 50% 0%,#2A2160,transparent 60%),linear-gradient(180deg,#0E1230,#05070F);font-family:"Zen Kaku Gothic New",sans-serif;-webkit-user-select:none;user-select:none}
+.mlwrap{height:100%;display:flex;flex-direction:column;gap:6px;padding:calc(var(--safe-t) + 4px) 10px calc(var(--safe-b) + 6px);position:relative}
+.mltop{display:flex;align-items:center;gap:8px;flex:none}
+.mlttl{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.1}
+.mlttl b{font-family:Cinzel,serif;font-weight:900;letter-spacing:.1em;background:linear-gradient(180deg,#fff,#FFD35A);-webkit-background-clip:text;background-clip:text;color:transparent}
+.mlttl small{font-size:11px;color:#B9B2E0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mlscs{display:flex;gap:5px;flex:none;overflow-x:auto;padding:2px 1px 4px}
+.mlsc{flex:1 0 82px;display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto auto;column-gap:5px;padding:5px 7px;border-radius:10px;background:rgba(0,0,0,.32);border:1.5px solid color-mix(in srgb,var(--pc) 40%,transparent);text-align:left;font-size:11px}
+.mlsc.cur{border-color:var(--pc);box-shadow:0 0 12px -2px var(--pc)}
+.mlsc.vw{background:rgba(255,255,255,.1)}
+.mlsc .dot{width:8px;height:8px;border-radius:50%;background:var(--pc);align-self:center}
+.mlsc b{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.mlsc span{grid-column:1/3;font-family:Cinzel,serif;font-weight:900;font-size:15px;color:#FFD35A}
+.mlsc em{grid-column:1/3;font-style:normal;font-size:9.5px;color:#B9B2E0}
+.mllog{flex:none;font-size:11.5px;line-height:1.35;color:#CFC9EE;background:rgba(0,0,0,.25);border-radius:9px;padding:4px 8px;max-height:3.9em;overflow:hidden}
+.mllog p{margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mlmain{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:2px 1px 8px}
+.mlgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;align-items:start}
+.mlgrid.one{grid-template-columns:minmax(0,1fr)}
+@media (min-width:640px){.mlgrid{grid-template-columns:repeat(3,minmax(0,1fr))}.mlgrid.one{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.mlq,.mls,.mlb{display:flex;height:auto;min-height:max-content;overflow:visible;flex-direction:column;gap:3px;text-align:left;padding:8px 10px;border-radius:12px;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.14);color:#F4F1FF;width:100%}
+.mlq:disabled,.mls:disabled,.mlb:disabled{opacity:.55}
+.mlq:not(:disabled),.mls:not(:disabled),.mlb:not(:disabled){border-color:#FFD35A;box-shadow:0 0 10px -4px #FFD35A}
+.mlq .qh{display:flex;gap:6px;align-items:center}.mlq .qh b{flex:1;font-size:14px}
+.mlq .qh i{font-style:normal;font-size:10px;font-weight:900;padding:1px 7px;border-radius:7px;background:#3FD67A;color:#052}
+.mlq.ローリスク .qh i{background:#FFD35A;color:#4A3300}.mlq.ハイリスク .qh i{background:#FF5A75;color:#fff}
+.mlq small,.mls small,.mlb small{font-size:11px;color:#B9B2E0}
+.mlq .ql{display:flex;flex-direction:column;gap:1px;font-size:12px}
+.mlq .ql span{display:flex;gap:6px}.mlq .ql em{font-style:normal;flex:none;min-width:54px;color:#FFD35A;font-size:11px}
+.mlq .ql .z{color:#9A93C4}
+.mlqw{display:flex;flex-direction:column;gap:3px}
+.mlkb{align-self:flex-end;font-size:11px;font-weight:900;padding:3px 10px;border-radius:8px;background:#8B5CFF;color:#fff}
+.mls{border-left:5px solid var(--ac,#9CA8FF)}
+.mls .sh,.mlb .bh{display:flex;gap:6px;align-items:center;flex-wrap:wrap}.mls .sh b,.mlb .bh b{font-size:13.5px}
+.mls .pw,.mlb .pw{font-size:11px;color:#B9B2E0;margin-left:auto}
+.mls em{font-style:normal;font-family:Cinzel,serif;font-weight:900;color:#FFD35A;font-size:14px}
+.mlb{border-left:5px solid var(--ac,#999)}.mlb em{font-style:normal;font-weight:900;color:#7DFFA8;font-size:12px}
+.mlat{font-style:normal;font-weight:900;font-size:10.5px;padding:1px 6px;border-radius:7px;background:var(--ac,#999);color:#10121C}
+.mlmain h4{margin:12px 2px 5px;font-size:12px;letter-spacing:.08em;color:#FFD35A}.mlmain h4.now{color:#7DFFA8}
+.mlnone{margin:4px 2px;font-size:12px;color:#9A93C4}
+.mlpow{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;padding:8px 10px;border-radius:12px;background:rgba(255,211,90,.1);border:1px solid rgba(255,211,90,.35)}
+.mlpow small{color:#B9B2E0}.mlpow b{font-family:Cinzel,serif;font-size:28px;color:#FFD35A}.mlpow em{font-style:normal;font-size:11px;color:#B9B2E0}
+.mlrow,.mlchips,.mlatt{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.mlrow span,.mlchips span{display:flex;flex-direction:column;padding:5px 10px;border-radius:10px;background:rgba(255,255,255,.07);font-size:13px}
+.mlrow small,.mlchips small{font-size:10px;color:#B9B2E0}.mlrow b,.mlchips b{font-weight:900}
+.mlatt span{display:flex;gap:6px;align-items:center;padding:5px 10px;border-radius:10px;background:rgba(255,255,255,.07);font-size:12.5px}
+.mlgsw{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}
+.mlgs{display:grid;grid-template-columns:auto auto 1fr;gap:4px 6px;align-items:center;padding:6px 9px;border-radius:10px;background:rgba(255,255,255,.07);border-left:5px solid var(--ac,#555);font-size:12px}
+.mlgs.empty{opacity:.5;border-left-color:#555}.mlgs span{text-align:right;font-weight:900;color:#FFD35A}.mlgs small{grid-column:1/4;font-size:10.5px;color:#B9B2E0}
+.mlts{padding:5px 9px;border-radius:9px;background:rgba(255,255,255,.06);margin-bottom:4px}.mlts b{font-size:12.5px}.mlts small{display:block;font-size:11px;color:#B9B2E0}
+.mldf{margin:2px 2px;font-size:12.5px}
+.mlbot{flex:none;display:flex;flex-direction:column;gap:6px;padding:7px 8px;border-radius:12px;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.1)}
+.mlmsg{font-size:12.5px;line-height:1.4}.mlmsg b{color:#FFD35A}
+.mlbtns{display:flex;gap:8px}.mlbtns .btn{padding:10px 6px;font-size:13px}.mlbtns .btn:disabled{opacity:.4}
+.mlnav{flex:none;display:grid;grid-template-columns:repeat(4,1fr);gap:5px}
+.mlnav button{padding:9px 0;border-radius:11px;font-weight:900;font-size:13px;background:rgba(255,255,255,.07);color:#B9B2E0}
+.mlnav button.on{background:linear-gradient(110deg,#FFD35A,#FF9F43);color:#2A1A00}
+.mlfx{position:absolute;inset:0;display:none;place-items:center;background:rgba(3,4,12,.72);z-index:5;pointer-events:none}
+.mlfx.on{display:grid}
+.mlroul{text-align:center;padding:18px 28px;border-radius:22px;background:linear-gradient(160deg,#241A5A,#0B0F2A);border:2px solid #FFD35A;box-shadow:0 0 40px -8px #FFD35A;max-width:86vw}
+.mlroul small{color:#B9B2E0;font-size:12px}
+.mlbig{font-family:Cinzel,serif;font-weight:900;font-size:84px;line-height:1.1;color:#FFD35A;min-width:2ch;transition:transform .2s}
+.mlbig.land{transform:scale(1.25);text-shadow:0 0 24px #FFD35A}
+.mlroul p{margin:4px 0 0;font-size:14px;font-weight:700;min-height:1.4em;line-height:1.4}
+.mlend table td:nth-child(n+2){text-align:right}
+.poster.t-ml{--g1:#FFD35A;--g2:#FF2E6A;--g3:#8B5CFF;--pbg:radial-gradient(100% 80% at 50% -10%,rgba(139,92,255,.4),transparent 60%),radial-gradient(70% 60% at 100% 100%,rgba(255,201,60,.28),transparent 60%),linear-gradient(170deg,#1A1346,#080A1C 70%);--pfont:"Cinzel",serif;--pglow:rgba(255,211,90,.6);--ctash:rgba(255,201,60,.5);--cta:linear-gradient(110deg,#FFF3C2,#FFD35A 40%,#FF9F43 75%,#FF2E6A)}
+.poster.t-ml .ptop h3{font-weight:900;letter-spacing:.06em;background:linear-gradient(180deg,#fff,#FFD35A);-webkit-background-clip:text;background-clip:text;color:transparent;font-size:25px}
+.poster.t-ml .art svg{position:absolute;right:-14px;bottom:-6px;width:210px;opacity:.35}
+.mlq>*,.mls>*,.mlb>*{width:100%;text-align:left}
+.mls em,.mlb em{text-align:right}
 </style>
 </head>
 <body>
@@ -3304,6 +3375,7 @@ img.wdta.im{display:block;object-fit:contain;-webkit-user-drag:none}
 <div class="arena lmg" id="lmg" hidden></div>
 <div class="arena wdg" id="wdg" hidden></div>
 <div class="arena gfg" id="gfg" hidden></div>
+<div class="arena mlg" id="mlg" hidden></div>
 <div class="sheet" id="sheet"><div class="in" id="sheetIn" role="dialog" aria-modal="true"></div></div>
 <div class="toast" id="toast" role="status"></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
@@ -3316,7 +3388,7 @@ img.wdta.im{display:block;object-fit:contain;-webkit-user-drag:none}
    ============================================================ */
 const CFG_URL = "https://gcuddhongxvojabweclh.supabase.co";
 const CFG_KEY = "sb_publishable_E6PxQDZpmdfb6kjRPte3qw_goaYjKZB";
-const APP_VER = "v113";
+const APP_VER = "v114";
 
 const lsGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
 const lsSet = (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} };
@@ -3325,12 +3397,12 @@ const SUPABASE_KEY = (CFG_KEY || lsGet("gl:sbKey") || "").trim();
 const sb = SUPABASE_URL && SUPABASE_KEY && window.supabase ? supabase.createClient(SUPABASE_URL, SUPABASE_KEY, { auth: { persistSession: false } }) : null;
 
 const COLORS = ["#FFC93C", "#FF2E6A", "#19C9E6", "#8B5CFF", "#3FD67A", "#FF8A3D", "#FF6FB5", "#5A6378"];
-const GAME_TBL = ["hx_games", "sz_games", "lm_games", "wd_games", "gf_games"];
+const GAME_TBL = ["hx_games", "sz_games", "lm_games", "wd_games", "gf_games", "ml_games"];
 const TABLES = ["players", "app_settings", ...GAME_TBL];
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 
-const db = { players: [], app_settings: [], hx_games: [], sz_games: [], lm_games: [], wd_games: [], gf_games: [] };
+const db = { players: [], app_settings: [], hx_games: [], sz_games: [], lm_games: [], wd_games: [], gf_games: [], ml_games: [] };
 let tab = lsGet("gl:tab") || "done", loaded = false;
 let me = lsGet("gl:me") || "";
 
@@ -3371,8 +3443,8 @@ async function loadAll(){
   await Promise.all([...TABLES.map(loadTable), extra]); loaded = true;
 }
 const reloadTimer = {};
-const GAME_HOOK = { hx_games: () => [hxId, drawHx], sz_games: () => [szId, drawSz], lm_games: () => [lmId, drawLm], wd_games: () => [wdId, drawWd], gf_games: () => [gfId, drawGf] };
-const inGame = () => !!(hxId || szId || lmId || wdId || gfId);
+const GAME_HOOK = { hx_games: () => [hxId, drawHx], sz_games: () => [szId, drawSz], lm_games: () => [lmId, drawLm], wd_games: () => [wdId, drawWd], gf_games: () => [gfId, drawGf], ml_games: () => [mlId, drawMl] };
+const inGame = () => !!(hxId || szId || lmId || wdId || gfId || mlId);
 /* リアルタイムで届いた変更を反映 */
 function rtChange(payload){
   const t = payload.table;
@@ -3437,8 +3509,8 @@ function flash(big, small){
 
 /* ---------- ルール ---------- */
 function openGameRules(k){
-  const title = { hx: "どんぐり戦争のルール", sz: "四季の巡りのルール", lm: "LEMNISCATEのルール", wd: "WARDENS OF RELICのルール" , gf: "タイルゴルフのルール" }[k];
-  const html = { hx: hxRulesHtml, sz: szRulesHtml, lm: lmRulesHtml, wd: wdRulesHtml, gf: gfRulesHtml }[k]();
+  const title = { hx: "どんぐり戦争のルール", sz: "四季の巡りのルール", lm: "LEMNISCATEのルール", wd: "WARDENS OF RELICのルール" , gf: "タイルゴルフのルール", ml: "勇者ミリオンのルール" }[k];
+  const html = { hx: hxRulesHtml, sz: szRulesHtml, lm: lmRulesHtml, wd: wdRulesHtml, gf: gfRulesHtml, ml: mlRulesHtml }[k]();
   let el = $("#artpop");
   if (!el){ el = document.createElement("div"); el.id = "artpop"; el.className = "artpop"; document.body.appendChild(el); el.addEventListener("click", e => { if (e.target === el || e.target.closest("[data-artclose]")) el.classList.remove("on"); }); }
   el.innerHTML = `<div class="artin wide" role="dialog" aria-modal="true"><div class="arth"><b>${title}</b><button class="artx" data-artclose aria-label="閉じる">×</button></div><div class="gr">${html}</div></div>`;
@@ -3454,8 +3526,8 @@ function pickMine(list){ return list.find(g => me && (g.players || []).includes(
 const turnSeen = {};
 function turnBuzz(){
   if (!me || !loaded) return;
-  [...hxLive(), ...szLive(), ...lmLive(), ...wdLive(), ...gfLive()].filter(g => (g.players || []).includes(me)).forEach(g => {
-    const now = g.st && g.st.gf ? gfMyTurn(g) : g.st && g.st.wd ? wdMyTurn(g) : g.st && g.st.lm ? lmMyTurn(g) : g.st && g.st.hx ? hxMyTurn(g) : szMyTurn(g);
+  [...hxLive(), ...szLive(), ...lmLive(), ...wdLive(), ...gfLive(), ...mlLive()].filter(g => (g.players || []).includes(me)).forEach(g => {
+    const now = g.st && g.st.ml ? mlMyTurn(g) : g.st && g.st.gf ? gfMyTurn(g) : g.st && g.st.wd ? wdMyTurn(g) : g.st && g.st.lm ? lmMyTurn(g) : g.st && g.st.hx ? hxMyTurn(g) : szMyTurn(g);
     const prev = turnSeen[g.id];
     turnSeen[g.id] = now;
     if (prev === false && now){ try { if (navigator.vibrate) navigator.vibrate([120, 70, 120, 70, 200]); } catch (e) {} }
@@ -10538,8 +10610,573 @@ function gfRulesHtml(){
   <h4>そのほか</h4><p><b>1打罰で手札を3枚入れ替える</b>ことが、自分のショットの番ならいつでもできる（画面下の「🔄 1打罰で手札を入れ替える」を2回押す）。打てるマスがないときも同じ。1ホール${GF_MAXS}打で打ち切り。</p>`;
 }
 
+/* ======================= 勇者ミリオン（YUSHA MILLION） ======================= */
+const ML_TITLE = "勇者ミリオン";
+const ML_D = {"BASE":[10000,100000,1000000,2000000],"UNIT":[5,10,10,10],"POW":[{"-2":20,"-1":25,"0":30,"1":35,"2":40},{"-2":80,"-1":90,"0":100,"1":110,"2":120},{"-2":280,"-1":290,"0":300,"1":310,"2":320},{"-2":280,"-1":290,"0":300,"1":310,"2":320}],"CAP":[{"魔道具(低)":50000,"魔道具(高)":150000,"武具":300000},{"魔道具(低)":200000,"魔道具(高)":500000,"武具":800000},{"魔道具(低)":500000,"魔道具(高)":1200000,"武具":2000000},{"魔道具(低)":500000,"魔道具(高)":1200000,"武具":2000000}],"Q":[["ノーリスク","ゴールドのみ","薬草の納品","確定",-2],["ノーリスク","ゴールドのみ","鉱石の採掘","確定",-1],["ノーリスク","ゴールドのみ","毛皮の納品","確定",0],["ノーリスク","ゴールドのみ","魔石の回収","確定",0],["ノーリスク","ゴールドのみ","キノコ狩り","確定",1],["ノーリスク","ゴールドのみ","木材の伐採","確定",2],["ノーリスク","ゴールドのみ","香辛料の運搬","確定",-1],["ノーリスク","ゴールドのみ","織物の納品","確定",0],["ノーリスク","ゴールドのみ","川魚の釣り","確定",1],["ノーリスク","ゴールドのみ","蜂蜜の採取","確定",0],["ノーリスク","戦闘力UPのみ","素振り千回","確定",-2],["ノーリスク","戦闘力UPのみ","早朝の走り込み","確定",-1],["ノーリスク","戦闘力UPのみ","丸太担ぎ","確定",0],["ノーリスク","戦闘力UPのみ","型稽古","確定",0],["ノーリスク","戦闘力UPのみ","瞑想修行","確定",1],["ノーリスク","戦闘力UPのみ","滝行","確定",2],["ノーリスク","戦闘力UPのみ","弓の的当て","確定",-1],["ノーリスク","戦闘力UPのみ","受け身の特訓","確定",0],["ノーリスク","戦闘力UPのみ","盾の構え練習","確定",1],["ノーリスク","戦闘力UPのみ","戦術書の読破","確定",0],["ノーリスク","戦闘力UP＋ゴールド","山賊の見回り","確定",-2],["ノーリスク","戦闘力UP＋ゴールド","野犬の駆除","確定",-1],["ノーリスク","戦闘力UP＋ゴールド","害虫の駆除","確定",0],["ノーリスク","戦闘力UP＋ゴールド","街道の魔物退治","確定",0],["ノーリスク","戦闘力UP＋ゴールド","畑荒らしの討伐","確定",1],["ノーリスク","戦闘力UP＋ゴールド","倉庫の鼠退治","確定",2],["ノーリスク","戦闘力UP＋ゴールド","洞窟の巡回","確定",-1],["ノーリスク","戦闘力UP＋ゴールド","沼の調査","確定",0],["ノーリスク","戦闘力UP＋ゴールド","見張り塔の警備","確定",1],["ノーリスク","戦闘力UP＋ゴールド","城壁の補修と警備","確定",0],["ローリスク","ゴールドのみ","行商人の護衛","L1",-2],["ローリスク","ゴールドのみ","古道の巡回","L2",-1],["ローリスク","ゴールドのみ","市場の荷運び","L3",0],["ローリスク","ゴールドのみ","酒場の用心棒","L4",0],["ローリスク","ゴールドのみ","畑の害獣追い","L1",1],["ローリスク","ゴールドのみ","灯台の見張り","L2",2],["ローリスク","ゴールドのみ","迷子の捜索","L3",-1],["ローリスク","ゴールドのみ","手紙の配達","L4",0],["ローリスク","ゴールドのみ","街道の整備","L1",1],["ローリスク","ゴールドのみ","仕入れの交渉","L2",0],["ローリスク","戦闘力UPのみ","模擬戦","L3",-2],["ローリスク","戦闘力UPのみ","傭兵団との合同訓練","L4",-1],["ローリスク","戦闘力UPのみ","師範代との立ち合い","L1",0],["ローリスク","戦闘力UPのみ","山籠もり","L2",0],["ローリスク","戦闘力UPのみ","魔物相手の実戦訓練","L3",1],["ローリスク","戦闘力UPのみ","魔法使いの補助訓練","L4",2],["ローリスク","戦闘力UPのみ","古い闘技場の稽古","L1",-1],["ローリスク","戦闘力UPのみ","武闘会の予選","L2",0],["ローリスク","戦闘力UPのみ","剣豪の指南","L3",1],["ローリスク","戦闘力UPのみ","狩猟の遠征","L4",0],["ローリスク","戦闘力UP＋ゴールド","盗賊団の捕縛","L1",-2],["ローリスク","戦闘力UP＋ゴールド","荒れ地の魔物調査","L2",-1],["ローリスク","戦闘力UP＋ゴールド","護送任務","L3",0],["ローリスク","戦闘力UP＋ゴールド","鉱山の魔物退治","L4",0],["ローリスク","戦闘力UP＋ゴールド","森の主の偵察","L1",1],["ローリスク","戦闘力UP＋ゴールド","村の防衛","L2",2],["ローリスク","戦闘力UP＋ゴールド","逃亡者の追跡","L3",-1],["ローリスク","戦闘力UP＋ゴールド","関所の警備","L4",0],["ローリスク","戦闘力UP＋ゴールド","遺跡の外周調査","L1",1],["ローリスク","戦闘力UP＋ゴールド","迷宮の入口調査","L2",0],["ローリスク","アイテム獲得","遺跡の宝箱探し","I1",-2],["ローリスク","アイテム獲得","行商人からの謝礼","I2",-1],["ローリスク","アイテム獲得","古道具の発掘","I1",0],["ローリスク","アイテム獲得","沈没船の引き揚げ","I2",0],["ローリスク","アイテム獲得","魔術師の遺品整理","I1",1],["ハイリスク","ゴールドのみ","闇市の取引","H1",-2],["ハイリスク","ゴールドのみ","財宝探し","H2",-1],["ハイリスク","ゴールドのみ","賭け試合","H3",0],["ハイリスク","ゴールドのみ","危険地帯の採掘","H4",0],["ハイリスク","ゴールドのみ","海賊船への潜入","H1",1],["ハイリスク","ゴールドのみ","魔物の巣の宝回収","H2",2],["ハイリスク","ゴールドのみ","賞金首の追跡","H3",-1],["ハイリスク","ゴールドのみ","禁断の遺跡調査","H4",0],["ハイリスク","ゴールドのみ","魔石の相場勝負","H1",1],["ハイリスク","ゴールドのみ","密輸船の積荷奪取","H2",0],["ハイリスク","戦闘力UPのみ","死の山籠もり","H3",-2],["ハイリスク","戦闘力UPのみ","魔の森の修行","H4",-1],["ハイリスク","戦闘力UPのみ","伝説の剣豪への挑戦","H1",0],["ハイリスク","戦闘力UPのみ","闘技場の連戦","H2",0],["ハイリスク","戦闘力UPのみ","竜の谷の試練","H3",1],["ハイリスク","戦闘力UPのみ","禁じ手の特訓","H4",2],["ハイリスク","戦闘力UPのみ","呪われた修行場","H1",-1],["ハイリスク","戦闘力UPのみ","一撃必殺の決闘","H2",0],["ハイリスク","戦闘力UPのみ","地下闘技場の勝ち抜き","H3",1],["ハイリスク","戦闘力UPのみ","魔界の試練","H4",0],["ハイリスク","戦闘力UP＋ゴールド","迷宮の最深部調査","H1",-2],["ハイリスク","戦闘力UP＋ゴールド","魔物の巣の殲滅","H2",-1],["ハイリスク","戦闘力UP＋ゴールド","凶悪犯の討伐","H3",0],["ハイリスク","戦闘力UP＋ゴールド","古城の亡霊退治","H4",0],["ハイリスク","戦闘力UP＋ゴールド","嵐の海の護衛航海","H1",1],["ハイリスク","戦闘力UP＋ゴールド","竜の巣の偵察","H2",2],["ハイリスク","戦闘力UP＋ゴールド","魔王軍の斥候狩り","H3",-1],["ハイリスク","戦闘力UP＋ゴールド","禁断の森の調査","H4",0],["ハイリスク","戦闘力UP＋ゴールド","暗殺者との対決","H1",1],["ハイリスク","戦闘力UP＋ゴールド","大型魔獣の討伐","H2",0],["ハイリスク","次ターン報酬UP","商人ギルドへの投資","N1",-2],["ハイリスク","次ターン報酬UP","来季の契約交渉","N2",-1],["ハイリスク","次ターン報酬UP","豪商への売り込み","N3",0],["ハイリスク","次ターン報酬UP","領主への献上品","N1",0],["ハイリスク","次ターン報酬UP","貿易船への出資","N2",1]],"T":{"L1":[[1,3,0.5],[4,8,1.0],[9,10,1.7]],"L2":[[1,5,0.7],[6,10,1.3]],"L3":[[1,2,0.5],[3,8,1.0],[9,10,1.7]],"L4":[[1,4,0.7],[5,9,1.1],[10,10,1.7]],"H1":[[1,6,0.0],[7,10,3.0]],"H2":[[1,4,0.0],[5,8,1.5],[9,10,3.0]],"H3":[[1,3,0.0],[4,8,1.2],[9,10,3.0]],"H4":[[1,5,0.0],[6,10,2.4]],"I1":[[1,3,"魔道具(低)"],[4,8,"魔道具(高)"],[9,10,"武具"]],"I2":[[1,6,"魔道具(高)"],[7,10,"武具"]],"N1":[[1,5,0],[6,8,100],[9,10,150]],"N2":[[1,6,0],[7,10,150]],"N3":[[1,4,0],[5,8,60],[9,10,180]]},"GEAR":[["武器","火",50,750000,null],["武器","火",50,750000,null],["武器","水",50,750000,null],["武器","水",50,750000,null],["武器","風",50,750000,null],["武器","風",50,750000,null],["武器","雷",50,750000,null],["武器","雷",50,750000,null],["武器","無",50,750000,"W1"],["武器","無",50,750000,"W2"],["胴","火",40,600000,null],["胴","火",40,600000,null],["胴","水",40,600000,null],["胴","水",40,600000,null],["胴","風",40,600000,null],["胴","風",40,600000,null],["胴","雷",40,600000,null],["胴","雷",40,600000,null],["胴","無",40,600000,"T1"],["胴","無",40,600000,"T2"],["頭","火",30,450000,null],["頭","火",30,450000,null],["頭","水",30,450000,null],["頭","水",30,450000,null],["頭","風",30,450000,null],["頭","風",30,450000,null],["頭","雷",30,450000,null],["頭","雷",30,450000,null],["頭","無",30,450000,"H1"],["頭","無",30,450000,"H2"],["腰","火",20,300000,null],["腰","火",20,300000,null],["腰","水",20,300000,null],["腰","水",20,300000,null],["腰","風",20,300000,null],["腰","風",20,300000,null],["腰","雷",20,300000,null],["腰","雷",20,300000,null],["腰","無",20,300000,"L1"],["腰","無",20,300000,"L2"],["籠手","火",15,200000,null],["籠手","火",15,200000,null],["籠手","水",15,200000,null],["籠手","水",15,200000,null],["籠手","風",15,200000,null],["籠手","風",15,200000,null],["籠手","雷",15,200000,null],["籠手","雷",15,200000,null],["籠手","無",15,200000,"K1"],["籠手","無",15,200000,"K2"],["脚","火",10,100000,null],["脚","火",10,100000,null],["脚","水",10,100000,null],["脚","水",10,100000,null],["脚","風",10,100000,null],["脚","風",10,100000,null],["脚","雷",10,100000,null],["脚","雷",10,100000,null],["脚","無",10,100000,"F1"],["脚","無",10,100000,"F2"]],"TOOLS":[["力の指輪","戦闘力（固定）","戦闘力+30（永続）",30000,"F",30,""],["力の指輪","戦闘力（固定）","戦闘力+30（永続）",30000,"F",30,""],["力の指輪","戦闘力（固定）","戦闘力+30（永続）",30000,"F",30,""],["力の指輪","戦闘力（固定）","戦闘力+30（永続）",30000,"F",30,""],["剛力の腕輪","戦闘力（固定）","戦闘力+50（永続）",60000,"F",50,""],["剛力の腕輪","戦闘力（固定）","戦闘力+50（永続）",60000,"F",50,""],["剛力の腕輪","戦闘力（固定）","戦闘力+50（永続）",60000,"F",50,""],["剛力の腕輪","戦闘力（固定）","戦闘力+50（永続）",60000,"F",50,""],["勇猛の首飾り","戦闘力（固定）","戦闘力+100（永続）",150000,"F",100,""],["勇猛の首飾り","戦闘力（固定）","戦闘力+100（永続）",150000,"F",100,""],["勇猛の首飾り","戦闘力（固定）","戦闘力+100（永続）",150000,"F",100,""],["勇猛の首飾り","戦闘力（固定）","戦闘力+100（永続）",150000,"F",100,""],["英雄の紋章","戦闘力（固定）","戦闘力+200（永続）",400000,"F",200,""],["英雄の紋章","戦闘力（固定）","戦闘力+200（永続）",400000,"F",200,""],["英雄の紋章","戦闘力（固定）","戦闘力+200（永続）",400000,"F",200,""],["覇者の証","戦闘力（固定）","戦闘力+300（永続）",700000,"F",300,""],["闘志のお守り","戦闘力（%）","戦闘力+10%（加算）",150000,"PCT",10,""],["狂戦士の護符","戦闘力（%）","戦闘力+20%（加算）",350000,"PCT",20,""],["狂戦士の護符","戦闘力（%）","戦闘力+20%（加算）",350000,"PCT",20,""],["覇王の宝珠","戦闘力（%）","戦闘力+30%（加算）",600000,"PCT",30,""],["武器の砥石","武具強化","装備中の武器の戦闘力+200（武器を装備していること）",250000,"UPG",200,"武器"],["武器の砥石","武具強化","装備中の武器の戦闘力+200（武器を装備していること）",250000,"UPG",200,"武器"],["胴の補強板","武具強化","装備中の胴の戦闘力+150（胴を装備していること）",200000,"UPG",150,"胴"],["胴の補強板","武具強化","装備中の胴の戦闘力+150（胴を装備していること）",200000,"UPG",150,"胴"],["兜の飾り","武具強化","装備中の頭の戦闘力+125（頭を装備していること）",150000,"UPG",125,"頭"],["兜の飾り","武具強化","装備中の頭の戦闘力+125（頭を装備していること）",150000,"UPG",125,"頭"],["腰の留め金","武具強化","装備中の腰の戦闘力+100（腰を装備していること）",120000,"UPG",100,"腰"],["腰の留め金","武具強化","装備中の腰の戦闘力+100（腰を装備していること）",120000,"UPG",100,"腰"],["籠手の鋲","武具強化","装備中の籠手の戦闘力+75（籠手を装備していること）",90000,"UPG",75,"籠手"],["籠手の鋲","武具強化","装備中の籠手の戦闘力+75（籠手を装備していること）",90000,"UPG",75,"籠手"],["脚の脚絆","武具強化","装備中の脚の戦闘力+50（脚を装備していること）",60000,"UPG",50,"脚"],["脚の脚絆","武具強化","装備中の脚の戦闘力+50（脚を装備していること）",60000,"UPG",50,"脚"],["万能の研磨剤","武具強化","装備中の武具1つの戦闘力+150（何か1つ装備していること）",200000,"UNIV",150,""],["万能の研磨剤","武具強化","装備中の武具1つの戦闘力+150（何か1つ装備していること）",200000,"UNIV",150,""],["商人の手形","報酬アップ","基本報酬・クエスト報酬+5%（加算）",100000,"REW",5,""],["商人の手形","報酬アップ","基本報酬・クエスト報酬+5%（加算）",100000,"REW",5,""],["商人の手形","報酬アップ","基本報酬・クエスト報酬+5%（加算）",100000,"REW",5,""],["金貨の袋","報酬アップ","基本報酬・クエスト報酬+10%（加算）",250000,"REW",10,""],["金貨の袋","報酬アップ","基本報酬・クエスト報酬+10%（加算）",250000,"REW",10,""],["金貨の袋","報酬アップ","基本報酬・クエスト報酬+10%（加算）",250000,"REW",10,""],["黄金の天秤","報酬アップ","基本報酬・クエスト報酬+20%（加算）",600000,"REW",20,""],["黄金の天秤","報酬アップ","基本報酬・クエスト報酬+20%（加算）",600000,"REW",20,""],["幸運のダイス","出目補正","出目+1（クエスト・ボス討伐に使用可）",600000,"ROLL",1,""],["幸運のダイス","出目補正","出目+1（クエスト・ボス討伐に使用可）",600000,"ROLL",1,""],["幸運のダイス","出目補正","出目+1（クエスト・ボス討伐に使用可）",600000,"ROLL",1,""],["幸運のダイス","出目補正","出目+1（クエスト・ボス討伐に使用可）",600000,"ROLL",1,""],["女神の祝福","出目補正","出目+2（クエスト・ボス討伐に使用可）",950000,"ROLL",2,""],["運命の砂時計(ボス)","振り直し","ボス討伐の出目を1ターンに1回振り直せる",300000,"BRR",1,""],["運命の砂時計(ボス)","振り直し","ボス討伐の出目を1ターンに1回振り直せる",300000,"BRR",1,""],["運命の砂時計(クエスト)","振り直し","クエストの出目を1ターンに1回振り直せる",400000,"QRR",1,""],["運命の砂時計(クエスト)","振り直し","クエストの出目を1ターンに1回振り直せる",400000,"QRR",1,""],["商人の特約","強力効果","1ターンの購入上限+1個（3個まで購入可）",1400000,"BUYS",1,""],["冒険者の特別許可","強力効果","1ターンのクエスト受注上限+1（2つ受注可）",1800000,"QSLOT",1,""],["再挑戦の巻物","強力効果","ボス討伐に失敗した時、同ターンにもう一度挑戦できる（1ターン1回）",1000000,"RETRY",1,""],["商店の会員証","強力効果","購入する商品が10%引き（10G未満切り捨て）",1000000,"DISC",1,""],["保険証書","その他","ハイリスククエストで0倍だった時、基本報酬の0.5倍を得る",50000,"INS",1,""],["保険証書","その他","ハイリスククエストで0倍だった時、基本報酬の0.5倍を得る",50000,"INS",1,""],["保険証書","その他","ハイリスククエストで0倍だった時、基本報酬の0.5倍を得る",50000,"INS",1,""],["掲示板の鍵","その他","ターン中1回、掲示板のクエスト1枚を入れ替えられる",30000,"NOP",0,""],["商店の合鍵","その他","ターン中1回、商店のランダム商品を全て引き直せる",50000,"NOP",0,""]],"BOSS":[[["ぷるぷるスライム",150,"無",100000,null,6],["ヘルパピー",165,"火",150000,null,6],["ポイズントード",180,"水",190000,null,6],["ウィンドバット",200,"風",230000,null,6],["スパークコボルト",220,"雷",280000,null,6],["フレイムスライム",240,"火",320000,null,6],["ブルースライム",255,"水",370000,null,6],["風切りゴブリン",270,"風",410000,null,6],["サンダースライム",285,"雷",450000,null,6],["ジャイアントスライム",300,"無",500000,null,6]],[["鉄兜のオーク兵",1000,"無",1000000,null,6],["炎尾のリザードマン",1060,"火",1500000,null,6],["沼地のトロール",1130,"水",1900000,null,6],["疾風の狼騎兵",1200,"風",2300000,null,6],["雷鳴のオークシャーマン",1280,"雷",2800000,null,6],["業火のオーク将軍",1360,"火",3200000,null,6],["氷牙のサハギン戦士長",1430,"水",3700000,null,6],["ハーピークイーン",1500,"風",4100000,null,6],["雷槌のトロールロード",1560,"雷",4500000,null,6],["オークの親分",1600,"無",5000000,null,6]],[["暗黒騎士王ヴォルガ",2000,"無",2000000,null,6],["嵐魔王ゼファロス",2400,"風",3000000,null,6],["炎魔王イグニス",2900,"火",3800000,null,6],["雷魔王ライゴウ",3400,"雷",4600000,null,6],["海魔王ネレウス",3900,"水",5600000,null,6],["焔の悪魔公爵ベルゾア",4400,"火",6400000,2000000,6],["深海魔王リヴァーナ",4900,"水",7400000,2500000,6],["疾風の悪魔王アルザード",5400,"風",8600000,3000000,6],["雷帝魔王ヴォルティア",6000,"雷",10000000,4000000,6],["大魔王ゼルドラス",10000,"無",24000000,6000000,8]]],"GEFF":{"W1":"装備している武具の数×20の戦闘力を得る","W2":"戦闘力1.2倍（+20%・加算）","T1":"クエスト報酬+10%（加算）","T2":"ハイリスククエストで得られる報酬を1.2倍する","H1":"クエストの出目+1","H2":"クエストの出目が9または10の時、基本報酬の0.3倍を得る","L1":"基本報酬+10%（加算）","L2":"ターン開始時、強化ポーション(低)の効果（戦闘力+20）を得る","K1":"クエストの振り直し1回/ターン","K2":"ボス討伐の出目が1〜3の時、振り直せる（1回）","F1":"戦闘力+10","F2":"戦闘力+10%（加算）","BS":"最初のボス討伐失敗時のみ、同ターンにもう一度挑戦できる","BO":"ボス討伐の出目+2"}};
+const ML_RN = ["スライム", "オーク", "ワイバーン", "ドラゴン"], ML_ROUNDS = 15, ML_START = 2000, ML_POT = 10000, ML_GP = 50000;
+/* ワイバーン級・ドラゴン級の戦闘力UPクエストの上がり幅にかける倍率（1＝そのまま。大魔王の討伐割合を上げたいときに大きくする） */
+const ML_LATE = 4;
+const ML_WEAK = { "火": "水", "水": "雷", "雷": "風", "風": "火" };
+const ML_AC = { "火": "#FF6A2A", "水": "#3FA9FF", "風": "#52E08A", "雷": "#FFD23C", "無": "#B8BCCB" };
+const ML_Q = ML_D.Q.map(([type, eff, name, table, d], i) => ({ i, type, eff, name, table, d }));
+const ML_NEUT = { "胴": "BS", "武器": "BO" };
+const mlG = n => Math.round(n).toLocaleString("ja-JP") + "G";
+const mlRnd10 = x => Math.floor(x / 1000 + 0.5) * 1000;
+const mlRndU = (x, u) => Math.floor(Math.round(x / u * 1e6) / 1e6 + 0.5) * u;
+const mlTier = (tab, x) => { const t = ML_D.T[tab].find(z => z[0] <= x && x <= z[1]); return t ? t[2] : undefined; };
+const mlCard = id => id < 100 ? { kind: "gear", id, part: ML_D.GEAR[id][0], attr: ML_D.GEAR[id][1], power: ML_D.GEAR[id][2], price: ML_D.GEAR[id][3], eff: ML_D.GEAR[id][4] }
+  : { kind: "tool", id, name: ML_D.TOOLS[id - 100][0], cat: ML_D.TOOLS[id - 100][1], tx: ML_D.TOOLS[id - 100][2], price: ML_D.TOOLS[id - 100][3], tk: ML_D.TOOLS[id - 100][4], tv: ML_D.TOOLS[id - 100][5], tp: ML_D.TOOLS[id - 100][6] };
+const mlBossItem = (r, bi) => bi < 5 ? null : r === 0 ? { gear: ["胴", 40, 600000] } : r === 1 ? { gear: ["武器", 50, 750000] } : { gem: ML_D.BOSS[2][bi][4] };
+const mlNewP = gold => ({ rank: 0, gold, qpow: 0, potion: 0, flat: 0, pct: 0, rew: 0, roll: 0, brr: 0, qrr: 0, buys: 2, qslots: 1, retry: 0, disc: 0, ins: 0, univ: 0, upg: {}, gear: {}, gem: 0, next: 0, gp: 0, kb: 0, sk: 0, tools: [], def: [] });
+
+function mlDerive(p){
+  let flat = 100 + p.qpow + p.potion + p.flat, pct = p.pct, rq = p.roll, rb = p.roll, qpct = p.rew, bpct = p.rew, hi = 0, qrr = p.qrr, k2 = false, h9 = false, retry = p.retry;
+  const gs = Object.entries(p.gear), n = gs.length, cnt = {};
+  for (const [slot, [a, pw, e]] of gs){
+    flat += pw + (p.upg[slot] || 0);
+    if (a !== "無") cnt[a] = (cnt[a] || 0) + 1;
+    if (e === "W1") flat += 20 * n; else if (e === "W2") pct += 20; else if (e === "F1") flat += 10; else if (e === "F2") pct += 10;
+    else if (e === "H1") rq += 1; else if (e === "T1") qpct += 10; else if (e === "T2") hi += 20; else if (e === "L1") bpct += 10;
+    else if (e === "K1") qrr += 1; else if (e === "K2") k2 = true; else if (e === "H2") h9 = true; else if (e === "BS") retry += 1; else if (e === "BO") rb += 2;
+  }
+  if (n && p.univ) flat += 150 * p.univ;
+  let am = 1; Object.values(cnt).forEach(c => { am *= c >= 6 ? 10 : c >= 4 ? 4 : c >= 2 ? 1.5 : 1; });
+  return { power: Math.floor(flat * (1 + pct / 100) * am + 1e-9), flat, pct, am, rq, rb, qpct, bpct, hi, qrr, k2, h9, retry, cnt, n };
+}
+function mlQOut(q, rank, x){
+  const B = ML_D.BASE[rank], u = ML_D.UNIT[rank], pw = ML_D.POW[rank][q.d] * (rank >= 2 ? ML_LATE : 1);
+  const o = { gold: 0, power: 0, item: null, nextpct: 0, zero: false };
+  if (q.eff === "アイテム獲得"){ const kind = mlTier(q.table, x); o.item = [kind, ML_D.CAP[rank][kind]]; return o; }
+  if (q.eff === "次ターン報酬UP"){ o.nextpct = mlTier(q.table, x); o.zero = q.type === "ハイリスク" && o.nextpct === 0; return o; }
+  const m = q.table === "確定" ? 1 : mlTier(q.table, x);
+  if (q.eff === "ゴールドのみ") o.gold = mlRndU(B * m, 1000);
+  else if (q.eff === "戦闘力UPのみ") o.power = mlRndU(pw * m, u);
+  else { o.gold = mlRndU(B * 0.6 * m, 1000); o.power = mlRndU(pw * 0.6 * m, u); }
+  o.zero = q.type === "ハイリスク" && m === 0;
+  return o;
+}
+/* クエストの結果を、ルーレットの出目つきで文章にする（画面用） */
+function mlQLines(q, rank){
+  const tiers = q.table === "確定" ? [[1, 10]] : ML_D.T[q.table];
+  return tiers.map(t => {
+    const o = mlQOut(q, rank, t[0]), parts = [];
+    if (o.gold) parts.push(mlG(o.gold)); if (o.power) parts.push(`戦闘力+${o.power}`);
+    if (o.item) parts.push(`${o.item[0].startsWith("魔道具") ? "魔道具" : "武具"}1つ（${mlG(o.item[1])}以下）`);
+    if (o.nextpct) parts.push(`次ターン基本報酬+${o.nextpct}%`);
+    if (!parts.length) parts.push("失敗（0）");
+    return [q.table === "確定" ? "確定" : t[0] === t[1] ? `${t[0]}` : `${t[0]}〜${t[1]}`, parts.join("・"), !!o.zero];
+  });
+}
+const mlName = st => pid => pname(pid);
+const mlL = (st, m) => { (st._log = st._log || []).push(m); };
+const mlRoll = () => 1 + Math.floor(Math.random() * 10);
+const mlPrice = (p, price) => p.disc ? Math.floor(price * (1 - 0.1 * p.disc) / 10) * 10 : price;
+const mlPower = p => mlDerive(p).power;
+
+function mlDrawQ(st){
+  if (!st.qdeck.length){ st.qdeck = shuffle(ML_Q.map(q => q.i).filter(i => !st.board.includes(i))); }
+  return st.qdeck.length ? st.qdeck.pop() : null;
+}
+function mlGetGear(st, pid, p, part, attr, power, eff, force){
+  const nw = [attr, power, eff];
+  if (!p.gear[part]){ p.gear[part] = nw; return true; }
+  if (!force){
+    const p2 = JSON.parse(JSON.stringify(p)); p2.gear[part] = nw;
+    if (mlScore(st, p2, mlCtx(st, p2), mlR(st)) <= mlScore(st, p, mlCtx(st, p), mlR(st))) return false;
+  }
+  p.gear[part] = nw; return true;
+}
+function mlGetTool(p, id){
+  const c = mlCard(id); p.tools.push(id);
+  switch (c.tk){
+    case "F": p.flat += c.tv; break; case "PCT": p.pct += c.tv; break; case "UPG": p.upg[c.tp] = (p.upg[c.tp] || 0) + c.tv; break;
+    case "UNIV": p.univ++; break; case "REW": p.rew += c.tv; break; case "ROLL": p.roll += c.tv; break; case "BRR": p.brr++; break; case "QRR": p.qrr++; break;
+    case "BUYS": p.buys++; break; case "QSLOT": p.qslots++; break; case "RETRY": p.retry++; break; case "DISC": p.disc++; break; case "INS": p.ins++; break;
+    case "NOP": if (c.name === "掲示板の鍵") p.kb++; else p.sk++; break;
+  }
+}
+const mlR = st => ML_ROUNDS - st.rd;
+
+/* ---------- 手番の始まり：基本報酬 ---------- */
+function mlBegin(st){
+  const pid = st.order[((st.rd - 1) + st.ti) % st.order.length], p = st.pl[pid];
+  if (Object.values(p.gear).some(g => g[2] === "L2")) p.potion += 20;
+  const d = mlDerive(p), B = ML_D.BASE[p.rank], pot = p.gp > 0 ? 0.1 : 0;
+  if (p.gp > 0) p.gp--;
+  const g = mlRnd10(B * (1 + d.bpct / 100 + p.next / 100 + pot));
+  p.next = 0; p.gold += g;
+  st.turn = { pid, ph: "quest", qn: 0, qpool: d.qrr, qr: null, kb: 0, sk: 0, bought: 0 };
+  mlL(st, `【第${st.rd}ラウンド】${pname(pid)}（${ML_RN[p.rank]}級）の冒険：基本報酬 ${mlG(g)}${pot ? "（金運ポーション）" : ""}`);
+}
+function mlNext(st){
+  st.ti++;
+  if (st.ti >= st.order.length){
+    st.ti = 0; st.rd++;
+    st.sdeck.push(...st.shop); st.sdeck = shuffle(st.sdeck); st.shop = st.sdeck.splice(Math.max(0, st.sdeck.length - 10), 10);
+    if (st.rd > ML_ROUNDS) return mlFinish(st);
+  }
+  mlBegin(st);
+}
+function mlFinish(st){
+  st.status = "finished"; st.turn = null;
+  const fin = {}; st.order.forEach(id => { const p = st.pl[id]; fin[id] = p.gold + p.gem; });
+  const best = Math.max(...st.order.map(id => fin[id]));
+  let w = st.order.filter(id => fin[id] === best);
+  if (w.length > 1){
+    const sg = id => Math.max(0, ...st.pl[id].def.filter(z => z[0] === 2).map(z => z[2]));
+    const m = Math.max(...w.map(sg)); w = w.filter(id => sg(id) === m);
+  }
+  st.wins = w; st.fin = fin;
+  mlL(st, `ゲーム終了！ 勝者：${w.map(pname).join("・")}`);
+}
+
+/* ---------- クエスト ---------- */
+function mlQFin(st, pid, p){
+  const t = st.turn, r = t.qr, q = ML_Q[r.q], d = mlDerive(p), x = Math.min(10, r.nat + d.rq), o = mlQOut(q, p.rank, x), B = ML_D.BASE[p.rank];
+  let g = o.gold;
+  if (g){ const pc = d.qpct + (q.type === "ハイリスク" ? d.hi : 0); g = mlRnd10(g * (1 + pc / 100)); }
+  if (d.h9 && q.type !== "ノーリスク" && x >= 9) g += mlRnd10(0.3 * B);
+  if (o.zero && p.ins) g += mlRnd10(0.5 * B * p.ins);
+  p.gold += g; p.qpow += o.power;
+  const parts = []; if (g) parts.push(mlG(g)); if (o.power) parts.push(`戦闘力+${o.power}`);
+  if (o.nextpct){ p.next = o.nextpct; parts.push(`次ターン基本報酬+${o.nextpct}%`); }
+  if (o.item){
+    const [kind, cap] = o.item, want = kind === "武具" ? "gear" : "tool";
+    const cs = st.sdeck.filter(id => mlCard(id).kind === want && mlCard(id).price <= cap);
+    if (cs.length){
+      const id = cs[Math.floor(Math.random() * cs.length)], c = mlCard(id); st.sdeck.splice(st.sdeck.indexOf(id), 1);
+      if (c.kind === "gear"){ const ok = mlGetGear(st, pid, p, c.part, c.attr, c.power, c.eff); parts.push(`${c.part}（${c.attr}）${ok ? "を装備" : "は今の装備より弱いので見送り"}`); }
+      else { mlGetTool(p, id); parts.push(`魔道具「${c.name}」`); }
+    } else parts.push("獲得できるアイテムがなかった");
+  }
+  mlL(st, `${pname(pid)}は「${q.name}」に挑戦：出目${r.nat}${d.rq ? `（補正+${d.rq}→${x}）` : ""} → ${parts.join("・") || "成果なし"}`);
+  st.last = { n: (st.last.n || 0) + 1, kind: "q", p: pid, nat: r.nat, x, txt: parts.join("・") || "成果なし" };
+  t.qn++; t.qr = null;
+}
+
+/* ---------- 討伐 ---------- */
+function mlHuntInfo(p, d, b){
+  const P = d.power;
+  if (P < b[1]) return { can: false, pr: 0 };
+  if (P >= 1.5 * b[1]) return { can: true, auto: true, pr: 1 };
+  const wk = ML_WEAK[b[2]], c = wk ? (d.cnt[wk] || 0) : 0, wb = c >= 4 ? 2 : c >= 2 ? 1 : 0;
+  const pr1 = Math.min(1, Math.max(0, (11 - b[5] + d.rb + wb) / 10)), k = 1 + p.brr + d.retry;
+  return { can: true, auto: false, wb, pr: 1 - Math.pow(1 - pr1, k), pr1 };
+}
+function mlHunt(st, pid, p, bi){
+  const r = p.rank, b = ML_D.BOSS[r][bi], d = mlDerive(p), inf = mlHuntInfo(p, d, b);
+  if (!inf.can) return false;
+  let ok = false; const rolls = [];
+  if (inf.auto) ok = true;
+  else {
+    let pool = p.brr;
+    for (let a = 0; a < 1 + d.retry && !ok; a++){
+      let nat = mlRoll(); rolls.push(nat); ok = nat + d.rb + inf.wb >= b[5];
+      if (!ok && d.k2 && nat <= 3){ nat = mlRoll(); rolls.push(nat); ok = nat + d.rb + inf.wb >= b[5]; }
+      while (!ok && pool > 0){ pool--; nat = mlRoll(); rolls.push(nat); ok = nat + d.rb + inf.wb >= b[5]; }
+    }
+  }
+  st.last = { n: (st.last.n || 0) + 1, kind: "hunt", p: pid, rolls, ok, auto: !!inf.auto, boss: b[0], need: b[5] - d.rb - (inf.wb || 0) };
+  if (!ok){ mlL(st, `${pname(pid)}は${b[0]}に挑戦…出目${rolls.join("→")}で失敗（次のターンまで再挑戦できない）`); return true; }
+  st.boards[r].splice(st.boards[r].indexOf(bi), 1);
+  p.gold += b[3]; p.def.push([r, b[0], b[1]]);
+  const parts = [mlG(b[3])], it = mlBossItem(r, bi);
+  if (it && it.gem){ p.gem += it.gem; parts.push(`戦利品の宝玉（${mlG(it.gem)}分）`); }
+  else if (it && it.gear){ const eff = b[2] === "無" ? ML_NEUT[it.gear[0]] : null; mlGetGear(st, pid, p, it.gear[0], b[2], it.gear[1], eff, !isCpu(pid)); parts.push(`${it.gear[0]}（${b[2]}）`); }
+  p.rank++;
+  mlL(st, `${pname(pid)}は${b[0]}を${inf.auto ? "圧倒して" : `出目${rolls.join("→")}で`}討伐！ ${ML_RN[p.rank]}級に昇格（${parts.join("・")}）`);
+  return true;
+}
+
+/* ---------- 一手を実行 ---------- */
+function mlApply(st, pid, mv){
+  const t = st.turn; if (!t || st.status !== "playing" || t.pid !== pid) return false;
+  const p = st.pl[pid];
+  switch (mv.t){
+    case "q": {
+      if (t.ph !== "quest" || t.qr || t.qn >= p.qslots || st.board[mv.i] == null) return false;
+      const qi = st.board[mv.i]; st.board[mv.i] = mlDrawQ(st);
+      const nat = mlRoll(); t.qr = { q: qi, nat };
+      st.last = { n: (st.last.n || 0) + 1, kind: "roll", p: pid, nat };
+      if (t.qpool <= 0) mlQFin(st, pid, p);
+      return true;
+    }
+    case "qre": if (!t.qr || t.qpool <= 0) return false; t.qpool--; t.qr.nat = mlRoll(); st.last = { n: (st.last.n || 0) + 1, kind: "roll", p: pid, nat: t.qr.nat }; return true;
+    case "qok": if (!t.qr) return false; mlQFin(st, pid, p); return true;
+    case "qend": if (t.ph !== "quest" || t.qr) return false; t.ph = "shop"; return true;
+    case "kb": {
+      if (t.ph !== "quest" || t.qr || p.kb <= 0 || t.kb || st.board[mv.i] == null) return false;
+      t.kb = 1; const old = st.board[mv.i]; st.qdeck.unshift(old); st.board[mv.i] = mlDrawQ(st); mlL(st, `${pname(pid)}は掲示板の鍵でクエストを入れ替えた`); return true;
+    }
+    case "sk": {
+      if (t.ph !== "shop" || p.sk <= 0 || t.sk) return false;
+      t.sk = 1; st.sdeck.push(...st.shop); st.sdeck = shuffle(st.sdeck); st.shop = st.sdeck.splice(Math.max(0, st.sdeck.length - 10), 10); mlL(st, `${pname(pid)}は商店の合鍵で商品を引き直した`); return true;
+    }
+    case "buy": {
+      if (t.ph !== "shop" || t.bought >= p.buys) return false;
+      if (mv.k === "pot"){ const pr = mlPrice(p, ML_POT); if (p.gold < pr) return false; p.gold -= pr; p.potion += 20; mlL(st, `${pname(pid)}は強化ポーション(低)を購入（戦闘力+20）`); }
+      else if (mv.k === "gp"){ const pr = mlPrice(p, ML_GP); if (p.gold < pr || p.gp > 0) return false; p.gold -= pr; p.gp = 1; mlL(st, `${pname(pid)}は金運ポーション(低)を購入（次ターンの基本報酬1.1倍）`); }
+      else {
+        const id = st.shop[mv.i]; if (id == null) return false;
+        const c = mlCard(id), pr = mlPrice(p, c.price); if (p.gold < pr) return false;
+        if (c.kind === "tool" && ((c.tk === "UPG" && !p.gear[c.tp]) || (c.tk === "UNIV" && !Object.keys(p.gear).length))) return false;
+        p.gold -= pr;
+        if (c.kind === "gear"){ p.gear[c.part] = [c.attr, c.power, c.eff]; mlL(st, `${pname(pid)}は${c.part}（${c.attr}）を購入して装備`); }
+        else { mlGetTool(p, id); mlL(st, `${pname(pid)}は魔道具「${c.name}」を購入`); }
+        if (st.sdeck.length) st.shop[mv.i] = st.sdeck.pop(); else st.shop.splice(mv.i, 1);
+      }
+      t.bought++; return true;
+    }
+    case "sd": if (t.ph !== "shop") return false; t.ph = "hunt"; return true;
+    case "hunt": {
+      if (t.ph !== "hunt" || p.rank >= 3 || !st.boards[p.rank].includes(mv.b)) return false;
+      if (!mlHunt(st, pid, p, mv.b)) return false;
+      mlNext(st); return true;
+    }
+    case "end": if (t.ph !== "hunt") return false; mlNext(st); return true;
+  }
+  return false;
+}
+function mlSetup(order){
+  const N = order.length, st = { ml: 1, order, N, rd: 1, ti: 0, status: "playing", pl: {}, qdeck: [], board: [], sdeck: [], shop: [], boards: [], turn: null, last: { n: 0 }, wins: [] };
+  order.forEach((id, i) => { st.pl[id] = mlNewP(i * ML_START); });
+  st.qdeck = shuffle(ML_Q.map(q => q.i)); st.board = Array.from({ length: 6 }, () => st.qdeck.pop());
+  st.sdeck = shuffle([...Array.from({ length: 60 }, (_, i) => i), ...Array.from({ length: 60 }, (_, i) => 100 + i)]);
+  st.shop = st.sdeck.splice(st.sdeck.length - 10, 10);
+  st.boards = [0, 1, 2].map(() => shuffle(Array.from({ length: 10 }, (_, i) => i)).slice(0, N).sort((a, b) => a - b));
+  mlL(st, `勇者ミリオン開始！ 手番：${order.map(pname).join("→")}`);
+  mlBegin(st);
+  return st;
+}
+
+/* ======================= CPU（シミュレーターと同じ考え方） ======================= */
+function mlCtx(st, p){
+  const r = p.rank, bs = r < 3 ? st.boards[r] : [];
+  if (!bs.length) return { T: null };
+  const bi = bs.reduce((a, b) => ML_D.BOSS[r][b][1] < ML_D.BOSS[r][a][1] ? b : a), wk = ML_D.BOSS[r][bi], it = mlBossItem(r, bi);
+  const iv = !it ? 0 : it.gear ? 0.5 * it.gear[2] : it.gem, dInc = (ML_D.BASE[r + 1] - ML_D.BASE[r]) * 2, R = mlR(st);
+  return { T: wk[1], V: wk[3] + iv + dInc * Math.max(0, R - 2), lamf: [14, 65, 20][r] * 100, dInc };
+}
+function mlScore(st, p, ctx, R){
+  const d = mlDerive(p); let P = d.power;
+  const ks = Object.keys(d.cnt);
+  if (ks.length){
+    const ab = ks.reduce((a, b) => d.cnt[b] > d.cnt[a] ? b : a), c2 = { ...d.cnt }; c2[ab] = Math.min(6, d.cnt[ab] + Math.floor(R / 4));
+    let amp = 1; Object.values(c2).forEach(c => { amp *= c >= 6 ? 10 : c >= 4 ? 4 : c >= 2 ? 1.5 : 1; });
+    if (amp > d.am) P = Math.floor(d.flat * (1 + d.pct / 100) * d.am * Math.pow(amp / d.am, 0.6));
+  }
+  const B = ML_D.BASE[p.rank]; let sc = 0;
+  if (ctx.T){
+    const T = ctx.T, V = ctx.V;
+    sc += V * Math.min(1, P / T) + 0.3 * V * Math.min(1, Math.max(0, (P - T) / (0.5 * T))) + ctx.lamf * Math.max(0, P - T);
+    if (P >= T && P < 1.5 * T){
+      const pr = Math.min(1, Math.max(0, (5 + d.rb) / 10)), k = 1 + p.brr + d.retry, pt = 1 - Math.pow(1 - pr, k);
+      sc -= ctx.dInc * Math.min(R, 1 / Math.max(pt, 0.05) - 1);
+    }
+  }
+  const Bb = B * (1 + d.bpct / 100), qm = Math.min(3, Math.max(1.2, 1.2 + 0.3 * d.rq));
+  let qinc = (1 + 0.9 * (p.qslots - 1)) * B * qm * (1 + (d.qpct + 0.5 * d.hi) / 100);
+  qinc += d.qrr * 0.1 * B;
+  if (d.h9) qinc += 0.3 * B * Math.min(1, 0.2 + 0.1 * d.rq) * 0.7;
+  qinc += p.ins * 0.5 * B * 0.2;
+  sc += R * (Bb + qinc);
+  sc += R * (p.buys - 2) * (0.15 * B + 15000);
+  sc += p.disc * R * 0.05 * (B + 50000);
+  return sc;
+}
+function mlTryCard(st, p, id, R){
+  const c = mlCard(id), p2 = JSON.parse(JSON.stringify(p));
+  if (c.kind === "gear") p2.gear[c.part] = [c.attr, c.power, c.eff];
+  else { if ((c.tk === "UPG" && !p.gear[c.tp]) || (c.tk === "UNIV" && !Object.keys(p.gear).length) || c.tk === "NOP") return null; mlGetTool(p2, id); }
+  return p2;
+}
+function mlCpuQVals(st, p, q, d, lam){
+  const B = ML_D.BASE[p.rank], out = [];
+  for (let r = 1; r <= 10; r++){
+    const x = Math.min(10, r + d.rq), o = mlQOut(q, p.rank, x); let g = o.gold;
+    if (g){ const pc = d.qpct + (q.type === "ハイリスク" ? d.hi : 0); g = mlRnd10(g * (1 + pc / 100)); }
+    if (d.h9 && q.type !== "ノーリスク" && x >= 9) g += mlRnd10(0.3 * B);
+    if (o.zero && p.ins) g += mlRnd10(0.5 * B * p.ins);
+    let v = g + lam * o.power * (1 + d.pct / 100) * d.am;
+    if (o.item) v += 0.35 * o.item[1];
+    if (o.nextpct && st.rd < ML_ROUNDS) v += o.nextpct / 100 * B;
+    out.push(v);
+  }
+  return out;
+}
+function mlCpuStep(st, pid){
+  const t = st.turn, p = st.pl[pid], R = mlR(st), d = mlDerive(p), ctx = mlCtx(st, p);
+  if (t.ph === "quest"){
+    const base = mlScore(st, p, ctx, R), p2 = JSON.parse(JSON.stringify(p)); p2.potion += 20;
+    const lam = Math.max(0, (mlScore(st, p2, ctx, R) - base) / 20);
+    if (t.qr){
+      const vals = mlCpuQVals(st, p, ML_Q[t.qr.q], d, lam), ev = vals.reduce((a, b) => a + b, 0) / 10;
+      return t.qpool > 0 && vals[t.qr.nat - 1] < ev - 1e-9 ? { t: "qre" } : { t: "qok" };
+    }
+    if (t.qn >= p.qslots) return { t: "qend" };
+    let best = null;
+    st.board.forEach((qi, i) => { if (qi == null) return; const v = mlCpuQVals(st, p, ML_Q[qi], d, lam), ev = v.reduce((a, b) => a + b, 0) / 10; if (!best || ev > best.ev) best = { ev, i }; });
+    return best ? { t: "q", i: best.i } : { t: "qend" };
+  }
+  if (t.ph === "shop"){
+    if (t.bought >= p.buys) return { t: "sd" };
+    const base = mlScore(st, p, ctx, R); let best = null;
+    const pp = mlPrice(p, ML_POT);
+    if (p.gold >= pp){ const p2 = JSON.parse(JSON.stringify(p)); p2.potion += 20; best = { dl: mlScore(st, p2, ctx, R) - base - pp, mv: { t: "buy", k: "pot" } }; }
+    const gp = mlPrice(p, ML_GP);
+    if (p.gp === 0 && p.gold >= gp && st.rd < ML_ROUNDS){ const dl = 0.1 * ML_D.BASE[p.rank] * (1 + d.bpct / 100) - gp; if (!best || dl > best.dl) best = { dl, mv: { t: "buy", k: "gp" } }; }
+    st.shop.forEach((id, i) => {
+      const c = mlCard(id), pr = mlPrice(p, c.price); if (p.gold < pr) return;
+      const p2 = mlTryCard(st, p, id, R); if (!p2) return;
+      const dl = mlScore(st, p2, ctx, R) - base - pr; if (!best || dl > best.dl) best = { dl, mv: { t: "buy", k: "card", i } };
+    });
+    return best && best.dl > 0 ? best.mv : { t: "sd" };
+  }
+  if (p.rank >= 3) return { t: "end" };
+  const cands = st.boards[p.rank].filter(bi => mlHuntInfo(p, d, ML_D.BOSS[p.rank][bi]).can);
+  if (!cands.length) return { t: "end" };
+  const dInc = (ML_D.BASE[p.rank + 1] - ML_D.BASE[p.rank]) * 2;
+  const val = bi => { const b = ML_D.BOSS[p.rank][bi], it = mlBossItem(p.rank, bi), iv = !it ? 0 : it.gear ? 0.5 * it.gear[2] : it.gem, pr = mlHuntInfo(p, d, b).pr; return pr * (b[3] + iv) - (1 - pr) * dInc; };
+  return { t: "hunt", b: cands.reduce((a, b) => val(b) > val(a) ? b : a) };
+}
+
+/* ======================= 通信・状態 ======================= */
+const mlGames = () => db.ml_games || [];
+const mlLive = () => mlGames().filter(g => g.status === "playing" && g.st && g.st.ml).sort((a, b) => b.created_at.localeCompare(a.created_at));
+const mlById = id => mlGames().find(g => g.id === id);
+const mlActor = st => st && st.turn ? st.turn.pid : null;
+function mlMyTurn(g){ const st = g && g.st; return !!(st && st.ml && g.status === "playing" && me && mlActor(st) === me); }
+async function mlCommit(id, fn){
+  for (let tries = 0; tries < 6; tries++){
+    const g = mlById(id); if (!g || g.status !== "playing") return false;
+    const st = JSON.parse(JSON.stringify(g.st)); st._log = [];
+    const r = fn(st, g); if (!r) return false;
+    const lines = st._log; delete st._log;
+    const body = { st, version: (g.version || 1) + 1, updated_at: new Date().toISOString() };
+    if (st.status !== "playing"){ body.status = "finished"; body.winner = (st.wins || [])[0] || null; }
+    if (lines.length){ const lg = (g.log || []).slice(), now = Date.now(); lines.forEach((m, i) => lg.push({ t: new Date(now + i).toISOString(), m })); body.log = lg.slice(-150); }
+    const ver0 = g.version || 1, undo = optimistic(g, body, drawMl);
+    let data, error;
+    try { ({ data, error } = await sb.from("ml_games").update(body).eq("id", id).eq("version", ver0).select()); } catch (e) { error = e; }
+    if (error && dmNetErr(error) && tries < 5){ undo(); await new Promise(r2 => setTimeout(r2, 600 * (tries + 1))); await loadTable("ml_games"); continue; }
+    if (error){ undo(); drawMl(); fail(error, "保存"); return false; }
+    if (data && data.length){ Object.assign(g, data[0]); drawMl(); return true; }
+    undo(); await loadTable("ml_games");
+  }
+  drawMl(); toast("混み合っています。もう一度タップしてください", 2000); return false;
+}
+const mlDo = (id, p, mv) => mlCommit(id, st => mlApply(st, p, mv));
+let mlAnimUntil = 0;
+CPU_AI.ml_games = g => {
+  const st = g.st; if (!st || !st.ml || g.status !== "playing") return null;
+  const p = mlActor(st); if (!isCpu(p)) return null;
+  const mv = mlCpuStep(st, p);
+  return { wait: Math.max(1100, mlAnimUntil - Date.now() + 500), run: () => mlDo(g.id, p, mv) };
+};
+
+/* ======================= 絵 ======================= */
+const ML_ICON = `<span class="gic mli"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="3" y="3" width="58" height="58" rx="12" fill="#101A36" stroke="#FFD35A" stroke-width="2"/><circle cx="32" cy="34" r="17" fill="#FFC93C" stroke="#B8860B" stroke-width="2"/><circle cx="32" cy="34" r="12" fill="none" stroke="#B8860B" stroke-width="1.4" stroke-dasharray="2 2.4"/><path d="M27 40V28l5 7 5-7v12" fill="none" stroke="#7A5200" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><path d="M14 20l5-9 5 6 4-8 4 8 5-6 5 9z" fill="#FF2E6A" stroke="#FFD35A" stroke-width="1.2" stroke-linejoin="round" transform="translate(-1 -3) scale(1.03)"/></svg></span>`;
+const mlShort = n => n >= 100000000 ? (n / 100000000).toFixed(2).replace(/\.?0+$/, "") + "億" : n >= 10000 ? (n / 10000).toFixed(n % 10000 ? 1 : 0).replace(/\.0$/, "") + "万" : String(n);
+const mlAttrB = a => `<i class="mlat" style="--ac:${ML_AC[a] || "#999"}">${a}</i>`;
+const ML_PARTS = ["武器", "胴", "頭", "腰", "籠手", "脚"];
+const ML_TOOLS_DESC = ML_D.GEFF;
+
+/* ======================= 画面 ======================= */
+let mlId = null, mlTab = "quest", mlView = null, mlSeen = {}, mlPlaying = false, mlLastKey = "";
+function openMl(id){ const g0 = mlById(id); mlId = id; mlView = null; mlLastKey = ""; if (g0 && g0.st) mlSeen[id] = (g0.st.last && g0.st.last.n) || 0; $("#mlg").hidden = false; document.body.style.overflow = "hidden"; drawMl(); }
+function closeMl(){ mlId = null; $("#mlg").hidden = true; document.body.style.overflow = ""; render(); }
+function drawMl(){
+  setTimeout(cpuKick, 0);
+  if (!mlId) return;
+  const g = mlById(mlId); if (!g || !g.st || g.status === "aborted") return closeMl();
+  if (mlPlaying) return;
+  const L = g.st.last;
+  if (L && L.n > (mlSeen[g.id] || 0)){ mlSeen[g.id] = L.n; mlRender(g); mlPlay(g, L); return; }
+  mlRender(g);
+  if (g.status === "finished") mlEndShow(g);
+}
+const mlWait = ms => new Promise(r => setTimeout(r, ms));
+async function mlPlay(g, L){
+  const fx = $("#mlFx"); if (!fx) return;
+  mlPlaying = true;
+  const nums = L.kind === "hunt" ? (L.rolls || []) : L.nat ? [L.nat] : [];
+  mlAnimUntil = Date.now() + 1000 + nums.length * 1300;
+  const who = esc(pname(L.p));
+  fx.innerHTML = `<div class="mlroul"><small>${who}${L.kind === "hunt" ? `の討伐「${esc(L.boss)}」` : "のルーレット"}</small><div class="mlbig" id="mlBig">？</div><p id="mlCap"></p></div>`; fx.classList.add("on");
+  const big = $("#mlBig"), cap = $("#mlCap");
+  try {
+    for (const v of nums){
+      for (let i = 0; i < 11; i++){ big.textContent = 1 + Math.floor(Math.random() * 10); await mlWait(55 + i * 8); }
+      big.textContent = v; big.classList.add("land"); await mlWait(520); big.classList.remove("land");
+    }
+    if (L.kind === "q") cap.textContent = L.txt;
+    else if (L.kind === "hunt") cap.textContent = L.ok ? (L.auto ? "戦闘力が圧倒的！ 挑戦なしで討伐" : "討伐成功！") : `失敗…（必要な出目は${Math.max(1, L.need)}以上）`;
+    else cap.textContent = "";
+    await mlWait(L.kind === "roll" ? 350 : 1100);
+  } catch (e) { console.error(e); }
+  fx.classList.remove("on"); mlPlaying = false; mlAnimUntil = 0;
+  drawMl();
+}
+
+function mlQHtml(q, rank, mine, can, p){
+  const lines = mlQLines(q, rank);
+  return `<button class="mlq ${q.type}" data-mq="${q.i}" ${can ? "" : "disabled"}><span class="qh"><b>${esc(q.name)}</b><i>${q.type}</i></span><small>${q.eff}</small>
+    <span class="ql">${lines.map(([r, tx, z]) => `<span class="${z ? "z" : ""}"><em>${r === "確定" ? "確定" : "出目" + r}</em>${esc(tx)}</span>`).join("")}</span></button>`;
+}
+function mlGearTx(c){ return c.eff ? (ML_D.GEFF[c.eff] || "") : `同じ属性が2個で戦闘力×1.5、4個で×4、6個で×10`; }
+function mlShopHtml(st, p, canBuy){
+  const t = st.turn, left = p ? p.buys - t.bought : 0, cards = st.shop.map((id, i) => {
+    const c = mlCard(id), pr = p ? mlPrice(p, c.price) : c.price;
+    const ng = !canBuy || p.gold < pr || left <= 0 || (c.kind === "tool" && ((c.tk === "UPG" && !p.gear[c.tp]) || (c.tk === "UNIV" && !Object.keys(p.gear).length)));
+    const hd = c.kind === "gear" ? `${mlAttrB(c.attr)}<b>${c.part}</b><span class="pw">戦闘力${c.power}</span>` : `<b>${esc(c.name)}</b><span class="pw">${esc(c.cat)}</span>`;
+    return `<button class="mls ${c.kind}" style="--ac:${c.kind === "gear" ? ML_AC[c.attr] : "#9CA8FF"}" data-mb="card" data-i="${i}" ${ng ? "disabled" : ""}><span class="sh">${hd}</span><small>${esc(c.kind === "gear" ? mlGearTx(c) : c.tx)}</small><em>${mlG(pr)}</em></button>`;
+  }).join("");
+  const pp = p ? mlPrice(p, ML_POT) : ML_POT, gg = p ? mlPrice(p, ML_GP) : ML_GP;
+  const fx = `<button class="mls fixed" data-mb="pot" ${!canBuy || p.gold < pp || left <= 0 ? "disabled" : ""}><span class="sh"><b>強化ポーション(低)</b><span class="pw">固定商品</span></span><small>戦闘力+20（永続）</small><em>${mlG(pp)}</em></button>
+    <button class="mls fixed" data-mb="gp" ${!canBuy || p.gold < gg || left <= 0 || p.gp > 0 ? "disabled" : ""}><span class="sh"><b>金運ポーション(低)</b><span class="pw">固定商品</span></span><small>次のターン開始時、基本報酬が1.1倍</small><em>${mlG(gg)}</em></button>`;
+  return `<div class="mlgrid">${fx}${cards}</div>`;
+}
+function mlBossHtml(st, p, canHunt){
+  if (!p) return "";
+  const d = mlDerive(p), out = [];
+  const blocks = [0, 1, 2].map(r => {
+    const mineR = r === p.rank;
+    const list = st.boards[r].map(bi => {
+      const b = ML_D.BOSS[r][bi], it = mlBossItem(r, bi), inf = mineR ? mlHuntInfo(p, d, b) : null;
+      const rw = !it ? "なし" : it.gem ? `戦利品の宝玉（${mlG(it.gem)}分）` : `${it.gear[0]}（${b[2]}属性）`;
+      const pr = inf ? (inf.can ? (inf.auto ? "挑戦なしで討伐" : `成功率 ${Math.round(inf.pr * 100)}%${inf.wb ? `（弱点+${inf.wb}）` : ""}`) : `戦闘力が足りない（${b[1]}〜）`) : "";
+      return `<button class="mlb" style="--ac:${ML_AC[b[2]]}" data-mh="${bi}" ${canHunt && mineR && inf.can ? "" : "disabled"}><span class="bh">${mlAttrB(b[2])}<b>${esc(b[0])}</b><span class="pw">戦闘力${b[1]}</span></span>
+        <small>討伐条件：出目${b[5]}以上　弱点：${ML_WEAK[b[2]] ? ML_WEAK[b[2]] + "属性の武具" : "なし"}</small><small>報酬：${mlG(b[3])}／${rw}</small>${pr ? `<em>${pr}</em>` : ""}</button>`;
+    }).join("") || `<p class="mlnone">この階級のボスは全員討伐された</p>`;
+    return `<h4 class="${mineR ? "now" : ""}">${ML_RN[r]}級ボス${mineR ? "（あなたの階級）" : ""}</h4><div class="mlgrid one">${list}</div>`;
+  });
+  return (p.rank >= 3 ? `<p class="mlnone">ドラゴン級：もうボスはいない。高い基本報酬で稼ごう</p>` : "") + blocks.join("");
+}
+function mlMeHtml(st, pid){
+  const p = st.pl[pid], d = mlDerive(p);
+  const slots = ML_PARTS.map(s => { const gr = p.gear[s]; return gr ? `<div class="mlgs" style="--ac:${ML_AC[gr[0]]}"><b>${s}</b>${mlAttrB(gr[0])}<span>${gr[1] + (p.upg[s] || 0)}</span>${gr[2] ? `<small>${esc(ML_D.GEFF[gr[2]] || "")}</small>` : ""}</div>` : `<div class="mlgs empty"><b>${s}</b><span>—</span></div>`; }).join("");
+  const att = Object.entries(d.cnt).map(([a, c]) => `<span style="--ac:${ML_AC[a]}">${mlAttrB(a)}${c}個${c >= 2 ? ` → ×${c >= 6 ? 10 : c >= 4 ? 4 : 1.5}` : "（2個で発動）"}</span>`).join("") || `<span>属性の武具なし</span>`;
+  const tc = {}; p.tools.forEach(id => { tc[id] = (tc[id] || 0) + 1; });
+  const tools = Object.entries(tc).map(([id, n]) => { const c = mlCard(+id); return `<div class="mlts"><b>${esc(c.name)}${n > 1 ? ` ×${n}` : ""}</b><small>${esc(c.tx)}</small></div>`; }).join("") || `<p class="mlnone">まだ魔道具を持っていない</p>`;
+  const chips = [["クエスト出目", "+" + d.rq], ["ボス出目", "+" + d.rb], ["基本報酬", "+" + d.bpct + "%"], ["クエスト報酬", "+" + d.qpct + "%"], ["購入枠", p.buys], ["クエスト枠", p.qslots], ["クエスト振り直し", d.qrr + "回"], ["ボス振り直し", p.brr + "回"], ["再挑戦", d.retry + "回"], ["割引", p.disc ? "10%" : "なし"]].map(([k, v]) => `<span><small>${k}</small><b>${v}</b></span>`).join("");
+  return `<div class="mlme"><div class="mlpow"><small>戦闘力</small><b>${d.power.toLocaleString()}</b><em>（基礎${d.flat}${d.pct ? ` ×${(1 + d.pct / 100).toFixed(2)}` : ""}${d.am > 1 ? ` ×属性${d.am}` : ""}）</em></div>
+    <div class="mlrow"><span><small>階級</small><b>${ML_RN[p.rank]}級</b></span><span><small>所持金</small><b>${mlG(p.gold)}</b></span>${p.gem ? `<span><small>宝玉</small><b>${mlG(p.gem)}</b></span>` : ""}${p.gp ? `<span><small>金運</small><b>使用待ち</b></span>` : ""}${p.next ? `<span><small>次ターン</small><b>報酬+${p.next}%</b></span>` : ""}</div>
+    <h4>発動中の属性</h4><div class="mlatt">${att}</div><h4>装備</h4><div class="mlgsw">${slots}</div><h4>魔道具</h4>${tools}<h4>効果のまとめ</h4><div class="mlchips">${chips}</div>
+    <h4>討伐したボス</h4>${p.def.length ? p.def.map(z => `<p class="mldf">${ML_RN[z[0]]}級　${esc(z[1])}（戦闘力${z[2]}）</p>`).join("") : `<p class="mlnone">まだ討伐していない</p>`}</div>`;
+}
+function mlRender(g){
+  const st = g.st, root = $("#mlg"), cur = mlActor(st), t = st.turn, mine = cur === me && g.status === "playing";
+  const inGame = st.order.includes(me), viewer = mlView && st.pl[mlView] ? mlView : inGame ? me : cur || st.order[0];
+  const key = (t ? t.pid + ":" + t.ph : "end");
+  if (key !== mlLastKey){ mlLastKey = key; if (mine) mlTab = t.ph === "quest" ? "quest" : t.ph === "shop" ? "shop" : "boss"; mlView = null; }
+  const vp = st.pl[viewer], rankV = (st.pl[inGame ? me : cur] || vp).rank;
+  const strips = st.order.map(pid => { const p = st.pl[pid]; return `<button class="mlsc ${pid === cur ? "cur" : ""} ${pid === viewer ? "vw" : ""}" data-pv="${pid}" style="--pc:${pcolor(pid)}"><i class="dot"></i><b>${esc(pname(pid))}</b><span>${mlShort(p.gold + p.gem)}</span><em>${ML_RN[p.rank]}・${mlPower(p).toLocaleString()}</em></button>`; }).join("");
+  const lg = (g.log || []).slice(-3).map(l => `<p>${colorizeLog(g.players, l.m)}</p>`).join("");
+  let body = "", act = "";
+  const myp = st.pl[me];
+  if (mlTab === "quest"){
+    const can = mine && t.ph === "quest" && !t.qr && t.qn < myp.qslots;
+    body = `<div class="mlgrid one">${st.board.map((qi, i) => qi == null ? "" : `<div class="mlqw">${mlQHtml(ML_Q[qi], rankV, mine, can, myp)}${mine && t.ph === "quest" && !t.qr && myp.kb > 0 && !t.kb ? `<button class="mlkb" data-kbq="${i}">鍵で入れ替え</button>` : ""}</div>`).join("")}</div>`;
+  } else if (mlTab === "shop") body = mlShopHtml(st, inGame ? myp : null, mine && t.ph === "shop");
+  else if (mlTab === "boss") body = mlBossHtml(st, st.pl[inGame ? me : cur], mine && t.ph === "hunt");
+  else body = mlMeHtml(st, viewer);
+  if (g.status === "finished") act = `<div class="mlmsg">ゲーム終了</div>`;
+  else if (!mine) act = `<div class="mlmsg">${cur ? `${esc(pname(cur))}の番（${t.ph === "quest" ? "冒険" : t.ph === "shop" ? "買い物" : "討伐"}）` : ""}</div>`;
+  else if (t.ph === "quest" && t.qr){
+    const q = ML_Q[t.qr.q], d = mlDerive(myp), x = Math.min(10, t.qr.nat + d.rq), ln = mlQLines(q, myp.rank).find(z => { const m = z[0].match(/(\d+)(?:〜(\d+))?/); return z[0] === "確定" || (x >= +m[1] && x <= +(m[2] || m[1])); });
+    act = `<div class="mlmsg"><b>${esc(q.name)}</b>：出目${t.qr.nat}${d.rq ? `＋補正${d.rq}＝${x}` : ""} → ${ln ? esc(ln[1]) : ""}</div><div class="mlbtns"><button class="btn sub" data-act="qre" ${t.qpool > 0 ? "" : "disabled"}>振り直す（あと${t.qpool}回）</button><button class="btn" data-act="qok">この結果で確定</button></div>`;
+  } else if (t.ph === "quest") act = `<div class="mlmsg">掲示板からクエストを選ぶ（あと${myp.qslots - t.qn}件）。ルーレットで結果が決まる</div><div class="mlbtns"><button class="btn sub" data-act="qend">${t.qn ? "買い物へ" : "受けずに買い物へ"}</button></div>`;
+  else if (t.ph === "shop") act = `<div class="mlmsg">買い物（あと${myp.buys - t.bought}個）。売却はできない</div><div class="mlbtns">${myp.sk > 0 && !t.sk ? `<button class="btn sub" data-act="sk">合鍵で商品を引き直す</button>` : ""}<button class="btn" data-act="sd">討伐へ</button></div>`;
+  else act = `<div class="mlmsg">${myp.rank >= 3 ? "ドラゴン級：討伐はありません" : "「討伐」タブから挑むボスを選ぶ。失敗しても次のターンまで再挑戦できないだけ"}</div><div class="mlbtns"><button class="btn sub" data-act="end">討伐せずにターン終了</button></div>`;
+  const nav = [["quest", "掲示板"], ["shop", "商店"], ["boss", "討伐"], ["me", "ステータス"]].map(([k, n]) => `<button class="${mlTab === k ? "on" : ""}" data-mt="${k}">${n}</button>`).join("");
+  root.innerHTML = `<div class="mlwrap"><div class="mltop"><button class="gfbk" id="mlBack">‹</button><div class="mlttl"><b>YUSHA MILLION</b><small>第${Math.min(st.rd, ML_ROUNDS)}/${ML_ROUNDS}ラウンド${t ? ` ・ ${esc(pname(t.pid))}の番` : ""}</small></div><button class="gfbk" id="mlMenu">⋯</button></div>
+    <div class="mlscs">${strips}</div><div class="mllog">${lg}</div>
+    <div class="mlmain" id="mlMain">${body}</div><div class="mlbot">${act}</div><div class="mlnav">${nav}</div><div class="mlfx" id="mlFx"></div></div>`;
+  const keep = mlRender.sc; if (keep != null && mlRender.tab === mlTab) $("#mlMain").scrollTop = keep;
+  $("#mlMain").onscroll = e => { mlRender.sc = e.target.scrollTop; mlRender.tab = mlTab; };
+  root.onclick = e => mlTap(g, e);
+}
+function mlTap(g, e){
+  const t = e.target, st = g.st, me_ = me, p = st.pl[me_];
+  const q = s => t.closest(s);
+  if (q("#mlBack")) return closeMl();
+  if (q("#mlMenu")) return mlMenu(g);
+  let b;
+  if ((b = q("[data-mt]"))){ mlTab = b.dataset.mt; mlRender.sc = 0; return mlRender(g); }
+  if ((b = q("[data-pv]"))){ mlView = b.dataset.pv; mlTab = "me"; mlRender.sc = 0; return mlRender(g); }
+  if (!mlMyTurn(g)) return;
+  if ((b = q("[data-kbq]"))) return void mlDo(g.id, me_, { t: "kb", i: +b.dataset.kbq });
+  if ((b = q("[data-mq]"))){ const i = st.board.indexOf(+b.dataset.mq); if (i >= 0 && !b.disabled) mlDo(g.id, me_, { t: "q", i }); return; }
+  if ((b = q("[data-mb]"))){
+    if (b.disabled) return;
+    const k = b.dataset.mb;
+    if (k === "card"){ const c = mlCard(st.shop[+b.dataset.i]); if (c.kind === "gear" && p.gear[c.part] && !confirm(`今の${c.part}（${p.gear[c.part][0]}・戦闘力${p.gear[c.part][1]}）を、${c.part}（${c.attr}・戦闘力${c.power}）に交換しますか？\n交換すると前の武具の戦闘力は引き継げません。`)) return; return void mlDo(g.id, me_, { t: "buy", k, i: +b.dataset.i }); }
+    return void mlDo(g.id, me_, { t: "buy", k });
+  }
+  if ((b = q("[data-mh]"))){ if (!b.disabled) mlDo(g.id, me_, { t: "hunt", b: +b.dataset.mh }); return; }
+  if ((b = q("[data-act]"))){ if (!b.disabled) mlDo(g.id, me_, { t: b.dataset.act }); }
+}
+function mlMenu(g){
+  const mine = (g.players || []).includes(me);
+  const s = openSheet(ML_TITLE, `<div class="btns col"><button class="btn sub" data-grule="ml">ルールを見る</button><button class="btn sub" id="mlLogB">ログを見る</button>${mine && g.status === "playing" ? `<button class="btn danger" id="mlAbort">この対戦をやめる</button>` : ""}</div>`);
+  s.querySelector("#mlLogB").onclick = () => openSheet("ログ", `<div class="wdlog">${(g.log || []).slice().reverse().map(l => `<p>${colorizeLog(g.players, l.m)}</p>`).join("")}</div>`);
+  const ab = s.querySelector("#mlAbort"); if (ab) ab.onclick = async () => { if (!confirm("この対戦をやめますか？")) return; const { error } = await sb.from("ml_games").update({ status: "aborted" }).eq("id", g.id); if (error) return fail(error, "中止"); await loadTable("ml_games"); closeSheet(); closeMl(); };
+}
+const mlEndSeen = {};
+function mlEndShow(g){
+  const st = g.st; if (mlEndSeen[g.id]) return; mlEndSeen[g.id] = 1;
+  const rk = st.order.slice().sort((a, b) => st.fin[b] - st.fin[a]);
+  const s = openSheet("結果", `<div class="gfend mlend"><h2>${(st.wins || []).includes(me) ? "VICTORY" : "GAME SET"}</h2><table><tr><th></th><th>最終</th><th>ゴールド</th><th>宝玉</th><th>階級</th></tr>${rk.map(p => `<tr class="${(st.wins || []).includes(p) ? "win" : ""}"><td style="color:${pcolor(p)}">${esc(pname(p))}</td><td><b>${mlG(st.fin[p])}</b></td><td>${mlG(st.pl[p].gold)}</td><td>${st.pl[p].gem ? mlG(st.pl[p].gem) : "—"}</td><td>${ML_RN[st.pl[p].rank]}</td></tr>`).join("")}</table><div class="btns"><button class="btn ghost" id="mlClose">閉じる</button><button class="btn" id="mlAgain">もう一度</button></div></div>`);
+  s.querySelector("#mlClose").onclick = () => { closeSheet(); closeMl(); };
+  s.querySelector("#mlAgain").onclick = () => { closeSheet(); closeMl(); openMlNew(); };
+}
+
+/* ======================= 新しく始める ======================= */
+function openMlNew(){
+  let order = db.players.map(p => p.id).slice(0, 4);
+  const s = openSheet(`${ML_TITLE}を始める`, `
+    <p class="note">【オリジナル・開発中】冒険→買い物→討伐を繰り返し、15ラウンドで一番ゴールドを稼いだ人の勝ち。ボスを倒して階級を上げ、武具の属性をそろえて戦闘力を何倍にもしよう。</p>
+    <div class="btns"><button type="button" class="grbtn" data-grule="ml">ルールを見る</button></div>
+    <div class="f"><span>参加者（タップで選ぶ・2〜6人）</span>${chipPlayers(db.players.map(p => p.id), order)}${cpuChips(order)}</div>
+    <div class="f"><span>最初のラウンドの手番（指で動かして並べ替え。ラウンドごとに先頭が1人ずつずれる。最初の持ち金は 左から 0・2,000・4,000…）</span><div id="mlOrder" class="norder"></div><button class="shufbtn" id="mlShuf">順番をシャッフル</button></div>
+    <div class="btns"><button class="btn" id="mlGo">はじめる</button></div>`);
+  s.querySelector("[data-close]").onclick = openGames;
+  const draw = () => { $("#mlOrder").innerHTML = seatHtml(order); seatDrag($("#mlOrder"), () => order, o => order = o, draw); };
+  s.querySelectorAll("[data-p]").forEach(b => b.onclick = () => {
+    const id = b.dataset.p, on = b.getAttribute("aria-pressed") !== "true";
+    if (on && order.length >= 6){ toast("最大6人です"); return; }
+    b.setAttribute("aria-pressed", String(on)); order = on ? [...order, id] : order.filter(x => x !== id); draw();
+  });
+  $("#mlShuf").onclick = () => { order = shuffle(order); draw(); };
+  draw();
+  $("#mlGo").onclick = async () => {
+    if (!order.some(id => !isCpu(id))){ toast("人間のプレイヤーを1人以上入れてください"); return; }
+    if (order.length < 2 || order.length > 6){ toast("参加者は2〜6人です"); return; }
+    const st = mlSetup(order); const lg = st._log || []; delete st._log;
+    const row = { status: "playing", players: order, st, created_by: me || null, log: lg.map((m, i) => ({ t: new Date(Date.now() + i).toISOString(), m })) };
+    const { data: res, error } = await sb.from("ml_games").insert(row).select().single();
+    if (error){ if (/ml_games|relation|exist|schema|permission/i.test(error.message || "")) toast("勇者ミリオンを使うには、SupabaseでSQLを実行してください（ml_games）", 4200); else fail(error, "作成"); return; }
+    await loadTable("ml_games"); closeSheet(); openMl(res.id);
+  };
+}
+
+/* ======================= ルール ======================= */
+function mlRulesHtml(){
+  return `<h4>目的</h4><p>${ML_ROUNDS}ラウンドの間に、<b>一番多くのゴールド</b>を持っていた人の勝ち（戦利品の宝玉はゴールドに換算）。同額なら、より強いワイバーン級ボスを倒した人の勝ち。全員が同じ手番数でゲームが終わる。</p>
+  <h4>手番の流れ</h4><p>全員が1周すると1ラウンド。先頭の人は毎ラウンド1人ずつずれる。最初の持ち金は手番順に 0・2,000・4,000…G。戦闘力は100からスタート。<br><b>① 冒険</b>：階級に応じた基本報酬をもらい、掲示板のクエストを1つ受ける（ルーレットで結果が決まる）。<br><b>② 買い物</b>：商店で合計2個まで買える（固定商品も含む・売却不可）。<br><b>③ 討伐</b>：自分の階級のボスに挑む。</p>
+  <h4>階級と基本報酬（1ラウンドごと）</h4><p>${ML_RN.map((n, i) => `${n}級 ${mlG(ML_D.BASE[i])}`).join(" ／ ")}</p>
+  <h4>ルーレット</h4><p>1〜10の出目。クエストの結果や、ボス討伐の成否を決める。魔道具で出目に+1などの補正や振り直しができる。</p>
+  <h4>クエスト</h4><p>掲示板には常に6枚。階級ごとに報酬が変わる。<b>ノーリスク</b>は確定、<b>ローリスク</b>は基本報酬の0.5〜1.7倍、<b>ハイリスク</b>は0〜3倍（失敗は0でマイナスはない）。戦闘力UP、戦闘力＋ゴールド、ゴールド、アイテム獲得、次ターン報酬UPの種類がある。</p>
+  <h4>討伐</h4><p>自分の階級のボスで、<b>戦闘力がボスの戦闘力以上</b>なら挑める。ボスの条件（基本は出目6以上、大魔王は8以上）をルーレットで満たせば討伐成功で階級が1つ上がる。<b>戦闘力がボスの1.5倍以上</b>なら挑戦なしで討伐。失敗しても次のターンまで再挑戦できないだけ。ボスは早い者勝ちで、各階級1体まで。弱点属性（火＜水＜雷＜風＜火）の武具を2個以上で出目+1、4個以上で+2。</p>
+  <p>報酬：ゴールドと、スライム級=胴、オーク級=武器の武具（そのボスの属性）、ワイバーン級=戦利品の宝玉（ゴールド換算額つき）。ドラゴン級になるとボスはいない。</p>
+  <h4>武具と属性</h4><p>武器・胴・頭・腰・籠手・脚の6か所に1つずつ。戦闘力は武器50・胴40・頭30・腰20・籠手15・脚10。<b>同じ属性の武具が2〜3個で戦闘力×1.5、4〜5個で×4、6個で×10</b>（属性ごとに掛け算）。無属性の武具はそれぞれ固有の効果を持つ。交換できるが、前の武具の戦闘力は引き継げない。</p>
+  <h4>魔道具</h4><p>戦闘力アップ、武具強化、報酬アップ、出目補正、振り直し、購入枠+1・クエスト枠+1などの永続効果。置ける数に上限はない。</p>
+  <h4>固定商品</h4><p>強化ポーション(低)：戦闘力+20（${mlG(ML_POT)}）。金運ポーション(低)：次のターン開始時、基本報酬1.1倍（${mlG(ML_GP)}）。</p>
+  <h4>商店</h4><p>ランダム商品は常に10個。誰かが買うとすぐ補充され、ラウンドの終わりにすべて山に戻してシャッフルされる。</p>`;
+}
+
 /* ======================= ここからロビー（ゲームの棚・戦績・設定） ======================= */
-const DEFAULT_STAGES = { hx: "dev", sz: "done", lm: "done", wd: "dev", gf: "dev" };
+const DEFAULT_STAGES = { hx: "dev", sz: "done", lm: "done", wd: "dev", gf: "dev", ml: "dev" };
 const stages = () => ({ ...DEFAULT_STAGES, ...(setting("stages") || {}) });
 const maxOf = (ids, val) => { const best = Math.max(...ids.map(val)); return ids.filter(p => val(p) === best); };
 const GAMES = [
@@ -10574,6 +11211,12 @@ GAMES.push({ id: "gf", name: "タイルゴルフ", en: "TILE GOLF", players: "1�
     start: () => openGfNew(), open: g => openGf(g.id),
     winners: g => (g.st && g.st.wins) || [],
     liveTx: g => `第${g.st.hi + 1}ホール` });
+GAMES.push({ id: "ml", name: "勇者ミリオン", en: "YUSHA MILLION", players: "2〜6人", time: "30〜45分",
+    desc: "冒険・買い物・討伐を繰り返す15ラウンド。クエストと武具・魔道具で戦闘力を育ててボスを倒し、階級を上げて一番ゴールドを稼いだ人の勝ち。同じ属性の武具をそろえると戦闘力が何倍にも。",
+    icon: () => ML_ICON, list: () => mlGames(), live: () => mlLive(), myTurn: g => mlMyTurn(g),
+    start: () => openMlNew(), open: g => openMl(g.id),
+    winners: g => (g.st && g.st.wins) || [],
+    liveTx: g => `第${Math.min(g.st.rd, ML_ROUNDS)}ラウンド` });
 const gameById = id => GAMES.find(x => x.id === id);
 const finished = gm => gm.list().filter(g => g.status === "finished");
 /* 人間が1人だけ（あとはCPU）の対戦＝「CPU戦」。メインの戦績には入れず、別枠で集計する */
@@ -10589,6 +11232,7 @@ const ART = {
 };
 
 ART.gf = `<svg viewBox="0 0 200 120" aria-hidden="true"><ellipse cx="110" cy="96" rx="70" ry="16" fill="#3FD67A" opacity=".5"/><path d="M118 96V24" stroke="#fff" stroke-width="3"/><path d="M118 24l34 12-34 12z" fill="#FF2E6A"/><circle cx="60" cy="88" r="7" fill="#fff"/></svg>`;
+ART.ml = `<svg viewBox="0 0 200 120" aria-hidden="true"><g fill="#FFC93C" stroke="#B8860B" stroke-width="3"><circle cx="70" cy="80" r="30"/><circle cx="125" cy="62" r="34"/><circle cx="160" cy="95" r="22"/></g><g fill="none" stroke="#7A5200" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M114 74V50l11 14 11-14v24"/></g></svg>`;
 function viewShelf(st){
   const S = stages(), list = GAMES.filter(gm => S[gm.id] === st);
   const dev = st === "dev";
@@ -10767,7 +11411,7 @@ $("#gearBtn").onclick = openSettings;
 $("#meBtn").onclick = () => sb ? openMe() : toast("先にSupabaseにつないでください");
 document.addEventListener("visibilitychange", async () => {
   if (document.hidden || !sb) return;
-  try { await loadAll(); if (!inGame()) render(); drawHx(); drawSz(); drawLm(); drawWd(); drawGf(); } catch (e) { console.error(e); }
+  try { await loadAll(); if (!inGame()) render(); drawHx(); drawSz(); drawLm(); drawWd(); drawGf(); drawMl(); } catch (e) { console.error(e); }
 });
 (async () => {
   render();
