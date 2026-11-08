@@ -3568,6 +3568,59 @@ img.wdta.im{display:block;object-fit:contain;-webkit-user-drag:none}
 .g3sub{position:absolute;left:0;right:0;top:calc(var(--safe-t) + 128px);z-index:2;text-align:center;font-size:14px;font-weight:700;color:#fff;text-shadow:0 2px 4px rgba(0,0,0,.8);pointer-events:none}
 .g3skip{position:absolute;right:12px;bottom:calc(var(--safe-b) + 14px);z-index:3;padding:6px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.35);background:rgba(0,0,0,.35);color:#fff;font-family:inherit;font-size:11px;font-weight:700;backdrop-filter:blur(4px)}
 
+/* ===== 3Dの世界（コース完成後） ===== */
+.gfmid.live{position:relative;padding:0;margin:0 -10px;align-items:stretch;justify-content:stretch}
+.g3live{position:absolute;inset:0;overflow:hidden;background:#0B1A10;border-top:1px solid rgba(255,230,160,.25);border-bottom:1px solid rgba(255,230,160,.25)}
+.g3lbox{position:absolute;inset:0;touch-action:none}
+.g3lbox canvas{position:absolute;inset:0;width:100%!important;height:100%!important;display:block}
+.g3lbox::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(130% 100% at 50% 40%,transparent 60%,rgba(0,0,0,.5))}
+.g3lcap{position:absolute;left:0;right:0;top:18%;z-index:2;text-align:center;pointer-events:none;opacity:0}
+.g3lcap.in{animation:g3hole 3.2s ease-out both}
+@keyframes g3hole{0%{opacity:0;transform:scale(1.6);filter:blur(6px)}12%{opacity:1;transform:scale(1);filter:none}75%{opacity:1}100%{opacity:0;transform:translateY(-10px)}}
+.g3lcap small{display:block;font-family:Cinzel,serif;font-weight:900;font-size:16px;letter-spacing:.4em;color:#FFE7A3;text-shadow:0 2px 6px rgba(0,0,0,.8)}
+.g3lcap b{display:block;font-size:28px;font-weight:900;background:linear-gradient(180deg,#FFF6C8,#FFD45A 50%,#C98A12);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 3px 0 rgba(0,0,0,.6)) drop-shadow(0 0 14px rgba(255,200,60,.5))}
+.g3hint{position:absolute;left:8px;bottom:6px;z-index:2;font-size:10px;font-weight:700;color:rgba(255,255,255,.75);text-shadow:0 1px 3px #000;pointer-events:none}
+/* 右上の小さな地図 */
+.gfmini{position:absolute;top:8px;right:8px;z-index:3;padding:4px;border-radius:12px;background:rgba(4,16,9,.6);backdrop-filter:blur(6px);box-shadow:0 0 0 1px rgba(255,230,160,.45),0 6px 16px rgba(0,0,0,.5)}
+.gfmini .gfboard{--cs:13px!important;gap:1px;padding:2px;border-radius:7px;box-shadow:0 0 0 1.5px #5A3A1E}
+.gfmini .gfboard::before{display:none}
+.gfmini .gfc{border-radius:2px;box-shadow:none}
+.gfmini .gfc .tree,.gfmini .gfflag .fl,.gfmini .gfc.t-w::before,.gfmini .gfc.t-w::after{animation:none}
+.gfmini .gfc.t-w::before,.gfmini .gfc.t-w::after,.gfmini .gfc.tee.on::before,.gfmini .gfc.tee.on::after{display:none}
+.gfmini .gfc .cup svg{width:100%;height:100%}
+.gfmini .gfc.tee .s{display:none}
+.gfmini .gfball{width:7px;height:7px;border-width:1.5px}
+.gfmini .gfball.dir::before,.gfmini .gfball.dir::after{display:none}
+.gfmini .gfc .chipb{display:none}
+.gfmini .gfc.sel{outline-width:2px;box-shadow:none}
+/* メニュー：CPUの速さ */
+.gfspd{display:flex;flex-direction:column;gap:6px;padding:4px 0}
+.gfspd small{font-size:12px;opacity:.75}
+.gfspd>div{display:flex;flex-wrap:wrap;gap:6px}
+.gfspd button{flex:1 1 auto;padding:8px 10px;border-radius:10px;border:1px solid rgba(127,127,127,.35);background:rgba(127,127,127,.1);color:inherit;font-family:inherit;font-size:12px;font-weight:700}
+.gfspd button.on{border-color:#3FD67A;background:rgba(63,214,122,.2);color:#3FD67A}
+/* ===== パー・スコア表示（実際のゴルフ） ===== */
+.gfttl small .par{font-weight:900;color:#FFE7A3;margin:0 2px}
+.gfsc em .tp{font-style:normal;margin-left:4px;font-weight:900;color:#FFE7A3}
+.gfpar{font-family:Cinzel,serif;font-weight:900;letter-spacing:.2em;color:#FFE7A3;margin-top:-6px}
+.gfsn{font-style:normal;font-weight:900;font-size:12px;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.gfsn.ace{background:linear-gradient(90deg,#FFE36A,#FF6AD5);color:#2A0A20}
+.gfsn.eagle{background:#FFB800;color:#2A1A00}
+.gfsn.birdie{background:#FF4A6A;color:#fff}
+.gfsn.par{background:rgba(255,255,255,.15);color:#fff}
+.gfsn.bogey{background:#3F7FD6;color:#fff}
+.gfsn.dbl{background:#1F3F7A;color:#CFE0FF}
+.gfcardt th,.gfcardt td{text-align:center}
+.gfcardt tr.parr td{font-weight:900;color:#C99A1A;background:rgba(255,227,106,.08)}
+.gfcardt .sc{display:inline-grid;place-items:center;min-width:24px;height:24px;font-weight:900}
+.gfcardt .sc.birdie{border:2px solid #FF4A6A;border-radius:50%}
+.gfcardt .sc.eagle,.gfcardt .sc.ace{border:2px solid #FFB800;border-radius:50%;box-shadow:0 0 0 2px rgba(255,184,0,.4)}
+.gfcardt .sc.bogey{border:2px solid #3F7FD6}
+.gfcardt .sc.dbl{border:2px double #1F3F7A;border-width:4px}
+.g3flash{position:absolute;inset:0;z-index:1;background:#fff;opacity:0;pointer-events:none}
+.g3flash.on{animation:g3cut .35s ease-out}
+@keyframes g3cut{0%{opacity:.85}100%{opacity:0}}
+
 </style>
 </head>
 <body>
@@ -3601,7 +3654,7 @@ img.wdta.im{display:block;object-fit:contain;-webkit-user-drag:none}
    ============================================================ */
 const CFG_URL = "https://gcuddhongxvojabweclh.supabase.co";
 const CFG_KEY = "sb_publishable_E6PxQDZpmdfb6kjRPte3qw_goaYjKZB";
-const APP_VER = "v119";
+const APP_VER = "v121";
 
 const lsGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
 const lsSet = (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} };
@@ -10116,8 +10169,36 @@ function gfPrep(st){
 }
 /* 置く人がいるのに表のタイルが無いとき（同点で2人以上が置く等）だけ、山から1枚出す */
 function gfRevFill(st){ if (st.place && st.place.q.length && !st.revRow.filter(z => z != null).length && st.revPool.length) st.revRow.push(st.revPool.shift()); }
+/* ---------- パー（実際のゴルフのように、ホールごとの基準打数） ----------
+   スタートからグリーン上のカップの隣まで最短で何打で行けるか ＋ 2（パットと余裕）。3〜6 */
+function gfPar(c0){
+  if (!c0 || !c0.t) return 4;
+  if (c0.par) return c0.par;
+  const c = { ...c0, t: c0.t.replace(/e/g, "f") };
+  const goal = (x, y) => Math.abs(x - c.cup[0]) + Math.abs(y - c.cup[1]) <= 1 && gfTile(c, x, y) === "g";
+  let fr = [{ x: c.sx, y: -1 }], seen = new Set([c.sx + ",-1"]), d = 1;
+  for (; d < 9; d++){
+    const nx = []; let hit = false;
+    for (const b of fr) for (const k of ["dr", "ir", "wd", "pt"]) for (const dd of (b.y < 0 ? [0] : [0, 1, 2, 3])) for (const o of gfTargetsAt(c, b, k, dd)){
+      if (!o.ok) continue; const t = gfTile(c, o.x, o.y); if (t === "w") continue;
+      if (goal(o.x, o.y)){ hit = true; break; }
+      const key = o.x + "," + o.y; if (!seen.has(key)){ seen.add(key); nx.push({ x: o.x, y: o.y }); }
+    }
+    if (hit) break; fr = nx; if (!fr.length) break;
+  }
+  return Math.max(3, Math.min(6, d + 2));
+}
+const gfParTot = (st, n) => st.holes.slice(0, n).reduce((a, h) => a + gfPar(h), 0);
+const gfToPar = v => v === 0 ? "E" : (v > 0 ? "+" : "") + v;
+/* 打数の呼び名（実際のゴルフ） */
+function gfScoreName(s, par){
+  if (s === 1) return { n: "ホールインワン！", c: "ace" };
+  const d = s - par;
+  return d <= -3 ? { n: "アルバトロス！", c: "ace" } : d === -2 ? { n: "イーグル！", c: "eagle" } : d === -1 ? { n: "バーディー！", c: "birdie" } : d === 0 ? { n: "パー", c: "par" } : d === 1 ? { n: "ボギー", c: "bogey" } : d === 2 ? { n: "ダブルボギー", c: "dbl" } : d === 3 ? { n: "トリプルボギー", c: "dbl" } : { n: `+${d}`, c: "dbl" };
+}
 function gfStartHole(st){
   const c = gfHole(st);
+  c.par = gfPar(c);
   st.order.forEach(p => { st.ball[p] = { x: c.sx, y: -1, s: 0, done: 0, on: 0 }; });
   const r = st.hi % st.order.length;            // ホールごとに1番手が交代
   st.turn = { pid: st.order[r] };
@@ -10316,7 +10397,16 @@ CPU_AI.gf_games = g => {
   const st = g.st; if (!st || !st.gf || g.status !== "playing") return null;
   const p = gfActor(st); if (!isCpu(p)) return null;
   const mv = gfCpuStep(st, p);
-  return { wait: Math.max(1300, gfAnimUntil - Date.now() + 500), run: async () => { while (gfPlaying && gfId === g.id) await gfWait(400); return gfDo(g.id, p, mv); } };   // 演出（ホール終了の画面など）を見ているあいだは待つ
+  return { wait: Math.max(150, 1300 * gfSpdF()), run: async () => {
+    while (gfPlaying && gfId === g.id) await gfWait(400);
+    // CPUの操作も見えるように：向きを決めて → 狙うマスを見せてから打つ
+    if (mv[0] === "shot" && gfId === g.id){
+      const f = gfSpdF();
+      gfRemote[g.id] = { gid: g.id, p, n: st.n, dir: mv[4] || 0, sel: true, aim: null }; drawGf(); await new Promise(r => setTimeout(r, 650 * f));
+      gfRemote[g.id] = { gid: g.id, p, n: st.n, dir: mv[4] || 0, sel: true, aim: { x: mv[2], y: mv[3] } }; drawGf(); await new Promise(r => setTimeout(r, 900 * f));
+    }
+    return gfDo(g.id, p, mv);
+  } };   // 演出（ホール終了の画面など）を見ているあいだは待つ
 };
 
 /* ======================= 絵 ======================= */
@@ -10375,8 +10465,8 @@ function gfChan(){
 }
 function gfSendAim(g, force){
   const st = g && g.st; if (!st || !st.gf || g.status !== "playing" || gfActor(st) !== me || st.build || st.place) return;
-  const club = gfSel === -1 ? "pt" : gfSel != null ? st.hand[me][gfSel] : null;
-  const d = { gid: g.id, p: me, n: st.n, dir: gfDir, club, aim: gfAim };
+  // 手札がバレないように、クラブの種類は送らない（向き・カードを選んだか・狙ったマスだけ）
+  const d = { gid: g.id, p: me, n: st.n, dir: gfDir, sel: gfSel != null, aim: gfAim };
   const key = JSON.stringify(d); if (!force && key === gfSentKey) return; gfSentKey = key;
   const ch = gfChan(); if (ch) try { ch.send({ type: "broadcast", event: "aim", payload: d }); } catch (e) {}
 }
@@ -10406,15 +10496,15 @@ function gfRender(g, anim){
   // 自分の番：自分のボールに打つ向きの三角
   if (mine && !st.build && !st.place && b && !gfAdj(st, me)) balls.forEach(z => { if (z.p === me) z.dir = atTee ? 0 : gfDir; });
   // ほかの人の番：その人が選んでいる向き（届いていなければ前向き）と狙っているマス
-  let rAim = null, rClub = null;
+  let rAim = null, rClub = null, rSel = false, rDir = 0;
   if (!anim && !mine && cur && cur !== me && g.status === "playing" && !st.build && !st.place && st.ball[cur] && !gfAdj(st, cur)){
     const r = gfRemote[g.id], ok = r && r.p === cur && r.n === st.n, bb = st.ball[cur];
     balls.forEach(z => { if (z.p === cur) z.dir = bb.y < 0 ? 0 : ok ? r.dir : 0; });
-    if (ok){ rAim = r.aim; rClub = r.club; }
+    if (ok){ rAim = r.aim; rClub = "__remote"; rSel = !!r.sel; rDir = r.dir || 0; }
   }
-  if (rClub && GF_CLUB[rClub]) tg = gfTargets(st, cur, rClub, (gfRemote[g.id] || {}).dir || 0).map(o => ({ ...o, remote: 1 }));
+  // ほかの人の番：狙える範囲（＝クラブ）は見せない。狙ったマスと向きだけ
   const tot = p => st.sc[p].reduce((a, v) => a + v, 0);
-  const sbd = st.order.map(p => { const bb = st.ball[p]; return `<div class="gfsc ${p === cur ? "cur" : ""} ${bb.done ? "done" : ""}" style="--pc:${pcolor(p)}"><i class="dot"></i><b>${esc(pname(p))}</b><span>${ending ? st.sc[p][hv] : bb.s}<small>打</small></span><em>計${tot(p) + (st.status === "playing" ? 0 : 0)}</em>${ending ? `<i class="ok">IN</i>` : st.build ? "" : st.place ? (st.place.q.includes(p) ? `<i class="ok">タイル</i>` : "") : bb.done ? `<i class="ok">${bb.cap ? "上限" : "IN"}</i>` : bb.on ? `<i class="gr">ON</i>` : ""}</div>`; }).join("");
+  const sbd = st.order.map(p => { const bb = st.ball[p]; return `<div class="gfsc ${p === cur ? "cur" : ""} ${bb.done ? "done" : ""}" style="--pc:${pcolor(p)}"><i class="dot"></i><b>${esc(pname(p))}</b><span>${ending ? st.sc[p][hv] : bb.s}<small>打</small></span><em>計${tot(p)}<i class="tp">${st.sc[p].length ? gfToPar(tot(p) - gfParTot(st, st.sc[p].length)) : ""}</i></em>${ending ? `<i class="ok">IN</i>` : st.build ? "" : st.place ? (st.place.q.includes(p) ? `<i class="ok">タイル</i>` : "") : bb.done ? `<i class="ok">${bb.cap ? "上限" : "IN"}</i>` : bb.on ? `<i class="gr">ON</i>` : ""}</div>`; }).join("");
   let act = "", pv = null;
   if (ending) act = "";
   else if (st.build){
@@ -10437,7 +10527,7 @@ function gfRender(g, anim){
       : `<div class="gfmsg">${esc(pname(cur))}が逆転タイルを置いています…（ここまでの合計でビリ）</div>`;
   }
   else if (g.status === "finished") act = `<div class="gfmsg">ゲーム終了</div>`;
-  else if (!mine) act = `<div class="gfmsg">${cur ? `${esc(pname(cur))}の番です${rClub && GF_CLUB[rClub] ? `：<b>${GF_CLUB[rClub].n}</b>・${GF_DIRN[(gfRemote[g.id] || {}).dir || 0]}向きで${rAim ? "狙いを決めた" : "考え中…"}` : ""}` : ""}</div>`;
+  else if (!mine) act = `<div class="gfmsg">${cur ? `${esc(pname(cur))}の番です${rClub ? `：${GF_DIRN[rDir]}向き・${rAim ? "<b>狙いを決めた！</b>" : rSel ? "クラブを選んで狙い中…" : "クラブを選んでいる…"}` : "（考え中…）"}` : ""}</div>`;
   else if (gfAdj(st, me)) act = `<div class="gfmsg">グリーンの上・カップの隣：パット（成功カード1枚で入る・成功7割）</div><button class="btn gfgo" id="gfPutt">パット ⛳</button>`;
   else if (gfDiag(st, me) && gfSel == null) act = `<div class="gfmsg">${gfCupD(st, me).on ? "カップの斜め隣" : "グリーンの外からパターで"}：ロングパット（成功カード2枚で入る）か、クラブ・パターで寄せる</div><button class="btn gfgo" id="gfLPutt">ロングパット 🎯</button>`;
   else if (!gfCanAny(st, me)) act = `<div class="gfmsg">どのクラブでも打てるマスがありません</div><button class="btn gfgo" id="gfPass">1打罰で手札を入れ替える</button>`;
@@ -10446,16 +10536,20 @@ function gfRender(g, anim){
     const dirs = atTee ? "" : `<div class="gfdir"><small>打つ向き</small>${[3, 0, 1, 2].map(d => `<button class="${gfDir === d ? "on" : ""}" data-dir="${d}">${"↑→↓←"[d]}<small>${GF_DIRN[d]}</small></button>`).join("")}</div>`;
     act = dirs + `<div class="gfmsg">${gfSel == null ? "クラブを1枚選ぶ" : !t2 ? "黄色のマスをタップ（濃い黄色は木を1本越えられる）" : t2.chip ? `カップを狙う：チップインチャレンジ（${gfChipN(t2.k)}枚すべて成功で入る）` : "狙うマスを決めた。ショット！"}</div>${t2 ? `<button class="btn gfgo" id="gfShot">${t2.chip ? "チップインに挑戦" : "ショット！"}</button>` : ""}`;
   }
+  const live = gf3dLiveWanted(g) && !ending && !!window.THREE && !GF3D.fail;
   const hand = (st.hand[me] || []).map((k, i) => gfCard(k, `${mine && gfSel === i ? "on" : ""} ${mine && !gfAdj(st, me) ? "" : "dim"}`, `data-hc="${i}"`, mine ? gfDir : 0)).join("") + gfCard("pt", `pt ${mine && gfSel === -1 ? "on" : ""} ${mine && !gfAdj(st, me) ? "" : "dim"}`, `data-hc="-1"`, mine ? gfDir : 0);
   root.innerHTML = `<div class="gfwrap">
-    <div class="gftop"><button class="gfbk" id="gfBack">‹</button><div class="gfttl"><b>TILE GOLF</b><small>第${hv + 1}/${st.holes.length}ホール「${esc(c.name)}」</small></div><button class="gfbk" id="gfMenu">⋯</button></div>
+    <div class="gftop"><button class="gfbk" id="gfBack">‹</button><div class="gfttl"><b>TILE GOLF</b><small>第${hv + 1}/${st.holes.length}ホール <b class="par">PAR ${gfPar(c)}</b>「${esc(c.name)}」</small></div><button class="gfbk" id="gfMenu">⋯</button></div>
     <div class="gfscs">${sbd}</div>
     ${st.revRow && st.revRow.length && (!st.place || ending) ? `<div class="gfrow"><small>逆転タイル</small>${st.revRow.map(id => id == null ? "" : gfRevTile(GF_REVSET[id], "mini")).join("")}</div>` : ""}
-    <div class="gfmid ${rClub ? "remote" : ""}">${gfBoardH(c, { tg, sel: rClub ? rAim : gfAim, balls: ending ? (st.last.from ? [{ p: st.last.p, x: st.last.from.x, y: st.last.from.y }] : []) : st.place || st.build ? [] : balls, pv, hl: anim && st.last && st.last.kind === "place" ? st.last : null, hl1: anim && st.last && st.last.kind === "build" ? st.last : null })}</div>
+    <div class="gfmid ${rClub ? "remote" : ""} ${live ? "live" : ""}">${live ? `<div class="g3live"></div><div class="gfmini">` : ""}${gfBoardH(c, { tg, sel: rClub ? rAim : gfAim, balls: ending ? (st.last.from ? [{ p: st.last.p, x: st.last.from.x, y: st.last.from.y }] : []) : st.place || st.build ? [] : balls, pv, hl: anim && st.last && st.last.kind === "place" ? st.last : null, hl1: anim && st.last && st.last.kind === "build" ? st.last : null })}${live ? `</div>` : ""}</div>
     <div class="gfbot">${act}${mine && !st.build && !st.place && b && !b.done && gfCanAny(st, me) ? `<button class="gfpassb ${gfPassArm ? "arm" : ""}" id="gfPass2">${gfPassArm ? "もう一度押すと入れ替え（＋1打）" : "🔄 1打罰で手札を入れ替える"}</button>` : ""}<div class="gfhand ${st.order.includes(me) && !ending ? "" : "hid"} ${st.place || st.build ? "sm" : ""}">${st.place || st.build ? `<small class="gfhl2">クラブの手札</small>` : ""}${hand}</div></div>
     <div class="gffx" id="gfFx"></div></div>`;
   root.onclick = e => gfTap(g, e);
   if (mine) gfSendAim(g);
+  // 3Dの世界（コース完成後）
+  if (live) gf3dLive(g, { tg, sel: rClub ? rAim : gfAim, balls, cur, remote: !!rClub, showDir: !!cur && !gfAdj(st, cur) && !(st.ball[cur] && st.ball[cur].y < 0 && false), dir: mine ? gfDir : rClub ? rDir : 0 });
+  else if (gf3dLiveWanted(g) && !ending && !window.THREE && !GF3D.fail) gf3dLoad().then(T => { if (T && gfId === g.id && !gfPlaying) drawGf(); });
 }
 function gfTap(g, e){
   const t = e.target, st = g.st;
@@ -10496,7 +10590,12 @@ function gfTap(g, e){
 }
 
 /* ---------- 演出 ---------- */
-const gfWait = ms => new Promise(r => setTimeout(r, ms));
+/* CPUの速さ（端末ごとに記憶）：CPUの手番の待ち時間と演出の速さを変える */
+const GF_SPDS = [{ n: "ゆっくり", f: 1.6 }, { n: "ふつう", f: 1 }, { n: "はやい", f: .55 }, { n: "とても速い", f: .3 }, { n: "爆速", f: .12 }];
+let gfSpdI = (() => { try { const v = +localStorage.getItem("gfspd"); return v >= 0 && v < 5 && localStorage.getItem("gfspd") != null ? v : 2; } catch (e) { return 2; } })();
+const gfSpdF = () => GF_SPDS[gfSpdI].f;
+let gfWaitF = 1;                                       // いま再生中の演出の倍率（CPUの手番だけ速くする）
+const gfWait = ms => new Promise(r => setTimeout(r, ms * gfWaitF));
 function gfCellEl(x, y){ return document.querySelector(`#gfg .gfboard [data-gx="${x}"][data-gy="${y}"]`); }
 function gfCenter(el){ const r = el.getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 }; }
 /* ---------- 派手な演出のための道具 ---------- */
@@ -10566,6 +10665,7 @@ async function gfFlipCards(fx, cards){
 }
 async function gfPlay(g, L){
   gfPlaying = true; gfAnimUntil = Date.now() + 9000;
+  gfWaitF = isCpu(L.p) ? gfSpdF() : 1; GF3D.spd = gfWaitF;   // CPUの手番は選んだ速さで
   const fx = $("#gfFx"), ballEl = document.querySelector(`#gfg [data-gb="${L.p}"]`);
   const show = async (html, ms, cls = "") => { fx.innerHTML = `<div class="gfshow ${cls}">${/win|rays/.test(cls) ? `<i class="gfrays"></i>` : ""}${html}</div>`; await gfWait(ms); };
   const c = g.st.holes[L.holeEnd ? L.holeEnd - 1 : g.st.hi];
@@ -10652,19 +10752,20 @@ async function gfPlay(g, L){
       document.querySelectorAll("#gfg .gfboard .gfball").forEach(e => e.remove());   // カップインしたボールは盤面から消す
       await gfWait(600);
       const st = g.st, h = L.holeEnd - 1, tot = p => st.sc[p].reduce((a, v) => a + v, 0);
-      const rows = st.order.slice().sort((a, b) => st.sc[a][h] - st.sc[b][h]).map(p => `<tr><td><i class="dot" style="--pc:${pcolor(p)}"></i>${esc(pname(p))}</td><td><b>${st.sc[p][h]}</b>打</td><td>計${tot(p)}</td></tr>`).join("");
+      const rows = st.order.slice().sort((a, b) => st.sc[a][h] - st.sc[b][h]).map(p => { const sn = gfScoreName(st.sc[p][h], gfPar(st.holes[h])); return `<tr><td><i class="dot" style="--pc:${pcolor(p)}"></i>${esc(pname(p))}</td><td><b>${st.sc[p][h]}</b>打</td><td><em class="gfsn ${sn.c}">${sn.n}</em></td><td>${gfToPar(tot(p) - gfParTot(st, st.sc[p].length))}</td></tr>`; }).join("");
       const rev = st.place ? `<p class="rv">逆転タイル：<b>${st.place.q.map(p => esc(pname(p))).join("・")}</b>が次のホールに2×2のタイルを置く</p>` : "";
       if (st.status === "playing"){
         gfFlash("#fff", .35); if (typeof lmConfetti === "function") try { lmConfetti(); } catch (e) {}
-        fx.innerHTML = `<div class="gfshow gfhe rays"><i class="gfrays"></i><b class="big">HOLE ${L.holeEnd} 終了</b><table>${rows}</table>${rev}<button class="btn gfgo" id="gfNextH">第${L.holeEnd + 1}ホールへ ▶</button></div>`;
+        fx.innerHTML = `<div class="gfshow gfhe rays"><i class="gfrays"></i><b class="big">HOLE ${L.holeEnd} 終了</b><small class="gfpar">PAR ${gfPar(st.holes[h])}</small><table>${rows}</table>${rev}<button class="btn gfgo" id="gfNextH">第${L.holeEnd + 1}ホールへ ▶</button></div>`;
         await new Promise(r => { const bt = fx.querySelector("#gfNextH"); bt.onclick = e => { e.stopPropagation(); r(); }; });
       } else { gfFlash("#fff", .35); await show(`<b class="big">HOLE ${L.holeEnd} 終了</b><table>${rows}</table>`, 2400, "gfhe rays"); }
     }
   } catch (e) { console.error(e); }
-  fx.innerHTML = ""; gfPlaying = false; gfAnimUntil = 0;
+  fx.innerHTML = ""; gfPlaying = false; gfAnimUntil = 0; gfWaitF = 1; GF3D.spd = 1;
   drawGf();
 }
 function gfFlyBall(L, from, to, dur, arc, label){
+  dur = dur * gfWaitF;
   const a = gfCellEl(from.x, from.y), b = gfCellEl(to.x, to.y), fx = $("#gfFx"); if (!a || !b || !fx) return gfWait(dur);
   const p0 = gfCenter(a), p1 = gfCenter(b);
   const real = document.querySelectorAll(`#gfg [data-gb="${L.p}"]`); real.forEach(r => r.style.visibility = "hidden");
@@ -10683,7 +10784,8 @@ function gfFlyBall(L, from, to, dur, arc, label){
 }
 function gfMenu(g){
   const mine = (g.players || []).includes(me);
-  const s = openSheet(GF_TITLE, `<div class="btns col"><button class="btn sub" id="gf3dB">3D演出：${GF3D.on ? "ON" : "OFF"}</button><button class="btn sub" data-grule="gf">ルールを見る</button><button class="btn sub" id="gfLogB">ログを見る</button>${mine && g.status === "playing" ? `<button class="btn danger" id="gfAbort">この対戦をやめる</button>` : ""}</div>`);
+  const s = openSheet(GF_TITLE, `<div class="btns col"><button class="btn sub" id="gf3dB">3D演出：${GF3D.on ? "ON" : "OFF"}</button><div class="gfspd"><small>CPUの速さ</small><div>${GF_SPDS.map((z, i) => `<button type="button" class="${i === gfSpdI ? "on" : ""}" data-spd="${i}">${z.n}</button>`).join("")}</div></div><button class="btn sub" data-grule="gf">ルールを見る</button><button class="btn sub" id="gfLogB">ログを見る</button>${mine && g.status === "playing" ? `<button class="btn danger" id="gfAbort">この対戦をやめる</button>` : ""}</div>`);
+  s.querySelectorAll("[data-spd]").forEach(b => b.onclick = () => { gfSpdI = +b.dataset.spd; try { localStorage.setItem("gfspd", gfSpdI); } catch (e) {} s.querySelectorAll("[data-spd]").forEach(x => x.classList.toggle("on", x === b)); toast(`CPUの速さ：${GF_SPDS[gfSpdI].n}`); });
   s.querySelector("#gf3dB").onclick = e => { gf3dSetOn(!GF3D.on); e.target.textContent = `3D演出：${GF3D.on ? "ON" : "OFF"}`; if (GF3D.on) gf3dLoad(); toast(GF3D.on ? "3D演出をONにしました" : "3D演出をOFFにしました（2Dの演出になります）"); };
   s.querySelector("#gfLogB").onclick = () => openSheet("ログ", `<div class="wdlog">${(g.log || []).slice().reverse().map(l => `<p>${colorizeLog(g.players, l.m)}</p>`).join("")}</div>`);
   const ab = s.querySelector("#gfAbort"); if (ab) ab.onclick = async () => { if (!confirm("この対戦をやめますか？")) return; const { error } = await sb.from("gf_games").update({ status: "aborted" }).eq("id", g.id); if (error) return fail(error, "中止"); await loadTable("gf_games"); closeSheet(); closeGf(); };
@@ -10724,7 +10826,7 @@ function gfEndShow(g){
   const st = g.st; if (gfEndSeen[g.id]) return; gfEndSeen[g.id] = 1;
   { const writer = g.created_by || st.order.filter(p => !isCpu(p)).sort()[0]; if (writer === me) gfUpdateBests(g); }   // 書き込むのは1人だけ（対戦を作った人）
   const tot = p => st.sc[p].reduce((a, v) => a + v, 0), rk = st.order.slice().sort((a, b) => tot(a) - tot(b));
-  const s = openSheet("結果", `<div class="gfend"><h2>${(st.wins || []).includes(me) ? "VICTORY" : "GAME SET"}</h2><table><tr><th></th>${st.holes.map((h, i) => `<th>H${i + 1}</th>`).join("")}<th>計</th></tr>${rk.map(p => `<tr class="${(st.wins || []).includes(p) ? "win" : ""}"><td style="color:${pcolor(p)}">${esc(pname(p))}</td>${st.sc[p].map(v => `<td>${v}</td>`).join("")}<td><b>${tot(p)}</b></td></tr>`).join("")}</table><h3 class="gfsvh3">今回のホール</h3><p class="note">気に入ったホールは保存すると、次から「作ってあるコース」で選べます</p><div class="gfsvrow">${st.holes.map((c, i) => { const best = Math.min(...st.order.map(p => st.sc[p][i])); return `<div class="gfsvc"><b class="hn">H${i + 1}</b>${gfBoardH(c, { cls: "mini" })}<b class="nm">${esc(c.shape || c.name)}</b><small>ベスト ${best}打</small><button type="button" class="btn ghost" data-svh="${i}" ${gfSaved[g.id + ":" + i] ? "disabled" : ""}>${gfSaved[g.id + ":" + i] ? "✓ 保存済み" : "💾 保存"}</button></div>`; }).join("")}</div></div><div class="btns"><button class="btn" id="gfAgain">もう一度</button></div>`);
+  const s = openSheet("結果", `<div class="gfend"><h2>${(st.wins || []).includes(me) ? "VICTORY" : "GAME SET"}</h2><table class="gfcardt"><tr><th>HOLE</th>${st.holes.map((h, i) => `<th>${i + 1}</th>`).join("")}<th>計</th></tr><tr class="parr"><td>PAR</td>${st.holes.map(h => `<td>${gfPar(h)}</td>`).join("")}<td>${gfParTot(st, st.holes.length)}</td></tr>${rk.map(p => `<tr class="${(st.wins || []).includes(p) ? "win" : ""}"><td style="color:${pcolor(p)}">${esc(pname(p))}</td>${st.sc[p].map((v, i) => `<td><span class="sc ${gfScoreName(v, gfPar(st.holes[i])).c}">${v}</span></td>`).join("")}<td><b>${tot(p)}</b><small> ${gfToPar(tot(p) - gfParTot(st, st.sc[p].length))}</small></td></tr>`).join("")}</table><h3 class="gfsvh3">今回のホール</h3><p class="note">気に入ったホールは保存すると、次から「作ってあるコース」で選べます</p><div class="gfsvrow">${st.holes.map((c, i) => { const best = Math.min(...st.order.map(p => st.sc[p][i])); return `<div class="gfsvc"><b class="hn">H${i + 1}</b>${gfBoardH(c, { cls: "mini" })}<b class="nm">${esc(c.shape || c.name)}</b><small>ベスト ${best}打</small><button type="button" class="btn ghost" data-svh="${i}" ${gfSaved[g.id + ":" + i] ? "disabled" : ""}>${gfSaved[g.id + ":" + i] ? "✓ 保存済み" : "💾 保存"}</button></div>`; }).join("")}</div></div><div class="btns"><button class="btn" id="gfAgain">もう一度</button></div>`);
   s.querySelectorAll("[data-svh]").forEach(b => b.onclick = () => gfSaveHole(g, +b.dataset.svh, b));
   s.querySelector("#gfAgain").onclick = () => { closeSheet(); closeGf(); openGfNew(); };
 }
@@ -10890,26 +10992,37 @@ function gf3dTex(T, w, h, draw, rep){
 const gf3dNoise = (g, w, h, n, cols, r0, r1) => { for (let i = 0; i < n; i++){ g.fillStyle = cols[i % cols.length]; g.beginPath(); g.arc(Math.random() * w, Math.random() * h, r0 + Math.random() * (r1 - r0), 0, 7); g.fill(); } };
 function gf3dMats(T){
   const M = {};
-  const std = (o) => new T.MeshStandardMaterial(Object.assign({ roughness: .9, metalness: 0 }, o));
-  M.fair = [0, 1].map(k => std({ map: gf3dTex(T, 128, 128, (g, w, h) => { for (let i = 0; i < 4; i++){ g.fillStyle = i % 2 ? "#4FBF5E" : "#3FA851"; if (k) g.fillRect(0, i * h / 4, w, h / 4); else g.fillRect(i * w / 4, 0, w / 4, h); } gf3dNoise(g, w, h, 300, ["rgba(255,255,255,.06)", "rgba(0,0,0,.06)"], .5, 1.4); }) }));
-  M.rough = std({ map: gf3dTex(T, 128, 128, (g, w, h) => { g.fillStyle = "#2B7434"; g.fillRect(0, 0, w, h); g.lineCap = "round"; for (let i = 0; i < 420; i++){ const x = Math.random() * w, y = Math.random() * h; g.strokeStyle = ["#5DB65A", "#1E5A26", "#3E9446", "#79CC6A"][i % 4]; g.lineWidth = 1.6; g.beginPath(); g.moveTo(x, y); g.lineTo(x + (Math.random() - .5) * 4, y - 4 - Math.random() * 6); g.stroke(); } }) });
-  M.green = std({ roughness: .55, map: gf3dTex(T, 128, 128, (g, w, h) => { const gr = g.createRadialGradient(w * .4, h * .35, 4, w / 2, h / 2, w * .8); gr.addColorStop(0, "#A8FFB2"); gr.addColorStop(1, "#5ED472"); g.fillStyle = gr; g.fillRect(0, 0, w, h); gf3dNoise(g, w, h, 200, ["rgba(255,255,255,.05)", "rgba(0,60,0,.05)"], .4, 1); }) });
-  M.sand = std({ map: gf3dTex(T, 128, 128, (g, w, h) => { g.fillStyle = "#EFD49A"; g.fillRect(0, 0, w, h); g.strokeStyle = "rgba(160,120,60,.25)"; g.lineWidth = 1.2; for (let y = 4; y < h; y += 7){ g.beginPath(); for (let x = 0; x <= w; x += 8) g.lineTo(x, y + Math.sin(x / 9) * 2); g.stroke(); } gf3dNoise(g, w, h, 500, ["#C9A462", "#FFF6D8", "#D9B878"], .4, 1.1); }) });
-  M.waterTex = gf3dTex(T, 128, 128, (g, w, h) => { const gr = g.createLinearGradient(0, 0, w, h); gr.addColorStop(0, "#5FC4FF"); gr.addColorStop(1, "#1A62C8"); g.fillStyle = gr; g.fillRect(0, 0, w, h); g.strokeStyle = "rgba(255,255,255,.35)"; g.lineWidth = 1.5; for (let i = 0; i < 26; i++){ const x = Math.random() * w, y = Math.random() * h; g.beginPath(); g.arc(x, y, 3 + Math.random() * 8, Math.PI * 1.1, Math.PI * 1.9); g.stroke(); } }, [1, 1]);
-  M.water = new T.MeshStandardMaterial({ map: M.waterTex, roughness: .15, metalness: .2, transparent: true, opacity: .92, emissive: new T.Color("#0A3A8A"), emissiveIntensity: .35 });
-  M.soil = std({ color: "#5A3A22" });
-  M.dark = std({ color: "#1B4A24" });
-  M.ground = std({ map: gf3dTex(T, 256, 256, (g, w, h) => { g.fillStyle = "#1F5A28"; g.fillRect(0, 0, w, h); gf3dNoise(g, w, h, 1400, ["#2A6E32", "#17481F", "#347A3A"], .8, 2.5); }, [30, 30]) });
-  M.trunk = std({ color: "#6B4223" });
-  M.leaf = ["#1F7A30", "#2E9A40", "#45B552"].map(c => std({ color: c, flatShading: true, roughness: .8 }));
-  M.tee = std({ color: "#3FA851" });
-  M.ball = new T.MeshStandardMaterial({ color: "#ffffff", roughness: .35, metalness: .05, emissive: new T.Color("#222"), emissiveIntensity: .2 });
+  const std = (o) => new T.MeshStandardMaterial(Object.assign({ roughness: .95, metalness: 0 }, o));
+  const grass = (g, w, h, base, n, cols) => { g.fillStyle = base; g.fillRect(0, 0, w, h); for (let i = 0; i < n; i++){ g.fillStyle = cols[i % cols.length]; g.fillRect(Math.random() * w, Math.random() * h, 1 + Math.random() * 1.5, 1 + Math.random() * 2.5); } };
+  // フェアウェイ：芝刈りの縞（明るい列と暗い列）
+  M.fair = ["#6AB446", "#5AA13C"].map(b => std({ map: gf3dTex(T, 128, 128, (g, w, h) => grass(g, w, h, b, 2200, ["rgba(255,255,220,.10)", "rgba(0,40,0,.10)", "rgba(120,170,60,.25)"])) }));
+  // ラフ：長い芝
+  M.rough = std({ map: gf3dTex(T, 128, 128, (g, w, h) => { grass(g, w, h, "#3E7A2C", 1600, ["rgba(0,30,0,.25)", "rgba(140,190,90,.18)"]); g.lineCap = "round"; for (let i = 0; i < 500; i++){ const x = Math.random() * w, y = Math.random() * h; g.strokeStyle = ["#5E9A3A", "#2C5E20", "#4C8A30"][i % 3]; g.lineWidth = 1.2; g.beginPath(); g.moveTo(x, y); g.lineTo(x + (Math.random() - .5) * 3, y - 3 - Math.random() * 5); g.stroke(); } }) });
+  // グリーン：短く刈った明るい芝
+  M.green = std({ roughness: .7, map: gf3dTex(T, 128, 128, (g, w, h) => grass(g, w, h, "#7CC85A", 3000, ["rgba(255,255,220,.07)", "rgba(0,50,0,.07)"])) });
+  M.collar = std({ map: gf3dTex(T, 64, 64, (g, w, h) => grass(g, w, h, "#6DBC4C", 800, ["rgba(255,255,220,.08)", "rgba(0,50,0,.08)"])) });
+  // バンカー：白っぽい砂とレーキ跡
+  M.sand = std({ map: gf3dTex(T, 128, 128, (g, w, h) => { g.fillStyle = "#E9D7A8"; g.fillRect(0, 0, w, h); g.strokeStyle = "rgba(170,140,90,.22)"; g.lineWidth = 1; for (let y = 3; y < h; y += 5){ g.beginPath(); for (let x = 0; x <= w; x += 6) g.lineTo(x, y + Math.sin(x / 11 + y) * 1.5); g.stroke(); } gf3dNoise(g, w, h, 900, ["#D2BB86", "#FFF7E2", "#C9AE78"], .3, .9); }) });
+  // 池：深い青緑と光の反射
+  M.waterTex = gf3dTex(T, 128, 128, (g, w, h) => { g.fillStyle = "#2E6E86"; g.fillRect(0, 0, w, h); for (let i = 0; i < 60; i++){ g.strokeStyle = `rgba(255,255,255,${.06 + Math.random() * .12})`; g.lineWidth = 1; const x = Math.random() * w, y = Math.random() * h, r = 6 + Math.random() * 14; g.beginPath(); g.ellipse(x, y, r, r * .35, 0, Math.PI * 1.15, Math.PI * 1.85); g.stroke(); } }, [2, 2]);
+  M.water = new T.MeshStandardMaterial({ map: M.waterTex, roughness: .06, metalness: .35, transparent: true, opacity: .93, emissive: new T.Color("#0C2A3A"), emissiveIntensity: .3 });
+  M.mud = std({ color: "#5E5034" });
+  M.soil = std({ color: "#6A5236" });
+  M.dark = std({ map: gf3dTex(T, 64, 64, (g, w, h) => grass(g, w, h, "#3A6E2A", 600, ["rgba(0,30,0,.3)", "rgba(120,170,80,.2)"])) });
+  M.ground = std({ map: gf3dTex(T, 256, 256, (g, w, h) => grass(g, w, h, "#4A8232", 9000, ["rgba(0,30,0,.18)", "rgba(150,190,90,.14)", "rgba(60,100,30,.3)"]), [60, 60]) });
+  M.trunk = std({ color: "#5A4030", roughness: 1 });
+  M.leaf = ["#2F6A26", "#3C7E2E", "#4A8E34", "#2A5A24"].map(c => std({ color: c, flatShading: true, roughness: .85 }));
+  M.pine = ["#1F4A26", "#24562C", "#2C6232"].map(c => std({ color: c, flatShading: true, roughness: .85 }));
+  M.tee = std({ map: gf3dTex(T, 64, 64, (g, w, h) => grass(g, w, h, "#76BE52", 700, ["rgba(255,255,220,.08)", "rgba(0,50,0,.08)"])) });
+  M.ball = new T.MeshStandardMaterial({ color: "#ffffff", roughness: .3, metalness: 0, emissive: new T.Color("#ffffff"), emissiveIntensity: .12 });
   M.pole = std({ color: "#F4F4F4", roughness: .3 });
-  M.flag = new T.MeshStandardMaterial({ color: "#FF2E6A", side: T.DoubleSide, roughness: .6, emissive: new T.Color("#FF2E6A"), emissiveIntensity: .25 });
-  M.hole = new T.MeshBasicMaterial({ color: "#020805" });
+  M.flag = new T.MeshStandardMaterial({ color: "#FFD21E", side: T.DoubleSide, roughness: .7, emissive: new T.Color("#FFB800"), emissiveIntensity: .12 });
+  M.hole = new T.MeshBasicMaterial({ color: "#050505" });
   M.glow = gf3dTex(T, 64, 64, (g, w, h) => { const gr = g.createRadialGradient(w / 2, h / 2, 0, w / 2, h / 2, w / 2); gr.addColorStop(0, "rgba(255,255,255,1)"); gr.addColorStop(.25, "rgba(255,255,255,.7)"); gr.addColorStop(1, "rgba(255,255,255,0)"); g.fillStyle = gr; g.fillRect(0, 0, w, h); });
   M.beam = gf3dTex(T, 8, 128, (g, w, h) => { const gr = g.createLinearGradient(0, 0, 0, h); gr.addColorStop(0, "rgba(255,240,160,0)"); gr.addColorStop(.55, "rgba(255,220,120,.35)"); gr.addColorStop(.92, "rgba(255,240,190,.8)"); gr.addColorStop(1, "rgba(255,240,190,0)"); g.fillStyle = gr; g.fillRect(0, 0, w, h); });
-  M.sky = gf3dTex(T, 4, 256, (g, w, h) => { const gr = g.createLinearGradient(0, 0, 0, h); gr.addColorStop(0, "#141A44"); gr.addColorStop(.42, "#5A3A78"); gr.addColorStop(.68, "#E2735A"); gr.addColorStop(.82, "#FFC27A"); gr.addColorStop(1, "#FFE2A8"); g.fillStyle = gr; g.fillRect(0, 0, w, h); });
+  // 昼の青空
+  M.sky = gf3dTex(T, 4, 256, (g, w, h) => { const gr = g.createLinearGradient(0, 0, 0, h); gr.addColorStop(0, "#2F6FC8"); gr.addColorStop(.45, "#6FA8E6"); gr.addColorStop(.72, "#B8D8F2"); gr.addColorStop(1, "#E4EEF4"); g.fillStyle = gr; g.fillRect(0, 0, w, h); });
+  M.cloud = gf3dTex(T, 128, 64, (g, w, h) => { for (let i = 0; i < 14; i++){ const x = 20 + Math.random() * (w - 40), y = 26 + Math.random() * 16, r = 10 + Math.random() * 16; const gr = g.createRadialGradient(x, y, 0, x, y, r); gr.addColorStop(0, "rgba(255,255,255,.9)"); gr.addColorStop(1, "rgba(255,255,255,0)"); g.fillStyle = gr; g.beginPath(); g.arc(x, y, r, 0, 7); g.fill(); } });
   return M;
 }
 
@@ -10918,7 +11031,7 @@ function gf3dInit(){
   if (GF3D.r) return GF3D.r;
   const T = window.THREE, host = document.getElementById("gfg");
   const wrap = document.createElement("div"); wrap.className = "g3d"; wrap.hidden = true;
-  wrap.innerHTML = `<div class="g3cap"></div><button class="g3skip" type="button">タップでスキップ ≫</button>`;
+  wrap.innerHTML = `<div class="g3cap"></div><div class="g3flash"></div><button class="g3skip" type="button">タップでスキップ ≫</button>`;
   host.appendChild(wrap);
   let renderer;
   try { renderer = new T.WebGLRenderer({ antialias: true, powerPreference: "high-performance" }); }
@@ -10929,29 +11042,34 @@ function gf3dInit(){
   renderer.toneMapping = T.NoToneMapping;
   wrap.prepend(renderer.domElement);
   const scene = new T.Scene(), M = gf3dMats(T);
-  scene.background = M.sky; scene.fog = new T.Fog("#D98A6A", 14, 46);
-  const cam = new T.PerspectiveCamera(52, 1, .05, 200);
-  scene.add(new T.HemisphereLight("#FFE8D0", "#20502C", .55));
-  const sun = new T.DirectionalLight("#FFD39A", 1.05); sun.position.set(-8, 12, -14); sun.castShadow = true;
+  scene.background = M.sky; scene.fog = new T.Fog("#D4E6F1", 16, 62);
+  const cam = new T.PerspectiveCamera(48, 1, .03, 220);
+  scene.add(new T.HemisphereLight("#CFE6FF", "#4A6A2E", .7));
+  const sun = new T.DirectionalLight("#FFF3DC", 1.15); sun.position.set(-7, 16, -9); sun.castShadow = true;
   sun.shadow.mapSize.set(1024, 1024); Object.assign(sun.shadow.camera, { left: -10, right: 10, top: 10, bottom: -10, near: 1, far: 60 }); sun.shadow.bias = -.0008;
   scene.add(sun, sun.target);
-  const rim = new T.DirectionalLight("#9AB8FF", .45); rim.position.set(8, 5, 10); scene.add(rim);
-  // 太陽の光（空に浮かぶ大きな光）
-  const sunGlow = new T.Sprite(new T.SpriteMaterial({ map: M.glow, color: "#FFD08A", transparent: true, blending: T.AdditiveBlending, depthWrite: false, fog: false }));
-  sunGlow.scale.set(26, 26, 1); scene.add(sunGlow);
-  // 地面（コースの外）
-  const ground = new T.Mesh(new T.PlaneGeometry(160, 160), M.ground); ground.rotation.x = -Math.PI / 2; ground.position.y = -.32; ground.receiveShadow = true; scene.add(ground);
+  const rim = new T.DirectionalLight("#BFD8FF", .25); rim.position.set(8, 5, 10); scene.add(rim);
+  // 太陽
+  const sunGlow = new T.Sprite(new T.SpriteMaterial({ map: M.glow, color: "#FFF6DA", transparent: true, blending: T.AdditiveBlending, depthWrite: false, fog: false }));
+  sunGlow.scale.set(18, 18, 1); scene.add(sunGlow);
+  // 雲
+  for (let i = 0; i < 16; i++){ const cl = new T.Sprite(new T.SpriteMaterial({ map: M.cloud, transparent: true, opacity: .55 + Math.random() * .35, depthWrite: false, fog: false })); const a = Math.random() * Math.PI * 2, r = 55 + Math.random() * 40; cl.position.set(Math.cos(a) * r, 14 + Math.random() * 14, Math.sin(a) * r); cl.scale.set(30 + Math.random() * 30, 12 + Math.random() * 8, 1); scene.add(cl); }
+  // 地面（コースの外はラフ。ゆるやかな起伏）
+  const gg = new T.PlaneGeometry(200, 200, 80, 80), ga = gg.attributes.position;
+  for (let i = 0; i < ga.count; i++){ const x = ga.getX(i), y = ga.getY(i), d = Math.max(0, Math.hypot(x * .9, y * .55) - 7); ga.setZ(i, d > 0 ? (Math.sin(x * .21) * Math.cos(y * .17) * .9 + Math.sin(x * .07 + y * .05) * 1.6) * Math.min(1, d / 10) : 0); }
+  gg.computeVertexNormals();
+  const ground = new T.Mesh(gg, M.ground); ground.rotation.x = -Math.PI / 2; ground.position.y = -.012; ground.receiveShadow = true; scene.add(ground);
   const course = new T.Group(); scene.add(course);
   const fxg = new T.Group(); scene.add(fxg);
   // ボール（自分の）と、ほかの人のボール
-  const ball = new T.Mesh(new T.SphereGeometry(.07, 28, 20), M.ball); ball.castShadow = true; scene.add(ball);
-  const ballRing = new T.Mesh(new T.RingGeometry(.12, .16, 32), new T.MeshBasicMaterial({ color: "#fff", transparent: true, opacity: .8, depthWrite: false }));
+  const ball = new T.Mesh(new T.SphereGeometry(.05, 28, 20), M.ball); ball.castShadow = true; scene.add(ball);
+  const ballRing = new T.Mesh(new T.RingGeometry(.08, .1, 32), new T.MeshBasicMaterial({ color: "#fff", transparent: true, opacity: .8, depthWrite: false }));
   ballRing.rotation.x = -Math.PI / 2; scene.add(ballRing);
   const others = new T.Group(); scene.add(others);
   // 軌跡
-  const TRN = 60, trailPos = new Float32Array(TRN * 3), trailCol = new Float32Array(TRN * 3);
+  const TRN = 110, trailPos = new Float32Array(TRN * 3), trailCol = new Float32Array(TRN * 3);
   const trailGeo = new T.BufferGeometry(); trailGeo.setAttribute("position", new T.BufferAttribute(trailPos, 3)); trailGeo.setAttribute("color", new T.BufferAttribute(trailCol, 3));
-  const trail = new T.Points(trailGeo, new T.PointsMaterial({ size: .16, map: M.glow, vertexColors: true, transparent: true, blending: T.AdditiveBlending, depthWrite: false }));
+  const trail = new T.Points(trailGeo, new T.PointsMaterial({ size: .07, map: M.glow, vertexColors: true, transparent: true, blending: T.AdditiveBlending, depthWrite: false }));
   trail.frustumCulled = false; scene.add(trail);
   const R = GF3D.r = { T, wrap, renderer, scene, cam, sun, sunGlow, M, course, fxg, ball, ballRing, others, trail, trailPos, trailCol, TRN, hist: [], parts: [], flags: [], waters: [], key: "", shake: 0, t0: 0 };
   const resize = () => { const w = host.clientWidth || innerWidth, h = host.clientHeight || innerHeight; renderer.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix(); };
@@ -10961,14 +11079,18 @@ function gf3dInit(){
 }
 
 /* ---------- コースを3Dにする ---------- */
-const gf3dTop = t => t === "b" ? -.07 : t === "w" ? -.14 : t === "g" ? .015 : t === "r" ? .02 : 0;
+const gf3dTop = t => t === "b" ? -.06 : t === "w" ? -.07 : t === "g" ? .012 : t === "r" ? .01 : t === "tee" ? .05 : 0;
 function gf3dPos(c, x, y){ const W = gfW(c), H = gfH(c); return { x: x - (W - 1) / 2, z: -(y - (H - 1) / 2) }; }
-function gf3dTree(R, s = 1){
-  const T = R.T, g = new T.Group();
-  const tr = new T.Mesh(new T.CylinderGeometry(.045 * s, .07 * s, .42 * s, 7), R.M.trunk); tr.position.y = .21 * s; tr.castShadow = true; g.add(tr);
-  [[0, .55, 0, .3], [-.13, .45, .06, .22], [.13, .47, -.05, .23], [.02, .74, .02, .2]].forEach(([x, y, z, r], i) => {
-    const m = new T.Mesh(new T.IcosahedronGeometry(r * s, 1), R.M.leaf[i % 3]); m.position.set(x * s, y * s, z * s); m.castShadow = true; g.add(m);
-  });
+function gf3dTree(R, s = 1, kind){
+  const T = R.T, g = new T.Group(); kind = kind || (Math.random() < .45 ? "pine" : "oak"); g.userData.s = s;
+  if (kind === "pine"){
+    const tr = new T.Mesh(new T.CylinderGeometry(.035 * s, .06 * s, .6 * s, 6), R.M.trunk); tr.position.y = .3 * s; tr.castShadow = true; g.add(tr);
+    [[.42, .5, .55], [.34, .45, .85], [.25, .4, 1.12], [.15, .32, 1.36]].forEach(([r, h, y], i) => { const m = new T.Mesh(new T.ConeGeometry(r * s, h * s, 8), R.M.pine[i % 3]); m.position.y = y * s; m.castShadow = true; g.add(m); });
+  } else {
+    const tr = new T.Mesh(new T.CylinderGeometry(.04 * s, .07 * s, .7 * s, 7), R.M.trunk); tr.position.y = .35 * s; tr.castShadow = true; g.add(tr);
+    for (let i = 0; i < 7; i++){ const a = i / 7 * Math.PI * 2, rr = i ? .22 : 0, r = (i ? .2 + Math.random() * .08 : .3) * s;
+      const m = new T.Mesh(new T.IcosahedronGeometry(r, 1), R.M.leaf[(i + (Math.random() * 4 | 0)) % 4]); m.position.set(Math.cos(a) * rr * s, (.85 + (i ? Math.random() * .25 : .15)) * s, Math.sin(a) * rr * s); m.scale.y = .85; m.castShadow = true; g.add(m); }
+  }
   return g;
 }
 function gf3dBuild(R, c, st, mover){
@@ -10976,38 +11098,50 @@ function gf3dBuild(R, c, st, mover){
   if (R.key !== key){
     R.key = key;
     while (R.course.children.length) R.course.remove(R.course.children[0]);
-    R.flags = []; R.waters = []; R.trees = [];
-    const W = gfW(c), H = gfH(c), box = new T.BoxGeometry(.98, .3, .98), top = new T.PlaneGeometry(.98, .98);
+    R.flags = []; R.waters = []; R.trees = []; R.tops = [];
+    const W = gfW(c), H = gfH(c), top = new T.PlaneGeometry(1, 1);
+    // くぼみ（バンカー・池）：まわりは0、中ほど深い
+    const bowl = (depth) => { const gq = new T.PlaneGeometry(1, 1, 14, 14), a = gq.attributes.position; for (let i = 0; i < a.count; i++){ const x = a.getX(i) * 2, y = a.getY(i) * 2, r = Math.max(Math.abs(x), Math.abs(y)), k = Math.max(0, 1 - Math.pow(r, 3)); a.setZ(i, -depth * k); } gq.computeVertexNormals(); return gq; };
+    const bunkerG = bowl(.08), pondG = bowl(.1);
     for (let y = -1; y < H; y++) for (let x = 0; x < W; x++){
       const t = y < 0 ? (x === c.sx ? "tee" : null) : gfTile(c, x, y); if (!t) continue;
-      const p = gf3dPos(c, x, y), h = y < 0 ? .02 : gf3dTop(t);
-      const base = new T.Mesh(box, R.M.soil); base.position.set(p.x, h - .15 - .005, p.z); base.receiveShadow = true; R.course.add(base);
-      const mat = t === "f" ? R.M.fair[(x + y) % 2] : t === "r" ? R.M.rough : t === "g" ? R.M.green : t === "b" ? R.M.sand : t === "w" ? R.M.water : t === "t" ? R.M.dark : t === "tee" ? R.M.tee : R.M.fair[0];
-      const tp = new T.Mesh(top, mat); tp.rotation.x = -Math.PI / 2; tp.position.set(p.x, h, p.z); tp.receiveShadow = true; R.course.add(tp);
-      if (t === "w") R.waters.push(tp);
-      if (t === "t"){ const tr = gf3dTree(R, 1 + Math.random() * .15); tr.position.set(p.x, h, p.z); tr.rotation.y = Math.random() * 6; R.course.add(tr); R.trees.push(tr); }
-      if (t === "tee") [-.32, .32].forEach(dx => { const m = new T.Mesh(new T.SphereGeometry(.05, 12, 8), new T.MeshStandardMaterial({ color: "#FF4A6A", emissive: new T.Color("#FF2E4A"), emissiveIntensity: .4 })); m.position.set(p.x + dx, h + .05, p.z - .3); R.course.add(m); });
+      const p = gf3dPos(c, x, y);
+      let tp;
+      if (t === "b"){ tp = new T.Mesh(bunkerG, R.M.sand); }
+      else if (t === "w"){ tp = new T.Mesh(pondG, R.M.mud); const wv = new T.Mesh(top, R.M.water); wv.rotation.x = -Math.PI / 2; wv.position.set(p.x, -.035, p.z); wv.scale.set(.86, .86, 1); R.course.add(wv); R.waters.push(wv); }
+      else if (t === "tee"){ const bx = new T.Mesh(new T.BoxGeometry(.9, .05, .9), R.M.soil); bx.position.set(p.x, .025, p.z); bx.receiveShadow = true; R.course.add(bx); tp = new T.Mesh(new T.PlaneGeometry(.9, .9), R.M.tee); }
+      else tp = new T.Mesh(top, t === "f" ? R.M.fair[(y + 100) % 2] : t === "r" ? R.M.rough : t === "g" ? R.M.green : t === "t" ? R.M.dark : R.M.fair[0]);
+      tp.rotation.x = -Math.PI / 2; tp.position.set(p.x, t === "tee" ? .051 : t === "g" ? .012 : t === "r" ? .006 : 0, p.z); tp.receiveShadow = true; tp.userData = { gx: x, gy: y }; R.course.add(tp); R.tops.push(tp);
+      // グリーンのまわりのカラー（少し長い芝のふち）
+      if (t === "g") [[1, 0], [-1, 0], [0, 1], [0, -1]].forEach(([dx, dy]) => { if (gfTile(c, x + dx, y + dy) === "g") return; const e = new T.Mesh(new T.PlaneGeometry(dx ? .08 : 1, dy ? .08 : 1), R.M.collar); e.rotation.x = -Math.PI / 2; e.position.set(p.x + dx * .46, .013, p.z - dy * .46); R.course.add(e); });
+      // ラフの草むら
+      if (t === "r") for (let i = 0; i < 9; i++){ const m = new T.Mesh(new T.ConeGeometry(.025, .09 + Math.random() * .06, 4), R.M.leaf[i % 4]); m.position.set(p.x + (Math.random() - .5) * .9, .04, p.z + (Math.random() - .5) * .9); R.course.add(m); }
+      if (t === "t"){ const tr = gf3dTree(R, 1.1 + Math.random() * .25); tr.position.set(p.x, 0, p.z); tr.rotation.y = Math.random() * 6; R.course.add(tr); R.trees.push(tr); }
+      if (t === "tee") [-.3, .3].forEach(dx => { const m = new T.Mesh(new T.SphereGeometry(.035, 12, 8), new T.MeshStandardMaterial({ color: "#2E6BE0", roughness: .3 })); m.position.set(p.x + dx, .085, p.z - .28); m.castShadow = true; R.course.add(m); });
     }
-    // カップと旗
-    const cp = gf3dPos(c, c.cup[0], c.cup[1]), ch = gf3dTop("g");
-    const hole = new T.Mesh(new T.CircleGeometry(.11, 32), R.M.hole); hole.rotation.x = -Math.PI / 2; hole.position.set(cp.x, ch + .003, cp.z); R.course.add(hole);
-    const rimM = new T.Mesh(new T.RingGeometry(.11, .13, 32), new T.MeshBasicMaterial({ color: "#E8FFE8" })); rimM.rotation.x = -Math.PI / 2; rimM.position.set(cp.x, ch + .004, cp.z); R.course.add(rimM);
-    const pole = new T.Mesh(new T.CylinderGeometry(.012, .012, 1.1, 8), R.M.pole); pole.position.set(cp.x, ch + .55, cp.z); pole.castShadow = true; R.course.add(pole);
-    const fg = new T.PlaneGeometry(.42, .26, 10, 4); fg.translate(.21, 0, 0);
-    const flag = new T.Mesh(fg, R.M.flag); flag.position.set(cp.x + .012, ch + .96, cp.z); flag.castShadow = true; R.course.add(flag);
+    // カップと旗（白いカップの縁・白いピン・黄色い旗）
+    const cp = gf3dPos(c, c.cup[0], c.cup[1]), ch = .012;
+    const hole = new T.Mesh(new T.CircleGeometry(.065, 32), R.M.hole); hole.rotation.x = -Math.PI / 2; hole.position.set(cp.x, ch + .002, cp.z); R.course.add(hole);
+    const rimM = new T.Mesh(new T.RingGeometry(.065, .075, 32), new T.MeshBasicMaterial({ color: "#F4F4F4" })); rimM.rotation.x = -Math.PI / 2; rimM.position.set(cp.x, ch + .003, cp.z); R.course.add(rimM);
+    const pole = new T.Mesh(new T.CylinderGeometry(.01, .01, 1.35, 8), R.M.pole); pole.position.set(cp.x, ch + .675, cp.z); pole.castShadow = true; R.course.add(pole);
+    const fg = new T.PlaneGeometry(.36, .22, 10, 4); fg.translate(.18, 0, 0);
+    const flag = new T.Mesh(fg, R.M.flag); flag.position.set(cp.x + .01, ch + 1.22, cp.z); flag.castShadow = true; R.course.add(flag);
     flag.userData.base = fg.attributes.position.array.slice(); R.flags.push(flag);
-    // まわりの木（雰囲気）
-    for (let i = 0; i < 46; i++){
-      const side = i % 2 ? 1 : -1, x = side * (W / 2 + 1 + Math.random() * 6), z = (Math.random() - .5) * (H + 14);
-      const tr = gf3dTree(R, 1.4 + Math.random() * 1.2); tr.position.set(x, -.32, z); tr.rotation.y = Math.random() * 6; R.course.add(tr); R.trees.push(tr);
+    // まわりの森（両側に並木、奥に林）
+    for (let i = 0; i < 90; i++){
+      const side = i % 2 ? 1 : -1, x = side * (W / 2 + .9 + Math.pow(Math.random(), 1.6) * 9), z = (Math.random() - .5) * (H + 20);
+      const tr = gf3dTree(R, 1.1 + Math.random() * 1.1); tr.position.set(x, 0, z); tr.rotation.y = Math.random() * 6; R.course.add(tr); R.trees.push(tr);
     }
-    for (let i = 0; i < 10; i++){ const tr = gf3dTree(R, 1.6 + Math.random()); tr.position.set((Math.random() - .5) * (W + 10), -.32, -(H / 2 + 2 + Math.random() * 6)); R.course.add(tr); }
-    R.sunGlow.position.set(-14, 9, -(H / 2 + 34));
+    for (let i = 0; i < 26; i++){ const tr = gf3dTree(R, 1.3 + Math.random() * 1.2); tr.position.set((Math.random() - .5) * (W + 16), 0, -(H / 2 + 2.5 + Math.random() * 9)); R.course.add(tr); R.trees.push(tr); }
+    // コースの外の「x」マス（土台の形のすき間）もラフ扱いで見た目をつなぐ
+    R.sunGlow.position.set(-26, 26, -(H / 2 + 50));
+    R.sun.target.position.set(0, 0, 0);
   }
   // ほかの人のボール
+  if (mover === null) return;
   while (R.others.children.length) R.others.remove(R.others.children[0]);
-  (st.order || []).forEach(p => { if (p === mover) return; const b = st.ball[p]; if (!b || b.done) return; const t = b.y < 0 ? "tee" : gfTile(c, b.x, b.y); const q = gf3dPos(c, b.x, b.y), h = b.y < 0 ? .02 : gf3dTop(t);
-    const m = new T.Mesh(new T.SphereGeometry(.07, 16, 12), new T.MeshStandardMaterial({ color: "#fff", emissive: new T.Color(pcolor(p)), emissiveIntensity: .35, roughness: .4 })); m.position.set(q.x + .18, h + .07, q.z + .12); m.castShadow = true; R.others.add(m); });
+  (st.order || []).forEach(p => { if (p === mover) return; const b = st.ball[p]; if (!b || b.done) return; const t = b.y < 0 ? "tee" : gfTile(c, b.x, b.y); const q = gf3dPos(c, b.x, b.y), h = gf3dTop(t) * (t === "b" || t === "w" ? .7 : 1);
+    const m = new T.Mesh(new T.SphereGeometry(.05, 16, 12), new T.MeshStandardMaterial({ color: "#fff", emissive: new T.Color(pcolor(p)), emissiveIntensity: .35, roughness: .4 })); m.position.set(q.x + .15, h + .05, q.z + .1); m.castShadow = true; R.others.add(m); });
 }
 
 /* ---------- 粒（パーティクル） ---------- */
@@ -11054,6 +11188,17 @@ function gf3dUpdateFx(R, dt, now){
   if (R.M.waterTex){ R.M.waterTex.offset.x = (now * .03) % 1; R.M.waterTex.offset.y = (now * .02) % 1; }
 }
 
+/* カメラとボールの間・カメラのすぐそばにある木は消す（ボールが隠れないように） */
+function gf3dOcclude(R, tgt){
+  const cx = R.cam.position.x, cz = R.cam.position.z, tx = tgt.x, tz = tgt.z, vx = tx - cx, vz = tz - cz, L2 = vx * vx + vz * vz || 1;
+  (R.trees || []).forEach(tr => {
+    const px = tr.position.x, pz = tr.position.z, r = .55 * tr.scale.x * (tr.userData.s || 1);
+    const k = Math.max(0, Math.min(1, ((px - cx) * vx + (pz - cz) * vz) / L2)), qx = cx + vx * k - px, qz = cz + vz * k - pz;
+    const nearCam = (px - cx) ** 2 + (pz - cz) ** 2 < (1.2 + r) ** 2, onLine = qx * qx + qz * qz < (r + .25) ** 2 && k < .97;
+    const atBall = (px - tx) ** 2 + (pz - tz) ** 2 < .2;
+    tr.visible = !(nearCam || onLine || atBall);
+  });
+}
 /* ---------- 再生のしくみ ---------- */
 const gf3dEase = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 function gf3dCap(R, txt, sub, cls = ""){ const c = R.wrap.querySelector(".g3cap"); c.className = "g3cap " + cls; c.innerHTML = txt || sub ? `${txt ? `<span class="m">${txt}</span>` : ""}${sub ? `<small>${sub}</small>` : ""}` : ""; if (txt || sub){ c.classList.remove("in"); void c.offsetWidth; c.classList.add("in"); } }
@@ -11064,7 +11209,7 @@ function gf3dRun(R, steps){
     const loop = now => {
       if (R.wrap.hidden) return res();
       let dt = Math.min(.05, (now - last) / 1000); last = now;
-      const sp = GF3D.skip ? 5 : (R.slow || 1); const sdt = dt * sp;
+      const sp = (GF3D.skip ? 5 : (R.slow || 1)) / (GF3D.spd || 1); const sdt = dt * sp;
       const s = steps[i];
       if (s){
         if (!started){ started = true; s.on && s.on(); }
@@ -11074,8 +11219,7 @@ function gf3dRun(R, steps){
       gf3dUpdateFx(R, sdt, now / 1000);
       // 揺れ
       if (R.shake > 0){ R.cam.position.x += (Math.random() - .5) * R.shake; R.cam.position.y += (Math.random() - .5) * R.shake; R.shake *= .88; if (R.shake < .002) R.shake = 0; }
-      // カメラのすぐ前の木は消す（ボールが見えなくならないように）
-      (R.trees || []).forEach(tr => { const dx = tr.position.x - R.cam.position.x, dz = tr.position.z - R.cam.position.z; const bx = tr.position.x - R.ball.position.x, bz = tr.position.z - R.ball.position.z; tr.visible = dx * dx + dz * dz > 1.3 * tr.scale.x && bx * bx + bz * bz > .2; });
+      gf3dOcclude(R, R.ball.position);
       R.renderer.render(R.scene, R.cam);
       if (i >= steps.length && !R.parts.some(p => p.beam)) return res();
       requestAnimationFrame(loop);
@@ -11102,24 +11246,29 @@ async function gf3dPlay(g, L){
   const st = g.st, c = st.holes[L.holeEnd ? L.holeEnd - 1 : st.hi]; if (!c || !L.from || !L.to) return false;
   GF3D.busy = true; GF3D.skip = false; R.slow = 1; R.hist = [];
   try {
+    R.mode = "shot"; if (R.tgt) R.tgt.visible = false; if (R.arrow) R.arrow.visible = false; if (R.aimMark) R.aimMark.visible = false; R.ballRing.visible = true;
+    R.wrap.prepend(R.renderer.domElement);
     gf3dBuild(R, c, st, L.p);
     R.wrap.hidden = false; R.wrap.classList.remove("out"); R.resize();
     const T = R.T, col = pcolor(L.p);
-    const P = (q) => { if (!q) return null; const t = q.y < 0 ? "tee" : gfTile(c, q.x, q.y); const p = gf3dPos(c, q.x, q.y); return gf3dV(R, p.x, (q.y < 0 ? .02 : gf3dTop(t)) + .085, p.z); };
+    const P = (q) => { if (!q) return null; const t = q.y < 0 ? "tee" : gfTile(c, q.x, q.y); const p = gf3dPos(c, q.x, q.y); return gf3dV(R, p.x, gf3dTop(t) * (t === "b" || t === "w" ? .7 : 1) + .05, p.z); };
     const from = P(L.from), aim = P(L.aim || L.to), to = P(L.to), cupP = (() => { const p = gf3dPos(c, c.cup[0], c.cup[1]); return gf3dV(R, p.x, gf3dTop("g"), p.z); })();
     const dirV = new T.Vector3().subVectors(aim, from); dirV.y = 0; if (dirV.lengthSq() < 1e-4) dirV.set(0, 0, -1); dirV.normalize();
     const side = new T.Vector3(-dirV.z, 0, dirV.x);
-    const putt = L.kind === "putt" || L.kind === "lputt", dist = from.distanceTo(aim), arcH = putt ? 0 : .5 + dist * .42;
+    const putt = L.kind === "putt" || L.kind === "lputt", dist = from.distanceTo(aim);
+    // 打ち上げの高さ：ウェッジは高く、ドライバーは低く長く
+    const arcH = putt ? 0 : L.club === "wd" ? .9 + dist * .55 : L.club === "ir" ? .7 + dist * .42 : L.club === "dr" ? .6 + dist * .34 : .5 + dist * .4;
     const holed = (L.res === "cupin" || L.res === "chipin") && !L.dchip;   // 風でカップのマスへ行ったときは、このあと2Dでカードをめくる
-    R.ball.position.copy(from); R.ball.visible = true; R.ballRing.material.color.set(col); R.ballRing.position.set(from.x, from.y - .08, from.z);
+    R.ball.position.copy(from); R.ball.visible = true; R.ballRing.material.color.set(col); R.ballRing.position.set(from.x, from.y - .045, from.z);
     R.trail.visible = !putt;
     const camAt = (pos, look) => { R.cam.position.copy(pos); R.cam.lookAt(look); };
     const club = L.club ? GF_CLUB[L.club].n : putt ? (L.kind === "putt" ? "パット" : "ロングパット") : "";
     const steps = [];
     // 0) 構え：ボールの後ろから
     steps.push({ d: putt ? .7 : 1, on: () => gf3dCap(R, club ? `${esc(pname(L.p))}<b>${club}</b>` : "", L.kind === "shot" && L.ev && GF_EV[L.ev] ? `${GF_EV[L.ev].ic} ${GF_EV[L.ev].n}` : ""), f: k => {
-      const e = gf3dEase(k), back = putt ? 1.3 : 2.6 - e * .6, up = putt ? .55 : 1.5 - e * .3;
-      camAt(gf3dV(R, from.x - dirV.x * back + side.x * .35 * (1 - e), from.y + up, from.z - dirV.z * back + side.z * .35 * (1 - e)), gf3dV(R, from.x + dirV.x * 2, from.y + .2, from.z + dirV.z * 2));
+      // テレビ中継のように、ボールの真後ろの低い位置から
+      const e = gf3dEase(k), back = putt ? .9 : 1.25 - e * .2, up = putt ? .32 : .5 - e * .08;
+      camAt(gf3dV(R, from.x - dirV.x * back + side.x * .5 * (1 - e), from.y + up, from.z - dirV.z * back + side.z * .5 * (1 - e)), gf3dV(R, from.x + dirV.x * 4, from.y + .35, from.z + dirV.z * 4));
     } });
     // ダフり：その場で土が爆発
     if (L.res === "duff"){
@@ -11128,31 +11277,48 @@ async function gf3dPlay(g, L){
       // 1) インパクト
       steps.push({ d: .12, on: () => { gf3dRing(R, from, "#ffffff", 1, .5); if (!putt){ gf3dBurst(R, from, { n: 30, c: ["#9BE07A", "#ffffff"], sp: 1.4, up: .6, g: 4, size: .08, life: .7 }); R.shake = .05; } } });
       // 2) 飛行（カメラが追いかける）
-      const fly = (a, b, h, d, label) => steps.push({ d, on: () => label && gf3dCap(R, label, "", "wind"), f: k => {
-        const e = putt ? 1 - Math.pow(1 - k, 2.2) : k, p = new T.Vector3().lerpVectors(a, b, e); p.y += Math.sin(Math.PI * e) * h;
-        R.ball.position.copy(p); R.ball.rotation.x -= .3; R.ballRing.position.set(p.x, Math.min(a.y, b.y) - .08 + .003, p.z); R.ballRing.material.opacity = .8 - Math.min(.7, (p.y - Math.min(a.y, b.y)) * .6);
+      // 本物っぽい弾道：はじめ速く（空気抵抗で減速）、頂点は後半寄り、落ちるときは急
+      // カメラ：前半は打った人の後ろから見上げ、後半は落ちる場所の横にカット（中継風）
+      const fly = (a, b, h, d, label, cut) => { let lc = null; steps.push({ d, on: () => { label && gf3dCap(R, label, "", "wind"); lc = null; }, f: k => {
+        const e = putt ? 1 - Math.pow(1 - k, 2.2) : 1 - Math.pow(1 - k, 1.35), p = new T.Vector3().lerpVectors(a, b, e); p.y += h > 0 ? Math.sin(Math.PI * Math.pow(e, 1.3)) * h : 0;
+        R.ball.position.copy(p); R.ball.rotation.x -= .4; R.ballRing.position.set(p.x, Math.min(a.y, b.y) - .045 + .003, p.z); R.ballRing.material.opacity = .8 - Math.min(.75, (p.y - Math.min(a.y, b.y)) * .9);
         gf3dTrailPush(R, p, col);
-        const ce = gf3dEase(k), back = putt ? 1.1 : 2.1 - ce * .5, up = putt ? .5 : .9 + h * .35 * (1 - ce) + .3, sd = putt ? .2 : .9 * ce;
-        camAt(gf3dV(R, p.x - dirV.x * back + side.x * sd, Math.max(.35, p.y * .55 + up), p.z - dirV.z * back + side.z * sd), gf3dV(R, p.x + dirV.x * .9, p.y * .7 + .05, p.z + dirV.z * .9));
-      } });
-      const flightT = putt ? .55 + dist * .25 : .9 + dist * .18;
+        if (putt){ camAt(gf3dV(R, p.x - dirV.x * .9 + side.x * .15, p.y + .3, p.z - dirV.z * .9 + side.z * .15), gf3dV(R, p.x + dirV.x * .8, p.y, p.z + dirV.z * .8)); return; }
+        if (cut && k > .5){
+          if (!lc){ lc = gf3dV(R, b.x + side.x * 1.6 - dirV.x * .3, b.y + .55, b.z + side.z * 1.6 - dirV.z * .3); if (R.wrap) { const fl = R.wrap.querySelector(".g3flash"); if (fl){ fl.classList.remove("on"); void fl.offsetWidth; fl.classList.add("on"); } } }
+          lc.lerp(gf3dV(R, b.x + side.x * 1.3 - dirV.x * .2, b.y + .45, b.z + side.z * 1.3 - dirV.z * .2), .02);
+          camAt(lc, p);
+        } else {
+          const st0 = gf3dV(R, a.x - dirV.x * (1.05 + k * .6), a.y + .45 + k * .9, a.z - dirV.z * (1.05 + k * .6));
+          camAt(st0, gf3dV(R, p.x, p.y * .9, p.z));
+        }
+      } }); };
+      const flightT = putt ? .55 + dist * .25 : 1.25 + dist * .2;
       if (holed && (L.chip || putt || L.dchip == null && L.res === "cupin" && !(L.to.x !== (L.aim || L.to).x || L.to.y !== (L.aim || L.to).y))){
         // そのままカップへ：最後はスロー
-        fly(from, putt ? cupP.clone().setY(cupP.y + .085) : aim, arcH, flightT, "");
+        fly(from, putt ? cupP.clone().setY(cupP.y + .05) : aim, arcH, flightT, "", !putt);
       } else {
-        fly(from, aim, arcH, flightT, "");
-        if (L.to.x !== (L.aim || L.to).x || L.to.y !== (L.aim || L.to).y){
+        const drift = L.to.x !== (L.aim || L.to).x || L.to.y !== (L.aim || L.to).y;
+        const rolls = !putt && !drift && ["fair", "green", "rough"].includes(L.res);
+        if (rolls){
+          // 少し手前に落ちて、跳ねて、転がって止まる
+          const roll = L.res === "rough" ? .05 : L.res === "green" ? .1 : .16, c1 = new T.Vector3().lerpVectors(from, aim, 1 - roll), c2 = new T.Vector3().lerpVectors(from, aim, 1 - roll * .4);
+          fly(from, c1, arcH, flightT * (1 - roll * .6), "", true);
+          steps.push({ d: .3, on: () => { gf3dBurst(R, c1, { n: 14, c: L.res === "green" ? ["#B6FFC4", "#ffffff"] : ["#7DBA50", "#C8E8A0"], sp: .6, up: .8, size: .05, life: .5, normal: 1 }); }, f: k => { const p = new T.Vector3().lerpVectors(c1, c2, k); p.y += Math.sin(Math.PI * k) * .09; R.ball.position.copy(p); R.ballRing.position.set(p.x, c1.y - .045 + .003, p.z); gf3dTrailPush(R, p, col); } });
+          steps.push({ d: .45, f: k => { const e = 1 - Math.pow(1 - k, 2.4), p = new T.Vector3().lerpVectors(c2, aim, e); R.ball.position.copy(p); R.ball.rotation.x -= .25 * (1 - k); R.ballRing.position.set(p.x, aim.y - .045 + .003, p.z); } });
+        } else fly(from, aim, arcH, flightT, "", !putt);
+        if (drift){
           steps.push({ d: .25, on: () => { gf3dRing(R, aim, "#ffffff", .8, .4); gf3dBurst(R, aim, { n: 16, c: ["#ffffff", "#CFEFD9"], sp: .9, up: .5, size: .07, life: .5 }); } });
-          fly(aim, to, .28, .65, (GF_EV[L.ev] || {}).lb || "流された！");
+          fly(aim, to, .22, .7, (GF_EV[L.ev] || {}).lb || "流された！", false);
         }
       }
       // 3) 着地・結果
       const land = to.clone(), t = L.to.y < 0 ? "tee" : gfTile(c, L.to.x, L.to.y);
       if (holed){
         steps.push({ d: .9, on: () => { R.slow = .35; gf3dCap(R, "", ""); }, f: k => {
-          const p = new T.Vector3().lerpVectors(R.ball.position, cupP, Math.min(1, k * 2)); p.y = cupP.y + .085 - Math.max(0, (k - .45) / .55) * .35; R.ball.position.copy(p);
+          const p = new T.Vector3().lerpVectors(R.ball.position, cupP, Math.min(1, k * 2)); p.y = cupP.y + .05 - Math.max(0, (k - .45) / .55) * .2; R.ball.position.copy(p);
           R.ballRing.material.opacity = .3 * (1 - k);
-          const a = k * 1.2 + 2.2; camAt(gf3dV(R, cupP.x + Math.cos(a) * 1.35, cupP.y + .62 - k * .2, cupP.z + Math.sin(a) * 1.35), gf3dV(R, cupP.x, cupP.y + .1, cupP.z));
+          const a = k * 1.0 + 2.2; camAt(gf3dV(R, cupP.x + Math.cos(a) * .85, cupP.y + .28 - k * .1, cupP.z + Math.sin(a) * .85), gf3dV(R, cupP.x, cupP.y + .04, cupP.z));
         } });
         steps.push({ d: 2.3, on: () => {
           R.slow = 1; R.ball.visible = false; R.shake = .08;
@@ -11178,9 +11344,9 @@ async function gf3dPlay(g, L){
           if (L.res === "water"){ R.ball.position.y = land.y - k * .3; R.ballRing.material.opacity = 0; }
           else if (L.res === "ob"){ R.ball.position.addScaledVector(dirV, .02); R.ball.position.y += .01; }
           else if (L.res === "miss"){ R.ball.position.x = land.x + Math.sin(k * 20) * .02 * (1 - k); }
-          else if (!putt){ R.ball.position.y = land.y + Math.abs(Math.sin(k * Math.PI * 3)) * .12 * (1 - k); }
+          else if (L.res === "bunker"){ R.ball.position.y = land.y - .02 * k; }
           const a = k * .5, b = R.ball.position;
-          camAt(gf3dV(R, b.x - dirV.x * (1.7 - k * .2) + side.x * (.9 + a), b.y + .9 + k * .2, b.z - dirV.z * (1.7 - k * .2) + side.z * (.9 + a)), gf3dV(R, b.x, b.y, b.z));
+          camAt(gf3dV(R, b.x - dirV.x * (.4 - k * .1) + side.x * (1.25 + a * .5), b.y + .45 + k * .15, b.z - dirV.z * (.4 - k * .1) + side.z * (1.25 + a * .5)), gf3dV(R, b.x, b.y, b.z));
         } });
       }
     }
@@ -11190,7 +11356,135 @@ async function gf3dPlay(g, L){
   R.wrap.classList.add("out"); await gfWait(GF3D.skip ? 120 : 380);
   R.wrap.hidden = true; R.wrap.classList.remove("out"); gf3dCap(R, "", ""); R.parts.slice().forEach(p => { const o = p.pts || p.beam || p.ring; R.fxg.remove(o); }); R.parts = [];
   GF3D.busy = false;
+  if (R.tgt) R.tgt.visible = true;
+  if (R.liveHost && R.liveHost.isConnected && R.liveBox){ R.mode = "live"; R.liveBox.prepend(R.renderer.domElement); gf3dLiveLoop(); }
   return true;
+}
+
+/* =====================================================================
+   3Dの世界（コースが完成したら、ずっと3Dで遊ぶ。2Dの盤面は右上の小さな地図）
+   ===================================================================== */
+const gf3dLiveWanted = g => GF3D.on && !GF3D.fail && g && g.status === "playing" && g.st && !g.st.build && !g.st.place;
+function gf3dTgtTex(T){
+  return gf3dTex(T, 64, 64, (g, w, h) => { g.fillStyle = "rgba(255,255,255,.35)"; g.fillRect(0, 0, w, h); g.strokeStyle = "#fff"; g.lineWidth = 6; g.strokeRect(3, 3, w - 6, h - 6); const gr = g.createRadialGradient(w / 2, h / 2, 4, w / 2, h / 2, w / 2); gr.addColorStop(0, "rgba(255,255,255,.35)"); gr.addColorStop(1, "rgba(255,255,255,0)"); g.fillStyle = gr; g.fillRect(0, 0, w, h); });
+}
+/* 3Dの世界を表示・更新する（gfRender から毎回呼ばれる） */
+function gf3dLive(g, o){
+  if (!window.THREE){ gf3dLoad().then(T => { if (T && gfId === g.id && !gfPlaying) drawGf(); }); return; }
+  const R = gf3dInit(); if (!R) return;
+  const host = document.querySelector("#gfg .g3live"); if (!host) return;
+  const T = R.T, st = g.st, c = st.holes[st.hi];
+  // 入れ物（キャンバス＋見出し）は使い回して、描き直された画面に付け替える
+  if (!R.liveBox){
+    R.liveBox = document.createElement("div"); R.liveBox.className = "g3lbox";
+    R.liveBox.innerHTML = `<div class="g3lcap"></div><div class="g3hint">ドラッグで見回す・光るマスをタップで狙う</div>`;
+    R.tgtTex = gf3dTgtTex(T); R.tgt = new T.Group(); R.scene.add(R.tgt);
+    R.arrow = new T.Mesh(new T.ConeGeometry(.045, .14, 16), new T.MeshStandardMaterial({ color: "#FFE600", emissive: new T.Color("#FFB800"), emissiveIntensity: .7 })); R.arrow.rotation.x = Math.PI / 2; R.scene.add(R.arrow);
+    R.aimMark = new T.Group();
+    const am1 = new T.Mesh(new T.RingGeometry(.22, .3, 40), new T.MeshBasicMaterial({ color: "#ffffff", transparent: true, blending: T.AdditiveBlending, depthWrite: false, side: T.DoubleSide })); am1.rotation.x = -Math.PI / 2; R.aimMark.add(am1);
+    const am2 = new T.Mesh(new T.CylinderGeometry(.05, .05, 1.6, 12, 1, true), new T.MeshBasicMaterial({ map: R.M.beam, color: "#ffffff", transparent: true, blending: T.AdditiveBlending, depthWrite: false })); am2.position.y = .8; R.aimMark.add(am2);
+    R.scene.add(R.aimMark);
+    R.look = new T.Vector3(); R.yaw = 0; R.liveKey = ""; R.goalKey = "";
+    // ドラッグで見回す／タップで狙う
+    let sx = 0, sy = 0, moved = false, down = false, yaw0 = 0;
+    const cv = R.renderer.domElement;
+    R.liveBox.addEventListener("pointerdown", e => { if (R.mode !== "live") return; down = true; moved = false; sx = e.clientX; sy = e.clientY; yaw0 = R.yaw; try { R.liveBox.setPointerCapture(e.pointerId); } catch (x) {} });
+    R.liveBox.addEventListener("pointermove", e => { if (!down) return; const dx = e.clientX - sx; if (Math.abs(dx) > 8 || Math.abs(e.clientY - sy) > 8) moved = true; if (moved) R.yaw = yaw0 - dx * .008; });
+    R.liveBox.addEventListener("pointerup", e => {
+      if (!down) return; down = false; if (moved) return;
+      const r = cv.getBoundingClientRect(), m = new T.Vector2(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
+      const ray = new T.Raycaster(); ray.setFromCamera(m, R.cam);
+      const hit = ray.intersectObjects(R.tgt.children, false)[0] || ray.intersectObjects(R.tops || [], false)[0];
+      if (hit && hit.object.userData && hit.object.userData.gx != null){
+        const el = document.querySelector(`#gfg .gfmini [data-gx="${hit.object.userData.gx}"][data-gy="${hit.object.userData.gy}"]`);
+        if (el) el.click();
+      }
+    });
+  }
+  if (!host.contains(R.liveBox)) host.appendChild(R.liveBox);
+  if (!GF3D.busy && R.renderer.domElement.parentElement !== R.liveBox) R.liveBox.prepend(R.renderer.domElement);
+  R.mode = "live"; R.liveHost = host;
+  gf3dBuild(R, c, st, null);
+  R.ball.visible = false; R.ballRing.visible = false; R.trail.visible = false;
+  // ボール（全員）
+  while (R.others.children.length) R.others.remove(R.others.children[0]);
+  const P = (x, y) => { const t = y < 0 ? "tee" : gfTile(c, x, y), p = gf3dPos(c, x, y); return gf3dV(R, p.x, gf3dTop(t) * (t === "b" || t === "w" ? .7 : 1), p.z); };
+  const cur = o.cur, balls = (o.balls || []).filter(z => st.ball[z.p] && !st.ball[z.p].done);
+  const sameCell = {};
+  balls.forEach(z => {
+    const k = z.x + "," + z.y, n = sameCell[k] = (sameCell[k] || 0) + 1, q = P(z.x, z.y), off = (n - 1) * .17 - (z.p === cur ? 0 : .08);
+    const m = new T.Mesh(new T.SphereGeometry(.05, 24, 16), new T.MeshStandardMaterial({ color: "#fff", roughness: .35, emissive: new T.Color(pcolor(z.p)), emissiveIntensity: z.p === cur ? .25 : .45 }));
+    m.position.set(q.x + (z.p === cur ? 0 : off), q.y + .05, q.z + (z.p === cur ? 0 : .12)); m.castShadow = true; R.others.add(m);
+    const ring = new T.Mesh(new T.RingGeometry(.08, .105, 32), new T.MeshBasicMaterial({ color: pcolor(z.p), transparent: true, opacity: .9, depthWrite: false })); ring.rotation.x = -Math.PI / 2; ring.position.set(m.position.x, q.y + .006, m.position.z); R.others.add(ring);
+    if (z.p === cur) R.curBall = m.position.clone();
+  });
+  // 狙えるマス
+  while (R.tgt.children.length){ const m = R.tgt.children[0]; R.tgt.remove(m); m.material.dispose(); }
+  (o.tg || []).filter(z => z.ok).forEach(z => {
+    const q = P(z.x, z.y), col = z.chip ? "#FFB800" : gfTile(c, z.x, z.y) === "b" ? (z.m === "d" ? "#FF2E8C" : "#FF8CC8") : z.m === "d" ? "#FFE600" : "#FFF2B0";
+    const m = new T.Mesh(new T.PlaneGeometry(.9, .9), new T.MeshBasicMaterial({ map: R.tgtTex, color: col, transparent: true, opacity: o.remote ? .45 : .85, blending: T.AdditiveBlending, depthWrite: false }));
+    m.rotation.x = -Math.PI / 2; m.position.set(q.x, q.y + .012, q.z); m.userData = { gx: z.x, gy: z.y, pulse: Math.random() * 6 }; R.tgt.add(m);
+  });
+  // 狙ったマス
+  R.aimMark.visible = !!o.sel; if (o.sel){ const q = P(o.sel.x, o.sel.y); R.aimMark.position.set(q.x, q.y + .015, q.z); }
+  // 打つ向きの矢印
+  const dir = o.dir || 0, V = GF_DIRV[dir], dW = gf3dV(R, V.F[0], 0, -V.F[1]);
+  R.arrow.visible = !!(R.curBall && o.showDir);
+  if (R.curBall){ R.arrow.position.copy(R.curBall).addScaledVector(dW, .15); R.arrow.lookAt(R.curBall.clone().addScaledVector(dW, 2)); R.arrow.rotateX(Math.PI / 2); }
+  // カメラの目標
+  const B = R.curBall ? R.curBall.clone() : P(c.sx, -1), goalKey = `${cur}|${dir}|${o.sel ? o.sel.x + "," + o.sel.y : ""}|${B.x.toFixed(2)},${B.z.toFixed(2)}`;
+  if (goalKey !== R.goalKey){ if (!R.goalKey || R.goalKey.split("|")[0] !== String(cur) || R.goalKey.split("|")[3] !== goalKey.split("|")[3]) R.yaw = 0; R.goalKey = goalKey; }
+  let look, pos;
+  if (o.sel){ const A = P(o.sel.x, o.sel.y); look = B.clone().lerp(A, .6); look.y += .05; pos = B.clone().addScaledVector(dW, -1.8); pos.y += 1.35; }
+  else { look = B.clone().addScaledVector(dW, 2.2); look.y += .2; pos = B.clone().addScaledVector(dW, -1.5); pos.y += .85; }
+  R.goal = { pos, look, B };
+  // ホールに入ったとき：グリーンからティーまで飛んでくる
+  const lk = g.id + ":" + st.hi;
+  if (R.liveKey !== lk){
+    R.liveKey = lk; const cp = P(c.cup[0], c.cup[1]);
+    R.intro = { t: 0, d: 3.2, a: gf3dV(R, cp.x + 1.5, 3.4, cp.z - 2.2), al: cp.clone() };
+    const cap = R.liveBox.querySelector(".g3lcap"); cap.innerHTML = `<small>HOLE ${st.hi + 1}</small><b>${esc(c.name)}</b>`; cap.classList.remove("in"); void cap.offsetWidth; cap.classList.add("in");
+    R.cam.position.copy(R.intro.a); R.look.copy(cp);
+  }
+  gf3dLiveLoop();
+}
+function gf3dLiveLoop(){
+  if (GF3D.liveRaf) return;
+  const R = GF3D.r; let last = performance.now(), frame = 0;
+  const step = now => {
+    GF3D.liveRaf = 0;
+    if (R.mode !== "live" || !R.liveHost || !R.liveHost.isConnected || GF3D.busy || $("#gfg").hidden) return;
+    const dt = Math.min(.05, (now - last) / 1000); last = now; frame++;
+    const box = R.liveBox, w = box.clientWidth, h = box.clientHeight, cv = R.renderer.domElement;
+    if (cv.parentElement !== box) box.prepend(cv);
+    if (w && h && (cv.width !== Math.round(w * R.renderer.getPixelRatio()) || cv.height !== Math.round(h * R.renderer.getPixelRatio()))){ R.renderer.setSize(w, h, false); R.cam.aspect = w / h; R.cam.updateProjectionMatrix(); }
+    const G = R.goal;
+    if (G){
+      // 見回し（ドラッグ）の分だけ、ボールのまわりに回す
+      const rel = G.pos.clone().sub(G.B), cs = Math.cos(R.yaw), sn = Math.sin(R.yaw);
+      const pos = gf3dV(R, G.B.x + rel.x * cs - rel.z * sn, G.pos.y, G.B.z + rel.x * sn + rel.z * cs);
+      const lrel = G.look.clone().sub(G.B), look = gf3dV(R, G.B.x + lrel.x * cs - lrel.z * sn, G.look.y, G.B.z + lrel.x * sn + lrel.z * cs);
+      if (R.intro){
+        R.intro.t += dt; const k = Math.min(1, R.intro.t / R.intro.d), e = gf3dEase(k);
+        const mid = R.intro.a.clone().lerp(pos, e); mid.y += Math.sin(e * Math.PI) * 1.6;
+        R.cam.position.copy(mid); R.look.copy(R.intro.al.clone().lerp(look, e));
+        if (k >= 1) R.intro = null;
+      } else {
+        const f = 1 - Math.exp(-dt * 4);
+        R.cam.position.lerp(pos, f); R.look.lerp(look, f);
+      }
+      R.cam.lookAt(R.look);
+    }
+    const t = now / 1000;
+    R.tgt.children.forEach(m => { m.material.opacity = (m.material.color.getHex() ? .55 : .5) + Math.sin(t * 4 + m.userData.pulse) * .25; });
+    if (R.aimMark.visible){ R.aimMark.children[0].scale.setScalar(1 + Math.sin(t * 5) * .12); R.aimMark.rotation.y += dt; }
+    if (R.arrow.visible) R.arrow.material.emissiveIntensity = .5 + Math.sin(t * 6) * .3;
+    if (R.goal) gf3dOcclude(R, R.goal.B);
+    gf3dUpdateFx(R, dt, t);
+    R.renderer.render(R.scene, R.cam);
+    GF3D.liveRaf = requestAnimationFrame(step);
+  };
+  GF3D.liveRaf = requestAnimationFrame(step);
 }
 
 /* ======================= ここからロビー（ゲームの棚・戦績・設定） ======================= */
