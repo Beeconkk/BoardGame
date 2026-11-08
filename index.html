@@ -3637,7 +3637,7 @@ img.wdta.im{display:block;object-fit:contain;-webkit-user-drag:none}
    ============================================================ */
 const CFG_URL = "https://gcuddhongxvojabweclh.supabase.co";
 const CFG_KEY = "sb_publishable_E6PxQDZpmdfb6kjRPte3qw_goaYjKZB";
-const APP_VER = "v122";
+const APP_VER = "v123";
 
 const lsGet = k => { try { return localStorage.getItem(k); } catch (e) { return null; } };
 const lsSet = (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} };
@@ -10959,8 +10959,10 @@ function gf3dMats(T){
   // バンカー：白っぽい砂とレーキ跡
   M.sand = std({ map: gf3dTex(T, 128, 128, (g, w, h) => { g.fillStyle = "#E9D7A8"; g.fillRect(0, 0, w, h); g.strokeStyle = "rgba(170,140,90,.22)"; g.lineWidth = 1; for (let y = 3; y < h; y += 5){ g.beginPath(); for (let x = 0; x <= w; x += 6) g.lineTo(x, y + Math.sin(x / 11 + y) * 1.5); g.stroke(); } gf3dNoise(g, w, h, 900, ["#D2BB86", "#FFF7E2", "#C9AE78"], .3, .9); }) });
   // 池：深い青緑と光の反射
-  M.waterTex = gf3dTex(T, 128, 128, (g, w, h) => { g.fillStyle = "#2E6E86"; g.fillRect(0, 0, w, h); for (let i = 0; i < 60; i++){ g.strokeStyle = `rgba(255,255,255,${.06 + Math.random() * .12})`; g.lineWidth = 1; const x = Math.random() * w, y = Math.random() * h, r = 6 + Math.random() * 14; g.beginPath(); g.ellipse(x, y, r, r * .35, 0, Math.PI * 1.15, Math.PI * 1.85); g.stroke(); } }, [2, 2]);
-  M.water = new T.MeshStandardMaterial({ map: M.waterTex, roughness: .06, metalness: .35, transparent: true, opacity: .93, emissive: new T.Color("#0C2A3A"), emissiveIntensity: .3 });
+  M.waterTex = gf3dTex(T, 128, 128, (g, w, h) => { g.fillStyle = "#3C8FD0"; g.fillRect(0, 0, w, h); for (let i = 0; i < 60; i++){ g.strokeStyle = `rgba(255,255,255,${.06 + Math.random() * .12})`; g.lineWidth = 1; const x = Math.random() * w, y = Math.random() * h, r = 6 + Math.random() * 14; g.beginPath(); g.ellipse(x, y, r, r * .35, 0, Math.PI * 1.15, Math.PI * 1.85); g.stroke(); } }, [2, 2]);
+  // 池：空を映すような青。光が当たってもちゃんと青く見えるよう、自分でも少し光らせる
+  M.water = new T.MeshPhongMaterial({ map: M.waterTex, color: "#7FC4FF", specular: new T.Color("#FFFFFF"), shininess: 120, emissive: new T.Color("#1E5C9A"), emissiveIntensity: .55, transparent: true, opacity: .95 });
+  M.foam = new T.MeshBasicMaterial({ color: "#E8F6FF", transparent: true, opacity: .55, depthWrite: false });
   M.mud = std({ color: "#5E5034" });
   M.soil = std({ color: "#6A5236" });
   M.dark = std({ map: gf3dTex(T, 64, 64, (g, w, h) => grass(g, w, h, "#3A6E2A", 600, ["rgba(0,30,0,.3)", "rgba(120,170,80,.2)"])) });
@@ -10996,6 +10998,8 @@ function gf3dInit(){
   if ("outputEncoding" in renderer) renderer.outputEncoding = T.sRGBEncoding;
   renderer.toneMapping = T.NoToneMapping;
   wrap.prepend(renderer.domElement);
+  // 端末のメモリ不足などで3Dが使えなくなったら、2Dの演出に切り替える
+  renderer.domElement.addEventListener("webglcontextlost", e => { e.preventDefault(); GF3D.fail = true; GF3D.busy = false; wrap.hidden = true; if (typeof toast === "function") toast("3D演出を止めて2Dに切り替えました", 2400); setTimeout(() => { if (!gfPlaying) drawGf(); }, 50); });
   const scene = new T.Scene(), M = gf3dMats(T);
   scene.background = M.sky; scene.fog = new T.Fog("#D4E6F1", 16, 62);
   const cam = new T.PerspectiveCamera(48, 1, .03, 220);
@@ -11010,10 +11014,8 @@ function gf3dInit(){
   // 雲
   for (let i = 0; i < 16; i++){ const cl = new T.Sprite(new T.SpriteMaterial({ map: M.cloud, transparent: true, opacity: .55 + Math.random() * .35, depthWrite: false, fog: false })); const a = Math.random() * Math.PI * 2, r = 55 + Math.random() * 40; cl.position.set(Math.cos(a) * r, 14 + Math.random() * 14, Math.sin(a) * r); cl.scale.set(30 + Math.random() * 30, 12 + Math.random() * 8, 1); scene.add(cl); }
   // 地面（コースの外はラフ。ゆるやかな起伏）
-  const gg = new T.PlaneGeometry(200, 200, 80, 80), ga = gg.attributes.position;
-  for (let i = 0; i < ga.count; i++){ const x = ga.getX(i), y = ga.getY(i), d = Math.max(0, Math.hypot(x * .9, y * .55) - 7); ga.setZ(i, d > 0 ? (Math.sin(x * .21) * Math.cos(y * .17) * .9 + Math.sin(x * .07 + y * .05) * 1.6) * Math.min(1, d / 10) : 0); }
-  gg.computeVertexNormals();
-  const ground = new T.Mesh(gg, M.ground); ground.rotation.x = -Math.PI / 2; ground.position.y = -.012; ground.receiveShadow = true; scene.add(ground);
+  const gg = new T.PlaneGeometry(200, 200, 120, 120);
+  const ground = new T.Mesh(gg, M.ground); ground.rotation.x = -Math.PI / 2; ground.position.y = 0; ground.receiveShadow = true; scene.add(ground);
   const course = new T.Group(); scene.add(course);
   const fxg = new T.Group(); scene.add(fxg);
   // ボール（自分の）と、ほかの人のボール
@@ -11026,8 +11028,8 @@ function gf3dInit(){
   const trailGeo = new T.BufferGeometry(); trailGeo.setAttribute("position", new T.BufferAttribute(trailPos, 3)); trailGeo.setAttribute("color", new T.BufferAttribute(trailCol, 3));
   const trail = new T.Points(trailGeo, new T.PointsMaterial({ size: .07, map: M.glow, vertexColors: true, transparent: true, blending: T.AdditiveBlending, depthWrite: false }));
   trail.frustumCulled = false; scene.add(trail);
-  const R = GF3D.r = { T, wrap, renderer, scene, cam, sun, sunGlow, M, course, fxg, ball, ballRing, others, trail, trailPos, trailCol, TRN, hist: [], parts: [], flags: [], waters: [], key: "", shake: 0, t0: 0 };
-  const resize = () => { const w = host.clientWidth || innerWidth, h = host.clientHeight || innerHeight; renderer.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix(); };
+  const R = GF3D.r = { T, wrap, renderer, scene, cam, ground, sun, sunGlow, M, course, fxg, ball, ballRing, others, trail, trailPos, trailCol, TRN, hist: [], parts: [], flags: [], waters: [], key: "", shake: 0, t0: 0 };
+  const resize = () => { const w = host.clientWidth || innerWidth, h = host.clientHeight || innerHeight; R.sizeW = w; R.sizeH = h; renderer.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix(); };
   R.resize = resize; addEventListener("resize", () => { if (!wrap.hidden) resize(); });
   wrap.addEventListener("pointerdown", () => { GF3D.skip = true; });
   return R;
@@ -11036,15 +11038,17 @@ function gf3dInit(){
 /* ---------- コースを3Dにする ---------- */
 const gf3dTop = t => t === "b" ? -.06 : t === "w" ? -.07 : t === "g" ? .012 : t === "r" ? .01 : t === "tee" ? .05 : 0;
 function gf3dPos(c, x, y){ const W = gfW(c), H = gfH(c); return { x: x - (W - 1) / 2, z: -(y - (H - 1) / 2) }; }
+const GF3DG = {};
+const gf3dG = (R, k, mk) => GF3DG[k] || (GF3DG[k] = mk(R.T));
 function gf3dTree(R, s = 1, kind){
   const T = R.T, g = new T.Group(); kind = kind || (Math.random() < .45 ? "pine" : "oak"); g.userData.s = s;
   if (kind === "pine"){
-    const tr = new T.Mesh(new T.CylinderGeometry(.035 * s, .06 * s, .6 * s, 6), R.M.trunk); tr.position.y = .3 * s; tr.castShadow = true; g.add(tr);
-    [[.42, .5, .55], [.34, .45, .85], [.25, .4, 1.12], [.15, .32, 1.36]].forEach(([r, h, y], i) => { const m = new T.Mesh(new T.ConeGeometry(r * s, h * s, 8), R.M.pine[i % 3]); m.position.y = y * s; m.castShadow = true; g.add(m); });
+    const tr = new T.Mesh(gf3dG(R, "pt", T => new T.CylinderGeometry(.035, .06, .6, 6)), R.M.trunk); tr.scale.setScalar(s); tr.position.y = .3 * s; tr.castShadow = true; g.add(tr);
+    [[.42, .5, .55], [.34, .45, .85], [.25, .4, 1.12], [.15, .32, 1.36]].forEach(([r, h, y], i) => { const m = new T.Mesh(gf3dG(R, "pc" + i, T => new T.ConeGeometry(r, h, 8)), R.M.pine[i % 3]); m.scale.setScalar(s); m.position.y = y * s; m.castShadow = true; g.add(m); });
   } else {
-    const tr = new T.Mesh(new T.CylinderGeometry(.04 * s, .07 * s, .7 * s, 7), R.M.trunk); tr.position.y = .35 * s; tr.castShadow = true; g.add(tr);
+    const tr = new T.Mesh(gf3dG(R, "ot", T => new T.CylinderGeometry(.04, .07, .7, 7)), R.M.trunk); tr.scale.setScalar(s); tr.position.y = .35 * s; tr.castShadow = true; g.add(tr);
     for (let i = 0; i < 7; i++){ const a = i / 7 * Math.PI * 2, rr = i ? .22 : 0, r = (i ? .2 + Math.random() * .08 : .3) * s;
-      const m = new T.Mesh(new T.IcosahedronGeometry(r, 1), R.M.leaf[(i + (Math.random() * 4 | 0)) % 4]); m.position.set(Math.cos(a) * rr * s, (.85 + (i ? Math.random() * .25 : .15)) * s, Math.sin(a) * rr * s); m.scale.y = .85; m.castShadow = true; g.add(m); }
+      const m = new T.Mesh(gf3dG(R, "ol", T => new T.IcosahedronGeometry(1, 1)), R.M.leaf[(i + (Math.random() * 4 | 0)) % 4]); m.scale.set(r, r * .85, r); m.position.set(Math.cos(a) * rr * s, (.85 + (i ? Math.random() * .25 : .15)) * s, Math.sin(a) * rr * s); m.castShadow = true; g.add(m); }
   }
   return g;
 }
@@ -11056,21 +11060,47 @@ function gf3dBuild(R, c, st, mover){
     R.flags = []; R.waters = []; R.trees = []; R.tops = [];
     const W = gfW(c), H = gfH(c), top = new T.PlaneGeometry(1, 1);
     // くぼみ（バンカー・池）：まわりは0、中ほど深い
-    const bowl = (depth) => { const gq = new T.PlaneGeometry(1, 1, 14, 14), a = gq.attributes.position; for (let i = 0; i < a.count; i++){ const x = a.getX(i) * 2, y = a.getY(i) * 2, r = Math.max(Math.abs(x), Math.abs(y)), k = Math.max(0, 1 - Math.pow(r, 3)); a.setZ(i, -depth * k); } gq.computeVertexNormals(); return gq; };
-    const bunkerG = bowl(.08), pondG = bowl(.1);
+    // くぼみ：同じ種類のマスが隣にある辺は縁を作らない（となり合う池・バンカーはひとつながりに）
+    const bowlCache = {};
+    const bowl = (depth, nb) => { const key = depth + nb.join(""); if (bowlCache[key]) return bowlCache[key];
+      const gq = new T.PlaneGeometry(1, 1, 14, 14), a = gq.attributes.position;
+      for (let i = 0; i < a.count; i++){ const x = a.getX(i) * 2, y = a.getY(i) * 2; // nb：[右, 左, 奥, 手前] がつながっているか
+        const ex = x > 0 ? (nb[0] ? 0 : x) : (nb[1] ? 0 : -x), ey = y > 0 ? (nb[2] ? 0 : y) : (nb[3] ? 0 : -y);
+        const r = Math.max(ex, ey), k = Math.max(0, 1 - Math.pow(r, 3)); a.setZ(i, -depth * k); }
+      gq.computeVertexNormals(); return (bowlCache[key] = gq); };
+    const nbOf = (x, y, t) => [gfTile(c, x + 1, y) === t, gfTile(c, x - 1, y) === t, gfTile(c, x, y + 1) === t, gfTile(c, x, y - 1) === t].map(Number);
+    // 地面：コースのまわり（3マス分）は平らなラフ、コースの真下は低くして、池やバンカーのくぼみが見えるように
+    { const ga = R.ground.geometry.attributes.position, hx = W / 2 + 3, hz = H / 2 + 4;
+      for (let i = 0; i < ga.count; i++){ const x = ga.getX(i), y = ga.getY(i), dx = Math.max(0, Math.abs(x) - hx), dz = Math.max(0, Math.abs(y) - hz), d = Math.hypot(dx, dz);
+        const inside = Math.abs(x) < W / 2 + .2 && Math.abs(y) < H / 2 + 1.7;
+        ga.setZ(i, inside ? -.2 : d > 0 ? (Math.sin(x * .21) * Math.cos(y * .17) * .9 + Math.sin(x * .07 + y * .05) * 1.6) * Math.min(1, d / 8) - .004 : -.004); }
+      ga.needsUpdate = true; R.ground.geometry.computeVertexNormals(); }
+    // コースの外側（土台の形のすき間・まわり）は、ラフの板で地面とつなぐ
+    for (let y = -3; y < H + 2; y++) for (let x = -3; x < W + 3; x++){
+      const inC = y >= 0 && y < H && x >= 0 && x < W && gfTile(c, x, y) != null, isTee = y === -1 && x === c.sx;
+      if (inC || isTee) continue;
+      const p = gf3dPos(c, x, y), m = new T.Mesh(top, R.M.ground2 || (R.M.ground2 = R.M.rough)); m.rotation.x = -Math.PI / 2; m.position.set(p.x, -.002, p.z); m.receiveShadow = true; R.course.add(m);
+    }
     for (let y = -1; y < H; y++) for (let x = 0; x < W; x++){
       const t = y < 0 ? (x === c.sx ? "tee" : null) : gfTile(c, x, y); if (!t) continue;
       const p = gf3dPos(c, x, y);
       let tp;
-      if (t === "b"){ tp = new T.Mesh(bunkerG, R.M.sand); }
-      else if (t === "w"){ tp = new T.Mesh(pondG, R.M.mud); const wv = new T.Mesh(top, R.M.water); wv.rotation.x = -Math.PI / 2; wv.position.set(p.x, -.035, p.z); wv.scale.set(.86, .86, 1); R.course.add(wv); R.waters.push(wv); }
+      if (t === "b"){ tp = new T.Mesh(bowl(.08, nbOf(x, y, "b")), R.M.sand); }
+      else if (t === "w"){
+        const nb = nbOf(x, y, "w"); tp = new T.Mesh(bowl(.12, nb), R.M.mud);
+        // 水面：つながっている辺は端まで、岸側は少し内側まで
+        const x0 = nb[1] ? -.5 : -.44, x1 = nb[0] ? .5 : .44, z0 = nb[3] ? -.5 : -.44, z1 = nb[2] ? .5 : .44;
+        const wv = new T.Mesh(top, R.M.water); wv.rotation.x = -Math.PI / 2; wv.scale.set(x1 - x0, z1 - z0, 1); wv.position.set(p.x + (x0 + x1) / 2, -.03, p.z - (z0 + z1) / 2); R.course.add(wv); R.waters.push(wv);
+        // 岸の白い波（岸側の辺だけ）
+        [[0, 1, .43, 0], [1, 1, -.43, 0], [2, 0, 0, .43], [3, 0, 0, -.43]].forEach(([i, vert, ox, oz]) => { if (nb[i]) return; const fo = new T.Mesh(gf3dG(R, "foam" + vert, T => vert ? new T.PlaneGeometry(.03, .9) : new T.PlaneGeometry(.9, .03)), R.M.foam); fo.rotation.x = -Math.PI / 2; fo.position.set(p.x + ox, -.027, p.z - oz); R.course.add(fo); });
+      }
       else if (t === "tee"){ const bx = new T.Mesh(new T.BoxGeometry(.9, .05, .9), R.M.soil); bx.position.set(p.x, .025, p.z); bx.receiveShadow = true; R.course.add(bx); tp = new T.Mesh(new T.PlaneGeometry(.9, .9), R.M.tee); }
       else tp = new T.Mesh(top, t === "f" ? R.M.fair[(y + 100) % 2] : t === "r" ? R.M.rough : t === "g" ? R.M.green : t === "t" ? R.M.dark : R.M.fair[0]);
       tp.rotation.x = -Math.PI / 2; tp.position.set(p.x, t === "tee" ? .051 : t === "g" ? .012 : t === "r" ? .006 : 0, p.z); tp.receiveShadow = true; tp.userData = { gx: x, gy: y }; R.course.add(tp); R.tops.push(tp);
       // グリーンのまわりのカラー（少し長い芝のふち）
       if (t === "g") [[1, 0], [-1, 0], [0, 1], [0, -1]].forEach(([dx, dy]) => { if (gfTile(c, x + dx, y + dy) === "g") return; const e = new T.Mesh(new T.PlaneGeometry(dx ? .08 : 1, dy ? .08 : 1), R.M.collar); e.rotation.x = -Math.PI / 2; e.position.set(p.x + dx * .46, .013, p.z - dy * .46); R.course.add(e); });
       // ラフの草むら
-      if (t === "r") for (let i = 0; i < 9; i++){ const m = new T.Mesh(new T.ConeGeometry(.025, .09 + Math.random() * .06, 4), R.M.leaf[i % 4]); m.position.set(p.x + (Math.random() - .5) * .9, .04, p.z + (Math.random() - .5) * .9); R.course.add(m); }
+      if (t === "r") for (let i = 0; i < 9; i++){ const m = new T.Mesh(gf3dG(R, "tuft", T => new T.ConeGeometry(.025, .12, 4)), R.M.leaf[i % 4]); m.scale.y = .75 + Math.random() * .5; m.position.set(p.x + (Math.random() - .5) * .9, .04, p.z + (Math.random() - .5) * .9); R.course.add(m); }
       if (t === "t"){ const tr = gf3dTree(R, 1.1 + Math.random() * .25); tr.position.set(p.x, 0, p.z); tr.rotation.y = Math.random() * 6; R.course.add(tr); R.trees.push(tr); }
       if (t === "tee") [-.3, .3].forEach(dx => { const m = new T.Mesh(new T.SphereGeometry(.035, 12, 8), new T.MeshStandardMaterial({ color: "#2E6BE0", roughness: .3 })); m.position.set(p.x + dx, .085, p.z - .28); m.castShadow = true; R.course.add(m); });
     }
@@ -11160,9 +11190,12 @@ function gf3dCap(R, txt, sub, cls = ""){ const c = R.wrap.querySelector(".g3cap"
 /* steps：[{ d: 秒, f: (k, dt, now) => {} , on: () => {} }] を順に再生 */
 function gf3dRun(R, steps){
   return new Promise(res => {
-    let i = 0, t = 0, last = performance.now(), started = false;
-    const loop = now => {
-      if (R.wrap.hidden) return res();
+    let i = 0, t = 0, last = performance.now(), started = false, done = false; const t0 = performance.now();
+    const fin = () => { if (!done){ done = true; res(); } };
+    const loop = now => { try { loop2(now); } catch (e) { console.warn("3D演出エラー", e); fin(); } };
+    const loop2 = now => {
+      if (done) return;
+      if (R.wrap.hidden || GF3D.fail || now - t0 > 20000) return fin();
       let dt = Math.min(.05, (now - last) / 1000); last = now;
       const sp = (GF3D.skip ? 5 : (R.slow || 1)) / (GF3D.spd || 1); const sdt = dt * sp;
       const s = steps[i];
@@ -11176,7 +11209,7 @@ function gf3dRun(R, steps){
       if (R.shake > 0){ R.cam.position.x += (Math.random() - .5) * R.shake; R.cam.position.y += (Math.random() - .5) * R.shake; R.shake *= .88; if (R.shake < .002) R.shake = 0; }
       gf3dOcclude(R, R.ball.position);
       R.renderer.render(R.scene, R.cam);
-      if (i >= steps.length && !R.parts.some(p => p.beam)) return res();
+      if (i >= steps.length && !R.parts.some(p => p.beam)) return fin();
       requestAnimationFrame(loop);
     };
     requestAnimationFrame(loop);
@@ -11202,6 +11235,8 @@ async function gf3dPlay(g, L){
   GF3D.busy = true; GF3D.skip = false; R.slow = 1; R.hist = [];
   try {
     R.mode = "shot"; if (R.tgt) R.tgt.visible = false; if (R.arrow) R.arrow.visible = false; if (R.aimMark) R.aimMark.visible = false; R.ballRing.visible = true;
+    // 画面を描き直すと全画面の入れ物が外れてしまうので、毎回付け直す（これが無いと黒い画面のまま止まる）
+    const gfgEl = document.getElementById("gfg"); if (R.wrap.parentElement !== gfgEl) gfgEl.appendChild(R.wrap);
     R.wrap.prepend(R.renderer.domElement);
     gf3dBuild(R, c, st, L.p);
     R.wrap.hidden = false; R.wrap.classList.remove("out"); R.resize();
@@ -11412,7 +11447,8 @@ function gf3dLiveLoop(){
     const dt = Math.min(.05, (now - last) / 1000); last = now; frame++;
     const box = R.liveBox, w = box.clientWidth, h = box.clientHeight, cv = R.renderer.domElement;
     if (cv.parentElement !== box) box.prepend(cv);
-    if (w && h && (cv.width !== Math.round(w * R.renderer.getPixelRatio()) || cv.height !== Math.round(h * R.renderer.getPixelRatio()))){ R.renderer.setSize(w, h, false); R.cam.aspect = w / h; R.cam.updateProjectionMatrix(); }
+    // 大きさが変わったときだけ作り直す（毎フレーム作り直すと重くなって画面が黒くなる）
+    if (w && h && (R.sizeW !== w || R.sizeH !== h)){ R.sizeW = w; R.sizeH = h; R.renderer.setSize(w, h, false); R.cam.aspect = w / h; R.cam.updateProjectionMatrix(); }
     const G = R.goal;
     if (G){
       // 見回し（ドラッグ）の分だけ、ボールのまわりに回す
